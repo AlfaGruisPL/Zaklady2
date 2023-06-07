@@ -1,0 +1,54 @@
+<div class="logowanie">
+  <h1 class="h1dlaTytuluPanelu">Panel logowania <span class="logowanieDlaKogoPanel"> dla pracownika</span></h1>
+  <h2>Zakład: {{subDomain}}</h2>
+  <div class="formularz">
+    <form>
+      <table>
+        <tr>
+          <td><input class="logInput" type="text" placeholder="E-mail" [ngModelOptions]="{standalone: true}"
+                     [(ngModel)]="email"
+                     [ngClass]="{'wpiszDane': !czyEmailWpisany || !czyPrawidloweDane}">
+          </td>
+        </tr>
+        <tr>
+          <td style="position: relative"><input class="logInput" [type]="!this.Podglad ? 'password': 'text'"
+                                                placeholder="Hasło"
+                                                [ngModelOptions]="{standalone: true}"
+                                                [(ngModel)]="haslo"
+                                                [ngClass]="{'wpiszDane': !czyHasloWpisane || !czyPrawidloweDane}">
+            <fa-icon class="Podglad" (click)="this.Podglad = !this.Podglad" style="position: absolute; top:34px"
+                     [icon]="!this.Podglad ? this.fontAwesome.oczko : this.fontAwesome.oczkoZamkniete"></fa-icon>
+          </td>
+        </tr>
+        <tr *ngIf="!czyPrawidloweDane">
+          <td class="czerwoneKomunikaty">Nieprawidłowe dane,spróbuj ponownie!</td>
+        </tr>
+        <tr *ngIf="!czyWszystkieDaneWpisane">
+          <td class="czerwoneKomunikaty">Uzupełnij pola zaznaczone na czerwono!</td>
+        </tr>
+        <tr *ngIf="!czyKontoPotwierdzone">
+          <td class="czerwoneKomunikaty">Twoje konto nie zostało potwierdzone!</td>
+        </tr>
+        <tr *ngIf="!czyWolnoLogowac">
+          <td class="czerwoneKomunikaty" style="padding-top:0;">Nie masz uprawnień aby logować<br> się od tego panelu!
+          </td>
+        </tr>
+        <tr *ngIf="bladPrzyLogowaniu == false;">
+          <td class="czerwoneKomunikaty">Wystąpił nieznany błąd przy logowaniu,<br>skontaktuj się z administratorem!
+          </td>
+        </tr>
+        <tr
+          *ngIf="czyWszystkieDaneWpisane && czyPrawidloweDane && czyWolnoLogowac && bladPrzyLogowaniu && czyKontoPotwierdzone">
+          <td class="czerwoneKomunikaty">&nbsp;</td>
+        </tr>
+      </table>
+      <div class="logowanieMarginButton">
+        <button type="submit" (click)="logowanie()" class="ButtonZarejestrujIzaloguj">Zaloguj</button>
+        <br>
+        <a [routerLink]="['../reset']" class="niePamietaszHasla">Nie pamiętasz hasła? Kliknij aby zresetować</a>
+        <a class="chceszSieZalogowacLubZarejestrowac" [routerLink]="['../rejestracja']">Kliknij, aby zarejestrować nowy
+          zakład</a>
+      </div>
+    </form>
+  </div>
+</div>

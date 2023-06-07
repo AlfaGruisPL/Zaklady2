@@ -1,0 +1,159 @@
+<div class="resetHasla">
+  <!-- <button (click)="powrotOJedenKrok()">
+     <fa-icon [icon]="fontAwesome.powrotIconka"></fa-icon>
+   </button> -->
+  <div class="tytulIPowrotdoLogowania">
+    <h2>Reset hasła
+      <fa-icon [icon]="fontAwesome.powrotIconka" (click)="powrotOJedenKrok()"></fa-icon>
+    </h2>
+
+  </div>
+  <div class="margin">
+    <div class="krokJeden" [ngClass]="{'nieAktywnyKrok': KrokAktywny != 1 }" [ngStyle]="{'z-index': krokPierwszyIndex}">
+      <span class="tytulJakiKrok">Krok 1</span>
+      <form>
+        <table>
+          <tr>
+            <td>
+              <input class="logInput" type="text" placeholder="e-mail" [(ngModel)]="email" style="margin-right: 15px"
+                     id="Resetinput1"
+                     [ngModelOptions]="{standalone: true}" [disabled]="KrokAktywny!= 1"
+                     [ngClass]="{'wpiszDane': emailPusty || emailNieIstnieje}">
+            </td>
+          </tr>
+          <tr>
+            <td class="ciemneNiebieskiNaglowkiReset">Wpisz taki adres e-mail jak przy
+              rejestracji!
+            </td>
+          </tr>
+          <tr>
+            <td class="jasneNiebieskiNaglowkiReset">Jeśli masz problem z adresem e-mail i chcesz go zmienić, to
+              skontaktuj się z
+              administratorem systemu
+            </td>
+          </tr>
+          <tr>
+            <td class="czerwoneKomunikaty" *ngIf="emailPusty">
+              Wpisz e-mail!
+            </td>
+            <td class="czerwoneKomunikaty" *ngIf="emailNieIstnieje">
+              Podany adres e-mail <br>nie został odnaleziony
+            </td>
+          </tr>
+        </table>
+        <button (click)="wyslijEmail()" type="submit" style="visibility: hidden"
+                [disabled]="przycisk1Disabled"></button>
+        <fa-icon class="icons" [icon]="fontAwesome.arrowWprawo" (click)="wyslijEmail()"
+                 [ngClass]="{'notActive':przycisk1Disabled}">
+          >
+        </fa-icon>
+      </form>
+    </div>
+    <form>
+      <div class="krokDwa" [ngClass]="{'nieAktywnyKrok': KrokAktywny != 2 }" [ngStyle]="{'z-index': krokDrugiIndex}">
+        <span class="tytulJakiKrok">Krok 2</span>
+        <p class="jasneNiebieskiNaglowkiReset">Na Twój adres e-mail
+          wysłaliśmy wiadomość z
+          kodem, który potwierdza Twoją tożsamość, <br></p>
+        <table style="margin-bottom: 10px">
+          <tr>
+            <td><span class="WpiszOtrzymanyKod"> Wpisz otrzymany kod:  </span></td>
+            <td><span class="czasKodu" *ngIf="czasKodu != -1">Ważny: {{czasKodu}} sekund</span></td>
+          </tr>
+        </table>
+
+
+        <input class="logInput" type="text" placeholder="Kod" [(ngModel)]="kod" id="Resetinput2"
+               [disabled]="KrokAktywny != 2 || czasKodu <= 0"
+               [ngModelOptions]="{standalone: true}" [ngClass]="{'wpiszDane': pustyKod ||  nieprawidlowyKod}">
+        <p class="wyslijKodPonownieNapis" (click)="wyslijEmail()">Wyślij kod ponownie</p>
+        <span class="czerwoneKomunikaty" *ngIf="pustyKod">Wpisz kod!</span>
+        <span class="czerwoneKomunikaty" *ngIf="nieprawidlowyKod">Nieprawidłowy kod! <br> Spróbuj jeszcze raz</span>
+        <button (click)="wyslijKod()" type="submit" style="visibility: hidden"></button>
+        <fa-icon class="icons" [icon]="fontAwesome.arrowWprawo" (click)="wyslijKod()"></fa-icon>
+      </div>
+    </form>
+
+    <form>
+      <div class="krokTrzy" [ngClass]="{'nieAktywnyKrok': KrokAktywny != 3 }" [ngStyle]="{'z-index': krokTrzeciIndex}">
+        <span class="tytulJakiKrok">Krok 3</span>
+
+
+        <input class="logInput" [type]="haslo1Podglad?'password':'text'" placeholder="nowe hasło" id="Resetinput3"
+               style="margin-top: 20px"
+               [(ngModel)]="haslo1"
+               [ngModelOptions]="{standalone: true}" [disabled]="KrokAktywny != 3"
+               [ngClass]="{'wpiszDane': haslaRozne || haslaNieSpelniajaWymagan || niewpisaneHasla || zmianaHaslaNieudana}">
+        <fa-icon class="Podglad" [icon]="haslo1Podglad?fontAwesome.oczko:fontAwesome.oczkoZamkniete"
+                 (click)="haslo1Podglad =  !haslo1Podglad"
+                 style="position: absolute; right: 5px; top:33px; font-size: 13px"></fa-icon>
+
+        <input class="logInput" [type]="haslo2Podglad?'password':'text'" placeholder="powtórz nowe hasło"
+               style="margin-top: 20px"
+               [(ngModel)]="haslo2" [ngModelOptions]="{standalone: true}" [disabled]="KrokAktywny != 3"
+               [ngClass]="{'wpiszDane': haslaRozne || haslaNieSpelniajaWymagan || niewpisaneHasla || zmianaHaslaNieudana}">
+        <fa-icon class="Podglad" [icon]="haslo2Podglad?fontAwesome.oczko:fontAwesome.oczkoZamkniete"
+                 (click)="haslo2Podglad =  !haslo2Podglad"
+                 style="position: absolute; right: 5px; top:104px; font-size: 13px"></fa-icon>
+        <table>
+          <tr>
+            <td><span class="ciemneNiebieskiNaglowkiReset" style="font-size: 24px"> Wpisz nowe hasło</span></td>
+            <td>
+              <fa-icon [tp]="wymaganiaHasla" tpVariation="popper" class="zapytajnik"
+                       [tpTrigger]="'mouseenter'" [tpClassName]="'wymaganiaHasla'"
+                       [icon]="fontAwesome.znakZapytajnika"></fa-icon>
+            </td>
+          </tr>
+        </table>
+
+
+        <span class="czerwoneKomunikaty"
+              *ngIf="haslaRozne">Wprowadziłeś różne hasła, <br> spróbuj jeszcze raz!</span>
+        <span class="czerwoneKomunikaty" *ngIf="niewpisaneHasla">Uzupełnij wszystkie pola zaznaczone na czerwono!</span>
+        <span class="czerwoneKomunikaty" *ngIf="zmianaHaslaNieudana">Zmiana hasła nie powiodła się,
+          <br> Skontaktuj się z administratorem!</span>
+        <span class="czerwoneKomunikaty" *ngIf="haslaNieSpelniajaWymagan">Hasło nie spełnia wymagań,<br> spróbuj jeszcze raz!</span>
+        <span class="czerwoneKomunikaty" *ngIf="takieSameHaslo">Hasło takie same jak poprzednie,<br> spróbuj jeszcze raz!</span>
+
+
+        <button type="submit" style="visibility: hidden" (click)="wyslijHaslo()"></button>
+        <fa-icon class="icons" [icon]="fontAwesome.arrowWprawo" (click)="wyslijHaslo()"></fa-icon>
+
+      </div>
+    </form>
+    <div class="krokCztery" [ngClass]="{'nieAktywnyKrok': KrokAktywny != 4 }" [ngStyle]="{'z-index': krokCzwartyIndex}">
+      <span class="tytulJakiKrok">Krok 4</span>
+      <span class="hasloZmienone">Twoje hasło zostało zmienione!</span>
+      <fa-icon class="icons" [icon]="fontAwesome.potwierdzenie" (click)="zakoncz()"></fa-icon>
+    </div>
+
+  </div>
+</div>
+
+<ng-template #wymaganiaHasla let-hide>
+  <h6 style="font-size: 20px; color: darkblue; margin-top: 0; font-weight: bolder; margin-bottom: 0">Takie wymagania
+    powinno spełniać
+    hasło:</h6>
+  <ul style="font-size: 18px; color: #07579b">
+    <li>
+      Musi zawierać minimum 8 znaków;
+    </li>
+    <li>
+      Może zawierać maksymalnie 100 znaków;
+    </li>
+    <li>
+      Musi zawierać przynajmniej jedną dużą i jedną małą literę;
+    </li>
+    <li>
+      Musi zawierać przynajmniej jedną cyfrę;
+    </li>
+    <li>
+      Musi zawierać minimum jeden znak specjalny;
+    </li>
+    <li>
+      Nie może zawierać spację.
+    </li>
+  </ul>
+
+</ng-template>
+

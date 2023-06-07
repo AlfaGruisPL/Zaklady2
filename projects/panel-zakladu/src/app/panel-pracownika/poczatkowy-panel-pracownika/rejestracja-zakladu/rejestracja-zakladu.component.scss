@@ -1,0 +1,62 @@
+.formularzRejestracji {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.formularz {
+  width: 1800px;
+  min-height: 500px;
+
+  .buttonZarejestruj {
+    width: 100%;
+    text-align: right;
+    margin-right: 150px;
+
+    .ButtonZarejestrujIzaloguj {
+      height: 50px;
+      width: 150px;
+    }
+  }
+
+  .tablica1 {
+    margin: 0 0 0 0;
+
+    h2 {
+      margin: 5px 0 3px 0;
+    }
+
+    position: relative;
+
+    input[type=checkbox] {
+      position: relative;
+      bottom: 3px;
+      transform: scale(172%);
+      margin-right: 15px;
+      margin-bottom: 5px;
+    }
+  }
+
+  .tablica2 {
+    h2 {
+      margin: 5px 0 3px 0;
+    }
+
+    margin: 0 0 0 100px;
+  }
+}
+
+
+.logInput {
+  width: 250px;
+
+}
+
+
+
+
+

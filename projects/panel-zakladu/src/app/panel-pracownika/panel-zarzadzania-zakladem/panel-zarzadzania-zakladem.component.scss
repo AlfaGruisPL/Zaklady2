@@ -1,0 +1,25 @@
+
+.menuTresc {
+  width: 100%;
+  height: calc(100vh - 77px);
+  float: left;
+  border-bottom: 1px solid #000;
+  border-top: 1px solid #000;
+
+  .menu {
+    width: 275px;
+    height: 100%;
+    float: left;
+    background: #e3e3e3;
+    border-right: 1px solid #000;
+  }
+
+  .tresc {
+    width: calc(100vw - 277px);
+    height: calc(100% - 2px);
+    float: left;
+    background: #f9f9f9;
+    overflow-y: auto;
+  }
+}
+

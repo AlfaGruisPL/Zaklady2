@@ -3,5 +3,300 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "StronaReklamowa": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/strona-reklamowa",
+      "sourceRoot": "projects/strona-reklamowa/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/strona-reklamowa",
+            "index": "projects/strona-reklamowa/src/index.html",
+            "main": "projects/strona-reklamowa/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/strona-reklamowa/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/strona-reklamowa/src/favicon.ico",
+              "projects/strona-reklamowa/src/assets"
+            ],
+            "styles": [
+              "projects/strona-reklamowa/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "StronaReklamowa:build:production"
+            },
+            "development": {
+              "browserTarget": "StronaReklamowa:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "StronaReklamowa:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/strona-reklamowa/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/strona-reklamowa/src/favicon.ico",
+              "projects/strona-reklamowa/src/assets"
+            ],
+            "styles": [
+              "projects/strona-reklamowa/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "PanelZakladu": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/panel-zakladu",
+      "sourceRoot": "projects/panel-zakladu/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/panel-zakladu",
+            "index": "projects/panel-zakladu/src/index.html",
+            "main": "projects/panel-zakladu/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/panel-zakladu/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/panel-zakladu/src/favicon.ico",
+              "projects/panel-zakladu/src/assets"
+            ],
+            "styles": [
+              "projects/panel-zakladu/src/assets/style/zakladPracownik/pracownik.scss",
+              "projects/panel-zakladu/src/assets/style/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "PanelZakladu:build:production"
+            },
+            "development": {
+              "browserTarget": "PanelZakladu:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "PanelZakladu:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/panel-zakladu/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/panel-zakladu/src/favicon.ico",
+              "projects/panel-zakladu/src/assets"
+            ],
+            "styles": [
+              "projects/panel-zakladu/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "PanelZarzadzaniaZakladami": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/panel-zarzadzania-zakladami",
+      "sourceRoot": "projects/panel-zarzadzania-zakladami/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/panel-zarzadzania-zakladami",
+            "index": "projects/panel-zarzadzania-zakladami/src/index.html",
+            "main": "projects/panel-zarzadzania-zakladami/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/panel-zarzadzania-zakladami/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/panel-zarzadzania-zakladami/src/favicon.ico",
+              "projects/panel-zarzadzania-zakladami/src/assets"
+            ],
+            "styles": [
+              "projects/panel-zarzadzania-zakladami/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "PanelZarzadzaniaZakladami:build:production"
+            },
+            "development": {
+              "browserTarget": "PanelZarzadzaniaZakladami:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "PanelZarzadzaniaZakladami:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/panel-zarzadzania-zakladami/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/panel-zarzadzania-zakladami/src/favicon.ico",
+              "projects/panel-zarzadzania-zakladami/src/assets"
+            ],
+            "styles": [
+              "projects/panel-zarzadzania-zakladami/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "6b65c970-5e8f-4e03-bc4e-4a9b19e7398f"
   }
 }

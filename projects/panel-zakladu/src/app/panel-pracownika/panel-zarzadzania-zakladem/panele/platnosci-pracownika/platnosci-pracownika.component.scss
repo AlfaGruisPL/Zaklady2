@@ -1,0 +1,18 @@
+
+.platnosci {
+  .divNaNaglowek {
+    height: 50px;
+    width: 100%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    background: antiquewhite;
+    align-items: center;
+    border-bottom: 2px solid blue;
+
+    .tytulNaglowka {
+
+      top: -20px;
+    }
+  }
+}

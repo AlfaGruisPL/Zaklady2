@@ -1,0 +1,11 @@
+<div class="pasekTytulowy" style="position: relative">
+  <span class="nazwaFirmy">  zaklad.pl</span>
+  <h1 style="position: relative">{{DanePodreczne.danePodreczneObiekt.tytulZakladu | maxDlugosc:40}}
+  </h1>
+  <button class="wstronaStartowaButton">
+    <fa-icon [icon]="fontAwesome.dom"></fa-icon>
+  </button>
+  <button class="wylogujButton" (click)="wyloguj()">
+    <fa-icon [icon]="fontAwesome.wylogowanieIconka"></fa-icon>
+  </button>
+</div>

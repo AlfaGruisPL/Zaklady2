@@ -1,0 +1,60 @@
+.pasekTytulowy {
+  width: 100%;
+  height: 50px;
+  background: #152684;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  float: left;
+  position: relative;
+  box-shadow: 0px 1px 4px 2px #030384;
+
+  .nazwaFirmy {
+    color: darkblue;
+    font-style: italic;
+    font-size: 30px;
+    padding-right: 100px;
+    text-shadow: 1px 1px 1px black;
+    left: 11px;
+    position: absolute
+  }
+
+  h1 {
+    margin: 0;
+    letter-spacing: 5px;
+    color: white;
+    font-weight: bolder;
+    font-size: 25px;
+    text-shadow: 0px 0px 1px black;
+  }
+
+  .wylogujButton {
+    position: absolute;
+    right: 18px;
+    color: #fffcf3;
+    filter: drop-shadow(0px 1px 1px #23b8f2);
+    font-size: 25px;
+    background: transparent;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
+      filter: drop-shadow(0px 1px 2px #23b8f2);
+    }
+  }
+
+  .wstronaStartowaButton {
+    position: absolute;
+    right: 58px;
+    color: #fffcf3;
+    filter: drop-shadow(0px 1px 1px #23b8f2);
+    font-size: 25px;
+    background: transparent;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
+      filter: drop-shadow(0px 1px 2px #23b8f2);
+    }
+  }
+}

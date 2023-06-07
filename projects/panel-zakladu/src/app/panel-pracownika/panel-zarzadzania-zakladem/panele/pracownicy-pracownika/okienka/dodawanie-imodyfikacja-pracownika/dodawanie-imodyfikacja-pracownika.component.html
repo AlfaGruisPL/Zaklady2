@@ -1,0 +1,124 @@
+<form>
+  <div class="modal-header">
+    <h4 class="modal-title" *ngIf="tryb == 'dodawanie'">Dodawanie pracownika</h4>
+    <h4 class="modal-title" *ngIf="tryb == 'modyfikacja'">Modyfikacja danych</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+
+    <table>
+      <tr>
+        <td><label for="imie" class="naglowki2form">Imię</label></td>
+        <td><input id="imie" type="text" class="logInputZaklad" [(ngModel)]="pracownikObj.imie"
+                   (keydown)="iloscKlikniec = 0"
+                   [ngModelOptions]="{standalone: true}">
+        </td>
+      </tr>
+      <tr>
+        <td><label for="nazwisko" class="naglowki2form"> Nazwisko</label></td>
+        <td><input id="nazwisko" type="text" class="logInputZaklad" [(ngModel)]="pracownikObj.nazwisko"
+                   (keydown)="iloscKlikniec = 0"
+                   [ngModelOptions]="{standalone: true}"></td>
+      </tr>
+      <tr>
+        <td><label for="adresEmail" class="naglowki2form">Adres e-mail</label></td>
+        <td><input id="adresEmail" type="text" class="logInputZaklad" [(ngModel)]="pracownikObj.adresEmail"
+                   (keydown)="iloscKlikniec = 0"
+                   [ngModelOptions]="{standalone: true}"></td>
+      </tr>
+      <tr>
+        <td>
+          <label for="nrTelefonu" class="naglowki2form">Numer telefonu</label></td>
+        <td>
+          <select class="logInputZaklad"
+                  style="width: 80px; height: 32px; background: #e3e2e2;position: relative;bottom: -1px"
+                  (click)="iloscKlikniec = 0"
+                  [(ngModel)]="pracownikObj.prefiksTelefonu"
+                  [ngModelOptions]="{standalone: true}">
+            <option>+48</option>
+            <option>+380</option>
+          </select>
+          <input style="width: 170px; margin: 2px" id="nrTelefonu" type="text" class="logInputZaklad"
+                 [(ngModel)]="pracownikObj.numerTelefonu"
+                 [ngModelOptions]="{standalone: true}">
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td colspan="2" class="naglowki1form">Adres zamieszkania</td>
+      </tr>
+      <tr>
+        <td><label for="wojewodztwo" class="naglowki2form">
+          Województwo
+        </label>
+
+        </td>
+        <td>
+          <select class="logInputZaklad" id="wojewodztwo" [(ngModel)]="pracownikObj.adres.wojewodztwo"
+                  (click)="iloscKlikniec = 0"
+                  [ngModelOptions]="{standalone: true}">
+            <option value="dolnoslaskie">Dolnośląskie</option>
+            <option value="kujawsko-pomorskie">Kujawsko-pomorskie</option>
+            <option value="lubelskie">Lubelskie</option>
+            <option value="lubuskie">Lubuskie</option>
+            <option value="lodzkie">Łódzkie</option>
+            <option value="malopolskie">Małopolskie</option>
+            <option value="mazowieckie">Mazowieckie</option>
+            <option value="opolskie">Opolskie</option>
+            <option value="podkarpackie">Podkarpackie</option>
+            <option value="podlaskie">Podlaskie</option>
+            <option value="pomorskie">Pomorskie</option>
+            <option value="slaskie">Śląskie</option>
+            <option value="swietokrzyskie">Świętokrzyskie</option>
+            <option value="warminsko-mazurskie">Warmińsko-mazurskie</option>
+            <option value="wielkopolskie">Wielkopolskie</option>
+            <option value="zachodniopomorskie">Zachodniopomorskie</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="miasto" class="naglowki2form">Miasto</label></td>
+        <td><input id="miasto" type="text" class="logInputZaklad" [(ngModel)]="pracownikObj.adres.miasto"
+                   (keydown)="iloscKlikniec = 0"
+                   [ngModelOptions]="{standalone: true}"></td>
+      </tr>
+      <tr>
+        <td><label for="ulica" class="naglowki2form">Ulica</label></td>
+        <td><input id="ulica" type="text" class="logInputZaklad" [(ngModel)]="pracownikObj.adres.ulica"
+                   (keydown)="iloscKlikniec = 0"
+                   [ngModelOptions]="{standalone: true}"></td>
+      </tr>
+      <tr>
+        <td><label class="naglowki2form">Numer domu/lokalu</label></td>
+        <td><input type="text" class="logInputZaklad" style="width: 100px" [(ngModel)]="pracownikObj.adres.nrDomu"
+                   (keydown)="iloscKlikniec = 0"
+                   [ngModelOptions]="{standalone: true}"><span
+          style="font-size: 25px;">&nbsp;/&nbsp;</span>
+          <input type="text" class="logInputZaklad" style="width: 100px" [(ngModel)]="pracownikObj.adres.nrLokalu"
+                 (keydown)="iloscKlikniec = 0"
+                 [ngModelOptions]="{standalone: true}"></td>
+
+      </tr>
+      <tr>
+        <td><label class="naglowki2form">Kod pocztowy</label></td>
+        <td><input type="text" class="logInputZaklad" style="width: 80px" maxlength="2" (keydown)="iloscKlikniec = 0"
+                   [(ngModel)]="pracownikObj.adres.kodPocztowy1"
+                   [ngModelOptions]="{standalone: true}">
+          <span
+            style="font-size: 25px;">&nbsp;-&nbsp;</span>
+          <input type="text" class="logInputZaklad" style="width: 100px" maxlength="3" (keydown)="iloscKlikniec = 0"
+                 [(ngModel)]="pracownikObj.adres.kodPocztowy2"
+                 [ngModelOptions]="{standalone: true}">
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <span style="padding-right: 150px " *ngIf="!pracownikObj.czyWszystkoWpisane && iloscKlikniec == 1"
+          class="czerwoneKomunikatyZaklad">Nie uzupełnione wszystkie pola! Czy na pewno chcesz zapisać dane? </span>
+    <span style=" padding-right: 150px " class="czerwoneKomunikatyZaklad" *ngIf="!pracownikDodany">Dodanie pracownika nie udane, skontaktuj się z administratorem</span>
+    <button type="submit" class="buttonZapiszZmodyfikuj" (click)="zapisz()">Zapisz</button>
+  </div>
+
+</form>

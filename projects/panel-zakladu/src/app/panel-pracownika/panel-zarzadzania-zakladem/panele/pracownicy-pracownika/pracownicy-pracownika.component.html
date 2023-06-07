@@ -1,0 +1,43 @@
+<div class="pracownicy">
+
+  <div class="naglowekZolty">
+    <h1 class="naglowek1Wzoltym">Panel zarządzania pracownikami</h1>
+
+  </div>
+  <div class="Divtabelka">
+    <table class="tablica">
+      <tr>
+        <th>Nr</th>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Adres e-mail</th>
+        <th>Numer telefonu</th>
+        <th>Zarządzanie</th>
+      </tr>
+      <tr *ngFor="let pracownik of ListaPracownikow; let index = index">
+        <td>{{index + 1}}</td>
+        <td>{{pracownik.imie}}</td>
+        <td>{{pracownik.nazwisko}}</td>
+        <td>{{pracownik.adresEmail}}</td>
+        <td>{{pracownik.prefiksTelefonu}}{{pracownik.numerTelefonu}}</td>
+        <td>
+          <div ngbDropdown container="body">
+            <button type="button" class="btn btn-outline-primary btn-sm" ngbDropdownToggle>Actions</button>
+            <div ngbDropdownMenu>
+              <button ngbDropdownItem>Edit</button>
+              <button ngbDropdownItem>Duplicate</button>
+              <button ngbDropdownItem>Move</button>
+              <div class="dropdown-divider"></div>
+              <button ngbDropdownItem>Delete</button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="divNaPrzycisk">
+    <button class="DodajPracownikaButton" (click)="dodajPracownika()">Dodaj pracownika</button>
+  </div>
+</div>
+
+

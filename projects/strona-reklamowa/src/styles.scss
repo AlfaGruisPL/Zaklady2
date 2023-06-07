@@ -1,0 +1,10 @@
+@import 'ngx-toastr/toastr';
+
+body {
+  margin: 0;
+}
+
+
+.toast-container .ngx-toastr {
+  width: 400px;
+}

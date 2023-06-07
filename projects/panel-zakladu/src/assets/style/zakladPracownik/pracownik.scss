@@ -1,0 +1,218 @@
+.logInputZaklad {
+  border: 2px inset #b7cff5;
+  width: 250px;
+  height: 32px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.logInputZaklad_czas {
+  width: 70px !important;
+  height: 35px;
+}
+
+
+/* Importing Bootstrap SCSS file. */
+@import '../../../../../../node_modules/bootstrap/scss/bootstrap';
+
+
+.tablica {
+  width: calc(100% - 20px);
+  margin: 10px 10px 10px 10px;
+
+  tr:first-of-type {
+    background: #ff0000 !important;
+
+    td {
+      height: 40px;
+    }
+  }
+
+  tr:nth-of-type(even) {
+    background: #f5f5f5;
+
+    td {
+      height: 40px;
+    }
+
+  }
+
+  tr:nth-of-type(odd) {
+    background: #ebebeb;
+
+    td {
+      height: 40px;
+    }
+  }
+
+}
+
+.naglowekZolty {
+  width: 100%;
+  height: min-content;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #e8d471;
+  box-shadow: 0px 2px 4px 0px #999;
+  padding: 5px;
+
+  .naglowek1Wzoltym {
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight: bolder;
+    margin: 0;
+    color: black;
+  }
+}
+
+
+.niebieskiKomunikatWzoltym {
+  font-weight: bolder;
+  letter-spacing: 1px;
+  color: #070172;
+  font-size: 19px;
+}
+
+.naglowki1form {
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.naglowki2form {
+  font-size: 20px;
+}
+
+
+.nieczynne {
+  width: 70px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  font-weight: bolder;
+  background: transparent;
+  border: none;
+  color: rgba(211, 8, 8, 0.91);
+  text-shadow: 0px 0px 1px black;
+
+  &:hover:enabled {
+    cursor: pointer;
+    color: rgba(238, 8, 8, 0.91);
+  }
+
+  &:disabled {
+    cursor: default;
+    filter: grayscale(100%);
+  }
+}
+
+.czynne {
+  width: 70px;
+  font-size: 15px;
+  letter-spacing: 1px;
+  font-weight: bolder;
+  background: transparent;
+  border: none;
+  color: #0e8604;
+  text-decoration: underline;
+  text-shadow: 0px 0px 1px black;
+
+  &:hover:enabled {
+    cursor: pointer;
+    color: #11a805;
+  }
+
+  &:disabled {
+    cursor: default;
+    filter: grayscale(100%);
+  }
+}
+
+///////////////////przyciski///////////////////////////
+.divNaPrzycisk {
+  width: 100%;
+  height: 150px;
+  text-align: center;
+  position: relative;
+  padding: 20px;
+
+  .DodajPracownikaButton {
+    height: 40px;
+    width: 250px;
+    background: #113ac4;
+    color: white;
+    border-radius: 40%;
+    font-weight: bolder;
+    box-shadow: 0px 0px 0px 1px #887b0d;
+    letter-spacing: 1px;
+
+    &:hover {
+      cursor: pointer;
+      background: #123ed2;
+      box-shadow: 0px 0px 1px 1px #887b0d;
+    }
+  }
+
+
+}
+
+.buttonZapiszZmodyfikuj {
+  position: absolute;
+  margin-top: 28px;
+  margin-bottom: 20px;
+  width: 90px;
+  height: 90px;
+  background: #1c7703;
+  font-size: 14px;
+  font-weight: bolder;
+  border-radius: 100%;
+  color: white;
+  text-shadow: 1px 1px 0px black;
+  box-shadow: 1px 1px 1px 1px #8d8a8a;
+  transition: 0.20s;
+  right: 10px;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: -1px -1px 1px 1px #8d8a8a;
+  }
+}
+
+///////////////////przyciski///////////////////////////
+
+
+.tablica {
+  tr:first-of-type {
+    background: #ff0000 !important;
+
+    td {
+      height: 40px;
+    }
+  }
+
+  tr:nth-of-type(even) {
+    background: #e0e0e0;
+
+    td {
+      height: 40px;
+    }
+
+  }
+
+  tr:nth-of-type(odd) {
+    background: #d4d4d4;
+
+    td {
+      height: 40px;
+    }
+  }
+}
+
+
+.czerwoneKomunikatyZaklad {
+  font-size: 20px;
+  color: #9d1818;
+  font-weight: bolder;
+  text-shadow: 0px 0px 1px black;
+}

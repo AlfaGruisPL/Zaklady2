@@ -1,0 +1,29 @@
+<div class="platnosci">
+  <div class="divNaNaglowek">
+    <h1>Panel płatności</h1>
+  </div>
+  System aktywny do: 25.0.7.2023<br>
+  Dni do końca aktywności: 40dni
+  <button> Opłać system</button>
+  <table>
+    <tr>
+      <th colspan="5">
+        Historia transakcji
+      </th>
+    </tr>
+    <tr>
+      <th>Nr.</th>
+      <th>Nazwa</th>
+      <th>Data</th>
+      <th>Kwota</th>
+      <th>Status</th>
+    </tr>
+    <tr *ngFor="let k of [1,2,3,4,5,6,7,8,9,10]">
+      <td>{{k}}</td>
+      <td>Opłata 14.07.2023 do 14.08.2023</td>
+      <td>05.06.2023</td>
+      <td>50zł</td>
+      <td>W trakcie realizacji</td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,255 @@
+.resetHasla {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+
+  h2 {
+    font-family: 'Kalam', cursive;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 10px;
+    text-shadow: 2px 1px 2px black;
+    font-size: 50px;
+    letter-spacing: 7px;
+    color: darkblue;
+  }
+
+  .margin {
+    width: 90%;
+    height: min-content;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 20px;
+
+    .krokJeden {
+
+
+      table {
+        tr {
+
+
+          &:first-of-type {
+            td {
+              text-align: center;
+
+            }
+          }
+
+          &:nth-of-type(2) {
+            td {
+              padding-top: 20px;
+
+            }
+          }
+
+          td {
+            padding-left: 15px;
+
+
+            button {
+              width: 100px;
+
+            }
+          }
+
+        }
+      }
+    }
+
+    .krokDwa {
+      margin-top: 180px;
+      margin-left: -70px;
+    }
+
+    .krokTrzy {
+      margin-left: -70px;
+    }
+
+    .krokCztery {
+      margin-top: 180px;
+      margin-left: -70px;
+      z-index: 2;
+    }
+
+    .krokJeden, .krokDwa, .krokTrzy, .krokCztery {
+      position: relative;
+      width: 410px !important;
+      height: 280px;
+      background: #eaeaea;
+      -webkit-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+      -moz-box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+      box-shadow: 8px 8px 24px 0px rgb(71, 77, 108);
+      border-radius: 10px;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      flex-direction: column;
+    }
+
+  }
+
+}
+
+
+.logInput {
+
+  &:first-child {
+    margin: 30px 0 0 0;
+  }
+
+  &:focus, &:focus-visible {
+    border: inset 4px transparent;
+  }
+
+  &::placeholder {
+    color: #000000;
+  }
+}
+
+.czerwoneKomunikaty {
+  margin-top: 5px;
+  display: block;
+  padding-left: 15px;
+  width: 90%;
+  padding-right: 15px;
+}
+
+
+.hasloZmienone {
+  font-weight: bolder;
+  font-size: 25px;
+  color: #023db9;
+  padding-top: 80px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.WpiszOtrzymanyKod {
+  font-weight: bolder;
+  font-size: 20px;
+  color: #023db9;
+  display: block;
+  padding-top: 10px;
+}
+
+.icons {
+  color: #0e7908;
+  font-size: 40px;
+  filter: drop-shadow(2px 2px 2px #505050);
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+
+  &:hover {
+    cursor: pointer;
+    color: #108d09;
+
+  }
+}
+
+.ciemneNiebieskiNaglowkiReset {
+  font-weight: bolder;
+  font-size: 20px;
+  color: #023db9;
+  display: block;
+  padding-top: 10px;
+  padding-left: 15px;
+}
+
+.jasneNiebieskiNaglowkiReset {
+  font-size: 19px;
+  color: #023db9;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 0;
+
+}
+
+.tytulJakiKrok {
+  position: absolute;
+  top: -50px;
+  font-size: 28px;
+  font-weight: bolder;
+  left: 100px;
+  font-family: 'Kalam', cursive;
+  letter-spacing: 4px;
+  color: darkblue;
+}
+
+.wyslijKodPonownieNapis {
+  font-size: 22px;
+  color: #980202;
+  margin-top: 0;
+  display: block;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    text-shadow: 0px 0px 2px #b4b4b4;
+  }
+}
+
+
+.zapytajnik {
+  position: relative;
+  font-size: 25px;
+  margin-left: 10px;
+  top: 5px;
+  color: #ad0505;
+
+  &:hover {
+    cursor: pointer;
+    color: #be0505;
+  }
+}
+
+.nieAktywnyKrok {
+  * {
+    pointer-events: none;
+
+    input {
+      pointer-events: none;
+    }
+  }
+
+  filter: blur(2px);
+}
+
+.czasKodu {
+  font-weight: bolder;
+  font-size: 20px;
+  color: #980202;
+  display: block;
+  padding-top: 10px;
+}
+
+.tytulIPowrotdoLogowania {
+  position: relative;
+  width: 100%;
+
+  h2 {
+    width: 100%;
+    position: relative;
+
+    fa-icon {
+      position: absolute;
+      right: 50px;
+      color: #023a00;
+
+      &:hover {
+        cursor: pointer;
+        color: #034601;
+      }
+    }
+  }
+}
+
+.notActive {
+  filter: grayscale(0.8);
+  pointer-events: none;
+}

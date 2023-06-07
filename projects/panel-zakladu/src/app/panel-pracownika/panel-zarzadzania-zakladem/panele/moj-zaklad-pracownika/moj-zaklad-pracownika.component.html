@@ -1,0 +1,327 @@
+<div class="panelZakladu">
+  <div class=naglowekZolty>
+    <span
+      class="naglowek1Wzoltym">Uzupełnij formularz, aby wyświetlić dla klientów główną informację swojego zakładu</span>
+    <br>
+    <span class="naglowek1Wzoltym"> * oznacza że pole jest zalecanym do wypełnienia</span> <br>
+    <span class="niebieskiKomunikatWzoltym" style="font-size: 19px">! oznacza że pole nie spełnia wymagań </span>
+
+  </div>
+  <form (ngSubmit)="zapisz()">
+    <div class="container">
+      <div class="tabela1">
+        <table class="daneZakladuTab">
+          <tr>
+            <td colspan="2" class="naglowki1form"> Dane zakładu:</td>
+          </tr>
+          <tr>
+            <td class="naglowki2form"><label for="nazwa">Nazwa*</label></td>
+            <td><input [disabled]="!zapiszButton" class="logInputZaklad zaznaczoneLogiZaklad" id="nazwa" type="text"
+                       [(ngModel)]="mojZakladKlasa.nazwa"
+                       [ngModelOptions]="{standalone: true}">
+            </td>
+          </tr>
+          <tr>
+            <td class="naglowki2form" colspan="2">Adres</td>
+          </tr>
+          <tr>
+            <td class="naglowki2form"><label for="wojewodztwo">Województwo*</label></td>
+            <td><select [disabled]="!zapiszButton" id="wojewodztwo" [(ngModel)]="mojZakladKlasa.wojewodztwo"
+                        style="height: 32px"
+                        class="logInputZaklad"
+                        [ngModelOptions]="{standalone: true}">
+              <option value="dolnoslaskie">Dolnośląskie</option>
+              <option value="kujawsko-pomorskie">Kujawsko-pomorskie</option>
+              <option value="lubelskie">Lubelskie</option>
+              <option value="lubuskie">Lubuskie</option>
+              <option value="lodzkie">Łódzkie</option>
+              <option value="malopolskie">Małopolskie</option>
+              <option value="mazowieckie">Mazowieckie</option>
+              <option value="opolskie">Opolskie</option>
+              <option value="podkarpackie">Podkarpackie</option>
+              <option value="podlaskie">Podlaskie</option>
+              <option value="pomorskie">Pomorskie</option>
+              <option value="slaskie">Śląskie</option>
+              <option value="swietokrzyskie">Świętokrzyskie</option>
+              <option value="warminsko-mazurskie">Warmińsko-mazurskie</option>
+              <option value="wielkopolskie">Wielkopolskie</option>
+              <option value="zachodniopomorskie">Zachodniopomorskie</option>
+            </select></td>
+          </tr>
+          <tr>
+            <td class="naglowki2form"><label for="kodPocztowy">Kod pocztowy</label></td>
+            <td><input [disabled]="!zapiszButton" style="width: 60px" maxlength="2" class="logInputZaklad"
+                       id="kodPocztowy" type="text"
+                       [(ngModel)]="mojZakladKlasa.kodPocztowy1"
+                       [ngModelOptions]="{standalone: true}">
+              -
+              <input [disabled]="!zapiszButton" maxlength="3" style="width: 70px" class="logInputZaklad" type="text"
+                     [(ngModel)]="mojZakladKlasa.kodPocztowy2"
+                     [ngModelOptions]="{standalone: true}"></td>
+          </tr>
+          <tr>
+            <td class="naglowki2form">
+              <label for="miasto">Miasto*</label>
+            </td>
+            <td>
+              <input [disabled]="!zapiszButton" class="logInputZaklad" type="text" id="miasto"
+                     [(ngModel)]="mojZakladKlasa.miasto"
+                     [ngModelOptions]="{standalone: true}">
+          </tr>
+          <tr>
+            <td class="naglowki2form"><label for="nazwaUlicy">Nazwa ulicy*</label></td>
+            <td><input [disabled]="!zapiszButton" class="logInputZaklad" id="nazwaUlicy" type="text"
+                       [(ngModel)]="mojZakladKlasa.nazwaUlicy"
+                       [ngModelOptions]="{standalone: true}"></td>
+          </tr>
+          <tr>
+            <td class="naglowki2form"><label for="numerDomu">Numer budynku/lokalu*</label></td>
+            <td><input [disabled]="!zapiszButton" class="logInputZaklad" id="numerDomu"
+                       [(ngModel)]="mojZakladKlasa.numerDomu"
+                       [ngModelOptions]="{standalone: true}"
+                       type="text"></td>
+          </tr>
+          <tr>
+            <td class="naglowki2form"><label for="Nip">Nip</label></td>
+            <td><input [disabled]="!zapiszButton" class="logInputZaklad" id="Nip"
+                       [(ngModel)]="mojZakladKlasa.nip"
+                       [ngModelOptions]="{standalone: true}"
+                       type="text"></td>
+          </tr>
+          <tr>
+            <td class="naglowki2form"><label for="Regon">Regon</label></td>
+            <td><input [disabled]="!zapiszButton" class="logInputZaklad" id="Regon"
+                       [(ngModel)]="mojZakladKlasa.regon"
+                       [ngModelOptions]="{standalone: true}"
+                       type="text"></td>
+          </tr>
+          <tr>
+            <td class="naglowki2form"><label for="dataZalozenia">Data założenia</label></td>
+            <td><input style="height: 32px" [disabled]="!zapiszButton" class="logInputZaklad" id="dataZalozenia"
+                       [(ngModel)]="mojZakladKlasa.dataZalozenia"
+                       [ngModelOptions]="{standalone: true}"
+                       type="date"></td>
+          </tr>
+          <tr>
+            <td class="naglowki2form" colspan="2"><label for="opis"> Opisz swój zakład kilkoma zdaniami</label></td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <input [disabled]="!zapiszButton" class="logInputZaklad" id="opis" type="text"
+                     [(ngModel)]="mojZakladKlasa.opisZakladu"
+                     [ngModelOptions]="{standalone: true}" style="width: 280px; height: 200px">
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="tabela2">
+        <table class="godzinyOtwarciaTab">
+          <tr>
+            <td colspan="4" class="naglowki1form">Ustaw godziny otwarcia i zamknięcia w robocze dni</td>
+          </tr>
+          <tr>
+            <td class="naglowki2form"><label>Niedziela</label></td>
+            <td><input class="logInputZaklad logInputZaklad_czas"
+                       [disabled]="mojZakladKlasa.niedziela.nieczynnyDzien || !zapiszButton" type="time"
+                       placeholder="Otwarcie"
+                       [(ngModel)]="mojZakladKlasa.niedziela.otwarcie"
+                       [ngModelOptions]="{standalone: true}"></td>
+            <td><input class="logInputZaklad logInputZaklad_czas"
+                       [disabled]="mojZakladKlasa.niedziela.nieczynnyDzien || !zapiszButton" type="time"
+                       placeholder="Zamknięcie"
+                       [(ngModel)]="mojZakladKlasa.niedziela.zamkniecie"
+                       [ngModelOptions]="{standalone: true}"></td>
+            <td>
+              <button class="nieczynne" *ngIf="!mojZakladKlasa.niedziela.nieczynnyDzien"
+                      [disabled]="!zapiszButton"
+                      (click)="mojZakladKlasa.niedziela.czynne()">
+                Nieczynne
+              </button>
+              <button class="czynne" *ngIf="mojZakladKlasa.niedziela.nieczynnyDzien"
+                      [disabled]="!zapiszButton"
+                      (click)="mojZakladKlasa.niedziela.nieczynne()">
+                Czynne
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td class="naglowki2form"><label>Poniedziałek</label></td>
+            <td><input class="logInputZaklad logInputZaklad_czas"
+                       [disabled]="mojZakladKlasa.poniedzialek.nieczynnyDzien || !zapiszButton" type="time"
+                       placeholder="Otwarcie"
+                       [(ngModel)]="mojZakladKlasa.poniedzialek.otwarcie"
+                       [ngModelOptions]="{standalone: true}"></td>
+            <td><input class="logInputZaklad logInputZaklad_czas"
+                       [disabled]="mojZakladKlasa.poniedzialek.nieczynnyDzien || !zapiszButton" type="time"
+                       placeholder="Zamknięcie"
+                       [(ngModel)]="mojZakladKlasa.poniedzialek.zamkniecie"
+                       [ngModelOptions]="{standalone: true}"></td>
+            <td>
+              <button class="nieczynne" *ngIf="!mojZakladKlasa.poniedzialek.nieczynnyDzien"
+                      (click)="mojZakladKlasa.poniedzialek.czynne()" [disabled]="!zapiszButton">
+                Nieczynne
+              </button>
+              <button class="czynne" *ngIf="mojZakladKlasa.poniedzialek.nieczynnyDzien"
+                      (click)="mojZakladKlasa.poniedzialek.nieczynne()" [disabled]="!zapiszButton">Czynne
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td class="naglowki2form"><label>Wtorek</label></td>
+            <td><input class="logInputZaklad logInputZaklad_czas"
+                       [disabled]="mojZakladKlasa.wtorek.nieczynnyDzien || !zapiszButton" type="time"
+                       placeholder="Otwarcie"
+                       [(ngModel)]="mojZakladKlasa.wtorek.otwarcie"
+                       [ngModelOptions]="{standalone: true}"></td>
+            <td><input class="logInputZaklad logInputZaklad_czas"
+                       [disabled]="mojZakladKlasa.wtorek.nieczynnyDzien || !zapiszButton" type="time"
+                       placeholder="Zamknięcie"
+                       [(ngModel)]="mojZakladKlasa.wtorek.zamkniecie"
+                       [ngModelOptions]="{standalone: true}"></td>
+            <td>
+              <button class="nieczynne" *ngIf="!mojZakladKlasa.wtorek.nieczynnyDzien"
+                      (click)="mojZakladKlasa.wtorek.czynne()" [disabled]="!zapiszButton">Nieczynne
+              </button>
+              <button class="czynne" *ngIf="mojZakladKlasa.wtorek.nieczynnyDzien "
+                      (click)="mojZakladKlasa.wtorek.nieczynne()" [disabled]="!zapiszButton">Czynne
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td class="naglowki2form"><label>Środa</label></td>
+            <td><input class="logInputZaklad logInputZaklad_czas"
+                       [disabled]="mojZakladKlasa.sroda.nieczynnyDzien || !zapiszButton" type="time"
+                       placeholder="Otwarcie"
+                       [(ngModel)]="mojZakladKlasa.sroda.otwarcie"
+                       [ngModelOptions]="{standalone: true}"></td>
+            <td><input class="logInputZaklad logInputZaklad_czas"
+                       [disabled]="mojZakladKlasa.sroda.nieczynnyDzien || !zapiszButton" type="time"
+                       placeholder="Zamknięcie"
+                       [(ngModel)]="mojZakladKlasa.sroda.zamkniecie"
+                       [ngModelOptions]="{standalone: true}"></td>
+            <td>
+              <button class="nieczynne" *ngIf="!mojZakladKlasa.sroda.nieczynnyDzien"
+                      (click)="mojZakladKlasa.sroda.czynne()" [disabled]="!zapiszButton">Nieczynne
+              </button>
+              <button class="czynne" *ngIf="mojZakladKlasa.sroda.nieczynnyDzien "
+                      (click)="mojZakladKlasa.sroda.nieczynne()" [disabled]="!zapiszButton">Czynne
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td class="naglowki2form"><label>Czwartek</label></td>
+            <td><input class="logInputZaklad logInputZaklad_czas"
+                       [disabled]="mojZakladKlasa.czwartek.nieczynnyDzien || !zapiszButton" type="time"
+                       placeholder="Otwarcie"
+                       [(ngModel)]="mojZakladKlasa.czwartek.otwarcie"
+                       [ngModelOptions]="{standalone: true}"></td>
+            <td><input class="logInputZaklad logInputZaklad_czas"
+                       [disabled]="mojZakladKlasa.czwartek.nieczynnyDzien || !zapiszButton" type="time"
+                       placeholder="Zamknięcie"
+                       [(ngModel)]="mojZakladKlasa.czwartek.zamkniecie"
+                       [ngModelOptions]="{standalone: true}"></td>
+            <td>
+              <button class="nieczynne" *ngIf="!mojZakladKlasa.czwartek.nieczynnyDzien"
+                      (click)="mojZakladKlasa.czwartek.czynne()" [disabled]="!zapiszButton">
+                Nieczynne
+              </button>
+              <button class="czynne" *ngIf="mojZakladKlasa.czwartek.nieczynnyDzien "
+                      (click)="mojZakladKlasa.czwartek.nieczynne()" [disabled]="!zapiszButton">
+                Czynne
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td class="naglowki2form"><label>Piątek</label></td>
+            <td><input class="logInputZaklad logInputZaklad_czas"
+                       [disabled]="mojZakladKlasa.piatek.nieczynnyDzien || !zapiszButton" type="time"
+                       placeholder="Otwarcie"
+                       [(ngModel)]="mojZakladKlasa.piatek.otwarcie"
+                       [ngModelOptions]="{standalone: true}"></td>
+            <td><input class="logInputZaklad logInputZaklad_czas"
+                       [disabled]="mojZakladKlasa.piatek.nieczynnyDzien || !zapiszButton" type="time"
+                       placeholder="Zamknięcie"
+                       [(ngModel)]="mojZakladKlasa.piatek.zamkniecie"
+                       [ngModelOptions]="{standalone: true}"></td>
+            <td>
+              <button class="nieczynne" *ngIf="!mojZakladKlasa.piatek.nieczynnyDzien"
+                      (click)="mojZakladKlasa.piatek.czynne()" [disabled]="!zapiszButton">Nieczynne
+              </button>
+              <button class="czynne" *ngIf="mojZakladKlasa.piatek.nieczynnyDzien "
+                      (click)="mojZakladKlasa.piatek.nieczynne()" [disabled]="!zapiszButton">Czynne
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td class="naglowki2form"><label>Sobota</label></td>
+            <td><input class="logInputZaklad logInputZaklad_czas"
+                       [disabled]="mojZakladKlasa.sobota.nieczynnyDzien || !zapiszButton" type="time"
+                       placeholder="Otwarcie"
+                       [(ngModel)]="mojZakladKlasa.sobota.otwarcie"
+                       [ngModelOptions]="{standalone: true}"></td>
+            <td><input class="logInputZaklad logInputZaklad_czas"
+                       [disabled]="mojZakladKlasa.sobota.nieczynnyDzien || !zapiszButton" type="time"
+                       placeholder="Zamknięcie"
+                       [(ngModel)]="mojZakladKlasa.sobota.zamkniecie"
+                       [ngModelOptions]="{standalone: true}"></td>
+            <td>
+              <button class="nieczynne" *ngIf="!mojZakladKlasa.sobota.nieczynnyDzien"
+                      (click)="mojZakladKlasa.sobota.czynne()" [disabled]="!zapiszButton">Nieczynne
+              </button>
+              <button class="czynne" *ngIf="mojZakladKlasa.sobota.nieczynnyDzien "
+                      (click)="mojZakladKlasa.sobota.nieczynne()" [disabled]="!zapiszButton">Czynne
+              </button>
+            </td>
+          </tr>
+
+
+        </table>
+      </div>
+      <div class="tabela3">
+        <table class="SkontaktujSieZnamiTab">
+          <tr>
+            <td colspan="2" class="naglowki1form"> Podstawowy kontakt z zakładem:</td>
+          </tr>
+          <tr>
+            <td class="naglowki2form"><label for="email">E-mail</label></td>
+            <td><input [disabled]="!zapiszButton" class="logInputZaklad" [(ngModel)]="mojZakladKlasa.email"
+                       [ngModelOptions]="{standalone: true}" id="email" type="text"></td>
+          </tr>
+          <tr>
+            <td class="naglowki2form"><label for="numerTelefonu"> Numer telefonu </label></td>
+            <td><input [disabled]="!zapiszButton" class="logInputZaklad" [(ngModel)]="mojZakladKlasa.numerTelefonu"
+                       [ngModelOptions]="{standalone: true}" id="numerTelefonu" type="text"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="tabela4">
+        <table class="ustawieniaMapyTab">
+          <tr>
+            <td colspan="2" class="naglowki1form"> Ustawienia mapy:</td>
+          </tr>
+          <tr>
+            <td class="naglowki2form"><label for="wysokosc"> Wysokość geograficzna </label></td>
+            <td><input [disabled]="!zapiszButton" class="logInputZaklad"
+                       [(ngModel)]="mojZakladKlasa.wysokosc"
+                       [ngModelOptions]="{standalone: true}"
+                       id="wysokosc" type="text"></td>
+          </tr>
+          <tr>
+            <td class="naglowki2form"><label for="Szerokosc"> Szerokość geograficzna </label></td>
+            <td><input [disabled]="!zapiszButton" class="logInputZaklad"
+                       [(ngModel)]="mojZakladKlasa.szerokosc"
+                       [ngModelOptions]="{standalone: true}"
+                       id="Szerokosc" type="text"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="divNaPrzycisk">
+      <button type="submit" *ngIf="zapiszButton == true" class="buttonZapiszZmodyfikuj" (click)="zapisz()">Zapisz
+      </button>
+      <button *ngIf="zmodyfikuj == true" class="buttonZapiszZmodyfikuj" (click)="zmodyfikujFunkcja()">
+        Zmodyfikuj
+      </button>
+    </div>
+  </form>
+</div>

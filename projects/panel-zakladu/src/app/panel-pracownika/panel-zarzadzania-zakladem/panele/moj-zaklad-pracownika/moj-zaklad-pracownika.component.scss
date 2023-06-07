@@ -1,0 +1,43 @@
+.panelZakladu {
+  width: 100%;
+  min-height: 100%;
+  background: #fbfeff;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-wrap: wrap;
+
+  .container {
+    margin-top: 40px;
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1.6fr 0.4fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    "tabela1 tabela2"
+    "tabela3 tabela4";
+  }
+
+  .tabela2 {
+    grid-area: tabela2;
+    margin-left: 40px;
+  }
+
+  .tabela3 {
+    margin-top: 50px;
+    grid-area: tabela3;
+  }
+
+  .tabela4 {
+    margin-left: 40px;
+    margin-top: 50px;
+    grid-area: tabela4;
+  }
+
+  .tabela1 {
+    grid-area: tabela1;
+  }
+
+}
+
