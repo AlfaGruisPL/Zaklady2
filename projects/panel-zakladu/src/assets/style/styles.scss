@@ -205,3 +205,42 @@ body {
 
 //*iconki*//
 
+//*tabela*//
+
+.tablicaPierwszyWierszJakoNaglowe {
+  tr:first-of-type {
+    background: #bdbdbd !important;
+
+    td {
+      height: 40px;
+    }
+  }
+
+}
+
+.tablica {
+  width: calc(100% - 20px);
+  margin: 10px 10px 10px 10px;
+  font-size: 20px;
+
+  tr:not(:last-child) td {
+    border-bottom: 1px solid #646464;
+  }
+
+  tr:nth-of-type(even) {
+    background: #e0e0e0;
+
+    td {
+      height: 40px;
+    }
+
+  }
+
+  tr:nth-of-type(odd) {
+    background: #d4d4d4;
+
+    td {
+      height: 40px;
+    }
+  }
+}

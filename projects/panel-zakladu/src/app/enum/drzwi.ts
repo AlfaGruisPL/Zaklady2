@@ -10,5 +10,9 @@ export enum Drzwi {
   daneMojZakladPracownik = "/zaklady/daneZakladu",
   podreczneDanePobierz = "/panelPracownika/daneStartowe",
   pobierzPracownikow = "/uzytkownicyWZakladach/pracownicyZakladu",
-  dodaniePracownikaDoTablicy = "/uzytkownicyWZakladach/dodawaniePracownika"
+  dodaniePracownikaDoTablicy = "/uzytkownicyWZakladach/dodawaniePracownika",
+
+  listaPlatnosci = "/platnosci/listaPlatnosci",
+  utworzeniePlatnosci = "/platnosci/nowaPlatnosc"
+
 }

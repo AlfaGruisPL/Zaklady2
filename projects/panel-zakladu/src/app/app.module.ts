@@ -97,6 +97,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DodawanieIModyfikacjaPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/pracownicy-pracownika/okienka/dodawanie-imodyfikacja-pracownika/dodawanie-imodyfikacja-pracownika.component';
 import { HarmonogramPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/harmonogram-pracownika/harmonogram-pracownika.component';
 import { ListaKlientowPracownikComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/lista-klientow-pracownik.component';
+import { PlatnosciPracownikaTabelaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/komponenty/platnosci-pracownika-tabela/platnosci-pracownika-tabela.component';
+import { PlatnosciPracownikaNaglowekComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/komponenty/platnosci-pracownika-naglowek/platnosci-pracownika-naglowek.component';
+import { OknoPlatnosciComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/komponenty/okna/okno-platnosci/okno-platnosci.component';
 
 @NgModule({
   declarations: [
@@ -133,7 +136,10 @@ import { ListaKlientowPracownikComponent } from './panel-pracownika/panel-zarzad
     MaxDlugoscPipe,
     DodawanieIModyfikacjaPracownikaComponent,
     HarmonogramPracownikaComponent,
-    ListaKlientowPracownikComponent
+    ListaKlientowPracownikComponent,
+    PlatnosciPracownikaTabelaComponent,
+    PlatnosciPracownikaNaglowekComponent,
+    OknoPlatnosciComponent
 
   ],
   imports: [
