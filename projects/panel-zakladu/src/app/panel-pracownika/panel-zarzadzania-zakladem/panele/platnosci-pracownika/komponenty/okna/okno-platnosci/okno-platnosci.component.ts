@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {ListonoszService} from "../../../../../../../serwisy/listonosz.service";
 import {Drzwi} from "../../../../../../../enum/drzwi";
+import {ZleceniePlatnosciDto} from "../../../../../../../klasy/panelPracownika/platnosci/zleceniePlatnosciDto";
 
 @Component({
   selector: 'app-okno-platnosci',
@@ -10,13 +11,17 @@ import {Drzwi} from "../../../../../../../enum/drzwi";
 })
 export class OknoPlatnosciComponent {
   ZaplacNieAktywne = false
+  public czasZakupu = "1miesiac"
 
   constructor(public activeModal: NgbActiveModal, private listonosz: ListonoszService) {
   }
 
   zaplac() {
     this.ZaplacNieAktywne = true
-    this.listonosz.wyslij(Drzwi.utworzeniePlatnosci, {}).then(udane => {
+    const dane: ZleceniePlatnosciDto = {
+      czas: this.czasZakupu
+    }
+    this.listonosz.wyslij(Drzwi.utworzeniePlatnosci, dane).then(udane => {
       window.open(udane, "_blank");
       this.activeModal.close("zaplac")
     }).catch(blad => {

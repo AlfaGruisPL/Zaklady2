@@ -6,6 +6,7 @@ export class Platnosc {
   probyPlatnosci: Array<probaPlatnosci> = []
   listaProb: Array<string> = []
   czyRozwiniete = false;
+  linkDoPlatnosci: string = '';
 
 
 }

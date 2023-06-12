@@ -9,7 +9,7 @@
   </tr>
   <ng-container *ngFor="let k of listaPlatnosci;let index2 = index">
     <tr>
-      <td>{{index2 + 1}}</td>
+      <td>{{listaPlatnosci.length - index2 }}</td>
       <td>{{k.opis}}Opłata 14.07.2023 do 14.08.2023</td>
       <td>{{k.dataUtworzenia}}</td>
       <td>{{k.kwota}}</td>
@@ -28,6 +28,9 @@
         <button *ngIf="k.czyRozwiniete" (click)="zamknijWszystkie();" class="przyciskRozwijania">Zwiń</button>
         <button *ngIf="!k.czyRozwiniete" (click)="zamknijWszystkie();k.czyRozwiniete = true" class="przyciskRozwijania">
           Rozwiń
+        </button>
+        <button *ngIf="k.probyPlatnosci[k.probyPlatnosci.length-1].status =='NEW' &&k.linkDoPlatnosci!=undefined"
+                (click)="otworzPlatnosc(k.linkDoPlatnosci)">Opłać ponownie
         </button>
       </td>
     </tr>

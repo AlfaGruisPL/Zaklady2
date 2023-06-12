@@ -92,14 +92,26 @@ import {
   StopkaPracownikComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/komponenty/stopka/stopka-pracownik.component';
 import {CookieModule} from "ngx-cookie";
-import { MaxDlugoscPipe } from './rureczki/max-dlugosc.pipe';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { DodawanieIModyfikacjaPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/pracownicy-pracownika/okienka/dodawanie-imodyfikacja-pracownika/dodawanie-imodyfikacja-pracownika.component';
-import { HarmonogramPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/harmonogram-pracownika/harmonogram-pracownika.component';
-import { ListaKlientowPracownikComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/lista-klientow-pracownik.component';
-import { PlatnosciPracownikaTabelaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/komponenty/platnosci-pracownika-tabela/platnosci-pracownika-tabela.component';
-import { PlatnosciPracownikaNaglowekComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/komponenty/platnosci-pracownika-naglowek/platnosci-pracownika-naglowek.component';
-import { OknoPlatnosciComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/komponenty/okna/okno-platnosci/okno-platnosci.component';
+import {MaxDlugoscPipe} from './rureczki/max-dlugosc.pipe';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {
+  DodawanieIModyfikacjaPracownikaComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/pracownicy-pracownika/okienka/dodawanie-imodyfikacja-pracownika/dodawanie-imodyfikacja-pracownika.component';
+import {
+  HarmonogramPracownikaComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/harmonogram-pracownika/harmonogram-pracownika.component';
+import {
+  ListaKlientowPracownikComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/lista-klientow-pracownik.component';
+import {
+  PlatnosciPracownikaTabelaComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/komponenty/platnosci-pracownika-tabela/platnosci-pracownika-tabela.component';
+import {
+  PlatnosciPracownikaNaglowekComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/komponenty/platnosci-pracownika-naglowek/platnosci-pracownika-naglowek.component';
+import {
+  OknoPlatnosciComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/komponenty/okna/okno-platnosci/okno-platnosci.component';
 
 @NgModule({
   declarations: [
