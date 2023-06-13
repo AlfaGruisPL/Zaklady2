@@ -103,13 +103,16 @@
                        type="date"><ui-switch checkedLabel="Wyświetlono" uncheckedLabel="Ukryte"></ui-switch></td>
           </tr>
           <tr>
-            <td class="naglowki2form" colspan="2"><label for="opis"> Opisz swój zakład kilkoma zdaniami</label></td>
+            <td class="naglowki2form" colspan="2"><label for="opis"> Opisz swój zakład kilkoma zdaniami</label>
+              <ui-switch checkedLabel="Wyświetlono" uncheckedLabel="Ukryte"  [disabled]="!zapiszButton" ></ui-switch>
+              </td>
           </tr>
           <tr>
             <td colspan="2">
-              <input [disabled]="!zapiszButton" class="logInputZaklad" id="opis" type="text"
-                     [(ngModel)]="mojZakladKlasa.opisZakladu"
-                     [ngModelOptions]="{standalone: true}" style="width: 280px; height: 200px">
+        <textarea [disabled]="!zapiszButton" class="loInputZagklad" id="opis" type="text"
+                        [(ngModel)]="mojZakladKlasa.opisZakladu"
+                        [ngModelOptions]="{standalone: true}" style="width: 420px; height: 200px;resize: none;">
+                   </textarea>
             </td>
           </tr>
         </table>

@@ -87,7 +87,6 @@ export class Pracownik {
       this.kodPocztowy2Puste = true;
       this.czyWszystkoWpisane = false;
     }
-    console.log(this)
     return this.czyWszystkoWpisane;
   }
 
