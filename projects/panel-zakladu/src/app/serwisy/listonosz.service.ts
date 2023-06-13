@@ -73,7 +73,7 @@ export class ListonoszService {
   }
 
 
-  public pobierz(drzwi: Drzwi): Promise<OdpowiedzPotwierdzajacaPoprawnosc<any> | any> {
+  public pobierz(drzwi: Drzwi|string): Promise<OdpowiedzPotwierdzajacaPoprawnosc<any> | any> {
 
     let opcjeWPudelku = {};
     if (this.token.tokenWartosc != undefined) {
@@ -91,6 +91,24 @@ export class ListonoszService {
         })
     });
 
+  }
+
+  public aktualizuj(drzwi: Drzwi|string, zawartosc: any): Promise<OdpowiedzPotwierdzajacaPoprawnosc<any> | any>{
+    let opcjeWPudelku = {};
+    if (this.token.tokenWartosc != undefined) {
+      const opcje = new HttpHeaders({
+        token: this.token.tokenWartosc
+      });
+      opcjeWPudelku = {headers: opcje};
+    }
+    return new Promise((resolve, reject) => {
+      this.listy.aktualizuj(drzwi, zawartosc, opcjeWPudelku).subscribe((next: OdpowiedzPotwierdzajacaPoprawnosc<any>) => {
+          resolve(next.value)
+        },
+        error => {
+          reject(error)
+        })
+    });
   }
 
 }

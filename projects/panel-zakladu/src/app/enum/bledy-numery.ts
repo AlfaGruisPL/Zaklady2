@@ -1,3 +1,5 @@
 export enum BledyNumery {
-  BladWyswietlaniaDanychPodrecznych = 200
+  BladWyswietlaniaDanychPodrecznych = 200,
+  niePobierajaSieDaneOPracowniku,
+  niePobierajaSieDaneWmojeKonto
 }

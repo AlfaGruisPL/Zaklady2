@@ -5,6 +5,7 @@ import {ListonoszService} from "../../../../../../serwisy/listonosz.service";
 import {PracownikDTO} from "../../../../../../klasy/panelPracownika/pracownicy/pracownik-dto";
 import {Drzwi} from "../../../../../../enum/drzwi";
 import {KomunikatyService} from "../../../../../../serwisy/komunikaty.service";
+import {BledyNumery} from "../../../../../../enum/bledy-numery";
 
 @Component({
   selector: 'app-dodawanie-imodyfikacja-pracownika',
@@ -13,21 +14,31 @@ import {KomunikatyService} from "../../../../../../serwisy/komunikaty.service";
 })
 export class DodawanieIModyfikacjaPracownikaComponent {
   @Input() tryb: string = "";
+  @Input() idUzytkownika: number = 0;
   public iloscKlikniec = 0
   public pracownikObj = new Pracownik();
   public pracownikDodany: boolean = true;
+  public pracownikZmodyfikowany: boolean = true;
 
 
   constructor(public activeModal: NgbActiveModal,
               public listonosz: ListonoszService,
               public komunikaty: KomunikatyService) {
   }
+  pobierzPracownika(){
+    this.listonosz.pobierz(Drzwi.pracownik + this.idUzytkownika).then(pobrany =>{
+      Object.assign(this.pracownikObj, pobrany);
+    }).catch(niepobrany => {
+this.komunikaty.wyswietlenieBladNumer(BledyNumery.niePobierajaSieDaneOPracowniku);
+    })
+  }
 
   zapisz() {
     this.iloscKlikniec++;
 
     this.pracownikObj.czyWszystkoWpisaneFunkcja();
-    if (this.iloscKlikniec == 2) {
+    console.log(this.iloscKlikniec)
+    if (this.iloscKlikniec >= 2) {
       const pracownikObjDTO = new PracownikDTO(this.pracownikObj);
       this.listonosz.wyslij(Drzwi.dodaniePracownikaDoTablicy, pracownikObjDTO).then(dodano => {
         this.pracownikDodany = true;
@@ -35,9 +46,22 @@ export class DodawanieIModyfikacjaPracownikaComponent {
         this.activeModal.close("Zapisanie udane");
       }).catch(nieudano => {
         this.pracownikDodany = false;
+        this.komunikaty.dodaniePracownikaNieUdane();
       })
     }
 
 
   }
+  public zmodyfikuj(){
+    const pracownikObjDTO = new PracownikDTO(this.pracownikObj);
+    this.listonosz.aktualizuj(Drzwi.pracownik + this.idUzytkownika, pracownikObjDTO).then(dodano => {
+      this.pracownikZmodyfikowany = true;
+      this.komunikaty.modyfikowaniePracownikaUdane();
+      this.activeModal.close("Zmodyfikowanie udane");
+    }).catch(nieudano => {
+      this.pracownikZmodyfikowany = false;
+      this.komunikaty.modyfikowaniePracownikaNieUdane();
+    })
+  }
+
 }

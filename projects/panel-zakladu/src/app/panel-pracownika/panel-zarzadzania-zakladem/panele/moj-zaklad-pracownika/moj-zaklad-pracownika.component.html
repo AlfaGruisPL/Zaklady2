@@ -22,7 +22,7 @@
             </td>
           </tr>
           <tr>
-            <td class="naglowki2form" colspan="2">Adres</td>
+            <td class="naglowki2form" colspan="2">Adres<ui-switch checkedLabel="Wyświetlono" uncheckedLabel="Ukryte"></ui-switch></td>
           </tr>
           <tr>
             <td class="naglowki2form"><label for="wojewodztwo">Województwo*</label></td>
@@ -86,21 +86,21 @@
             <td><input [disabled]="!zapiszButton" class="logInputZaklad" id="Nip"
                        [(ngModel)]="mojZakladKlasa.nip"
                        [ngModelOptions]="{standalone: true}"
-                       type="text"></td>
+                       type="text"> <ui-switch checkedLabel="Wyświetlono" uncheckedLabel="Ukryte"></ui-switch></td>
           </tr>
           <tr>
             <td class="naglowki2form"><label for="Regon">Regon</label></td>
             <td><input [disabled]="!zapiszButton" class="logInputZaklad" id="Regon"
                        [(ngModel)]="mojZakladKlasa.regon"
                        [ngModelOptions]="{standalone: true}"
-                       type="text"></td>
+                       type="text"> <ui-switch checkedLabel="Wyświetlono" uncheckedLabel="Ukryte"></ui-switch></td>
           </tr>
           <tr>
             <td class="naglowki2form"><label for="dataZalozenia">Data założenia</label></td>
             <td><input style="height: 32px" [disabled]="!zapiszButton" class="logInputZaklad" id="dataZalozenia"
                        [(ngModel)]="mojZakladKlasa.dataZalozenia"
                        [ngModelOptions]="{standalone: true}"
-                       type="date"></td>
+                       type="date"><ui-switch checkedLabel="Wyświetlono" uncheckedLabel="Ukryte"></ui-switch></td>
           </tr>
           <tr>
             <td class="naglowki2form" colspan="2"><label for="opis"> Opisz swój zakład kilkoma zdaniami</label></td>
@@ -117,7 +117,7 @@
       <div class="tabela2">
         <table class="godzinyOtwarciaTab">
           <tr>
-            <td colspan="4" class="naglowki1form">Ustaw godziny otwarcia i zamknięcia w robocze dni</td>
+            <td colspan="4" class="naglowki1form">Ustaw godziny otwarcia i zamknięcia w robocze dni <ui-switch checkedLabel="Wyświetlono" uncheckedLabel="Ukryte"></ui-switch></td>
           </tr>
           <tr>
             <td class="naglowki2form"><label>Niedziela</label></td>
@@ -280,24 +280,24 @@
       <div class="tabela3">
         <table class="SkontaktujSieZnamiTab">
           <tr>
-            <td colspan="2" class="naglowki1form"> Podstawowy kontakt z zakładem:</td>
+            <td colspan="2" class="naglowki1form"> Podstawowy kontakt z zakładem: </td>
           </tr>
           <tr>
-            <td class="naglowki2form"><label for="email">E-mail</label></td>
+            <td class="naglowki2form"><label for="email">E-mail </label> </td>
             <td><input [disabled]="!zapiszButton" class="logInputZaklad" [(ngModel)]="mojZakladKlasa.email"
-                       [ngModelOptions]="{standalone: true}" id="email" type="text"></td>
+                       [ngModelOptions]="{standalone: true}" id="email" type="text"> <ui-switch checkedLabel="Wyświetlono" uncheckedLabel="Ukryte"></ui-switch></td>
           </tr>
           <tr>
             <td class="naglowki2form"><label for="numerTelefonu"> Numer telefonu </label></td>
             <td><input [disabled]="!zapiszButton" class="logInputZaklad" [(ngModel)]="mojZakladKlasa.numerTelefonu"
-                       [ngModelOptions]="{standalone: true}" id="numerTelefonu" type="text"></td>
+                       [ngModelOptions]="{standalone: true}" id="numerTelefonu" type="text"> <ui-switch checkedLabel="Wyświetlono" uncheckedLabel="Ukryte"></ui-switch></td>
           </tr>
         </table>
       </div>
       <div class="tabela4">
         <table class="ustawieniaMapyTab">
           <tr>
-            <td colspan="2" class="naglowki1form"> Ustawienia mapy:</td>
+            <td colspan="2" class="naglowki1form"> Ustawienia mapy: <ui-switch checkedLabel="Wyświetlono" uncheckedLabel="Ukryte"></ui-switch></td>
           </tr>
           <tr>
             <td class="naglowki2form"><label for="wysokosc"> Wysokość geograficzna </label></td>

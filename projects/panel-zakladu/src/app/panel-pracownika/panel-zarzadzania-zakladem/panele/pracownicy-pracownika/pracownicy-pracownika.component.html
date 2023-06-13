@@ -22,13 +22,12 @@
         <td>{{pracownik.prefiksTelefonu}}{{pracownik.numerTelefonu}}</td>
         <td>
           <div ngbDropdown container="body">
-            <button type="button" class="btn btn-outline-primary btn-sm" ngbDropdownToggle>Actions</button>
+            <button type="button" class="btn btn-outline-primary btn-sm" ngbDropdownToggle>Wybierz:</button>
             <div ngbDropdownMenu>
-              <button ngbDropdownItem>Edit</button>
-              <button ngbDropdownItem>Duplicate</button>
-              <button ngbDropdownItem>Move</button>
+              <button ngbDropdownItem (click)="wyswietlUzytkownika(pracownik.id)">Wyświetl</button>
+              <button ngbDropdownItem (click)="zmodyfikujUzytkownika(pracownik.id)">Zmodyfikuj</button>
               <div class="dropdown-divider"></div>
-              <button ngbDropdownItem>Delete</button>
+              <button ngbDropdownItem>Usuń</button>
             </div>
           </div>
         </td>

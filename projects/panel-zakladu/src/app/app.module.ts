@@ -112,6 +112,7 @@ import {
 import {
   OknoPlatnosciComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/komponenty/okna/okno-platnosci/okno-platnosci.component';
+import {UiSwitchModule} from "ngx-ui-switch";
 
 @NgModule({
   declarations: [
@@ -164,6 +165,7 @@ import {
     CookieModule.withOptions(),
     FontAwesomeModule,
     TippyDirective,
+    UiSwitchModule,
     NgbModule,
   ],
   providers: [

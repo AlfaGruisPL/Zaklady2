@@ -1,4 +1,5 @@
 export class Pracownik {
+  public id:number = 0;
   public imie: string = "";
   public nazwisko: string = "";
   public adresEmail: string = "";

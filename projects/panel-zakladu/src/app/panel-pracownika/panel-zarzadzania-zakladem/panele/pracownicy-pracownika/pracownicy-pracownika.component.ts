@@ -15,16 +15,18 @@ import {Subscription} from "rxjs";
 })
 export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
   public ListaPracownikow: Array<Pracownik> = [];
+  private sub1?: Subscription;
+  private sub2?: Subscription;
 
   constructor(private modalService: NgbModal,
               private listonosz: ListonoszService) {
   }
 
   ngOnInit() {
-    this.pobierzPracownika();
+    this.pobierzListePracownikow();
   }
 
-  public pobierzPracownika() {
+  public pobierzListePracownikow() {
     this.listonosz.pobierz(Drzwi.pobierzPracownikow).then((pobrane: Array<Pracownik>) => {
       this.ListaPracownikow = [];
       pobrane.forEach(pracownik => {
@@ -40,23 +42,45 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
     })
   }
 
-  private sub1?: Subscription;
+
 
   public dodajPracownika() {
     const okienko = this.modalService.open(DodawanieIModyfikacjaPracownikaComponent, {backdrop: "static", size: 'xl'});
     okienko.componentInstance.tryb = "dodawanie";
+
     this.sub1 = okienko.closed.subscribe(zamkniete => {
       if (zamkniete == "Zapisanie udane") {
-        this.pobierzPracownika();
+        this.pobierzListePracownikow();
 
       }
       this.sub1?.unsubscribe();
     })
   }
+  public zmodyfikujUzytkownika(id: number){
+    const okienko = this.modalService.open(DodawanieIModyfikacjaPracownikaComponent, {backdrop: "static", size: 'xl'});
+    okienko.componentInstance.tryb = "modyfikacja";
+    okienko.componentInstance.idUzytkownika = id;
+    okienko.componentInstance.pobierzPracownika();
+    this.sub2 = okienko.closed.subscribe(zamkniete => {
+      if (zamkniete == "Zmodyfikowanie udane") {
+        this.pobierzListePracownikow();
+
+      }
+      this.sub2?.unsubscribe();
+    })
+  }
+  public wyswietlUzytkownika(id: number){
+    const okienko = this.modalService.open(DodawanieIModyfikacjaPracownikaComponent, {backdrop: "static", size: 'xl'});
+    okienko.componentInstance.tryb = "wyswietlenie";
+    okienko.componentInstance.idUzytkownika = id;
+    okienko.componentInstance.pobierzPracownika();
+  }
+
 
   ngOnDestroy(): void {
     // if(this.sub1 != undefined){
-    this.sub1?.unsubscribe()
+    this.sub1?.unsubscribe();
+    this.sub2?.unsubscribe()
     //  }
   }
 }

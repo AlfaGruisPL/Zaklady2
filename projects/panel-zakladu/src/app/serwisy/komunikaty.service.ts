@@ -20,7 +20,7 @@ export class KomunikatyService {
 
 
   public wyswietlenieBladNumer(numer: BledyNumery) {
-    this.komunikaty.error('Wystąpił błąd numer ' + numer, 'Błąd');
+    this.komunikaty.error('Wystąpił błąd numer ' + numer +' Zgłoś numer błędu administratoru','Błąd');
   }
 
   public wylogowanieUdane() {
@@ -32,6 +32,15 @@ export class KomunikatyService {
   }
 
   public dodaniePracownikaUdane() {
-    this.komunikaty.success("Pracownik został dodany", 'Udane')
+    this.komunikaty.success("Pracownik został dodany", 'Udane');
+  }
+  public dodaniePracownikaNieUdane() {
+    this.komunikaty.error("Pracownik  nie został dodany, skontaktuj się z administratorem", 'Udane')
+  }
+  public modyfikowaniePracownikaUdane() {
+    this.komunikaty.success("Dane o pracowniku zostały zmodyfikowane", 'Udane');
+  }
+  public modyfikowaniePracownikaNieUdane() {
+    this.komunikaty.error("Dane o pracowniku nie zostały zmodyfikowane, skontaktuj się z administratorem", 'Udane')
   }
 }

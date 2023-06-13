@@ -13,6 +13,10 @@ export enum Drzwi {
   dodaniePracownikaDoTablicy = "/uzytkownicyWZakladach/dodawaniePracownika",
 
   listaPlatnosci = "/platnosci/listaPlatnosci",
-  utworzeniePlatnosci = "/platnosci/nowaPlatnosc"
+  utworzeniePlatnosci = "/platnosci/nowaPlatnosc",
+  pracownik = "/uzytkownicyWZakladach/pracownik/",
+
+  mojeKonto ="/users/profil",
+
 
 }

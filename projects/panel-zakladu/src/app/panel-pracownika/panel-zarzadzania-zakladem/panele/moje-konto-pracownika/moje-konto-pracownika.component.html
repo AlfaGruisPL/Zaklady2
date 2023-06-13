@@ -1,1 +1,103 @@
-<p>moje-konto-pracownika works!</p>
+<div class="panelZakladu">
+  <div class=naglowekZolty>
+    <span
+      class="naglowek1Wzoltym">Uzupełnij formularz, aby wyświetlić dla klientów główną informację swojego zakładu</span>
+  </div>
+  <div>
+    <form>
+    <table>
+      <tr>
+        <td> <label for="imie">Imię</label></td>
+        <td> <input [disabled]="!wlaczPrzyciskZapisz" id="imie" type="text" [(ngModel)]="mojeKontoObj.imie"  [ngModelOptions]="{standalone: true}"></td>
+      </tr>
+      <tr>
+        <td> <label for="nazwisko"> Nazwisko</label></td>
+        <td> <input [disabled]="!wlaczPrzyciskZapisz" id="nazwisko"  type="text" [(ngModel)]="mojeKontoObj.nazwisko" [ngModelOptions]="{standalone: true}"></td>
+      </tr>
+      <tr>
+      <tr>
+      <td colspan="2">
+        Adres zamieszkania
+      </td>
+    </tr>
+      <tr>
+      <td> <label for="wojewodztwo">Województwo</label></td>
+        <td> <select [disabled]="!wlaczPrzyciskZapisz"  id="wojewodztwo" [(ngModel)]="mojeKontoObj.adres.wojewodztwo" [ngModelOptions]="{standalone: true}">
+          <option value="dolnoslaskie">Dolnośląskie</option>
+          <option value="kujawsko-pomorskie">Kujawsko-pomorskie</option>
+          <option value="lubelskie">Lubelskie</option>
+          <option value="lubuskie">Lubuskie</option>
+          <option value="lodzkie">Łódzkie</option>
+          <option value="malopolskie">Małopolskie</option>
+          <option value="mazowieckie">Mazowieckie</option>
+          <option value="opolskie">Opolskie</option>
+          <option value="podkarpackie">Podkarpackie</option>
+          <option value="podlaskie">Podlaskie</option>
+          <option value="pomorskie">Pomorskie</option>
+          <option value="slaskie">Śląskie</option>
+          <option value="swietokrzyskie">Świętokrzyskie</option>
+          <option value="warminsko-mazurskie">Warmińsko-mazurskie</option>
+          <option value="wielkopolskie">Wielkopolskie</option>
+          <option value="zachodniopomorskie">Zachodniopomorskie</option>
+        </select></td>
+    </tr>
+      <tr>
+      <td> <label for="miasto">Miasto</label></td>
+      <td> <input [disabled]="!wlaczPrzyciskZapisz" id="miasto" type="text"  [(ngModel)]="mojeKontoObj.adres.miasto" [ngModelOptions]="{standalone: true}"></td>
+    </tr>
+      <tr>
+        <td> <label for="ulica">Ulica</label></td>
+        <td> <input [disabled]="!wlaczPrzyciskZapisz" id="ulica" type="text"  [(ngModel)]="mojeKontoObj.adres.ulica"  [ngModelOptions]="{standalone: true}"></td>
+      </tr>
+      <tr>
+        <td> <label>Numer domu/lokalu</label></td>
+        <td> <input [disabled]="!wlaczPrzyciskZapisz" type="text"  [(ngModel)]="mojeKontoObj.adres.numerDomu" [ngModelOptions]="{standalone: true}"></td>
+        <span> / </span>
+        <td> <input [disabled]="!wlaczPrzyciskZapisz" type="text"  [(ngModel)]="mojeKontoObj.adres.numerLokalu"  [ngModelOptions]="{standalone: true}"></td>
+      </tr>
+      <tr>
+        <td> <label>Kod pocztowy</label></td>
+        <td> <input [disabled]="!wlaczPrzyciskZapisz" type="text"  [(ngModel)]="mojeKontoObj.adres.kodPocztowy1"  [ngModelOptions]="{standalone: true}"></td>
+        <span> - </span>
+        <td> <input [disabled]="!wlaczPrzyciskZapisz" type="text"   [(ngModel)]="mojeKontoObj.adres.kodPocztowy2" [ngModelOptions]="{standalone: true}"></td>
+      </tr>
+      <tr><td colspan="2">Dane kontaktowe</td>
+      </tr>
+      <tr>
+        <td><label for ="email">Adres e-mail</label></td>
+        <td><input id = "email" [disabled]="!wlaczPrzyciskZapisz"  [(ngModel)]="mojeKontoObj.email" [ngModelOptions]="{standalone: true}"></td>
+      </tr>
+      <tr>
+        <td><label for ="prefiks">Prefiks telefonu:</label></td>
+        <td><select id = "prefiks"  [disabled]="!wlaczPrzyciskZapisz" [(ngModel)]="mojeKontoObj.prefiks"  [ngModelOptions]="{standalone: true}">
+          <option>+48</option>
+          <option>+380</option>
+        </select></td>
+      </tr>
+      <tr>
+        <td><label for ="numerTelefonu">Numer telefonu</label></td>
+        <td><input id = "numerTelefonu"  [disabled]="!wlaczPrzyciskZapisz" [(ngModel)]="mojeKontoObj.numerTelefonu"  [ngModelOptions]="{standalone: true}"></td>
+      </tr>
+      <tr>
+        <td>Zmiana hasła <ui-switch [disabled]="!wlaczPrzyciskZapisz" [(ngModel)]="mojeKontoObj.opcjaZmianyHasla" [ngModelOptions]="{standalone: true}"></ui-switch></td>
+      </tr>
+      <tr>
+        <td><label for ="noweHaslo">Nowe hasło</label></td>
+        <td><input id = "noweHaslo"  [disabled]="!wlaczPrzyciskZapisz && !mojeKontoObj.opcjaZmianyHasla"  [(ngModel)]="mojeKontoObj.wpiszNoweHaslo"  [ngModelOptions]="{standalone: true}"></td>
+      </tr>
+      <tr>
+        <td><label for ="PowtorzNoweHaslo">Powtórz nowe hasło</label></td>
+        <td><input id = "PowtorzNoweHaslo"   [disabled]="!wlaczPrzyciskZapisz && !mojeKontoObj.opcjaZmianyHasla"  [(ngModel)]="mojeKontoObj.powtorzNoweHaslo"  [ngModelOptions]="{standalone: true}"></td>
+      </tr>
+      <tr *ngIf="!mojeKontoObj.czyHaslaWpisane && mojeKontoObj.czyHaslaTakieSame">
+        <td><span class="czerwoneKomunikaty"> Uzupełnij oba pola</span></td>
+      </tr>
+      <tr *ngIf="!mojeKontoObj.czyHaslaTakieSame">
+        <td><span class="czerwoneKomunikaty"> Hasła różne</span></td>
+      </tr>
+    </table>
+      <button class="buttonZapiszZmodyfikuj" (click)="wlaczPrzyciskZapisz = true">Zmodyfikuj</button>
+      <button *ngIf="wlaczPrzyciskZapisz == true" class="buttonZapiszZmodyfikuj" (click)="zapisz()">Zapisz</button>
+    </form>
+  </div>
+</div>
