@@ -77,6 +77,9 @@ export class PanelLogowaniaPracownikowComponent implements OnInit {
         case 4:
           this.czyKontoPotwierdzone = false;
           break;
+        case 5:
+          this.czyPrawidloweDane = false;
+          break;
         default:
           this.bladPrzyLogowaniu = false
       }

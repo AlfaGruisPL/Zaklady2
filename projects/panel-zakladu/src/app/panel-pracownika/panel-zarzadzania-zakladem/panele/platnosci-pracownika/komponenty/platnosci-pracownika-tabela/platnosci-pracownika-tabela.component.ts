@@ -25,8 +25,18 @@ export class PlatnosciPracownikaTabelaComponent implements OnInit, OnDestroy {
 
 
   pobieranieDanych() {
-    this.listonosz.pobierz(Drzwi.listaPlatnosci).then(k => {
+    const rozwiniete = this.listaPlatnosci.find(k => {
+      return k.czyRozwiniete == true
+    })
+    this.listonosz.pobierz(Drzwi.listaPlatnosci).then((k: Array<Platnosc>) => {
       Object.assign(this.listaPlatnosci, k)
+      if (rozwiniete != undefined) {
+        this.listaPlatnosci.find(k2 => {
+          if (k2.id == rozwiniete.id) {
+            k2.czyRozwiniete = true
+          }
+        })
+      }
     })
   }
 
