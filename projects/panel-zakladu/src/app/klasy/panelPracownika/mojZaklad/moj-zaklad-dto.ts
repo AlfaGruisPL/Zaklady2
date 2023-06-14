@@ -18,6 +18,14 @@ export class MojZakladDTO {
   public piatek: dzienDTO;
   public sobota: dzienDTO;
 
+  public adresCzyWyswietlic = false;
+  public nipCzyWyswietlic = false;
+  public regonCzyWyswietlic = false;
+  public emailCzyWyswietlic = false;
+  public telefonCzyWyswietlic = false;
+  public opisCzyWyswietlic = false;
+  public dataZalozeniayCzyWyswietlic = false;
+  public mapaCzyWyswietlic = false;
 
   public wysokosc: string = '';
   public szerokosc: string = '';

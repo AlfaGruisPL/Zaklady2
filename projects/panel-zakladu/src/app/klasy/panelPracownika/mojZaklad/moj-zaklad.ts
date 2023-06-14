@@ -17,6 +17,15 @@ export class MojZaklad {
   public piatek: dzien = new dzien();
   public sobota: dzien = new dzien();
 
+  public adresCzyWyswietlic = false;
+  public nipCzyWyswietlic = false;
+  public regonCzyWyswietlic = false;
+  public emailCzyWyswietlic = false;
+  public telefonCzyWyswietlic = false;
+  public opisCzyWyswietlic = false;
+  public dataZalozeniayCzyWyswietlic = false;
+  public mapaCzyWyswietlic = false;
+
   public wysokosc: string = '';
   public szerokosc: string = '';
   public nip: string = "";
