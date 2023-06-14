@@ -3,6 +3,7 @@ export class MojZaklad {
   public miasto: string = "";
   public nazwaUlicy: string = "";
   public numerDomu: string = "";
+  public numerLokalu: string = "";
   public opisZakladu: string = "";
   public dataZalozenia?: Date;
   public kodPocztowy1: string = "";

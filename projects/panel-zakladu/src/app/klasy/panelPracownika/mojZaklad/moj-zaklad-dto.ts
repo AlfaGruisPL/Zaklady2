@@ -5,6 +5,7 @@ export class MojZakladDTO {
   public miasto: string = "";
   public nazwaUlicy: string = "";
   public numerDomu: string = "";
+  public numerLokalu: string = "";
   public opisZakladu: string = "";
   public dataZalozenia?: Date = new Date();
   public kodPocztowy: string = "";
@@ -31,6 +32,7 @@ export class MojZakladDTO {
     this.miasto = mojZakladKlasa.miasto;
     this.nazwaUlicy = mojZakladKlasa.nazwaUlicy;
     this.numerDomu = mojZakladKlasa.numerDomu;
+    this.numerLokalu = mojZakladKlasa.numerLokalu;
     this.opisZakladu = mojZakladKlasa.opisZakladu;
     this.dataZalozenia = mojZakladKlasa.dataZalozenia;
     this.kodPocztowy = mojZakladKlasa.kodPocztowy1 + "-" + mojZakladKlasa.kodPocztowy2;

@@ -10,33 +10,74 @@
   .container {
     margin-top: 40px;
     display: grid;
-    grid-auto-columns: 1fr;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1.6fr 0.4fr;
+    grid-template-rows:  auto auto auto;
     gap: 0px 0px;
     grid-template-areas:
-    "tabela1 tabela2"
+    "tabela1 tabela1"
+    "tabela2 tabela2"
     "tabela3 tabela4";
   }
 
   .tabela2 {
     grid-area: tabela2;
     margin-left: 40px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+
+    table {
+      border-top: 2px solid #afb0b4;
+      border-right: 2px solid #afb0b4;
+      display: block;
+      padding: 20px;
+    }
+
   }
 
   .tabela3 {
     margin-top: 50px;
     grid-area: tabela3;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+
+    table {
+      border-bottom: 2px solid #afb0b4;
+      border-left: 2px solid #afb0b4;
+      display: block;
+      padding: 20px;
+    }
   }
 
   .tabela4 {
     margin-left: 40px;
     margin-top: 50px;
     grid-area: tabela4;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+
+    table {
+      border-bottom: 2px solid #afb0b4;
+      border-right: 2px solid #afb0b4;
+      display: block;
+      padding: 20px;
+    }
   }
 
   .tabela1 {
     grid-area: tabela1;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+
+    table {
+      border-top: 2px solid #afb0b4;
+      border-left: 2px solid #afb0b4;
+      padding: 20px;
+      display: block;
+    }
   }
 
 }

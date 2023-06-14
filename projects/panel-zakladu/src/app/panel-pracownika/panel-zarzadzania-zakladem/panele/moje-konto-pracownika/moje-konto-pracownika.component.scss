@@ -1,0 +1,64 @@
+
+.panelZakladu {
+  min-height: 100%;
+
+  .naglowekZolty {
+
+  }
+
+  .mojeKonto {
+    width: calc(100% - 100px);
+    display: flex;
+    justify-content: start;
+    margin: 20px 50px 20px 50px;
+
+    .informacjeTable {
+      border-bottom: 1px solid #afb0b4;
+      border-right: 1px solid #afb0b4;
+      display: block;
+      padding: 20px;
+
+    }
+  }
+
+  .zmianaHasla {
+    margin: 40px 0 40px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    .zapytajnik {
+      margin: 10px 0 10px 10px;
+    }
+
+    .zmianaHaslaTable {
+      border-top: 2px dotted #afb0b4;
+      border-left: 2px dotted #afb0b4;
+      display: block;
+      padding: 20px;
+      height: 150px;
+    }
+  }
+
+  .naPrzycisk {
+    width: 100%;
+    height: 150px;
+    min-height: auto;
+    position: relative;
+
+    .zmodyfikuj {
+      right: 30px;
+      bottom: 10px;
+    }
+  }
+}
+
+.wyloczone {
+  filter: blur(1px);
+  pointer-events: none;
+  cursor: not-allowed;
+
+
+}
+

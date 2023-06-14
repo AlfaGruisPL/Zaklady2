@@ -11,7 +11,7 @@ ul {
 
     &:nth-child(even) {
       li {
-        background: #1a45ac;
+        background: #001dbf;
 
         span {
           color: white;
@@ -84,8 +84,8 @@ ul {
 //style Dla menu kiedy jesteśmy w jakimś oknie
 .aktywneMenu {
   li {
-    box-shadow: 0px 0px 2px 2px #6e6302 !important;
-    background: #d0b500 !important;
+    box-shadow: 0px 0px 2px 2px #887a03 !important;
+    background: #ddbe03 !important;
     //   background: rgb(0, 34, 175) !important;
     // background: linear-gradient(0deg, rgba(0, 34, 175, 1) 0%, rgba(198, 184, 82, 1) 0%, rgba(46, 74, 196, 1) 20%, rgba(50, 119, 222, 1) 55%, rgba(84, 149, 245, 1) 70%, rgba(106, 166, 255, 1) 82%, rgba(134, 183, 255, 1) 94%, rgba(161, 192, 237, 1) 100%, rgba(242, 242, 242, 1) 100%) !important;
 

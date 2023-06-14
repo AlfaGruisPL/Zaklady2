@@ -5,6 +5,7 @@ import {Drzwi} from "../../../../enum/drzwi";
 import {MojeKontoDTO} from "../../../../klasy/panelPracownika/mojeKonto/moje-konto-dto";
 import {KomunikatyService} from "../../../../serwisy/komunikaty.service";
 import {BledyNumery} from "../../../../enum/bledy-numery";
+import {FontAwesomeService} from "../../../../serwisy/font-awesome.service";
 
 @Component({
   selector: 'app-moje-konto-pracownika',
@@ -14,9 +15,12 @@ import {BledyNumery} from "../../../../enum/bledy-numery";
 export class MojeKontoPracownikaComponent implements OnInit {
   public mojeKontoObj = new MojeKonto();
   public wlaczPrzyciskZapisz: boolean = false;
+  public podgladWlaczoneJeden: boolean = false;
+  public podgladWlaczoneDwa: boolean = false;
 
   constructor(public listonosz: ListonoszService,
-              public komunikaty: KomunikatyService) {
+              public komunikaty: KomunikatyService,
+              public fontAwesome: FontAwesomeService) {
 
   }
 
@@ -25,6 +29,7 @@ export class MojeKontoPracownikaComponent implements OnInit {
   }
 
   public zapisz() {
+    const mojeKontoDTO = new MojeKontoDTO(this.mojeKontoObj);
     if (this.mojeKontoObj.opcjaZmianyHasla != false) {
       if (!this.mojeKontoObj.czyHaslaWpisaneFunkcja()) {
         return
@@ -33,13 +38,18 @@ export class MojeKontoPracownikaComponent implements OnInit {
       if (!this.mojeKontoObj.czyHaslaWpisane || !this.mojeKontoObj.czyHaslaTakieSame) {
         return
       }
+      mojeKontoDTO.hasloNowe = this.mojeKontoObj.powtorzNoweHaslo;
+
+
     }
 
-    const mojeKontoDTO = new MojeKontoDTO(this.mojeKontoObj);
+
     this.listonosz.aktualizuj(Drzwi.mojeKonto, mojeKontoDTO).then(zapisane => {
       this.pobierz();
       this.komunikaty.modyfikacjaUdana();
       this.wlaczPrzyciskZapisz = false;
+      this.mojeKontoObj.wpiszNoweHaslo = "";
+      this.mojeKontoObj.powtorzNoweHaslo = "";
 
     }).catch(niezapisane => {
       this.komunikaty.modyfikacjaNieUdana();
