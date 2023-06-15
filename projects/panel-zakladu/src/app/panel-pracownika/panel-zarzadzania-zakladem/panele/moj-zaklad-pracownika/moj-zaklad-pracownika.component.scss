@@ -36,11 +36,11 @@
         td {
           &:Not(:first-of-type) {
             input {
-              padding-left: 50px;
+              margin-left: 20px;
             }
 
             ui-switch {
-              margin-left: 50px
+              margin-left: 30px
             }
           }
         }
