@@ -7,6 +7,7 @@ import {ListonoszService} from "../../../../serwisy/listonosz.service";
 import {Drzwi} from "../../../../enum/drzwi";
 import {Pracownik} from "../../../../klasy/panelPracownika/pracownicy/pracownik";
 import {Subscription} from "rxjs";
+import {KomunikatyService} from "../../../../serwisy/komunikaty.service";
 
 @Component({
   selector: 'app-pracownicy-pracownika',
@@ -19,7 +20,8 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
   private sub2?: Subscription;
 
   constructor(private modalService: NgbModal,
-              private listonosz: ListonoszService) {
+              private listonosz: ListonoszService,
+              private komunikaty: KomunikatyService) {
   }
 
   ngOnInit() {
@@ -43,7 +45,6 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
   }
 
 
-
   public dodajPracownika() {
     const okienko = this.modalService.open(DodawanieIModyfikacjaPracownikaComponent, {backdrop: "static", size: 'xl'});
     okienko.componentInstance.tryb = "dodawanie";
@@ -56,7 +57,8 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
       this.sub1?.unsubscribe();
     })
   }
-  public zmodyfikujUzytkownika(id: number){
+
+  public zmodyfikujUzytkownika(id: number) {
     const okienko = this.modalService.open(DodawanieIModyfikacjaPracownikaComponent, {backdrop: "static", size: 'xl'});
     okienko.componentInstance.tryb = "modyfikacja";
     okienko.componentInstance.idUzytkownika = id;
@@ -69,13 +71,25 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
       this.sub2?.unsubscribe();
     })
   }
-  public wyswietlUzytkownika(id: number){
+
+  public wyswietlUzytkownika(id: number) {
     const okienko = this.modalService.open(DodawanieIModyfikacjaPracownikaComponent, {backdrop: "static", size: 'xl'});
     okienko.componentInstance.tryb = "wyswietlenie";
     okienko.componentInstance.idUzytkownika = id;
     okienko.componentInstance.pobierzPracownika();
   }
 
+
+  public usunPracownika(pracownikId: number) {
+    this.listonosz.usun(Drzwi.pracownik + pracownikId + '/true').then(usunieto => {
+      this.komunikaty.pracownikUsuniety();
+    }).catch(nieusunieto => {
+      this.komunikaty.pracownikNieUsuniety();
+    }).finally(() => {
+      this.pobierzListePracownikow();
+    })
+
+  }
 
   ngOnDestroy(): void {
     // if(this.sub1 != undefined){
