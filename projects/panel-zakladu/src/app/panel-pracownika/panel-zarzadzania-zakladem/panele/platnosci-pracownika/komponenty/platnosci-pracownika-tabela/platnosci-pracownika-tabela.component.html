@@ -10,7 +10,7 @@
   <ng-container *ngFor="let k of listaPlatnosci;let index2 = index">
     <tr>
       <td>{{listaPlatnosci.length - index2 }}</td>
-      <td>{{k.opis}}Opłata 14.07.2023 do 14.08.2023</td>
+      <td>{{k.opis}}</td>
       <td>{{k.dataUtworzenia}}</td>
       <td>{{k.kwota}}</td>
       <ng-container [ngSwitch]="k.probyPlatnosci[k.probyPlatnosci.length-1].status">
