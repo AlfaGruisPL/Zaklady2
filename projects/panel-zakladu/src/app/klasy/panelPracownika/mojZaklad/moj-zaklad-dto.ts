@@ -1,15 +1,15 @@
-import {dzien, MojZaklad} from "./moj-zaklad";
+import { dzien, MojZaklad } from './moj-zaklad';
 
 export class MojZakladDTO {
-  public nazwa: string = "";
-  public miasto: string = "";
-  public nazwaUlicy: string = "";
-  public numerDomu: string = "";
-  public numerLokalu: string = "";
-  public opisZakladu: string = "";
+  public nazwa: string = '';
+  public miasto: string = '';
+  public nazwaUlicy: string = '';
+  public numerDomu: string = '';
+  public numerLokalu: string = '';
+  public opisZakladu: string = '';
   public dataZalozenia?: Date = new Date();
-  public kodPocztowy: string = "";
-  public wojewodztwo: string = "";
+  public kodPocztowy: string = '';
+  public wojewodztwo: string = '';
   public niedziela: dzienDTO;
   public poniedzialek: dzienDTO;
   public wtorek: dzienDTO;
@@ -26,14 +26,15 @@ export class MojZakladDTO {
   public opisCzyWyswietlic = false;
   public dataZalozeniayCzyWyswietlic = false;
   public mapaCzyWyswietlic = false;
+  public godzinyCzyWyswietlic = false;
 
   public wysokosc: string = '';
   public szerokosc: string = '';
-  public nip: string = "";
-  public regon: string = ""
+  public nip: string = '';
+  public regon: string = '';
 
-  public email: string = "";
-  public numerTelefonu: string = "";
+  public email: string = '';
+  public numerTelefonu: string = '';
 
   constructor(mojZakladKlasa: MojZaklad) {
     this.nazwa = mojZakladKlasa.nazwa;
@@ -43,7 +44,8 @@ export class MojZakladDTO {
     this.numerLokalu = mojZakladKlasa.numerLokalu;
     this.opisZakladu = mojZakladKlasa.opisZakladu;
     this.dataZalozenia = mojZakladKlasa.dataZalozenia;
-    this.kodPocztowy = mojZakladKlasa.kodPocztowy1 + "-" + mojZakladKlasa.kodPocztowy2;
+    this.kodPocztowy =
+      mojZakladKlasa.kodPocztowy1 + '-' + mojZakladKlasa.kodPocztowy2;
     this.wojewodztwo = mojZakladKlasa.wojewodztwo;
     this.niedziela = new dzienDTO(mojZakladKlasa.niedziela);
     this.poniedzialek = new dzienDTO(mojZakladKlasa.poniedzialek);
@@ -52,19 +54,18 @@ export class MojZakladDTO {
     this.czwartek = new dzienDTO(mojZakladKlasa.czwartek);
     this.piatek = new dzienDTO(mojZakladKlasa.piatek);
     this.sobota = new dzienDTO(mojZakladKlasa.sobota);
-    this.nip = mojZakladKlasa.nip
-    this.regon = mojZakladKlasa.regon
-    this.wysokosc = mojZakladKlasa.wysokosc
-    this.szerokosc = mojZakladKlasa.szerokosc
-    this.email = mojZakladKlasa.email
-    this.numerTelefonu = mojZakladKlasa.numerTelefonu
+    this.nip = mojZakladKlasa.nip;
+    this.regon = mojZakladKlasa.regon;
+    this.wysokosc = mojZakladKlasa.wysokosc;
+    this.szerokosc = mojZakladKlasa.szerokosc;
+    this.email = mojZakladKlasa.email;
+    this.numerTelefonu = mojZakladKlasa.numerTelefonu;
   }
-
 }
 
 export class dzienDTO {
-  public otwarcie: string = "";
-  public zamkniecie: string = "";
+  public otwarcie: string = '';
+  public zamkniecie: string = '';
   public nieczynnyDzien: boolean = false;
 
   constructor(dzienKlasa: dzien) {
