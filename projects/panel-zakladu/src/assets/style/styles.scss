@@ -267,15 +267,24 @@ body {
   }
 
   .switch:not(.checked) {
-    background: red !important;
+    background: #868686 !important;
 
     label {
+      span {
+        color: white !important;
+      }
 
     }
   }
 
   .switch.checked {
-    background: #0e7908 !important;
+    background: rgb(163 199 231) !important;
 
+    label {
+      span {
+        color: black !important;
+      }
+
+    }
   }
 }

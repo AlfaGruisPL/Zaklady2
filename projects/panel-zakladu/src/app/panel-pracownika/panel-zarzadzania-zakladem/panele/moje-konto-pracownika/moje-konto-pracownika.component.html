@@ -1,7 +1,8 @@
 <div class="panelZakladu">
   <div class=naglowekZolty>
     <span
-      class="naglowek1Wzoltym">Uzupełnij formularz swoich danych osobowych <br> * oznacza że pole jest zalecane do uzupełnienia</span>
+      class="naglowek1Wzoltym">Uzupełnij formularz swoich danych osobowych </span>
+    <span class="naglowek1Wzoltym2"> * oznacza że pole jest zalecane do uzupełnienia</span>
   </div>
   <div class="mojeKonto">
     <form>
@@ -104,7 +105,7 @@
         </tr>
         <tr>
           <td><label class="naglowki2form" for="numerTelefonu">Numer telefonu*</label></td>
-          <td><input class="logInputZaklad" id="numerTelefonu" [disabled]="!wlaczPrzyciskZapisz"
+          <td><input class="logInputZaklad" id="numerTelefonu" maxlength="9" [disabled]="!wlaczPrzyciskZapisz"
                      [(ngModel)]="mojeKontoObj.numerTelefonu"
                      [ngModelOptions]="{standalone: true}"></td>
         </tr>
@@ -161,7 +162,7 @@
   </div>
   <div class="naPrzycisk">
     <button class="zmodyfikujZapiszButton" (click)="wlaczPrzyciskZapisz = true">Zmodyfikuj</button>
-    <button *ngIf="wlaczPrzyciskZapisz == true" class="zmodyfikuj" (click)="zapisz()">Zapisz</button>
+    <button *ngIf="wlaczPrzyciskZapisz == true" class="zmodyfikujZapiszButton" (click)="zapisz()">Zapisz</button>
   </div>
 </div>
 

@@ -9,12 +9,15 @@
 
     <table>
       <tr>
+        <td class="naglowki1form" colspan="2">Dane pracownika</td>
+      </tr>
+      <tr>
         <td><label for="imie" class="naglowki2form">Imię</label></td>
         <td *ngIf="tryb != 'wyswietlenie'"><input id="imie" type="text" class="logInputZaklad" [(ngModel)]="pracownikObj.imie"
                    (keydown)="iloscKlikniec = 0"
                    [ngModelOptions]="{standalone: true}">
         </td>
-        <td *ngIf="tryb == 'wyswietlenie'"> {{pracownikObj.imie}}</td>
+        <td class="wyswietlanieDanych" *ngIf="tryb == 'wyswietlenie'"> {{pracownikObj.imie}}</td>
       </tr>
       <tr>
         <td><label for="nazwisko" class="naglowki2form"> Nazwisko</label></td>
@@ -58,7 +61,7 @@
       </tr>
       <tr>
         <td><label for="wojewodztwo" class="naglowki2form">
-          Województwo
+          Województwo:
         </label>
 
         </td>
@@ -84,7 +87,7 @@
             <option value="zachodniopomorskie">Zachodniopomorskie</option>
           </select>
         </td>
-        <td *ngIf="tryb == 'wyswietlenie'">{{pracownikObj.adres.wojewodztwo}}</td>
+        <td class="wyswietlanieDanych" *ngIf="tryb == 'wyswietlenie'">{{pracownikObj.adres.wojewodztwo}}</td>
       </tr>
       <tr>
         <td><label for="miasto" class="naglowki2form">Miasto</label></td>
@@ -126,7 +129,7 @@
                  [(ngModel)]="pracownikObj.adres.kodPocztowy2"
                  [ngModelOptions]="{standalone: true}">
         </td>
-        <td *ngIf="tryb == 'wyswietlenie'">
+        <td class="wyswietlanieDanych" *ngIf="tryb == 'wyswietlenie'">
           {{pracownikObj.adres.kodPocztowy1}}
            <span
              style="font-size: 25px;">&nbsp;-&nbsp;</span>
@@ -136,7 +139,7 @@
     </table>
   </div>
   <div class="modal-footer">
-    <span style="padding-right: 150px " *ngIf="!pracownikObj.czyWszystkoWpisane && iloscKlikniec == 1"
+    <span style="padding-right: 180px " *ngIf="!pracownikObj.czyWszystkoWpisane && iloscKlikniec == 1"
           class="czerwoneKomunikatyZaklad">Nie uzupełnione wszystkie pola! Czy na pewno chcesz zapisać dane? </span>
     <button *ngIf="tryb == 'dodawanie'" type="submit" class="buttonZapiszZmodyfikuj" (click)="zapisz()">Zapisz</button>
     <button *ngIf="tryb == 'modyfikacja'" type="submit" class="buttonZapiszZmodyfikuj" (click)="zmodyfikuj()">Zmodyfikuj</button>

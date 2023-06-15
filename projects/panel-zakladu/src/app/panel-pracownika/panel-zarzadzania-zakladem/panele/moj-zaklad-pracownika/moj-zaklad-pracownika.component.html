@@ -1,8 +1,9 @@
 <div class="panelZakladu">
   <div class=naglowekZolty>
-    <span
-      class="naglowek1Wzoltym">Uzupełnij formularz, aby Prywatneić dla klientów główną informację swojego zakładu <br>
-    * oznacza że pole jest zalecanym do wypełnienia
+    <span class="naglowek1Wzoltym">Uzupełnij formularz danymi o swoim zakładzie </span>
+    <span class="naglowek1Wzoltym2"> * oznacza że pole jest zalecane do uzupełnienia </span>
+
+    <span class="naglowek1Wzoltym2">   Publiczne/prywatne - służy do określenia, jakie dane mają być wyświetlane na stronie reprezentacyjnej
       </span>
   </div>
   <form (ngSubmit)="zapisz()">
@@ -313,7 +314,8 @@
           </tr>
           <tr>
             <td class="naglowki2form"><label for="numerTelefonu"> Numer telefonu </label></td>
-            <td><input [disabled]="!zapiszButton" class="logInputZaklad" [(ngModel)]="mojZakladKlasa.numerTelefonu"
+            <td><input [disabled]="!zapiszButton" class="logInputZaklad" maxlength="9"
+                       [(ngModel)]="mojZakladKlasa.numerTelefonu"
                        [ngModelOptions]="{standalone: true}" id="numerTelefonu" type="text">
             </td>
             <td class="unchecked">

@@ -28,7 +28,7 @@
   box-shadow: 0px 2px 4px 0px #999;
   padding: 5px;
 
-  .naglowek1Wzoltym {
+  .naglowek1Wzoltym, .naglowek1Wzoltym2 {
     font-size: 20px;
     letter-spacing: 1px;
     font-weight: bolder;
@@ -36,6 +36,10 @@
     color: black;
     font-family: serif;
     text-shadow: 0px 0px 2px #ffffff;
+  }
+
+  .naglowek1Wzoltym2 {
+    font-size: 18px;
   }
 }
 
@@ -48,12 +52,13 @@
 }
 
 .naglowki1form {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bolder;
 }
 
 .naglowki2form {
-  font-size: 20px;
+  font-size: 19px;
+  font-weight: bolder;
 }
 
 
@@ -108,23 +113,6 @@
   position: relative;
   padding: 20px;
 
-  .DodajPracownikaButton {
-    height: 40px;
-    width: 250px;
-    background: #113ac4;
-    color: white;
-    border-radius: 40%;
-    font-weight: bolder;
-    box-shadow: 0px 0px 0px 1px #887b0d;
-    letter-spacing: 1px;
-
-    &:hover {
-      cursor: pointer;
-      background: #123ed2;
-      box-shadow: 0px 0px 1px 1px #887b0d;
-    }
-  }
-
 
 }
 
@@ -148,9 +136,10 @@
     cursor: pointer;
     box-shadow: -1px -1px 1px 1px #8d8a8a;
   }
+
 }
 
-.zmodyfikujZapiszButton {
+.zmodyfikujZapiszButton, .DodajPracownikaButton {
   position: absolute;
   margin-top: 28px;
   margin-bottom: 20px;
@@ -170,7 +159,6 @@
     cursor: pointer;
     box-shadow: 0px 0px 1px 1px #8d8a8a;
   }
-
 }
 
 ///////////////////przyciski///////////////////////////
@@ -186,4 +174,11 @@
 
 .unchecked {
   padding-left: 10px;
+}
+
+
+.wyswietlanieDanych {
+  font-weight: 400;
+  font-size: 20px;
+  color: black;
 }

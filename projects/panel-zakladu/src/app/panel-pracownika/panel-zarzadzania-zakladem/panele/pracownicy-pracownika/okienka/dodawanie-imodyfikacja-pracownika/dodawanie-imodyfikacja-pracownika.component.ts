@@ -25,11 +25,12 @@ export class DodawanieIModyfikacjaPracownikaComponent {
               public listonosz: ListonoszService,
               public komunikaty: KomunikatyService) {
   }
-  pobierzPracownika(){
-    this.listonosz.pobierz(Drzwi.pracownik + this.idUzytkownika).then(pobrany =>{
+
+  pobierzPracownika() {
+    this.listonosz.pobierz(Drzwi.pracownik + this.idUzytkownika).then(pobrany => {
       Object.assign(this.pracownikObj, pobrany);
     }).catch(niepobrany => {
-this.komunikaty.wyswietlenieBladNumer(BledyNumery.niePobierajaSieDaneOPracowniku);
+      this.komunikaty.wyswietlenieBladNumer(BledyNumery.niePobierajaSieDaneOPracowniku);
     })
   }
 
@@ -52,7 +53,12 @@ this.komunikaty.wyswietlenieBladNumer(BledyNumery.niePobierajaSieDaneOPracowniku
 
 
   }
-  public zmodyfikuj(){
+
+  public zmodyfikuj() {
+    this.iloscKlikniec++;
+    if (this.iloscKlikniec <= 1) {
+      return
+    }
     const pracownikObjDTO = new PracownikDTO(this.pracownikObj);
     this.listonosz.aktualizuj(Drzwi.pracownik + this.idUzytkownika, pracownikObjDTO).then(dodano => {
       this.pracownikZmodyfikowany = true;
