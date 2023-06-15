@@ -70,6 +70,6 @@ export class dzienDTO {
   constructor(dzienKlasa: dzien) {
     this.otwarcie = dzienKlasa.otwarcie;
     this.zamkniecie = dzienKlasa.zamkniecie;
-    this.nieczynnyDzien = dzienKlasa.nieczynnyDzien;
+    this.nieczynnyDzien = dzienKlasa.czynnyDzien;
   }
 }

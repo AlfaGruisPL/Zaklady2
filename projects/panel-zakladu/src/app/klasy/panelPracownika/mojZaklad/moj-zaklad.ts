@@ -54,15 +54,15 @@ export class MojZaklad {
 export class dzien {
   public otwarcie: string = "";
   public zamkniecie: string = "";
-  public nieczynnyDzien: boolean = true;
+  public czynnyDzien: boolean = true;
 
 
   public nieczynne() {
-    this.nieczynnyDzien = false;
+    this.czynnyDzien = false;
   }
 
   public czynne() {
-    this.nieczynnyDzien = true;
+    this.czynnyDzien = true;
   }
 
 

@@ -165,7 +165,15 @@ import {UiSwitchModule} from "ngx-ui-switch";
     CookieModule.withOptions(),
     FontAwesomeModule,
     TippyDirective,
-    UiSwitchModule,
+    UiSwitchModule.forRoot({
+      size: "small",
+      color: "rgb(16 67 207)",
+      switchColor: "#8faaf5",
+      defaultBgColor: "rgb(229 236 255)",
+      defaultBoColor: "rgb(75 67 223)",
+      checkedTextColor: "rgb(255,255,255)",
+      uncheckedTextColor: "rgb(0,0,0)"
+    }),
     NgbModule,
   ],
   providers: [

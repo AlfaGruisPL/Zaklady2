@@ -244,3 +244,38 @@ body {
     }
   }
 }
+
+
+.switch.switch-small > .switch-pane > span {
+  font-size: 15px !important;
+  font-weight: 500 !important;
+
+}
+
+.przelacznikPublicznePrywatne {
+  button {
+    width: 105px !important;
+  }
+}
+
+.przelacznikCzynneNieczynne {
+  .switch {
+    width: 105px !important;
+    margin-left: 10px;
+    margin-right: 10px;
+
+  }
+
+  .switch:not(.checked) {
+    background: red !important;
+
+    label {
+
+    }
+  }
+
+  .switch.checked {
+    background: #0e7908 !important;
+
+  }
+}
