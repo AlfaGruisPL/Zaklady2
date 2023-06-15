@@ -83,5 +83,6 @@ export class dzienDTO {
     this.otwarcie = dzienKlasa.otwarcie;
     this.zamkniecie = dzienKlasa.zamkniecie;
     this.czynnyDzien = dzienKlasa.czynnyDzien;
+    console.log(this);
   }
 }
