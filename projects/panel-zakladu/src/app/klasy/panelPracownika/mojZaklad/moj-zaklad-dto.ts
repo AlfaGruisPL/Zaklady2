@@ -60,17 +60,29 @@ export class MojZakladDTO {
     this.szerokosc = mojZakladKlasa.szerokosc;
     this.email = mojZakladKlasa.email;
     this.numerTelefonu = mojZakladKlasa.numerTelefonu;
+
+    this.adresCzyWyswietlic = mojZakladKlasa.adresCzyWyswietlic;
+    this.nipCzyWyswietlic = mojZakladKlasa.nipCzyWyswietlic;
+    this.regonCzyWyswietlic = mojZakladKlasa.regonCzyWyswietlic;
+    this.emailCzyWyswietlic = mojZakladKlasa.emailCzyWyswietlic;
+    this.telefonCzyWyswietlic = mojZakladKlasa.telefonCzyWyswietlic;
+    this.opisCzyWyswietlic = mojZakladKlasa.opisCzyWyswietlic;
+    this.dataZalozeniayCzyWyswietlic =
+      mojZakladKlasa.dataZalozeniayCzyWyswietlic;
+    this.mapaCzyWyswietlic = mojZakladKlasa.mapaCzyWyswietlic;
+    this.godzinyCzyWyswietlic = mojZakladKlasa.godzinyCzyWyswietlic;
   }
 }
 
 export class dzienDTO {
   public otwarcie: string = '';
   public zamkniecie: string = '';
-  public nieczynnyDzien: boolean = false;
+  public czynnyDzien: boolean = false;
 
   constructor(dzienKlasa: dzien) {
     this.otwarcie = dzienKlasa.otwarcie;
     this.zamkniecie = dzienKlasa.zamkniecie;
-    this.nieczynnyDzien = dzienKlasa.czynnyDzien;
+    this.czynnyDzien = dzienKlasa.czynnyDzien;
+    console.log(this);
   }
 }

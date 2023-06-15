@@ -21,6 +21,10 @@ export class MojZakladPracownikaComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.pobieranieDanych()
+  }
+
+  pobieranieDanych() {
     this.listonosz.pobierz(Drzwi.daneMojZakladPracownik).then((dane: MojZaklad) => {
       Object.assign(this.mojZakladKlasa.poniedzialek, dane.poniedzialek)
       Object.assign(this.mojZakladKlasa.wtorek, dane.wtorek)
@@ -41,6 +45,7 @@ export class MojZakladPracownikaComponent implements OnInit {
     this.listonosz.wyslij(Drzwi.daneMojZakladPracownik, dane).then(udane => {
       this.komunikaty.modyfikacjaUdana();
       this.PodreczneDane.pobierajaca();
+      this.pobieranieDanych()
     }).catch(blad => {
       this.komunikaty.modyfikacjaNieUdana();
     })
