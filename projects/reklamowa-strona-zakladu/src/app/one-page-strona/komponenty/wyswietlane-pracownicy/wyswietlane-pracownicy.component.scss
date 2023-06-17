@@ -1,0 +1,29 @@
+.pracownicy {
+  background: #0e7908;
+  width: 98vw;
+  display: flex;
+  height: min-content;
+  min-height: 500px;
+
+  .pracownik {
+    background: red;
+    margin: 5px;
+    width: 400px;
+    height: 100%;
+
+    .imieNazwisko {
+      height: 25px;
+      width: 400px;
+    }
+
+    .zdjecie {
+      width: 400px;
+
+    }
+
+    .popatrz {
+      height: 25px;
+      width: 400px;
+    }
+  }
+}

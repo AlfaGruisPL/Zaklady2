@@ -140,18 +140,7 @@
                      type="text">
             </td>
           </tr>
-          <tr>
-            <td class="naglowki2form" colspan="2"><label for="opis"> Opisz swój zakład kilkoma zdaniami</label>
-            </td>
-            <td>
-              <ui-switch class="przelacznikPublicznePrywatne" [disabled]="!zapiszButton" class="unchecked"
-                         checkedLabel="Publiczne"
-                         uncheckedLabel="Prywatne"
-                         [(ngModel)]="mojZakladKlasa.opisCzyWyswietlic"
-                         [ngModelOptions]="{standalone: true}"
-              ></ui-switch>
-            </td>
-          </tr>
+
           <tr>
             <td colspan="2">
         <textarea [disabled]="!zapiszButton" class="loInputZagklad" id="opis" type="text"
@@ -351,6 +340,25 @@
                        [(ngModel)]="mojZakladKlasa.szerokosc"
                        [ngModelOptions]="{standalone: true}"
                        id="Szerokosc" type="text"></td>
+          </tr>
+        </table>
+      </div>
+      <div class="tabela5">
+        <app-pracownicy-moj-zaklad [czyWidoczne]="zapiszButton"></app-pracownicy-moj-zaklad>
+      </div>
+      <div class="tabela6">
+        <table>
+          <tr>
+            <td class="naglowki2form" colspan="2"><label for="opis"> Opisz swój zakład kilkoma zdaniami</label>
+            </td>
+            <td>
+              <ui-switch class="przelacznikPublicznePrywatne" [disabled]="!zapiszButton" class="unchecked"
+                         checkedLabel="Publiczne"
+                         uncheckedLabel="Prywatne"
+                         [(ngModel)]="mojZakladKlasa.opisCzyWyswietlic"
+                         [ngModelOptions]="{standalone: true}"
+              ></ui-switch>
+            </td>
           </tr>
         </table>
       </div>

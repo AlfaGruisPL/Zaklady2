@@ -2,5 +2,8 @@ export enum BledyNumery {
   BladWyswietlaniaDanychPodrecznych = 200,
   niePobierajaSieDaneOPracowniku,
   niePobierajaSieDaneWmojeKonto,
-  NiePobierajaSieDajeWPlatnosci
+  NiePobierajaSieDajeWPlatnosci,
+  NiePobierajaSiePracownicyMojZaklad,
+  NieAktualizujaSiePracownicyMojZaklad,
+  NiePobieraSieListaPracownikowPanelPracownicy
 }

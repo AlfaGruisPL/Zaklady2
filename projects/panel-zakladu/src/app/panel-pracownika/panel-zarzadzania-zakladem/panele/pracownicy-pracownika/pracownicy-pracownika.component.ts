@@ -8,6 +8,8 @@ import {Drzwi} from "../../../../enum/drzwi";
 import {Pracownik} from "../../../../klasy/panelPracownika/pracownicy/pracownik";
 import {Subscription} from "rxjs";
 import {KomunikatyService} from "../../../../serwisy/komunikaty.service";
+import {BledyNumery} from "../../../../enum/bledy-numery";
+import {CzyNaprawdeUsunacComponent} from "./okienka/czy-naprawde-usunac/czy-naprawde-usunac.component";
 
 @Component({
   selector: 'app-pracownicy-pracownika',
@@ -18,10 +20,12 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
   public ListaPracownikow: Array<Pracownik> = [];
   private sub1?: Subscription;
   private sub2?: Subscription;
+  public filter = "dostepni";
 
   constructor(private modalService: NgbModal,
               private listonosz: ListonoszService,
-              private komunikaty: KomunikatyService) {
+              private komunikaty: KomunikatyService,
+              private okienka: NgbModal) {
   }
 
   ngOnInit() {
@@ -40,6 +44,40 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
         this.ListaPracownikow.push(pracownikObj)
       })
     }).catch(niepobrane => {
+      this.komunikaty.wyswietlenieBladNumer(BledyNumery.NiePobieraSieListaPracownikowPanelPracownicy);
+    })
+  }
+
+
+  public filtrowaniePracownikow(): Array<Pracownik> {
+    return this.ListaPracownikow.filter(Pracownik => {
+      switch (this.filter) {
+        case "zarchiwizuj":
+          if (Pracownik.status == "zarchiwizuj") {
+            return true;
+          } else {
+            return false;
+          }
+          break;
+        case "dostepni":
+          if (Pracownik.status == "dostepni" && Pracownik.urlop == false) {
+            return true;
+          } else {
+            return false;
+          }
+          break;
+
+        case "urlop":
+          if (Pracownik.status == "dostepni" && Pracownik.urlop == true) {
+            return true;
+          } else {
+            return false;
+          }
+          break
+
+        default:
+          return true;
+      }
 
     })
   }
@@ -57,6 +95,49 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
       this.sub1?.unsubscribe();
     })
   }
+
+  public zarchiwizujUzytkownika(id: number) {
+    this.listonosz.aktualizuj(Drzwi.zwolnionyPrzywroconyPracownikMojZaklad + "/" + id, {status: "zarchiwizuj"}).then(udane => {
+      this.komunikaty.pracownikZarchiwizowany();
+      this.pobierzListePracownikow();
+    }).catch(nieudane => {
+      this.komunikaty.pracownikNieZarchiwizowany();
+    })
+  }
+
+  public urlop(id: number) {
+    this.listonosz.aktualizuj(Drzwi.zwolnionyPrzywroconyPracownikMojZaklad + "/" + id, {
+      urlop: true,
+      status: "dostepni"
+    }).then(udane => {
+      this.komunikaty.pracownikDodanyDoUrlopu()
+      this.pobierzListePracownikow();
+    }).catch(nieudane => {
+      this.komunikaty.pracownikNieDodanyDoUrlopu();
+    })
+  }
+
+  public przywrocUzytkownika(id: number) {
+    this.listonosz.aktualizuj(Drzwi.zwolnionyPrzywroconyPracownikMojZaklad + "/" + id, {
+      status: "dostepni",
+      urlop: false
+    }).then(udane => {
+      this.komunikaty.pracownikPrzywrocony();
+      this.pobierzListePracownikow();
+    }).catch(nieudane => {
+      this.komunikaty.pracownikNiePrzywrocony()
+    })
+  }
+
+  public przywrocUzytkownikaZUrlopu(id: number) {
+    this.listonosz.aktualizuj(Drzwi.zwolnionyPrzywroconyPracownikMojZaklad + "/" + id, {urlop: false}).then(udane => {
+      this.komunikaty.pracownikPrzywrocony();
+      this.pobierzListePracownikow();
+    }).catch(nieudane => {
+      this.komunikaty.pracownikNiePrzywrocony()
+    })
+  }
+
 
   public zmodyfikujUzytkownika(id: number) {
     const okienko = this.modalService.open(DodawanieIModyfikacjaPracownikaComponent, {backdrop: "static", size: 'xl'});
@@ -81,13 +162,22 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
 
 
   public usunPracownika(pracownikId: number) {
-    this.listonosz.usun(Drzwi.pracownik + pracownikId + '/true').then(usunieto => {
-      this.komunikaty.pracownikUsuniety();
-    }).catch(nieusunieto => {
-      this.komunikaty.pracownikNieUsuniety();
-    }).finally(() => {
-      this.pobierzListePracownikow();
+    const sterowanie = this.okienka.open(CzyNaprawdeUsunacComponent, {size: 'lg'});
+    const sub = sterowanie.closed.subscribe(k => {
+      if (k == "Nie") {
+        return
+      } else {
+        this.listonosz.usun(Drzwi.pracownik + pracownikId + '/true').then(usunieto => {
+          this.komunikaty.pracownikUsuniety();
+        }).catch(nieusunieto => {
+          this.komunikaty.pracownikNieUsuniety();
+        }).finally(() => {
+          this.pobierzListePracownikow();
+        })
+      }
+      sub.unsubscribe();
     })
+
 
   }
 

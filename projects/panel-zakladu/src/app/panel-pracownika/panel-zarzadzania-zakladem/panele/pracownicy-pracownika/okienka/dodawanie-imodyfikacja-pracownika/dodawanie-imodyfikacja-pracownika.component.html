@@ -144,14 +144,19 @@
         </td>
       </tr>
     </table>
+
+
   </div>
   <div class="modal-footer">
     <span style="padding-right: 180px " *ngIf="!pracownikObj.czyWszystkoWpisane && iloscKlikniec == 1"
           class="czerwoneKomunikatyZaklad">Nie uzupełnione wszystkie pola! Czy na pewno chcesz zapisać dane? </span>
-    <span style="padding-right: 180px " *ngIf="iloscKlikniec == 1"
+    <span style="padding-right: 180px " *ngIf="iloscKlikniec == 1 && tryb == 'modyfikacja'"
           class="czerwoneKomunikatyZaklad">Czy na pewno chcesz zmodyfikować dane? </span>
-    <button *ngIf="tryb == 'dodawanie'" type="submit" class="zmodyfikujZapiszButton" (click)="zapisz()">Zapisz</button>
-    <button *ngIf="tryb == 'modyfikacja'" type="submit" class="zmodyfikujZapiszButton" (click)="zmodyfikuj()">
+    <button *ngIf="tryb == 'dodawanie'" type="submit" class="zmodyfikujZapiszButton" (click)="zapisz()"
+            [disabled]="blokowaniePrzycisku">Zapisz
+    </button>
+    <button *ngIf="tryb == 'modyfikacja'" type="submit" class="zmodyfikujZapiszButton" (click)="zmodyfikuj()"
+            [disabled]="blokowaniePrzycisku">
       Zmodyfikuj
     </button>
   </div>

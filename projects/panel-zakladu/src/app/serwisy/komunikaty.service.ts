@@ -54,4 +54,29 @@ export class KomunikatyService {
   public pracownikNieUsuniety() {
     this.komunikaty.error("Dane o pracowniku nie zostały usunięte, skontaktuj się z administratorem", 'Udane')
   }
+
+  public pracownikZarchiwizowany() {
+    this.komunikaty.success("Pracownik został przeniesiony do tabeli 'Archiwum'", 'Udane')
+  }
+
+  public pracownikPrzywrocony() {
+    this.komunikaty.success("Pracownik został przywrocony do tabeli 'Dostępni'", 'Udane')
+  }
+
+  public pracownikNiePrzywrocony() {
+    this.komunikaty.error("Pracownik nie został przywrocony do tabeli 'Dostępni'", 'Udane')
+  }
+
+  public pracownikNieZarchiwizowany() {
+    this.komunikaty.error("Pracownik nie został przeniesiony do tabeli 'Archiwum'", 'Udane')
+  }
+
+
+  public pracownikDodanyDoUrlopu() {
+    this.komunikaty.success("Pracownik został przeniesiony  do tabeli 'Urlop'", 'Udane')
+  }
+
+  public pracownikNieDodanyDoUrlopu() {
+    this.komunikaty.error("Pracownik nie został dodany do tabeli 'Urlop'", 'Udane')
+  }
 }

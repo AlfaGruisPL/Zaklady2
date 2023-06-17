@@ -1,0 +1,18 @@
+<div class="modal-header">
+  <h4 class="modal-title">UWAGA!</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close('Nie')"></button>
+</div>
+<div class="modal-body">
+  <span>Czy na pewno chcesz usunąć dane o pracowniku? </span>
+  <br>
+  <span>Usunięcie danych, spowoduje utratę historii wizyt, statystyk itd.... </span>
+</div>
+<div class="modal-footer">
+  <button (click)="activeModal.close('Nie')">
+    Nie
+  </button>
+  <button (click)="activeModal.close('Tak')">
+    Tak
+  </button>
+
+</div>

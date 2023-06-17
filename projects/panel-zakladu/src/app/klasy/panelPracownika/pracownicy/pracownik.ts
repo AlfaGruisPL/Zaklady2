@@ -1,5 +1,5 @@
 export class Pracownik {
-  public id:number = 0;
+  public id: number = 0;
   public imie: string = "";
   public nazwisko: string = "";
   public adresEmail: string = "";
@@ -15,6 +15,10 @@ export class Pracownik {
     kodPocztowy2: string;
   }
   public ilosKlientow: number = 0;
+
+
+  public status = "";
+  public urlop: boolean = false;
 
   public imiePuste: boolean = false;
   public nazwiskoPuste: boolean = false;

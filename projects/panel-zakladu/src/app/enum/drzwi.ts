@@ -11,6 +11,8 @@ export enum Drzwi {
   podreczneDanePobierz = "/panelPracownika/daneStartowe",
   pobierzPracownikow = "/uzytkownicyWZakladach/pracownicyZakladu",
   dodaniePracownikaDoTablicy = "/uzytkownicyWZakladach/dodawaniePracownika",
+  pobierzPracownikowMojZaklad = "/uzytkownicyWZakladach/pracownikWidocznosc",
+  aktualizujPracownikowMojZaklad = "/uzytkownicyWZakladach/pracownikWidocznosc",
 
   listaPlatnosci = "/platnosci/listaPlatnosci",
   utworzeniePlatnosci = "/platnosci/nowaPlatnosc",
@@ -18,6 +20,8 @@ export enum Drzwi {
 
   mojeKonto = "/users/profil",
 
-  informacjeDoPaneluPlatnosci = "/platnosci/informacjeDoPaneluPlatnosci"
+  informacjeDoPaneluPlatnosci = "/platnosci/informacjeDoPaneluPlatnosci",
+
+  zwolnionyPrzywroconyPracownikMojZaklad = "/listaPracownikow/zwolnionyPrzywrocony"
 
 }

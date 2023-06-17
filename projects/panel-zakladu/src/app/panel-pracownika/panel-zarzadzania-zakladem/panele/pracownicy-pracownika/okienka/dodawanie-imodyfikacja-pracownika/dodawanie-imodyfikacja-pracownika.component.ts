@@ -19,6 +19,7 @@ export class DodawanieIModyfikacjaPracownikaComponent {
   public pracownikObj = new Pracownik();
   public pracownikDodany: boolean = true;
   public pracownikZmodyfikowany: boolean = true;
+  public blokowaniePrzycisku: boolean = false;
 
 
   constructor(public activeModal: NgbActiveModal,
@@ -36,7 +37,7 @@ export class DodawanieIModyfikacjaPracownikaComponent {
 
   zapisz() {
     this.iloscKlikniec++;
-
+    this.blokowaniePrzycisku = true;
     this.pracownikObj.czyWszystkoWpisaneFunkcja();
     console.log(this.iloscKlikniec)
     if (this.iloscKlikniec >= 2) {
@@ -48,6 +49,8 @@ export class DodawanieIModyfikacjaPracownikaComponent {
       }).catch(nieudano => {
         this.pracownikDodany = false;
         this.komunikaty.dodaniePracownikaNieUdane();
+      }).finally(() => {
+        this.blokowaniePrzycisku = false;
       })
     }
 
@@ -55,6 +58,7 @@ export class DodawanieIModyfikacjaPracownikaComponent {
   }
 
   public zmodyfikuj() {
+    this.blokowaniePrzycisku = true
     this.iloscKlikniec++;
     if (this.iloscKlikniec <= 1) {
       return
@@ -67,6 +71,8 @@ export class DodawanieIModyfikacjaPracownikaComponent {
     }).catch(nieudano => {
       this.pracownikZmodyfikowany = false;
       this.komunikaty.modyfikowaniePracownikaNieUdane();
+    }).finally(() => {
+      this.blokowaniePrzycisku = false;
     })
   }
 

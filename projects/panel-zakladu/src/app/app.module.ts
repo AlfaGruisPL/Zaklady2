@@ -113,6 +113,8 @@ import {
   OknoPlatnosciComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/komponenty/okna/okno-platnosci/okno-platnosci.component';
 import {UiSwitchModule} from "ngx-ui-switch";
+import { PracownicyMojZakladComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moj-zaklad-pracownika/pracownicy-moj-zaklad/pracownicy-moj-zaklad.component';
+import { CzyNaprawdeUsunacComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/pracownicy-pracownika/okienka/czy-naprawde-usunac/czy-naprawde-usunac.component';
 
 @NgModule({
   declarations: [
@@ -152,7 +154,9 @@ import {UiSwitchModule} from "ngx-ui-switch";
     ListaKlientowPracownikComponent,
     PlatnosciPracownikaTabelaComponent,
     PlatnosciPracownikaNaglowekComponent,
-    OknoPlatnosciComponent
+    OknoPlatnosciComponent,
+    PracownicyMojZakladComponent,
+    CzyNaprawdeUsunacComponent
 
   ],
   imports: [

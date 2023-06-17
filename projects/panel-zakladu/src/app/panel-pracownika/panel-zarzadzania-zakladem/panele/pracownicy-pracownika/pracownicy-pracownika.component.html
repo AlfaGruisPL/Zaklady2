@@ -4,6 +4,22 @@
     <h1 class="naglowek1Wzoltym">Panel zarządzania pracownikami</h1>
 
   </div>
+  <div class="filtry">
+    <div class="switchButtonDiv">
+      <button (click)="filter= 'dostepni'" class="switchButton"
+              [ngClass]="{'switchButtonAktywny':filter =='dostepni'}">Dostępni
+      </button>
+      <button (click)="filter= 'urlop'" class="switchButton"
+              [ngClass]="{'switchButtonAktywny':filter =='urlop'}">
+        Urlop
+      </button>
+      <button (click)="filter= 'zarchiwizuj'" class="switchButton"
+              [ngClass]="{'switchButtonAktywny':filter =='zarchiwizuj'}">
+        Archiwum
+      </button>
+    </div>
+  </div>
+
   <div class="Divtabelka">
     <table class="tablica">
       <tr>
@@ -14,7 +30,7 @@
         <th>Numer telefonu</th>
         <th>Zarządzanie</th>
       </tr>
-      <tr *ngFor="let pracownik of ListaPracownikow; let index = index">
+      <tr *ngFor="let pracownik of filtrowaniePracownikow(); let index = index">
         <td>{{index + 1}}</td>
         <td>{{pracownik.imie}}</td>
         <td>{{pracownik.nazwisko}}</td>
@@ -26,6 +42,33 @@
             <div ngbDropdownMenu>
               <button ngbDropdownItem (click)="wyswietlUzytkownika(pracownik.id)">Wyświetl</button>
               <button ngbDropdownItem (click)="zmodyfikujUzytkownika(pracownik.id)">Zmodyfikuj</button>
+
+              <ng-container *ngIf="filter != 'zarchiwizuj' else przyciskiDoArchiwizuj ">
+                <button ngbDropdownItem (click)="urlop(pracownik.id)"
+                        *ngIf="pracownik.urlop == false else przywrocUrlop "> Urlop
+                </button>
+                <button ngbDropdownItem (click)="zarchiwizujUzytkownika(pracownik.id)"
+                        *ngIf="pracownik.status == 'dostepni' else przywrocArchiwum ">Zarchiwizuj
+                </button>
+
+
+                <ng-template #przywrocArchiwum>
+                  <button ngbDropdownItem (click)="przywrocUzytkownika(pracownik.id)">Przywróć</button>
+                </ng-template>
+                <ng-template #przywrocUrlop>
+                  <button ngbDropdownItem (click)="przywrocUzytkownikaZUrlopu(pracownik.id)">DO pracy wio</button>
+                </ng-template>
+
+              </ng-container>
+              <ng-template #przyciskiDoArchiwizuj>
+
+                <button ngbDropdownItem (click)="urlop(pracownik.id)">Urlop
+                </button>
+                <button ngbDropdownItem (click)="przywrocUzytkownika(pracownik.id)">Dostepny</button>
+
+              </ng-template>
+
+
               <div class="dropdown-divider"></div>
               <button ngbDropdownItem (click)="usunPracownika(pracownik.id)">Usuń</button>
             </div>
