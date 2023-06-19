@@ -14,6 +14,8 @@ import {StopkaComponent} from './one-page-strona/komponenty/stopka/stopka.compon
 import {BannerComponent} from './one-page-strona/komponenty/banner/banner.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {CarouselModule} from "ngx-owl-carousel-o";
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import {FormsModule} from "@angular/forms";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule, BrowserAnimationsModule,
+    CarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]
