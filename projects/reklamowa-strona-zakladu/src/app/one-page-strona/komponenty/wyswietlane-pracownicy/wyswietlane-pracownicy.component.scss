@@ -1,4 +1,5 @@
-.pracownicy {
+/*.pracownicy {
+
   background: #0e7908;
   width: 98vw;
   display: flex;
@@ -11,30 +12,46 @@
     width: 400px;
     height: 100%;
 
-    .imieNazwisko {
-      height: 25px;
-      width: 400px;
-    }
 
-    .zdjecie {
-      width: 400px;
+}
 
-    }
 
-    .popatrz {
-      height: 25px;
-      width: 400px;
-    }
+*/
+.pracownicy {
+
+  width: 98vw;
+
+  min-height: 500px;
+
+
+}
+
+.pracownik {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  height: 400px !important;
+  margin-left: 20px;
+  margin-right: 20px;
+  border: 1px solid black;
+
+  .imieNazwisko {
+    text-align: center;
+    height: 25px;
+    width: 400px;
+  }
+
+  .zdjecie {
+    height: 400px;
+
+  }
+
+  .popatrz {
+    text-align: center;
+    height: 25px;
+    width: 400px;
   }
 }
 
-
-.slide {
-  transform-origin: center;
-  position: relative;
-}
-
-.wrapper {
-  max-width: 800px;
-  margin: 0 auto;
-}

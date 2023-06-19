@@ -1,54 +1,23 @@
-<!-- <div class="pracownicy">
-
-  <owl-carousel-o [options]="customOptions" #owlCat>
-    <ng-container *ngFor="let pracownik of listaPracownikow">
-      <ng-template carouselSlide let-owlItem>
-        <div class="slide" [@activeSlide]="owlItem.isCentered ? 'active' : 'inActive'">
-          <div>
-            <div class="imieNazwisko">
+<div class="glider-contain pracownicy">
+  <div class="glider">
+    <div class="pracownik" *ngFor="let pracownik of listaPracownikow">
+      <div class="imieNazwisko">
       <span>
-{{pracownik.imie}} {{pracownik.nazwisko}}
+        {{pracownik.imie}} {{pracownik.nazwisko}}
       </span>
-            </div>
-            <div class="zdjecie">
-              <img style="width:200px"
-                   src="https://thumbs.dreamstime.com/z/wektorowa-ilustracja-mickey-mouse-137965016.jpg">
-            </div>
-            <div class="popatrz">
-              <button>Zobacz</button>
-            </div>
-
-          </div>
-
-        </div>
-      </ng-template>
-    </ng-container>
-  </owl-carousel-o>
+      </div>
+      <div class="zdjecie">
+        <img style="width:200px"
+             src="https://thumbs.dreamstime.com/z/wektorowa-ilustracja-mickey-mouse-137965016.jpg">
+      </div>
+      <div class="popatrz">
+        <button>Zobacz</button>
+      </div>
 
 
-</div>
+    </div>
 
--->
-<h1 class="text-center my-4">Cities gallery</h1>
+  </div>
+  <div role="tablist" class="dots"></div>
 
-<div class="wrapper">
-  <owl-carousel-o [options]="customOptions" #owlCat>
-    <ng-container *ngFor="let image of listaPracownikow">
-      <ng-template carouselSlide let-owlItem>
-        <div class="slide" [@activeSlide]="owlItem.isCentered ? 'active' : 'inActive'">
-          <!-- {{owlItem.center}}
-          {{owlItem.id}} -->
-          <div>
-            <h5 style="text-align: center;">Korneliia Mushak</h5>
-            <img style="width:200px"
-                 src="https://thumbs.dreamstime.com/z/wektorowa-ilustracja-mickey-mouse-137965016.jpg">
-            <button> Kliknij !!!</button>
-
-
-          </div>
-
-        </div>
-      </ng-template>
-    </ng-container>
-  </owl-carousel-o>
 </div>
