@@ -17,23 +17,27 @@ export class WyswietlanePracownicyComponent implements OnInit {
   constructor(public listonosz: ListonoszService) {
   }
 
+  private slider: any
+
+  generowanieKaruzeli() {
+    // @ts-ignore
+    this.slider = new Glider(document.querySelector('.glider'), {
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      draggable: true,
+      dots: '.dots',
+      arrows: {
+        prev: '.glider-prev',
+        next: '.glider-next'
+      }
+    });
+  }
 
   ngOnInit() {
-    setTimeout(() => {
 
-      // @ts-ignore
-      new Glider(document.querySelector('.glider'), {
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        draggable: true,
-        dots: '.dots',
-        arrows: {
-          prev: '.glider-prev',
-          next: '.glider-next'
-        }
-      });
-    }, 10)
+
     this.pobierzPracownikow();
+
   }
 
   public pobierzPracownikow() {
@@ -42,6 +46,11 @@ export class WyswietlanePracownicyComponent implements OnInit {
         const pracownikObj = new Pracownik();
         Object.assign(pracownikObj, pracownik);
         this.listaPracownikow.push(pracownikObj);
+
+      })
+      setTimeout(() => {
+        this.generowanieKaruzeli()
+
       })
     }).catch(niepobrane => {
 
