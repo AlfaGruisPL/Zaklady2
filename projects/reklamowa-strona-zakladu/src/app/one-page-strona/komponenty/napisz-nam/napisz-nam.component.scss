@@ -1,11 +1,12 @@
 .napiszNam {
-  width: 100%;
+  width: 98vw;
   float: left;
-  background-color: #dadada;
-  height: 400px;
+  background-color: #fcfcfc;
+  height: 600px;
 
   .tytulIzdj {
-    height: 40%;
+    margin-top: 20px;
+    height: 20%;
     width: 100%;
     display: flex;
     align-items: center;
@@ -53,11 +54,53 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60%;
+    height: 80%;
     width: 100%;
 
     .formularzTab {
-  
+
     }
   }
 }
+
+.inputNapiszDoNas {
+  border: 2px inset #1b8934;
+  border-radius: 20px;
+  width: 220px;
+  height: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 18px;
+}
+
+
+.buttonWyslij, .buttonReset {
+  width: 150px;
+  height: 30px;
+  background: #e3f9f6;
+  border: 1px solid #01570a;
+  color: green;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 20px;
+  transition: 200ms;
+
+  &:hover {
+    box-shadow: 0px 0px 2px 2px #d1d9d1;
+    cursor: pointer;
+    color: white;
+    background: #01570a;
+  }
+}
+
+.buttonReset {
+  border: 1px solid #a10808;
+  color: #a10808;
+
+
+  &:hover {
+    color: white;
+    background: #a10808;
+  }
+}
+

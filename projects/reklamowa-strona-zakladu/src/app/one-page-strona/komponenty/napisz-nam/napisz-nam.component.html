@@ -20,27 +20,35 @@
     <form>
       <table class="formularzTab">
         <tr>
-          <td><input placeholder="Imię" [(ngModel)]="napiszNamObj.imie" [ngModelOptions]="{standalone: true}"></td>
-          <td><input type="text" [(ngModel)]="napiszNamObj.nazwisko" [ngModelOptions]="{standalone: true}"
+          <td><input class="inputNapiszDoNas" placeholder="Imię" [(ngModel)]="napiszNamObj.imie"
+                     [ngModelOptions]="{standalone: true}"></td>
+          <td><input class="inputNapiszDoNas" type="text" [(ngModel)]="napiszNamObj.nazwisko"
+                     [ngModelOptions]="{standalone: true}"
                      placeholder="Nazwisko"></td>
         </tr>
         <tr>
-          <td><input type="text" [(ngModel)]="napiszNamObj.adresEmail" [ngModelOptions]="{standalone: true}"
+          <td><input class="inputNapiszDoNas" type="text" [(ngModel)]="napiszNamObj.adresEmail"
+                     [ngModelOptions]="{standalone: true}"
                      placeholder="E-mail"></td>
-          <td><input type="text" [(ngModel)]="napiszNamObj.numerTelefonu" [ngModelOptions]="{standalone: true}"
+          <td><input class="inputNapiszDoNas" type="text" [(ngModel)]="napiszNamObj.numerTelefonu"
+                     [ngModelOptions]="{standalone: true}"
                      placeholder="Numer telefonu"></td>
         </tr>
         <tr>
-          <td colspan="2"><textarea style="width: 500px; height: 80px; resize: none"
+          <td colspan="2"><textarea style="width: 470px; height: 200px; border-radius:10px; resize: none"
+                                    class="inputNapiszDoNas"
                                     [(ngModel)]="napiszNamObj.wiadomosc" [ngModelOptions]="{standalone: true}"
                                     placeholder="Wpisz swoją wiadomość"></textarea>
           </td>
         </tr>
         <tr>
-          <td colspan="2">
-            <button type="reset" class="wyslij">Reset</button>
-            <button (click)="wyslij()" class="wyslij">Wyślij</button>
+          <td>
+            <button class="buttonReset" type="reset">Reset</button>
           </td>
+          <td>
+            <button class="buttonWyslij" (click)="wyslij()">Wyślij</button>
+          </td>
+
         </tr>
       </table>
     </form>

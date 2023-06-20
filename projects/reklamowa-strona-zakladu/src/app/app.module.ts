@@ -18,8 +18,10 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {CarouselModule} from "ngx-owl-carousel-o";
 import {ZdjecieZakladuComponent} from './one-page-strona/komponenty/zdjecie-zakladu/zdjecie-zakladu.component';
 import {InformacjaONasComponent} from './one-page-strona/komponenty/informacja-onas/informacja-onas.component';
-import { NapiszNamComponent } from './one-page-strona/komponenty/napisz-nam/napisz-nam.component';
+import {NapiszNamComponent} from './one-page-strona/komponenty/napisz-nam/napisz-nam.component';
+import {ZarejestrujSieComponent} from './one-page-strona/komponenty/zarejestruj-sie/zarejestruj-sie.component';
 import { StrzalkaComponent } from './one-page-strona/strzalka/strzalka.component';
+import { OgloszeniaComponent } from './one-page-strona/komponenty/ogloszenia/ogloszenia.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { StrzalkaComponent } from './one-page-strona/strzalka/strzalka.component
     ZdjecieZakladuComponent,
     InformacjaONasComponent,
     NapiszNamComponent,
+    ZarejestrujSieComponent,
     StrzalkaComponent,
+    OgloszeniaComponent,
   ],
   imports: [
     BrowserModule,
