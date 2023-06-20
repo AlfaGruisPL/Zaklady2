@@ -6,8 +6,9 @@
   right: 15px;
   bottom: 15px;
   border-radius: 50%;
-  border: 2px inset #a20000;
+  border: 2px solid #a20000;
   transition: 0.5s ease-out;
+  z-index: 100;
 
   &:hover {
     cursor: pointer;

@@ -48,11 +48,16 @@
   }
 }
 
+.adres, .opis, .zdjzaproszenie {
+  padding-left: 150px;
+
+}
+
 .opis {
   grid-area: opis;
   display: flex;
-  justify-content: center;
-  align-items: center;
+
+  text-align: left;
 
   .opisP {
     font-size: 20px;
@@ -78,7 +83,6 @@
 .adres {
   grid-area: adres;
   display: flex;
-  justify-content: center;
   align-items: center;
 
   .adresTable {
@@ -97,8 +101,12 @@
 .zdjzaproszenie {
   grid-area: zdjzaproszenie;
   display: flex;
-  justify-content: center;
   align-items: center;
+
+  span {
+    width: calc(100% - 150px);
+    text-align: center;
+  }
 }
 
 .zapraszamSpan {
