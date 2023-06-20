@@ -115,6 +115,7 @@ import {
 import {UiSwitchModule} from "ngx-ui-switch";
 import { PracownicyMojZakladComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moj-zaklad-pracownika/pracownicy-moj-zaklad/pracownicy-moj-zaklad.component';
 import { CzyNaprawdeUsunacComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/pracownicy-pracownika/okienka/czy-naprawde-usunac/czy-naprawde-usunac.component';
+import { PlatnosciPracownikaOplatyComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/komponenty/platnosci-pracownika-oplaty/platnosci-pracownika-oplaty.component';
 
 @NgModule({
   declarations: [
@@ -156,7 +157,8 @@ import { CzyNaprawdeUsunacComponent } from './panel-pracownika/panel-zarzadzania
     PlatnosciPracownikaNaglowekComponent,
     OknoPlatnosciComponent,
     PracownicyMojZakladComponent,
-    CzyNaprawdeUsunacComponent
+    CzyNaprawdeUsunacComponent,
+    PlatnosciPracownikaOplatyComponent
 
   ],
   imports: [

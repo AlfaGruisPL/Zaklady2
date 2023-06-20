@@ -14,9 +14,17 @@
         </td>
         <td>
           <span class="status">
-            {{ dane?.aktywne }}
+            <span *ngIf=" dane.status == -1">Testowe</span>
+       <span *ngIf=" dane.status == 1">Aktywne</span>
+            <span *ngIf=" dane.status == 0">Nieaktywne</span>
           </span>
         </td>
+      </tr>
+
+
+      <tr>
+        <td class="statusTytul">Konto:</td>
+        <td class="status">{{dane.konto / 100 }} zł</td>
       </tr>
       <tr>
         <td class="statusTytul">Pakiet:</td>
@@ -25,9 +33,8 @@
       <tr>
         <td colspan="2">
           <span class="opis">
-            <b>System aktywny do:</b> {{ dane?.aktywneDo | date : "dd.MM.yyyy"
-            }}<br />
-            <b>Dni do końca aktywności:</b> {{ dane?.dniDoKoncaAktywnosci }}
+            <b>System aktywny do:</b> {{ dane.aktywneDo | date : "dd.MM.yyyy"}}
+            <br/>
           </span>
         </td>
       </tr>

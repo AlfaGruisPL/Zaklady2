@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-banner',
@@ -6,11 +7,13 @@ import {Component} from '@angular/core';
   styleUrls: ['./banner.component.scss']
 })
 export class BannerComponent {
-  przeniesDoPanelu(element: any): void {
-    (document.getElementById(element) as HTMLElement).scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-      inline: "nearest"
-    });
+  constructor(private router: Router) {
+  }
+
+  przeniesDoPanelu(element: string): void {
+    this.router.navigate(['.'])
+    setTimeout(() => {
+      this.router.navigate(['.'], {fragment: element})
+    }, 0)
   }
 }

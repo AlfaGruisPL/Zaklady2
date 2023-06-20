@@ -11,7 +11,7 @@
     <tr>
       <td>{{listaPlatnosci.length - index2 }}</td>
       <td>{{k.opis}}</td>
-      <td>{{k.dataUtworzenia}}</td>
+      <td>{{k.dataUtworzenia | date : "dd.MM.yyyy  HH:MM"}}</td>
       <td>{{k.kwota}}</td>
       <ng-container [ngSwitch]="k.probyPlatnosci[k.probyPlatnosci.length-1].status">
         <td *ngSwitchCase="'NEW'" class="statusyPlatnosci" style="color:#005200">Nowa</td>
@@ -51,7 +51,7 @@
                 <td colspan="2"></td>
                 <td>{{index + 1}}</td>
                 <td>{{k3.identyfikatorPayNow}}</td>
-                <td>{{k3.data}}</td>
+                <td>{{k3.data | date : "dd.MM.yyyy  HH:MM"}}</td>
                 <ng-container [ngSwitch]="k3.status">
                   <td *ngSwitchCase="'NEW'" class="statusyPlatnosci" style="color:#005200">Nowa</td>
                   <td *ngSwitchCase="'CONFIRMED'" class="statusyPlatnosci" style="color:green">Zatwierdzona</td>

@@ -21,7 +21,8 @@ export enum Drzwi {
   mojeKonto = "/users/profil",
 
   informacjeDoPaneluPlatnosci = "/platnosci/informacjeDoPaneluPlatnosci",
-
+  listaOplat = "/platnosci/listaOplat",
   zwolnionyPrzywroconyPracownikMojZaklad = "/listaPracownikow/zwolnionyPrzywrocony"
+
 
 }

@@ -1,5 +1,6 @@
 export class InformacjeDoPaneluPlatnosci {
-  aktywne: string = "null";
+  status: number = 0;
   aktywneDo: Date = new Date();
   dniDoKoncaAktywnosci: string = "";
+  konto: number = 0;
 }

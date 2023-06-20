@@ -1,0 +1,20 @@
+<h3 class="historiaTransakcjiH3">Historia automatycznych opłat:</h3>
+<table class="historiaTransakcji tablica tablicaPierwszyWierszJakoNaglowe">
+  <tr #naglowek>
+    <th>Nr.</th>
+    <th>Nazwa</th>
+    <th>Data</th>
+    <th>Kwota</th>
+    <th>Status</th>
+  </tr>
+  <ng-container *ngFor="let k of listaPlatnosci;let index2 = index">
+    <tr>
+      <td>{{listaPlatnosci.length - index2 }}</td>
+      <td>{{k.opis}}</td>
+      <td>{{k.dataUtworzenia | date : "dd.MM.yyyy  HH:MM"}}</td>
+      <td>{{k.kwota}}</td>
+      <td *ngIf="k.status==0">Nieudane</td>
+      <td *ngIf="k.status==1">Udane</td>
+    </tr>
+  </ng-container>
+</table>
