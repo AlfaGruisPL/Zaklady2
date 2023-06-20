@@ -10,7 +10,7 @@ import {FontAwesomeService} from "../../../serwisy/font-awesome.service";
   styleUrls: ['./panel-logowania-pracownikow.component.scss']
 })
 export class PanelLogowaniaPracownikowComponent implements OnInit {
-  public email: string = "";
+  public email: string = "korneliamushak@gmail.com";
   public haslo: string = "";
   public czyPrawidloweDane: boolean = true;
 
