@@ -1,0 +1,68 @@
+.zarejestujSie {
+  width: 98vw;
+  height: 300px;
+  float: left;
+  background: #efefef;
+
+  .zdj {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: left;
+
+    img {
+      max-width: 100%;
+      height: calc(100% - 100px);
+    }
+  }
+
+  .tytulIButton {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    float: left;
+
+  }
+}
+
+
+.spanZapiszSie {
+  font-size: 40px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: brown;
+  text-shadow: burlywood;
+  text-shadow: 1px 1px 1px brown;
+  font-family: math;
+}
+
+.rejestracjaButton {
+  margin-top: 20px;
+  transition: 200ms;
+  width: 260px;
+  height: 40px;
+  font-size: 20px;
+  border: 2px inset #5dcc5d;
+  box-shadow: 2px 2px 2px 2px #035a03;
+  letter-spacing: 1px;
+  font-family: math;
+  font-weight: bold;
+  color: #09ac09;
+  text-shadow: 0px 1px 2px green;
+
+  &:hover {
+    cursor: pointer;
+    background: #5dcc5d;
+    color: white;
+    text-shadow: 1px 2px 4px black;
+
+  }
+}
+
+
+

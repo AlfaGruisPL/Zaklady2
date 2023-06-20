@@ -22,6 +22,7 @@ import {NapiszNamComponent} from './one-page-strona/komponenty/napisz-nam/napisz
 import {ZarejestrujSieComponent} from './one-page-strona/komponenty/zarejestruj-sie/zarejestruj-sie.component';
 import { StrzalkaComponent } from './one-page-strona/strzalka/strzalka.component';
 import { OgloszeniaComponent } from './one-page-strona/komponenty/ogloszenia/ogloszenia.component';
+import { MapaComponent } from './one-page-strona/komponenty/mapa/mapa.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { OgloszeniaComponent } from './one-page-strona/komponenty/ogloszenia/ogl
     ZarejestrujSieComponent,
     StrzalkaComponent,
     OgloszeniaComponent,
+    MapaComponent,
   ],
   imports: [
     BrowserModule,
