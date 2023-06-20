@@ -16,6 +16,7 @@ export enum Drzwi {
 
   listaPlatnosci = "/platnosci/listaPlatnosci",
   utworzeniePlatnosci = "/platnosci/nowaPlatnosc",
+  aktywacjaKonta = "/platnosci/aktywacjaKonta",
   pracownik = "/uzytkownicyWZakladach/pracownik/",
 
   mojeKonto = "/users/profil",

@@ -31,6 +31,14 @@ export class KomunikatyService {
     this.komunikaty.error('Wylogowanie nieudane', 'Bląd');
   }
 
+  public kontoAktywowane() {
+    this.komunikaty.error('Twoje konto zostało aktywowane', 'Udane');
+  }
+
+  public kontoNieAktywowane() {
+    this.komunikaty.error('Twoje konto nie zostało aktywowane', 'Bląd');
+  }
+
   public dodaniePracownikaUdane() {
     this.komunikaty.success("Pracownik został dodany", 'Udane');
   }

@@ -5,6 +5,8 @@ import {OknoPlatnosciComponent} from '../okna/okno-platnosci/okno-platnosci.comp
 import {
   InformacjeDoPaneluPlatnosci
 } from '../../../../../../klasy/panelPracownika/platnosci/informacje-do-panelu-platnosci';
+import {Drzwi} from "../../../../../../enum/drzwi";
+import {KomunikatyService} from "../../../../../../serwisy/komunikaty.service";
 
 @Component({
   selector: 'app-platnosci-pracownika-naglowek',
@@ -16,7 +18,8 @@ export class PlatnosciPracownikaNaglowekComponent {
 
   constructor(
     private modalService: NgbModal,
-    private listonosz: ListonoszService
+    private listonosz: ListonoszService,
+    private komunikaty: KomunikatyService
   ) {
   }
 
@@ -25,5 +28,13 @@ export class PlatnosciPracownikaNaglowekComponent {
       backdrop: 'static',
       size: 'lg',
     });
+  }
+
+  aktywacjaKonta() {
+    this.listonosz.wyslij(Drzwi.aktywacjaKonta, {aktywnosc: true}).then(k => {
+      this.komunikaty.kontoAktywowane()
+    }).catch(k => {
+      this.komunikaty.kontoNieAktywowane()
+    })
   }
 }

@@ -1,0 +1,48 @@
+.strzalka {
+  width: 40px;
+  height: 40px;
+  background: #ff1c1c;
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  border-radius: 50%;
+  border: 2px inset #a20000;
+  transition: 0.5s ease-out;
+
+  &:hover {
+    cursor: pointer;
+
+
+    scale: 1.1;
+
+  }
+
+  .strz {
+    transition: 0.5s ease-out;
+  }
+
+
+  .strz:after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 3px;
+    right: 8px;
+    top: 16px;
+    transform: rotate(45deg);
+    background: white;
+  }
+
+  .strz:before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 3px;
+    right: 17px;
+    top: 16px;
+    transform: rotate(-225deg);
+    background: white;
+  }
+
+
+}
