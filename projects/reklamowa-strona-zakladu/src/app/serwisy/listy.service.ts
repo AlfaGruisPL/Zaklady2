@@ -17,4 +17,8 @@ export class ListyService {
   pobierz(drzwi: Drzwi | string, opcje: {}): Observable<any> {
     return this.api.get(this.linkDoApi + drzwi, opcje)
   }
+
+  wyslij(drzwi: Drzwi | string, zawartosc: {}, opcje: {}): Observable<any> {
+    return this.api.post(this.linkDoApi + drzwi, zawartosc, opcje)
+  }
 }

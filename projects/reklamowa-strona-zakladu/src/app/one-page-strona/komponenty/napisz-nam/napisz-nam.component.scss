@@ -1,0 +1,63 @@
+.napiszNam {
+  width: 100%;
+  float: left;
+  background-color: #dadada;
+  height: 400px;
+
+  .tytulIzdj {
+    height: 40%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .tytul {
+      width: 48%;
+      height: 100%;
+      float: left;
+
+      .naglowek {
+        tr {
+          .skontatujSieZnami {
+            font-size: 35px;
+            font-weight: bolder;
+            color: blue;
+
+          }
+
+          .zostawWiadomosc {
+            font-size: 25px;
+            color: blue;
+            letter-spacing: 1px;
+          }
+        }
+      }
+    }
+
+    .zdj {
+      width: 48%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .misiImg {
+        width: auto;
+        height: 100%;
+      }
+    }
+
+  }
+
+  .formularz {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60%;
+    width: 100%;
+
+    .formularzTab {
+  
+    }
+  }
+}

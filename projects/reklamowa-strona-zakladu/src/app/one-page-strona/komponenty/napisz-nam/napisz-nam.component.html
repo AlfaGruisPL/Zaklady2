@@ -1,0 +1,72 @@
+<div class="napiszNam" #napiszNam>
+  <div class="tytulIzdj">
+    <div class="tytul">
+      <table class="naglowek">
+        <tr>
+          <td class="skontatujSieZnami">Skontaktuj się z nami</td>
+        </tr>
+        <tr>
+          <td class="zostawWiadomosc">Zostaw swoją wiadomość, <br> a my damy odpowiedź na twój adres e-mail,<br> który
+            wskażesz
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="zdj">
+      <img class="misiImg" src="assets/misi.jpg">
+    </div>
+  </div>
+  <div class="formularz">
+    <form>
+      <table class="formularzTab">
+        <tr>
+          <td><input placeholder="Imię" [(ngModel)]="napiszNamObj.imie" [ngModelOptions]="{standalone: true}"></td>
+          <td><input type="text" [(ngModel)]="napiszNamObj.nazwisko" [ngModelOptions]="{standalone: true}"
+                     placeholder="Nazwisko"></td>
+        </tr>
+        <tr>
+          <td><input type="text" [(ngModel)]="napiszNamObj.adresEmail" [ngModelOptions]="{standalone: true}"
+                     placeholder="E-mail"></td>
+          <td><input type="text" [(ngModel)]="napiszNamObj.numerTelefonu" [ngModelOptions]="{standalone: true}"
+                     placeholder="Numer telefonu"></td>
+        </tr>
+        <tr>
+          <td colspan="2"><textarea style="width: 500px; height: 80px; resize: none"
+                                    [(ngModel)]="napiszNamObj.wiadomosc" [ngModelOptions]="{standalone: true}"
+                                    placeholder="Wpisz swoją wiadomość"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button type="reset" class="wyslij">Reset</button>
+            <button (click)="wyslij()" class="wyslij">Wyślij</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+    <table *ngIf="wiadomoscWyslana">
+      <tr>
+        <td>
+          Twoja wiadomość została wysłana,
+        </td>
+      </tr>
+      <tr>
+        <td>
+          czekaj odpowiedzi w ciągu kilkoch dni
+        </td>
+      </tr>
+    </table>
+    <table *ngIf="wiadomoscNieWyslana">
+      <tr>
+        <td>
+          Twoja wiadomość nie została wysłana,
+        </td>
+      </tr>
+      <tr>
+        <td>
+          zwróć się o pomoc
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

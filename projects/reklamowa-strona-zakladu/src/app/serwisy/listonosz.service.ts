@@ -25,4 +25,15 @@ export class ListonoszService {
     })
 
   }
+
+  wyslij(drzwi: Drzwi | string, zawartosc: {}): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.listy.wyslij(drzwi, zawartosc, {}).subscribe(next => {
+          resolve(next['value'])
+        },
+        error => {
+          reject(error)
+        })
+    })
+  }
 }

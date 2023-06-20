@@ -1,3 +1,4 @@
 export enum Drzwi {
-  listaPracownikow = "stronaReklamowa/listaPracownikow"
+  listaPracownikow = "stronaReklamowa/listaPracownikow",
+  napiszNam = "stronaReklamowa/napiszNam"
 }
