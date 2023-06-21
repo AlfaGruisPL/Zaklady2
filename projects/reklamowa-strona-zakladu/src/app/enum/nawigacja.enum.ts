@@ -4,5 +4,6 @@ export enum NawigacjaEnum {
   napiszNam = "napiszNam",
   pracownicy = "pracownicy",
   poczatek = "poczatek",
-  ONas = "ONas"
+  ONas = "ONas",
+  rejestracja = "rejestracja"
 }

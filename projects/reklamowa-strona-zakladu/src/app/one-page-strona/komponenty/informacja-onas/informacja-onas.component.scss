@@ -1,7 +1,9 @@
 .informacjaOnas {
   background: #fcfcfc;
-  width: 98vw;
+  width: 100vw;
   float: left;
+  position: relative;
+  z-index: 99;
 
   .container {
     display: grid;

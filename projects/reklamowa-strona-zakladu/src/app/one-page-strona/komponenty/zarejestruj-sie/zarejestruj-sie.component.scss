@@ -3,6 +3,9 @@
   height: 300px;
   float: left;
   background: #efefef;
+  box-shadow: 0px 1px 0px 1px #cac5c5;
+  position: relative;
+  z-index: 100;
 
   .zdj {
     width: 30%;
