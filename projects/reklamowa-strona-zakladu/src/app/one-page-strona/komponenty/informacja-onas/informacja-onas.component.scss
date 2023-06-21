@@ -1,4 +1,6 @@
 .informacjaOnas {
+  background: #fcfcfc;
+  width: 98vw;
 
   .container {
     display: grid;
@@ -15,26 +17,94 @@
 
   .kontakt {
     grid-area: kontakt;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .GodzinyOtwarcia {
     grid-area: GodzinyOtwarcia;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .DanePodstawowe {
     grid-area: DanePodstawowe;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .Uslugi {
     grid-area: Uslugi;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .Adres {
     grid-area: Adres;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .Opis {
     grid-area: Opis;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
+}
+
+.informacjeOnasTytul {
+  font-size: 33px;
+  font-weight: bold;
+  color: #b40c00;
+  letter-spacing: 1px;
+  font-family: math;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0px 1px 2px black;
+
+}
+
+.informacjaNaglowek1 {
+  font-size: 23px;
+  font-weight: bold;
+  color: #03208a;
+  font-family: math;
+  text-shadow: 0px 1px 2px #95b5ee;
+}
+
+.informacjaNaglowek2 {
+  font-size: 18px;
+  color: #03208a;
+  font-family: math;
+}
+
+.nieczynne {
+  color: red;
+  font-size: 18px;
+}
+
+.zobaczMape {
+  color: #1d5a01;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: underline;
+  text-shadow: 0px 0px 1px darkgreen;
+  letter-spacing: 1px;
+
+  &:hover {
+    cursor: pointer;
+    color: #226b01;
+  }
+}
+
+.opis {
+  color: blue;
 }

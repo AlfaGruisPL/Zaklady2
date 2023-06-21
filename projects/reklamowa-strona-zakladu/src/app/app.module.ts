@@ -24,7 +24,10 @@ import {StrzalkaComponent} from './one-page-strona/strzalka/strzalka.component';
 import {OgloszeniaComponent} from './one-page-strona/komponenty/ogloszenia/ogloszenia.component';
 import {MapaComponent} from './one-page-strona/komponenty/mapa/mapa.component';
 import {LeafletModule} from "@asymmetrik/ngx-leaflet";
-
+import {StatystykiComponent} from './one-page-strona/komponenty/statystyki/statystyki.component';
+import {
+  FormularzZarejestrujSieComponent
+} from './one-page-strona/komponenty/formularz-zarejestruj-sie/formularz-zarejestruj-sie.component';
 
 @NgModule({
   declarations: [
@@ -37,17 +40,17 @@ import {LeafletModule} from "@asymmetrik/ngx-leaflet";
     ZdjecieZakladuComponent,
     InformacjaONasComponent,
     NapiszNamComponent,
-    ZarejestrujSieComponent,
+    ZarejestrujSieComponent, StatystykiComponent,
     StrzalkaComponent,
-    OgloszeniaComponent,
+    OgloszeniaComponent, FormularzZarejestrujSieComponent,
     MapaComponent,
   ],
-  imports: [
+  imports: [LeafletModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule, BrowserAnimationsModule,
-    CarouselModule, LeafletModule
+    CarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]
