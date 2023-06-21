@@ -32,11 +32,19 @@ export class KomunikatyService {
   }
 
   public kontoAktywowane() {
-    this.komunikaty.error('Twoje konto zostało aktywowane', 'Udane');
+    this.komunikaty.success('Twoje konto zostało aktywowane', 'Udane');
+  }
+
+  public kontoWstrzymane() {
+    this.komunikaty.success('Twoje konto zostało wstrzymane', 'Udane');
   }
 
   public kontoNieAktywowane() {
     this.komunikaty.error('Twoje konto nie zostało aktywowane', 'Bląd');
+  }
+
+  public kontoNieWstrzymane() {
+    this.komunikaty.error('Twoje konto nie zostało wstrzymane', 'Bląd');
   }
 
   public dodaniePracownikaUdane() {

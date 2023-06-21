@@ -1,9 +1,10 @@
-<h3 class="historiaTransakcjiH3">Historia automatycznych opłat:</h3>
+<h3 class="historiaTransakcjiH3">Historia opłat:</h3>
 <table class="historiaTransakcji tablica tablicaPierwszyWierszJakoNaglowe">
   <tr #naglowek>
     <th>Nr.</th>
     <th>Nazwa</th>
-    <th>Data</th>
+    <th>Data utworzenia</th>
+    <th>Data końca</th>
     <th>Kwota</th>
     <th>Status</th>
   </tr>
@@ -12,9 +13,10 @@
       <td>{{listaPlatnosci.length - index2 }}</td>
       <td>{{k.opis}}</td>
       <td>{{k.dataUtworzenia | date : "dd.MM.yyyy  HH:MM"}}</td>
+      <td>{{k.dataKonca | date : "dd.MM.yyyy  HH:MM"}}</td>
       <td>{{k.kwota}}</td>
-      <td *ngIf="k.status==0">Nieudane</td>
-      <td *ngIf="k.status==1">Udane</td>
+      <td *ngIf="k.status==0" style="font-weight: bolder;color:darkred">Nieudane</td>
+      <td *ngIf="k.status==1" style="font-weight: bolder;color:  #0e7908">Udane</td>
     </tr>
   </ng-container>
 </table>

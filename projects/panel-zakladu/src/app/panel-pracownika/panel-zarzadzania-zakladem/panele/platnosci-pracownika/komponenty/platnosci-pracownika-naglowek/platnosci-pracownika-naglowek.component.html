@@ -4,7 +4,12 @@
     <button class="przyciskPlatnosci" (click)="nowaPlatnosc()">
       Wpłać pieniądze na konto
     </button>
-    <button class="przyciskPlatnosci" (click)="aktywacjaKonta()">Aktywuj konto</button>
+    <button class="przyciskPlatnosci" (click)="aktywacjaKonta()" *ngIf="dane.status == -1 || dane.status == 0">Aktywuj
+      konto
+    </button>
+    <button class="przyciskPlatnosci" (click)="wstrzymajKonto()" *ngIf="dane.status == 1">
+      Wstrzymaj
+    </button>
   </div>
   <div class="czesc">
     <table>
@@ -33,7 +38,7 @@
       <tr>
         <td colspan="2">
           <span class="opis">
-            <b>System aktywny do:</b> {{ dane.aktywneDo | date : "dd.MM.yyyy"}}
+            <b>System aktywny do:</b> {{ dane.aktywneDo | date : "dd.MM.yyyy   HH:MM"}}
             <br/>
           </span>
         </td>

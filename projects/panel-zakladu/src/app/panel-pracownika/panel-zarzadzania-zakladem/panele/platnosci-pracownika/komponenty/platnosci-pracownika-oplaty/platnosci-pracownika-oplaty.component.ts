@@ -1,6 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ListonoszService} from "../../../../../../serwisy/listonosz.service";
 import {Drzwi} from "../../../../../../enum/drzwi";
+import {
+  ListaOplatDoPaneluPlatnosci
+} from "../../../../../../klasy/panelPracownika/platnosci/lista-oplat-do-panelu-platnosci";
 
 @Component({
   selector: 'app-platnosci-pracownika-oplaty',
@@ -9,7 +12,7 @@ import {Drzwi} from "../../../../../../enum/drzwi";
 })
 export class PlatnosciPracownikaOplatyComponent implements OnInit, OnDestroy {
 
-  public listaPlatnosci: Array<any> = []
+  public listaPlatnosci: Array<ListaOplatDoPaneluPlatnosci> = []
 
   constructor(private listonosz: ListonoszService) {
   }
@@ -25,12 +28,8 @@ export class PlatnosciPracownikaOplatyComponent implements OnInit, OnDestroy {
 
 
   pobieranieDanych() {
-    const rozwiniete = this.listaPlatnosci.find(k => {
-      return k.czyRozwiniete == true
-    })
     this.listonosz.pobierz(Drzwi.listaOplat).then((k: Array<any>) => {
       Object.assign(this.listaPlatnosci, k)
-
     })
   }
 

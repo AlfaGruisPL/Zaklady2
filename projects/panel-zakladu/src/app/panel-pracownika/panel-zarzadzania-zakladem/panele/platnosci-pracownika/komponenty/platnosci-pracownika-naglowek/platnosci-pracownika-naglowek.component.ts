@@ -37,4 +37,12 @@ export class PlatnosciPracownikaNaglowekComponent {
       this.komunikaty.kontoNieAktywowane()
     })
   }
+
+  wstrzymajKonto() {
+    this.listonosz.wyslij(Drzwi.aktywacjaKonta, {aktywnosc: false}).then(k => {
+      this.komunikaty.kontoWstrzymane()
+    }).catch(k => {
+      this.komunikaty.kontoNieWstrzymane()
+    })
+  }
 }

@@ -1,15 +1,18 @@
 <div id="stopka" class="stopka">
-  <div class="informacje"></div>
+
   <div class="mapaDiv">
     <div class="naglowekMapa">
-      <h5>Mapa:</h5>
+      <h5>Tutaj nas znajdziesz:</h5>
     </div>
-
     <div class="mapa"
          leaflet
+         (leafletMapReady)="onMapReady($event)"
          [leafletOptions]="options">
     </div>
+
   </div>
 
+  <div class="informacje">
+  </div>
 
 </div>
