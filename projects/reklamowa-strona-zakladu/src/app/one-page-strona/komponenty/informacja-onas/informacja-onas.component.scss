@@ -81,14 +81,17 @@
 }
 
 .informacjaNaglowek2 {
-  font-size: 18px;
-  color: #03208a;
+  font-size: 20px;
+  color: #2441aa;
   font-family: math;
+  text-shadow: 0px 1px 1px blue;
 }
 
 .nieczynne {
-  color: red;
-  font-size: 18px;
+  color: #c70000;
+  font-size: 20px;
+  font-family: math;
+  text-shadow: 0px 1px 1px darkred;
 }
 
 .zobaczMape {
@@ -98,6 +101,7 @@
   text-decoration: underline;
   text-shadow: 0px 0px 1px darkgreen;
   letter-spacing: 1px;
+  font-family: math;
 
   &:hover {
     cursor: pointer;
@@ -106,5 +110,21 @@
 }
 
 .opis {
-  color: blue;
+  color: #384dda;
+  font-family: math;
+  font-size: 25px;
+  font-weight: bold;
+  text-shadow: 0px 0px 1px black;
+}
+
+.opisDiv {
+  border: 2px inset #7a7eff;
+  width: 702px;
+  height: 100px;
+  padding: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: #f4f4f4;
 }
