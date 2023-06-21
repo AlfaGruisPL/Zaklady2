@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-formularz-zarejestruj-sie',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./formularz-zarejestruj-sie.component.scss']
 })
 export class FormularzZarejestrujSieComponent {
+  public krok: number = 1;
 
+
+  ustawKrok(nowyKrok: number) {
+    this.krok = nowyKrok
+  }
 }

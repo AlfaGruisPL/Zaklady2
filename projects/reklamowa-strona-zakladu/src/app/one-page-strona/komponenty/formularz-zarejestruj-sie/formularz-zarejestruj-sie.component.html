@@ -1,1 +1,15 @@
-<p>formularz-zarejestruj-sie works!</p>
+<div class="rejestracja">
+  <div class="naglowek">
+    <span>Uzupełnij formularz swoimi danymi, aby się zapisać na wizytę</span>
+  </div>
+  <div class="formularz">
+    <ng-container [ngSwitch]=" krok">
+      <app-wybor-pracownika *ngSwitchCase="1" (wyslijKrok)="ustawKrok($event)"></app-wybor-pracownika>
+      <app-wybor-uslug *ngSwitchCase="2" (wyslijKrok)="ustawKrok($event)"></app-wybor-uslug>
+      <app-wpisanie-danych *ngSwitchCase="3" (wyslijKrok)="ustawKrok($event)"></app-wpisanie-danych>
+      <app-podsumowanie *ngSwitchCase="4" (wyslijKrok)="ustawKrok($event)"></app-podsumowanie>
+
+    </ng-container>
+  </div>
+
+</div>

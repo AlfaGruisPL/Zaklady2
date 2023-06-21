@@ -22,12 +22,16 @@ import {NapiszNamComponent} from './one-page-strona/komponenty/napisz-nam/napisz
 import {ZarejestrujSieComponent} from './one-page-strona/komponenty/zarejestruj-sie/zarejestruj-sie.component';
 import {StrzalkaComponent} from './one-page-strona/strzalka/strzalka.component';
 import {OgloszeniaComponent} from './one-page-strona/komponenty/ogloszenia/ogloszenia.component';
-import {MapaComponent} from './one-page-strona/komponenty/mapa/mapa.component';
 import {LeafletModule} from "@asymmetrik/ngx-leaflet";
 import {StatystykiComponent} from './one-page-strona/komponenty/statystyki/statystyki.component';
 import {
   FormularzZarejestrujSieComponent
 } from './one-page-strona/komponenty/formularz-zarejestruj-sie/formularz-zarejestruj-sie.component';
+import { WyborPracownikaComponent } from './one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/wybor-pracownika/wybor-pracownika.component';
+import { WyborUslugComponent } from './one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/wybor-uslug/wybor-uslug.component';
+import { KalendarzComponent } from './one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/kalendarz/kalendarz.component';
+import { WpisanieDanychComponent } from './one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/wpisanie-danych/wpisanie-danych.component';
+import { PodsumowanieComponent } from './one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/podsumowanie/podsumowanie.component';
 
 @NgModule({
   declarations: [
@@ -42,8 +46,7 @@ import {
     NapiszNamComponent,
     ZarejestrujSieComponent, StatystykiComponent,
     StrzalkaComponent,
-    OgloszeniaComponent, FormularzZarejestrujSieComponent,
-    MapaComponent,
+    OgloszeniaComponent, FormularzZarejestrujSieComponent, WyborPracownikaComponent, WyborUslugComponent, KalendarzComponent, WpisanieDanychComponent, PodsumowanieComponent,
   ],
   imports: [LeafletModule,
     BrowserModule,
