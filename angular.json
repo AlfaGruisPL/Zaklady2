@@ -323,7 +323,8 @@
               "projects/reklamowa-strona-zakladu/src/assets"
             ],
             "styles": [
-              "projects/reklamowa-strona-zakladu/src/styles.scss"
+              "projects/reklamowa-strona-zakladu/src/styles.scss",
+              "./node_modules/leaflet/dist/leaflet.css"
             ],
             "scripts": []
           },

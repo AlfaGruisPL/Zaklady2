@@ -20,9 +20,11 @@ import {ZdjecieZakladuComponent} from './one-page-strona/komponenty/zdjecie-zakl
 import {InformacjaONasComponent} from './one-page-strona/komponenty/informacja-onas/informacja-onas.component';
 import {NapiszNamComponent} from './one-page-strona/komponenty/napisz-nam/napisz-nam.component';
 import {ZarejestrujSieComponent} from './one-page-strona/komponenty/zarejestruj-sie/zarejestruj-sie.component';
-import { StrzalkaComponent } from './one-page-strona/strzalka/strzalka.component';
-import { OgloszeniaComponent } from './one-page-strona/komponenty/ogloszenia/ogloszenia.component';
-import { MapaComponent } from './one-page-strona/komponenty/mapa/mapa.component';
+import {StrzalkaComponent} from './one-page-strona/strzalka/strzalka.component';
+import {OgloszeniaComponent} from './one-page-strona/komponenty/ogloszenia/ogloszenia.component';
+import {MapaComponent} from './one-page-strona/komponenty/mapa/mapa.component';
+import {LeafletModule} from "@asymmetrik/ngx-leaflet";
+
 
 @NgModule({
   declarations: [
@@ -45,7 +47,7 @@ import { MapaComponent } from './one-page-strona/komponenty/mapa/mapa.component'
     AppRoutingModule,
     HttpClientModule,
     FormsModule, BrowserAnimationsModule,
-    CarouselModule
+    CarouselModule, LeafletModule
   ],
   providers: [],
   bootstrap: [AppComponent]
