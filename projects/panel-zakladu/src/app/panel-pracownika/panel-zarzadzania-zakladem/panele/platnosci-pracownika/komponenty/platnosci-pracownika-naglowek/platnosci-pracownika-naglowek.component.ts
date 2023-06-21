@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {ListonoszService} from '../../../../../../serwisy/listonosz.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {OknoPlatnosciComponent} from '../okna/okno-platnosci/okno-platnosci.component';
@@ -14,6 +14,7 @@ import {KomunikatyService} from "../../../../../../serwisy/komunikaty.service";
   styleUrls: ['./platnosci-pracownika-naglowek.component.scss'],
 })
 export class PlatnosciPracownikaNaglowekComponent {
+  @Output() pobierzDane = new EventEmitter<void>();
   @Input() dane: InformacjeDoPaneluPlatnosci = new InformacjeDoPaneluPlatnosci();
 
   constructor(
@@ -34,7 +35,15 @@ export class PlatnosciPracownikaNaglowekComponent {
     this.listonosz.wyslij(Drzwi.aktywacjaKonta, {aktywnosc: true}).then(k => {
       this.komunikaty.kontoAktywowane()
     }).catch(k => {
-      this.komunikaty.kontoNieAktywowane()
+      if (k['error']['reasonCode'] == 3) {
+        this.komunikaty.kontoNieAktywowane_zabrakloPieniedzy()
+
+      } else {
+        this.komunikaty.kontoNieAktywowane()
+
+      }
+    }).finally(() => {
+      this.pobierzDane.emit();
     })
   }
 
@@ -42,7 +51,10 @@ export class PlatnosciPracownikaNaglowekComponent {
     this.listonosz.wyslij(Drzwi.aktywacjaKonta, {aktywnosc: false}).then(k => {
       this.komunikaty.kontoWstrzymane()
     }).catch(k => {
+
       this.komunikaty.kontoNieWstrzymane()
+    }).finally(() => {
+      this.pobierzDane.emit();
     })
   }
 }

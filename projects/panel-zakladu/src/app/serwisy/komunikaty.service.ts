@@ -39,6 +39,10 @@ export class KomunikatyService {
     this.komunikaty.success('Twoje konto zostało wstrzymane', 'Udane');
   }
 
+  public kontoNieAktywowane_zabrakloPieniedzy() {
+    this.komunikaty.error('Twoje konto nie zostało aktywowane, za mało funduszy na koncie', 'Bląd');
+  }
+
   public kontoNieAktywowane() {
     this.komunikaty.error('Twoje konto nie zostało aktywowane', 'Bląd');
   }

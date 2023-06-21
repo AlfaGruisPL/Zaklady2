@@ -22,7 +22,7 @@ export class PlatnosciPracownikaComponent implements OnInit, OnDestroy {
     this.pobierz()
     this.timer = setInterval(() => {
       this.pobierz()
-    }, 10000)
+    }, 20000)
   }
 
   ngOnDestroy() {
