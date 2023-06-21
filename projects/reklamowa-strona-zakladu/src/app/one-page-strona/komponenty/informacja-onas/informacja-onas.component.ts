@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {NawigacjaService} from "../../../serwisy/nawigacja.service";
 
 @Component({
   selector: 'app-informacja-onas',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./informacja-onas.component.scss']
 })
 export class InformacjaONasComponent {
-
+  constructor(public nawigacja: NawigacjaService) {
+  }
 }

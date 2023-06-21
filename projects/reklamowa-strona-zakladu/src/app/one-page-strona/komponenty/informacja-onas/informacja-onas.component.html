@@ -1,4 +1,4 @@
-<div class="informacjaOnas">
+<div class="informacjaOnas" id="ONas">
   <div class="container">
     <div class="kontakt">
       <table>
@@ -98,7 +98,7 @@
       <table>
         <tr>
           <td class="informacjeOnasTytul">Gdzie nas znajdziesz:</td>
-          <td><img style="width: 50px; height: 40px; float: left" src="assets/logoMapy.png"></td>
+          <td><img style="width: 40px; height: 40px; float: left" src="assets/logoMapy.png"></td>
         </tr>
         <tr>
           <td colspan="2" class="informacjaNaglowek1">woj.Podkarpackie</td>
@@ -112,7 +112,7 @@
           <td class="informacjaNaglowek2">43</td>
         </tr>
         <tr>
-          <td class="zobaczMape">Zobacz mapę</td>
+          <td class="zobaczMape" (click)="nawigacja.przeniesDoPanelu(nawigacja.nav.stopka)">Zobacz mapę</td>
           <td></td>
         </tr>
       </table>

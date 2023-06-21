@@ -7,15 +7,16 @@
   </div>
   <div class="menu">
     <ul>
-      <li (click)="przeniesDoPanelu('pracownicy')">
+      <li (click)="nawigacja.przeniesDoPanelu(nawigacja.nav.pracownicy)">
         Pracownicy
       </li>
-      <li (click)="przeniesDoPanelu('stopka')">
+      <li (click)="nawigacja.przeniesDoPanelu(nawigacja.nav.ONas)">
         O nas
       </li>
     </ul>
   </div>
   <div class="napiszDoNasPrzycisk">
-    <button class="napiszDoNasButton" (click)="przeniesDoPanelu('napiszNam')">Napisz do nas</button>
+    <button class="napiszDoNasButton" (click)="nawigacja.przeniesDoPanelu(nawigacja.nav.napiszNam)">Napisz do nas
+    </button>
   </div>
 </div>

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Router} from "@angular/router";
+import {NawigacjaService} from "../../../serwisy/nawigacja.service";
 
 @Component({
   selector: 'app-banner',
@@ -7,13 +7,9 @@ import {Router} from "@angular/router";
   styleUrls: ['./banner.component.scss']
 })
 export class BannerComponent {
-  constructor(private router: Router) {
+
+  constructor(public nawigacja: NawigacjaService) {
   }
 
-  przeniesDoPanelu(element: string): void {
-    this.router.navigate(['.'])
-    setTimeout(() => {
-      this.router.navigate(['.'], {fragment: element})
-    }, 0)
-  }
+
 }
