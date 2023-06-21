@@ -19,9 +19,12 @@
 */
 .pracownicyDuzy {
   width: 100vw;
-  min-height: 500px;
+  min-height: 650px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  background: #cfedc6;
+
 
   .pracownicy {
 
@@ -37,27 +40,56 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  width: 400px;
-  height: 400px !important;
-  margin-left: 20px;
-  margin-right: 20px;
-  border: 1px solid black;
+  width: 400px !important;
+  height: 500px !important;
+  margin-left: 10px;
+  margin-right: 10px;
+  box-shadow: 0px 0px 4px 1px #00391a;
+  background: #fbfbfb;
 
   .imieNazwisko {
-    text-align: center;
-    height: 25px;
     width: 400px;
+    height: 50px;
+    text-align: center;
+
+    span {
+
+      font-size: 32px;
+      font-weight: bold;
+      color: #1c5bfc;
+      text-shadow: 1px 1px 1px #000000;
+      font-family: math;
+    }
+
   }
 
   .zdjecie {
-    height: 400px;
+    height: 500px;
 
   }
 
   .popatrz {
     text-align: center;
-    height: 25px;
+    height: 50px;
     width: 400px;
+
+    .zobacz {
+      width: 100%;
+      border: none;
+      color: #1f3aea;
+      font-size: 30px;
+      text-shadow: 1px 1px 1px black;
+      background: transparent;
+      letter-spacing: 5px;
+      border: 2px solid steelblue;
+
+      &:hover {
+        cursor: pointer;
+        background: steelblue;
+        color: white;
+        text-shadow: 1px 1px 1px black;
+      }
+    }
   }
 }
 
