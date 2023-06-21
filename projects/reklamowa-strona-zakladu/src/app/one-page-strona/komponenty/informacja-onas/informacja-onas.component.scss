@@ -13,9 +13,9 @@
     gap: 0px 0px;
     grid-auto-flow: row;
     grid-template-areas:
-    "DanePodstawowe DanePodstawowe Uslugi Uslugi"
-    "Opis Opis GodzinyOtwarcia GodzinyOtwarcia"
-    "Adres Adres kontakt kontakt";
+    "DanePodstawowe DanePodstawowe   GodzinyOtwarcia GodzinyOtwarcia"
+    "Opis Opis kontakt kontakt"
+    "Uslugi Uslugi  Adres Adres ";
   }
 
   .kontakt {
@@ -23,6 +23,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    table {
+      border-left: 2px solid #d8d8d8;
+      border-right: 2px solid #d8d8d8;
+    }
   }
 
   .GodzinyOtwarcia {
@@ -30,6 +35,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    table {
+      border-left: 2px solid #d8d8d8;
+      border-right: 2px solid #d8d8d8;
+    }
   }
 
   .DanePodstawowe {
@@ -51,6 +61,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    table {
+      border-left: 2px solid #d8d8d8;
+      border-right: 2px solid #d8d8d8;
+    }
   }
 
   .Opis {
@@ -68,9 +83,6 @@
   color: #b40c00;
   letter-spacing: 1px;
   font-family: math;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   text-shadow: 0px 1px 2px black;
 
 }
