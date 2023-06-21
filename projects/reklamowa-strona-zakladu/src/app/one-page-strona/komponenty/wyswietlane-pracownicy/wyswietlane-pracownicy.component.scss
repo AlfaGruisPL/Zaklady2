@@ -17,13 +17,19 @@
 
 
 */
-.pracownicy {
-
-  width: 93vw;
-
+.pracownicyDuzy {
+  width: 100vw;
   min-height: 500px;
+  display: flex;
+  justify-content: center;
+
+  .pracownicy {
+
+    width: 93vw;
+    min-height: 500px;
 
 
+  }
 }
 
 .pracownik {
