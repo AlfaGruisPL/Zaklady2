@@ -16,6 +16,7 @@
     "DanePodstawowe DanePodstawowe   GodzinyOtwarcia GodzinyOtwarcia"
     "Opis Opis kontakt kontakt"
     "Uslugi Uslugi  Adres Adres ";
+    padding-top: 30px;
   }
 
   .kontakt {
@@ -45,7 +46,7 @@
   .DanePodstawowe {
     grid-area: DanePodstawowe;
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
 
 
