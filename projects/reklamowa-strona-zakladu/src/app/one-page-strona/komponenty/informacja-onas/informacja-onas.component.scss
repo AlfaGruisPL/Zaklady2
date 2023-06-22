@@ -150,16 +150,26 @@
 .podstawoweInformacje {
   display: flex;
   align-items: start;
-  justify-content: center;
+  justify-content: end;
 }
 
 .uslugi {
   display: flex;
   align-items: start;
-  justify-content: center;
+  justify-content: end;
 }
 
 .tabelaRamka {
   border: 2px solid #d8d8d8;
   box-shadow: 2px 2px 4px 1px #b8babd;
+}
+
+
+.uslugiTytul {
+  font-size: 29px;
+  font-weight: bold;
+  color: #0068b4;
+  letter-spacing: 1px;
+  font-family: math;
+  text-shadow: 1px 0px 2px #000000;
 }
