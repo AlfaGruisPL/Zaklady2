@@ -32,6 +32,10 @@ import { WyborUslugComponent } from './one-page-strona/komponenty/formularz-zare
 import { KalendarzComponent } from './one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/kalendarz/kalendarz.component';
 import { WpisanieDanychComponent } from './one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/wpisanie-danych/wpisanie-danych.component';
 import { PodsumowanieComponent } from './one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/podsumowanie/podsumowanie.component';
+import { ONasDanePodstawoweComponent } from './one-page-strona/komponenty/informacja-onas/komponenty/onas-dane-podstawowe/onas-dane-podstawowe.component';
+import { ONasAdresComponent } from './one-page-strona/komponenty/informacja-onas/komponenty/onas-adres/onas-adres.component';
+import { ONasGodzinyOtwarciaComponent } from './one-page-strona/komponenty/informacja-onas/komponenty/onas-godziny-otwarcia/onas-godziny-otwarcia.component';
+import { ONasKontaktComponent } from './one-page-strona/komponenty/informacja-onas/komponenty/onas-kontakt/onas-kontakt.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,7 @@ import { PodsumowanieComponent } from './one-page-strona/komponenty/formularz-za
     NapiszNamComponent,
     ZarejestrujSieComponent, StatystykiComponent,
     StrzalkaComponent,
-    OgloszeniaComponent, FormularzZarejestrujSieComponent, WyborPracownikaComponent, WyborUslugComponent, KalendarzComponent, WpisanieDanychComponent, PodsumowanieComponent,
+    OgloszeniaComponent, FormularzZarejestrujSieComponent, WyborPracownikaComponent, WyborUslugComponent, KalendarzComponent, WpisanieDanychComponent, PodsumowanieComponent, ONasDanePodstawoweComponent, ONasAdresComponent, ONasGodzinyOtwarciaComponent, ONasKontaktComponent,
   ],
   imports: [LeafletModule,
     BrowserModule,

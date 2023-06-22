@@ -1,132 +1,19 @@
 <div class="informacjaOnas" id="ONas">
   <div class="container">
     <div class="kontakt">
-      <table class="tabelaDane">
-        <tr>
-          <td colspan="2" class="informacjeOnasTytul">Nasz kontakt
-            <img style="width: 23px;height: 35px;position: relative;top: 8px;left: 10px;"
-                 src="assets/smartphone-icon%20(1).png"></td>
-        </tr>
-        <tr>
-          <td class="informacjaNaglowek1">Numer telefonu</td>
-          <td class="informacjaNaglowek2"> +48 7 888 30 720</td>
-        </tr>
-        <tr>
-          <td class="informacjaNaglowek1">E-mail</td>
-          <td class="informacjaNaglowek2">kornelia@gmail.com</td>
-        </tr>
-      </table>
+      <app-onas-kontakt></app-onas-kontakt>
     </div>
     <div class="GodzinyOtwarcia">
-      <table class="tabelaDane">
-        <tr>
-          <td class="informacjeOnasTytul" colspan="2">
-            Godziny otwarcia
-
-            <img style="width: 38px;height: 36px;position: relative;top: 8px;left: 10px;"
-                 src="assets/on-time-icon%20(1).png">
-          </td>
-        </tr>
-        <tr>
-          <td class="informacjaNaglowek1">Poniedziałek -</td>
-          <td class="informacjaNaglowek2"> 08:00 - 18:00</td>
-        </tr>
-        <tr>
-          <td class="informacjaNaglowek1">Wtorek -</td>
-          <td class="informacjaNaglowek2"> 08:00 - 18:00</td>
-        </tr>
-        <tr>
-          <td class="informacjaNaglowek1">Środa -</td>
-          <td class="informacjaNaglowek2"> 08:00 - 18:00</td>
-        </tr>
-        <tr>
-          <td class="informacjaNaglowek1">Czwartek -</td>
-          <td class="informacjaNaglowek2"> 08:00 - 18:00</td>
-        </tr>
-        <tr>
-          <td class="informacjaNaglowek1">Piątek -</td>
-          <td class="informacjaNaglowek2"> 08:00 - 18:00</td>
-        </tr>
-        <tr>
-          <td class="informacjaNaglowek1">Sobota -</td>
-          <td class="nieczynne"> nieczynne</td>
-        </tr>
-        <tr>
-          <td class="informacjaNaglowek1">Niedziela -</td>
-          <td class="nieczynne"> nieczynne</td>
-        </tr>
-      </table>
+      <app-onas-godziny-otwarcia></app-onas-godziny-otwarcia>
     </div>
     <div class="DanePodstawowe">
-      <table>
-        <tr>
-          <td colspan="2" class="informacjeOnasTytul">
-            Trochę informacji o naszym zakładzie
-          </td>
-          <td><img style="width: 40px; height: 40px; float: left;position: relative;top:-5px"
-                   src="assets/more-info-icon%20(1).png"></td>
-        </tr>
-        <tr>
-          <td class="informacjaNaglowek1">
-            Data założenia:
-          </td>
-          <td class="informacjaNaglowek2">
-            20:06:2023
-          </td>
-        </tr>
-        <tr>
-          <td class="informacjaNaglowek1">
-            Ilość pracowników:
-          </td>
-          <td class="informacjaNaglowek2">
-            20
-          </td>
-        </tr>
-        <tr>
-          <td class="informacjaNaglowek1">
-            NIP:
-          </td>
-          <td class="informacjaNaglowek2">
-            2062023
-          </td>
-        </tr>
-        <tr>
-          <td class="informacjaNaglowek1">
-            REGION:
-          </td>
-          <td class="informacjaNaglowek2">
-            20062023
-          </td>
-        </tr>
-      </table>
+      <app-onas-dane-podstawowe></app-onas-dane-podstawowe>
     </div>
     <div class="Uslugi">
       <span class="NaszeUslugi"></span>
     </div>
     <div class="Adres">
-      <table class="tabelaDane">
-        <tr>
-          <td class="informacjeOnasTytul">Gdzie nas znajdziesz</td>
-          <td><img style="width: 40px; height: 40px; float: left;position: relative;top:-5px"
-                   src="assets/logoMapy.png">
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2" class="informacjaNaglowek1">woj.Podkarpackie</td>
-        </tr>
-        <tr>
-          <td class="informacjaNaglowek1">Jarosław,</td>
-          <td class="informacjaNaglowek2">16</td>
-        </tr>
-        <tr>
-          <td class="informacjaNaglowek1">Numer lokalu:</td>
-          <td class="informacjaNaglowek2">43</td>
-        </tr>
-        <tr>
-          <td class="zobaczMape" (click)="nawigacja.przeniesDoPanelu(nawigacja.nav.stopka)">Zobacz mapę</td>
-          <td></td>
-        </tr>
-      </table>
+      <app-onas-adres></app-onas-adres>
     </div>
     <div class="Opis">
 

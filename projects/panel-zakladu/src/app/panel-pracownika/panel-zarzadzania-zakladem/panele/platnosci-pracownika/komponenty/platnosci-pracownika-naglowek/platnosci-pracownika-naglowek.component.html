@@ -19,9 +19,9 @@
         </td>
         <td>
           <span class="status">
-            <span *ngIf=" dane.status == -1">Testowe</span>
-       <span *ngIf=" dane.status == 1">Aktywne</span>
-            <span *ngIf=" dane.status == 0">Nieaktywne</span>
+            <span *ngIf=" dane.status == -1" style="color: #00b0ff">Testowe</span>
+       <span *ngIf=" dane.status == 1" style="color: green">Aktywne</span>
+            <span *ngIf=" dane.status == 0" style="color: red">Nieaktywne</span>
           </span>
         </td>
       </tr>

@@ -4,6 +4,7 @@ import {Drzwi} from "../../../../enum/drzwi";
 import {KomunikatyService} from "../../../../serwisy/komunikaty.service";
 import {BledyNumery} from "../../../../enum/bledy-numery";
 import {InformacjeDoPaneluPlatnosci} from "../../../../klasy/panelPracownika/platnosci/informacje-do-panelu-platnosci";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-platnosci-pracownika',
@@ -13,16 +14,22 @@ import {InformacjeDoPaneluPlatnosci} from "../../../../klasy/panelPracownika/pla
 export class PlatnosciPracownikaComponent implements OnInit, OnDestroy {
   public dane: InformacjeDoPaneluPlatnosci = new InformacjeDoPaneluPlatnosci()
 
-  constructor(private listonosz: ListonoszService, private komunikaty: KomunikatyService) {
+  constructor(
+    private listonosz: ListonoszService,
+    private komunikaty: KomunikatyService,
+    private route: ActivatedRoute) {
   }
 
   private timer: any;
 
   ngOnInit() {
+    this.route.params.subscribe(k => {
+      console.log(k)
+    })
     this.pobierz()
     this.timer = setInterval(() => {
       this.pobierz()
-    }, 20000)
+    }, 10000)
   }
 
   ngOnDestroy() {
