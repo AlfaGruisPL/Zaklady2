@@ -36,6 +36,7 @@ import { ONasDanePodstawoweComponent } from './one-page-strona/komponenty/inform
 import { ONasAdresComponent } from './one-page-strona/komponenty/informacja-onas/komponenty/onas-adres/onas-adres.component';
 import { ONasGodzinyOtwarciaComponent } from './one-page-strona/komponenty/informacja-onas/komponenty/onas-godziny-otwarcia/onas-godziny-otwarcia.component';
 import { ONasKontaktComponent } from './one-page-strona/komponenty/informacja-onas/komponenty/onas-kontakt/onas-kontakt.component';
+import { ONasUslugiComponent } from './one-page-strona/komponenty/informacja-onas/komponenty/onas-uslugi/onas-uslugi.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { ONasKontaktComponent } from './one-page-strona/komponenty/informacja-on
     NapiszNamComponent,
     ZarejestrujSieComponent, StatystykiComponent,
     StrzalkaComponent,
-    OgloszeniaComponent, FormularzZarejestrujSieComponent, WyborPracownikaComponent, WyborUslugComponent, KalendarzComponent, WpisanieDanychComponent, PodsumowanieComponent, ONasDanePodstawoweComponent, ONasAdresComponent, ONasGodzinyOtwarciaComponent, ONasKontaktComponent,
+    OgloszeniaComponent, FormularzZarejestrujSieComponent, WyborPracownikaComponent, WyborUslugComponent, KalendarzComponent, WpisanieDanychComponent, PodsumowanieComponent, ONasDanePodstawoweComponent, ONasAdresComponent, ONasGodzinyOtwarciaComponent, ONasKontaktComponent, ONasUslugiComponent,
   ],
   imports: [LeafletModule,
     BrowserModule,

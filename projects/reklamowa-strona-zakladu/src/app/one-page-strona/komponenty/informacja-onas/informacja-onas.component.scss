@@ -16,7 +16,7 @@
     width: 100%;
     grid-auto-flow: row;
     grid-template-areas:
-    "DanePodstawowe DanePodstawowe  GodzinyOtwarcia GodzinyOtwarcia"
+    "panel panel GodzinyOtwarcia GodzinyOtwarcia"
     "panel panel kontakt kontakt"
     "panel panel Adres Adres"
     "Opis Opis Opis Opis";
@@ -34,6 +34,7 @@
     "uslugi uslugi uslugi"
     "uslugi uslugi uslugi";
     grid-area: panel;
+
   }
 
   .uslugi {
@@ -65,8 +66,8 @@
 
   }
 
-  .DanePodstawowe {
-    grid-area: DanePodstawowe;
+  .podstawoweInformacje {
+    grid-area: podstawoweInformacje;
     display: flex;
     align-items: start;
     justify-content: center;
@@ -143,7 +144,22 @@
   padding-left: 30px;
   width: 440px;
 
+
+}
+
+.podstawoweInformacje {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+
+.uslugi {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+
+.tabelaRamka {
   border: 2px solid #d8d8d8;
   box-shadow: 2px 2px 4px 1px #b8babd;
 }
-
