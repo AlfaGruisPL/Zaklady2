@@ -37,6 +37,11 @@ import { ONasAdresComponent } from './one-page-strona/komponenty/informacja-onas
 import { ONasGodzinyOtwarciaComponent } from './one-page-strona/komponenty/informacja-onas/komponenty/onas-godziny-otwarcia/onas-godziny-otwarcia.component';
 import { ONasKontaktComponent } from './one-page-strona/komponenty/informacja-onas/komponenty/onas-kontakt/onas-kontakt.component';
 import { ONasUslugiComponent } from './one-page-strona/komponenty/informacja-onas/komponenty/onas-uslugi/onas-uslugi.component';
+import { InformacjeOJednymPracownikuAdresComponent } from './one-page-strona/komponenty/informacja-ojednym-pracowniku/komponenty/informacje-ojednym-pracowniku-adres/informacje-ojednym-pracowniku-adres.component';
+import { InformacjeOJednymPracownikuKontaktComponent } from './one-page-strona/komponenty/informacja-ojednym-pracowniku/komponenty/informacje-ojednym-pracowniku-kontakt/informacje-ojednym-pracowniku-kontakt.component';
+import { InformacjeOJednymPracownikuOpisComponent } from './one-page-strona/komponenty/informacja-ojednym-pracowniku/komponenty/informacje-ojednym-pracowniku-opis/informacje-ojednym-pracowniku-opis.component';
+import { InformacjeOJednymPracownikuZdjecieImieNazwiskoComponent } from './one-page-strona/komponenty/informacja-ojednym-pracowniku/komponenty/informacje-ojednym-pracowniku-zdjecie-imie-nazwisko/informacje-ojednym-pracowniku-zdjecie-imie-nazwisko.component';
+import { InformacjeOJednymPracownikuPytanieComponent } from './one-page-strona/komponenty/informacja-ojednym-pracowniku/komponenty/informacje-ojednym-pracowniku-pytanie/informacje-ojednym-pracowniku-pytanie.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +56,7 @@ import { ONasUslugiComponent } from './one-page-strona/komponenty/informacja-ona
     NapiszNamComponent,
     ZarejestrujSieComponent, StatystykiComponent,
     StrzalkaComponent,
-    OgloszeniaComponent, FormularzZarejestrujSieComponent, WyborPracownikaComponent, WyborUslugComponent, KalendarzComponent, WpisanieDanychComponent, PodsumowanieComponent, ONasDanePodstawoweComponent, ONasAdresComponent, ONasGodzinyOtwarciaComponent, ONasKontaktComponent, ONasUslugiComponent,
+    OgloszeniaComponent, FormularzZarejestrujSieComponent, WyborPracownikaComponent, WyborUslugComponent, KalendarzComponent, WpisanieDanychComponent, PodsumowanieComponent, ONasDanePodstawoweComponent, ONasAdresComponent, ONasGodzinyOtwarciaComponent, ONasKontaktComponent, ONasUslugiComponent, InformacjeOJednymPracownikuAdresComponent, InformacjeOJednymPracownikuKontaktComponent, InformacjeOJednymPracownikuOpisComponent, InformacjeOJednymPracownikuZdjecieImieNazwiskoComponent, InformacjeOJednymPracownikuPytanieComponent,
   ],
   imports: [LeafletModule,
     BrowserModule,
