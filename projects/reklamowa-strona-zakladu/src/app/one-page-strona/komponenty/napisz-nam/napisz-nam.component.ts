@@ -17,6 +17,7 @@ export class NapiszNamComponent {
   }
 
   public wyslij() {
+    this.napiszNamObj.czyWszystkoUzupelnioneFunkcja();
     this.wiadomoscNieWyslana = false;
     this.wiadomoscWyslana = false;
     const napiszNamDTO = new NapiszNamDto(this.napiszNamObj);
@@ -27,6 +28,12 @@ export class NapiszNamComponent {
       this.wiadomoscNieWyslana = true;
     })
 
+  }
+
+  public reset() {
+    this.wiadomoscNieWyslana = false;
+    this.wiadomoscWyslana = false;
+    this.napiszNamObj = new NapiszNam();
   }
 
 }

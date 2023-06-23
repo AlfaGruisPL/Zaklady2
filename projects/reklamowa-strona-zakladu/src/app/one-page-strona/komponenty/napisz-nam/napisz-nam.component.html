@@ -16,22 +16,23 @@
     <form>
       <table class="formularzTab">
         <tr>
-          <td><input class="inputNapiszDoNas" placeholder="Imię" [(ngModel)]="napiszNamObj.imie"
+          <td><input [ngClass]="{'czerwoneInputy': napiszNamObj.pusteImie}" class="inputNapiszDoNas"
+                     placeholder="Imię" [(ngModel)]="napiszNamObj.imie"
                      [ngModelOptions]="{standalone: true}"></td>
-          <td><input class="inputNapiszDoNas" type="text" [(ngModel)]="napiszNamObj.nazwisko"
+          <td><input [ngClass]="{'czerwoneInputy': napiszNamObj.pusteNazwisko}" class="inputNapiszDoNas" type="text"
+                     [(ngModel)]="napiszNamObj.nazwisko"
                      [ngModelOptions]="{standalone: true}"
                      placeholder="Nazwisko"></td>
         </tr>
         <tr>
-          <td><input class="inputNapiszDoNas" type="text" [(ngModel)]="napiszNamObj.adresEmail"
-                     [ngModelOptions]="{standalone: true}"
-                     placeholder="E-mail"></td>
-          <td><input class="inputNapiszDoNas" type="text" [(ngModel)]="napiszNamObj.numerTelefonu"
-                     [ngModelOptions]="{standalone: true}"
-                     placeholder="Numer telefonu"></td>
+          <td colspan="2"><input [ngClass]="{'czerwoneInputy': napiszNamObj.pustyEmail}" class="inputNapiszDoNas"
+                                 type="text" [(ngModel)]="napiszNamObj.adresEmail"
+                                 [ngModelOptions]="{standalone: true}"
+                                 placeholder="E-mail"></td>
         </tr>
         <tr>
-          <td colspan="2"><textarea style="width: 470px; height: 200px; border-radius:10px; resize: none"
+          <td colspan="2"><textarea [ngClass]="{'czerwoneInputy': napiszNamObj.pustaTresc}"
+                                    style="width: 470px; height: 200px; border-radius:10px; resize: none"
                                     class="inputNapiszDoNas"
                                     [(ngModel)]="napiszNamObj.wiadomosc" [ngModelOptions]="{standalone: true}"
                                     placeholder="Wpisz swoją wiadomość"></textarea>
@@ -39,7 +40,7 @@
         </tr>
         <tr>
           <td>
-            <button class="buttonReset" type="reset">Reset</button>
+            <button class="buttonReset" (click)="reset()">Reset</button>
           </td>
           <td>
             <button class="buttonWyslij" (click)="wyslij()">Wyślij</button>
@@ -48,29 +49,33 @@
         </tr>
       </table>
     </form>
-    <table *ngIf="wiadomoscWyslana">
-      <tr>
-        <td>
-          Twoja wiadomość została wysłana,
-        </td>
-      </tr>
-      <tr>
-        <td>
-          czekaj odpowiedzi w ciągu kilkoch dni
-        </td>
-      </tr>
-    </table>
-    <table *ngIf="wiadomoscNieWyslana">
-      <tr>
-        <td>
-          Twoja wiadomość nie została wysłana,
-        </td>
-      </tr>
-      <tr>
-        <td>
-          zwróć się o pomoc
-        </td>
-      </tr>
-    </table>
+    <div class="komunikaty">
+      <table *ngIf="!napiszNamObj.czyWszystkoUzupelnione">
+        <tr>
+          <td class="czerwone">Uzupełnij wszystkie pola</td>
+        </tr>
+      </table>
+
+      <table *ngIf="wiadomoscWyslana">
+        <tr>
+          <td class="czerwone">Twoja wiadomość została wysłana,</td>
+        </tr>
+        <tr>
+          <td class="czerwone">czekaj odpowiedzi w ciągu kilkoch dni</td>
+        </tr>
+      </table>
+
+      <table *ngIf="wiadomoscNieWyslana && napiszNamObj.czyWszystkoUzupelnione">
+        <tr>
+          <td class="czerwone">Twoja wiadomość nie została wysłana,</td>
+        </tr>
+        <tr>
+          <td class="czerwone"> skontaktuj się z administratorem</td>
+        </tr>
+      </table>
+
+    </div>
+
+
   </div>
 </div>
