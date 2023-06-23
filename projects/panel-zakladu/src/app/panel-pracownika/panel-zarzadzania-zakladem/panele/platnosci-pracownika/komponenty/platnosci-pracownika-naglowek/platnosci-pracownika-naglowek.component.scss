@@ -4,7 +4,7 @@
   .czesc {
     height: 200px;
     float: left;
-    $czesc1Szerokowcs: 300px;
+    $czesc1Szerokowcs: 400px;
     $czesc3Szerokowcs: 450px;
 
     &:nth-of-type(1) {
@@ -38,4 +38,8 @@
 
 .przyciskPlatnosci {
 
+}
+
+.tabelaUslug {
+  font-size: 17px;
 }

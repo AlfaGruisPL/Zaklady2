@@ -11,6 +11,20 @@ import {
   styleUrls: ['./platnosci-pracownika-oplaty.component.scss']
 })
 export class PlatnosciPracownikaOplatyComponent implements OnInit, OnDestroy {
+  public page = 1;
+  public pageSize = 5;
+
+  pageCount(): number {
+    return Math.ceil(this.listaPlatnosci.length / this.pageSize)
+  }
+
+  array(number: number) {
+    const k2 = [];
+    for (let k = 0; k < number; k++) {
+      k2.push("")
+    }
+    return k2
+  }
 
   public listaPlatnosci: Array<ListaOplatDoPaneluPlatnosci> = []
 

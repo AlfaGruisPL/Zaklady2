@@ -67,9 +67,6 @@ import {
   RaportyPracownikaComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/panele/raporty-pracownika/raporty-pracownika.component';
 import {
-  PlatnosciPracownikaComponent
-} from './panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/platnosci-pracownika.component';
-import {
   MojZakladPracownikaComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moj-zaklad-pracownika/moj-zaklad-pracownika.component';
 import {popperVariation, provideTippyConfig, TippyDirective, tooltipVariation} from '@ngneat/helipopper';
@@ -103,19 +100,16 @@ import {
 import {
   ListaKlientowPracownikComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/lista-klientow-pracownik.component';
-import {
-  PlatnosciPracownikaTabelaComponent
-} from './panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/komponenty/platnosci-pracownika-tabela/platnosci-pracownika-tabela.component';
-import {
-  PlatnosciPracownikaNaglowekComponent
-} from './panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/komponenty/platnosci-pracownika-naglowek/platnosci-pracownika-naglowek.component';
-import {
-  OknoPlatnosciComponent
-} from './panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/komponenty/okna/okno-platnosci/okno-platnosci.component';
 import {UiSwitchModule} from "ngx-ui-switch";
-import { PracownicyMojZakladComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moj-zaklad-pracownika/pracownicy-moj-zaklad/pracownicy-moj-zaklad.component';
-import { CzyNaprawdeUsunacComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/pracownicy-pracownika/okienka/czy-naprawde-usunac/czy-naprawde-usunac.component';
-import { PlatnosciPracownikaOplatyComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/komponenty/platnosci-pracownika-oplaty/platnosci-pracownika-oplaty.component';
+import {
+  PracownicyMojZakladComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/moj-zaklad-pracownika/pracownicy-moj-zaklad/pracownicy-moj-zaklad.component';
+import {
+  CzyNaprawdeUsunacComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/pracownicy-pracownika/okienka/czy-naprawde-usunac/czy-naprawde-usunac.component';
+import {
+  PlatnosciPracownikaModule
+} from "./panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/platnosciPracownika.module";
 
 @NgModule({
   declarations: [
@@ -141,7 +135,7 @@ import { PlatnosciPracownikaOplatyComponent } from './panel-pracownika/panel-zar
     CennikiPracownikaComponent,
     StronaReprezentacyjnaPracownikaComponent,
     RaportyPracownikaComponent,
-    PlatnosciPracownikaComponent,
+
     MojZakladPracownikaComponent,
     RejestracjaZakladuComponent,
     PoczatkowyPanelKlientaComponent,
@@ -153,12 +147,10 @@ import { PlatnosciPracownikaOplatyComponent } from './panel-pracownika/panel-zar
     DodawanieIModyfikacjaPracownikaComponent,
     HarmonogramPracownikaComponent,
     ListaKlientowPracownikComponent,
-    PlatnosciPracownikaTabelaComponent,
-    PlatnosciPracownikaNaglowekComponent,
-    OknoPlatnosciComponent,
+
     PracownicyMojZakladComponent,
     CzyNaprawdeUsunacComponent,
-    PlatnosciPracownikaOplatyComponent
+
 
   ],
   imports: [
@@ -181,6 +173,7 @@ import { PlatnosciPracownikaOplatyComponent } from './panel-pracownika/panel-zar
       uncheckedTextColor: "rgb(0,0,0)"
     }),
     NgbModule,
+    PlatnosciPracownikaModule
   ],
   providers: [
 

@@ -18,7 +18,8 @@ export enum Drzwi {
   utworzeniePlatnosci = "/platnosci/nowaPlatnosc",
   aktywacjaKonta = "/platnosci/aktywacjaKonta",
   pracownik = "/uzytkownicyWZakladach/pracownik/",
-
+  PlatnosciIloscPracownikow = "/platnosci/iloscPracownikow",
+  PlatnosciIUslugaSMS = "/platnosci/uslugaSms",
   mojeKonto = "/users/profil",
 
   informacjeDoPaneluPlatnosci = "/platnosci/informacjeDoPaneluPlatnosci",

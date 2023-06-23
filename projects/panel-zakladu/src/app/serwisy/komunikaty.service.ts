@@ -10,6 +10,23 @@ export class KomunikatyService {
   constructor(private komunikaty: ToastrService) {
   }
 
+  public uslugaSmsWlaczona() {
+    this.komunikaty.success('Usługa SMS została włączona', 'Udane');
+  }
+
+  public uslugaSmsWylaczona() {
+    this.komunikaty.success('Usługa SMS została włączona', 'Udane');
+  }
+
+  public uslugaSmsNieWylaczona() {
+    this.komunikaty.error('Wyłączenie usługi SMS nie powiodło się', 'Błąd');
+  }
+
+  public uslugaSmsNieWlaczona() {
+    this.komunikaty.error('Włączenie usługi SMS nie powiodło się', 'Błąd');
+  }
+
+
   public modyfikacjaUdana() {
     this.komunikaty.success('Zmodyfikowanie danych powiodło się', 'Udane');
   }

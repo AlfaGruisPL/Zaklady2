@@ -1,5 +1,48 @@
 <div class="glownyDiv">
-  <div class="czesc"></div>
+  <div class="czesc">
+    <table class="tabelaUslug">
+      <tr>
+        <th colspan="3">Dodatki:</th>
+
+      </tr>
+      <tr>
+        <td>
+          Pracownicy
+        </td>
+        <td>
+          <button (click)="DodajPracownika()">Dodaj</button>
+          {{dane.iloscPracownikow}}
+          <button (click)="OdejmijPracownika()">Usuń</button>
+        </td>
+      </tr>
+      <tr>
+        <td style="font-weight: bolder">Usługa SMS
+        </td>
+        <td style="color: #0e7908;font-weight: bolder">
+          <ui-switch class="przelacznikPublicznePrywatne" checkedLabel="Włączone"
+                     [(ngModel)]="dane.uslugaSMS"
+                     uncheckedLabel="Wyłączone" (change)="zmianaUslugSms($event)">
+          </ui-switch>
+
+        </td>
+      </tr>
+      <tr>
+        <td>Darmowe:</td>
+        <td>wykorzytanow 34 z 100</td>
+      </tr>
+      <tr>
+        <td style="font-weight: bolder">Usługa email
+        </td>
+        <td style="color: #0e7908;font-weight: bolder">
+          Włączona
+        </td>
+      </tr>
+      <tr>
+        <td>Darmowe:</td>
+        <td>wykorzystano 54 z <i>nielimitowane</i></td>
+      </tr>
+    </table>
+  </div>
   <div class="czesc">
     <button class="przyciskPlatnosci" (click)="nowaPlatnosc()">
       Wpłać pieniądze na konto
@@ -10,6 +53,7 @@
     <button class="przyciskPlatnosci" (click)="wstrzymajKonto()" *ngIf="dane.status == 1">
       Wstrzymaj
     </button>
+
   </div>
   <div class="czesc">
     <table>

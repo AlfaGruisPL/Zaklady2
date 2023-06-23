@@ -7,6 +7,9 @@ import {
 } from '../../../../../../klasy/panelPracownika/platnosci/informacje-do-panelu-platnosci';
 import {Drzwi} from "../../../../../../enum/drzwi";
 import {KomunikatyService} from "../../../../../../serwisy/komunikaty.service";
+import {
+  PlatnosciPracownikaPotwierdzenieAkcjiComponent
+} from "../../komunikaty/platnosci-pracownika-potwierdzenie-akcji/platnosci-pracownika-potwierdzenie-akcji.component";
 
 @Component({
   selector: 'app-platnosci-pracownika-naglowek',
@@ -57,4 +60,82 @@ export class PlatnosciPracownikaNaglowekComponent {
       this.pobierzDane.emit();
     })
   }
+
+  DodajPracownika() {
+    const okienko = this.modalService.open(PlatnosciPracownikaPotwierdzenieAkcjiComponent)
+    okienko.componentInstance.tresc = "Zmodyfikowanie ilości pracowników może wiązać się z pobraniem dodatkowej opłaty zgodnej z cennikiem."
+    okienko.result.then(
+      (result) => {
+        this.DodajPracownikaZapytanie();
+      },
+      (reason) => {
+      },
+    );
+
+  }
+
+  DodajPracownikaZapytanie() {
+    this.listonosz.wyslij(Drzwi.PlatnosciIloscPracownikow, {tryb: 'dodaj'}).then(k => {
+      console.log(k)
+    }).catch(k => {
+      console.log("Źle")
+    }).finally(() => {
+      this.pobierzDane.emit();
+    })
+  }
+
+  OdejmijPracownika() {
+    const okienko = this.modalService.open(PlatnosciPracownikaPotwierdzenieAkcjiComponent)
+    okienko.componentInstance.tresc = "Zmniejszenie liczby pracowników może wiązać się z zmianami na stronie reprezentacyjnej"
+    okienko.result.then(
+      (result) => {
+        this.OdejmijPracownikaZapytanie();
+      },
+      (reason) => {
+      },
+    );
+  }
+
+  OdejmijPracownikaZapytanie() {
+    this.listonosz.wyslij(Drzwi.PlatnosciIloscPracownikow, {tryb: 'odejmij'}).then(k => {
+      console.log(k)
+    }).catch(k => {
+      console.log("Źle")
+    }).finally(() => {
+      this.pobierzDane.emit();
+    })
+  }
+
+  zmianaUslugSms(event: boolean) {
+    if (event) {
+      const okienko = this.modalService.open(PlatnosciPracownikaPotwierdzenieAkcjiComponent)
+      okienko.componentInstance.tresc = "Włączenie usługi sms może generować dodatkowe koszty zgodne z cennikiem "
+      okienko.result.then(
+        (result) => {
+          this.listonosz.wyslij(Drzwi.PlatnosciIUslugaSMS, {tryb: "wlacz"}).then(k => {
+            this.komunikaty.uslugaSmsWlaczona()
+          }).catch(k => {
+            this.komunikaty.uslugaSmsNieWlaczona()
+          })
+        },
+        (reason) => {
+          this.dane.uslugaSMS = false;
+        },
+      );
+    }
+    if (!event) {
+      this.listonosz.wyslij(Drzwi.PlatnosciIUslugaSMS, {tryb: "wylacz"}).then(k => {
+        this.komunikaty.uslugaSmsWylaczona()
+      }).catch(k => {
+        this.komunikaty.uslugaSmsNieWylaczona()
+      })
+
+
+    }
+  }
+
 }
+
+
+
+

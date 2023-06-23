@@ -3,4 +3,6 @@ export class InformacjeDoPaneluPlatnosci {
   aktywneDo: Date = new Date();
   dniDoKoncaAktywnosci: string = "";
   konto: number = 0;
+  iloscPracownikow: number = -1;
+  uslugaSMS: boolean = false;
 }
