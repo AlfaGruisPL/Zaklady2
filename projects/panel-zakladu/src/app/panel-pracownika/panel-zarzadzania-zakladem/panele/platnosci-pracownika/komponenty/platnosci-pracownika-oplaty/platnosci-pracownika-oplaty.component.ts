@@ -18,13 +18,6 @@ export class PlatnosciPracownikaOplatyComponent implements OnInit, OnDestroy {
     return Math.ceil(this.listaPlatnosci.length / this.pageSize)
   }
 
-  array(number: number) {
-    const k2 = [];
-    for (let k = 0; k < number; k++) {
-      k2.push("")
-    }
-    return k2
-  }
 
   public listaPlatnosci: Array<ListaOplatDoPaneluPlatnosci> = []
 

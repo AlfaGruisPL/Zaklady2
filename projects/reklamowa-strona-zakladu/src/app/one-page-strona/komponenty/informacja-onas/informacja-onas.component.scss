@@ -10,7 +10,7 @@
 
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 0.9fr 1.1fr 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
     grid-auto-columns: 1fr;
     gap: 0px 0px;
     width: 100%;
@@ -41,10 +41,6 @@
     grid-area: uslugi;
   }
 
-  .podstawoweInformacje {
-    grid-area: podstawoweInformacje;
-  }
-
   .opis {
     grid-area: opis;
   }
@@ -54,7 +50,7 @@
     grid-area: kontakt;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
 
   }
 
@@ -62,7 +58,7 @@
     grid-area: GodzinyOtwarcia;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
 
   }
 
@@ -70,7 +66,7 @@
     grid-area: podstawoweInformacje;
     display: flex;
     align-items: start;
-    justify-content: center;
+    justify-content: right;
 
 
   }
@@ -80,25 +76,21 @@
     grid-area: Adres;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
 
-  }
-
-  .Opis {
-    grid-area: Opis;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
 }
 
 .informacjeOnasTytul {
-  font-size: 33px;
+  margin: 0;
+  font-family: math;
+  text-align: center;
+  padding-bottom: 10px;
+  font-size: 30px;
   font-weight: bold;
   color: #b40c00;
   letter-spacing: 1px;
-  font-family: math;
   text-shadow: 0px 1px 2px black;
 
 }
@@ -120,26 +112,6 @@
 }
 
 
-.opis {
-  color: #384dda;
-  font-family: math;
-  font-size: 25px;
-  font-weight: bold;
-  text-shadow: 0px 0px 1px black;
-}
-
-.opisDiv {
-  border: 2px inset #7a7eff;
-  width: 702px;
-  height: 100px;
-  padding: 17px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background: #f4f4f4;
-}
-
 .tabelaDane {
   padding-left: 30px;
   width: 440px;
@@ -147,38 +119,40 @@
 
 }
 
-.podstawoweInformacje {
-  display: flex;
-  align-items: start;
-  justify-content: center;
-}
 
 .uslugi {
   display: flex;
   align-items: start;
-  justify-content: center;
+  justify-content: right;
 }
 
 .tabelaRamka {
-  border: 2px solid #d8d8d8;
+  border: 1px solid #d8d8d8;
   box-shadow: 2px 2px 4px 1px #b8babd;
-}
+  margin-left: 50px;
+  padding-bottom: 20px;
 
+}
 
 .uslugiTytul {
   font-size: 29px;
   font-weight: bold;
-  color: #0068b4;
+  color: #000275;
   letter-spacing: 1px;
   font-family: math;
-  text-shadow: 1px 0px 2px #000000;
+  text-align: left;
+  text-shadow: 0px 0px 1px #000;
 }
+
 
 .uslugiTable {
   margin: 20px;
   width: 600px;
   height: min-content;
   min-height: 200px;
-  box-shadow: inset 0px 0px 1pc 1px #bdbbbb;
+  box-shadow: inset 0px 0px 1pc 1px #e1e1e1a6;
+  border: 1px solid gainsboro;
+  padding: 8px;
+  margin-right: 50px;
 }
 

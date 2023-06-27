@@ -1,0 +1,23 @@
+.glownyDiv {
+  width: 100%;
+
+  .czesc {
+    height: 200px;
+    float: left;
+    $czesc1Szerokowcs: 550px;
+    $czesc3Szerokowcs: 450px;
+
+    &:nth-of-type(1) {
+      width: $czesc1Szerokowcs;
+    }
+
+    &:nth-of-type(2) {
+      width: calc(100% - $czesc1Szerokowcs - $czesc3Szerokowcs);
+    }
+
+    &:nth-of-type(3) {
+      width: $czesc3Szerokowcs;
+    }
+  }
+}
+

@@ -1,0 +1,39 @@
+<h3>Ustawienia</h3>
+<table>
+  <tr>
+    <th colspan="2">
+      <h4>Powiadomienia SMS:</h4>
+    </th>
+  </tr>
+  <tr>
+    <td>
+      Przypomnienie o wizycie (godzina przed)
+    </td>
+    <td>
+      <ui-switch checkedLabel="Włączone" uncheckedLabel="Wyłączone"
+                 [(ngModel)]="service.dane.smsPowiadomienia.godzinaPrzed"></ui-switch>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      Przypomnienie o wizycie (dzień przed)
+    </td>
+    <td>
+      <ui-switch checkedLabel="Włączone" uncheckedLabel="Wyłączone"
+                 [(ngModel)]="service.dane.smsPowiadomienia.dzienPrzed"></ui-switch>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      Potwierdzenie wizyty (w czasie rejestracji)
+    </td>
+    <td>
+      <ui-switch checkedLabel="Włączone" uncheckedLabel="Wyłączone"
+                 [(ngModel)]="service.dane.smsPowiadomienia.potwierdzenieRejestracji"></ui-switch>
+    </td>
+  </tr>
+
+
+</table>

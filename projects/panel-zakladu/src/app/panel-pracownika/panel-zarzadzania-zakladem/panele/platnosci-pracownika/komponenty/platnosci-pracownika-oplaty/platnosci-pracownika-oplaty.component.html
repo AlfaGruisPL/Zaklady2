@@ -10,7 +10,7 @@
   </tr>
   <ng-container *ngFor="let k of listaPlatnosci | slice: (page-1) * pageSize : page * pageSize ;let index2 = index">
     <tr>
-      <td>{{(listaPlatnosci.length - index2)  }}    {{(page * pageSize) }}</td>
+      <td>{{(listaPlatnosci.length - index2 - (pageSize * page) + pageSize)}}  </td>
       <td>{{k.opis}}</td>
       <td>{{k.dataUtworzenia | date : "dd.MM.yyyy  HH:MM"}}</td>
       <td>{{k.dataKonca | date : "dd.MM.yyyy  HH:MM"}}</td>
@@ -18,20 +18,28 @@
       <td *ngIf="k.status==0" style="font-weight: bolder;color:darkred">Nieudane</td>
       <td *ngIf="k.status==1" style="font-weight: bolder;color:  #0e7908">Udane</td>
     </tr>
-    <tr *ngFor="let k of array(pageSize - (listaPlatnosci | slice: (page - 1) * pageSize : page * pageSize).length)">
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-
   </ng-container>
-</table>
+  <tr
+    *ngFor="let k of [].constructor(pageSize - (listaPlatnosci | slice: (page - 1) * pageSize : page * pageSize).length)">
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
 
-<ngb-pagination
-  [(page)]="page"
-  [pageSize]="pageSize"
-  [collectionSize]="listaPlatnosci.length"></ngb-pagination> Wyświetlono {{page}} z {{pageCount()}} stron.
+
+</table>
+<div class="paggination">
+  <ngb-pagination
+    [(page)]="page"
+    [pageSize]="pageSize"
+    [collectionSize]="listaPlatnosci.length"></ngb-pagination>
+  <span class="tekst">
+
+  Wyświetlono {{page}} z {{pageCount()}} stron.
+  </span>
+</div>
+

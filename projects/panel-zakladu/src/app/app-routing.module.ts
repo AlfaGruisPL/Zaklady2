@@ -61,6 +61,9 @@ import {
 import {
   ListaKlientowPracownikComponent
 } from "./panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/lista-klientow-pracownik.component";
+import {
+  UslugaSmsPracownikaComponent
+} from "./panel-pracownika/panel-zarzadzania-zakladem/panele/usluga-sms-pracownika/usluga-sms-pracownika.component";
 
 const routes: Routes = [
   {
@@ -128,6 +131,10 @@ const routes: Routes = [
       {
         path: 'platnosci',
         component: PlatnosciPracownikaComponent
+      },
+      {
+        path: 'sms',
+        component: UslugaSmsPracownikaComponent
       },
       {
         path: 'harmonogram',

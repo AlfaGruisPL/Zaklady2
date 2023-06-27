@@ -7,9 +7,20 @@
   text-shadow: 0px 0px 1px darkgreen;
   letter-spacing: 1px;
   font-family: math;
+  padding-top: 10px;
 
   &:hover {
     cursor: pointer;
     color: #226b01;
   }
+}
+
+
+.adresIcona {
+  width: 48px;
+  height: 45px;
+  float: -2;
+  position: relative;
+  top: -8px;
+  left: -20px;
 }

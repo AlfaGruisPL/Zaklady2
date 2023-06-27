@@ -10,6 +10,7 @@ import {KomunikatyService} from "../../../../../../serwisy/komunikaty.service";
 import {
   PlatnosciPracownikaPotwierdzenieAkcjiComponent
 } from "../../komunikaty/platnosci-pracownika-potwierdzenie-akcji/platnosci-pracownika-potwierdzenie-akcji.component";
+import {PlatnosciSMSOknoComponent} from "../okna/platnosci-smsokno/platnosci-smsokno.component";
 
 @Component({
   selector: 'app-platnosci-pracownika-naglowek',
@@ -25,6 +26,10 @@ export class PlatnosciPracownikaNaglowekComponent {
     private listonosz: ListonoszService,
     private komunikaty: KomunikatyService
   ) {
+  }
+
+  otworzSMS() {
+    this.modalService.open(PlatnosciSMSOknoComponent, {size: "xl", backdrop: "static"})
   }
 
   nowaPlatnosc() {
@@ -116,6 +121,8 @@ export class PlatnosciPracownikaNaglowekComponent {
             this.komunikaty.uslugaSmsWlaczona()
           }).catch(k => {
             this.komunikaty.uslugaSmsNieWlaczona()
+          }).finally(() => {
+            this.pobierzDane.emit();
           })
         },
         (reason) => {
@@ -128,6 +135,8 @@ export class PlatnosciPracownikaNaglowekComponent {
         this.komunikaty.uslugaSmsWylaczona()
       }).catch(k => {
         this.komunikaty.uslugaSmsNieWylaczona()
+      }).finally(() => {
+        this.pobierzDane.emit();
       })
 
 

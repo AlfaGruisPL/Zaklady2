@@ -4,6 +4,7 @@ import {
   faCircleCheck,
   faCircleLeft,
   faCircleQuestion,
+  faCommentSms,
   faEye,
   faEyeSlash,
   faForward,
@@ -48,6 +49,7 @@ export class FontAwesomeService {
   klienci = faIdBadge
   flaga = faFontAwesomeFlag
   dom = faHomeUser
+  sms = faCommentSms
 
   constructor() {
   }

@@ -364,3 +364,25 @@ body {
   }
 
 }
+
+
+//*numerki pod tabelką*//
+.paggination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ngb-pagination {
+    display: block;
+    width: min-content;
+  }
+
+  .tekst {
+    padding-left: 20px;
+    position: relative;
+    bottom: 10px;
+    font-weight: bold;
+    font-size: 17px;
+  }
+}

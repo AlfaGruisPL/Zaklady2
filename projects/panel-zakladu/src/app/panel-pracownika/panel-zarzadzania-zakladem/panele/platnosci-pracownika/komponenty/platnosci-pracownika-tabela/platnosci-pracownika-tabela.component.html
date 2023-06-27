@@ -7,9 +7,9 @@
     <th>Kwota</th>
     <th colspan="2">Status</th>
   </tr>
-  <ng-container *ngFor="let k of listaPlatnosci;let index2 = index">
+  <ng-container *ngFor="let k of listaPlatnosci  | slice: (page-1) * pageSize : page * pageSize ;let index2 = index">
     <tr>
-      <td>{{listaPlatnosci.length - index2 }}</td>
+      <td>{{(listaPlatnosci.length - index2 - (pageSize * page) + pageSize)}}  </td>
       <td>{{k.opis}}</td>
       <td>{{k.dataUtworzenia | date : "dd.MM.yyyy  HH:MM"}}</td>
       <td>{{k.kwota}}</td>
@@ -72,4 +72,25 @@
     </ng-container>
 
   </ng-container>
+  <tr
+    *ngFor="let k of [].constructor(pageSize - (listaPlatnosci | slice: (page - 1) * pageSize : page * pageSize).length)">
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+
 </table>
+<div class="paggination">
+  <ngb-pagination
+    [(page)]="page"
+    [pageSize]="pageSize"
+    [collectionSize]="listaPlatnosci.length"></ngb-pagination>
+  <span class="tekst">
+
+  Wyświetlono {{page}} z {{pageCount()}} stron.
+  </span>
+</div>

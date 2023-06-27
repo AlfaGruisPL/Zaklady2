@@ -15,7 +15,7 @@ export class KomunikatyService {
   }
 
   public uslugaSmsWylaczona() {
-    this.komunikaty.success('Usługa SMS została włączona', 'Udane');
+    this.komunikaty.success('Usługa SMS została wyłączona', 'Udane');
   }
 
   public uslugaSmsNieWylaczona() {
