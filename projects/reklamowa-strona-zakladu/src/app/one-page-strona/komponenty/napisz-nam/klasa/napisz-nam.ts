@@ -3,11 +3,13 @@ export class NapiszNam {
   public nazwisko: string = "";
   public adresEmail: string = "";
   public wiadomosc: string = "";
+  public komuWyslac: string = "Wybierz";
 
   public pusteImie: boolean = false;
   public pusteNazwisko: boolean = false;
   public pustyEmail: boolean = false;
   public pustaTresc: boolean = false;
+  public komuWyslacPuste: boolean = false;
   public czyWszystkoUzupelnione: boolean = true;
 
 
@@ -16,7 +18,9 @@ export class NapiszNam {
     this.pusteNazwisko = false;
     this.pustyEmail = false;
     this.pustaTresc = false;
+    this.komuWyslacPuste = false;
     this.czyWszystkoUzupelnione = true;
+
 
     if (this.imie.length <= 0) {
       this.pusteImie = true;
@@ -32,6 +36,10 @@ export class NapiszNam {
     }
     if (this.wiadomosc.length <= 0) {
       this.pustaTresc = true;
+      this.czyWszystkoUzupelnione = false;
+    }
+    if (this.komuWyslac == "Wybierz") {
+      this.komuWyslacPuste = true;
       this.czyWszystkoUzupelnione = false;
     }
     return this.czyWszystkoUzupelnione;

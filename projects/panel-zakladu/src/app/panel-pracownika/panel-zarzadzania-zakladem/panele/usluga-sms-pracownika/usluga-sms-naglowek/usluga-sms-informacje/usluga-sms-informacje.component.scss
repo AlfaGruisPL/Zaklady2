@@ -1,0 +1,29 @@
+.informationTable {
+  margin-top: 10px;
+  font-size: 23px;
+
+  tr {
+    border-bottom: 1px solid #e8e8e8;
+
+    td:first-of-type {
+      padding-left: 10px;
+      font-weight: bolder;
+      padding-right: 20px;
+      width: 350px;
+    }
+
+    td:last-of-type {
+      font-weight: bolder;
+
+
+    }
+
+    .aktywne {
+      color: #0e7908;
+    }
+
+    .nieaktywne {
+      color: #7e0006;
+    }
+  }
+}

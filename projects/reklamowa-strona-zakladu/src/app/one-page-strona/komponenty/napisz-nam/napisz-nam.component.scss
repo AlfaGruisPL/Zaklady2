@@ -23,13 +23,10 @@
 
         }
 
-        .zostawWiadomosc {
-          font-size: 25px;
-          color: blue;
-          letter-spacing: 1px;
-          text-shadow: 0px 0px 1px #051956
-        }
+
       }
+
+
     }
 
   }
@@ -54,6 +51,12 @@
   }
 }
 
+.zostawWiadomosc {
+  font-size: 25px;
+  color: blue;
+  letter-spacing: 1px;
+  text-shadow: 0px 0px 1px #051956
+}
 
 .inputNapiszDoNas {
   border: 2px inset #2491f9;
@@ -63,6 +66,20 @@
   padding-left: 10px;
   padding-right: 10px;
   font-size: 18px;
+}
+
+.selectNapiszDoNas {
+  border: 2px inset #2491f9;
+  border-radius: 20px;
+  width: 245px;
+  height: 33px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 18px;
+  color: #000000;
+  background: white;
+
+
 }
 
 
@@ -97,7 +114,7 @@
 }
 
 .czerwoneInputy {
-  border: 2px inset #720202 !important;
+  border: 2px inset #d30505 !important;
 }
 
 

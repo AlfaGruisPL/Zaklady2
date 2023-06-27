@@ -17,6 +17,7 @@ import {FormsModule} from "@angular/forms";
 import {PlatnosciPracownikaComponent} from "./platnosci-pracownika.component";
 import {NgbPagination} from "@ng-bootstrap/ng-bootstrap";
 import {UiSwitchModule} from "ngx-ui-switch";
+import { PlatnosciSMSOknoComponent } from './komponenty/okna/platnosci-smsokno/platnosci-smsokno.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {UiSwitchModule} from "ngx-ui-switch";
     PlatnosciPracownikaNaglowekComponent,
     PlatnosciPracownikaComponent,
     OknoPlatnosciComponent,
-    PlatnosciPracownikaOplatyComponent
+    PlatnosciPracownikaOplatyComponent,
+    PlatnosciSMSOknoComponent
   ],
   imports:
     [

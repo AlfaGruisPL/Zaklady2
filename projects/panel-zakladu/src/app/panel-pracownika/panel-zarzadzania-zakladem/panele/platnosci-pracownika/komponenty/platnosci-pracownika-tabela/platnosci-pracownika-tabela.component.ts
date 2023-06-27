@@ -10,6 +10,8 @@ import {Drzwi} from "../../../../../../enum/drzwi";
 })
 export class PlatnosciPracownikaTabelaComponent implements OnInit, OnDestroy {
   public listaPlatnosci: Array<Platnosc> = []
+  public page = 0
+  public pageSize = 5;
 
   constructor(private listonosz: ListonoszService) {
   }
@@ -53,5 +55,9 @@ export class PlatnosciPracownikaTabelaComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     clearInterval(this.autoPobieranieDanych)
+  }
+
+  pageCount(): number {
+    return Math.ceil(this.listaPlatnosci.length / this.pageSize)
   }
 }

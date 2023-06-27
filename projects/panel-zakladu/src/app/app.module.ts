@@ -110,6 +110,9 @@ import {
 import {
   PlatnosciPracownikaModule
 } from "./panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/platnosciPracownika.module";
+import {
+  UslugaSmsPracownikaModule
+} from "./panel-pracownika/panel-zarzadzania-zakladem/panele/usluga-sms-pracownika/usluga-sms-pracownika.module";
 
 @NgModule({
   declarations: [
@@ -173,7 +176,8 @@ import {
       uncheckedTextColor: "rgb(0,0,0)"
     }),
     NgbModule,
-    PlatnosciPracownikaModule
+    PlatnosciPracownikaModule,
+    UslugaSmsPracownikaModule
   ],
   providers: [
 

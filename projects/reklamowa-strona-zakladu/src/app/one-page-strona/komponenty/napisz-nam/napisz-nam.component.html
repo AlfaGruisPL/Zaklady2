@@ -16,6 +16,19 @@
     <form>
       <table class="formularzTab">
         <tr>
+          <td colspan="2"><span class="zostawWiadomosc">Wybierz komu chcesz wysłać wiadomość</span></td>
+
+        </tr>
+        <tr>
+          <td><select [(ngModel)]="napiszNamObj.komuWyslac"
+                      [ngModelOptions]="{standalone: true}" [ngClass]="{'czerwoneInputy': napiszNamObj.komuWyslacPuste}"
+                      class="selectNapiszDoNas">
+            <option [disabled]="true">Wybierz</option>
+            <option>Zakład</option>
+            <option>Pracownik</option>
+          </select></td>
+        </tr>
+        <tr>
           <td><input [ngClass]="{'czerwoneInputy': napiszNamObj.pusteImie}" class="inputNapiszDoNas"
                      placeholder="Imię" [(ngModel)]="napiszNamObj.imie"
                      [ngModelOptions]="{standalone: true}"></td>
@@ -29,7 +42,9 @@
                                  type="text" [(ngModel)]="napiszNamObj.adresEmail"
                                  [ngModelOptions]="{standalone: true}"
                                  placeholder="E-mail"></td>
+
         </tr>
+
         <tr>
           <td colspan="2"><textarea [ngClass]="{'czerwoneInputy': napiszNamObj.pustaTresc}"
                                     style="width: 470px; height: 200px; border-radius:10px; resize: none"
@@ -48,6 +63,7 @@
 
         </tr>
       </table>
+
     </form>
     <div class="komunikaty">
       <table *ngIf="!napiszNamObj.czyWszystkoUzupelnione">

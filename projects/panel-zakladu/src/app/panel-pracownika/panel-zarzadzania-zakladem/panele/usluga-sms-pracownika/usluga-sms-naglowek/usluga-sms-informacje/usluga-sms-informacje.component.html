@@ -1,0 +1,23 @@
+<table class="informationTable">
+  <tr>
+    <td>Status:</td>
+    <td class="aktywne" *ngIf="service.dane.status">Aktywne</td>
+    <td class="nieaktywne" *ngIf="!service.dane.status">Nieaktywne</td>
+  </tr>
+  <tr>
+    <td>
+      Opłata dziś:
+    </td>
+    <td>
+      4zł
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Opłata w bieżącym cyklu rozliczeniowym: (4 dni)
+    </td>
+    <td>
+      15zł
+    </td>
+  </tr>
+</table>
