@@ -18,6 +18,8 @@ import {PlatnosciPracownikaComponent} from "./platnosci-pracownika.component";
 import {NgbPagination} from "@ng-bootstrap/ng-bootstrap";
 import {UiSwitchModule} from "ngx-ui-switch";
 import { PlatnosciSMSOknoComponent } from './komponenty/okna/platnosci-smsokno/platnosci-smsokno.component';
+import { WykresStanuKontaComponent } from './komponenty/wykres-stanu-konta/wykres-stanu-konta.component';
+import { StartStopUslugaComponent } from './komponenty/okna/start-stop-usluga/start-stop-usluga.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { PlatnosciSMSOknoComponent } from './komponenty/okna/platnosci-smsokno/p
     PlatnosciPracownikaComponent,
     OknoPlatnosciComponent,
     PlatnosciPracownikaOplatyComponent,
-    PlatnosciSMSOknoComponent
+    PlatnosciSMSOknoComponent,
+    WykresStanuKontaComponent,
+    StartStopUslugaComponent
   ],
   imports:
     [

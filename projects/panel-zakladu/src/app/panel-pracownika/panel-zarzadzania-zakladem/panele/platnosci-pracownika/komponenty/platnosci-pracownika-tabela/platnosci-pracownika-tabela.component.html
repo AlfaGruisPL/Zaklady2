@@ -88,7 +88,12 @@
   <ngb-pagination
     [(page)]="page"
     [pageSize]="pageSize"
-    [collectionSize]="listaPlatnosci.length"></ngb-pagination>
+    [collectionSize]="listaPlatnosci.length"
+    [maxSize]="7"
+    [rotate]="true"
+    [boundaryLinks]="true"
+
+  ></ngb-pagination>
   <span class="tekst">
 
   Wyświetlono {{page}} z {{pageCount()}} stron.

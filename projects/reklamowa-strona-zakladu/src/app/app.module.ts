@@ -1,32 +1,26 @@
-import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {OnePageStronaComponent} from './one-page-strona/one-page-strona.component';
-import {
-  WyswietlanePracownicyComponent
-} from './one-page-strona/komponenty/wyswietlane-pracownicy/wyswietlane-pracownicy.component';
-import {
-  InformacjaOJednymPracownikuComponent
-} from './one-page-strona/komponenty/informacja-ojednym-pracowniku/informacja-ojednym-pracowniku.component';
-import {StopkaComponent} from './one-page-strona/komponenty/stopka/stopka.component';
-import {BannerComponent} from './one-page-strona/komponenty/banner/banner.component';
-import {HttpClientModule} from "@angular/common/http";
-import {FormsModule} from "@angular/forms";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {CarouselModule} from "ngx-owl-carousel-o";
-import {ZdjecieZakladuComponent} from './one-page-strona/komponenty/zdjecie-zakladu/zdjecie-zakladu.component';
-import {InformacjaONasComponent} from './one-page-strona/komponenty/informacja-onas/informacja-onas.component';
-import {NapiszNamComponent} from './one-page-strona/komponenty/napisz-nam/napisz-nam.component';
-import {ZarejestrujSieComponent} from './one-page-strona/komponenty/zarejestruj-sie/zarejestruj-sie.component';
-import {StrzalkaComponent} from './one-page-strona/strzalka/strzalka.component';
-import {OgloszeniaComponent} from './one-page-strona/komponenty/ogloszenia/ogloszenia.component';
-import {LeafletModule} from "@asymmetrik/ngx-leaflet";
-import {StatystykiComponent} from './one-page-strona/komponenty/statystyki/statystyki.component';
-import {
-  FormularzZarejestrujSieComponent
-} from './one-page-strona/komponenty/formularz-zarejestruj-sie/formularz-zarejestruj-sie.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { OnePageStronaComponent } from './one-page-strona/one-page-strona.component';
+import { WyswietlanePracownicyComponent } from './one-page-strona/komponenty/wyswietlane-pracownicy/wyswietlane-pracownicy.component';
+import { InformacjaOJednymPracownikuComponent } from './one-page-strona/komponenty/informacja-ojednym-pracowniku/informacja-ojednym-pracowniku.component';
+import { StopkaComponent } from './one-page-strona/komponenty/stopka/stopka.component';
+import { BannerComponent } from './one-page-strona/komponenty/banner/banner.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { ZdjecieZakladuComponent } from './one-page-strona/komponenty/zdjecie-zakladu/zdjecie-zakladu.component';
+import { InformacjaONasComponent } from './one-page-strona/komponenty/informacja-onas/informacja-onas.component';
+import { NapiszNamComponent } from './one-page-strona/komponenty/napisz-nam/napisz-nam.component';
+import { ZarejestrujSieComponent } from './one-page-strona/komponenty/zarejestruj-sie/zarejestruj-sie.component';
+import { StrzalkaComponent } from './one-page-strona/strzalka/strzalka.component';
+import { OgloszeniaComponent } from './one-page-strona/komponenty/ogloszenia/ogloszenia.component';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { StatystykiComponent } from './one-page-strona/komponenty/statystyki/statystyki.component';
+import { FormularzZarejestrujSieComponent } from './one-page-strona/komponenty/formularz-zarejestruj-sie/formularz-zarejestruj-sie.component';
 import { WyborPracownikaComponent } from './one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/wybor-pracownika/wybor-pracownika.component';
 import { WyborUslugComponent } from './one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/wybor-uslug/wybor-uslug.component';
 import { KalendarzComponent } from './one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/kalendarz/kalendarz.component';
@@ -42,6 +36,7 @@ import { InformacjeOJednymPracownikuKontaktComponent } from './one-page-strona/k
 import { InformacjeOJednymPracownikuOpisComponent } from './one-page-strona/komponenty/informacja-ojednym-pracowniku/komponenty/informacje-ojednym-pracowniku-opis/informacje-ojednym-pracowniku-opis.component';
 import { InformacjeOJednymPracownikuZdjecieImieNazwiskoComponent } from './one-page-strona/komponenty/informacja-ojednym-pracowniku/komponenty/informacje-ojednym-pracowniku-zdjecie-imie-nazwisko/informacje-ojednym-pracowniku-zdjecie-imie-nazwisko.component';
 import { InformacjeOJednymPracownikuPytanieComponent } from './one-page-strona/komponenty/informacja-ojednym-pracowniku/komponenty/informacje-ojednym-pracowniku-pytanie/informacje-ojednym-pracowniku-pytanie.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -54,19 +49,38 @@ import { InformacjeOJednymPracownikuPytanieComponent } from './one-page-strona/k
     ZdjecieZakladuComponent,
     InformacjaONasComponent,
     NapiszNamComponent,
-    ZarejestrujSieComponent, StatystykiComponent,
+    ZarejestrujSieComponent,
+    StatystykiComponent,
     StrzalkaComponent,
-    OgloszeniaComponent, FormularzZarejestrujSieComponent, WyborPracownikaComponent, WyborUslugComponent, KalendarzComponent, WpisanieDanychComponent, PodsumowanieComponent, ONasDanePodstawoweComponent, ONasAdresComponent, ONasGodzinyOtwarciaComponent, ONasKontaktComponent, ONasUslugiComponent, InformacjeOJednymPracownikuAdresComponent, InformacjeOJednymPracownikuKontaktComponent, InformacjeOJednymPracownikuOpisComponent, InformacjeOJednymPracownikuZdjecieImieNazwiskoComponent, InformacjeOJednymPracownikuPytanieComponent,
+    OgloszeniaComponent,
+    FormularzZarejestrujSieComponent,
+    WyborPracownikaComponent,
+    WyborUslugComponent,
+    KalendarzComponent,
+    WpisanieDanychComponent,
+    PodsumowanieComponent,
+    ONasDanePodstawoweComponent,
+    ONasAdresComponent,
+    ONasGodzinyOtwarciaComponent,
+    ONasKontaktComponent,
+    ONasUslugiComponent,
+    InformacjeOJednymPracownikuAdresComponent,
+    InformacjeOJednymPracownikuKontaktComponent,
+    InformacjeOJednymPracownikuOpisComponent,
+    InformacjeOJednymPracownikuZdjecieImieNazwiskoComponent,
+    InformacjeOJednymPracownikuPytanieComponent,
   ],
-  imports: [LeafletModule,
+  imports: [
+    LeafletModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule, BrowserAnimationsModule,
-    CarouselModule
+    FormsModule,
+    BrowserAnimationsModule,
+    CarouselModule,
+    NgSelectModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

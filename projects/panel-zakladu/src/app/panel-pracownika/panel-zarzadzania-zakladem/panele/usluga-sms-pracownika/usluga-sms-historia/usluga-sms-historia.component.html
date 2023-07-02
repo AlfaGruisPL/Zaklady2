@@ -1,4 +1,9 @@
 <h3 class="historiaTransakcjiH3">Historia opłat za usługę:</h3>
+<div class="chart-container" style="max-height: 300px;width: 90%">
+  <canvas id="MyChart" style="max-height: 300px;width: 90%"> {{ chart }}</canvas>
+</div>
+
+
 <table class="historiaTransakcji tablica tablicaPierwszyWierszJakoNaglowe">
   <tr #naglowek>
     <th>Nr.</th>
@@ -7,7 +12,8 @@
     <th>Kwota</th>
     <th>Status</th>
   </tr>
-  <ng-container *ngFor="let sms of service.dane.historia;let index = index">
+  <ng-container
+    *ngFor="let sms of service.dane.historia  | slice: (page-1) * pageSize : page * pageSize ;let index = index">
     <tr>
       <td>{{service.dane.historia.length - index }}</td>
       <td>{{sms.termin}}</td>
@@ -27,7 +33,15 @@
   <ngb-pagination
     [(page)]="page"
     [pageSize]="pageSize"
-    [collectionSize]="service.dane.historia.length"></ngb-pagination>
+    [collectionSize]="service.dane.historia.length"
+    [maxSize]="7"
+    [rotate]="true"
+    [boundaryLinks]="true"
+
+
+  ></ngb-pagination>
+
+
   <span class="tekst">
 
   Wyświetlono {{page}} z {{pageCount()}} stron.

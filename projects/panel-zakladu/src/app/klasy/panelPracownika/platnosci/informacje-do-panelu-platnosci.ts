@@ -5,4 +5,6 @@ export class InformacjeDoPaneluPlatnosci {
   konto: number = 0;
   iloscPracownikow: number = -1;
   uslugaSMS: boolean = false;
+  darmoweSMS: number = 0;
+  wykorzystaneZDarmowych = 0;
 }

@@ -3,12 +3,18 @@
     Wybierz pracownika, do którego chcesz się zapisać na wizytę
   </span>
 </div>
-<select>
-  <option>Korneliia</option>
-  <option>Mateusz</option>
-  <option>Mruczek</option>
-  <option>Franek</option>
-</select>
+<div class="select">
+  <ng-select
+    class="selectPracownicy"
+    [items]="pracownicy"
+    [(ngModel)]="wybranyPracownik"
+    bindLabel="pracownik"
+    bindValue="id"
+    placeholder="Wybierz"
+  >
+  </ng-select>
+</div>
+
 <div class="divNaPrzycisk">
-  <button (click)="przejdzDalej()">Dalej</button>
+  <button class="buttonDalej" (click)="przejdzDalej()">Dalej</button>
 </div>

@@ -27,7 +27,8 @@ export enum Drzwi {
   zwolnionyPrzywroconyPracownikMojZaklad = "/listaPracownikow/zwolnionyPrzywrocony",
 
 
-  panelSms = "/sms/panelUslugi"
+  panelSms = "/sms/panelUslugi",
+  wykresStanuKonta = "/platnosci/wykresStanuKOnta"
 
 
 }

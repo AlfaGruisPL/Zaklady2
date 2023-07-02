@@ -4,13 +4,27 @@
   </div>
   <div class="kroki">Wybór pracownika -> wybór usługi -> wpisanieDanych</div>
   <div class="formularz">
-    <ng-container [ngSwitch]=" krok">
-      <app-wybor-pracownika *ngSwitchCase="1" (wyslijKrok)="ustawKrok($event)"></app-wybor-pracownika>
-      <app-wybor-uslug *ngSwitchCase="2" (wyslijKrok)="ustawKrok($event)"></app-wybor-uslug>
-      <app-wpisanie-danych *ngSwitchCase="3" (wyslijKrok)="ustawKrok($event)"></app-wpisanie-danych>
-      <app-podsumowanie *ngSwitchCase="4" (wyslijKrok)="ustawKrok($event)"></app-podsumowanie>
-
+    <ng-container [ngSwitch]="krok">
+      <app-wybor-pracownika
+        *ngSwitchCase="1"
+        (wyslijKrok)="ustawKrok($event)"
+      ></app-wybor-pracownika>
+      <app-wybor-uslug
+        *ngSwitchCase="2"
+        (wyslijKrok)="ustawKrok($event)"
+      ></app-wybor-uslug>
+      <app-kalendarz
+        *ngSwitchCase="3"
+        (wyslijKrok)="ustawKrok($event)"
+      ></app-kalendarz>
+      <app-wpisanie-danych
+        *ngSwitchCase="4"
+        (wyslijKrok)="ustawKrok($event)"
+      ></app-wpisanie-danych>
+      <app-podsumowanie
+        *ngSwitchCase="5"
+        (wyslijKrok)="ustawKrok($event)"
+      ></app-podsumowanie>
     </ng-container>
   </div>
-
 </div>

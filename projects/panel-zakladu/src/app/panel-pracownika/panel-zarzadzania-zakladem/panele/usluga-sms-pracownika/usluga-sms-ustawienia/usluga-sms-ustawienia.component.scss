@@ -1,0 +1,24 @@
+h3 {
+  padding-left: 20px;
+  padding-bottom: 20px;
+}
+
+table {
+  margin-left: 15px;
+  font-size: 20px;
+
+  tr th h4 {
+  }
+
+  tr {
+    td:last-of-type {
+      padding-left: 30px;
+    }
+
+    td {
+      ui-switch {
+        width: 200px;
+      }
+    }
+  }
+}

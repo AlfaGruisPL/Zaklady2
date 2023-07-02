@@ -39,7 +39,6 @@ export class PlatnosciPracownikaComponent implements OnInit, OnDestroy {
   pobierz() {
     this.listonosz.pobierz(Drzwi.informacjeDoPaneluPlatnosci).then(pobrane => {
       Object.assign(this.dane, pobrane)
-      console.log(this.dane)
     }).catch(error => {
       this.komunikaty.wyswietlenieBladNumer(BledyNumery.NiePobierajaSieDajeWPlatnosci)
     })

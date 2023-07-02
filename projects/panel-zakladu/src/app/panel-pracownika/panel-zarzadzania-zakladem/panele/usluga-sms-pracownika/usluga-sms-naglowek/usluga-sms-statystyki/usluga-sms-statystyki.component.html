@@ -1,24 +1,26 @@
 <table class="informationTable">
   <tr>
+    <td>SMS dziś:</td>
     <td>
-      SMS dziś:
-    </td>
-    <td>
-      {{service.dane.smsDzis}}
+      {{ service.dane.smsDzis }}
     </td>
   </tr>
-
   <tr>
+    <td>Darmowe SMS dziś:</td>
     <td>
-      SMS całość:
+      {{ service.dane.wykorzystaneZDarmowych }} z {{ service.dane.darmoweSMS }}
     </td>
+  </tr>
+  <tr>
+    <td>SMS całość:</td>
     <td>
-      {{service.dane.smsCalosc}}
+      {{ service.dane.smsCalosc }}
     </td>
   </tr>
   <tr>
     <td>Średnia SMS na dzień:</td>
     <td>
-      {{service.dane.smsSrednia}}</td>
+      {{ service.dane.smsSrednia }}
+    </td>
   </tr>
 </table>

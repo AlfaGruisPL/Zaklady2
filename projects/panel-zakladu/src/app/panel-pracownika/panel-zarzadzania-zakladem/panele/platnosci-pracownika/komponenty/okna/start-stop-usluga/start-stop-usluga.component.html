@@ -1,0 +1,38 @@
+<div class="modal-header">
+  <h4 class="modal-title">
+    <ng-container *ngIf="tryb == 'wlacz'"> Aktywacja systemu</ng-container>
+    <ng-container *ngIf="tryb == 'wylacz'"> Dezaktywacja systemu</ng-container>
+  </h4>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')"
+  ></button>
+</div>
+<div class="modal-body">
+  <ng-container *ngIf="tryb == 'wlacz'">
+    <p>Aktywacja systemu wiążę się z pobraniem opłaty zgodnej z cennikiem.</p>
+    <p>
+      System może być aktywowany jeżeli od poprzedniej aktywacji minęło więcej
+      niż 30 minut.
+    </p>
+    <p></p>
+    <p style="color: red">
+      <b>UWAGA:</b><br />Dezaktywacja usługi nie wiążę się z zwrotem opłaty,
+      która jest pobierana za każdym razem kiedy aktywowany jest system.
+    </p>
+  </ng-container>
+  <ng-container *ngIf="tryb == 'wylacz'">
+    <p>Dezaktywacja usługi!</p>
+    <p style="color: red">
+      <b>UWAGA:</b><br />Dezaktywacja usługi nie wiążę się z zwrotem opłaty.
+      Ponowna aktywacja wiązać się będzie z ponownym pobraniem opłaty za
+      aktywację systemu.
+    </p>
+  </ng-container>
+</div>
+<div class="modal-footer">
+  <button (click)="activeModal.dismiss()">Anuluj</button>
+  <button (click)="activeModal.close()">Potwierdź</button>
+</div>

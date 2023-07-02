@@ -3,39 +3,38 @@
     <table class="tabelaUslug">
       <tr>
         <th colspan="3">Dodatki:</th>
-
       </tr>
       <tr>
-        <td>
-          Pracownicy
-        </td>
+        <td>Pracownicy</td>
         <td>
           <button (click)="DodajPracownika()">Dodaj</button>
-          {{dane.iloscPracownikow}}
+          {{ dane.iloscPracownikow }}
           <button (click)="OdejmijPracownika()">Usuń</button>
         </td>
       </tr>
       <tr>
-        <td style="font-weight: bolder">Usługa SMS
-        </td>
-        <td style="color: #0e7908;font-weight: bolder">
-          <ui-switch class="przelacznikPublicznePrywatne" checkedLabel="Włączone"
-                     [(ngModel)]="dane.uslugaSMS"
-                     uncheckedLabel="Wyłączone" (change)="zmianaUslugSms($event)">
+        <td style="font-weight: bolder">Usługa SMS</td>
+        <td style="color: #0e7908; font-weight: bolder">
+          <ui-switch
+            class="przelacznikPublicznePrywatne"
+            checkedLabel="Włączone"
+            [(ngModel)]="dane.uslugaSMS"
+            uncheckedLabel="Wyłączone"
+            (change)="zmianaUslugSms($event)"
+          >
           </ui-switch>
           <button (click)="otworzSMS()">Zaawansowane</button>
         </td>
       </tr>
       <tr>
         <td>Darmowe:</td>
-        <td>wykorzytanow 34 z 100</td>
+        <td>
+          wykorzytanow {{ dane.wykorzystaneZDarmowych }} z {{ dane.darmoweSMS }}
+        </td>
       </tr>
       <tr>
-        <td style="font-weight: bolder">Usługa email
-        </td>
-        <td style="color: #0e7908;font-weight: bolder">
-          Włączona
-        </td>
+        <td style="font-weight: bolder">Usługa email</td>
+        <td style="color: #0e7908; font-weight: bolder">Włączona</td>
       </tr>
       <tr>
         <td>Darmowe:</td>
@@ -44,16 +43,7 @@
     </table>
   </div>
   <div class="czesc">
-    <button class="przyciskPlatnosci" (click)="nowaPlatnosc()">
-      Wpłać pieniądze na konto
-    </button>
-    <button class="przyciskPlatnosci" (click)="aktywacjaKonta()" *ngIf="dane.status == -1 || dane.status == 0">Aktywuj
-      konto
-    </button>
-    <button class="przyciskPlatnosci" (click)="wstrzymajKonto()" *ngIf="dane.status == 1">
-      Wstrzymaj
-    </button>
-
+    <app-wykres-stanu-konta></app-wykres-stanu-konta>
   </div>
   <div class="czesc">
     <table>
@@ -63,17 +53,18 @@
         </td>
         <td>
           <span class="status">
-            <span *ngIf=" dane.status == -1" style="color: #00b0ff">Testowe</span>
-       <span *ngIf=" dane.status == 1" style="color: green">Aktywne</span>
-            <span *ngIf=" dane.status == 0" style="color: red">Nieaktywne</span>
+            <span *ngIf="dane.status == -1" style="color: #00b0ff"
+              >Testowe</span
+            >
+            <span *ngIf="dane.status == 1" style="color: green">Aktywne</span>
+            <span *ngIf="dane.status == 0" style="color: red">Nieaktywne</span>
           </span>
         </td>
       </tr>
 
-
       <tr>
         <td class="statusTytul">Konto:</td>
-        <td class="status">{{dane.konto / 100 }} zł</td>
+        <td class="status">{{ dane.konto / 100 }} zł</td>
       </tr>
       <tr>
         <td class="statusTytul">Pakiet:</td>
@@ -82,11 +73,29 @@
       <tr>
         <td colspan="2">
           <span class="opis">
-            <b>System aktywny do:</b> {{ dane.aktywneDo | date : "dd.MM.yyyy   HH:MM"}}
-            <br/>
+            <b>System aktywny do:</b>
+            {{ dane.aktywneDo | date : "dd.MM.yyyy   HH:MM" }}
+            <br />
           </span>
         </td>
       </tr>
     </table>
+    <button class="przyciskPlatnosci" (click)="nowaPlatnosc()">
+      Wpłać pieniądze na konto
+    </button>
+    <button
+      class="przyciskPlatnosci"
+      (click)="aktywacjaKonta()"
+      *ngIf="dane.status == -1 || dane.status == 0"
+    >
+      Aktywuj konto
+    </button>
+    <button
+      class="przyciskPlatnosci"
+      (click)="wstrzymajKonto()"
+      *ngIf="dane.status == 1"
+    >
+      Wstrzymaj
+    </button>
   </div>
 </div>

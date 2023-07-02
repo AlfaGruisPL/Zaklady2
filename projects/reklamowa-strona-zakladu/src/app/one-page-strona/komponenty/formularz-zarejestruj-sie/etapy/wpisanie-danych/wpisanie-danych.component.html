@@ -1,4 +1,73 @@
-<p>wpisanie-danych works!</p>
-<div class="divNaPrzycisk">
-  <button (click)="przejdzDalej()">Dalej</button>
+<div class="naglowek">
+  <span> Wpisz swoje podstawowe dane</span>
 </div>
+<form>
+  <div class="wpisanieDanych">
+    <table>
+      <tr>
+        <td>
+          <input
+            [ngClass]="{
+              czerwoneInputy: daneKlientaClasa.imiePuste
+            }"
+            class="inputyFormularz"
+            [(ngModel)]="daneKlientaClasa.imie"
+            [ngModelOptions]="{ standalone: true }"
+            placeholder="Imię"
+          />
+        </td>
+        <td>
+          <input
+            [ngClass]="{
+              czerwoneInputy: daneKlientaClasa.nazwiskoPuste
+            }"
+            class="inputyFormularz"
+            [(ngModel)]="daneKlientaClasa.nazwisko"
+            [ngModelOptions]="{ standalone: true }"
+            placeholder="Nazwisko"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <select
+            class="prefiks"
+            [(ngModel)]="daneKlientaClasa.prefiksTelefonu"
+            [ngModelOptions]="{ standalone: true }"
+          >
+            <option>+48</option>
+            <option>+380</option>
+          </select>
+
+          <input
+            [ngClass]="{
+              czerwoneInputy: daneKlientaClasa.numerTelefonuPusty
+            }"
+            style="width: 205px; margin-left: 5px"
+            class="inputyFormularz"
+            [(ngModel)]="daneKlientaClasa.numerTelefonu"
+            [ngModelOptions]="{ standalone: true }"
+            placeholder="Numer telefonu"
+          />
+        </td>
+        <td>
+          <input
+            [ngClass]="{
+              czerwoneInputy: daneKlientaClasa.adresEmailPusty
+            }"
+            class="inputyFormularz"
+            [(ngModel)]="daneKlientaClasa.email"
+            [ngModelOptions]="{ standalone: true }"
+            placeholder="Email"
+          />
+        </td>
+      </tr>
+      <tr *ngIf="!daneKlientaClasa.czyWszystkoUzupelnione">
+        <td>Wprowadź wszystkie dane!</td>
+      </tr>
+    </table>
+  </div>
+  <div class="divNaPrzycisk">
+    <button class="buttonDalej" (click)="przejdzDalej()">Dalej</button>
+  </div>
+</form>
