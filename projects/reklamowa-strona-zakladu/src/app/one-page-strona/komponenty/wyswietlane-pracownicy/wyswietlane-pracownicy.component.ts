@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {ListonoszService} from "../../../serwisy/listonosz.service";
-import {Drzwi} from "../../../enum/drzwi";
-import {Pracownik} from "../../../klasy/pracownik";
+import { Component, OnInit } from '@angular/core';
+import { ListonoszService } from '../../../serwisy/listonosz.service';
+import { Drzwi } from '../../../enum/drzwi';
+import { Pracownik } from '../../../klasy/pracownik';
 
 // @ts-ignore
 @Component({
@@ -10,14 +10,11 @@ import {Pracownik} from "../../../klasy/pracownik";
   styleUrls: ['./wyswietlane-pracownicy.component.scss'],
 })
 export class WyswietlanePracownicyComponent implements OnInit {
-
-
   public listaPracownikow: Array<Pracownik> = [];
 
-  constructor(public listonosz: ListonoszService) {
-  }
+  constructor(public listonosz: ListonoszService) {}
 
-  private slider: any
+  private slider: any;
 
   generowanieKaruzeli() {
     // @ts-ignore
@@ -28,34 +25,28 @@ export class WyswietlanePracownicyComponent implements OnInit {
       dots: '.dots',
       arrows: {
         prev: '.glider-prev',
-        next: '.glider-next'
-      }
+        next: '.glider-next',
+      },
     });
   }
 
   ngOnInit() {
-
-
     this.pobierzPracownikow();
-
   }
 
   public pobierzPracownikow() {
-    this.listonosz.pobierz(Drzwi.listaPracownikow).then((pobrane: Array<Pracownik>) => {
-      pobrane.forEach(pracownik => {
-        const pracownikObj = new Pracownik();
-        Object.assign(pracownikObj, pracownik);
-        this.listaPracownikow.push(pracownikObj);
-
+    this.listonosz
+      .pobierz(Drzwi.listaPracownikow)
+      .then((pobrane: Array<Pracownik>) => {
+        pobrane.forEach((pracownik) => {
+          const pracownikObj = new Pracownik();
+          Object.assign(pracownikObj, pracownik);
+          this.listaPracownikow.push(pracownikObj);
+        });
+        setTimeout(() => {
+          // this.generowanieKaruzeli()
+        });
       })
-      setTimeout(() => {
-        this.generowanieKaruzeli()
-
-      })
-    }).catch(niepobrane => {
-
-    })
+      .catch((niepobrane) => {});
   }
-
-
 }

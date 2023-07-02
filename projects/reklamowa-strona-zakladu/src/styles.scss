@@ -1,7 +1,8 @@
+@import "~@ng-select/ng-select/themes/material.theme.css";
+
 body {
   margin: 0;
 }
-
 
 .glider.draggable {
   overflow: hidden;
@@ -14,4 +15,28 @@ html {
 .pizenka {
   width: 50px;
   height: 50px;
+}
+
+.ng-select.selectPracownicy {
+  width: 200px;
+}
+
+.ng-select.selectPracownicy .ng-select-container {
+  background: #fff;
+  height: 20px;
+  box-shadow: 0px 0px 1px 1px #e8e8e8;
+
+  .ng-placeholder {
+    color: red;
+    font-size: 20px;
+    padding-left: 5px;
+  }
+}
+
+.ng-select.selectPracownicy .ng-select-opened {
+}
+
+.ng-select-opened .ng-select-container .ng-value-container .ng-placeholder {
+  transform: translateY(-0.68125em) scale(0.75) perspective(100px)
+    translateZ(0.001px) !important;
 }

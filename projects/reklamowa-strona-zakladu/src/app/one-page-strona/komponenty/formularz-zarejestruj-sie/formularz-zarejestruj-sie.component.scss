@@ -31,3 +31,109 @@
   .formularz {
   }
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@400&display=swap");
+.kroki {
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.12);
+
+  .kolko {
+    width: 28px;
+    height: 28px;
+    border: 2px solid black;
+    border-radius: 50%;
+    margin-right: 140px;
+    position: relative;
+    left: 75px;
+    box-shadow: 1px 2px 1px 1px #303030;
+    text-align: center;
+    z-index: 10;
+    background: white;
+
+    p {
+      margin: 0;
+      padding: 0;
+      position: relative;
+      top: 2px;
+      font-size: 20px;
+      font-family: "Lexend Peta", sans-serif;
+    }
+
+    &:not(:last-of-type):after {
+      z-index: 9;
+      position: relative;
+      top: -14px;
+      left: 28px;
+      width: 142px;
+      height: 3px;
+      display: block;
+      content: "";
+      background: #333333;
+    }
+  }
+
+  .kolkoJuzPo {
+    background: #dbd5d5;
+  }
+
+  .kolkoAktywne {
+    scale: 1.3;
+    top: -3px;
+    background: green !important;
+
+    p {
+      color: white;
+    }
+
+    &:after {
+      top: -11px !important;
+      width: 110px !important;
+      height: 2px !important;
+      left: 30px !important;
+    }
+  }
+}
+
+.divNaPrzycisk {
+  width: 100%;
+  height: min-content;
+  float: left;
+  text-align: right;
+
+  .buttonDalej {
+    width: 110px;
+    height: 30px;
+    background: #2c7b00;
+    float: right;
+    color: white;
+    font-size: 16px;
+    text-shadow: 1px 1px 1px black;
+    box-shadow: 0px 0px 1px 1px #eaeaea;
+    border-radius: 7px;
+    font-weight: bold;
+
+    &:hover {
+      cursor: pointer;
+      background: #318801;
+    }
+  }
+}
+
+.naglowek {
+  width: 100%;
+  height: min-content;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+
+  span {
+    font-family: math;
+    font-size: 22px;
+    color: #0c57a2;
+    text-shadow: 0px 0px 1px black;
+  }
+}

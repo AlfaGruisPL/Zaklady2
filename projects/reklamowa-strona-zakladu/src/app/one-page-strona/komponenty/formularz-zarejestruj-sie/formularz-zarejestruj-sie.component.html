@@ -2,7 +2,16 @@
   <div class="naglowek">
     <span>Rejestracja na wizyte</span>
   </div>
-  <div class="kroki">Wybór pracownika -> wybór usługi -> wpisanieDanych</div>
+  <div class="kroki">
+    <div
+      class="kolko kolko1"
+      [ngClass]="{ kolkoJuzPo: k < krok, kolkoAktywne: k == krok }"
+      *ngFor="let k of [1, 2, 3, 4, 5]"
+    >
+      <p>{{ k }}</p>
+    </div>
+    <!-- Wybór pracownika -> wybór usługi -> wpisanieDanych-->
+  </div>
   <div class="formularz">
     <ng-container [ngSwitch]="krok">
       <app-wybor-pracownika
