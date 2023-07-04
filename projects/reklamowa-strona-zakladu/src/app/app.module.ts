@@ -34,9 +34,11 @@ import { ONasUslugiComponent } from './one-page-strona/komponenty/informacja-ona
 import { InformacjeOJednymPracownikuKontaktComponent } from './one-page-strona/komponenty/informacja-ojednym-pracowniku/komponenty/informacje-ojednym-pracowniku-kontakt/informacje-ojednym-pracowniku-kontakt.component';
 import { InformacjeOJednymPracownikuOpisComponent } from './one-page-strona/komponenty/informacja-ojednym-pracowniku/komponenty/informacje-ojednym-pracowniku-opis/informacje-ojednym-pracowniku-opis.component';
 import { InformacjeOJednymPracownikuZdjecieImieNazwiskoComponent } from './one-page-strona/komponenty/informacja-ojednym-pracowniku/komponenty/informacje-ojednym-pracowniku-zdjecie-imie-nazwisko/informacje-ojednym-pracowniku-zdjecie-imie-nazwisko.component';
-import { NgSelectModule } from '@ng-select/ng-select';
+
 import { WeryfikacjaComponent } from './one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/weryfikacja/weryfikacja.component';
 import { ZegarComponent } from './one-page-strona/komponenty/zarejestruj-sie/zegar/zegar.component';
+import {NgSelectModule} from "@ng-select/ng-select";
+
 
 @NgModule({
   declarations: [

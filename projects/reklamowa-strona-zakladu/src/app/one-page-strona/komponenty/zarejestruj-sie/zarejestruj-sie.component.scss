@@ -17,51 +17,11 @@
     position: relative;
 
     img {
-      max-width: 100%;
-      height: calc(100% - 0px);
+     width: 300px;
+      height: 300px;
     }
 
-    .sekundy {
-      transition: transform 0.2s cubic-bezier(0.4, 2.08, 0.55, 0.44);
 
-      .sekundy2 {
-        height: 60px;
-        width: 4px;
-        box-sizing: border-box;
-        position: absolute;
-        transform-origin: bottom;
-        animation: secondsMotion 60s infinite linear;
-        right: 77px;
-        bottom: 93px;
-        background: #e5e5e5;
-      }
-    }
-
-    .minuty {
-      height: 50px;
-      width: 6px;
-      box-sizing: border-box;
-      position: absolute;
-      transform-origin: bottom;
-      animation: secondsMotion 90s infinite linear;
-      right: 77px;
-      bottom: 93px;
-      background: #e5e5e5;
-      transform: rotateZ(90deg);
-    }
-
-    .godziny {
-      height: 40px;
-      width: 7px;
-      box-sizing: border-box;
-      position: absolute;
-      transform-origin: bottom;
-      animation: secondsMotion 150s infinite linear;
-      right: 77px;
-      bottom: 93px;
-      background: #e5e5e5;
-      transform: rotateZ(180deg);
-    }
   }
 
   .tytulIButton {
@@ -75,11 +35,6 @@
   }
 }
 
-@keyframes secondsMotion {
-  100% {
-    transform: rotateZ(360deg);
-  }
-}
 
 .spanZapiszSie {
   font-size: 40px;

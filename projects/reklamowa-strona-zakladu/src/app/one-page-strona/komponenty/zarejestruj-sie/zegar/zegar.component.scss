@@ -1,21 +1,68 @@
+$kolor: #e8e8e8;
 .clock {
-  border-radius: 50%;
-  background-size: 88%;
-  height: 20em;
-  padding-bottom: 31%;
+
   position: relative;
-  width: 20em;
+  width: 300px;
+  height: 300px;
+  z-index: 100;
+  right: -77px;
+  bottom: -60px;
 }
 
-.clock.simple:after {
-  background: #000;
+.clock:after {
+  background: rgb(44, 44, 44);
   border-radius: 50%;
   content: "";
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 5%;
-  height: 5%;
-  z-index: 10;
+  left: calc(50% - 5px);
+  top: calc(50% - 5px);
+
+  width: 10px;
+  height: 10px;
+  z-index: 101;
+}
+.hours,.minutes,.seconds{
+  box-shadow: 0 0 1px 1px #bdbdbd;
+}
+.minutes-container, .hours-container, .seconds-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  .hours {
+    background: $kolor;
+    height: 20%;
+    left: 48.75%;
+    position: absolute;
+    top: 30%;
+    transform-origin: 50% 100%;
+    width: 2.5%;
+  }
+  .minutes {
+    background: $kolor;
+    height: 42px;
+    position: absolute;
+    top: 109px;
+    transform-origin: 50% 100%;
+    width: 4px;
+    left: 149px;
+  }
+  .seconds {
+    background: $kolor;
+    height: 80px;
+    right: -80px;
+    position: absolute;
+    top: 29.1%;
+    left: 50.7%;
+    transform-origin: 50% 80%;
+    width: 3px;
+    z-index: 8;
+  }
+}
+.minutes-container {
+  transition: transform 0.3s cubic-bezier(.4,2.08,.55,.44);
+}
+.seconds-container {
+  transition: transform 0.2s cubic-bezier(.4,2.08,.55,.44);
 }
