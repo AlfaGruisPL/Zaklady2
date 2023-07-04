@@ -28,27 +28,29 @@
 
 </div> -->
 
-
 <div class="listaPracownikow" id="pracownicy">
   <div class="naglowek">
     <h3 class="nasiPracownicy">Nasi pracownicy</h3>
   </div>
   <div class="wierszPracownikow">
-    <div class="pracownik" *ngFor="let pracownik of listaPracownikow">
+    <div
+      class="pracownik"
+      *ngFor="let pracownik of listaPracownikow"
+      (click)="
+        czyPracownikKlikniety = true; daneKliknietegoPracownika = pracownik
+      "
+    >
       <div class="imieNazwisko">
-      <span>
-        {{pracownik.imie}} {{pracownik.nazwisko}}
-      </span>
+        <span> {{ pracownik.imie }} {{ pracownik.nazwisko }} </span>
       </div>
       <div class="zdjecie">
         <img
-          src="https://jakiprezent.pl/blog/wp-content/uploads/foto/30-urodziny/prezenty-na-30-dla-niego-b.jpg">
+          src="https://jakiprezent.pl/blog/wp-content/uploads/foto/30-urodziny/prezenty-na-30-dla-niego-b.jpg"
+        />
       </div>
       <div class="popatrz">
         <button class="zobacz">Zobacz</button>
       </div>
-
-
     </div>
   </div>
 </div>

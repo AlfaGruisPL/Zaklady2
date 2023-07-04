@@ -31,12 +31,12 @@ import { ONasAdresComponent } from './one-page-strona/komponenty/informacja-onas
 import { ONasGodzinyOtwarciaComponent } from './one-page-strona/komponenty/informacja-onas/komponenty/onas-godziny-otwarcia/onas-godziny-otwarcia.component';
 import { ONasKontaktComponent } from './one-page-strona/komponenty/informacja-onas/komponenty/onas-kontakt/onas-kontakt.component';
 import { ONasUslugiComponent } from './one-page-strona/komponenty/informacja-onas/komponenty/onas-uslugi/onas-uslugi.component';
-import { InformacjeOJednymPracownikuAdresComponent } from './one-page-strona/komponenty/informacja-ojednym-pracowniku/komponenty/informacje-ojednym-pracowniku-adres/informacje-ojednym-pracowniku-adres.component';
 import { InformacjeOJednymPracownikuKontaktComponent } from './one-page-strona/komponenty/informacja-ojednym-pracowniku/komponenty/informacje-ojednym-pracowniku-kontakt/informacje-ojednym-pracowniku-kontakt.component';
 import { InformacjeOJednymPracownikuOpisComponent } from './one-page-strona/komponenty/informacja-ojednym-pracowniku/komponenty/informacje-ojednym-pracowniku-opis/informacje-ojednym-pracowniku-opis.component';
 import { InformacjeOJednymPracownikuZdjecieImieNazwiskoComponent } from './one-page-strona/komponenty/informacja-ojednym-pracowniku/komponenty/informacje-ojednym-pracowniku-zdjecie-imie-nazwisko/informacje-ojednym-pracowniku-zdjecie-imie-nazwisko.component';
-import { InformacjeOJednymPracownikuPytanieComponent } from './one-page-strona/komponenty/informacja-ojednym-pracowniku/komponenty/informacje-ojednym-pracowniku-pytanie/informacje-ojednym-pracowniku-pytanie.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { WeryfikacjaComponent } from './one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/weryfikacja/weryfikacja.component';
+import { ZegarComponent } from './one-page-strona/komponenty/zarejestruj-sie/zegar/zegar.component';
 
 @NgModule({
   declarations: [
@@ -64,11 +64,11 @@ import { NgSelectModule } from '@ng-select/ng-select';
     ONasGodzinyOtwarciaComponent,
     ONasKontaktComponent,
     ONasUslugiComponent,
-    InformacjeOJednymPracownikuAdresComponent,
     InformacjeOJednymPracownikuKontaktComponent,
     InformacjeOJednymPracownikuOpisComponent,
     InformacjeOJednymPracownikuZdjecieImieNazwiskoComponent,
-    InformacjeOJednymPracownikuPytanieComponent,
+    WeryfikacjaComponent,
+    ZegarComponent,
   ],
   imports: [
     LeafletModule,

@@ -4,11 +4,27 @@ export class DaneKlienta {
   public prefiksTelefonu: string = '+48';
   public numerTelefonu: string = '';
   public email: string = '';
+  wybranyPracownik: number = 0;
+  public kodWeryfikacja: string = '';
+  public identyfikator: string = '';
+  public kodWeryfikacjaPusty: boolean = false;
   public czyWszystkoUzupelnione: boolean = true;
   public imiePuste: boolean = false;
   public nazwiskoPuste: boolean = false;
   public numerTelefonuPusty: boolean = false;
   public adresEmailPusty: boolean = false;
+  public daneNieWyslane: boolean = false;
+  public niepoprawnyKod: boolean = false;
+
+  public czyKodWerifikacjaWpisany() {
+    this.kodWeryfikacjaPusty = false;
+    if (this.kodWeryfikacja.length <= 0) {
+      this.kodWeryfikacjaPusty = true;
+    } else {
+      this.kodWeryfikacjaPusty = false;
+    }
+    return this.kodWeryfikacjaPusty;
+  }
 
   public czyWszystkoUzupelnioneFunkcja() {
     this.czyWszystkoUzupelnione = true;
@@ -40,15 +56,14 @@ export class DaneKlienta {
 export class DaneKlientaDTO {
   public imie: string = '';
   public nazwisko: string = '';
-  public prefiksTelefonu: string = '';
   public numerTelefonu: string = '';
   public email: string = '';
 
   constructor(daneKlienta: DaneKlienta) {
     this.imie = daneKlienta.imie;
     this.nazwisko = daneKlienta.nazwisko;
-    this.prefiksTelefonu = daneKlienta.prefiksTelefonu;
-    this.numerTelefonu = daneKlienta.numerTelefonu;
+    this.numerTelefonu =
+      daneKlienta.prefiksTelefonu + '-' + daneKlienta.numerTelefonu;
     this.email = daneKlienta.email;
   }
 }

@@ -8,9 +8,12 @@
 ></app-formularz-zarejestruj-sie>
 <div class="parallax3"></div>
 <app-informacja-onas></app-informacja-onas>
-<app-wyswietlane-pracownicy></app-wyswietlane-pracownicy>
+<app-wyswietlane-pracownicy
+  #komponentWyswietlanrPracownicy
+></app-wyswietlane-pracownicy>
 <app-informacja-ojednym-pracowniku
-  *ngIf="false"
+  *ngIf="komponentWyswietlanrPracownicy.czyPracownikKlikniety"
+  [daneOPracowniku]="komponentWyswietlanrPracownicy.daneKliknietegoPracownika"
 ></app-informacja-ojednym-pracowniku>
 <app-formularz-zarejestruj-sie *ngIf="false"></app-formularz-zarejestruj-sie>
 <div class="parallax2"></div>

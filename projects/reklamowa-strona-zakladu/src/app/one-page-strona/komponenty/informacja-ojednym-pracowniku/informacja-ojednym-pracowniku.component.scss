@@ -1,21 +1,19 @@
 .container {
+  padding-top: 20px;
+  padding-bottom: 20px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
   grid-auto-columns: 1fr;
   gap: 0px 0px;
   grid-auto-flow: row;
   grid-template-areas:
-    "imieNazwiskoIzdjecie pytanie pytanie"
-    "opis kontakt adresZapraszam";
+    "imieNazwiskoIzdjecie kontakt"
+    " opis adresZapraszam";
 }
 
 .imieNazwiskoIzdjecie {
   grid-area: imieNazwiskoIzdjecie;
-}
-
-.pytanie {
-  grid-area: pytanie;
 }
 
 .opis {
@@ -28,16 +26,4 @@
 
 .adresZapraszam {
   grid-area: adresZapraszam;
-}
-
-
-.zdjzaproszenie {
-  grid-area: zdjzaproszenie;
-  display: flex;
-  align-items: center;
-
-  span {
-    width: calc(100% - 150px);
-    text-align: center;
-  }
 }

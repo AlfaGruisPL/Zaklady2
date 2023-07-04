@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NawigacjaService } from '../../../serwisy/nawigacja.service';
+import { ZarejestrujSieService } from '../formularz-zarejestruj-sie/zarejestrujSie.service';
 
 @Component({
   selector: 'app-zarejestruj-sie',
@@ -7,12 +8,13 @@ import { NawigacjaService } from '../../../serwisy/nawigacja.service';
   styleUrls: ['./zarejestruj-sie.component.scss'],
 })
 export class ZarejestrujSieComponent {
-  public pokazFormularz: boolean = true; //ma być false
-
-  constructor(public nawigacja: NawigacjaService) {}
+  constructor(
+    public nawigacja: NawigacjaService,
+    private rejestracja: ZarejestrujSieService
+  ) {}
 
   public pokazFormularzRejestracji() {
     this.nawigacja.przeniesDoPanelu(this.nawigacja.nav.rejestracjaFormularz);
-    this.pokazFormularz = true;
+    this.rejestracja.wyswietlanieFormualrza = true;
   }
 }

@@ -16,6 +16,9 @@ export class WyswietlanePracownicyComponent implements OnInit {
 
   private slider: any;
 
+  public czyPracownikKlikniety = false;
+  public daneKliknietegoPracownika: Pracownik = new Pracownik();
+
   generowanieKaruzeli() {
     // @ts-ignore
     this.slider = new Glider(document.querySelector('.glider'), {

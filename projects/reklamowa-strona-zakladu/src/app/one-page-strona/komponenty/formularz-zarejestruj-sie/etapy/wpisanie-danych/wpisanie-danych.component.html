@@ -8,10 +8,10 @@
         <td>
           <input
             [ngClass]="{
-              czerwoneInputy: daneKlientaClasa.imiePuste
+              czerwoneInputy: ZarejestrujSieService.DaneKlientaClass.imiePuste
             }"
             class="inputyFormularz"
-            [(ngModel)]="daneKlientaClasa.imie"
+            [(ngModel)]="ZarejestrujSieService.DaneKlientaClass.imie"
             [ngModelOptions]="{ standalone: true }"
             placeholder="Imię"
           />
@@ -19,10 +19,11 @@
         <td>
           <input
             [ngClass]="{
-              czerwoneInputy: daneKlientaClasa.nazwiskoPuste
+              czerwoneInputy:
+                ZarejestrujSieService.DaneKlientaClass.nazwiskoPuste
             }"
             class="inputyFormularz"
-            [(ngModel)]="daneKlientaClasa.nazwisko"
+            [(ngModel)]="ZarejestrujSieService.DaneKlientaClass.nazwisko"
             [ngModelOptions]="{ standalone: true }"
             placeholder="Nazwisko"
           />
@@ -32,7 +33,7 @@
         <td>
           <select
             class="prefiks"
-            [(ngModel)]="daneKlientaClasa.prefiksTelefonu"
+            [(ngModel)]="ZarejestrujSieService.DaneKlientaClass.prefiksTelefonu"
             [ngModelOptions]="{ standalone: true }"
           >
             <option>+48</option>
@@ -41,11 +42,12 @@
 
           <input
             [ngClass]="{
-              czerwoneInputy: daneKlientaClasa.numerTelefonuPusty
+              czerwoneInputy:
+                ZarejestrujSieService.DaneKlientaClass.numerTelefonuPusty
             }"
             style="width: 205px; margin-left: 5px"
             class="inputyFormularz"
-            [(ngModel)]="daneKlientaClasa.numerTelefonu"
+            [(ngModel)]="ZarejestrujSieService.DaneKlientaClass.numerTelefonu"
             [ngModelOptions]="{ standalone: true }"
             placeholder="Numer telefonu"
           />
@@ -53,17 +55,23 @@
         <td>
           <input
             [ngClass]="{
-              czerwoneInputy: daneKlientaClasa.adresEmailPusty
+              czerwoneInputy:
+                ZarejestrujSieService.DaneKlientaClass.adresEmailPusty
             }"
             class="inputyFormularz"
-            [(ngModel)]="daneKlientaClasa.email"
+            [(ngModel)]="ZarejestrujSieService.DaneKlientaClass.email"
             [ngModelOptions]="{ standalone: true }"
             placeholder="Email"
           />
         </td>
       </tr>
-      <tr *ngIf="!daneKlientaClasa.czyWszystkoUzupelnione">
+      <tr
+        *ngIf="!ZarejestrujSieService.DaneKlientaClass.czyWszystkoUzupelnione"
+      >
         <td>Wprowadź wszystkie dane!</td>
+      </tr>
+      <tr *ngIf="ZarejestrujSieService.DaneKlientaClass.daneNieWyslane">
+        <td>Dane nie zostały wysłane! Skontaktuj się z administratorem</td>
       </tr>
     </table>
   </div>

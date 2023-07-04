@@ -30,8 +30,10 @@
         *ngSwitchCase="4"
         (wyslijKrok)="ustawKrok($event)"
       ></app-wpisanie-danych>
+      <app-weryfikacja *ngSwitchCase="5" (wyslijKrok)="ustawKrok($event)">
+      </app-weryfikacja>
       <app-podsumowanie
-        *ngSwitchCase="5"
+        *ngSwitchCase="6"
         (wyslijKrok)="ustawKrok($event)"
       ></app-podsumowanie>
     </ng-container>

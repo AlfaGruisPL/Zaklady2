@@ -29,10 +29,14 @@
     align-items: center;
     flex-direction: column;
     float: left;
-
   }
 }
 
+@keyframes secondsMotion {
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
 
 .spanZapiszSie {
   font-size: 40px;
@@ -63,9 +67,5 @@
     background: #5dcc5d;
     color: white;
     text-shadow: 1px 2px 4px black;
-
   }
 }
-
-
-

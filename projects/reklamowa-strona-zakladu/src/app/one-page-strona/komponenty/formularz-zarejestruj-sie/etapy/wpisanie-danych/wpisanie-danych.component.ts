@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { DaneKlienta } from '../klasy/dane-klienta';
+import { ZarejestrujSieService } from '../../zarejestrujSie.service';
 
 @Component({
   selector: 'app-wpisanie-danych',
@@ -11,11 +11,12 @@ import { DaneKlienta } from '../klasy/dane-klienta';
 })
 export class WpisanieDanychComponent {
   @Output() wyslijKrok = new EventEmitter<number>();
-  public daneKlientaClasa = new DaneKlienta();
+
+  constructor(public ZarejestrujSieService: ZarejestrujSieService) {}
 
   public przejdzDalej() {
-    this.daneKlientaClasa.czyWszystkoUzupelnioneFunkcja();
-    if (this.daneKlientaClasa.czyWszystkoUzupelnione) {
+    this.ZarejestrujSieService.DaneKlientaClass.czyWszystkoUzupelnioneFunkcja();
+    if (this.ZarejestrujSieService.DaneKlientaClass?.czyWszystkoUzupelnione) {
       this.wyslijKrok.emit(5);
     }
   }
