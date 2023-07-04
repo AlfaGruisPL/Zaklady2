@@ -8,7 +8,9 @@ import {Component, OnInit} from '@angular/core';
 export class ZegarComponent implements OnInit{
   ngOnInit() {
     this.initLocalClocks()
-
+setInterval(()=>{
+  this.initLocalClocks()
+},600000 ) //10 minut
     this.setUpMinuteHands()
     this.moveSecondHands()
   }
