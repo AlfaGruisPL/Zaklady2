@@ -5,10 +5,13 @@
   <div class="kroki">
     <div
       class="kolko kolko1"
-      [ngClass]="{ kolkoJuzPo: k < krok, kolkoAktywne: k == krok }"
-      *ngFor="let k of [1, 2, 3, 4, 5]"
+      [ngClass]="{
+        kolkoJuzPo: index + 1 < krok,
+        kolkoAktywne: index + 1 == krok
+      }"
+      *ngFor="let k of [].constructor(6); let index = index"
     >
-      <p>{{ k }}</p>
+      <p>{{ index + 1 }}</p>
     </div>
     <!-- Wybór pracownika -> wybór usługi -> wpisanieDanych-->
   </div>

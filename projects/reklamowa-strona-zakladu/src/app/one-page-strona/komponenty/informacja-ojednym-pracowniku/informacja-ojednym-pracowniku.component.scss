@@ -7,23 +7,29 @@
   grid-auto-columns: 1fr;
   gap: 0px 0px;
   grid-auto-flow: row;
+  float: left;
   grid-template-areas:
     "imieNazwiskoIzdjecie kontakt"
     " opis adresZapraszam";
 }
 
+$padding: 30px;
 .imieNazwiskoIzdjecie {
   grid-area: imieNazwiskoIzdjecie;
+  padding-right: $padding;
 }
 
 .opis {
   grid-area: opis;
+  padding-right: $padding;
 }
 
 .kontakt {
   grid-area: kontakt;
+  padding-left: $padding;
 }
 
 .adresZapraszam {
   grid-area: adresZapraszam;
+  padding-left: $padding;
 }

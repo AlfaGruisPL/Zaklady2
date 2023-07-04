@@ -4,9 +4,10 @@
 <app-zarejestruj-sie #komponentZarejestrujSie></app-zarejestruj-sie>
 <div class="parallax" id="rejestracjaFormularz"></div>
 <app-formularz-zarejestruj-sie
-  *ngIf="komponentZarejestrujSie.pokazFormularz == true"
+  #komponentZarejestrujSieFormularz
+  *ngIf="zarejestrujSie.wyswietlanieFormualrza"
 ></app-formularz-zarejestruj-sie>
-<div class="parallax3"></div>
+<div class="parallax3" *ngIf="zarejestrujSie.wyswietlanieFormualrza"></div>
 <app-informacja-onas></app-informacja-onas>
 <app-wyswietlane-pracownicy
   #komponentWyswietlanrPracownicy
@@ -15,9 +16,13 @@
   *ngIf="komponentWyswietlanrPracownicy.czyPracownikKlikniety"
   [daneOPracowniku]="komponentWyswietlanrPracownicy.daneKliknietegoPracownika"
 ></app-informacja-ojednym-pracowniku>
-<app-formularz-zarejestruj-sie *ngIf="false"></app-formularz-zarejestruj-sie>
-<div class="parallax2"></div>
-<app-napisz-nam></app-napisz-nam>
+<div
+  class="parallax2"
+  *ngIf="komponentWyswietlanrPracownicy.czyPracownikKlikniety"
+></div>
+<app-napisz-nam
+  [listaPracownikow]="komponentWyswietlanrPracownicy.listaPracownikow"
+></app-napisz-nam>
 
 <app-stopka></app-stopka>
 
