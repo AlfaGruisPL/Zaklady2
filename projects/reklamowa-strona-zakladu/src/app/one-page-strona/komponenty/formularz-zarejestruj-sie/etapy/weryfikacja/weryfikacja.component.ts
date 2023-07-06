@@ -17,10 +17,9 @@ export class WeryfikacjaComponent {
 
   public przejdzDalej() {
     this.kodNieWpisany = false;
+    this.ZarejestrujSieService.DaneKlientaClass.niepoprawnyKod = false;
     this.ZarejestrujSieService.DaneKlientaClass.czyKodWerifikacjaWpisany();
-    if (
-      this.ZarejestrujSieService.DaneKlientaClass.kodWeryfikacjaPusty == false
-    ) {
+    if (!this.ZarejestrujSieService.DaneKlientaClass.kodWeryfikacjaPusty) {
       this.wyslijKrok.emit(6);
     } else {
       this.kodNieWpisany = true;

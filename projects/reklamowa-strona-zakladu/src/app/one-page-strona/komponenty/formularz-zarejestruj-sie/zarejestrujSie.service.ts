@@ -6,5 +6,5 @@ import { DaneKlienta } from './etapy/klasy/dane-klienta';
 })
 export class ZarejestrujSieService {
   DaneKlientaClass: DaneKlienta = new DaneKlienta();
-  wyswietlanieFormualrza = false;
+  wyswietlanieFormualrza = true;
 }

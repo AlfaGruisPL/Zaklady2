@@ -66,13 +66,26 @@
         </td>
       </tr>
       <tr
-        *ngIf="!ZarejestrujSieService.DaneKlientaClass.czyWszystkoUzupelnione"
+        *ngIf="
+          !ZarejestrujSieService.DaneKlientaClass.czyWszystkoUzupelnione;
+          else puste
+        "
       >
         <td class="czerwone">Wprowadź wszystkie dane!</td>
       </tr>
-      <tr *ngIf="ZarejestrujSieService.DaneKlientaClass.daneNieWyslane">
+      <tr
+        *ngIf="
+          ZarejestrujSieService.DaneKlientaClass.daneNieWyslane;
+          else puste
+        "
+      >
         <td>Dane nie zostały wysłane! Skontaktuj się z administratorem</td>
       </tr>
+      <ng-template #puste>
+        <tr>
+          <td class="czerwone" style="visibility: hidden">k</td>
+        </tr>
+      </ng-template>
     </table>
   </div>
   <div class="divNaPrzycisk">

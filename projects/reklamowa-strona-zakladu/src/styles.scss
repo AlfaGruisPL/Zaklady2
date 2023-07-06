@@ -1,4 +1,4 @@
-@import "~@ng-select/ng-select/themes/material.theme.css";
+@import "~@ng-select/ng-select/themes/default.theme.css";
 
 body {
   margin: 0;
@@ -22,21 +22,44 @@ html {
 }
 
 .ng-select.selectPracownicy .ng-select-container {
-  background: #fff;
-  height: 20px;
-  box-shadow: 0px 0px 1px 1px #e8e8e8;
+  width: 280px;
+  height: 25px;
+  font-size: 18px;
+  border: 2px inset #2491f9;
+  border-radius: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
 
   .ng-placeholder {
-    color: red;
-    font-size: 20px;
+    color: silver;
+    font-size: 14px;
     padding-left: 5px;
+  }
+
+  .ng-option {
   }
 }
 
-.ng-select.selectPracownicy .ng-select-opened {
+.ng-select.selectPracownicy ng-dropdown-panel.ng-select-top {
+  width: 280px !important;
+  border: 2px inset blue;
+  border-bottom: none;
 }
 
-.ng-select-opened .ng-select-container .ng-value-container .ng-placeholder {
-  transform: translateY(-0.68125em) scale(0.75) perspective(100px)
-    translateZ(0.001px) !important;
+.ng-select.selectPracownicy ng-dropdown-panel.ng-select-bottom {
+  width: 280px !important;
+  border: 2px inset blue;
+  border-top: none;
+}
+
+.ng-select.selectPracownicy .ng-dropdown-panel-items {
+  width: 100%;
+}
+
+.ng-select.selectPracownicy div.ng-option {
+  width: 273px !important;
+
+  .ng-option-label {
+    font-size: 20px;
+  }
 }
