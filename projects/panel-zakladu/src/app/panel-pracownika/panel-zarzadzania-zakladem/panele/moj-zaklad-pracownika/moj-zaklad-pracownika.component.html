@@ -1,143 +1,267 @@
 <div class="panelZakladu">
-  <div class=naglowekZolty>
-    <span class="naglowek1Wzoltym">Uzupełnij formularz danymi o swoim zakładzie </span>
-    <span class="naglowek1Wzoltym2"> * oznacza że pole jest zalecane do uzupełnienia </span>
+  <div class="naglowekZolty">
+    <span class="naglowek1Wzoltym"
+      >Uzupełnij formularz danymi o swoim zakładzie
+    </span>
+    <span class="naglowek1Wzoltym2">
+      * oznacza że pole jest zalecane do uzupełnienia
+    </span>
 
-    <span class="naglowek1Wzoltym2">   Publiczne/prywatne - służy do określenia, jakie dane mają być wyświetlane na stronie reprezentacyjnej
-      </span>
+    <span class="naglowek1Wzoltym2">
+      Publiczne/prywatne - służy do określenia, jakie dane mają być wyświetlane
+      na stronie reprezentacyjnej
+    </span>
   </div>
   <form (ngSubmit)="zapisz()">
     <div class="container">
       <div class="tabela1">
         <table class="daneZakladuTab">
           <tr>
-            <td colspan="2" class="naglowki1form"> Dane zakładu:</td>
+            <td colspan="2" class="naglowki1form">Dane zakładu:</td>
           </tr>
           <tr>
             <td class="naglowki2form"><label for="nazwa">Nazwa*</label></td>
-            <td><input [disabled]="!zapiszButton" class="logInputZaklad zaznaczoneLogiZaklad" id="nazwa" type="text"
-                       [(ngModel)]="mojZakladKlasa.nazwa"
-                       [ngModelOptions]="{standalone: true}">
+            <td>
+              <input
+                [disabled]="!zapiszButton"
+                class="logInputZaklad zaznaczoneLogiZaklad"
+                id="nazwa"
+                type="text"
+                [(ngModel)]="mojZakladKlasa.nazwa"
+                [ngModelOptions]="{ standalone: true }"
+              />
             </td>
           </tr>
           <tr>
             <td class="naglowki2form"><label for="Nip">Nip</label></td>
-            <td><input [disabled]="!zapiszButton" class="logInputZaklad" id="Nip"
-                       [(ngModel)]="mojZakladKlasa.nip"
-                       [ngModelOptions]="{standalone: true}"
-                       type="text">
+            <td>
+              <input
+                [disabled]="!zapiszButton"
+                class="logInputZaklad"
+                id="Nip"
+                [(ngModel)]="mojZakladKlasa.nip"
+                [ngModelOptions]="{ standalone: true }"
+                type="text"
+              />
             </td>
             <td class="unchecked">
-              <ui-switch class="przelacznikPublicznePrywatne" [disabled]="!zapiszButton" checkedLabel="Publiczne"
-                         uncheckedLabel="Prywatne"
-                         [(ngModel)]="mojZakladKlasa.nipCzyWyswietlic"
-                         [ngModelOptions]="{standalone: true}"
+              <ui-switch
+                class="przelacznikPublicznePrywatne"
+                [disabled]="!zapiszButton"
+                checkedLabel="Publiczne"
+                uncheckedLabel="Prywatne"
+                [(ngModel)]="mojZakladKlasa.nipCzyWyswietlic"
+                [ngModelOptions]="{ standalone: true }"
               ></ui-switch>
-
             </td>
           </tr>
           <tr>
             <td class="naglowki2form"><label for="Regon">Regon</label></td>
-            <td><input [disabled]="!zapiszButton" class="logInputZaklad" id="Regon"
-                       [(ngModel)]="mojZakladKlasa.regon"
-                       [ngModelOptions]="{standalone: true}"
-                       type="text">
+            <td>
+              <input
+                [disabled]="!zapiszButton"
+                class="logInputZaklad"
+                id="Regon"
+                [(ngModel)]="mojZakladKlasa.regon"
+                [ngModelOptions]="{ standalone: true }"
+                type="text"
+              />
             </td>
             <td class="unchecked">
-              <ui-switch class="przelacznikPublicznePrywatne" [disabled]="!zapiszButton" checkedLabel="Publiczne"
-                         uncheckedLabel="Prywatne"
-                         [(ngModel)]="mojZakladKlasa.regonCzyWyswietlic"
-                         [ngModelOptions]="{standalone: true}"
-              ></ui-switch>
-            </td>
-
-          </tr>
-          <tr>
-            <td class="naglowki2form"><label for="dataZalozenia">Data założenia</label></td>
-            <td><input style="height: 32px" [disabled]="!zapiszButton" class="logInputZaklad" id="dataZalozenia"
-                       [(ngModel)]="mojZakladKlasa.dataZalozenia"
-                       [ngModelOptions]="{standalone: true}"
-                       type="date">
-            </td>
-            <td class="unchecked">
-              <ui-switch class="przelacznikPublicznePrywatne" [disabled]="!zapiszButton" checkedLabel="Publiczne"
-                         uncheckedLabel="Prywatne"
-                         [(ngModel)]="mojZakladKlasa.dataZalozeniayCzyWyswietlic"
-                         [ngModelOptions]="{standalone: true}"></ui-switch>
-            </td>
-          </tr>
-          <tr>
-            <td style="padding-top: 40px" class="naglowki1form" colspan="2">Adres
-            </td>
-            <td class="unchecked" style="padding-top: 40px">
-              <ui-switch class="przelacznikPublicznePrywatne" [disabled]="!zapiszButton" checkedLabel="Publiczne"
-                         uncheckedLabel="Prywatne"
-                         [(ngModel)]="mojZakladKlasa.adresCzyWyswietlic"
-                         [ngModelOptions]="{standalone: true}"
+              <ui-switch
+                class="przelacznikPublicznePrywatne"
+                [disabled]="!zapiszButton"
+                checkedLabel="Publiczne"
+                uncheckedLabel="Prywatne"
+                [(ngModel)]="mojZakladKlasa.regonCzyWyswietlic"
+                [ngModelOptions]="{ standalone: true }"
               ></ui-switch>
             </td>
           </tr>
           <tr>
-            <td class="naglowki2form"><label for="wojewodztwo">Województwo*</label></td>
-            <td><select [disabled]="!zapiszButton" id="wojewodztwo" [(ngModel)]="mojZakladKlasa.wojewodztwo"
-                        style="height: 32px"
-                        class="logInputZaklad"
-                        [ngModelOptions]="{standalone: true}">
-              <option value="dolnoslaskie">Dolnośląskie</option>
-              <option value="kujawsko-pomorskie">Kujawsko-pomorskie</option>
-              <option value="lubelskie">Lubelskie</option>
-              <option value="lubuskie">Lubuskie</option>
-              <option value="lodzkie">Łódzkie</option>
-              <option value="malopolskie">Małopolskie</option>
-              <option value="mazowieckie">Mazowieckie</option>
-              <option value="opolskie">Opolskie</option>
-              <option value="podkarpackie">Podkarpackie</option>
-              <option value="podlaskie">Podlaskie</option>
-              <option value="pomorskie">Pomorskie</option>
-              <option value="slaskie">Śląskie</option>
-              <option value="swietokrzyskie">Świętokrzyskie</option>
-              <option value="warminsko-mazurskie">Warmińsko-mazurskie</option>
-              <option value="wielkopolskie">Wielkopolskie</option>
-              <option value="zachodniopomorskie">Zachodniopomorskie</option>
-            </select></td>
+            <td class="naglowki2form">
+              <label for="dataZalozenia">Data założenia</label>
+            </td>
+            <td>
+              <input
+                style="height: 32px"
+                [disabled]="!zapiszButton"
+                class="logInputZaklad"
+                id="dataZalozenia"
+                [(ngModel)]="mojZakladKlasa.dataZalozenia"
+                [ngModelOptions]="{ standalone: true }"
+                type="date"
+              />
+            </td>
+            <td class="unchecked">
+              <ui-switch
+                class="przelacznikPublicznePrywatne"
+                [disabled]="!zapiszButton"
+                checkedLabel="Publiczne"
+                uncheckedLabel="Prywatne"
+                [(ngModel)]="mojZakladKlasa.dataZalozeniayCzyWyswietlic"
+                [ngModelOptions]="{ standalone: true }"
+              ></ui-switch>
+            </td>
           </tr>
           <tr>
-            <td class="naglowki2form"><label for="kodPocztowy">Kod pocztowy</label></td>
-            <td><input [disabled]="!zapiszButton" style="width: 155px" maxlength="2" class="logInputZaklad"
-                       id="kodPocztowy" type="text"
-                       [(ngModel)]="mojZakladKlasa.kodPocztowy1"
-                       [ngModelOptions]="{standalone: true}">
+            <td style="padding-top: 40px" class="naglowki1form" colspan="2">
+              Adres
+              <ui-switch
+                class="przelacznikPublicznePrywatne"
+                [disabled]="!zapiszButton"
+                checkedLabel="Miasto"
+                uncheckedLabel="Wieś"
+              ></ui-switch>
+            </td>
+          </tr>
+          <tr>
+            <td class="naglowki2form">
+              <label for="wojewodztwo">Województwo*</label>
+            </td>
+            <td>
+              <select
+                [disabled]="!zapiszButton"
+                id="wojewodztwo"
+                [(ngModel)]="mojZakladKlasa.wojewodztwo"
+                style="height: 32px"
+                class="logInputZaklad"
+                [ngModelOptions]="{ standalone: true }"
+              >
+                <option value="dolnoslaskie">Dolnośląskie</option>
+                <option value="kujawsko-pomorskie">Kujawsko-pomorskie</option>
+                <option value="lubelskie">Lubelskie</option>
+                <option value="lubuskie">Lubuskie</option>
+                <option value="lodzkie">Łódzkie</option>
+                <option value="malopolskie">Małopolskie</option>
+                <option value="mazowieckie">Mazowieckie</option>
+                <option value="opolskie">Opolskie</option>
+                <option value="podkarpackie">Podkarpackie</option>
+                <option value="podlaskie">Podlaskie</option>
+                <option value="pomorskie">Pomorskie</option>
+                <option value="slaskie">Śląskie</option>
+                <option value="swietokrzyskie">Świętokrzyskie</option>
+                <option value="warminsko-mazurskie">Warmińsko-mazurskie</option>
+                <option value="wielkopolskie">Wielkopolskie</option>
+                <option value="zachodniopomorskie">Zachodniopomorskie</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td class="naglowki2form">
+              <label for="nazwaUlicy">Nazwa ulicy*</label>
+            </td>
+            <td>
+              <input
+                [disabled]="!zapiszButton"
+                class="logInputZaklad"
+                id="nazwaUlicy"
+                type="text"
+                [(ngModel)]="mojZakladKlasa.nazwaUlicy"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td class="naglowki2form"><label>Numer budynku/lokalu*</label></td>
+            <td>
+              <input
+                [disabled]="!zapiszButton"
+                class="logInputZaklad"
+                style="width: 164px"
+                [(ngModel)]="mojZakladKlasa.numerDomu"
+                [ngModelOptions]="{ standalone: true }"
+                type="text"
+              />
+              <span style="font-size: 25px"> / </span>
+              <input
+                [disabled]="!zapiszButton"
+                class="logInputZaklad"
+                style="width: 164px"
+                [(ngModel)]="mojZakladKlasa.numerLokalu"
+                [ngModelOptions]="{ standalone: true }"
+                type="text"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td class="naglowki2form">
+              <label for="kodPocztowy">Kod pocztowy</label>
+            </td>
+            <td>
+              <input
+                [disabled]="!zapiszButton"
+                style="width: 155px"
+                maxlength="2"
+                class="logInputZaklad"
+                id="kodPocztowy"
+                type="text"
+                [(ngModel)]="mojZakladKlasa.kodPocztowy1"
+                [ngModelOptions]="{ standalone: true }"
+              />
               <span style="font-size: 25px"> - </span>
-              <input [disabled]="!zapiszButton" maxlength="3" style="width: 172px" class="logInputZaklad" type="text"
-                     [(ngModel)]="mojZakladKlasa.kodPocztowy2"
-                     [ngModelOptions]="{standalone: true}"></td>
+              <input
+                [disabled]="!zapiszButton"
+                maxlength="3"
+                style="width: 172px"
+                class="logInputZaklad"
+                type="text"
+                [(ngModel)]="mojZakladKlasa.kodPocztowy2"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </td>
           </tr>
+          <tr>
+            <td class="naglowki1form" colspan="2">
+              Uzupełnij jeśli masz zakład w mieście
+            </td>
+          </tr>
+
           <tr>
             <td class="naglowki2form">
               <label for="miasto">Miasto*</label>
             </td>
             <td>
-              <input [disabled]="!zapiszButton" class="logInputZaklad" type="text" id="miasto"
-                     [(ngModel)]="mojZakladKlasa.miasto"
-                     [ngModelOptions]="{standalone: true}">
+              <input
+                [disabled]="!zapiszButton"
+                class="logInputZaklad"
+                type="text"
+                id="miasto"
+                [(ngModel)]="mojZakladKlasa.miasto"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </td>
+          </tr>
+
+          <tr>
+            <td class="naglowki1form" colspan="2">
+              Uzupełnij jeśli masz zakład we wsi
+            </td>
           </tr>
           <tr>
-            <td class="naglowki2form"><label for="nazwaUlicy">Nazwa ulicy*</label></td>
-            <td><input [disabled]="!zapiszButton" class="logInputZaklad" id="nazwaUlicy" type="text"
-                       [(ngModel)]="mojZakladKlasa.nazwaUlicy"
-                       [ngModelOptions]="{standalone: true}"></td>
+            <td class="naglowki2form"><label for="powiat">Powiat*</label></td>
+            <td>
+              <input
+                [disabled]="!zapiszButton"
+                id="powiat"
+                class="logInputZaklad"
+                type="text"
+                [(ngModel)]="mojZakladKlasa.powiat"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </td>
           </tr>
           <tr>
-            <td class="naglowki2form"><label>Numer budynku/lokalu*</label></td>
-            <td><input [disabled]="!zapiszButton" class="logInputZaklad" style="width: 164px"
-                       [(ngModel)]="mojZakladKlasa.numerDomu"
-                       [ngModelOptions]="{standalone: true}"
-                       type="text">
-              <span style="font-size: 25px"> / </span>
-              <input [disabled]="!zapiszButton" class="logInputZaklad" style="width: 164px"
-                     [(ngModel)]="mojZakladKlasa.numerLokalu"
-                     [ngModelOptions]="{standalone: true}"
-                     type="text">
+            <td class="naglowki2form"><label for="wies">Wieś*</label></td>
+            <td>
+              <input
+                [disabled]="!zapiszButton"
+                id="wies"
+                class="logInputZaklad"
+                type="text"
+                [(ngModel)]="mojZakladKlasa.wies"
+                [ngModelOptions]="{ standalone: true }"
+              />
             </td>
           </tr>
 

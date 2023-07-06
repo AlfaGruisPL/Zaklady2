@@ -68,7 +68,7 @@
       <tr
         *ngIf="!ZarejestrujSieService.DaneKlientaClass.czyWszystkoUzupelnione"
       >
-        <td>Wprowadź wszystkie dane!</td>
+        <td class="czerwone">Wprowadź wszystkie dane!</td>
       </tr>
       <tr *ngIf="ZarejestrujSieService.DaneKlientaClass.daneNieWyslane">
         <td>Dane nie zostały wysłane! Skontaktuj się z administratorem</td>
@@ -77,5 +77,6 @@
   </div>
   <div class="divNaPrzycisk">
     <button class="buttonDalej" (click)="przejdzDalej()">Dalej</button>
+    <button class="buttonCofnij" (click)="cofnij()">Cofnij</button>
   </div>
 </form>

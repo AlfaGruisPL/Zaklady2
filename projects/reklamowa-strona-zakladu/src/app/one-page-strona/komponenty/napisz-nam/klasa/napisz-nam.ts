@@ -1,9 +1,9 @@
 export class NapiszNam {
-  public imie: string = "";
-  public nazwisko: string = "";
-  public adresEmail: string = "";
-  public wiadomosc: string = "";
-  public komuWyslac: string = "Wybierz";
+  public imie: string = '';
+  public nazwisko: string = '';
+  public adresEmail: string = '';
+  public wiadomosc: string = '';
+  public komuWyslac: string = 'Wybierz:';
 
   public pusteImie: boolean = false;
   public pusteNazwisko: boolean = false;
@@ -12,7 +12,6 @@ export class NapiszNam {
   public komuWyslacPuste: boolean = false;
   public czyWszystkoUzupelnione: boolean = true;
 
-
   public czyWszystkoUzupelnioneFunkcja() {
     this.pusteImie = false;
     this.pusteNazwisko = false;
@@ -20,7 +19,6 @@ export class NapiszNam {
     this.pustaTresc = false;
     this.komuWyslacPuste = false;
     this.czyWszystkoUzupelnione = true;
-
 
     if (this.imie.length <= 0) {
       this.pusteImie = true;
@@ -38,21 +36,19 @@ export class NapiszNam {
       this.pustaTresc = true;
       this.czyWszystkoUzupelnione = false;
     }
-    if (this.komuWyslac == "Wybierz") {
+    if (this.komuWyslac == 'Wybierz:') {
       this.komuWyslacPuste = true;
       this.czyWszystkoUzupelnione = false;
     }
     return this.czyWszystkoUzupelnione;
-
   }
-
 }
 
 export class NapiszNamDto {
-  public imie: string = "";
-  public nazwisko: string = "";
-  public adresEmail: string = "";
-  public wiadomosc: string = "";
+  public imie: string = '';
+  public nazwisko: string = '';
+  public adresEmail: string = '';
+  public wiadomosc: string = '';
 
   constructor(napiszNamKlasa: NapiszNam) {
     this.imie = napiszNamKlasa.imie;
@@ -61,4 +57,3 @@ export class NapiszNamDto {
     this.wiadomosc = napiszNamKlasa.wiadomosc;
   }
 }
-

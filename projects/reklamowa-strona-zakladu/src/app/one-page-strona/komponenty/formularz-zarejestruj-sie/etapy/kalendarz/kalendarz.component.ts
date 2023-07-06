@@ -14,4 +14,8 @@ export class KalendarzComponent {
   public przejdzDalej() {
     this.wyslijKrok.emit(4);
   }
+
+  public cofnij() {
+    this.wyslijKrok.emit(2);
+  }
 }

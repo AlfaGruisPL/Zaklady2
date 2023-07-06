@@ -32,7 +32,6 @@ import { ONasGodzinyOtwarciaComponent } from './one-page-strona/komponenty/infor
 import { ONasKontaktComponent } from './one-page-strona/komponenty/informacja-onas/komponenty/onas-kontakt/onas-kontakt.component';
 import { ONasUslugiComponent } from './one-page-strona/komponenty/informacja-onas/komponenty/onas-uslugi/onas-uslugi.component';
 import { InformacjeOJednymPracownikuKontaktComponent } from './one-page-strona/komponenty/informacja-ojednym-pracowniku/komponenty/informacje-ojednym-pracowniku-kontakt/informacje-ojednym-pracowniku-kontakt.component';
-import { InformacjeOJednymPracownikuOpisComponent } from './one-page-strona/komponenty/informacja-ojednym-pracowniku/komponenty/informacje-ojednym-pracowniku-opis/informacje-ojednym-pracowniku-opis.component';
 import { InformacjeOJednymPracownikuZdjecieImieNazwiskoComponent } from './one-page-strona/komponenty/informacja-ojednym-pracowniku/komponenty/informacje-ojednym-pracowniku-zdjecie-imie-nazwisko/informacje-ojednym-pracowniku-zdjecie-imie-nazwisko.component';
 
 import { WeryfikacjaComponent } from './one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/weryfikacja/weryfikacja.component';
@@ -67,7 +66,6 @@ import {NgSelectModule} from "@ng-select/ng-select";
     ONasKontaktComponent,
     ONasUslugiComponent,
     InformacjeOJednymPracownikuKontaktComponent,
-    InformacjeOJednymPracownikuOpisComponent,
     InformacjeOJednymPracownikuZdjecieImieNazwiskoComponent,
     WeryfikacjaComponent,
     ZegarComponent,

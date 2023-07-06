@@ -1,5 +1,5 @@
 <div class="naglowek">
-  <span> Wybierz pracownika, do którego chcesz się zapisać na wizytę </span>
+  <span> Wybierz pracownika do którego chcesz się zapisać na wizytę </span>
 </div>
 <div class="select">
   <ng-select
@@ -12,7 +12,17 @@
   >
   </ng-select>
 </div>
-
+<span class="czerwone">
+  <ng-container
+    *ngIf="
+      ZarejestrujSieService.DaneKlientaClass.niewybranyPracownik;
+      else puste
+    "
+  >
+    Wybierz pracownika, aby przejść dalej
+  </ng-container>
+  <ng-template #puste> <span style="visibility: hidden"> --</span></ng-template>
+</span>
 <div class="divNaPrzycisk">
   <button class="buttonDalej" (click)="przejdzDalej()">Dalej</button>
 </div>

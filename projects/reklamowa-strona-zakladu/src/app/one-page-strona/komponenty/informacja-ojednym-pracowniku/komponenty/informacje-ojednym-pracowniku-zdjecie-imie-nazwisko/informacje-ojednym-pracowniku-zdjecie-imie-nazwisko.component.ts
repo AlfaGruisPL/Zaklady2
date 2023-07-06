@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ZarejestrujSieService } from '../../../formularz-zarejestruj-sie/zarejestrujSie.service';
 import { NawigacjaService } from '../../../../../serwisy/nawigacja.service';
 import { Pracownik } from '../../../../../klasy/pracownik';
+import { NawigacjaEnum } from '../../../../../enum/nawigacja.enum';
 
 @Component({
   selector: 'app-informacje-ojednym-pracowniku-zdjecie-imie-nazwisko',
@@ -21,7 +22,7 @@ export class InformacjeOJednymPracownikuZdjecieImieNazwiskoComponent {
 
   wybierz() {
     this.zarejestrujSieSErvice.wyswietlanieFormualrza = true;
-    this.nawigacja.przeniesDoPanelu(this.nawigacja.nav.rejestracjaFormularz);
+    this.nawigacja.przeniesDoPanelu(NawigacjaEnum.rejestracjaFormularz);
     this.zarejestrujSieSErvice.DaneKlientaClass.wybranyPracownik =
       this.daneOPracowniku.id;
   }

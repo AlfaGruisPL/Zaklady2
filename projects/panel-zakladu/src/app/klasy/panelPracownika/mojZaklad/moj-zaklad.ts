@@ -9,6 +9,8 @@ export class MojZaklad {
   public kodPocztowy1: string = '';
   public kodPocztowy2: string = '';
   public wojewodztwo: string = '';
+  public powiat: string = '';
+  public wies: string = '';
   public niedziela: dzien = new dzien();
   public poniedzialek: dzien = new dzien();
   public wtorek: dzien = new dzien();
@@ -33,18 +35,6 @@ export class MojZaklad {
   public regon: string = '';
   public email: string = '';
   public numerTelefonu: string = '';
-
-  public czyWszystkoUzupelnione: boolean = true;
-
-  public czyWszystkieWymaganePolaUzupelnione(): boolean {
-    this.czyWszystkoUzupelnione = true;
-    if (this.nazwa.length <= 0) {
-      this.czyWszystkoUzupelnione = false;
-    }
-    return this.czyWszystkoUzupelnione;
-  }
-
-  przepiszZApi() {}
 }
 
 export class dzien {

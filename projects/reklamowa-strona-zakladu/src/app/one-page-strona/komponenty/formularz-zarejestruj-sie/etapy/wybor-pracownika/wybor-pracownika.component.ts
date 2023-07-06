@@ -30,6 +30,9 @@ export class WyborPracownikaComponent implements OnInit {
   ) {}
 
   public przejdzDalej() {
-    this.wyslijKrok.emit(2);
+    this.ZarejestrujSieService.DaneKlientaClass.czyWybranyPracownik();
+    if (!this.ZarejestrujSieService.DaneKlientaClass.niewybranyPracownik) {
+      this.wyslijKrok.emit(2);
+    }
   }
 }

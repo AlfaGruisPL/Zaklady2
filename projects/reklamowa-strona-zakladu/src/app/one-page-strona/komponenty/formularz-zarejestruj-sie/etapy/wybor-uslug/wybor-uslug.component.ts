@@ -14,4 +14,8 @@ export class WyborUslugComponent {
   public przejdzDalej() {
     this.wyslijKrok.emit(3);
   }
+
+  public cofnij() {
+    this.wyslijKrok.emit(1);
+  }
 }

@@ -10,6 +10,8 @@ export class MojZakladDTO {
   public dataZalozenia?: Date = new Date();
   public kodPocztowy: string = '';
   public wojewodztwo: string = '';
+  public powiat: string = '';
+  public wies: string = '';
   public niedziela: dzienDTO;
   public poniedzialek: dzienDTO;
   public wtorek: dzienDTO;
@@ -60,6 +62,8 @@ export class MojZakladDTO {
     this.szerokosc = mojZakladKlasa.szerokosc;
     this.email = mojZakladKlasa.email;
     this.numerTelefonu = mojZakladKlasa.numerTelefonu;
+    this.powiat = mojZakladKlasa.powiat;
+    this.wies = mojZakladKlasa.wies;
 
     this.adresCzyWyswietlic = mojZakladKlasa.adresCzyWyswietlic;
     this.nipCzyWyswietlic = mojZakladKlasa.nipCzyWyswietlic;

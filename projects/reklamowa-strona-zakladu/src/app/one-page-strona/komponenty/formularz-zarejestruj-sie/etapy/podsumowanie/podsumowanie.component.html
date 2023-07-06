@@ -1,51 +1,62 @@
+<div class="kartka">
+  <img src="assets/kartkaPapieru.png" />
+</div>
 <div class="naglowek">
-  <span>Podsumowanie</span>
-  <table>
+  <span class="naglowek">Podsumowanie</span>
+  <table class="dane">
     <tr>
-      <td>Imię i Nazwisko:</td>
-      <td>Korneliia Mushak</td>
+      <td class="naglowek2">Imię i Nazwisko:</td>
+      <td class="naglowek3">Korneliia Mushak</td>
     </tr>
     <tr>
-      <td>Termin wizyty:</td>
-      <td>08.08.2023</td>
+      <td class="naglowek2">Termin wizyty:</td>
+      <td class="naglowek3">08.08.2023</td>
     </tr>
     <tr>
-      <td>Godzina:</td>
-      <td>08:40</td>
+      <td class="naglowek2">Godzina:</td>
+      <td class="naglowek3">08:40</td>
     </tr>
     <tr>
-      <td>Adres:</td>
-      <td>Jarosław, ulica Czarnieckiego</td>
-    </tr>
-    <tr>
-      <td>Kontakt do zapisanego pracownika:</td>
-      <td>788830720</td>
-    </tr>
-    <tr>
-      <td>Imię i nazwisko pracownika:</td>
-      <td>Mateusz Osikowski</td>
-    </tr>
-    <tr>
-      <td>Kontakt do zakładu:</td>
-      <td>788830720</td>
-    </tr>
-    <tr>
-      <td>Wybrane usługi:</td>
-      <td>Strzyżenie embro</td>
-    </tr>
-    <tr>
-      <td>Prognozowana cena za usługi:</td>
-      <td>400 złotych</td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <a> Kliknij, jeśli chcesz wygenerować podsumowanie w plik PDF </a>
+      <td class="naglowek2">Adres:</td>
+      <td class="naglowek3">
+        woj.Podkarpackie, pow.Jarosław,<br />
+        miasto Jarosław, ul.Czarnieckiego, <br />
+        miasto Jarosław, ul.Czarnieckiego, <br />
+        miasto Jarosław, ul.Czarnieckiego, <br />
+        miasto Jarosław, ul.Czarnieckiego, <br />
+        nr domu 16, nr lokalu 5
       </td>
     </tr>
+
+    <tr>
+      <td class="naglowek2">Imię i nazwisko pracownika:</td>
+      <td class="naglowek3">Mateusz Osikowski</td>
+    </tr>
+    <tr>
+      <td class="naglowek2">Wybrane usługi:</td>
+      <td class="naglowek3">Strzyżenie embro</td>
+    </tr>
+    <tr>
+      <td class="naglowek2">Prognozowana cena za usługi:</td>
+      <td class="naglowek3">400 złotych</td>
+    </tr>
+    <tr>
+      <td class="naglowek2">Kontakt do zapisanego pracownika:</td>
+      <td class="naglowek3">788830720</td>
+    </tr>
+    <tr>
+      <td class="naglowek2">Kontakt do zakładu:</td>
+      <td class="naglowek3">788830720</td>
+    </tr>
   </table>
-</div>
-<div class="divNaPrzycisk">
-  <button class="buttonDalej" (click)="przejdzDalej()">
-    Zarejestruj ponownie
-  </button>
+  <div class="karteczki">
+    <div class="karteczka1"></div>
+    <div class="karteczka2"></div>
+  </div>
+  <a class="pdf"> Kliknij, jeśli chcesz wygenerować podsumowanie w plik PDF </a>
+  <div class="divNaPrzycisk">
+    <button class="buttonZarejestrujPonownie" (click)="przejdzDalej()">
+      Zarejestruj ponownie
+    </button>
+  </div>
 </div>

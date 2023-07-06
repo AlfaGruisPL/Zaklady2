@@ -3,6 +3,7 @@ import { NapiszNam, NapiszNamDto } from './klasa/napisz-nam';
 import { ListonoszService } from '../../../serwisy/listonosz.service';
 import { Drzwi } from '../../../enum/drzwi';
 import { Pracownik } from '../../../klasy/pracownik';
+import { NapiszNamService } from './napisz-nam.service';
 
 @Component({
   selector: 'app-napisz-nam',
@@ -11,21 +12,24 @@ import { Pracownik } from '../../../klasy/pracownik';
 })
 export class NapiszNamComponent {
   @Input() listaPracownikow: Pracownik[] = [];
-  public napiszNamObj = new NapiszNam();
+
   public wiadomoscWyslana: boolean = false;
   public wiadomoscNieWyslana: boolean = false;
 
-  constructor(public listonosz: ListonoszService) {}
+  constructor(
+    public listonosz: ListonoszService,
+    public napiszNam: NapiszNamService
+  ) {}
 
   public wyslij() {
-    this.napiszNamObj.czyWszystkoUzupelnioneFunkcja();
+    this.napiszNam.napiszNamObj.czyWszystkoUzupelnioneFunkcja();
     this.wiadomoscNieWyslana = false;
     this.wiadomoscWyslana = false;
-    const napiszNamDTO = new NapiszNamDto(this.napiszNamObj);
+    const napiszNamDTO = new NapiszNamDto(this.napiszNam.napiszNamObj);
     this.listonosz
       .wyslij(Drzwi.napiszNam, napiszNamDTO)
       .then((udane) => {
-        this.napiszNamObj = new NapiszNam();
+        this.napiszNam.napiszNamObj = new NapiszNam();
         this.wiadomoscWyslana = true;
       })
       .catch((nieudane) => {
@@ -36,6 +40,6 @@ export class NapiszNamComponent {
   public reset() {
     this.wiadomoscNieWyslana = false;
     this.wiadomoscWyslana = false;
-    this.napiszNamObj = new NapiszNam();
+    this.napiszNam.napiszNamObj = new NapiszNam();
   }
 }

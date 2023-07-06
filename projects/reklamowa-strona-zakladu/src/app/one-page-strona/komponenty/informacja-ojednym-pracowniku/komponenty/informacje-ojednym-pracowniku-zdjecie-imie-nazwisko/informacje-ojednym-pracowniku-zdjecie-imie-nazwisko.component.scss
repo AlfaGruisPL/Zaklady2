@@ -2,7 +2,9 @@
   float: right;
   width: 300px;
   flex-direction: column;
-  border: 2px inset #696b69;
+  border-top: 2px inset #696b69;
+  border-left: 2px inset #696b69;
+  box-shadow: 2px 2px 4px 2px #696b69;
 
   &:hover {
     cursor: pointer;

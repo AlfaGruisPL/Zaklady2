@@ -20,4 +20,8 @@ export class WpisanieDanychComponent {
       this.wyslijKrok.emit(5);
     }
   }
+
+  public cofnij() {
+    this.wyslijKrok.emit(3);
+  }
 }

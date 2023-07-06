@@ -1,15 +1,20 @@
 .inputyFormularz {
-  border: inset 2px blue;
   width: 280px;
   height: 25px;
   font-size: 18px;
+  border: 2px inset #2491f9;
+  border-radius: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .czerwoneInputy {
-  border: 2px solid red;
+  border: 2px inset #d30505 !important;
 }
 
 .prefiks {
   width: 70px;
   font-size: 16px;
+  border: 2px inset #2491f9;
+  border-radius: 20px;
 }

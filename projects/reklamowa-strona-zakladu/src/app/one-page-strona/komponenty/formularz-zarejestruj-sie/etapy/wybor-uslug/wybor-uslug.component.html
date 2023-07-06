@@ -1,4 +1,22 @@
-<p>wybor-uslug works!</p>
+<div class="uslugi">
+  <table>
+    <tr>
+      <th>Nr</th>
+      <th>Usługa</th>
+      <th>Cena</th>
+      <th>Wybierz</th>
+    </tr>
+    <tr *ngFor="let k of [].constructor(8)">
+      <td>1</td>
+      <td>Fryzura Frencz Boba</td>
+      <td>40 złotych</td>
+      <td>
+        <input type="checkbox" />
+      </td>
+    </tr>
+  </table>
+</div>
 <div class="divNaPrzycisk">
   <button class="buttonDalej" (click)="przejdzDalej()">Dalej</button>
+  <button class="buttonCofnij" (click)="cofnij()">Cofnij</button>
 </div>

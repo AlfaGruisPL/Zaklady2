@@ -1,25 +1,9 @@
 .select {
-  padding-top: 20px;
-  padding-bottom: 70px;
+  padding-top: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: min-content;
-
-  /*
-    .selectPracownicy {
-      // background: #00028e;
-      width: 200px;
-      height: 30px;
-      color: white;
-      font-size: 20px;
-      font-family: math;
-      // text-shadow: 0px 0px 1px black;
-      // box-shadow: 0px 0px 0px 1px black;
-
-      &:hover {
-        cursor: pointer;
-      }
-    }*/
+  padding-bottom: 20px;
 }

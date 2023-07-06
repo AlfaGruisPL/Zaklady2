@@ -9,6 +9,12 @@
     <tr>
       <td>
         <input
+          [ngClass]="{
+            czerwonyInput:
+              ZarejestrujSieService.DaneKlientaClass.niepoprawnyKod ||
+              ZarejestrujSieService.DaneKlientaClass.kodWeryfikacjaPusty
+          }"
+          class="logInput"
           placeholder="Kod"
           [(ngModel)]="ZarejestrujSieService.DaneKlientaClass.kodWeryfikacja"
           [ngModelOptions]="{ standalone: true }"

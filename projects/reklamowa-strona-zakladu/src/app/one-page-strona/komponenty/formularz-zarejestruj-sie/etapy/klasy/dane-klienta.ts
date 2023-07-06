@@ -4,7 +4,8 @@ export class DaneKlienta {
   public prefiksTelefonu: string = '+48';
   public numerTelefonu: string = '';
   public email: string = '';
-  wybranyPracownik: number = 0;
+  public wybranyPracownik: number | undefined;
+  public niewybranyPracownik: boolean = false;
   public kodWeryfikacja: string = '';
   public identyfikator: string = '';
   public kodWeryfikacjaPusty: boolean = false;
@@ -50,6 +51,14 @@ export class DaneKlienta {
       this.czyWszystkoUzupelnione = false;
     }
     return this.czyWszystkoUzupelnione;
+  }
+
+  public czyWybranyPracownik() {
+    this.niewybranyPracownik = false;
+    if (this.wybranyPracownik == undefined) {
+      this.niewybranyPracownik = true;
+    }
+    return this.niewybranyPracownik;
   }
 }
 
