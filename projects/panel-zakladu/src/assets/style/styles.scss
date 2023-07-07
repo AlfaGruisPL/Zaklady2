@@ -43,14 +43,23 @@ body {
 
 .naglowekWformularzu {
   font-weight: bolder;
-  font-size: 28px;
+  font-size: 25px;
   color: black;
-  font-family: "Kalam", cursive;
+  font-family: math;
 }
 
 .naglowekDwaWformularzu {
   font-size: 25px;
   color: #210202;
+  font-family: math;
+}
+
+.naglowekTlumaczenie {
+  font-size: 24px;
+  color: #210202;
+  font-family: math;
+  font-weight: bold;
+  margin: 0;
 }
 
 .czerwoneKomunikaty {
@@ -73,9 +82,8 @@ body {
   font-size: 20px;
 }
 
-.h1dlaTytuluPanelu {
-  margin-top: 15px;
-  font-family: "Kalam", cursive;
+.h1dlaTytuluPaneluZaklad, .h1dlaTytuluPaneluLogowanie {
+  font-family: math;
   width: 100%;
   text-align: center;
   margin-left: 10px;
@@ -85,25 +93,36 @@ body {
   letter-spacing: 7px;
   color: darkblue;
   position: relative;
+  margin: 0;
+}
 
-  .iconkaPowrotu {
-    position: absolute;
-    right: 50px;
-    color: #023a00;
+.h1dlaTytuluPaneluLogowanie {
+  margin-bottom: 20px;
+}
 
-    &:hover {
-      cursor: pointer;
-      color: #034601;
-    }
+.h1dlaTytuluPaneluZaklad {
+  margin-top: 10px;
+}
+
+.iconkaPowrotu {
+  position: absolute;
+  right: 50px;
+  color: #023a00;
+
+  &:hover {
+    cursor: pointer;
+    color: #034601;
   }
 }
+
 
 .niePamietaszHasla {
   font-size: 22px;
   text-decoration: none;
-  color: #023db9;
+  color: #023296;
   font-weight: bolder;
-  font-family: "Kalam", cursive;
+  font-family: math;
+
 
   &:hover {
     color: #002f5e;
@@ -116,6 +135,8 @@ body {
   text-decoration: none;
   color: #380000;
   font-weight: bolder;
+  font-family: math;
+
 
   &:hover {
     color: #640202;
@@ -126,7 +147,9 @@ body {
 .logowanieDlaKogoPanel {
   text-shadow: none;
   color: #6c0101;
-  font-size: 28px;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: math;
 }
 
 //*naglowki i komunikaty*//

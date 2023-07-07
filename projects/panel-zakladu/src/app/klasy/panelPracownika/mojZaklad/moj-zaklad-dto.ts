@@ -26,6 +26,7 @@ export class MojZakladDTO {
   public emailCzyWyswietlic = false;
   public telefonCzyWyswietlic = false;
   public opisCzyWyswietlic = false;
+  public uslugiCzyWyswietlic = false;
   public dataZalozeniayCzyWyswietlic = false;
   public mapaCzyWyswietlic = false;
   public godzinyCzyWyswietlic = false;
@@ -61,7 +62,8 @@ export class MojZakladDTO {
     this.wysokosc = mojZakladKlasa.wysokosc;
     this.szerokosc = mojZakladKlasa.szerokosc;
     this.email = mojZakladKlasa.email;
-    this.numerTelefonu = mojZakladKlasa.numerTelefonu;
+    this.numerTelefonu =
+      mojZakladKlasa.prefiksTelefonu + '-' + mojZakladKlasa.numerTelefonu;
     this.powiat = mojZakladKlasa.powiat;
     this.wies = mojZakladKlasa.wies;
 
@@ -71,6 +73,7 @@ export class MojZakladDTO {
     this.emailCzyWyswietlic = mojZakladKlasa.emailCzyWyswietlic;
     this.telefonCzyWyswietlic = mojZakladKlasa.telefonCzyWyswietlic;
     this.opisCzyWyswietlic = mojZakladKlasa.opisCzyWyswietlic;
+    this.uslugiCzyWyswietlic = mojZakladKlasa.uslugiCzyWyswietlic;
     this.dataZalozeniayCzyWyswietlic =
       mojZakladKlasa.dataZalozeniayCzyWyswietlic;
     this.mapaCzyWyswietlic = mojZakladKlasa.mapaCzyWyswietlic;

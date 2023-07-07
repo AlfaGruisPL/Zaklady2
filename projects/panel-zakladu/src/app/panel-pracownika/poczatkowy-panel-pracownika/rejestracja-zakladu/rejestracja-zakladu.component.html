@@ -1,51 +1,93 @@
 <div class="formularzRejestracji">
-  <h1 class="h1dlaTytuluPanelu">Zarejestruj swój zakład
-    <fa-icon [icon]="fontAwesome.powrotIconka" (click)="powrotOJedenKrok()"></fa-icon>
-  </h1>
-  <div class="formularz" *ngIf="rejestracjaUdana" style="flex-direction: column;justify-content: flex-start">
-    <h2 style="font-size: 32px; text-align: center; color: #020c5d;  width: 100%; height: 70px;float: left">Na Twoją
-      pocztę
-      wysłaliśmy e-mail z linkiem
-      podtwierdzającym
-      rejestracje zakładu!</h2>
-    <span style="color: #031091; text-align: center;font-size: 28px; width: 100%; float: left"> Sprawdź pocztę aby dokończyć swoją rejestracje.
-      </span>
 
-    <a [routerLink]="['../logowanie']"
-       style="width: 100%;text-align: center;font-size: 25px;padding-top: 70px;font-weight: bolder">Przejdź
-      do panelu
-      logowania</a>
+
+  <div
+    class="formularz"
+    *ngIf="rejestracjaUdana"
+    style="flex-direction: column; justify-content: flex-start"
+  >
+    <h2
+      style="
+        font-size: 32px;
+        text-align: center;
+        color: #020c5d;
+        width: 100%;
+        height: 70px;
+        float: left;
+      "
+    >
+      Na Twoją pocztę wysłaliśmy e-mail z linkiem podtwierdzającym rejestracje
+      zakładu!
+    </h2>
+    <span
+      style="
+        color: #031091;
+        text-align: center;
+        font-size: 28px;
+        width: 100%;
+        float: left;
+      "
+    >
+      Sprawdź pocztę aby dokończyć swoją rejestracje.
+    </span>
+
+    <a
+      [routerLink]="['../logowanie']"
+      style="
+        width: 100%;
+        text-align: center;
+        font-size: 25px;
+        padding-top: 70px;
+        font-weight: bolder;
+      "
+    >Przejdź do panelu logowania</a
+    >
   </div>
   <div class="formularz" *ngIf="!rejestracjaUdana">
-
     <form class="tablica1">
       <table>
         <tr>
-          <td colspan="2"><h2 class="naglowekWformularzu">Dane zakładu:</h2></td>
-        </tr>
-        <tr>
-          <td><label class="naglowekDwaWformularzu" for="nazwaZakladu"> Nazwa zakładu*</label></td>
-          <td><input id="nazwaZakladu" type="text" [ngModelOptions]="{standalone: true}"
-                     [(ngModel)]="daneRejestracji.nazwaZakladu"
-                     [ngClass]="{'wpiszDane': !daneRejestracji.nazwaZakladuPoprawne}"
-                     class="logInput"></td>
-        </tr>
-        <tr>
-          <td colspan="2"><h2 class="naglowekWformularzu">Adres zakładu:</h2></td>
-        </tr>
-        <tr>
-          <td><label for="miasto" class="naglowekDwaWformularzu"> Miasto*</label></td>
-          <td><input id="miasto" type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="daneRejestracji.miasto"
-                     [ngClass]="{'wpiszDane': !daneRejestracji.miastoPoprawne}" class="logInput">
+          <td colspan="2">
+            <h2 class="naglowekWformularzu">Dane zakładu:</h2>
           </td>
         </tr>
         <tr>
-          <td><label for="wojewodztwo" class="naglowekDwaWformularzu">Województwo*</label></td>
+          <td>
+            <label class="naglowekDwaWformularzu" for="nazwaZakladu">
+              Nazwa zakładu*</label
+            >
+          </td>
+          <td>
+            <input
+              id="nazwaZakladu"
+              type="text"
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="daneRejestracji.nazwaZakladu"
+              [ngClass]="{ wpiszDane: !daneRejestracji.nazwaZakladuPoprawne }"
+              class="logInput"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <h2 class="naglowekWformularzu">Adres zakładu:</h2>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="wojewodztwo" class="naglowekDwaWformularzu"
+            >Województwo*</label
+            >
+          </td>
           <td>
             <select
-              style="height: 44px; width: 260px;"
-              id="wojewodztwo" [ngModelOptions]="{standalone: true}" [(ngModel)]="daneRejestracji.wojewodztwo"
-              [ngClass]="{'wpiszDane': !daneRejestracji.wojewodztwoPoprawne}" class="logInput">
+              style="height: 44px; width: 260px"
+              id="wojewodztwo"
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="daneRejestracji.wojewodztwo"
+              [ngClass]="{ wpiszDane: !daneRejestracji.wojewodztwoPoprawne }"
+              class="logInput"
+            >
               <option value="dolnoslaskie">Dolnośląskie</option>
               <option value="kujawsko-pomorskie">Kujawsko-pomorskie</option>
               <option value="lubelskie">Lubelskie</option>
@@ -63,55 +105,142 @@
               <option value="wielkopolskie">Wielkopolskie</option>
               <option value="zachodniopomorskie">Zachodniopomorskie</option>
             </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="ulica" class="naglowekDwaWformularzu">Ulica*</label>
+          </td>
+          <td>
+            <input
+              id="ulica"
+              type="text"
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="daneRejestracji.ulica"
+              [ngClass]="{ wpiszDane: !daneRejestracji.ulicaPoprawna }"
+              class="logInput"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="nrDomu" class="naglowekDwaWformularzu"
+            >Nr domu*/lokalu</label
+            >
+          </td>
+          <td>
+            <input
+              id="nrDomu"
+              size="4"
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="daneRejestracji.nrDomu"
+              [ngClass]="{ wpiszDane: !daneRejestracji.nrDomuPoprawny }"
+              class="logInput"
+              style="width: 80px"
+            />/
+            <input
+              size="4"
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="daneRejestracji.nrLokalu"
+              class="logInput"
+              style="width: 80px"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="kodPocztowy" class="naglowekDwaWformularzu"
+            >Kod pocztowy*</label
+            >
+          </td>
+          <td>
+            <input
+              id="kodPocztowy"
+              size="2"
+              maxlength="2"
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="daneRejestracji.kodPocztowy1"
+              [ngClass]="{ wpiszDane: !daneRejestracji.kodPocztowy1Poprawny }"
+              class="logInput"
+              style="width: 80px"
+            />-
+            <input
+              size="5"
+              maxlength="3"
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="daneRejestracji.kodPocztowy2"
+              [ngClass]="{ wpiszDane: !daneRejestracji.kodPocztowy2Poprawny }"
+              class="logInput"
+              style="width: 80px"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">Miasto</td>
+        </tr>
+        <tr>
+          <td>
+            <label for="miasto" class="naglowekDwaWformularzu"> Miasto*</label>
+          </td>
+          <td>
+            <input
+              id="miasto"
+              type="text"
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="daneRejestracji.miasto"
+              [ngClass]="{ wpiszDane: !daneRejestracji.miastoPoprawne }"
+              class="logInput"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">Wieś</td>
+        </tr>
 
+        <tr>
+          <td>
+            <label class="naglowekDwaWformularzu" for="powiat">Powiat</label>
           </td>
+          <td><input class="logInput" id="powiat" type="text" [ngClass]="{ wpiszDane: !daneRejestracji.powiatPoprawny}"
+                     [(ngModel)]="daneRejestracji.powiat"
+                     [ngModelOptions]="{ standalone: true}"></td>
         </tr>
         <tr>
-          <td><label for="ulica" class="naglowekDwaWformularzu">Ulica*</label></td>
-          <td><input id="ulica" type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="daneRejestracji.ulica"
-                     [ngClass]="{'wpiszDane': !daneRejestracji.ulicaPoprawna}" class="logInput">
+          <td>
+            <label class="naglowekDwaWformularzu" for="wies">Wieś</label>
           </td>
+          <td><input class="logInput" id="wies" type="text" [ngClass]="{ wpiszDane: !daneRejestracji.wiesPoprawna }"
+                     [(ngModel)]="daneRejestracji.wies"
+                     [ngModelOptions]="{ standalone: true }"></td>
+        </tr>
+
+
+        <tr>
+          <td colspan="2"><h3 class="naglowekTlumaczenie">* oznacza że pole jest wymagane</h3></td>
         </tr>
         <tr>
-          <td><label for="nrDomu" class="naglowekDwaWformularzu">Nr domu*/lokalu</label></td>
-          <td><input id="nrDomu" size="4" [ngModelOptions]="{standalone: true}" [(ngModel)]="daneRejestracji.nrDomu"
-                     [ngClass]="{'wpiszDane': !daneRejestracji.nrDomuPoprawny}" class="logInput" style="width: 80px">/
-            <input size="4" [ngModelOptions]="{standalone: true}" [(ngModel)]="daneRejestracji.nrLokalu"
-                   class="logInput" style="width: 80px">
-          </td>
+          <td colspan="2"><h3 class="naglowekTlumaczenie">! oznacza że pole nie spełnia wymagań</h3></td>
         </tr>
         <tr>
-          <td><label for="kodPocztowy" class="naglowekDwaWformularzu">Kod pocztowy*</label></td>
-          <td><input id="kodPocztowy" size="2" maxlength="2" [ngModelOptions]="{standalone: true}"
-                     [(ngModel)]="daneRejestracji.kodPocztowy1"
-                     [ngClass]="{'wpiszDane': !daneRejestracji.kodPocztowy1Poprawny}" class="logInput"
-                     style="width: 80px">-
-            <input size="5" maxlength="3" [ngModelOptions]="{standalone: true}"
-                   [(ngModel)]="daneRejestracji.kodPocztowy2"
-                   [ngClass]="{'wpiszDane': !daneRejestracji.kodPocztowy2Poprawny}" class="logInput"
-                   style="width: 80px">
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2"><h3>* oznacza że pole jest wymagane</h3></td>
-        </tr>
-        <tr>
-          <td colspan="2"><h3>! oznacza że pole nie spełnia wymagań</h3></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox" [ngModelOptions]="{standalone: true}"
-                     [(ngModel)]="daneRejestracji.rodo"
-                     [ngClass]="{'rodoIregulamin': !daneRejestracji.rodoPoprawne}">
+          <td>
+            <input
+              type="checkbox"
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="daneRejestracji.rodo"
+              [ngClass]="{ rodoIregulamin: !daneRejestracji.rodoPoprawne }"
+            />
             <label class="naglowekDwaWformularzu">- RODO</label>
           </td>
         </tr>
         <tr>
-          <td><input type="checkbox" [ngModelOptions]="{standalone: true}"
-                     [(ngModel)]="daneRejestracji.regulamin"
-                     [ngClass]="{'rodoIregulamin': !daneRejestracji.regulaminPoprawny}"> <label
-            class="naglowekDwaWformularzu">
-            -
-            Regulamin </label>
+          <td>
+            <input
+              type="checkbox"
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="daneRejestracji.regulamin"
+              [ngClass]="{ rodoIregulamin: !daneRejestracji.regulaminPoprawny }"
+            />
+            <label class="naglowekDwaWformularzu"> - Regulamin </label>
           </td>
         </tr>
       </table>
@@ -119,81 +248,175 @@
     <form class="tablica2">
       <table>
         <tr>
-          <td colspan="2"><h2 class="naglowekWformularzu">Dane właściciela:</h2></td>
+          <td colspan="2">
+            <h2 class="naglowekWformularzu">Dane właściciela:</h2>
+          </td>
         </tr>
         <tr>
           <td>
-            <label for="imie" class="naglowekDwaWformularzu">Imię*</label></td>
-          <td><input id="imie" type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="daneRejestracji.imie"
-                     [ngClass]="{'wpiszDane': !daneRejestracji.imiePoprawne}" class="logInput">
+            <label for="imie" class="naglowekDwaWformularzu">Imię*</label>
+          </td>
+          <td>
+            <input
+              id="imie"
+              type="text"
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="daneRejestracji.imie"
+              [ngClass]="{ wpiszDane: !daneRejestracji.imiePoprawne }"
+              class="logInput"
+            />
           </td>
         </tr>
         <tr>
-          <td><label for="nazwisko" class="naglowekDwaWformularzu">Nazwisko*</label></td>
-          <td><input id="nazwisko" type="text" [ngModelOptions]="{standalone: true}"
-                     [(ngModel)]="daneRejestracji.nazwisko"
-                     [ngClass]="{'wpiszDane': !daneRejestracji.nazwiskoPoprawne}" class="logInput"></td>
-        </tr>
-        <tr>
-          <td><label for="e-mail" class="naglowekDwaWformularzu">E-mail*</label></td>
-          <td><input id="e-mail" type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="daneRejestracji.email"
-                     [ngClass]="{'wpiszDane': !daneRejestracji.emailPoprawny}" class="logInput">
+          <td>
+            <label for="nazwisko" class="naglowekDwaWformularzu"
+            >Nazwisko*</label
+            >
+          </td>
+          <td>
+            <input
+              id="nazwisko"
+              type="text"
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="daneRejestracji.nazwisko"
+              [ngClass]="{ wpiszDane: !daneRejestracji.nazwiskoPoprawne }"
+              class="logInput"
+            />
           </td>
         </tr>
         <tr>
-          <td><label for="numerTelefonu" class="naglowekDwaWformularzu">Numer telefonu*</label></td>
-          <td><input id="numerTelefonu" type="text" [ngModelOptions]="{standalone: true}"
-                     [(ngModel)]="daneRejestracji.numerTelefonu"
-                     [ngClass]="{'wpiszDane': !daneRejestracji.numerTelefonuPoprawny}" class="logInput"></td>
+          <td>
+            <label for="e-mail" class="naglowekDwaWformularzu">E-mail*</label>
+          </td>
+          <td>
+            <input
+              id="e-mail"
+              type="text"
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="daneRejestracji.email"
+              [ngClass]="{ wpiszDane: !daneRejestracji.emailPoprawny }"
+              class="logInput"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="numerTelefonu" class="naglowekDwaWformularzu"
+            >Numer telefonu*</label
+            >
+          </td>
+          <td>
+            <input
+              id="numerTelefonu"
+              type="text"
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="daneRejestracji.numerTelefonu"
+              [ngClass]="{ wpiszDane: !daneRejestracji.numerTelefonuPoprawny }"
+              class="logInput"
+            />
+          </td>
         </tr>
         <tr>
           <td colspan="2">
-            <h2 class="naglowekWformularzu" style="position: relative">Utwórz hasło
-              <fa-icon style="position: absolute; top: -2px" [tp]="wymaganiaHasla" tpVariation="popper"
-                       class="zapytajnik"
-                       [tpTrigger]="'mouseenter'" [tpClassName]="'wymaganiaHasla'"
-                       [icon]="fontAwesome.znakZapytajnika"></fa-icon>
+            <h2 class="naglowekWformularzu" style="position: relative">
+              Utwórz hasło
+              <fa-icon
+                style="position: absolute; top: -2px"
+                [tp]="wymaganiaHasla"
+                tpVariation="popper"
+                class="zapytajnik"
+                [tpTrigger]="'mouseenter'"
+                [tpClassName]="'wymaganiaHasla'"
+                [icon]="fontAwesome.znakZapytajnika"
+              ></fa-icon>
             </h2>
           </td>
+        </tr>
+        <tr>
+          <td>
+            <label for="haslo1" class="naglowekDwaWformularzu">Hasło*</label>
+          </td>
+          <td>
+            <input
+              id="haslo1"
+              [type]="!this.podgladWlaczJeden ? 'password' : 'text'"
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="daneRejestracji.haslo1"
+              [ngClass]="{
+                wpiszDane:
+                  !daneRejestracji.czyHaslaTakieSame_ ||
+                  !daneRejestracji.haslo1poprawne
+              }"
+              class="logInput"
+            />
+          </td>
+          <fa-icon
+            [icon]="
+              this.podgladWlaczJeden
+                ? fontAwesome.oczkoZamkniete
+                : fontAwesome.oczko
+            "
+            (click)="this.podgladWlaczJeden = !this.podgladWlaczJeden"
+            class="Podglad"
+          ></fa-icon>
+        </tr>
+        <tr>
+          <td>
+            <label for="haslo2" class="naglowekDwaWformularzu"
+            >Powtórz hasło*</label
+            >
+          </td>
+          <td>
+            <input
+              id="haslo2"
+              [type]="!this.podgladWlaczDwa ? 'password' : 'text'"
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="daneRejestracji.haslo2"
+              [ngClass]="{
+                wpiszDane:
+                  !daneRejestracji.czyHaslaTakieSame_ ||
+                  !daneRejestracji.haslo2poprawne
+              }"
+              class="logInput"
+            />
+          </td>
+          <fa-icon
+            [icon]="
+              this.podgladWlaczDwa
+                ? fontAwesome.oczkoZamkniete
+                : fontAwesome.oczko
+            "
+            (click)="this.podgladWlaczDwa = !this.podgladWlaczDwa"
+            class="Podglad"
+          ></fa-icon>
+        </tr>
 
-        </tr>
-        <tr>
-          <td><label for="haslo1" class="naglowekDwaWformularzu">Hasło*</label></td>
-          <td><input id="haslo1" [type]="!this.podgladWlaczJeden ? 'password' : 'text'"
-                     [ngModelOptions]="{standalone: true}"
-                     [(ngModel)]="daneRejestracji.haslo1"
-                     [ngClass]="{'wpiszDane': !daneRejestracji.czyHaslaTakieSame_ || !daneRejestracji.haslo1poprawne}"
-                     class="logInput"></td>
-          <fa-icon
-            [icon]="this.podgladWlaczJeden ? fontAwesome.oczkoZamkniete : fontAwesome.oczko "
-            (click)="this.podgladWlaczJeden =! this.podgladWlaczJeden"
-            class="Podglad"></fa-icon>
-        </tr>
-        <tr>
-          <td><label for="haslo2" class="naglowekDwaWformularzu">Powtórz hasło*</label></td>
-          <td><input id="haslo2" [type]="!this.podgladWlaczDwa ? 'password' : 'text'"
-                     [ngModelOptions]="{standalone: true}"
-                     [(ngModel)]="daneRejestracji.haslo2"
-                     [ngClass]="{'wpiszDane': !daneRejestracji.czyHaslaTakieSame_  || !daneRejestracji.haslo2poprawne}"
-                     class="logInput"></td>
-          <fa-icon
-            [icon]="this.podgladWlaczDwa ? fontAwesome.oczkoZamkniete : fontAwesome.oczko "
-            (click)="this.podgladWlaczDwa =! this.podgladWlaczDwa"
-            class="Podglad"></fa-icon>
-        <tr *ngIf="!daneRejestracji.czyHaslaTakieSame_ else puste">
-          <td colspan="2" class="czerwoneKomunikaty"><b>Hasła są różne, wpisz jednakowe hasło</b></td>
+        <tr *ngIf="!daneRejestracji.czyHaslaTakieSame_; else puste">
+          <td colspan="2" class="czerwoneKomunikaty">
+            <b>Hasła są różne, wpisz jednakowe hasło</b>
+          </td>
         </tr>
         <tr *ngIf="!daneRejestracji.hasloSpelniaWymagania">
-          <td colspan="2" class="czerwoneKomunikaty"><b>Hasło nie spełnia wymagań</b></td>
+          <td colspan="2" class="czerwoneKomunikaty">
+            <b>Hasło nie spełnia wymagań</b>
+          </td>
         </tr>
         <tr *ngIf="daneRejestracji.emailWykorzystany">
-          <td colspan="2" class="czerwoneKomunikaty"><b>Adres email jest już zarejestrowany</b></td>
+          <td colspan="2" class="czerwoneKomunikaty">
+            <b>Adres email jest już zarejestrowany</b>
+          </td>
         </tr>
         <tr *ngIf="daneRejestracji.nmumerTelefonuWykorzystany">
-          <td colspan="2" class="czerwoneKomunikaty"><b>Numer telefonu jest już zarejestrowany</b></td>
+          <td colspan="2" class="czerwoneKomunikaty">
+            <b>Numer telefonu jest już zarejestrowany</b>
+          </td>
         </tr>
         <tr *ngIf="!daneRejestracji.rejestracjaUdana">
-          <td colspan="2" class="czerwoneKomunikaty"><b>Rejestracja nieudana, <br> skontaktuj się z administratorem!</b>
+          <td colspan="2" class="czerwoneKomunikaty">
+            <b
+            >Rejestracja nieudana, <br/>
+              skontaktuj się z administratorem!</b
+            >
           </td>
         </tr>
 
@@ -210,42 +433,43 @@
       </table>
 
       <div class="buttonZarejestruj">
-        <button (click)="zarejestruj()" class="ButtonZarejestrujIzaloguj" [disabled]="!daneRejestracji.przyciskAktywny">
+        <button
+          (click)="zarejestruj()"
+          class="ButtonZarejestrujIzaloguj"
+          [disabled]="!daneRejestracji.przyciskAktywny"
+        >
           Zarejestruj
         </button>
-        <br>
-        <a class="chceszSieZalogowacLubZarejestrowac" [routerLink]="['../logowanie']"> Logowanie do zarejestrowanego
-          konta</a>
+        <br/>
+        <a
+          class="chceszSieZalogowacLubZarejestrowac"
+          [routerLink]="['../logowanie']"
+        >
+          Logowanie do zarejestrowanego konta</a
+        >
       </div>
-
     </form>
-
   </div>
 </div>
 
 <ng-template #wymaganiaHasla let-hide>
-  <h6 style="font-size: 20px; color: darkblue; margin-top: 0; font-weight: bolder; margin-bottom: 0">Takie wymagania
-    powinno spełniać
-    hasło:</h6>
+  <h6
+    style="
+      font-size: 20px;
+      color: darkblue;
+      margin-top: 0;
+      font-weight: bolder;
+      margin-bottom: 0;
+    "
+  >
+    Takie wymagania powinno spełniać hasło:
+  </h6>
   <ul style="font-size: 18px; color: #07579b">
-    <li>
-      Musi zawierać minimum 8 znaków;
-    </li>
-    <li>
-      Może zawierać maksymalnie 100 znaków;
-    </li>
-    <li>
-      Musi zawierać przynajmniej jedną dużą i jedną małą literę;
-    </li>
-    <li>
-      Musi zawierać przynajmniej jedną cyfrę;
-    </li>
-    <li>
-      Musi zawierać minimum jeden znak specjalny;
-    </li>
-    <li>
-      Nie może zawierać spację.
-    </li>
+    <li>Musi zawierać minimum 8 znaków;</li>
+    <li>Może zawierać maksymalnie 100 znaków;</li>
+    <li>Musi zawierać przynajmniej jedną dużą i jedną małą literę;</li>
+    <li>Musi zawierać przynajmniej jedną cyfrę;</li>
+    <li>Musi zawierać minimum jeden znak specjalny;</li>
+    <li>Nie może zawierać spację.</li>
   </ul>
-
 </ng-template>

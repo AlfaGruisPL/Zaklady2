@@ -1,15 +1,23 @@
-<table class="tabelaDane tabelaRamka">
-  <tr>
-    <td colspan="2" class="informacjeOnasTytul">Nasz kontakt
-      <img class="telefonIconka"
-           src="assets/smartphone-icon%20(1).png"></td>
-  </tr>
-  <tr>
-    <td class="informacjaNaglowek1">Numer telefonu</td>
-    <td class="informacjaNaglowek2"> +48 7 888 30 720</td>
-  </tr>
-  <tr>
-    <td class="informacjaNaglowek1">E-mail</td>
-    <td class="informacjaNaglowek2">kornelia@gmail.com</td>
-  </tr>
-</table>
+<div class="tabelaDane tabelaRamka">
+  <table>
+    <tr>
+      <td colspan="2" class="informacjeOnasTytul">
+        Nasz kontakt
+        <img class="telefonIconka" src="assets/smartphone-icon%20(1).png"/>
+      </td>
+    </tr>
+    <tr *ngIf="danePodstawowe_.danePodstawowe.wyswietlaneDane.telefonCzyWyswietlic">
+      <td class="informacjaNaglowek1">Numer telefonu</td>
+      <td class="informacjaNaglowek2">
+        {{ danePodstawowe_.danePodstawowe.numerTelefonuOgolny }}
+      </td>
+    </tr>
+    <tr *ngIf="danePodstawowe_.danePodstawowe.wyswietlaneDane.emailCzyWyswietlic">
+      <td class="informacjaNaglowek1">E-mail</td>
+      <td class="informacjaNaglowek2">
+        {{ danePodstawowe_.danePodstawowe.emailOgolny }}
+      </td>
+    </tr>
+  </table>
+
+</div>

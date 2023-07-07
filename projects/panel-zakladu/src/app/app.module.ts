@@ -46,6 +46,8 @@ import { PracownicyMojZakladComponent } from './panel-pracownika/panel-zarzadzan
 import { CzyNaprawdeUsunacComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/pracownicy-pracownika/okienka/czy-naprawde-usunac/czy-naprawde-usunac.component';
 import { PlatnosciPracownikaModule } from './panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/platnosciPracownika.module';
 import { UslugaSmsPracownikaModule } from './panel-pracownika/panel-zarzadzania-zakladem/panele/usluga-sms-pracownika/usluga-sms-pracownika.module';
+import { UslugiPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/uslugi.component';
+import { UslugiPrzypisaniPracownicyComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/uslugi-przypisani-pracownicy/uslugi-przypisani-pracownicy.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +80,8 @@ import { UslugaSmsPracownikaModule } from './panel-pracownika/panel-zarzadzania-
 
     PracownicyMojZakladComponent,
     CzyNaprawdeUsunacComponent,
+    UslugiPracownikaComponent,
+    UslugiPrzypisaniPracownicyComponent,
   ],
   imports: [
     BrowserModule,

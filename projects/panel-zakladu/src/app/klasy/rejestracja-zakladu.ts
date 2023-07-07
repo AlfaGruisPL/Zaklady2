@@ -3,6 +3,8 @@ import * as EmailValidator from 'email-validator';
 
 export class RejestracjaZakladu {
   public nazwaZakladu: string = 'k';
+  public powiat: string = 'k';
+  public wies: string = 'k';
   public miasto: string = 'k';
   public wojewodztwo: string = '';
   public ulica: string = "k";
@@ -27,6 +29,8 @@ export class RejestracjaZakladu {
   public wojewodztwoPoprawne: boolean = true;
   public ulicaPoprawna: boolean = true;
   public nrDomuPoprawny: boolean = true;
+  public wiesPoprawna: boolean = true;
+  public powiatPoprawny: boolean = true;
   public nrLokaluPoprawny: boolean = true;
   public kodPocztowy1Poprawny?: boolean = true;
   public kodPocztowy2Poprawny?: boolean = true;
@@ -102,6 +106,18 @@ export class RejestracjaZakladu {
       this.nrDomuPoprawny = true;
     } else {
       this.nrDomuPoprawny = false;
+      this.czyWszystkoPoprawne = false;
+    }
+    if (this.powiat.length > 0) {
+      this.powiatPoprawny = true;
+    } else {
+      this.powiatPoprawny = false;
+      this.czyWszystkoPoprawne = false;
+    }
+    if (this.wies.length > 0) {
+      this.wiesPoprawna = true;
+    } else {
+      this.wiesPoprawna = false;
       this.czyWszystkoPoprawne = false;
     }
 
@@ -198,6 +214,8 @@ export class RejestracjaZakladu {
 export class RejestracjaZakladuDTO {
   public nazwaZakladu: string = '';
   public miasto: string = '';
+  public powiat: string = '';
+  public wies: string = '';
   public wojewodztwo: string = '';
   public ulica: string = "";
   public nrDomu: string = "";
@@ -212,6 +230,8 @@ export class RejestracjaZakladuDTO {
   constructor(dane: RejestracjaZakladu) {
     this.nazwaZakladu = dane.nazwaZakladu;
     this.miasto = dane.miasto;
+    this.powiat = dane.powiat;
+    this.wies = dane.wies;
     this.wojewodztwo = dane.wojewodztwo;
     this.ulica = dane.ulica;
     this.nrDomu = dane.nrDomu;

@@ -1,23 +1,71 @@
-<table class="uslugiTable">
-  <tr>
-    <td colspan="2">
-      <h1 class="informacjeOnasTytul">Nasze usługi</h1>
-    </td>
-    <td>
+<div class="uslugiTable">
+  <table>
+    <tr>
+      <td colspan="2">
+        <h1 class="informacjeOnasTytul">Nasze usługi</h1>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <th class="uslugiTytul">Usługa</th>
+      <th class="uslugiTytul">Cena</th>
+    </tr>
+    <tr
+      *ngFor="
+      let usluga of danePodstawowe.danePodstawowe.uslugi
+        | slice : (strona - 1) * max : strona * max;
+      let index = index
+    "
+    >
+      <td class="informacjaNaglowek1">
+        {{
+        danePodstawowe.danePodstawowe.uslugi.length -
+        (danePodstawowe.danePodstawowe.uslugi.length -
+          index -
+          max * strona +
+          max) +
+        1
+        }}
+        . {{ usluga.nazwa }}
+      </td>
+      <td class="informacjaNaglowek2">{{ usluga.cena }} zł</td>
+    </tr>
+    <tr
+      *ngFor="
+      let k of [].constructor(
+        max -
+          (
+            danePodstawowe.danePodstawowe.uslugi
+            | slice : (strona - 1) * max : strona * max
+          ).length
+      )
+    "
+    >
+      <td class="informacjaNaglowek1" style="visibility: hidden">.</td>
+      <td class="informacjaNaglowek1"></td>
+    </tr>
+    <tr>
+      <td colspan="3" *ngIf="danePodstawowe.danePodstawowe.uslugi.length > 10">
+        <div
+          style="
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          padding-top: 30px;
+        "
+        >
+          <ngb-pagination
+            [collectionSize]="danePodstawowe.danePodstawowe.uslugi.length"
+            [(page)]="strona"
+            [maxSize]="5"
+            [rotate]="true"
+            [pageSize]="max"
+            [boundaryLinks]="true"
+          ></ngb-pagination>
 
-    </td>
-  </tr>
-  <tr>
-    <th class="uslugiTytul">Usługa</th>
-    <th class="uslugiTytul">Cena</th>
-  </tr>
-  <tr *ngFor="let usluga of [1, 2, 3, 4,5,6,7,8,9,10]">
-    <td class="informacjaNaglowek1">
-      Strzyżenie
-    </td>
-    <td class="informacjaNaglowek2">
-      50 zł
-    </td>
-  </tr>
+        </div>
+      </td>
+    </tr>
+  </table>
 
-</table>
+</div>

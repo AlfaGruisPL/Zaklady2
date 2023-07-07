@@ -36,8 +36,8 @@ import { InformacjeOJednymPracownikuZdjecieImieNazwiskoComponent } from './one-p
 
 import { WeryfikacjaComponent } from './one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/weryfikacja/weryfikacja.component';
 import { ZegarComponent } from './one-page-strona/komponenty/zarejestruj-sie/zegar/zegar.component';
-import {NgSelectModule} from "@ng-select/ng-select";
-
+import { NgSelectModule } from '@ng-select/ng-select';
+import { NgbPaginationModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -79,6 +79,8 @@ import {NgSelectModule} from "@ng-select/ng-select";
     BrowserAnimationsModule,
     CarouselModule,
     NgSelectModule,
+    NgbPaginationModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

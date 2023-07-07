@@ -26,6 +26,7 @@ export class MojZaklad {
   public telefonCzyWyswietlic = false;
   public godzinyCzyWyswietlic = false;
   public opisCzyWyswietlic = false;
+  public uslugiCzyWyswietlic = false;
   public dataZalozeniayCzyWyswietlic = false;
   public mapaCzyWyswietlic = false;
 
@@ -34,6 +35,7 @@ export class MojZaklad {
   public nip: string = '';
   public regon: string = '';
   public email: string = '';
+  public prefiksTelefonu = '';
   public numerTelefonu: string = '';
 }
 

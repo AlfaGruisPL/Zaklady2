@@ -18,6 +18,7 @@ import { RejestracjaZakladuComponent } from './panel-pracownika/poczatkowy-panel
 import { HarmonogramPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/harmonogram-pracownika/harmonogram-pracownika.component';
 import { ListaKlientowPracownikComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/lista-klientow-pracownik.component';
 import { UslugaSmsPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/usluga-sms-pracownika/usluga-sms-pracownika.component';
+import { UslugiPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/uslugi.component';
 
 const routes: Routes = [
   {
@@ -71,6 +72,10 @@ const routes: Routes = [
       {
         path: 'cenniki',
         component: CennikiPracownikaComponent,
+      },
+      {
+        path: 'uslugi',
+        component: UslugiPracownikaComponent,
       },
       {
         path: 'stronaReprezentacyjnaUstawienia',

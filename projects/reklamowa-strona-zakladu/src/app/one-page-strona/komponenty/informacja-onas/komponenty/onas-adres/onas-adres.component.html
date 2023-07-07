@@ -1,27 +1,92 @@
-<table class="tabelaDane tabelaRamka">
-  <tr>
-    <td class="informacjeOnasTytul">Gdzie nas znajdziesz</td>
-    <td><img class="adresIcona" src="assets/logoMapy.png" /></td>
-  </tr>
-  <tr>
-    <td class="informacjaNaglowek1">woj.Podkarpackie,pow.Jarosław</td>
-  </tr>
-  <tr>
-    <td colspan="2" class="informacjaNaglowek1">Jarosław</td>
-  </tr>
-  <tr>
-    <td colspan="2" class="informacjaNaglowek1">ul.Czarnieckiego</td>
-  </tr>
-  <tr>
-    <td colspan="2" class="informacjaNaglowek1">nr.domu 16/5</td>
-  </tr>
-  <tr>
-    <td
-      class="zobaczMape"
-      (click)="nawigacja.przeniesDoPanelu(nawigacja.nav.stopka)"
-    >
-      Zobacz mapę
-    </td>
-    <td></td>
-  </tr>
-</table>
+<div class="tabelaDane tabelaRamka">
+  <table>
+    <tr>
+      <td class="informacjeOnasTytul">Gdzie nas znajdziesz</td>
+      <td><img class="adresIcona" src="assets/logoMapy.png"/></td>
+    </tr>
+    <!--
+    <tr *ngIf="DanePodstawowe_.danePodstawowe.adres.miasto.length > 0">
+  <td>
+        <ng-container
+          ><br />
+
+          nr.domu {{ DanePodstawowe_.danePodstawowe.adres.numerDomu }}
+          <ng-container
+            *ngIf="DanePodstawowe_.danePodstawowe.adres.numerLokalu.length > 0"
+          >
+            /nr.lokalu {{ DanePodstawowe_.danePodstawowe.adres.numerLokalu }}
+          </ng-container>
+          <br />
+          kod pocztowy {{ DanePodstawowe_.danePodstawowe.adres.kodPocztowy }}
+        </ng-container>
+        <ng-container>
+
+
+        </ng-container>
+      </td>
+    </tr>
+    -->
+    <tr>
+      <td class="informacjaNaglowek1">
+        woj.{{ DanePodstawowe_.danePodstawowe.adres.wojewodztwo }},
+        {{ DanePodstawowe_.danePodstawowe.adres.miasto }}
+      </td>
+    </tr>
+    <ng-container *ngIf="DanePodstawowe_.danePodstawowe.adres.miasto.length > 0">
+      <tr>
+        <td class="informacjaNaglowek1">
+          ul.{{ DanePodstawowe_.danePodstawowe.adres.numerUlicy }}
+        </td>
+      </tr>
+      <tr>
+        <td class="informacjaNaglowek1">
+          nr.domu &nbsp;{{ DanePodstawowe_.danePodstawowe.adres.numerDomu }}
+        </td>
+      </tr>
+      <tr *ngIf="DanePodstawowe_.danePodstawowe.adres.numerLokalu.length > 0">
+        <td class="informacjaNaglowek1">
+          nr.lokalu &nbsp;{{ DanePodstawowe_.danePodstawowe.adres.numerLokalu }}
+        </td>
+      </tr>
+    </ng-container>
+    <ng-container *ngIf="DanePodstawowe_.danePodstawowe.adres.wies.length > 0">
+      <tr>
+        <td class="informacjaNaglowek1">
+          pow.{{ DanePodstawowe_.danePodstawowe.adres.powiat }}
+        </td>
+      </tr>
+      <tr>
+        <td class="informacjaNaglowek1">
+          w.{{ DanePodstawowe_.danePodstawowe.adres.wies }}
+          <ng-container
+            *ngIf="DanePodstawowe_.danePodstawowe.adres.numerUlicy.length > 0"
+          >
+            ul.{{ DanePodstawowe_.danePodstawowe.adres.numerUlicy }}
+          </ng-container>
+        </td>
+      </tr>
+      <tr>
+        <td class="informacjaNaglowek1">
+          nr.domu &nbsp;{{ DanePodstawowe_.danePodstawowe.adres.numerDomu }}
+        </td>
+      </tr>
+
+      <tr *ngIf="DanePodstawowe_.danePodstawowe.adres.numerLokalu.length > 0">
+        <td class="informacjaNaglowek1">
+          nr.lokalu &nbsp;{{ DanePodstawowe_.danePodstawowe.adres.numerLokalu }}
+        </td>
+      </tr>
+    </ng-container>
+
+    <tr>
+      <td
+        class="zobaczMape"
+        (click)="nawigacja.przeniesDoPanelu(nawigacja.nav.stopka)"
+      >
+        Zobacz mapę
+      </td>
+      <td></td>
+    </tr>
+  </table>
+
+</div>

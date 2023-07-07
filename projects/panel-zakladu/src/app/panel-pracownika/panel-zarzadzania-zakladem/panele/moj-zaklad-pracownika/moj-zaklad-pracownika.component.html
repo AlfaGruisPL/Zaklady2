@@ -107,12 +107,6 @@
           <tr>
             <td style="padding-top: 40px" class="naglowki1form" colspan="2">
               Adres
-              <ui-switch
-                class="przelacznikPublicznePrywatne"
-                [disabled]="!zapiszButton"
-                checkedLabel="Miasto"
-                uncheckedLabel="Wieś"
-              ></ui-switch>
             </td>
           </tr>
           <tr>
@@ -223,12 +217,22 @@
             </td>
             <td>
               <input
-                [disabled]="!zapiszButton"
+                [disabled]="!zapiszButton || !czyMiasto"
                 class="logInputZaklad"
                 type="text"
                 id="miasto"
                 [(ngModel)]="mojZakladKlasa.miasto"
                 [ngModelOptions]="{ standalone: true }"
+              />
+              <input
+                type="button"
+                value="Włącz"
+                *ngIf="!czyMiasto && zapiszButton"
+                (click)="
+                  czyMiasto = true;
+                  mojZakladKlasa.powiat = '';
+                  mojZakladKlasa.wies = ''
+                "
               />
             </td>
           </tr>
@@ -242,12 +246,18 @@
             <td class="naglowki2form"><label for="powiat">Powiat*</label></td>
             <td>
               <input
-                [disabled]="!zapiszButton"
+                [disabled]="!zapiszButton || czyMiasto"
                 id="powiat"
                 class="logInputZaklad"
                 type="text"
                 [(ngModel)]="mojZakladKlasa.powiat"
                 [ngModelOptions]="{ standalone: true }"
+              />
+              <input
+                type="button"
+                value="Włącz"
+                *ngIf="czyMiasto && zapiszButton"
+                (click)="czyMiasto = false; mojZakladKlasa.miasto = ''"
               />
             </td>
           </tr>
@@ -565,10 +575,21 @@
               <label for="numerTelefonu"> Numer telefonu </label>
             </td>
             <td>
+              <select
+                [disabled]="!zapiszButton"
+                class="logInputZaklad"
+                style="width: 80px"
+                [(ngModel)]="mojZakladKlasa.prefiksTelefonu"
+                [ngModelOptions]="{ standalone: true }"
+              >
+                <option>+48</option>
+                <option>+380</option>
+              </select>
               <input
                 [disabled]="!zapiszButton"
                 class="logInputZaklad"
                 maxlength="9"
+                style="width: 267px; margin-left: 2px"
                 [(ngModel)]="mojZakladKlasa.numerTelefonu"
                 [ngModelOptions]="{ standalone: true }"
                 id="numerTelefonu"
@@ -644,7 +665,7 @@
         <table>
           <tr>
             <td class="naglowki2form" colspan="2">
-              <label for="opis"> Opisz swój zakład kilkoma zdaniami</label>
+              <label for="opis"> Cennik usług</label>
             </td>
             <td>
               <ui-switch
@@ -653,7 +674,7 @@
                 class="unchecked"
                 checkedLabel="Publiczne"
                 uncheckedLabel="Prywatne"
-                [(ngModel)]="mojZakladKlasa.opisCzyWyswietlic"
+                [(ngModel)]="mojZakladKlasa.uslugiCzyWyswietlic"
                 [ngModelOptions]="{ standalone: true }"
               ></ui-switch>
             </td>

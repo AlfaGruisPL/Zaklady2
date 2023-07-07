@@ -3,6 +3,8 @@ import {
   faArrowRightFromBracket,
   faCircleCheck,
   faCircleLeft,
+  faCircleMinus,
+  faCirclePlus,
   faCircleQuestion,
   faCommentSms,
   faEye,
@@ -52,6 +54,8 @@ export class FontAwesomeService {
   flaga = faFontAwesomeFlag;
   dom = faHomeUser;
   sms = faCommentSms;
+  plusWKolku = faCirclePlus;
+  minusWKolku = faCircleMinus;
 
   constructor() {}
 }
