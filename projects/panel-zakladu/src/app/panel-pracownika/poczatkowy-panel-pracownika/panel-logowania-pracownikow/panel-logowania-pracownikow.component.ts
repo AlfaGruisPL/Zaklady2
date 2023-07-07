@@ -3,6 +3,7 @@ import {ListonoszService} from "../../../serwisy/listonosz.service";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 import {FontAwesomeService} from "../../../serwisy/font-awesome.service";
+import {Drzwi} from "../../../enum/drzwi";
 
 @Component({
   selector: 'app-panel-logowania-pracownikow',
@@ -25,9 +26,15 @@ export class PanelLogowaniaPracownikowComponent implements OnInit {
   public Podglad: boolean = false;
   subDomain = ""
 
+
   ngOnInit() {
-    this.subDomain = window.location.href.split('.')[0].split("//")[1]
-    console.log(this.subDomain)
+    console.log(1)
+
+    // this.subDomain = window.location.href.split('.')[0].split("//")[1]
+    //  console.log(this.subDomain)
+    this.listonosz.pobierz(Drzwi.nazwaZakladu).then(k => {
+      this.subDomain = k.nazwa
+    })
   }
 
   public czyDaneWpisane() {

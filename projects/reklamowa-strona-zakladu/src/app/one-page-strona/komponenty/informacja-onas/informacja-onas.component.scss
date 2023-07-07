@@ -5,34 +5,32 @@
   position: relative;
   z-index: 99;
   padding-top: 20px;
+  height: min-content;
 
   .container {
 
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto auto auto auto;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
     grid-auto-columns: 1fr;
     gap: 0px 0px;
     width: 100%;
     grid-auto-flow: row;
     grid-template-areas:
-    "panel panel GodzinyOtwarcia GodzinyOtwarcia"
-    "panel panel kontakt kontakt"
-    "panel panel Adres Adres"
-    "Opis Opis Opis Opis";
+    "panel dane"
   }
 
 
   .panel {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 0.7fr 1.3fr 1fr;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
     gap: 0px 0px;
     grid-auto-flow: row;
     grid-template-areas:
-    "podstawoweInformacje podstawoweInformacje podstawoweInformacje"
-    "uslugi uslugi uslugi"
-    "uslugi uslugi uslugi";
+    "podstawoweInformacje"
+    "uslugi "
+    "uslugi ";
     grid-area: panel;
 
   }
@@ -54,11 +52,17 @@
 
   }
 
-  .GodzinyOtwarcia {
-    grid-area: GodzinyOtwarcia;
+  .dane {
+    grid-area: dane;
     display: flex;
     align-items: center;
     justify-content: left;
+    flex-direction: column;
+
+    div {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
 
   }
 
@@ -127,10 +131,12 @@
 }
 
 .tabelaRamka {
+
   border: 1px solid #d8d8d8;
   box-shadow: 2px 2px 4px 1px #b8babd;
   margin-left: 50px;
   padding-bottom: 20px;
+
 
 }
 
@@ -146,13 +152,22 @@
 
 
 .uslugiTable {
-  margin: 20px;
-  width: 600px;
-  height: min-content;
-  min-height: 200px;
+  padding-left: 4px;
+  padding-right: 4px;
   box-shadow: inset 0px 0px 1pc 1px #e1e1e1a6;
   border: 1px solid gainsboro;
-  padding: 8px;
-  margin-right: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  table {
+    margin: 20px;
+    width: 600px;
+    height: min-content;
+    min-height: 200px;
+
+
+    margin-right: 50px;
+  }
+
 }
 

@@ -18,7 +18,7 @@ export class MojZaklad {
   public czwartek: dzien = new dzien();
   public piatek: dzien = new dzien();
   public sobota: dzien = new dzien();
-
+  public iloscPracownikow = 0;
   public adresCzyWyswietlic = false;
   public nipCzyWyswietlic = false;
   public regonCzyWyswietlic = false;
@@ -29,6 +29,9 @@ export class MojZaklad {
   public uslugiCzyWyswietlic = false;
   public dataZalozeniayCzyWyswietlic = false;
   public mapaCzyWyswietlic = false;
+  public iloscPracownikowCzyWyswietlic = false
+  public daneZakladuCzyWyswietlic = false
+  public naszKontaktCzyWyswietlic = false;
 
   public wysokosc: string = '';
   public szerokosc: string = '';

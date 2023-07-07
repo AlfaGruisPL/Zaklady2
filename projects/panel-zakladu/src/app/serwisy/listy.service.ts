@@ -16,7 +16,6 @@ export class ListyService {
   }
 
   public pobierz(drzwi: string, opcje: any): Observable<any> {
-
     return this.http.get(this.LinkDoApi + drzwi, opcje)
   }
 

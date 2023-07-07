@@ -1,7 +1,7 @@
 <div class="panelZakladu">
   <div class="naglowekZolty">
     <span class="naglowek1Wzoltym"
-      >Uzupełnij formularz danymi o swoim zakładzie
+    >Uzupełnij formularz danymi o swoim zakładzie
     </span>
     <span class="naglowek1Wzoltym2">
       * oznacza że pole jest zalecane do uzupełnienia
@@ -17,7 +17,16 @@
       <div class="tabela1">
         <table class="daneZakladuTab">
           <tr>
-            <td colspan="2" class="naglowki1form">Dane zakładu:</td>
+            <td colspan="2" class="naglowki1form">Dane zakładu:
+              <ui-switch
+                class="przelacznikPublicznePrywatne"
+                [disabled]="!zapiszButton"
+                checkedLabel="Publiczne"
+                uncheckedLabel="Prywatne"
+                [(ngModel)]="mojZakladKlasa.daneZakladuCzyWyswietlic"
+                [ngModelOptions]="{ standalone: true }"
+              ></ui-switch>
+            </td>
           </tr>
           <tr>
             <td class="naglowki2form"><label for="nazwa">Nazwa*</label></td>
@@ -100,6 +109,20 @@
                 checkedLabel="Publiczne"
                 uncheckedLabel="Prywatne"
                 [(ngModel)]="mojZakladKlasa.dataZalozeniayCzyWyswietlic"
+                [ngModelOptions]="{ standalone: true }"
+              ></ui-switch>
+            </td>
+          </tr>
+          <tr>
+            <td class="naglowki2form">Ilość pracowników</td>
+            <td class="naglowki2form">{{mojZakladKlasa.iloscPracownikow}}</td>
+            <td>
+              <ui-switch
+                class="przelacznikPublicznePrywatne"
+                [disabled]="!zapiszButton"
+                checkedLabel="Publiczne"
+                uncheckedLabel="Prywatne"
+                [(ngModel)]="mojZakladKlasa.iloscPracownikowCzyWyswietlic"
                 [ngModelOptions]="{ standalone: true }"
               ></ui-switch>
             </td>
@@ -265,7 +288,7 @@
             <td class="naglowki2form"><label for="wies">Wieś*</label></td>
             <td>
               <input
-                [disabled]="!zapiszButton"
+                [disabled]="!zapiszButton || czyMiasto"
                 id="wies"
                 class="logInputZaklad"
                 type="text"
@@ -545,6 +568,14 @@
           <tr>
             <td colspan="3" class="naglowki1form">
               Podstawowy kontakt z zakładem:
+              <ui-switch
+                class="przelacznikPublicznePrywatne"
+                [disabled]="!zapiszButton"
+                checkedLabel="Publiczne"
+                uncheckedLabel="Prywatne"
+                [(ngModel)]="mojZakladKlasa.naszKontaktCzyWyswietlic"
+                [ngModelOptions]="{ standalone: true }"
+              ></ui-switch>
             </td>
           </tr>
           <tr>

@@ -4,4 +4,5 @@ export enum Drzwi {
   daneKlientaRejestracja = 'wizyty/daneKlientaRejestracja',
   kodWeryfikacyjnyIdentyfikator = 'wizyty/kodWeryfikacyjny',
   listaPracownikowRejestracja = 'wizyty/listaPracownikow',
+  danePodstawowe = 'stronaReklamowa/danePodstawowe',
 }

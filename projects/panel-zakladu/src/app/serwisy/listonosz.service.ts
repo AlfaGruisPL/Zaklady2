@@ -103,6 +103,7 @@ export class ListonoszService {
       });
       opcjeWPudelku = {headers: opcje};
     }
+
     return new Promise((resolve, reject) => {
       this.listy.pobierz(drzwi, opcjeWPudelku).subscribe((next: OdpowiedzPotwierdzajacaPoprawnosc<any>) => {
           resolve(next.value)
