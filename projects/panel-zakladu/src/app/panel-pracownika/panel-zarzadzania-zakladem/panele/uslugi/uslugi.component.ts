@@ -3,6 +3,12 @@ import { Usluga } from '../../../../klasy/panelPracownika/usluga/usluga';
 import { FontAwesomeService } from '../../../../serwisy/font-awesome.service';
 import { ListonoszService } from '../../../../serwisy/listonosz.service';
 import { Drzwi } from '../../../../enum/drzwi';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {usluga} from "../../../../../../../reklamowa-strona-zakladu/src/app/klasy/dane-podstawowe";
+import {
+  UslugiPrzypisaniPracownicyComponent
+} from "./uslugi-przypisani-pracownicy/uslugi-przypisani-pracownicy.component";
+import {Pracownik} from "../../../../klasy/panelPracownika/pracownicy/pracownik";
 
 @Component({
   selector: 'app-uslugi',
@@ -11,10 +17,12 @@ import { Drzwi } from '../../../../enum/drzwi';
 })
 export class UslugiPracownikaComponent implements OnInit {
   public listaUslug: Array<Usluga> = [new Usluga()];
+  public pracownicy:Array<Pracownik> = []
 
   constructor(
     public fontAwesome: FontAwesomeService,
-    private listonosz: ListonoszService
+    private listonosz: ListonoszService,
+    private modal:NgbModal
   ) {}
 
   ngOnInit() {
@@ -24,7 +32,12 @@ export class UslugiPracownikaComponent implements OnInit {
   public dodajWiersz() {
     this.listaUslug.push(new Usluga());
   }
+public modyfikacjaPracownikow(usluga :Usluga){
+    const okno = this.modal.open(UslugiPrzypisaniPracownicyComponent,{size:"lg"})
+  okno.componentInstance.usluga = usluga
+  okno.componentInstance.pracownicy = this.pracownicy
 
+  }
   public zapisz() {
     //usunięcie pustych usług
     /* this.listaUslug = this.listaUslug.filter((usluga) => {
@@ -57,6 +70,8 @@ export class UslugiPracownikaComponent implements OnInit {
       console.log(dane);
       this.listaUslug = [];
       Object.assign(this.listaUslug, dane['uslugi']);
+      this.pracownicy = []
+      Object.assign(this.pracownicy,dane['pracownicy'])
     });
   }
 }
