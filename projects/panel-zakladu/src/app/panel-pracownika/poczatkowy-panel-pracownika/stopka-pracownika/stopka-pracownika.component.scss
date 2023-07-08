@@ -4,10 +4,15 @@
   background: var(--ciemnyNiebieski);
   box-shadow: 0px 5px 5px 5px #1b2848;
   border-top: 4px solid black;
-
-  table {
-    color: white;
-    font-size: 20px;
-    font-family: math;
+  display: flex;
+  justify-content: space-evenly;
+  .panel{
+    table {
+      color: white;
+      font-size: 20px;
+      font-family: math;
+    }
+    color:white;
   }
+
 }
