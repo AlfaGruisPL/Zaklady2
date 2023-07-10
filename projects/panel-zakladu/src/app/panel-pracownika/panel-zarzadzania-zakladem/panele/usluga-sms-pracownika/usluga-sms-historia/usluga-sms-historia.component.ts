@@ -67,7 +67,8 @@ export class UslugaSmsHistoriaComponent implements OnInit, OnDestroy {
 
   public footer = (tooltipItems: any[]) => {
     const cenaSMS = this.datasetsCena[tooltipItems[0].dataIndex]
-    const kwota = Math.round((tooltipItems[0].formattedValue * cenaSMS)) / 100
+    const smsIlosc = tooltipItems[0].formattedValue > 20 ? tooltipItems[0].formattedValue - 20 : 0;
+    const kwota = Math.round((smsIlosc * cenaSMS)) / 100
     return 'Opłata:  ' + kwota + 'zł';
   };
   public label = (tooltipItems: TooltipItem<any>) => {

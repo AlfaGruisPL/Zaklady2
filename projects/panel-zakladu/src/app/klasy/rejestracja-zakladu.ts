@@ -25,6 +25,10 @@ export class RejestracjaZakladu {
 
   public przyciskAktywny = true;
 
+
+  public powiatPoprawne: boolean = true;
+  public wiesPoprawne: boolean = true;
+  public miastoPoprawne: boolean = true;
   public nazwaZakladuPoprawne: boolean = true;
   public wojewodztwoPoprawne: boolean = true;
   public ulicaPoprawna: boolean = true;
@@ -44,6 +48,7 @@ export class RejestracjaZakladu {
   public czyWszystkoPoprawne: boolean = true;
 
   public czyHaslaTakieSame(): boolean {
+    this.czyHaslaTakieSame_ = true;
     if (this.haslo1 == this.haslo2) {
       this.czyHaslaTakieSame_ = true;
     } else {
@@ -93,6 +98,24 @@ export class RejestracjaZakladu {
       this.ulicaPoprawna = true;
     } else {
       this.ulicaPoprawna = false;
+      this.czyWszystkoPoprawne = false;
+    }
+    if (this.miasto.length > 0) {
+      this.miastoPoprawne = true;
+    } else {
+      this.miastoPoprawne = false;
+      this.czyWszystkoPoprawne = false;
+    }
+    if (this.wies.length > 0) {
+      this.wiesPoprawne = true;
+    } else {
+      this.wiesPoprawne = false;
+      this.czyWszystkoPoprawne = false;
+    }
+    if (this.powiat.length > 0) {
+      this.powiatPoprawne = true;
+    } else {
+      this.powiatPoprawne = false;
       this.czyWszystkoPoprawne = false;
     }
     if (this.nrDomu.length > 0) {

@@ -1,4 +1,4 @@
-import { dzien, MojZaklad } from './moj-zaklad';
+import {dzien, MojZaklad} from './moj-zaklad';
 
 export class MojZakladDTO {
   public nazwa: string = '';
@@ -30,7 +30,9 @@ export class MojZakladDTO {
   public dataZalozeniayCzyWyswietlic = false;
   public mapaCzyWyswietlic = false;
   public godzinyCzyWyswietlic = false;
-
+  public iloscPracownikowCzyWyswietlic = false
+  public daneZakladuCzyWyswietlic = false
+  public naszKontaktCzyWyswietlic = false;
   public wysokosc: string = '';
   public szerokosc: string = '';
   public nip: string = '';
@@ -78,6 +80,10 @@ export class MojZakladDTO {
       mojZakladKlasa.dataZalozeniayCzyWyswietlic;
     this.mapaCzyWyswietlic = mojZakladKlasa.mapaCzyWyswietlic;
     this.godzinyCzyWyswietlic = mojZakladKlasa.godzinyCzyWyswietlic;
+
+    this.iloscPracownikowCzyWyswietlic = mojZakladKlasa.iloscPracownikowCzyWyswietlic;
+    this.daneZakladuCzyWyswietlic = mojZakladKlasa.daneZakladuCzyWyswietlic;
+    this.naszKontaktCzyWyswietlic = mojZakladKlasa.naszKontaktCzyWyswietlic;
   }
 }
 

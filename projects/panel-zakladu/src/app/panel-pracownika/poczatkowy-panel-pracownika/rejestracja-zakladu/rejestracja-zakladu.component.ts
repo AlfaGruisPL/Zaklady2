@@ -18,6 +18,7 @@ export class RejestracjaZakladuComponent {
   public podgladWlaczJeden: boolean = true;
   public podgladWlaczDwa: boolean = true;
   public rejestracjaUdana = false;
+  public czyMiasto = 0
 
   constructor(
     public fontAwesome: FontAwesomeService,
@@ -29,10 +30,14 @@ export class RejestracjaZakladuComponent {
   }
 
   public zarejestruj() {
+    this.daneRejestracji.hasloSpelniaWymagania = true
+    this.daneRejestracji.czyHaslaTakieSame_ = true
     var czyHaslaTakieSame = this.daneRejestracji.czyHaslaTakieSame();
     var czyDaneDobre = this.daneRejestracji.czyWszystkiePolaUzupelnione();
     var czywalidacjadobra = this.daneRejestracji.czyDanePoprawne()
-    if (czyDaneDobre == false) return
+    if (!czyDaneDobre || !czyHaslaTakieSame) {
+      return
+    }
     if (!this.daneRejestracji.walidacjaHasla()) {
       return
     }

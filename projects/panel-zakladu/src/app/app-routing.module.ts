@@ -1,24 +1,57 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { ResetHaslaPracownikowComponent } from './panel-pracownika/poczatkowy-panel-pracownika/reset-hasla-pracownikow/reset-hasla-pracownikow.component';
-import { PoczatkowyPanelPracownikaComponent } from './panel-pracownika/poczatkowy-panel-pracownika/poczatkowy-panel-pracownika.component';
-import { PanelLogowaniaPracownikowComponent } from './panel-pracownika/poczatkowy-panel-pracownika/panel-logowania-pracownikow/panel-logowania-pracownikow.component';
-import { PanelZarzadzaniaZaklademComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panel-zarzadzania-zakladem.component';
-import { StronaStartowaPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/strona-startowa-pracownika/strona-startowa-pracownika.component';
-import { MojeKontoPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moje-konto-pracownika/moje-konto-pracownika.component';
-import { ZarejestrowaneWizytyPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/zarejestrowane-wizyty-pracownika/zarejestrowane-wizyty-pracownika.component';
-import { PracownicyPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/pracownicy-pracownika/pracownicy-pracownika.component';
-import { KalendarzTerminowComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/kalendarz-terminow/kalendarz-terminow.component';
-import { CennikiPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/cenniki-pracownika/cenniki-pracownika.component';
-import { StronaReprezentacyjnaPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/strona-reprezentacyjna-pracownika/strona-reprezentacyjna-pracownika.component';
-import { RaportyPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/raporty-pracownika/raporty-pracownika.component';
-import { MojZakladPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moj-zaklad-pracownika/moj-zaklad-pracownika.component';
-import { PlatnosciPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/platnosci-pracownika.component';
-import { RejestracjaZakladuComponent } from './panel-pracownika/poczatkowy-panel-pracownika/rejestracja-zakladu/rejestracja-zakladu.component';
-import { HarmonogramPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/harmonogram-pracownika/harmonogram-pracownika.component';
-import { ListaKlientowPracownikComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/lista-klientow-pracownik.component';
-import { UslugaSmsPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/usluga-sms-pracownika/usluga-sms-pracownika.component';
-import { UslugiPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/uslugi.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {
+  ResetHaslaPracownikowComponent
+} from './panel-pracownika/poczatkowy-panel-pracownika/reset-hasla-pracownikow/reset-hasla-pracownikow.component';
+import {
+  PoczatkowyPanelPracownikaComponent
+} from './panel-pracownika/poczatkowy-panel-pracownika/poczatkowy-panel-pracownika.component';
+import {
+  PanelLogowaniaPracownikowComponent
+} from './panel-pracownika/poczatkowy-panel-pracownika/panel-logowania-pracownikow/panel-logowania-pracownikow.component';
+import {
+  PanelZarzadzaniaZaklademComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panel-zarzadzania-zakladem.component';
+import {
+  StronaStartowaPracownikaComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/strona-startowa-pracownika/strona-startowa-pracownika.component';
+import {
+  MojeKontoPracownikaComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/moje-konto-pracownika/moje-konto-pracownika.component';
+import {
+  ZarejestrowaneWizytyPracownikaComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/zarejestrowane-wizyty-pracownika/zarejestrowane-wizyty-pracownika.component';
+import {
+  PracownicyPracownikaComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/pracownicy-pracownika/pracownicy-pracownika.component';
+import {
+  KalendarzTerminowComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/kalendarz-terminow/kalendarz-terminow.component';
+import {
+  StronaReprezentacyjnaPracownikaComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/strona-reprezentacyjna-pracownika/strona-reprezentacyjna-pracownika.component';
+import {
+  RaportyPracownikaComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/raporty-pracownika/raporty-pracownika.component';
+import {
+  MojZakladPracownikaComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/moj-zaklad-pracownika/moj-zaklad-pracownika.component';
+import {
+  PlatnosciPracownikaComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/platnosci-pracownika.component';
+import {
+  RejestracjaZakladuComponent
+} from './panel-pracownika/poczatkowy-panel-pracownika/rejestracja-zakladu/rejestracja-zakladu.component';
+import {
+  HarmonogramPracownikaComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/harmonogram-pracownika/harmonogram-pracownika.component';
+import {
+  ListaKlientowPracownikComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/lista-klientow-pracownik.component';
+import {
+  UslugaSmsPracownikaComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/usluga-sms-pracownika/usluga-sms-pracownika.component';
+import {UslugiPracownikaComponent} from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/uslugi.component';
 
 const routes: Routes = [
   {
@@ -69,10 +102,7 @@ const routes: Routes = [
         path: 'kalendarzTerminow',
         component: KalendarzTerminowComponent,
       },
-      {
-        path: 'cenniki',
-        component: CennikiPracownikaComponent,
-      },
+
       {
         path: 'uslugi',
         component: UslugiPracownikaComponent,
@@ -113,11 +143,12 @@ const routes: Routes = [
     ],
   },
 
-  { path: '', redirectTo: 'zaklad', pathMatch: 'full' },
+  {path: '', redirectTo: 'zaklad', pathMatch: 'full'},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

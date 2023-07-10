@@ -163,6 +163,7 @@
           </td>
           <td>
             <input
+              [disabled]="czyMiasto == 2|| czyMiasto == 0"
               id="miasto"
               type="text"
               [ngModelOptions]="{ standalone: true }"
@@ -295,7 +296,7 @@ margin-left: 2px"
             <h2 class="naglowekWformularzu" style="position: relative">
               Utwórz hasło
               <fa-icon
-                style="position: absolute; top: -2px"
+                style="position: absolute; top: 2px"
                 [tp]="wymaganiaHasla"
                 tpVariation="popper"
                 class="zapytajnik"
@@ -323,16 +324,17 @@ margin-left: 2px"
               }"
               class="logInput"
             />
-          </td>
-          <fa-icon
-            [icon]="
+            <fa-icon
+              [icon]="
               this.podgladWlaczJeden
                 ? fontAwesome.oczkoZamkniete
                 : fontAwesome.oczko
             "
-            (click)="this.podgladWlaczJeden = !this.podgladWlaczJeden"
-            class="Podglad"
-          ></fa-icon>
+              (click)="this.podgladWlaczJeden = !this.podgladWlaczJeden"
+              class="Podglad"
+            ></fa-icon>
+          </td>
+
         </tr>
         <tr>
           <td>
@@ -353,9 +355,8 @@ margin-left: 2px"
               }"
               class="logInput"
             />
-          </td>
-          <fa-icon
-            [icon]="
+            <fa-icon
+              [icon]="
               this.podgladWlaczDwa
                 ? fontAwesome.oczkoZamkniete
                 : fontAwesome.oczko
@@ -398,28 +399,28 @@ margin-left: 2px"
           </td>
         </tr>
 
-        <tr *ngIf="!daneRejestracji.czyHaslaTakieSame_; else puste">
-          <td colspan="2" class="czerwoneKomunikaty">
-            <b>Hasła są różne, wpisz jednakowe hasło</b>
-          </td>
-        </tr>
-        <tr *ngIf="!daneRejestracji.hasloSpelniaWymagania">
-          <td colspan="2" class="czerwoneKomunikaty">
-            <b>Hasło nie spełnia wymagań</b>
-          </td>
-        </tr>
-        <tr *ngIf="daneRejestracji.emailWykorzystany">
-          <td colspan="2" class="czerwoneKomunikaty">
-            <b>Adres email jest już zarejestrowany</b>
-          </td>
-        </tr>
-        <tr *ngIf="daneRejestracji.nmumerTelefonuWykorzystany">
-          <td colspan="2" class="czerwoneKomunikaty">
+        <tr>
+          <td colspan="2">
+
+            <div style="min-height: 70px;padding-top: 1px">
+
+
+
+        <span *ngIf="!daneRejestracji.czyHaslaTakieSame_ " class="czerwoneKomunikaty">
+            <b>Hasła są różne, wpisz jednakowe hasła</b><br>
+        </span>
+              <span *ngIf="!daneRejestracji.hasloSpelniaWymagania" class="czerwoneKomunikaty">
+            <b>Hasło nie spełnia wymagań</b><br>
+        </span>
+              <span *ngIf="daneRejestracji.emailWykorzystany" class="czerwoneKomunikaty">
+            <b>Adres e-mail jest już zarejestrowany</b><br>
+        </span>
+              <span *ngIf="daneRejestracji.nmumerTelefonuWykorzystany" class="czerwoneKomunikaty">
+
             <b>Numer telefonu jest już zarejestrowany</b>
-          </td>
-        </tr>
-        <tr *ngIf="!daneRejestracji.rejestracjaUdana">
-          <td colspan="2" class="czerwoneKomunikaty">
+        <br>
+        </span>
+              <span *ngIf="!daneRejestracji.rejestracjaUdana " class="czerwoneKomunikaty">
             <b
             >Rejestracja nieudana, <br/>
               skontaktuj się z administratorem!</b
