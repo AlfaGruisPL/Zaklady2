@@ -1,10 +1,11 @@
+<h2>Proponowane wolne terminy:</h2>
 <table>
   <tr>
     <td colspan="8">
       <div class="sterowanie">
-        <button (click)="WLEWO()"><</button>
+        <button (click)="WLEWO()" [disabled]="licznikPrzyciskow <= 0">Poprzedni tydzień</button>
         Miesiąc: {{miesiac()}} - Tydzień: {{tydzien()}}
-        <button (click)="WPrawo()">></button>
+        <button (click)="WPrawo()"> Następny tydzień></button>
       </div>
     </td>
   </tr>

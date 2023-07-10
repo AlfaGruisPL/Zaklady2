@@ -1,7 +1,7 @@
 export class DzienTygodnia {
   dzien: number = 0
   nazwa: string = '-----'
-  data: Date = new Date
+  data: Date = new Date()
 
   samaData() {
     const k = this.data
@@ -11,7 +11,7 @@ export class DzienTygodnia {
   }
 
   ustawDate() {
-    const teraz = new Date()
+    const teraz = this.data
     const dzienDzis = teraz.getDate()
     this.data = new Date(teraz.setDate(dzienDzis - (teraz.getDay() - 1) + this.dzien))
   }

@@ -12,7 +12,7 @@ import {Termin} from "./termin";
 })
 export class KalendarzComponent implements OnInit {
   @Output() wyslijKrok = new EventEmitter<number>();
-
+  licznikPrzyciskow = 0
 
   public godzinaRozpoczecia = 6;
   dni = dniTygodnia
@@ -70,29 +70,34 @@ export class KalendarzComponent implements OnInit {
     return tablica
   }
 
-  dataKursos = new Date()
+  dataKursor = new Date()
 
   public miesiac() {
-    return this.dataKursos.getMonth() + 1
+    return this.dataKursor.getMonth() + 1
   }
 
   public tydzien() {
-    return Math.ceil(this.dataKursos.getDate() / 7)
+    return Math.ceil(this.dataKursor.getDate() / 7)
   }
 
   WPrawo() {
-    this.dataKursos = new Date(new Date().setUTCMonth(this.miesiac() + 1))
+    this.licznikPrzyciskow++
+    this.dataKursor = new Date(this.dataKursor.getTime() + (7 * 24 * 60 * 60 * 1000))
+
     this.dni.forEach(k => {
-      k.data = new Date(k.data.getTime() + 604800000)
+      k.data = new Date(this.dataKursor)
       k.ustawDate()
+      console.log(k.samaData());
     })
   }
 
   WLEWO() {
-    this.dataKursos = new Date(new Date().setUTCMonth(this.miesiac() - 1))
+    this.licznikPrzyciskow--
+    this.dataKursor = new Date(this.dataKursor.getTime() - (7 * 24 * 60 * 60 * 1000))
     this.dni.forEach(k => {
-      k.data = new Date(k.data.getTime() - 604800000)
+      k.data = new Date(this.dataKursor)
       k.ustawDate()
+      console.log(k.samaData());
     })
   }
 
