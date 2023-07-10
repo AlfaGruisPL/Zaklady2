@@ -1,17 +1,21 @@
+<div class="naglowek">
+  <span>Wybierz usługę/usługi</span>
+</div>
+
 <div class="uslugi">
   <table>
-    <tr>
+    <tr class="spanTytul">
       <th>Nr</th>
       <th>Usługa</th>
       <th>Cena</th>
       <th>Wybierz</th>
     </tr>
-    <tr *ngFor="let k of [].constructor(8)">
-      <td>1</td>
-      <td>Fryzura Frencz Boba</td>
-      <td>40 złotych</td>
-      <td>
-        <input type="checkbox" />
+    <tr *ngFor="let usluga of danePodstawowe.danePodstawowe.uslugi;let index = index">
+      <td class="uslugiSpan" style="min-width: 80px">{{index + 1}}.</td>
+      <td class="uslugiSpan" style="min-width: 550px;">{{usluga.nazwa}}</td>
+      <td class="uslugiSpan" style="min-width: 100px">{{usluga.cena}} złotych</td>
+      <td style="min-width: 100px; text-align: center">
+        <input class="chekboxUsluga" type="checkbox"/>
       </td>
     </tr>
   </table>

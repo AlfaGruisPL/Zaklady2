@@ -27,27 +27,41 @@ import { StronaReprezentacyjnaPracownikaComponent } from './panel-pracownika/pan
 import { RaportyPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/raporty-pracownika/raporty-pracownika.component';
 import { MojZakladPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moj-zaklad-pracownika/moj-zaklad-pracownika.component';
 import {
-  popperVariation,
-  provideTippyConfig,
-  TippyDirective,
-  tooltipVariation,
-} from '@ngneat/helipopper';
-import { RejestracjaZakladuComponent } from './panel-pracownika/poczatkowy-panel-pracownika/rejestracja-zakladu/rejestracja-zakladu.component';
-import { BannerPracownikComponent } from './panel-pracownika/panel-zarzadzania-zakladem/komponenty/banner/banner-pracownik.component';
-import { StopkaPracownikComponent } from './panel-pracownika/panel-zarzadzania-zakladem/komponenty/stopka/stopka-pracownik.component';
-import { CookieModule } from 'ngx-cookie';
-import { MaxDlugoscPipe } from './rureczki/max-dlugosc.pipe';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { DodawanieIModyfikacjaPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/pracownicy-pracownika/okienka/dodawanie-imodyfikacja-pracownika/dodawanie-imodyfikacja-pracownika.component';
-import { HarmonogramPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/harmonogram-pracownika/harmonogram-pracownika.component';
-import { ListaKlientowPracownikComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/lista-klientow-pracownik.component';
-import { UiSwitchModule } from 'ngx-ui-switch';
-import { PracownicyMojZakladComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moj-zaklad-pracownika/pracownicy-moj-zaklad/pracownicy-moj-zaklad.component';
-import { CzyNaprawdeUsunacComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/pracownicy-pracownika/okienka/czy-naprawde-usunac/czy-naprawde-usunac.component';
-import { PlatnosciPracownikaModule } from './panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/platnosciPracownika.module';
-import { UslugaSmsPracownikaModule } from './panel-pracownika/panel-zarzadzania-zakladem/panele/usluga-sms-pracownika/usluga-sms-pracownika.module';
-import { UslugiPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/uslugi.component';
-import { UslugiPrzypisaniPracownicyComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/uslugi-przypisani-pracownicy/uslugi-przypisani-pracownicy.component';
+  BannerPracownikComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/komponenty/banner/banner-pracownik.component';
+import {
+  StopkaPracownikComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/komponenty/stopka/stopka-pracownik.component';
+import {CookieModule} from 'ngx-cookie';
+import {MaxDlugoscPipe} from './rureczki/max-dlugosc.pipe';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {
+  DodawanieIModyfikacjaPracownikaComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/pracownicy-pracownika/okienka/dodawanie-imodyfikacja-pracownika/dodawanie-imodyfikacja-pracownika.component';
+import {
+  HarmonogramPracownikaComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/harmonogram-pracownika/harmonogram-pracownika.component';
+import {
+  ListaKlientowPracownikComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/lista-klientow-pracownik.component';
+import {UiSwitchModule} from 'ngx-ui-switch';
+import {
+  PracownicyMojZakladComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/moj-zaklad-pracownika/pracownicy-moj-zaklad/pracownicy-moj-zaklad.component';
+import {
+  CzyNaprawdeUsunacComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/pracownicy-pracownika/okienka/czy-naprawde-usunac/czy-naprawde-usunac.component';
+import {
+  PlatnosciPracownikaModule
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/platnosciPracownika.module';
+import {
+  UslugaSmsPracownikaModule
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/usluga-sms-pracownika/usluga-sms-pracownika.module';
+import {UslugiPracownikaComponent} from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/uslugi.component';
+import {
+  UslugiPrzypisaniPracownicyComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/uslugi-przypisani-pracownicy/uslugi-przypisani-pracownicy.component';
+import { RejestracjaUdanaComponent } from './panel-pracownika/poczatkowy-panel-pracownika/rejestracja-zakladu/rejestracja-udana/rejestracja-udana.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +96,7 @@ import { UslugiPrzypisaniPracownicyComponent } from './panel-pracownika/panel-za
     CzyNaprawdeUsunacComponent,
     UslugiPracownikaComponent,
     UslugiPrzypisaniPracownicyComponent,
+    RejestracjaUdanaComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,9 +2,8 @@
   <div class="tytul">
     <h1 class="h1dlaTytuluPaneluZaklad">
       Zarejestruj swój zakład
+
     </h1>
-  </div>
-  <div class="icon">
     <fa-icon class="iconWroc"
              [icon]="fontAwesome.powrotIconka"
              (click)="powrotOJedenKrok()"
@@ -14,57 +13,16 @@
 
 
 <div class="formularzRejestracji">
+  <app-rejestracja-udana
+    *ngIf="rejestracjaUdana"></app-rejestracja-udana>
 
-
-  <div
-    class="formularz"
-    *ngIf="rejestracjaUdana"
-    style="flex-direction: column; justify-content: flex-start"
-  >
-    <h2
-      style="
-        font-size: 32px;
-        text-align: center;
-        color: #020c5d;
-        width: 100%;
-        height: 70px;
-        float: left;
-      "
-    >
-      Na Twoją pocztę wysłaliśmy e-mail z linkiem podtwierdzającym rejestracje
-      zakładu!
-    </h2>
-    <span
-      style="
-        color: #031091;
-        text-align: center;
-        font-size: 28px;
-        width: 100%;
-        float: left;
-      "
-    >
-      Sprawdź pocztę aby dokończyć swoją rejestracje.
-    </span>
-
-    <a
-      [routerLink]="['../logowanie']"
-      style="
-        width: 100%;
-        text-align: center;
-        font-size: 25px;
-        padding-top: 70px;
-        font-weight: bolder;
-      "
-    >Przejdź do panelu logowania</a
-    >
-  </div>
   <div class="formularz" *ngIf="!rejestracjaUdana">
     <form class="tablica1">
       <table>
         <tr>
-          <td colspan="2">
+          <th colspan="2">
             <h2 class="naglowekWformularzu">Dane zakładu:</h2>
-          </td>
+          </th>
         </tr>
         <tr>
           <td>
@@ -82,11 +40,12 @@
               class="logInput"
             />
           </td>
+
         </tr>
         <tr>
-          <td colspan="2">
+          <th colspan="2">
             <h2 class="naglowekWformularzu">Adres zakładu:</h2>
-          </td>
+          </th>
         </tr>
         <tr>
           <td>
@@ -96,7 +55,7 @@
           </td>
           <td>
             <select
-              style="height: 44px; width: 260px"
+              style="height: 35px; width: 250px; background: white;"
               id="wojewodztwo"
               [ngModelOptions]="{ standalone: true }"
               [(ngModel)]="daneRejestracji.wojewodztwo"
@@ -140,7 +99,7 @@
         <tr>
           <td>
             <label for="nrDomu" class="naglowekDwaWformularzu"
-            >Nr domu*/lokalu</label
+            >Nr domu*<span class="znaczek">/</span>lokalu</label
             >
           </td>
           <td>
@@ -152,7 +111,7 @@
               [ngClass]="{ wpiszDane: !daneRejestracji.nrDomuPoprawny }"
               class="logInput"
               style="width: 80px"
-            />/
+            /> <span class="znaczek">/</span>
             <input
               size="4"
               [ngModelOptions]="{ standalone: true }"
@@ -178,7 +137,7 @@
               [ngClass]="{ wpiszDane: !daneRejestracji.kodPocztowy1Poprawny }"
               class="logInput"
               style="width: 80px"
-            />-
+            /><span class="znaczek">-</span>
             <input
               size="5"
               maxlength="3"
@@ -191,11 +150,16 @@
           </td>
         </tr>
         <tr>
-          <td colspan="2">Miasto</td>
+          <td colspan="2" class="miastoCzyWies">Miasto
+
+          </td>
+          <td>
+            <button class="buttonWybierz" *ngIf="czyMiasto != 1" (click)="czyMiasto =1">Wybierz</button>
+          </td>
         </tr>
         <tr>
           <td>
-            <label for="miasto" class="naglowekDwaWformularzu"> Miasto*</label>
+            <label for="miasto" class="naglowekDwaWformularzu"> Miasto</label>
           </td>
           <td>
             <input
@@ -203,63 +167,45 @@
               type="text"
               [ngModelOptions]="{ standalone: true }"
               [(ngModel)]="daneRejestracji.miasto"
-              [ngClass]="{ wpiszDane: !daneRejestracji.miastoPoprawne }"
               class="logInput"
             />
           </td>
         </tr>
         <tr>
-          <td colspan="2">Wieś</td>
+          <td colspan="2" class="miastoCzyWies">Wieś
+
+          </td>
+          <td>
+            <button *ngIf="czyMiasto != 2" (click)="czyMiasto =2">Wybierz</button>
+          </td>
         </tr>
 
         <tr>
           <td>
             <label class="naglowekDwaWformularzu" for="powiat">Powiat</label>
           </td>
-          <td><input class="logInput" id="powiat" type="text" [ngClass]="{ wpiszDane: !daneRejestracji.powiatPoprawny}"
-                     [(ngModel)]="daneRejestracji.powiat"
-                     [ngModelOptions]="{ standalone: true}"></td>
+          <td><input class="logInput" id="powiat" type="text"
+                     [(ngModel)]="daneRejestracji.powiat" [disabled]="czyMiasto == 1|| czyMiasto == 0"
+                     [ngClass]="{ wpiszDane: !daneRejestracji.powiatPoprawne }"
+                     [ngModelOptions]="{ standalone: true}">
+
+          </td>
         </tr>
         <tr>
           <td>
             <label class="naglowekDwaWformularzu" for="wies">Wieś</label>
           </td>
-          <td><input class="logInput" id="wies" type="text" [ngClass]="{ wpiszDane: !daneRejestracji.wiesPoprawna }"
-                     [(ngModel)]="daneRejestracji.wies"
+          <td><input class="logInput" id="wies" type="text"
+                     [(ngModel)]="daneRejestracji.wies" [disabled]="czyMiasto == 1 || czyMiasto == 0"
+                     [ngClass]="{ wpiszDane: !daneRejestracji.wiesPoprawne }"
                      [ngModelOptions]="{ standalone: true }"></td>
         </tr>
 
 
-        <tr>
-          <td colspan="2"><h3 class="naglowekTlumaczenie">* oznacza że pole jest wymagane</h3></td>
-        </tr>
-        <tr>
-          <td colspan="2"><h3 class="naglowekTlumaczenie">! oznacza że pole nie spełnia wymagań</h3></td>
-        </tr>
-        <tr>
-          <td>
-            <input
-              type="checkbox"
-              [ngModelOptions]="{ standalone: true }"
-              [(ngModel)]="daneRejestracji.rodo"
-              [ngClass]="{ rodoIregulamin: !daneRejestracji.rodoPoprawne }"
-            />
-            <label class="naglowekDwaWformularzu">- RODO</label>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <input
-              type="checkbox"
-              [ngModelOptions]="{ standalone: true }"
-              [(ngModel)]="daneRejestracji.regulamin"
-              [ngClass]="{ rodoIregulamin: !daneRejestracji.regulaminPoprawny }"
-            />
-            <label class="naglowekDwaWformularzu"> - Regulamin </label>
-          </td>
-        </tr>
       </table>
     </form>
+
+
     <form class="tablica2">
       <table>
         <tr>
@@ -279,8 +225,10 @@
               [(ngModel)]="daneRejestracji.imie"
               [ngClass]="{ wpiszDane: !daneRejestracji.imiePoprawne }"
               class="logInput"
+              [ngClass]="{ wpiszDane: !daneRejestracji.miastoPoprawne }"
             />
           </td>
+
         </tr>
         <tr>
           <td>
@@ -321,6 +269,15 @@
             >
           </td>
           <td>
+            <select class="logInput logInputPrefiksTelefonu" [(ngModel)]="daneRejestracji.prefiksTelefonu"
+                    [ngModelOptions]="{ standalone: true } ">
+              <option>
+                +48
+              </option>
+              <option>
+                +380
+              </option>
+            </select>
             <input
               id="numerTelefonu"
               type="text"
@@ -328,6 +285,8 @@
               [(ngModel)]="daneRejestracji.numerTelefonu"
               [ngClass]="{ wpiszDane: !daneRejestracji.numerTelefonuPoprawny }"
               class="logInput"
+              style="width: 176px;
+margin-left: 2px"
             />
           </td>
         </tr>
@@ -401,9 +360,42 @@
                 ? fontAwesome.oczkoZamkniete
                 : fontAwesome.oczko
             "
-            (click)="this.podgladWlaczDwa = !this.podgladWlaczDwa"
-            class="Podglad"
-          ></fa-icon>
+              (click)="this.podgladWlaczDwa = !this.podgladWlaczDwa"
+              class="Podglad"
+            ></fa-icon>
+          </td>
+
+        </tr>
+
+
+        <tr>
+          <td style="position: relative" colspan="2">
+            <input
+              type="checkbox"
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="daneRejestracji.rodo"
+              [ngClass]="{ rodoIregulamin: !daneRejestracji.rodoPoprawne }"
+            />
+            <label class="naglowekRodoIRegulamin">&nbsp;-&nbsp; RODO</label>
+            <br>
+
+
+            <input
+              type="checkbox"
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="daneRejestracji.regulamin"
+              [ngClass]="{ rodoIregulamin: !daneRejestracji.regulaminPoprawny }"
+            />
+            <label class="naglowekRodoIRegulamin"> &nbsp;-&nbsp; Regulamin </label>
+            <button style="position: absolute; right: 1px;top:20px"
+                    (click)="zarejestruj()"
+                    class="ButtonZarejestrujIzaloguj"
+                    [disabled]="!daneRejestracji.przyciskAktywny"
+            >
+              Zarejestruj
+            </button>
+
+          </td>
         </tr>
 
         <tr *ngIf="!daneRejestracji.czyHaslaTakieSame_; else puste">
@@ -431,40 +423,39 @@
             <b
             >Rejestracja nieudana, <br/>
               skontaktuj się z administratorem!</b
-            >
+            ><br>
+        </span>
+
+
+              <span *ngIf="!daneRejestracji.czyWszystkoPoprawne " class="czerwoneKomunikaty">
+
+            <b> Wypełnij wszystkie pola zaznaczone na czerwono!</b><br>
+        </span>
+            </div>
           </td>
+        <tr>
+          <td colspan="2" style="text-align: right"><h3 class="naglowekTlumaczenie">* oznacza że pole jest wymagane</h3>
+          </td>
+
         </tr>
 
-        <ng-template #puste>
-          <tr>
-            <td>&nbsp;</td>
-          </tr>
-        </ng-template>
-        <tr *ngIf="!daneRejestracji.czyWszystkoPoprawne">
-          <td colspan="2" class="czerwoneKomunikaty">
-            <b> Wypełnij wszystkie pola, zaznaczone na czerwono!</b>
-          </td>
+
+        <tr>
+          <td colspan="2" style="text-align: right"><h3 class="naglowekTlumaczenie">! oznacza że pole nie spełnia
+            wymagań</h3></td>
+
         </tr>
       </table>
 
-      <div class="buttonZarejestruj">
-        <button
-          (click)="zarejestruj()"
-          class="ButtonZarejestrujIzaloguj"
-          [disabled]="!daneRejestracji.przyciskAktywny"
-        >
-          Zarejestruj
-        </button>
-        <br/>
-        <a
-          class="chceszSieZalogowacLubZarejestrowac"
-          [routerLink]="['../logowanie']"
-        >
-          Logowanie do zarejestrowanego konta</a
-        >
-      </div>
     </form>
+    <a style="padding-top: 20px"
+       class="chceszSieZalogowacLubZarejestrowac"
+       [routerLink]="['../logowanie']"
+    >
+      Logowanie do zarejestrowanego konta</a
+    >
   </div>
+
 </div>
 
 <ng-template #wymaganiaHasla let-hide>
@@ -475,6 +466,7 @@
       margin-top: 0;
       font-weight: bolder;
       margin-bottom: 0;
+      font-family: math;
     "
   >
     Takie wymagania powinno spełniać hasło:

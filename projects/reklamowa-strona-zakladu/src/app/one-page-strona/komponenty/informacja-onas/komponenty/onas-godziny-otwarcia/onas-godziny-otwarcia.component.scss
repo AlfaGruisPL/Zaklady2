@@ -13,3 +13,27 @@
   top: 8px;
   left: 0px;
 }
+
+.spanKreska {
+  visibility: hidden;
+  position: relative;
+  padding-left: 10px;
+
+
+  &:after {
+    position: absolute;
+    bottom: -11px;
+    left: 4px;
+    content: "-";
+    visibility: visible;
+    font-size: 33px;
+  }
+}
+
+.iconkaGodzina {
+  position: relative;
+  color: rgb(38, 66, 174);
+  font-size: 23px;
+  top: 2px;
+  filter: drop-shadow(0px 0px 1px #afacac);
+}

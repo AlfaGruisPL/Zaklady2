@@ -9,16 +9,30 @@ import {Pracownik} from "../../../../../klasy/panelPracownika/pracownicy/pracown
   styleUrls: ['./uslugi-przypisani-pracownicy.component.scss']
 })
 export class UslugiPrzypisaniPracownicyComponent {
-@Input() usluga: Usluga=new Usluga()
-  @Input() pracownicy:Array<Pracownik> = []
-  constructor(public activeModal:NgbActiveModal) {
+  @Input() usluga: Usluga = new Usluga()
+  @Input() pracownicy: Array<Pracownik> = []
+
+  constructor(public activeModal: NgbActiveModal) {
 
   }
-  czyZaznaczony(id:number){
 
-   return  this.usluga.pracownicy.find(k=>{
-     console.log( k ,id)
-      return k ==id
-    })
+  czyZaznaczony(pracownik: any) {
+
+    return this.usluga.pracownicy.find(k => {
+
+      return k == pracownik.id
+    }) != undefined
+  }
+
+  ustaw(event: any, pracownik: Pracownik) {
+
+    if (event.originalTarget.checked) {
+      this.usluga.pracownicy.push(pracownik.id)
+    } else {
+      this.usluga.pracownicy = this.usluga.pracownicy.filter(k => {
+        return k != pracownik.id
+      })
+    }
+
   }
 }

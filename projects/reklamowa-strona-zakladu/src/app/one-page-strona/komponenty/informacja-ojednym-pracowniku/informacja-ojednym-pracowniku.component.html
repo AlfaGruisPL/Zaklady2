@@ -1,12 +1,16 @@
-<div class="container">
-  <div class="imieNazwiskoIzdjecie">
-    <app-informacje-ojednym-pracowniku-zdjecie-imie-nazwisko
-      [daneOPracowniku]="daneOPracowniku"
-    ></app-informacje-ojednym-pracowniku-zdjecie-imie-nazwisko>
+<div class="wyswietlanyPracownik">
+  <div class="container">
+    <div class="imieNazwiskoIzdjecie">
+      <app-informacje-ojednym-pracowniku-zdjecie-imie-nazwisko
+        [daneOPracowniku]="daneOPracowniku"
+      ></app-informacje-ojednym-pracowniku-zdjecie-imie-nazwisko>
+    </div>
+    <div class="kontakt">
+      <app-informacje-ojednym-pracowniku-kontakt
+        [daneOPracowniku]="daneOPracowniku"
+      ></app-informacje-ojednym-pracowniku-kontakt>
+    </div>
   </div>
-  <div class="kontakt">
-    <app-informacje-ojednym-pracowniku-kontakt
-      [daneOPracowniku]="daneOPracowniku"
-    ></app-informacje-ojednym-pracowniku-kontakt>
-  </div>
+
 </div>
+

@@ -47,7 +47,7 @@
   width: 800px;
   height: min-content;
   min-height: 100px;
-  box-shadow: inset 0px 0px 1pc 1px rgba(225, 225, 225, 0.6509803922);
+  box-shadow: inset 0px 0px 1pc 1px rgba(209, 231, 255, 0.65);
   border: 1px solid gainsboro;
   display: flex;
   justify-content: center;
@@ -66,10 +66,12 @@
   font-weight: bold;
   text-shadow: 0px 0px 1px #817b7b;
   font-family: math;
+  transition: 200ms;
 
   &:hover {
     color: white;
-    background-color: #d40000;
+    background-color: #b90b0b;
+    border: 2px solid #a80505;
     cursor: pointer;
   }
 }

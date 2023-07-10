@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { Usluga } from '../../../../klasy/panelPracownika/usluga/usluga';
-import { FontAwesomeService } from '../../../../serwisy/font-awesome.service';
-import { ListonoszService } from '../../../../serwisy/listonosz.service';
-import { Drzwi } from '../../../../enum/drzwi';
+import {Component, OnInit} from '@angular/core';
+import {Usluga} from '../../../../klasy/panelPracownika/usluga/usluga';
+import {FontAwesomeService} from '../../../../serwisy/font-awesome.service';
+import {ListonoszService} from '../../../../serwisy/listonosz.service';
+import {Drzwi} from '../../../../enum/drzwi';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {usluga} from "../../../../../../../reklamowa-strona-zakladu/src/app/klasy/dane-podstawowe";
 import {
   UslugiPrzypisaniPracownicyComponent
 } from "./uslugi-przypisani-pracownicy/uslugi-przypisani-pracownicy.component";
 import {Pracownik} from "../../../../klasy/panelPracownika/pracownicy/pracownik";
+import {KomunikatyService} from "../../../../serwisy/komunikaty.service";
 
 @Component({
   selector: 'app-uslugi',
@@ -17,37 +17,48 @@ import {Pracownik} from "../../../../klasy/panelPracownika/pracownicy/pracownik"
 })
 export class UslugiPracownikaComponent implements OnInit {
   public listaUslug: Array<Usluga> = [new Usluga()];
-  public pracownicy:Array<Pracownik> = []
+  public pracownicy: Array<Pracownik> = []
 
   constructor(
     public fontAwesome: FontAwesomeService,
     private listonosz: ListonoszService,
-    private modal:NgbModal
-  ) {}
+    private modal: NgbModal,
+    public komunikat: KomunikatyService
+  ) {
+  }
 
   ngOnInit() {
     this.pobieranieDanych();
   }
 
   public dodajWiersz() {
-    this.listaUslug.push(new Usluga());
+    const usluga = new Usluga()
+    this.pracownicy.forEach(k => {
+      usluga.pracownicy.push(k.id)
+    })
+
+    this.listaUslug.push(usluga);
   }
-public modyfikacjaPracownikow(usluga :Usluga){
-    const okno = this.modal.open(UslugiPrzypisaniPracownicyComponent,{size:"lg"})
-  okno.componentInstance.usluga = usluga
-  okno.componentInstance.pracownicy = this.pracownicy
+
+  public modyfikacjaPracownikow(usluga: Usluga) {
+    const okno = this.modal.open(UslugiPrzypisaniPracownicyComponent, {size: "lg"})
+    okno.componentInstance.usluga = usluga
+    okno.componentInstance.pracownicy = this.pracownicy
 
   }
+
   public zapisz() {
     //usunięcie pustych usług
-    /* this.listaUslug = this.listaUslug.filter((usluga) => {
-       return usluga.nazwa.length > 0;
-     });*/
+    this.listaUslug = this.listaUslug.filter((usluga) => {
+      return usluga.nazwa.length > 0;
+    });
     this.listonosz
       .wyslij(Drzwi.uslugiPanel, this.listaUslug)
       .then((k) => {
-        console.log('udanme');
-      })
+        this.komunikat.modyfikacjaUdana()
+      }).catch(k => {
+      this.komunikat.modyfikacjaNieUdana()
+    })
       .finally(() => {
         this.pobieranieDanych();
       });
@@ -67,11 +78,10 @@ public modyfikacjaPracownikow(usluga :Usluga){
 
   private pobieranieDanych() {
     this.listonosz.pobierz(Drzwi.uslugiPanel).then((dane) => {
-      console.log(dane);
       this.listaUslug = [];
       Object.assign(this.listaUslug, dane['uslugi']);
       this.pracownicy = []
-      Object.assign(this.pracownicy,dane['pracownicy'])
+      Object.assign(this.pracownicy, dane['pracownicy'])
     });
   }
 }

@@ -2,7 +2,7 @@
   <div class="uslugi">
     <div class="naglowekZolty">
       <span class="naglowek1Wzoltym"
-        >Uzupełnij formularz danymi o usługach, jakie oferuje Twój zakład i
+      >Uzupełnij formularz danymi o usługach, jakie oferuje Twój zakład i
         przypisz do nich pracowników
       </span>
     </div>
@@ -23,6 +23,7 @@
             <th class="thClass">Usługa</th>
             <th class="thClass">Cena</th>
             <th class="thClass">Pracownicy</th>
+            <th class="thClass">Wykonane</th>
           </tr>
           <tr *ngFor="let usluga of listaUslug; let index = index">
             <td>
@@ -56,9 +57,12 @@
 
             <td>
               <fa-icon (click)="modyfikacjaPracownikow(usluga)"
-                [icon]="fontAwesome.czlowieczek"
-                class="iconkaUser"
+                       [icon]="fontAwesome.czlowieczek"
+                       class="iconkaUser"
               ></fa-icon>
+            </td>
+            <td>
+              {{usluga.pracownicy.length}}
             </td>
           </tr>
         </table>

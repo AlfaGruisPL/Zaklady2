@@ -3,9 +3,9 @@
   <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close('Nie')"></button>
 </div>
 <div class="modal-body">
- <h3>
-   {{usluga.nazwa}}
- </h3>
+  <h3>
+    {{usluga.nazwa}}
+  </h3>
   <br>
   <table>
     <tr>
@@ -14,7 +14,7 @@
     </tr>
     <tr *ngFor="let pracownik of pracownicy">
       <td>{{pracownik.imie}} {{pracownik.nazwisko}}</td>
-<td><input type="checkbox" >{{czyZaznaczony(pracownik.id)}}</td>
+      <td><input type="checkbox" [checked]="czyZaznaczony(pracownik)" (click)="ustaw($event,pracownik)"></td>
     </tr>
   </table>
 </div>

@@ -1,5 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DanePodstawoweService} from '../../../../../serwisy/dane-podstawowe.service';
+import {FaIconsService} from "../../../../../serwisy/fa-icons.service";
 
 @Component({
   selector: 'app-onas-uslugi',
@@ -14,7 +15,8 @@ export class ONasUslugiComponent implements OnInit, OnDestroy {
   public max = 10
   public sub1: any;
 
-  constructor(public danePodstawowe: DanePodstawoweService) {
+  constructor(public danePodstawowe: DanePodstawoweService,
+              public faIcons: FaIconsService) {
   }
 
   ngOnInit() {

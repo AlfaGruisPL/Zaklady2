@@ -3,19 +3,9 @@
     <tr>
       <td colspan="2" class="informacjeOnasTytul">
         Trochę informacji o naszym zakładzie
+        <fa-icon class="iconkaPodstawowe" [icon]="faIcons.info"></fa-icon>
       </td>
-      <td>
-        <img
-          style="
-          width: 40px;
-          height: 40px;
-          float: left;
-          position: relative;
-          top: -5px;
-        "
-          src="assets/more-info-icon%20(1).png"
-        />
-      </td>
+
     </tr>
     <tr *ngIf="DanePodstawowe_.danePodstawowe.wyswietlaneDane.dataZalozeniayCzyWyswietlic">
       <td class="informacjaNaglowek1">Data założenia:</td>

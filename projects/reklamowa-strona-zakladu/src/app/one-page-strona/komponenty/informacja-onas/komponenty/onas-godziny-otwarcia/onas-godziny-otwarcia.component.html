@@ -3,12 +3,12 @@
     <tr>
       <td class="informacjeOnasTytul" colspan="2">
         Godziny otwarcia
-
-        <img class="zegarek" src="assets/on-time-icon%20(1).png"/>
+        <fa-icon class="iconkaGodzina"
+                 [icon]="faIcons.zegarek"></fa-icon>
       </td>
     </tr>
     <tr>
-      <td class="informacjaNaglowek1">Poniedziałek -</td>
+      <td class="informacjaNaglowek1">Poniedziałek</td>
       <td
         class="informacjaNaglowek2"
         *ngIf="
@@ -16,32 +16,32 @@
         else nieczynne
       "
       >
-        {{ DanePodstawowe_.danePodstawowe.poniedzialek.otwarcie }} -
+        {{ DanePodstawowe_.danePodstawowe.poniedzialek.otwarcie }} <span class="spanKreska">-</span>
         {{ DanePodstawowe_.danePodstawowe.poniedzialek.zamkniecie }}
       </td>
     </tr>
     <tr>
-      <td class="informacjaNaglowek1">Wtorek -</td>
+      <td class="informacjaNaglowek1">Wtorek</td>
       <td
         class="informacjaNaglowek2"
         *ngIf="DanePodstawowe_.danePodstawowe.wtorek.czynnyDzien; else nieczynne"
       >
-        {{ DanePodstawowe_.danePodstawowe.wtorek.otwarcie }} -
+        {{ DanePodstawowe_.danePodstawowe.wtorek.otwarcie }} <span class="spanKreska">-</span>
         {{ DanePodstawowe_.danePodstawowe.wtorek.zamkniecie }}
       </td>
     </tr>
     <tr>
-      <td class="informacjaNaglowek1">Środa -</td>
+      <td class="informacjaNaglowek1">Środa</td>
       <td
         class="informacjaNaglowek2"
         *ngIf="DanePodstawowe_.danePodstawowe.sroda.czynnyDzien; else nieczynne"
       >
-        {{ DanePodstawowe_.danePodstawowe.sroda.otwarcie }} -
+        {{ DanePodstawowe_.danePodstawowe.sroda.otwarcie }} <span class="spanKreska">-</span>
         {{ DanePodstawowe_.danePodstawowe.sroda.zamkniecie }}
       </td>
     </tr>
     <tr>
-      <td class="informacjaNaglowek1">Czwartek -</td>
+      <td class="informacjaNaglowek1">Czwartek</td>
       <td
         class="informacjaNaglowek2"
         *ngIf="
@@ -49,32 +49,32 @@
         else nieczynne
       "
       >
-        {{ DanePodstawowe_.danePodstawowe.czwartek.otwarcie }} -
+        {{ DanePodstawowe_.danePodstawowe.czwartek.otwarcie }} <span class="spanKreska">-</span>
         {{ DanePodstawowe_.danePodstawowe.czwartek.zamkniecie }}
       </td>
     </tr>
     <tr>
-      <td class="informacjaNaglowek1">Piątek -</td>
+      <td class="informacjaNaglowek1">Piątek</td>
       <td
         class="informacjaNaglowek2"
         *ngIf="DanePodstawowe_.danePodstawowe.piatek.czynnyDzien; else nieczynne"
       >
-        {{ DanePodstawowe_.danePodstawowe.piatek.otwarcie }} -
+        {{ DanePodstawowe_.danePodstawowe.piatek.otwarcie }} <span class="spanKreska">-</span>
         {{ DanePodstawowe_.danePodstawowe.piatek.zamkniecie }}
       </td>
     </tr>
     <tr>
-      <td class="informacjaNaglowek1">Sobota -</td>
+      <td class="informacjaNaglowek1">Sobota</td>
       <td
         class="informacjaNaglowek2"
         *ngIf="DanePodstawowe_.danePodstawowe.sobota.czynnyDzien; else nieczynne"
       >
-        {{ DanePodstawowe_.danePodstawowe.sobota.otwarcie }} -
+        {{ DanePodstawowe_.danePodstawowe.sobota.otwarcie }} <span class="spanKreska">-</span>
         {{ DanePodstawowe_.danePodstawowe.sobota.zamkniecie }}
       </td>
     </tr>
     <tr>
-      <td class="informacjaNaglowek1">Niedziela -</td>
+      <td class="informacjaNaglowek1">Niedziela</td>
       <td
         class="informacjaNaglowek2"
         *ngIf="
@@ -82,7 +82,7 @@
         else nieczynne
       "
       >
-        {{ DanePodstawowe_.danePodstawowe.niedziela.otwarcie }} -
+        {{ DanePodstawowe_.danePodstawowe.niedziela.otwarcie }} <span class="spanKreska">-</span>
         {{ DanePodstawowe_.danePodstawowe.niedziela.zamkniecie }}
       </td>
     </tr>

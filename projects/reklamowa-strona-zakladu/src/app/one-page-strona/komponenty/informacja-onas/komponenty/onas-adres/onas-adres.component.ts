@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { NawigacjaService } from '../../../../../serwisy/nawigacja.service';
-import { DanePodstawoweService } from '../../../../../serwisy/dane-podstawowe.service';
+import {Component} from '@angular/core';
+import {NawigacjaService} from '../../../../../serwisy/nawigacja.service';
+import {DanePodstawoweService} from '../../../../../serwisy/dane-podstawowe.service';
+import {FaIconsService} from "../../../../../serwisy/fa-icons.service";
 
 @Component({
   selector: 'app-onas-adres',
@@ -13,6 +14,8 @@ import { DanePodstawoweService } from '../../../../../serwisy/dane-podstawowe.se
 export class ONasAdresComponent {
   constructor(
     public nawigacja: NawigacjaService,
-    public DanePodstawowe_: DanePodstawoweService
-  ) {}
+    public DanePodstawowe_: DanePodstawoweService,
+    public faIcons: FaIconsService
+  ) {
+  }
 }

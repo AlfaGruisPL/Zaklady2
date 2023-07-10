@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { DanePodstawoweService } from '../../../../../serwisy/dane-podstawowe.service';
+import {Component} from '@angular/core';
+import {DanePodstawoweService} from '../../../../../serwisy/dane-podstawowe.service';
+import {FaIconsService} from "../../../../../serwisy/fa-icons.service";
 
 @Component({
   selector: 'app-onas-kontakt',
@@ -10,5 +11,7 @@ import { DanePodstawoweService } from '../../../../../serwisy/dane-podstawowe.se
   ],
 })
 export class ONasKontaktComponent {
-  constructor(public danePodstawowe_: DanePodstawoweService) {}
+  constructor(public danePodstawowe_: DanePodstawoweService,
+              public faIcons: FaIconsService) {
+  }
 }

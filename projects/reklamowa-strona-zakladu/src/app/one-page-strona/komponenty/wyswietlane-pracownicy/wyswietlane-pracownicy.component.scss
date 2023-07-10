@@ -154,8 +154,8 @@
 
         span {
           position: relative;
-          top: 3px;
-          font-size: 32px;
+          top: -2px;
+          font-size: 30px;
           font-weight: bold;
           color: white;
           text-shadow: 1px 1px 1px #000000;
@@ -188,6 +188,12 @@
           background: #00000078;
           letter-spacing: 5px;
           transition: 100ms;
+          font-family: math;
+
+          span {
+            position: relative;
+            bottom: 4px;
+          }
 
           &:hover {
             cursor: pointer;

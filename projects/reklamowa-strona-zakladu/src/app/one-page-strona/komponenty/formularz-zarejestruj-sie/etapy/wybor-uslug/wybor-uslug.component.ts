@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
+import {DanePodstawoweService} from "../../../../../serwisy/dane-podstawowe.service";
 
 @Component({
   selector: 'app-wybor-uslug',
@@ -10,6 +11,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class WyborUslugComponent {
   @Output() wyslijKrok = new EventEmitter<number>();
+
+  constructor(public danePodstawowe: DanePodstawoweService) {
+  }
 
   public przejdzDalej() {
     this.wyslijKrok.emit(3);

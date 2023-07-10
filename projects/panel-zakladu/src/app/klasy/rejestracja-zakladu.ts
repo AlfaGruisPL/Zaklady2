@@ -16,6 +16,7 @@ export class RejestracjaZakladu {
   public nazwisko: string = "k";
   public email: string = "alfagruis@gmail.com";
   public numerTelefonu: string = "530322870";
+  public prefiksTelefonu: string = "+48";
   public haslo1: string = "Kawa0808)aaaa";
   public haslo2: string = "Kawa0808)aaaa";
   public rodo: boolean = false;
@@ -25,12 +26,9 @@ export class RejestracjaZakladu {
   public przyciskAktywny = true;
 
   public nazwaZakladuPoprawne: boolean = true;
-  public miastoPoprawne: boolean = true;
   public wojewodztwoPoprawne: boolean = true;
   public ulicaPoprawna: boolean = true;
   public nrDomuPoprawny: boolean = true;
-  public wiesPoprawna: boolean = true;
-  public powiatPoprawny: boolean = true;
   public nrLokaluPoprawny: boolean = true;
   public kodPocztowy1Poprawny?: boolean = true;
   public kodPocztowy2Poprawny?: boolean = true;
@@ -38,6 +36,7 @@ export class RejestracjaZakladu {
   public nazwiskoPoprawne: boolean = true;
   public emailPoprawny: boolean = true;
   public numerTelefonuPoprawny: boolean = true;
+  public prefiksTelefonuPoprawny: boolean = true;
   public rodoPoprawne: boolean = true;
   public regulaminPoprawny: boolean = true;
   public haslo1poprawne: boolean = true;
@@ -83,12 +82,6 @@ export class RejestracjaZakladu {
       this.nazwaZakladuPoprawne = false;
       this.czyWszystkoPoprawne = false;
     }
-    if (this.miasto.length > 0) {
-      this.miastoPoprawne = true;
-    } else {
-      this.miastoPoprawne = false;
-      this.czyWszystkoPoprawne = false;
-    }
 
     if (this.wojewodztwo.length > 0) {
       this.wojewodztwoPoprawne = true;
@@ -108,19 +101,6 @@ export class RejestracjaZakladu {
       this.nrDomuPoprawny = false;
       this.czyWszystkoPoprawne = false;
     }
-    if (this.powiat.length > 0) {
-      this.powiatPoprawny = true;
-    } else {
-      this.powiatPoprawny = false;
-      this.czyWszystkoPoprawne = false;
-    }
-    if (this.wies.length > 0) {
-      this.wiesPoprawna = true;
-    } else {
-      this.wiesPoprawna = false;
-      this.czyWszystkoPoprawne = false;
-    }
-
     if (this.kodPocztowy1 != undefined && this.kodPocztowy1.toString().length > 0 && regex_liczby.test(this.kodPocztowy1.toString())) {
       this.kodPocztowy1Poprawny = true;
     } else {
@@ -240,7 +220,7 @@ export class RejestracjaZakladuDTO {
     this.imie = dane.imie;
     this.nazwisko = dane.nazwisko;
     this.email = dane.email;
-    this.numerTelefonu = dane.numerTelefonu;
+    this.numerTelefonu = dane.prefiksTelefonu + "-" + dane.numerTelefonu;
     this.haslo = dane.haslo1;
   }
 

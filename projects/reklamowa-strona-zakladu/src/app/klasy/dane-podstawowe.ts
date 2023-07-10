@@ -54,6 +54,7 @@ export class adres {
 }
 
 export class usluga {
+  public id: number = 0;
   public nazwa: string = '';
   public cena: string = '';
   public pracownicy: Array<number> = [];
