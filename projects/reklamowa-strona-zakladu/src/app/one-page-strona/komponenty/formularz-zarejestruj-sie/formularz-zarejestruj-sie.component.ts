@@ -10,7 +10,7 @@ import { ZarejestrujSieService } from './zarejestrujSie.service';
   styleUrls: ['./formularz-zarejestruj-sie.component.scss'],
 })
 export class FormularzZarejestrujSieComponent implements OnInit {
-  public krok: number = 2;
+  public krok: number = 3;
   public daneKlientaKlasa = new DaneKlienta();
 
   constructor(

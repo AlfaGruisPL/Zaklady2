@@ -1,0 +1,33 @@
+.godzina {
+
+  tr:first-of-type {
+    border-top: 1px solid green;
+    border-bottom: 1px solid green;
+  }
+
+  td {
+    height: 14px;
+    border-left: 1px solid green;
+    border-bottom: 1px solid green;
+
+    &:first-of-type {
+      border-left: none;
+      border-bottom: none;
+      font-weight: bold;
+      font-family: math;
+      font-size: 15px;
+    }
+
+    &:last-of-type {
+      border-right: 1px solid green;
+    }
+
+  }
+}
+
+.sterowanie {
+  width: 100%;
+  text-align: center;
+}
+
+

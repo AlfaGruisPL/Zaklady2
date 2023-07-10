@@ -38,6 +38,7 @@ import { WeryfikacjaComponent } from './one-page-strona/komponenty/formularz-zar
 import { ZegarComponent } from './one-page-strona/komponenty/zarejestruj-sie/zegar/zegar.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgbPaginationModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TerminComponent } from './one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/kalendarz/termin/termin.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { NgbPaginationModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
     InformacjeOJednymPracownikuZdjecieImieNazwiskoComponent,
     WeryfikacjaComponent,
     ZegarComponent,
+    TerminComponent,
   ],
   imports: [
     LeafletModule,

@@ -1,4 +1,38 @@
-<p>kalendarz works!</p>
+<table>
+  <tr>
+    <td colspan="8">
+      <div class="sterowanie">
+        <button (click)="WLEWO()"><</button>
+        Miesiąc: {{miesiac()}} - Tydzień: {{tydzien()}}
+        <button (click)="WPrawo()">></button>
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <th>
+      Godzina:
+    </th>
+    <th *ngFor="let dzien of dni" style="width: 125px">
+      {{dzien.nazwa}}<br>
+      {{dzien.samaData()}}
+    </th>
+
+  </tr>
+  <tr class="godzina" *ngFor="let k of [].constructor(21);let index = index">
+    <td style="position:relative;"><span style="position: relative;top:-12.5px">
+      {{godzina(index)}}</span></td>
+    <td
+      style="position: relative;height: 25px"
+      *ngFor="let dzien of dni"
+    >
+      <ng-container *ngFor="let termin of terminyNaDzien(dzien)">
+        <app-termin *ngIf="index==0" [godzinaRozpoczecia]="godzinaRozpoczecia" [termin]="termin"></app-termin>
+      </ng-container>
+    </td>
+
+  </tr>
+</table>
 <div class="divNaPrzycisk">
   <button class="buttonDalej" (click)="przejdzDalej()">Dalej</button>
   <button class="buttonCofnij" (click)="cofnij()">Cofnij</button>
