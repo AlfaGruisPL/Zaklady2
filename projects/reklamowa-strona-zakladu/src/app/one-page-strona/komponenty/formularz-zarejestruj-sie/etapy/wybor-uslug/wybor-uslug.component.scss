@@ -1,3 +1,8 @@
+.uslugi {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .spanTytul {
   font-size: 19px;
@@ -18,4 +23,8 @@
 
 .chekboxUsluga {
   scale: 1.2;
+}
+
+.strzalka {
+  font-size: 70px;
 }

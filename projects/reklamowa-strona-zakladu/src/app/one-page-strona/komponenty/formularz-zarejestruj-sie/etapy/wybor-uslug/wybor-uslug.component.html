@@ -3,6 +3,9 @@
 </div>
 
 <div class="uslugi">
+  <div (click)="poprzednie()" class="strzalka" [ngStyle]="{'color':strona == 1?'red':''}">
+    <
+  </div>
   <table>
     <tr class="spanTytul">
       <th>Nr</th>
@@ -10,7 +13,8 @@
       <th>Cena</th>
       <th>Wybierz</th>
     </tr>
-    <tr *ngFor="let usluga of danePodstawowe.danePodstawowe.uslugi;let index = index">
+    <tr
+      *ngFor="let usluga of danePodstawowe.danePodstawowe.uslugi | slice: (strona-1) * iloscNaStrone : strona * iloscNaStrone;let index = index ">
       <td class="uslugiSpan" style="min-width: 80px">{{index + 1}}.</td>
       <td class="uslugiSpan" style="min-width: 550px;">{{usluga.nazwa}}</td>
       <td class="uslugiSpan" style="min-width: 100px">{{usluga.cena}} złotych</td>
@@ -19,6 +23,10 @@
       </td>
     </tr>
   </table>
+  <div (click)="nastepne()" class="strzalka"
+       [ngStyle]="{'color':(strona) * iloscNaStrone > danePodstawowe.danePodstawowe.uslugi.length?'red':''}">
+    >
+  </div>
 </div>
 <div class="divNaPrzycisk">
   <button class="buttonDalej" (click)="przejdzDalej()">Dalej</button>

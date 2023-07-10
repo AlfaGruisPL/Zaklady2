@@ -11,6 +11,8 @@ import {DanePodstawoweService} from "../../../../../serwisy/dane-podstawowe.serv
 })
 export class WyborUslugComponent {
   @Output() wyslijKrok = new EventEmitter<number>();
+  strona = 1
+  iloscNaStrone = 10
 
   constructor(public danePodstawowe: DanePodstawoweService) {
   }
@@ -21,5 +23,17 @@ export class WyborUslugComponent {
 
   public cofnij() {
     this.wyslijKrok.emit(1);
+  }
+
+  poprzednie() {
+    if (this.strona > 1) {
+      this.strona--
+    }
+  }
+
+  nastepne() {
+
+    this.strona++
+
   }
 }
