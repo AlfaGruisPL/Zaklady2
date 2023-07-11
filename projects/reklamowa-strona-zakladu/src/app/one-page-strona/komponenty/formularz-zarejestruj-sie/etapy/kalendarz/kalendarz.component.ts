@@ -59,6 +59,7 @@ export class KalendarzComponent implements OnInit {
 
   terminyNaDzien(data: DzienTygodnia): Array<any> {
     const tablica = this.ZarejestrujSie.DaneKlientaClass.wszystkieTerminy.filter(usluga => {
+      console.log(usluga.data, data.data)
       if (usluga.data.getDate() == data.data.getDate()) {
         if (usluga.data.getFullYear() == data.data.getFullYear()) {
           if (usluga.data.getMonth() == data.data.getMonth()) {

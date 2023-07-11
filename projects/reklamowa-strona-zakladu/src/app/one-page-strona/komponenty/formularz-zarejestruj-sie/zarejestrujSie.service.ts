@@ -24,6 +24,7 @@ export class ZarejestrujSieService {
           terminOBJ.koniec = termin_.koniec
           terminOBJ.poczatek = termin_.poczatek
           terminOBJ.poczatekMinuty = termin_.poczatekMinuty
+          terminOBJ.data = new Date(termin_.data)
           this.DaneKlientaClass.wszystkieTerminy.push(terminOBJ)
         })
       }
