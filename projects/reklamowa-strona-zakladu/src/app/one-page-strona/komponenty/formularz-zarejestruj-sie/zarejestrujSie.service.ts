@@ -21,6 +21,7 @@ export class ZarejestrujSieService {
     const pracownikUslugiDTO_obj: pracownikUslugiDTO = new pracownikUslugiDTO(this.DaneKlientaClass);
     this.listonosz.wyslij(Drzwi.pobierzTerminy, pracownikUslugiDTO_obj).then(
       (odpowiedz: Array<Termin>) => {
+        this.DaneKlientaClass.wszystkieTerminy = []
         odpowiedz.forEach(termin_ => {
           const terminOBJ = new Termin()
           terminOBJ.koniecMinuty = termin_.koniecMinuty
