@@ -31,7 +31,7 @@ export class KalendarzComponent implements OnInit {
     "Grudzień"
   ];
 
-  constructor(private ZarejestrujSie: ZarejestrujSieService) {
+  constructor(public ZarejestrujSie: ZarejestrujSieService) {
   }
 
   public przejdzDalej() {

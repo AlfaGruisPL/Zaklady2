@@ -67,14 +67,6 @@
       </tr>
       <tr
         *ngIf="
-          !ZarejestrujSieService.DaneKlientaClass.czyWszystkoUzupelnione;
-          else puste
-        "
-      >
-        <td class="czerwone">Wprowadź wszystkie dane!</td>
-      </tr>
-      <tr
-        *ngIf="
           ZarejestrujSieService.DaneKlientaClass.daneNieWyslane;
           else puste
         "
@@ -89,6 +81,7 @@
     </table>
   </div>
   <div class="divNaPrzycisk">
+    <span class="czerwone" *ngIf="!ZarejestrujSieService.DaneKlientaClass.czyWszystkoUzupelnione">Wprowadź wszystkie dane!</span>
     <button class="buttonDalej" (click)="przejdzDalej()">Dalej</button>
     <button class="buttonCofnij" (click)="cofnij()">Cofnij</button>
   </div>

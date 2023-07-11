@@ -1,3 +1,5 @@
+$borderSelect: 2px inset #4096e3;
+
 @import "~@ng-select/ng-select/themes/default.theme.css";
 
 body {
@@ -42,14 +44,22 @@ html {
 
 .ng-select.selectPracownicy ng-dropdown-panel.ng-select-top {
   width: 280px !important;
-  border: 2px inset blue;
+  border: $borderSelect;
   border-bottom: none;
 }
 
 .ng-select.selectPracownicy ng-dropdown-panel.ng-select-bottom {
   width: 280px !important;
-  border: 2px inset blue;
+  border: $borderSelect;
   border-top: none;
+}
+
+.ng-select.selectPracownicy ng-dropdown-panel .ng-option-label {
+  color: #0853c4;
+  font-weight: bold;
+  font-family: math;
+  text-shadow: 0px 0px 1px black;
+  font-size: 18px !important;
 }
 
 .ng-select.selectPracownicy .ng-dropdown-panel-items {
@@ -57,7 +67,7 @@ html {
 }
 
 .ng-select.selectPracownicy div.ng-option {
-  width: 273px !important;
+  // width: 273px !important;
 
   .ng-option-label {
     font-size: 20px;

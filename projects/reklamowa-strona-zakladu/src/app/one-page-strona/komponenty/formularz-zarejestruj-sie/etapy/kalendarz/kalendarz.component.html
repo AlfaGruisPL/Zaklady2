@@ -1,30 +1,37 @@
-<h2>Proponowane wolne terminy:</h2>
-<table>
+<div class="naglowek">
+  <span>Proponowane wolne terminy:</span>
+</div>
+<div class="divNaSpan" *ngIf="ZarejestrujSie.niepobranyKalendarz == true">
+  <span class="czerwone">Wystąpił błąd przy pobieraniu kalendarza, <br>zgłoś problem administratorowi</span>
+</div>
+
+<table *ngIf="ZarejestrujSie.niepobranyKalendarz == false">
   <tr>
     <td colspan="8">
       <div class="sterowanie">
-        <button (click)="WLEWO()" [disabled]="licznikPrzyciskow <= 0">Poprzedni tydzień</button>
-        <div style="width: 300px;text-align: center">
+        <button class="jakiTydzienButton" (click)="WLEWO()" [disabled]="licznikPrzyciskow <= 0">Poprzedni tydzień
+        </button>
+        <div class="jakiMiesiacDiv">
+          <span>  {{miesiace[miesiac() - 1]}} - Tydzień: {{tydzien()}}</span>
 
-          {{miesiace[miesiac() - 1]}} - Tydzień: {{tydzien()}}
         </div>
-        <button (click)="WPrawo()"> Następny tydzień></button>
+        <button class="jakiTydzienButton" (click)="WPrawo()"> Następny tydzień</button>
       </div>
     </td>
   </tr>
 
   <tr>
-    <th>
+    <th class="wyswietlaneGodzinySpan" style="font-size: 18px">
       Godzina:
     </th>
     <th *ngFor="let dzien of dni" style="width: 125px">
-      {{dzien.nazwa}}<br>
-      {{dzien.samaData()}}
+      <span class="wyswietlaneDniSpan"> {{dzien.nazwa}}</span> <br>
+      <span class="wyswietlaneDniSpan" style="font-size: 15px">{{dzien.samaData()}}</span>
     </th>
 
   </tr>
   <tr class="godzina" *ngFor="let k of [].constructor(21);let index = index">
-    <td style="position:relative;"><span style="position: relative;top:-12.5px">
+    <td style="position:relative;"><span class="wyswietlaneGodzinySpan">
       {{godzina(index)}}</span></td>
     <td
       style="position: relative;height: 25px"
@@ -38,6 +45,7 @@
   </tr>
 </table>
 <div class="divNaPrzycisk">
-  <button class="buttonDalej" (click)="przejdzDalej()">Dalej</button>
+  <span class="czerwone">Wybierz termin, aby przejść dalej</span>
+  <button [disabled]="ZarejestrujSie.niepobranyKalendarz" class="buttonDalej" (click)="przejdzDalej()">Dalej</button>
   <button class="buttonCofnij" (click)="cofnij()">Cofnij</button>
 </div>

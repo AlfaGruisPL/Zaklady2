@@ -119,10 +119,17 @@
     font-weight: bold;
     font-family: math;
     margin-left: 20px;
+    border: 1px solid #067202;
 
-    &:hover {
+    &:hover:not([disabled]) {
       cursor: pointer;
       background: #318801;
+    }
+
+    &:disabled {
+      filter: grayscale(80%);
+      cursor: not-allowed;
+
     }
   }
 
@@ -139,6 +146,7 @@
     font-weight: bold;
     font-family: math;
     margin-left: 20px;
+    border: 1px solid #750000;
 
     &:hover {
       cursor: pointer;
@@ -156,6 +164,7 @@
 
   span {
     font-family: math;
+    font-weight: bold;
     font-size: 24px;
     color: #0c57a2;
     text-shadow: 0px 0px 1px black;

@@ -10,11 +10,14 @@ import {Termin} from "./etapy/kalendarz/termin";
 export class ZarejestrujSieService {
   DaneKlientaClass: DaneKlienta = new DaneKlienta();
   wyswietlanieFormualrza = true;
+  public niepobranyKalendarz: boolean = false;
+
 
   constructor(private listonosz: ListonoszService) {
   }
 
   pobierzTerminyWizyt() {
+    this.niepobranyKalendarz = false;
     const pracownikUslugiDTO_obj: pracownikUslugiDTO = new pracownikUslugiDTO(this.DaneKlientaClass);
     this.listonosz.wyslij(Drzwi.pobierzTerminy, pracownikUslugiDTO_obj).then(
       (odpowiedz: Array<Termin>) => {
@@ -29,7 +32,7 @@ export class ZarejestrujSieService {
         })
       }
     ).catch(niewyslane => {
-
+      this.niepobranyKalendarz = true;
     })
   }
 }

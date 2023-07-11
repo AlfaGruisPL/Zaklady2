@@ -1,14 +1,47 @@
+$kolor: #d4e4fc;
+.jakiMiesiacDiv {
+  width: 300px;
+  text-align: center;
+
+  span {
+    font-family: math;
+    font-size: 21px;
+    font-weight: bold;
+    color: #670101;
+    text-shadow: 0px 0px 1px black;
+  }
+}
+
+.wyswietlaneGodzinySpan {
+  position: relative;
+  top: -12.5px;
+  font-family: math;
+  font-size: 15px;
+  color: #0c57a2;
+  text-shadow: 0px 0px 1px black;
+}
+
+.wyswietlaneDniSpan {
+  font-family: math;
+  font-size: 18px;
+  font-weight: bold;
+  color: #670101;
+  text-shadow: 0px 0px 1px black;
+}
+
 .godzina {
 
+
   tr:first-of-type {
-    border-top: 1px solid green;
-    border-bottom: 1px solid green;
+    border-top: 1px solid $kolor;
+    border-bottom: 1px solid $kolor;
   }
+
 
   td {
     height: 14px;
-    border-left: 1px solid green;
-    border-bottom: 1px solid green;
+    border-left: 1px solid $kolor;
+    border-bottom: 1px solid $kolor;
 
     &:first-of-type {
       border-left: none;
@@ -19,7 +52,7 @@
     }
 
     &:last-of-type {
-      border-right: 1px solid green;
+      border-right: 1px solid $kolor;
     }
 
   }
@@ -33,4 +66,41 @@
 
 h2 {
   text-align: center;
+}
+
+.divNaSpan {
+  width: 100%;
+  float: left;
+  text-align: center;
+  height: min-content;
+
+  span {
+
+  }
+}
+
+.jakiTydzienButton {
+  width: 145px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 20px;
+  background: #2138b5;
+  color: white;
+  text-shadow: 1px 1px 3px black;
+  box-shadow: 0px 0px 2px 1px #0e064a;
+  border: inset 1px #250ba4;
+  font-family: math;
+  letter-spacing: 1px;
+
+  &:hover:not([disabled]) {
+    cursor: pointer;
+    background: #243cc0;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background: gray;
+    border: solid 1px #242424;
+    box-shadow: none;
+  }
 }
