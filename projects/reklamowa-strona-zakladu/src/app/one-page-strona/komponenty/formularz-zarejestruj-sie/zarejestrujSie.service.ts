@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {DaneKlienta, pracownikUslugiDTO} from './etapy/klasy/dane-klienta';
 import {ListonoszService} from "../../../serwisy/listonosz.service";
 import {Drzwi} from "../../../enum/drzwi";
+import {Termin} from "./etapy/kalendarz/termin";
 
 @Injectable({
   providedIn: 'root',
@@ -16,8 +17,15 @@ export class ZarejestrujSieService {
   pobierzTerminyWizyt() {
     const pracownikUslugiDTO_obj: pracownikUslugiDTO = new pracownikUslugiDTO(this.DaneKlientaClass);
     this.listonosz.wyslij(Drzwi.pobierzTerminy, pracownikUslugiDTO_obj).then(
-      odpowiedz => {
-        this.DaneKlientaClass.wszystkieTerminy = odpowiedz
+      (odpowiedz: Array<Termin>) => {
+        odpowiedz.forEach(termin_ => {
+          const terminOBJ = new Termin()
+          terminOBJ.koniecMinuty = termin_.koniecMinuty
+          terminOBJ.koniec = termin_.koniec
+          terminOBJ.poczatek = termin_.poczatek
+          terminOBJ.poczatekMinuty = termin_.poczatekMinuty
+          this.DaneKlientaClass.wszystkieTerminy.push(terminOBJ)
+        })
       }
     ).catch(niewyslane => {
 
