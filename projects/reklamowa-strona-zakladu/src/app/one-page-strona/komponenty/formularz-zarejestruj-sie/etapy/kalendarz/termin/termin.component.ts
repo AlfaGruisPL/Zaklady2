@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ZarejestrujSieService} from "../../../zarejestrujSie.service";
 import {Termin} from "../termin";
 
 @Component({
@@ -8,13 +9,19 @@ import {Termin} from "../termin";
 })
 export class TerminComponent implements OnInit {
   @Input() godzinaRozpoczecia = 0
-  @Input() termin = {poczatek: 15, poczatekMinuty: 15, koniec: 16, koniecMinuty: 40}
+  @Input() termin: Termin = new Termin()
 
-  terminy: Array<Termin> = []
+  constructor(public zarejestrujSie_: ZarejestrujSieService) {
+  }
+
   top = '70px';
   wysokosc = '100px'
 
   ngOnInit() {
+    //  if (this.zarejestrujSie_.DaneKlientaClass.wybranyTermin != undefined) {
+
+    //this.termin = this.zarejestrujSie_.DaneKlientaClass.wybranyTermin
+    //  }
     const poczatek = this.termin.poczatek
     const koniec = this.termin.koniec
     const roznica = (poczatek + (this.termin.poczatekMinuty / 60)) - 2 - this.godzinaRozpoczecia
@@ -22,5 +29,19 @@ export class TerminComponent implements OnInit {
     this.top = (roznica * 25 * 2) + 'px'
     this.wysokosc = (((koniec + (this.termin.koniecMinuty / 60)) - (poczatek + (this.termin.poczatekMinuty / 60))) * 2 * 25) + "px"
     console.log(this.wysokosc)
+  }
+
+  wybierzTermin() {
+    this.zarejestrujSie_.DaneKlientaClass.wybranyTermin = this.termin;
+  }
+
+  wybrany() {
+    return JSON.stringify(this.zarejestrujSie_.DaneKlientaClass.wybranyTermin) == JSON.stringify(this.termin)
+  }
+
+  anuluj() {
+    setTimeout(() => {
+      this.zarejestrujSie_.DaneKlientaClass.wybranyTermin = undefined;
+    }, 10)
   }
 }

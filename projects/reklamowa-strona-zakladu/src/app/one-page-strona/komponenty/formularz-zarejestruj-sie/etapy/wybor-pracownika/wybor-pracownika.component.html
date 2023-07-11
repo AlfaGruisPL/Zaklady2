@@ -12,7 +12,9 @@
   >
   </ng-select>
 </div>
-<span class="czerwone">
+
+<div class="divNaPrzycisk">
+  <span class="czerwone">
   <ng-container
     *ngIf="
       ZarejestrujSieService.DaneKlientaClass.niewybranyPracownik;
@@ -23,6 +25,5 @@
   </ng-container>
   <ng-template #puste> <span style="visibility: hidden"> --</span></ng-template>
 </span>
-<div class="divNaPrzycisk">
   <button class="buttonDalej" (click)="przejdzDalej()">Dalej</button>
 </div>

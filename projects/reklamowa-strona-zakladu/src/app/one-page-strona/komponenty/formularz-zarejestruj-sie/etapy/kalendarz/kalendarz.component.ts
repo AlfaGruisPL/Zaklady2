@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {dniTygodnia, DzienTygodnia} from "./dzien-tygodnia";
 import {Termin} from "./termin";
+import {ZarejestrujSieService} from "../../zarejestrujSie.service";
 
 @Component({
   selector: 'app-kalendarz',
@@ -16,7 +17,23 @@ export class KalendarzComponent implements OnInit {
 
   public godzinaRozpoczecia = 6;
   dni = dniTygodnia
+  public miesiace: string[] = [
+    "Styczeń",
+    "Luty",
+    "Marzec",
+    "Kwiecień",
+    "Maj",
+    "Czerwiec",
+    "Lipiec",
+    "Sierpień",
+    "Wrzesień",
+    "Październik",
+    "Listopad",
+    "Grudzień"
+  ];
 
+  constructor(private ZarejestrujSie: ZarejestrujSieService) {
+  }
 
   public przejdzDalej() {
     this.wyslijKrok.emit(4);
@@ -35,17 +52,14 @@ export class KalendarzComponent implements OnInit {
     return godzina + ":" + minuta
   }
 
-  czyCosWyswietlic(id: string, godzina: string, index: number) {
-    if (id == 'pole_4_1') {
-      // @ts-ignore
-      document.getElementById(id).innerHTML = "<div class='termin'>tuu </div>"
-    }
-  }
 
   ngOnInit() {
+    this.ZarejestrujSie.pobierzTerminyWizyt()
     const k = new Termin();
     k.data = new Date(new Date().setUTCMonth(6, 14))
+    k.data = new Date(k.data.setUTCHours(0, 0, 0, 0))
     k.poczatek = 11
+
     k.poczatekMinuty = 10
     k.koniec = 13
     k.koniecMinuty = 20

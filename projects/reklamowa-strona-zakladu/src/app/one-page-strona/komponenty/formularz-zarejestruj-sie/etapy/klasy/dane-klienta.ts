@@ -1,3 +1,6 @@
+import {usluga} from "../../../../../klasy/dane-podstawowe";
+import {Termin} from "../kalendarz/termin";
+
 export class DaneKlienta {
   public imie: string = '';
   public nazwisko: string = '';
@@ -6,6 +9,7 @@ export class DaneKlienta {
   public email: string = '';
   public wybranyPracownik: number | undefined;
   public niewybranyPracownik: boolean = false;
+  public uslugi: Array<usluga> = []; //wszystkie uslugi pobierane z api
   public kodWeryfikacja: string = '';
   public identyfikator: string = '';
   public kodWeryfikacjaPusty: boolean = false;
@@ -16,6 +20,7 @@ export class DaneKlienta {
   public adresEmailPusty: boolean = false;
   public daneNieWyslane: boolean = false;
   public niepoprawnyKod: boolean = false;
+  public wybranyTermin: Termin | undefined;
 
   public czyKodWerifikacjaWpisany() {
     this.kodWeryfikacjaPusty = false;
@@ -67,6 +72,7 @@ export class DaneKlientaDTO {
   public nazwisko: string = '';
   public numerTelefonu: string = '';
   public email: string = '';
+
 
   constructor(daneKlienta: DaneKlienta) {
     this.imie = daneKlienta.imie;

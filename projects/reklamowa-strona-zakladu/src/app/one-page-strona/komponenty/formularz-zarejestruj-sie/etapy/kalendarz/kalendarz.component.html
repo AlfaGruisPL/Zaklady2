@@ -4,7 +4,10 @@
     <td colspan="8">
       <div class="sterowanie">
         <button (click)="WLEWO()" [disabled]="licznikPrzyciskow <= 0">Poprzedni tydzień</button>
-        Miesiąc: {{miesiac()}} - Tydzień: {{tydzien()}}
+        <div style="width: 300px;text-align: center">
+
+          {{miesiace[miesiac() - 1]}} - Tydzień: {{tydzien()}}
+        </div>
         <button (click)="WPrawo()"> Następny tydzień></button>
       </div>
     </td>

@@ -58,4 +58,5 @@ export class usluga {
   public nazwa: string = '';
   public cena: string = '';
   public pracownicy: Array<number> = [];
+  public wybrane = false;
 }

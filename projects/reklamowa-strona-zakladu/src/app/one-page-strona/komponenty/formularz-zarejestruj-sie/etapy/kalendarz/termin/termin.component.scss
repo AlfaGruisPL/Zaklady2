@@ -9,20 +9,27 @@
   flex-direction: column;
   z-index: 1000;
 
-  .wybierz {
+  .wybierz, .wybrane {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-weight: bold;
     font-size: 20px;
-
   }
 
-  transition: scale 500ms ease-in-out, color 1200ms ease-in-out;
+  .wybrane {
+    color: #003aff;
+
+    &:hover {
+      background: rgba(140, 140, 140, 0.89);
+    }
+  }
+
+  transition: scale 0.1s, color 1200ms ease-in-out;
 
   &:hover {
-    border: 2px solid #b20000;
+    //  border: 2px solid #b20000;
     cursor: pointer;
     background: whitesmoke;
     scale: 1.051;
@@ -40,4 +47,9 @@ h3 {
   width: 100%;
   font-size: 18px;
   text-shadow: 1px 1px 1px black;
+}
+
+.wybranyTermin {
+  background: rgba(72, 255, 0, 0.89) !important;
+  scale: 1.11 !important;
 }

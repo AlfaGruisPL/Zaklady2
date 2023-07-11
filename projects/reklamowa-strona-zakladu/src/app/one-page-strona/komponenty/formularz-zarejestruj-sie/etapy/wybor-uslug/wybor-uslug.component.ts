@@ -11,15 +11,28 @@ import {DanePodstawoweService} from "../../../../../serwisy/dane-podstawowe.serv
 })
 export class WyborUslugComponent {
   @Output() wyslijKrok = new EventEmitter<number>();
+  public niewybranaUsluga: boolean = false;
 
   constructor(public danePodstawowe: DanePodstawoweService) {
   }
 
   public przejdzDalej() {
+    this.niewybranaUsluga = false;
+    const wybraneUslugi = this.danePodstawowe.danePodstawowe.uslugi.filter(usluga => {
+      return usluga.wybrane
+    })
+    if (wybraneUslugi.length <= 0) {
+      this.niewybranaUsluga = true;
+      return
+    }
+
+
     this.wyslijKrok.emit(3);
   }
 
   public cofnij() {
     this.wyslijKrok.emit(1);
   }
+
+
 }

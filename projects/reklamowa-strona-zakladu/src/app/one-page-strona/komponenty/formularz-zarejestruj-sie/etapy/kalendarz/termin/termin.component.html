@@ -1,7 +1,12 @@
-<div class="termin" [ngStyle]="{'top':top,height:wysokosc}">
+<div class="termin" [ngStyle]="{'top':top,height:wysokosc}" (click)="wybierzTermin()"
+     [ngClass]="{'wybranyTermin':wybrany()}">
   <h3>
     {{termin.poczatek}}:{{termin.poczatekMinuty}} - {{termin.koniec}}:{{termin.koniecMinuty}}
   </h3>
 
-  <div class="wybierz">Wybierz</div>
+  <div class="wybierz" *ngIf="!wybrany()">Wybierz</div>
+  <div class="wybrane" *ngIf="wybrany()" (click)="anuluj()">Anuluj
+  </div>
+
+
 </div>
