@@ -1,6 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {dniTygodnia, DzienTygodnia} from "./dzien-tygodnia";
-import {Termin} from "./termin";
 import {ZarejestrujSieService} from "../../zarejestrujSie.service";
 
 @Component({
@@ -54,24 +53,12 @@ export class KalendarzComponent implements OnInit {
 
 
   ngOnInit() {
-    this.ZarejestrujSie.pobierzTerminyWizyt()
-    const k = new Termin();
-    k.data = new Date(new Date().setUTCMonth(6, 14))
-    k.data = new Date(k.data.setUTCHours(0, 0, 0, 0))
-    k.poczatek = 11
 
-    k.poczatekMinuty = 10
-    k.koniec = 13
-    k.koniecMinuty = 20
-    this.terminy.push(k)
   }
 
 
-  terminy = [new Termin()
-  ]
-
   terminyNaDzien(data: DzienTygodnia): Array<any> {
-    const tablica = this.terminy.filter(usluga => {
+    const tablica = this.ZarejestrujSie.DaneKlientaClass.wszystkieTerminy.filter(usluga => {
       if (usluga.data.getDate() == data.data.getDate()) {
         if (usluga.data.getFullYear() == data.data.getFullYear()) {
           if (usluga.data.getMonth() == data.data.getMonth()) {

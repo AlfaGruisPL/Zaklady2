@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {DanePodstawoweService} from "../../../../../serwisy/dane-podstawowe.service";
+import {ZarejestrujSieService} from "../../zarejestrujSie.service";
 
 @Component({
   selector: 'app-wybor-uslug',
@@ -13,7 +14,8 @@ export class WyborUslugComponent {
   @Output() wyslijKrok = new EventEmitter<number>();
   public niewybranaUsluga: boolean = false;
 
-  constructor(public danePodstawowe: DanePodstawoweService) {
+  constructor(public danePodstawowe: DanePodstawoweService,
+              public zarejestrujSie_: ZarejestrujSieService) {
   }
 
   public przejdzDalej() {
@@ -25,8 +27,7 @@ export class WyborUslugComponent {
       this.niewybranaUsluga = true;
       return
     }
-
-
+    this.zarejestrujSie_.pobierzTerminyWizyt();
     this.wyslijKrok.emit(3);
   }
 

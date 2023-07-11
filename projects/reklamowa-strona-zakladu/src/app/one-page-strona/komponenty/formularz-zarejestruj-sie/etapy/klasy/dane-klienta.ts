@@ -21,6 +21,7 @@ export class DaneKlienta {
   public daneNieWyslane: boolean = false;
   public niepoprawnyKod: boolean = false;
   public wybranyTermin: Termin | undefined;
+  public wszystkieTerminy: Array<Termin> = []
 
   public czyKodWerifikacjaWpisany() {
     this.kodWeryfikacjaPusty = false;
@@ -64,6 +65,25 @@ export class DaneKlienta {
       this.niewybranyPracownik = true;
     }
     return this.niewybranyPracownik;
+  }
+}
+
+export class pracownikUslugiDTO {
+  public pracownikId: number = 0;
+  public uslugiId: Array<number> = [];
+
+  constructor(public pracownikUslugi: DaneKlienta) {
+    this.pracownikUslugi.uslugi.forEach(usluga => {
+      if (usluga.wybrane) {
+        this.uslugiId.push(usluga.id);
+      }
+    })
+
+    if (pracownikUslugi.wybranyPracownik != undefined) {
+      this.pracownikId = pracownikUslugi.wybranyPracownik;
+    }
+
+
   }
 }
 
