@@ -59,7 +59,6 @@ export class KalendarzComponent implements OnInit {
 
   terminyNaDzien(data: DzienTygodnia): Array<any> {
     const tablica = this.ZarejestrujSie.DaneKlientaClass.wszystkieTerminy.filter(usluga => {
-      console.log(usluga.data, data.data)
       if (usluga.data.getDate() == data.data.getDate()) {
         if (usluga.data.getFullYear() == data.data.getFullYear()) {
           if (usluga.data.getMonth() == data.data.getMonth()) {
@@ -89,7 +88,6 @@ export class KalendarzComponent implements OnInit {
     this.dni.forEach(k => {
       k.data = new Date(this.dataKursor)
       k.ustawDate()
-      console.log(k.samaData());
     })
   }
 
@@ -99,7 +97,6 @@ export class KalendarzComponent implements OnInit {
     this.dni.forEach(k => {
       k.data = new Date(this.dataKursor)
       k.ustawDate()
-      console.log(k.samaData());
     })
   }
 

@@ -28,7 +28,7 @@ export class TerminComponent implements OnInit {
 
     this.top = (roznica * 25 * 2) + 'px'
     this.wysokosc = (((koniec + (this.termin.koniecMinuty / 60)) - (poczatek + (this.termin.poczatekMinuty / 60))) * 2 * 25) + "px"
-    console.log(this.wysokosc)
+
   }
 
   wybierzTermin() {
