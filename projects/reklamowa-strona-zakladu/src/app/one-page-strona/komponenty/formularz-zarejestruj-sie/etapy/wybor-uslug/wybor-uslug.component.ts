@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {DanePodstawoweService} from "../../../../../serwisy/dane-podstawowe.service";
 import {ZarejestrujSieService} from "../../zarejestrujSie.service";
+import {usluga} from "../../../../../klasy/dane-podstawowe";
 
 @Component({
   selector: 'app-wybor-uslug',
@@ -18,6 +19,10 @@ export class WyborUslugComponent {
               public zarejestrujSie_: ZarejestrujSieService) {
   }
 
+  uslugi() {
+    return this.danePodstawowe.danePodstawowe.uslugi
+  }
+
   public przejdzDalej() {
     this.niewybranaUsluga = false;
     const wybraneUslugi = this.danePodstawowe.danePodstawowe.uslugi.filter(usluga => {
@@ -33,6 +38,15 @@ export class WyborUslugComponent {
 
   public cofnij() {
     this.wyslijKrok.emit(1);
+  }
+
+  czyWykonuje(usluga: usluga) {
+    if (usluga.pracownicy == undefined) {
+      console.log("Błąd tablicy pracownikow w usludze")
+    }
+    return usluga.pracownicy.find(id => {
+      return id == this.zarejestrujSie_.DaneKlientaClass.wybranyPracownik
+    }) != undefined
   }
 
 

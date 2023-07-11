@@ -10,12 +10,15 @@
       <th>Cena</th>
       <th>Wybierz</th>
     </tr>
-    <tr *ngFor="let usluga of danePodstawowe.danePodstawowe.uslugi;let index = index">
+    <tr *ngFor="let usluga of uslugi();let index = index" [ngClass]="{'niedostepnaUsluga':!czyWykonuje(usluga)}">
       <td class="uslugiSpan" style="min-width: 80px">{{index + 1}}.</td>
       <td class="uslugiSpan" style="min-width: 550px;">{{usluga.nazwa}}</td>
       <td class="uslugiSpan" style="min-width: 100px">{{usluga.cena}} złotych</td>
+
       <td style="min-width: 100px; text-align: center">
-        <input class="chekboxUsluga" type="checkbox" [(ngModel)]="usluga.wybrane"/>
+
+        <input class="chekboxUsluga" type="checkbox" [(ngModel)]="usluga.wybrane" *ngIf="czyWykonuje(usluga)"/>
+        <span *ngIf="!czyWykonuje(usluga)">Niedostępne</span>
       </td>
     </tr>
   </table>

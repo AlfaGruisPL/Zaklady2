@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { DaneKlienta, DaneKlientaDTO } from './etapy/klasy/dane-klienta';
-import { ListonoszService } from '../../../serwisy/listonosz.service';
-import { Drzwi } from '../../../enum/drzwi';
-import { ZarejestrujSieService } from './zarejestrujSie.service';
+import {Component, OnInit} from '@angular/core';
+import {DaneKlienta, DaneKlientaDTO} from './etapy/klasy/dane-klienta';
+import {ListonoszService} from '../../../serwisy/listonosz.service';
+import {Drzwi} from '../../../enum/drzwi';
+import {ZarejestrujSieService} from './zarejestrujSie.service';
 
 @Component({
   selector: 'app-formularz-zarejestruj-sie',
@@ -10,13 +10,14 @@ import { ZarejestrujSieService } from './zarejestrujSie.service';
   styleUrls: ['./formularz-zarejestruj-sie.component.scss'],
 })
 export class FormularzZarejestrujSieComponent implements OnInit {
-  public krok: number = 3;
+  public krok: number = 1;
   public daneKlientaKlasa = new DaneKlienta();
 
   constructor(
     public listonosz: ListonoszService,
     public zarejestrujSieService: ZarejestrujSieService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.zarejestrujSieService.DaneKlientaClass = this.daneKlientaKlasa;

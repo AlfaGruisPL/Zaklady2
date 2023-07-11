@@ -20,6 +20,7 @@ export class DanePodstawoweService {
       .then((pobrane: DanePodstawowe) => {
         Object.assign(this.danePodstawowe, pobrane);
         this.danePodstawoweObservable.next(this.danePodstawowe);
+        console.log(this.danePodstawowe);
       })
       .catch((niepobrane) => {
       });
