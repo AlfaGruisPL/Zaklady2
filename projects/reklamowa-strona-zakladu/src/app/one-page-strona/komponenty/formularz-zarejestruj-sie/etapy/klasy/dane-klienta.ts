@@ -72,17 +72,16 @@ export class pracownikUslugiDTO {
   public pracownikId: number = 0;
   public uslugiId: Array<number> = [];
 
-  constructor(public pracownikUslugi: DaneKlienta) {
+  constructor(pracownikUslugi: DaneKlienta) {
+
     pracownikUslugi.uslugi.forEach(usluga => {
       if (usluga.wybrane) {
         this.uslugiId.push(usluga.id);
       }
     })
-
     if (pracownikUslugi.wybranyPracownik != undefined) {
       this.pracownikId = pracownikUslugi.wybranyPracownik;
     }
-
 
   }
 }

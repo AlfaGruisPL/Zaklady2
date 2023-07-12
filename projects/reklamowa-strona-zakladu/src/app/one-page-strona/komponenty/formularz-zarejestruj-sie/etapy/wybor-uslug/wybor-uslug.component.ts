@@ -24,6 +24,7 @@ export class WyborUslugComponent {
   }
 
   public przejdzDalej() {
+    this.zarejestrujSie_.DaneKlientaClass.uslugi = this.danePodstawowe.danePodstawowe.uslugi
     this.niewybranaUsluga = false;
     const wybraneUslugi = this.danePodstawowe.danePodstawowe.uslugi.filter(usluga => {
       return usluga.wybrane

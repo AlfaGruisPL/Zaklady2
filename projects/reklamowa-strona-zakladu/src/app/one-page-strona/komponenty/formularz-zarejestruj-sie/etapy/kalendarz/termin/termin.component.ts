@@ -26,8 +26,8 @@ export class TerminComponent implements OnInit {
     const koniec = this.termin.koniec
     const roznica = (poczatek + (this.termin.poczatekMinuty / 60)) - 2 - this.godzinaRozpoczecia
 
-    this.top = (roznica * 25 * 2) + 'px'
-    this.wysokosc = (((koniec + (this.termin.koniecMinuty / 60)) - (poczatek + (this.termin.poczatekMinuty / 60))) * 2 * 25) + "px"
+    this.top = (roznica * 26.9 * 2) + 'px'
+    this.wysokosc = (((koniec + (this.termin.koniecMinuty / 60)) - (poczatek + (this.termin.poczatekMinuty / 60))) * 2 * 27) + "px"
 
   }
 

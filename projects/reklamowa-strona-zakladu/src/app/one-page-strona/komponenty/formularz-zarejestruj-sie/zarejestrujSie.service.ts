@@ -18,7 +18,8 @@ export class ZarejestrujSieService {
 
   pobierzTerminyWizyt() {
     this.niepobranyKalendarz = false;
-    const pracownikUslugiDTO_obj: pracownikUslugiDTO = new pracownikUslugiDTO(this.DaneKlientaClass);
+    const pracownikUslugiDTO_obj = new pracownikUslugiDTO(this.DaneKlientaClass);
+
     this.listonosz.wyslij(Drzwi.pobierzTerminy, pracownikUslugiDTO_obj).then(
       (odpowiedz: Array<Termin>) => {
         this.DaneKlientaClass.wszystkieTerminy = []

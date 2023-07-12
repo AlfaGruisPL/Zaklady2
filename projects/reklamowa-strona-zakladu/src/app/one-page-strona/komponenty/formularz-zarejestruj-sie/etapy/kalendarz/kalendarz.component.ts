@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {dniTygodnia, DzienTygodnia} from "./dzien-tygodnia";
 import {ZarejestrujSieService} from "../../zarejestrujSie.service";
+import {DanePodstawoweService} from "../../../../../serwisy/dane-podstawowe.service";
 
 @Component({
   selector: 'app-kalendarz',
@@ -31,7 +32,30 @@ export class KalendarzComponent implements OnInit {
     "Grudzień"
   ];
 
-  constructor(public ZarejestrujSie: ZarejestrujSieService) {
+  constructor(public ZarejestrujSie: ZarejestrujSieService, public danePodstawowe: DanePodstawoweService) {
+  }
+
+  public czyPracuje(dzien: number) {
+    console.log(dzien)
+    switch (dzien) {
+      case 0:
+        return this.danePodstawowe.danePodstawowe.poniedzialek.czynnyDzien
+      case 1:
+        return this.danePodstawowe.danePodstawowe.wtorek.czynnyDzien
+      case 2:
+        return this.danePodstawowe.danePodstawowe.sroda.czynnyDzien
+      case 3:
+        return this.danePodstawowe.danePodstawowe.czwartek.czynnyDzien
+      case 4:
+        return this.danePodstawowe.danePodstawowe.piatek.czynnyDzien
+      case 5:
+        return this.danePodstawowe.danePodstawowe.sobota.czynnyDzien
+      case 6:
+        return this.danePodstawowe.danePodstawowe.niedziela.czynnyDzien
+
+    }
+    return true
+
   }
 
   public przejdzDalej() {

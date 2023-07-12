@@ -3,6 +3,8 @@ import {DaneKlienta, DaneKlientaDTO} from './etapy/klasy/dane-klienta';
 import {ListonoszService} from '../../../serwisy/listonosz.service';
 import {Drzwi} from '../../../enum/drzwi';
 import {ZarejestrujSieService} from './zarejestrujSie.service';
+import {NawigacjaService} from "../../../serwisy/nawigacja.service";
+import {NawigacjaEnum} from "../../../enum/nawigacja.enum";
 
 @Component({
   selector: 'app-formularz-zarejestruj-sie',
@@ -10,12 +12,13 @@ import {ZarejestrujSieService} from './zarejestrujSie.service';
   styleUrls: ['./formularz-zarejestruj-sie.component.scss'],
 })
 export class FormularzZarejestrujSieComponent implements OnInit {
-  public krok: number = 3;
+  public krok: number = 1;
   public daneKlientaKlasa = new DaneKlienta();
 
   constructor(
     public listonosz: ListonoszService,
-    public zarejestrujSieService: ZarejestrujSieService
+    public zarejestrujSieService: ZarejestrujSieService,
+    private nawigacja_: NawigacjaService
   ) {
   }
 
@@ -33,6 +36,7 @@ export class FormularzZarejestrujSieComponent implements OnInit {
     } else {
       this.krok = nowyKrok;
     }
+    this.nawigacja_.przeniesDoPanelu(NawigacjaEnum.rejestracjaFormularz)
   }
 
   public wyslijDane() {
