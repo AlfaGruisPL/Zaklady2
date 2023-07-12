@@ -54,8 +54,9 @@ html {
   border-top: none;
 }
 
-.ng-select.selectPracownicy ng-dropdown-panel .ng-option-label {
-  color: #0853c4;
+
+.ng-select.selectPracownicy .ng-value-label {
+  color: #404040;
   font-weight: bold;
   font-family: math;
   text-shadow: 0px 0px 1px black;
