@@ -14,7 +14,7 @@ import {DanePodstawoweService} from "../../../../../serwisy/dane-podstawowe.serv
 export class KalendarzComponent implements OnInit {
   @Output() wyslijKrok = new EventEmitter<number>();
   licznikPrzyciskow = 0
-
+  nieMoznaDalejKomunikat = false
   public godzinaRozpoczecia = 6;
   dni = dniTygodnia
   public miesiace: string[] = [
@@ -59,6 +59,11 @@ export class KalendarzComponent implements OnInit {
   }
 
   public przejdzDalej() {
+    this.nieMoznaDalejKomunikat = false
+    if (this.ZarejestrujSie.DaneKlientaClass.wybranyTermin == undefined) {
+      this.nieMoznaDalejKomunikat = true;
+      return;
+    }
     this.wyslijKrok.emit(4);
   }
 

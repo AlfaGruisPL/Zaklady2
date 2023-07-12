@@ -48,7 +48,7 @@
   </tr>
 </table>
 <div class="divNaPrzycisk">
-  <span class="czerwone">Wybierz termin, aby przejść dalej</span>
+  <span class="czerwone" *ngIf="nieMoznaDalejKomunikat">Wybierz termin, aby przejść dalej</span>
   <button [disabled]="ZarejestrujSie.niepobranyKalendarz" class="buttonDalej" (click)="przejdzDalej()">Dalej</button>
   <button class="buttonCofnij" (click)="cofnij()">Cofnij</button>
 </div>
