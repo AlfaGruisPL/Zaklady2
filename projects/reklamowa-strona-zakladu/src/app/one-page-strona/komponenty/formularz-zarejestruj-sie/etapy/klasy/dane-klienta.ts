@@ -2,15 +2,15 @@ import {usluga} from "../../../../../klasy/dane-podstawowe";
 import {Termin} from "../kalendarz/termin";
 
 export class DaneKlienta {
-  public imie: string = '';
-  public nazwisko: string = '';
+  public imie: string = 'Korneliia';
+  public nazwisko: string = 'Mushak';
   public prefiksTelefonu: string = '+48';
-  public numerTelefonu: string = '';
-  public email: string = '';
-  public wybranyPracownik: number | undefined;
+  public numerTelefonu: string = '530322879';
+  public email: string = 'korneliamushak@gmail.com';
+  public wybranyPracownik: number | undefined = 183;
   public niewybranyPracownik: boolean = false;
   public uslugi: Array<usluga> = []; //wszystkie uslugi pobierane z api
-  public kodWeryfikacja: string = '';
+  public kodWeryfikacja: string = '8';
   public identyfikator: string = '';
   public kodWeryfikacjaPusty: boolean = false;
   public czyWszystkoUzupelnione: boolean = true;
