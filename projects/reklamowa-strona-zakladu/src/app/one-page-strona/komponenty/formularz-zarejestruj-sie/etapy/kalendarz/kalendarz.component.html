@@ -34,10 +34,11 @@
     <td style="position:relative;"><span class="wyswietlaneGodzinySpan">
       {{godzina(index)}}</span></td>
     <td
-      [ngStyle]="{'background-color':czyPracuje(dzien.dzien)?'':'rgba(0,0,0,0.47)'}"
+      [ngStyle]="kolorTla(dzien)"
       style="position: relative;height: 25px"
       *ngFor="let dzien of dni"
     >
+
       <span *ngIf="!czyPracuje(dzien.dzien)" style="width: 100%;text-align: center;display: block;color:#343434">---------</span>
       <ng-container *ngFor="let termin of terminyNaDzien(dzien)">
         <app-termin *ngIf="index==0" [godzinaRozpoczecia]="godzinaRozpoczecia" [termin]="termin"></app-termin>

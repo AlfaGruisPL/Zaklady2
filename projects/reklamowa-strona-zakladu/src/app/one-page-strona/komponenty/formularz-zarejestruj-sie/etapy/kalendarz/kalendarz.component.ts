@@ -36,7 +36,7 @@ export class KalendarzComponent implements OnInit {
   }
 
   public czyPracuje(dzien: number) {
-    
+
     switch (dzien) {
       case 0:
         return this.danePodstawowe.danePodstawowe.poniedzialek.czynnyDzien
@@ -80,6 +80,19 @@ export class KalendarzComponent implements OnInit {
 
   }
 
+  kolorTla(dzien: DzienTygodnia) {
+    if (!this.CzyAktualne(dzien.data)) {
+      return {'background-color': "rgba(211,211,211,0.31)"}
+    }
+    if (!this.czyPracuje(dzien.dzien)) {
+      return {'background-color': "rgba(148,148,148,0.31)"}
+    }
+    return {}
+  }
+
+  private CzyAktualne(data: Date) {
+    return !(data.setUTCHours(0, 0, 0, 0) < new Date().setUTCHours(0, 0, 0, 0))
+  }
 
   terminyNaDzien(data: DzienTygodnia): Array<any> {
     const tablica = this.ZarejestrujSie.DaneKlientaClass.wszystkieTerminy.filter(usluga => {
