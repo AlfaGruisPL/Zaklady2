@@ -23,9 +23,20 @@ export class NawigacjaService {
     /* const sub =  this.route.fragment.subscribe(fragment => {
         console.log("My hash fragment is here => ", fragment)
       })*/
-    this.router.navigate(['.'])
+    // @ts-ignore
+    document.getElementById(element).scrollIntoView({behavior: "smooth", inline: "nearest"});
+    this.router.navigate(['.'], {fragment: element})
+    // @ts-ignore
+    document.getElementById(element).scrollIntoView({behavior: "smooth", inline: "nearest"});
+
+    //this.router.navigate(['.'])
     setTimeout(() => {
+      // @ts-ignore
+      document.getElementById(element).scrollIntoView({behavior: "smooth", inline: "nearest"});
       this.router.navigate(['.'], {fragment: element})
-    }, 0)
+      // @ts-ignore
+      document.getElementById(element).scrollIntoView({behavior: "smooth", inline: "nearest"});
+
+    }, 1)
   }
 }

@@ -2,10 +2,10 @@
 <app-banner></app-banner>
 <app-zdjecie-zakladu></app-zdjecie-zakladu>
 <app-zarejestruj-sie #komponentZarejestrujSie></app-zarejestruj-sie>
-<div class="parallax"></div>
-<app-formularz-zarejestruj-sie id="rejestracjaFormularz"
-                               #komponentZarejestrujSieFormularz
-                               *ngIf="zarejestrujSie.wyswietlanieFormualrza"
+<div class="parallax" id="rejestracjaFormularz"></div>
+<app-formularz-zarejestruj-sie
+  #komponentZarejestrujSieFormularz
+  *ngIf="zarejestrujSie.wyswietlanieFormualrza"
 ></app-formularz-zarejestruj-sie>
 <div class="parallax3" *ngIf="zarejestrujSie.wyswietlanieFormualrza"></div>
 <app-informacja-onas></app-informacja-onas>

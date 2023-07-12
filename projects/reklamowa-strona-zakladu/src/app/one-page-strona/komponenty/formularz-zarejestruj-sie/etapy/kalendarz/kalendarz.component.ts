@@ -36,7 +36,7 @@ export class KalendarzComponent implements OnInit {
   }
 
   public czyPracuje(dzien: number) {
-    console.log(dzien)
+    
     switch (dzien) {
       case 0:
         return this.danePodstawowe.danePodstawowe.poniedzialek.czynnyDzien
