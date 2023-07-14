@@ -11,7 +11,7 @@ import {ZleceniePlatnosciDto} from "../../../../../../../klasy/panelPracownika/p
 })
 export class OknoPlatnosciComponent {
   ZaplacNieAktywne = false
-  public czasZakupu = "1miesiac"
+  public kwota = 50
 
   constructor(public activeModal: NgbActiveModal, private listonosz: ListonoszService) {
   }
@@ -19,7 +19,7 @@ export class OknoPlatnosciComponent {
   zaplac() {
     this.ZaplacNieAktywne = true
     const dane: ZleceniePlatnosciDto = {
-      czas: this.czasZakupu
+      kwota: this.kwota
     }
     this.listonosz.wyslij(Drzwi.utworzeniePlatnosci, dane).then(udane => {
       window.open(udane, "_blank");

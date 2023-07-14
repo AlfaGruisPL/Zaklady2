@@ -4,7 +4,7 @@ import {Drzwi} from "../../../../enum/drzwi";
 import {KomunikatyService} from "../../../../serwisy/komunikaty.service";
 import {BledyNumery} from "../../../../enum/bledy-numery";
 import {InformacjeDoPaneluPlatnosci} from "../../../../klasy/panelPracownika/platnosci/informacje-do-panelu-platnosci";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-platnosci-pracownika',
@@ -17,14 +17,30 @@ export class PlatnosciPracownikaComponent implements OnInit, OnDestroy {
   constructor(
     private listonosz: ListonoszService,
     private komunikaty: KomunikatyService,
+    private router: Router,
     private route: ActivatedRoute) {
   }
 
   private timer: any;
+  private paymentId = ''
+  private paymentStatus = ''
 
   ngOnInit() {
-    this.route.params.subscribe(k => {
-      console.log(k)
+    this.route.queryParams.subscribe(k => {
+      if (k['paymentId'] != undefined && k['paymentStatus']) {
+        this.paymentId = k['paymentId'];
+        this.paymentStatus = k['paymentStatus'];
+
+        alert('Twoja płatność została zakończona, trwa przetwarzanie płatności. Proces ten może zająć kilka minut')
+        this.router.navigate([], {
+          queryParams: {
+            'paymentId': null,
+            'paymentStatus': null,
+          },
+          queryParamsHandling: 'merge'
+        })
+      }
+
     })
     this.pobierz()
     this.timer = setInterval(() => {

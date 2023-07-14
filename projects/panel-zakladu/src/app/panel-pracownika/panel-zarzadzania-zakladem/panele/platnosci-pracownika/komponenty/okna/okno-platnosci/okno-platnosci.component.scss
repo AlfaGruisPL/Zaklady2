@@ -12,3 +12,9 @@ label {
   width: 200px;
   margin-left: 10px;
 }
+
+.zapisz {
+  &:disabled {
+    filter: grayscale(0.5);
+  }
+}

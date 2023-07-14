@@ -25,6 +25,9 @@ export class PlatnosciPracownikaTabelaComponent implements OnInit, OnDestroy {
     }, 7000)
   }
 
+  liczba(k: any) {
+    return Number(k)
+  }
 
   pobieranieDanych() {
     const rozwiniete = this.listaPlatnosci.find(k => {
