@@ -129,47 +129,6 @@ export class PlatnosciPracownikaNaglowekComponent {
       });
   }
 
-  zmianaUslugSms(event: boolean) {
-    if (event) {
-      const okienko = this.modalService.open(
-        PlatnosciPracownikaPotwierdzenieAkcjiComponent
-      );
-      okienko.componentInstance.tresc =
-        'Włączenie usługi sms może generować dodatkowe koszty zgodne z cennikiem ';
-      okienko.result.then(
-        (result) => {
-          this.listonosz
-            .wyslij(Drzwi.PlatnosciIUslugaSMS, { tryb: 'wlacz' })
-            .then((k) => {
-              this.komunikaty.uslugaSmsWlaczona();
-            })
-            .catch((k) => {
-              this.komunikaty.uslugaSmsNieWlaczona();
-            })
-            .finally(() => {
-              this.pobierzDane.emit();
-            });
-        },
-        (reason) => {
-          this.dane.uslugaSMS = false;
-        }
-      );
-    }
-    if (!event) {
-      this.listonosz
-        .wyslij(Drzwi.PlatnosciIUslugaSMS, { tryb: 'wylacz' })
-        .then((k) => {
-          this.komunikaty.uslugaSmsWylaczona();
-        })
-        .catch((k) => {
-          this.komunikaty.uslugaSmsNieWylaczona();
-        })
-        .finally(() => {
-          this.pobierzDane.emit();
-        });
-    }
-  }
-
   private aktywacjaKontaZapytanie() {
     this.listonosz
       .wyslij(Drzwi.aktywacjaKonta, {aktywnosc: true})

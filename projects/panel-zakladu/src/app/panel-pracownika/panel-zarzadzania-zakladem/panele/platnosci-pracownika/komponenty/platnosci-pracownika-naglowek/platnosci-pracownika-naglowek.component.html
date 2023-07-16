@@ -12,26 +12,8 @@
           <button (click)="OdejmijPracownika()">Usuń</button>
         </td>
       </tr>
-      <tr>
-        <td style="font-weight: bolder">Usługa SMS</td>
-        <td style="color: #0e7908; font-weight: bolder">
-          <ui-switch
-            class="przelacznikPublicznePrywatne"
-            checkedLabel="Włączone"
-            [(ngModel)]="dane.uslugaSMS"
-            uncheckedLabel="Wyłączone"
-            (change)="zmianaUslugSms($event)"
-          >
-          </ui-switch>
-          <button (click)="otworzSMS()">Zaawansowane</button>
-        </td>
-      </tr>
-      <tr>
-        <td>Darmowe:</td>
-        <td>
-          wykorzytanow {{ dane.wykorzystaneZDarmowych }} z {{ dane.darmoweSMS }}
-        </td>
-      </tr>
+
+
       <tr>
         <td style="font-weight: bolder">Usługa email</td>
         <td style="color: #0e7908; font-weight: bolder">Włączona</td>
@@ -54,7 +36,7 @@
         <td>
           <span class="status">
             <span *ngIf="dane.status == -1" style="color: #00b0ff"
-              >Testowe</span
+            >Testowe</span
             >
             <span *ngIf="dane.status == 1" style="color: green">Aktywne</span>
             <span *ngIf="dane.status == 0" style="color: red">Nieaktywne</span>
@@ -75,7 +57,7 @@
           <span class="opis">
             <b>System aktywny do:</b>
             {{ dane.aktywneDo | date : "dd.MM.yyyy   HH:MM" }}
-            <br />
+            <br/>
           </span>
         </td>
       </tr>

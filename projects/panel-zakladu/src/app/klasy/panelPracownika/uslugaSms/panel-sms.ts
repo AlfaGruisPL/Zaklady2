@@ -28,6 +28,8 @@ export class PanelSms {
   oplataDzis = 0;
   oplataSuma = 0;
   darmoweSMS = 0;
+  uslugaSMS: boolean = false;
+
   wykorzystaneZDarmowych = 0;
   smsPowiadomienia: smsPowiadomienia = new smsPowiadomienia();
 }

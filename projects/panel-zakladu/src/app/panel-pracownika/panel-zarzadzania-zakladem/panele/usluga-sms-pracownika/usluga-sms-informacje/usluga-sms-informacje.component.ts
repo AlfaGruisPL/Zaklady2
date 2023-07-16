@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UslugaSmsService} from "../../uslugaSms.service";
+import {UslugaSmsService} from "../uslugaSms.service";
 
 @Component({
   selector: 'app-usluga-sms-informacje',
@@ -9,4 +9,6 @@ import {UslugaSmsService} from "../../uslugaSms.service";
 export class UslugaSmsInformacjeComponent {
   constructor(public service: UslugaSmsService) {
   }
+
+
 }
