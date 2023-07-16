@@ -1,3 +1,3 @@
 export interface ZleceniePlatnosciDto {
-  czas: string;
+  kwota: number;
 }

@@ -138,7 +138,7 @@
   transition: 0.20s;
   right: 10px;
 
-  &:hover {
+  &:hover:not([disabled]) {
     cursor: pointer;
     box-shadow: -1px -1px 1px 1px #8d8a8a;
   }

@@ -4,7 +4,7 @@
     <th>Nr.</th>
     <th>Nazwa</th>
     <th>Data utworzenia</th>
-    <th>Data końca</th>
+    <th>Data końca aktywności</th>
     <th>Kwota</th>
     <th>Status</th>
   </tr>
@@ -12,9 +12,9 @@
     <tr>
       <td>{{(listaPlatnosci.length - index2 - (pageSize * page) + pageSize)}}  </td>
       <td>{{k.opis}}</td>
-      <td>{{k.dataUtworzenia | date : "dd.MM.yyyy  HH:MM"}}</td>
-      <td>{{k.dataKonca | date : "dd.MM.yyyy  HH:MM"}}</td>
-      <td>{{k.kwota}}</td>
+      <td>{{k.dataUtworzenia | date : "dd.MM.yyyy  HH:mm"}}</td>
+      <td>{{k.dataKonca | date : "dd.MM.yyyy  HH:mm"}}</td>
+      <td>{{k.kwota / 100}}zł</td>
       <td *ngIf="k.status==0" style="font-weight: bolder;color:darkred">Nieudane</td>
       <td *ngIf="k.status==1" style="font-weight: bolder;color:  #0e7908">Udane</td>
     </tr>

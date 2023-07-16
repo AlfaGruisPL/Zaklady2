@@ -5,31 +5,13 @@
 <div class="modal-body">
   <table>
     <tr>
-      <td><label>Wybierz czas subskrypcji:</label></td>
-      <td>
-        <select class="logInput">
-          <option value="1tydzien">1 tydzień</option>
-          <option value="1miesiac">1 miesiąc</option>
-          <option value="2miesiac">2 miesiące</option>
-          <option value="4miesiac">4 miesiące</option>
-        </select>
-      </td>
-    </tr>
-    <tr>
       <td><label>Kwota</label></td>
-      <td>50zł</td>
+      <td><input type="number" step="1" [(ngModel)]="kwota">zł</td>
     </tr>
-    <tr>
-      <td><label>Początek subskrypcji</label></td>
-    </tr>
-    <tr>
-      <td>
-        <label>Koniec subskrypcji</label>
-      </td>
-    </tr>
+
   </table>
 </div>
 <div class="modal-footer">
-  <button [disabled]="ZaplacNieAktywne" (click)="zaplac()" class="buttonZapiszZmodyfikuj"> Zapłać</button>
+  <button [disabled]="ZaplacNieAktywne" (click)="zaplac()" class="buttonZapiszZmodyfikuj zapisz"> Zapłać</button>
 </div>
 

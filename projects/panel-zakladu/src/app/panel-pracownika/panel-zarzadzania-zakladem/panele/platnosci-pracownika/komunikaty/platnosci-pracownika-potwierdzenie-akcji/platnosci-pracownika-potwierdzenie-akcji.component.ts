@@ -9,6 +9,7 @@ import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 export class PlatnosciPracownikaPotwierdzenieAkcjiComponent {
   @Input() tresc = ""
 
+
   constructor(public modal: NgbActiveModal) {
   }
 }
