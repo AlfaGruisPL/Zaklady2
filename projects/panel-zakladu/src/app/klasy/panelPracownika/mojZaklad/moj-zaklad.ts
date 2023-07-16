@@ -55,3 +55,13 @@ export class dzien {
     this.czynnyDzien = true;
   }
 }
+
+export class GodzinyOtwarcia {
+  public niedziela: dzien = new dzien();
+  public poniedzialek: dzien = new dzien();
+  public wtorek: dzien = new dzien();
+  public sroda: dzien = new dzien();
+  public czwartek: dzien = new dzien();
+  public piatek: dzien = new dzien();
+  public sobota: dzien = new dzien();
+}

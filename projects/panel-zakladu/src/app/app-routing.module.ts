@@ -30,9 +30,7 @@ import {
 import {
   StronaReprezentacyjnaPracownikaComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/panele/strona-reprezentacyjna-pracownika/strona-reprezentacyjna-pracownika.component';
-import {
-  RaportyPracownikaComponent
-} from './panel-pracownika/panel-zarzadzania-zakladem/panele/raporty-pracownika/raporty-pracownika.component';
+
 import {
   MojZakladPracownikaComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moj-zaklad-pracownika/moj-zaklad-pracownika.component';
@@ -110,10 +108,6 @@ const routes: Routes = [
       {
         path: 'stronaReprezentacyjnaUstawienia',
         component: StronaReprezentacyjnaPracownikaComponent,
-      },
-      {
-        path: 'raporty',
-        component: RaportyPracownikaComponent,
       },
       {
         path: 'mojZaklad',

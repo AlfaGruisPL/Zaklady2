@@ -34,7 +34,7 @@
     font-weight: bolder;
     margin: 0;
     color: black;
-    font-family: serif;
+    font-family: math;
     text-shadow: 0px 0px 2px #ffffff;
   }
 
@@ -52,13 +52,19 @@
 }
 
 .naglowki1form {
+  font-family: math;
   font-size: 22px;
   font-weight: bolder;
+  color: #1c1c1c;
+  text-shadow: 0px 0px 1px black;
 }
 
 .naglowki2form {
+  font-family: math;
   font-size: 19px;
   font-weight: bolder;
+  color: #1c1c1c;
+  text-shadow: 0px 0px 1px black;
 }
 
 
@@ -111,7 +117,7 @@
   height: 150px;
   text-align: center;
   position: relative;
-  padding: 20px;
+  padding: 10px;
 
 
 }

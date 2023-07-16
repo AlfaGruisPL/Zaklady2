@@ -32,14 +32,14 @@
     position: absolute;
     right: 18px;
     color: #fffcf3;
-    filter: drop-shadow(0px 1px 1px #23b8f2);
+    filter: drop-shadow(0px 1px 1px black);
     font-size: 25px;
     background: transparent;
     border: none;
 
     &:hover {
       cursor: pointer;
-      filter: drop-shadow(0px 1px 2px #23b8f2);
+      filter: drop-shadow(0px 1px 2px black);
     }
   }
 
@@ -47,14 +47,14 @@
     position: absolute;
     right: 58px;
     color: #fffcf3;
-    filter: drop-shadow(0px 1px 1px #23b8f2);
+    filter: drop-shadow(0px 1px 1px black);
     font-size: 25px;
     background: transparent;
     border: none;
 
     &:hover {
       cursor: pointer;
-      filter: drop-shadow(0px 1px 2px #23b8f2);
+      filter: drop-shadow(0px 1px 2px black);
     }
   }
 }

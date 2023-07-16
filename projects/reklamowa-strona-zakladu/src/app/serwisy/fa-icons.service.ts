@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {
+  faCircleCheck,
   faCircleInfo,
   faClipboardList,
   faClock,
@@ -16,6 +17,7 @@ export class FaIconsService {
   uslugi = faClipboardList
   zegarek = faClock
   mapa = faMapLocationDot
+  check = faCircleCheck
 
   constructor() {
   }

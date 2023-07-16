@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
-import { NapiszNam, NapiszNamDto } from './klasa/napisz-nam';
-import { ListonoszService } from '../../../serwisy/listonosz.service';
-import { Drzwi } from '../../../enum/drzwi';
-import { Pracownik } from '../../../klasy/pracownik';
-import { NapiszNamService } from './napisz-nam.service';
+import {Component, Input} from '@angular/core';
+import {NapiszNam, NapiszNamDto} from './klasa/napisz-nam';
+import {ListonoszService} from '../../../serwisy/listonosz.service';
+import {Drzwi} from '../../../enum/drzwi';
+import {Pracownik} from '../../../klasy/pracownik';
+import {NapiszNamService} from './napisz-nam.service';
+import {FaIconsService} from "../../../serwisy/fa-icons.service";
 
 @Component({
   selector: 'app-napisz-nam',
@@ -15,17 +16,22 @@ export class NapiszNamComponent {
 
   public wiadomoscWyslana: boolean = false;
   public wiadomoscNieWyslana: boolean = false;
+  public aktywnyPrzycisk: boolean = false;
 
   constructor(
     public listonosz: ListonoszService,
-    public napiszNam: NapiszNamService
-  ) {}
+    public napiszNam: NapiszNamService,
+    public faIcons: FaIconsService
+  ) {
+  }
 
   public wyslij() {
+
     this.napiszNam.napiszNamObj.czyWszystkoUzupelnioneFunkcja();
     this.wiadomoscNieWyslana = false;
     this.wiadomoscWyslana = false;
     const napiszNamDTO = new NapiszNamDto(this.napiszNam.napiszNamObj);
+    this.aktywnyPrzycisk = true;
     this.listonosz
       .wyslij(Drzwi.napiszNam, napiszNamDTO)
       .then((udane) => {
@@ -34,7 +40,9 @@ export class NapiszNamComponent {
       })
       .catch((nieudane) => {
         this.wiadomoscNieWyslana = true;
-      });
+      }).finally(() => {
+      this.aktywnyPrzycisk = false;
+    });
   }
 
   public reset() {

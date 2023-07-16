@@ -1,6 +1,6 @@
 <div class="naglowek">
   <p>
-    <span>Dokonaj weryfikację aby się zapisać na wizytę </span> <br />
+    <span>Dokonaj weryfikację aby się zapisać na wizytę </span> <br/>
     <span> Na twój adres e-mail został wysłany kod, wpisz go poniżej:</span>
   </p>
 </div>
@@ -21,14 +21,10 @@
         />
       </td>
     </tr>
-    <tr *ngIf="kodNieWpisany == true">
-      <td>Kod nie wpisany</td>
-    </tr>
-    <tr *ngIf="ZarejestrujSieService.DaneKlientaClass.niepoprawnyKod == true">
-      <td>Wpisany kod niepoprawny, spróbuj jeszcze raz</td>
-    </tr>
   </table>
   <div class="divNaPrzycisk">
+    <span class="czerwone" *ngIf="kodNieWpisany == true">Wpisz kod, aby przejść dalej</span>
+    <span class="czerwone" *ngIf="ZarejestrujSieService.DaneKlientaClass.niepoprawnyKod == true">Wpisany kod niepoprawny, spróbuj jeszcze raz</span>
     <button class="buttonDalej" (click)="przejdzDalej()">Dalej</button>
   </div>
 </form>

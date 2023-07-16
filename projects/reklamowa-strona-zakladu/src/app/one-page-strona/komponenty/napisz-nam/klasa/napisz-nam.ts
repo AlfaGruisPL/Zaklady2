@@ -49,11 +49,13 @@ export class NapiszNamDto {
   public nazwisko: string = '';
   public adresEmail: string = '';
   public wiadomosc: string = '';
+  public komuWyslac: string = '';
 
   constructor(napiszNamKlasa: NapiszNam) {
     this.imie = napiszNamKlasa.imie;
     this.nazwisko = napiszNamKlasa.nazwisko;
     this.adresEmail = napiszNamKlasa.adresEmail;
     this.wiadomosc = napiszNamKlasa.wiadomosc;
+    this.komuWyslac = napiszNamKlasa.komuWyslac;
   }
 }

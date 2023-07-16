@@ -1,0 +1,48 @@
+<div class="panel">
+
+  <table class="informationTable">
+    <tr>
+      <td colspan="2" class="naglowek1">
+        Statystyki
+      </td>
+    </tr>
+
+    <tr>
+      <td class="naglowek2">
+        Koszt wysłanych sms za dziś:
+      </td>
+      <td>
+        <span class="sumaSpan">    {{service.dane.oplataDzis}} zł </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="naglowek2">
+        Koszt wysłanych sms za cały czas:
+      </td>
+      <td>
+        <span class="sumaSpan"> {{service.dane.oplataSuma}} zł</span>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="naglowek2">Ilość wysłanych sms za dziś:</td>
+      <td>
+        <span class="sumaSpan">  {{ service.dane.smsDzis }} </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="naglowek2">Ilość wysłanych sms za całość:</td>
+      <td>
+        <span class="sumaSpan">   {{ service.dane.smsCalosc }} </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="naglowek2"> Średnia ilość sms na dzień:</td>
+      <td>
+        <span class="sumaSpan">   {{ service.dane.smsSrednia }} </span>
+      </td>
+    </tr>
+
+  </table>
+
+</div>

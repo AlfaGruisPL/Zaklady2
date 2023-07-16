@@ -1,71 +1,93 @@
-<h3>Ustawienia:</h3>
-<table>
-  <tr>
-    <th colspan="2">
-      <h4>Powiadomienia SMS:</h4>
-    </th>
-  </tr>
-  <tr>
-    <td>Przypomnienie o wizycie <b>(godzina przed)</b></td>
-    <td>
-      <ui-switch
-        class="uiSwitch120px"
-        checkedLabel="Włączone"
-        uncheckedLabel="Wyłączone"
-        [(ngModel)]="service.dane.smsPowiadomienia.godzinaPrzed"
-      ></ui-switch>
-      (zalecane)
-    </td>
-  </tr>
-  <tr>
-    <td>Przypomnienie o wizycie <b>(trzy godziny przed)</b></td>
-    <td>
-      <ui-switch
-        class="uiSwitch120px"
-        checkedLabel="Włączone"
-        uncheckedLabel="Wyłączone"
-        [(ngModel)]="service.dane.smsPowiadomienia.trzyGodzinyPrzed"
-      ></ui-switch>
-    </td>
-  </tr>
+<div class="ustawienia">
+  <table>
+    <tr>
+      <th colspan="2" class="naglowek1">
+        Powiadomienia SMS:
+      </th>
+    </tr>
+    <tr>
+      <td class="naglowek2">Usługa SMS</td>
+      <td>
+        <ui-switch
+          class="uiSwitch120px"
+          checkedLabel="Włączone"
+          [(ngModel)]="service.dane.uslugaSMS"
+          uncheckedLabel="Wyłączone"
+          (change)="service.zmianaUslugSms($event)"
+        >
+        </ui-switch>
 
-  <tr>
-    <td>Przypomnienie o wizycie <b>(dzień przed)</b></td>
-    <td>
-      <ui-switch
-        class="uiSwitch120px"
-        checkedLabel="Włączone"
-        uncheckedLabel="Wyłączone"
-        [(ngModel)]="service.dane.smsPowiadomienia.dzienPrzed"
-      ></ui-switch>
-      (zalecane)
-    </td>
-  </tr>
-  <tr>
-    <td>Przypomnienie o wizycie <b>(trzy dni przed)</b></td>
-    <td>
-      <ui-switch
-        class="uiSwitch120px"
-        checkedLabel="Włączone"
-        uncheckedLabel="Wyłączone"
-        [(ngModel)]="service.dane.smsPowiadomienia.trzyDniPrzed"
-      ></ui-switch>
-    </td>
-  </tr>
-  <tr>
-    <td>Potwierdzenie wizyty <b>(w czasie rejestracji)</b></td>
-    <td>
-      <ui-switch
-        class="uiSwitch120px"
-        checkedLabel="Włączone"
-        uncheckedLabel="Wyłączone"
-        [(ngModel)]="service.dane.smsPowiadomienia.potwierdzenieRejestracji"
-      ></ui-switch>
-      (zalecane)
-    </td>
-  </tr>
-  <tr>
-    <td>Przewidywana opłata na jednego klienta <sup>1*</sup>:</td>
-    <td style="font-weight: bolder">{{ przewidywanaOplata() }} groszy</td>
-  </tr>
-</table>
+      </td>
+    </tr>
+    <tr>
+      <td class="naglowek2">Potwierdzenie wizyty <span class="naglowekNawiasy">(w czasie rejestracji)</span>
+      </td>
+      <td>
+        <ui-switch
+          class="uiSwitch120px"
+          checkedLabel="Włączone"
+          uncheckedLabel="Wyłączone"
+          [(ngModel)]="service.dane.smsPowiadomienia.potwierdzenieRejestracji"
+        ></ui-switch>
+        <span class="naglowekZalecane"> (zalecane)</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="naglowek2">Przypomnienie o wizycie <span class="naglowekNawiasy">(trzy dni przed)</span>
+      </td>
+      <td>
+        <ui-switch
+          class="uiSwitch120px"
+          checkedLabel="Włączone"
+          uncheckedLabel="Wyłączone"
+          [(ngModel)]="service.dane.smsPowiadomienia.trzyDniPrzed"
+        ></ui-switch>
+      </td>
+    </tr>
+    <tr>
+      <td class="naglowek2">Przypomnienie o wizycie <span class="naglowekNawiasy">(dzień przed)</span></td>
+      <td>
+        <ui-switch
+          class="uiSwitch120px"
+          checkedLabel="Włączone"
+          uncheckedLabel="Wyłączone"
+          [(ngModel)]="service.dane.smsPowiadomienia.dzienPrzed"
+        ></ui-switch>
+        <span class="naglowekZalecane"> (zalecane)</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="naglowek2">Przypomnienie o wizycie <span class="naglowekNawiasy">(trzy godziny przed)</span>
+      </td>
+      <td>
+        <ui-switch
+          class="uiSwitch120px"
+          checkedLabel="Włączone"
+          uncheckedLabel="Wyłączone"
+          [(ngModel)]="service.dane.smsPowiadomienia.trzyGodzinyPrzed"
+        ></ui-switch>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="naglowek2"> Przypomnienie o wizycie <span class="naglowekNawiasy">(godzina przed)</span>
+      </td>
+      <td>
+        <ui-switch
+          class="uiSwitch120px"
+          checkedLabel="Włączone"
+          uncheckedLabel="Wyłączone"
+          [(ngModel)]="service.dane.smsPowiadomienia.godzinaPrzed"
+        ></ui-switch>
+        <span class="naglowekZalecane"> (zalecane)</span>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td class="sumaSpan">Przewidywana opłata na jednego klienta <sup>1*</sup>:</td>
+      <td class="sumaSpan" style="font-size: 21px">{{ przewidywanaOplata() }} groszy</td>
+    </tr>
+  </table>
+
+</div>

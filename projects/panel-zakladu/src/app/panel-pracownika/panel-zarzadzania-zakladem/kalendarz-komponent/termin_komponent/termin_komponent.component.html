@@ -1,0 +1,53 @@
+<div class="termin"
+     #wizytaDiv
+     (click)="zarzadzaj()"
+     [ngStyle]="{'top':top,height:wysokosc}"
+
+     placement="top"
+     ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+     popoverTitle="Popover on top"
+     [animation]="true"
+     triggers="mouseenter:mouseleave"
+     [ngbPopover]="popContent" [popoverTitle]="popTitle"
+>
+
+  <h3>
+    {{wizyta.terminPoczatek| date:'HH:mm'}}    {{wizyta.terminKoniec| date:'HH:mm'}}
+  </h3>
+
+  <div class="zarzadzaj" *ngIf="wizytaDiv.clientHeight >= 65">Zarządzaj</div>
+</div>
+<ng-template #popTitle>
+  Wizyta <b>{{wizyta.terminPoczatek| date:'HH:mm'}}    {{wizyta.terminKoniec| date:'HH:mm'}} </b></ng-template>
+<ng-template #popContent>
+  <table>
+    <tr>
+      <td>
+        Klient:
+      </td>
+      <td>
+        {{wizyta.imie + " " + wizyta.nazwisko}}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Email:
+      </td>
+      <td>
+        {{wizyta.email}}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Telefon:
+      </td>
+      <td>
+        {{wizyta.numerTelefonu}}
+      </td>
+    </tr>
+  </table>
+
+</ng-template>
+
+
+

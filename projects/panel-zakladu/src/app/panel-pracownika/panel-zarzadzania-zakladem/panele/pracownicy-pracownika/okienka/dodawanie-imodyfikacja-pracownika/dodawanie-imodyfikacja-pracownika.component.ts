@@ -37,10 +37,9 @@ export class DodawanieIModyfikacjaPracownikaComponent {
 
   zapisz() {
     this.iloscKlikniec++;
-    this.blokowaniePrzycisku = true;
     this.pracownikObj.czyWszystkoWpisaneFunkcja();
-    console.log(this.iloscKlikniec)
     if (this.iloscKlikniec >= 2) {
+      this.blokowaniePrzycisku = true;
       const pracownikObjDTO = new PracownikDTO(this.pracownikObj);
       this.listonosz.wyslij(Drzwi.dodaniePracownikaDoTablicy, pracownikObjDTO).then(dodano => {
         this.pracownikDodany = true;
@@ -58,22 +57,21 @@ export class DodawanieIModyfikacjaPracownikaComponent {
   }
 
   public zmodyfikuj() {
-    this.blokowaniePrzycisku = true
     this.iloscKlikniec++;
-    if (this.iloscKlikniec <= 1) {
-      return
+    if (this.iloscKlikniec >= 2) {
+      const pracownikObjDTO = new PracownikDTO(this.pracownikObj);
+      this.blokowaniePrzycisku = true
+      this.listonosz.aktualizuj(Drzwi.pracownik + this.idUzytkownika, pracownikObjDTO).then(dodano => {
+        this.pracownikZmodyfikowany = true;
+        this.komunikaty.modyfikowaniePracownikaUdane();
+        this.activeModal.close("Zmodyfikowanie udane");
+      }).catch(nieudano => {
+        this.pracownikZmodyfikowany = false;
+        this.komunikaty.modyfikowaniePracownikaNieUdane();
+      }).finally(() => {
+        this.blokowaniePrzycisku = false;
+      })
     }
-    const pracownikObjDTO = new PracownikDTO(this.pracownikObj);
-    this.listonosz.aktualizuj(Drzwi.pracownik + this.idUzytkownika, pracownikObjDTO).then(dodano => {
-      this.pracownikZmodyfikowany = true;
-      this.komunikaty.modyfikowaniePracownikaUdane();
-      this.activeModal.close("Zmodyfikowanie udane");
-    }).catch(nieudano => {
-      this.pracownikZmodyfikowany = false;
-      this.komunikaty.modyfikowaniePracownikaNieUdane();
-    }).finally(() => {
-      this.blokowaniePrzycisku = false;
-    })
   }
 
 }

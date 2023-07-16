@@ -6,8 +6,8 @@
       </tr>
       <tr>
         <td class="zostawWiadomosc">
-          Zostaw swoją wiadomość, <br />
-          a my damy odpowiedź na twój adres e-mail,<br />
+          Zostaw swoją wiadomość, <br/>
+          a my damy odpowiedź na twój adres e-mail,<br/>
           który wskażesz
         </td>
       </tr>
@@ -20,7 +20,7 @@
         <tr>
           <td colspan="2">
             <span class="zostawWiadomosc"
-              >Wybierz komu chcesz wysłać wiadomość</span
+            >Wybierz komu chcesz wysłać wiadomość</span
             >
           </td>
         </tr>
@@ -99,44 +99,28 @@
             ></textarea>
           </td>
         </tr>
-        <tr>
-          <td>
-            <button class="buttonReset" (click)="reset()">Reset</button>
-          </td>
-          <td>
-            <button class="buttonWyslij" (click)="wyslij()">Wyślij</button>
-          </td>
-        </tr>
-      </table>
-    </form>
-    <div class="komunikaty">
-      <table *ngIf="!napiszNam.napiszNamObj.czyWszystkoUzupelnione">
-        <tr>
-          <td class="czerwone">Uzupełnij wszystkie pola</td>
-        </tr>
       </table>
 
-      <table *ngIf="wiadomoscWyslana">
-        <tr>
-          <td class="czerwone">Twoja wiadomość została wysłana,</td>
-        </tr>
-        <tr>
-          <td class="czerwone">czekaj odpowiedzi w ciągu kilkoch dni</td>
-        </tr>
-      </table>
+      <div class="divNaPrzycisk">
 
-      <table
-        *ngIf="
+        <button class="buttonReset" (click)="reset()" type="reset" [disabled]="aktywnyPrzycisk">Reset</button>
+
+        <button class="buttonWyslij" (click)="wyslij()" type="submit" [disabled]="aktywnyPrzycisk">Wyślij</button>
+      </div>
+      <div class="divNaKomunikaty">
+        <span *ngIf="!napiszNam.napiszNamObj.czyWszystkoUzupelnione" class="czerwone">Uzupełnij wszystkie pola</span>
+
+        <span *ngIf="wiadomoscWyslana" class="czerwone"> <fa-icon [icon]="faIcons.check" class="faIconCheck"></fa-icon>Twoja wiadomość została wysłana, <br>
+       oczekuj odpowiedzi od nas   </span>
+        <span *ngIf="
           wiadomoscNieWyslana && napiszNam.napiszNamObj.czyWszystkoUzupelnione
-        "
-      >
-        <tr>
-          <td class="czerwone">Twoja wiadomość nie została wysłana,</td>
-        </tr>
-        <tr>
-          <td class="czerwone">skontaktuj się z administratorem</td>
-        </tr>
-      </table>
-    </div>
+        " class="czerwone">
+
+          Twoja wiadomość nie została wysłana, <br>skontaktuj się z administratorem
+    </span>
+      </div>
+
+
+    </form>
   </div>
 </div>

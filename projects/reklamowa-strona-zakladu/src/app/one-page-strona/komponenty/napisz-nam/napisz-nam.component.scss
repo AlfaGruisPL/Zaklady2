@@ -3,6 +3,7 @@
   float: left;
   background: #fcfcfc;
   height: 600px;
+  margin-top: 20px;
 
 
   .tytul {
@@ -61,24 +62,25 @@
 .inputNapiszDoNas {
   border: 2px inset #2491f9;
   border-radius: 20px;
-  width: 220px;
-  height: 25px;
+  width: 250px;
+  height: 29px;
   padding-left: 10px;
   padding-right: 10px;
   font-size: 18px;
+  margin: 8px 2px 2px 8px;
 }
 
 .selectNapiszDoNas {
   border: 2px inset #2491f9;
   border-radius: 20px;
-  width: 245px;
-  height: 33px;
+  width: 250px;
+  height: 29px;
   padding-left: 10px;
   padding-right: 10px;
   font-size: 18px;
   color: #000000;
   background: white;
-
+  margin: 10px 0 0 8px;
 
 }
 
@@ -88,26 +90,36 @@
   height: 30px;
   background: #e3f9f6;
   border: 1px solid #01570a;
-  color: green;
-  font-size: 15px;
-  font-weight: bold;
   border-radius: 20px;
-  transition: 200ms;
+  transition: 400ms;
+  font-family: math;
+  font-size: 18px;
+  font-weight: bolder;
+  color: #027002;
 
-  &:hover {
+  &:hover:not([disabled]) {
     box-shadow: 0px 0px 2px 2px #d1d9d1;
     cursor: pointer;
     color: white;
     background: #01570a;
   }
+
+  &:disabled {
+    filter: grayscale(0.4);
+    cursor: not-allowed;
+    border: 1px solid #ababab;
+
+
+  }
 }
 
 .buttonReset {
+  margin: 2px 10px 2px 10px;
   border: 1px solid #a10808;
   color: #a10808;
 
 
-  &:hover {
+  &:hover:not([disabled]) {
     color: white;
     background: #a10808;
   }
@@ -121,7 +133,21 @@
 .czerwone {
   color: #cc0303;
   font-size: 18px;
-  text-shadow: 0px 1px 1px #313030;
+  text-shadow: 0px 0px 1px #313030;
   font-family: math;
   font-weight: bold;
 }
+
+.divNaKomunikaty {
+  margin: 5px 0px 5px 0px;
+  min-height: 55px;
+}
+
+.faIconCheck {
+  color: green;
+  position: relative;
+  top: 5px;
+  font-size: 29px;
+  filter: drop-shadow(0px 0px 1px #686868);
+}
+

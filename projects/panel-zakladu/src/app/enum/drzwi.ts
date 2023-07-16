@@ -32,4 +32,7 @@ export enum Drzwi {
   wykresStanuKonta = '/platnosci/wykresStanuKOnta',
 
   uslugiPanel = '/uslugi/panel',
+
+
+  zarejestrowaneWizytyTerminy = '/kalendarzTerminow/terminy'
 }

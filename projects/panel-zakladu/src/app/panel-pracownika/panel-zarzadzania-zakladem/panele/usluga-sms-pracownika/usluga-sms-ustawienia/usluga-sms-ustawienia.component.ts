@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
-import { UslugaSmsService } from '../uslugaSms.service';
+import {Component} from '@angular/core';
+import {UslugaSmsService} from '../uslugaSms.service';
 
 @Component({
   selector: 'app-usluga-sms-ustawienia',
   templateUrl: './usluga-sms-ustawienia.component.html',
-  styleUrls: ['./usluga-sms-ustawienia.component.scss'],
+  styleUrls: ['./usluga-sms-ustawienia.component.scss', "../usluga-sms-pracownika.component.scss"],
 })
 export class UslugaSmsUstawieniaComponent {
-  constructor(public service: UslugaSmsService) {}
+  constructor(public service: UslugaSmsService) {
+  }
 
   przewidywanaOplata() {
     let cena = 0;

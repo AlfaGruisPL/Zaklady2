@@ -50,9 +50,6 @@ import {
   StronaReprezentacyjnaPracownikaComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/panele/strona-reprezentacyjna-pracownika/strona-reprezentacyjna-pracownika.component';
 import {
-  RaportyPracownikaComponent
-} from './panel-pracownika/panel-zarzadzania-zakladem/panele/raporty-pracownika/raporty-pracownika.component';
-import {
   MojZakladPracownikaComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moj-zaklad-pracownika/moj-zaklad-pracownika.component';
 import {popperVariation, provideTippyConfig, TippyDirective, tooltipVariation,} from '@ngneat/helipopper';
@@ -67,7 +64,7 @@ import {
 } from './panel-pracownika/panel-zarzadzania-zakladem/komponenty/stopka/stopka-pracownik.component';
 import {CookieModule} from 'ngx-cookie';
 import {MaxDlugoscPipe} from './rureczki/max-dlugosc.pipe';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbDropdown, NgbDropdownModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {
   DodawanieIModyfikacjaPracownikaComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/panele/pracownicy-pracownika/okienka/dodawanie-imodyfikacja-pracownika/dodawanie-imodyfikacja-pracownika.component';
@@ -94,7 +91,28 @@ import {UslugiPracownikaComponent} from './panel-pracownika/panel-zarzadzania-za
 import {
   UslugiPrzypisaniPracownicyComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/uslugi-przypisani-pracownicy/uslugi-przypisani-pracownicy.component';
-import { RejestracjaUdanaComponent } from './panel-pracownika/poczatkowy-panel-pracownika/rejestracja-zakladu/rejestracja-udana/rejestracja-udana.component';
+import {
+  RejestracjaUdanaComponent
+} from './panel-pracownika/poczatkowy-panel-pracownika/rejestracja-zakladu/rejestracja-udana/rejestracja-udana.component';
+import {
+  HarmonogramDniaComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/harmonogram-pracownika/harmonogram-dnia/harmonogram-dnia.component';
+import {
+  HarmonogramDniaTerminComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/harmonogram-pracownika/harmonogram-dnia/harmonogram-dnia-termin/harmonogram-dnia-termin.component';
+import {
+  KalendarzKomponentComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/kalendarz-komponent/kalendarz-komponent.component';
+import {
+  Termin_komponentComponent
+} from "./panel-pracownika/panel-zarzadzania-zakladem/kalendarz-komponent/termin_komponent/termin_komponent.component";
+import {
+  KalendarzGodzinaKreskaKomponentComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/kalendarz-komponent/kalendarz-godzina-kreska-komponent/kalendarz-godzina-kreska-komponent.component';
+import {
+  KalendarzZarzadzanieTerminemComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/kalendarz-komponent/kalendarz-zarzadzanie-terminem/kalendarz-zarzadzanie-terminem.component';
+import { KalendarzPrzerwaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/kalendarz-komponent/kalendarz-przerwa/kalendarz-przerwa.component';
 
 @NgModule({
   declarations: [
@@ -113,7 +131,6 @@ import { RejestracjaUdanaComponent } from './panel-pracownika/poczatkowy-panel-p
     PracownicyPracownikaComponent,
     KalendarzTerminowComponent,
     StronaReprezentacyjnaPracownikaComponent,
-    RaportyPracownikaComponent,
 
     MojZakladPracownikaComponent,
     RejestracjaZakladuComponent,
@@ -129,6 +146,9 @@ import { RejestracjaUdanaComponent } from './panel-pracownika/poczatkowy-panel-p
     UslugiPracownikaComponent,
     UslugiPrzypisaniPracownicyComponent,
     RejestracjaUdanaComponent,
+    HarmonogramDniaComponent,
+    HarmonogramDniaTerminComponent,
+    KalendarzKomponentComponent, Termin_komponentComponent, KalendarzGodzinaKreskaKomponentComponent, KalendarzZarzadzanieTerminemComponent, KalendarzPrzerwaComponent
   ],
   imports: [
     BrowserModule,
@@ -138,7 +158,7 @@ import { RejestracjaUdanaComponent } from './panel-pracownika/poczatkowy-panel-p
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     CookieModule.withOptions(),
-    FontAwesomeModule,
+    FontAwesomeModule, NgbDropdownModule,
     TippyDirective,
     UiSwitchModule.forRoot({
       size: 'small',
@@ -153,7 +173,7 @@ import { RejestracjaUdanaComponent } from './panel-pracownika/poczatkowy-panel-p
     PlatnosciPracownikaModule,
     UslugaSmsPracownikaModule,
   ],
-  providers: [
+  providers: [NgbDropdown,
     provideTippyConfig({
       defaultVariation: 'tooltip',
       variations: {
