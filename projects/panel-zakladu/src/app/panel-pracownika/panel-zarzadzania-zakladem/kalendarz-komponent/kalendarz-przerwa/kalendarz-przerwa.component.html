@@ -1,0 +1,36 @@
+<div class="modal-header">
+  <h4 class="modal-title">Zarządzanie przerwami</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close('Nie')"></button>
+</div>
+<div class="modal-body">
+  <table>
+    <tr>
+      <td>
+        Początek:
+      </td>
+      <td>
+        <input type="time" [ngModel]="godzinaRozpoczecia | date:'HH:mm'"
+               (ngModelChange)="godzinaRozpoczecia = $event">
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        Koniec:
+      </td>
+      <td>
+        <input type="time" [ngModel]="godzinaZakonczenia | date:'HH:mm'"
+               (ngModelChange)="godzinaZakonczenia = $event">
+      </td>
+    </tr>
+
+  </table>
+
+</div>
+<div class="modal-footer">
+  <button (click)="activeModal.close('anuluj')">
+    Anuluj
+  </button>
+
+
+</div>

@@ -1,0 +1,72 @@
+<table style="width: 100%;">
+  <tr>
+    <td colspan="8">
+      <div class="sterowanie">
+        <button class="jakiTydzienButton" (click)="WLEWO()">Poprzedni tydzień
+        </button>
+        <div class="jakiMiesiacDiv">
+          <span>  {{miesiace[miesiac() - 1]}} - Tydzień: {{tydzien()}}</span>
+
+        </div>
+        <button class="jakiTydzienButton" (click)="WPrawo()"> Następny tydzień</button>
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <th class="wyswietlaneGodzinySpan" style="font-size: 18px">
+      Godzina:
+    </th>
+    <th *ngFor="let dzien of dni" class="naglowkiTabeli">
+      <span class="wyswietlaneDniSpan"> {{dzien.nazwa}}</span> <br>
+      <span class="wyswietlaneDniSpan" style="font-size: 15px">{{dzien.samaData()}}</span>
+      <div ngbDropdown class="zarzadzanie" *ngIf="zarzadzanie">
+        <button type="button" class="btn btn-outline-primary " id="dropdownBasic1" ngbDropdownToggle>
+          Zarządzanie dniem
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem>Oznacz jako dzień wolny</button>
+          <button ngbDropdownItem>Dodaj przerwę</button>
+        </div>
+      </div>
+    </th>
+
+  </tr>
+  <tr>
+    <td></td>
+    <td style="position: relative;height: 0px" *ngFor="let dzien of dni">
+      <ng-container *ngFor="let wizyta of terminyNaDzien(dzien)">
+        <app-termin-komponent [godzinaRozpoczecia]="godzinaRozpoczecia" style="width: 150px;"
+                              [wizyta]="wizyta"></app-termin-komponent>
+
+      </ng-container>
+    </td>
+
+  </tr>
+  <tr class="godzina" *ngFor="let k of [].constructor(21);let index = index">
+
+    <td style="position:relative;"><span class="wyswietlaneGodzinySpan">
+      {{Kalendarz_.godzina(index)}}</span></td>
+    <td
+      [ngStyle]="kolorTla(dzien,index)"
+
+      style="position: relative;height: 25px"
+      *ngFor="let dzien of dni"
+      [ngClass]="{poleKlikalne:true}"
+      (click)="kliknietoPole(dzien,index)"
+
+    >
+      <span *ngIf="!czyPracuje(dzien.dzien)" style="width: 100%;text-align: center;display: block;color:#343434">---------</span>
+      <div *ngIf="czyToDzis(dzien.data) && index == 0
+
+">
+        <app-kalendarz-godzina-kreska-komponent
+          [poczatek]="[8,0]"
+          [koniec]="[18,0]"
+          [wysokosc]="(21*25.6)" [sumaCzasu]="(10*60)"></app-kalendarz-godzina-kreska-komponent>
+
+      </div>
+    </td>
+
+  </tr>
+</table>

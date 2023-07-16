@@ -1,0 +1,12 @@
+<table class="tabelka">
+  <tr>
+    <td class="godzina" *ngFor="let k of [].constructor(27);let index = index">{{zwrocGodzine(index)}}</td>
+  </tr>
+  <tr>
+    <td class="podzial" *ngFor="let k of [].constructor(27) let index = index">
+      <ng-container *ngIf="index == 0">
+        <app-harmonogram-dnia-termin *ngFor="let termin of terminy " [termin]="termin"></app-harmonogram-dnia-termin>
+      </ng-container>
+    </td>
+  </tr>
+</table>

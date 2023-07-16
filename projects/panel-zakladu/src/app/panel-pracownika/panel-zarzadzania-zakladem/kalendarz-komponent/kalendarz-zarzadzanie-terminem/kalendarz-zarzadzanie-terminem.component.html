@@ -1,0 +1,64 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{wizyta.terminPoczatek|date:'HH:mm'}} - {{wizyta.terminKoniec|date:'HH:mm'}}</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close('Nie')"></button>
+</div>
+<div class="modal-body">
+  <table>
+    <tr>
+      <td>
+        Klient:
+      </td>
+      <td>
+        {{wizyta.imie + " " + wizyta.nazwisko}}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Termin:
+      </td>
+      <td>
+        {{wizyta.terminPoczatek | date:'dd.LL.YYYY'}}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Godziny:
+      </td>
+      <td>
+        {{wizyta.terminPoczatek|date:'HH:mm'}} - {{wizyta.terminKoniec|date:'HH:mm'}}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Telefon:
+      </td>
+      <td>
+        {{wizyta.numerTelefonu}}
+      </td>
+
+    </tr>
+    <tr>
+      <td>Email:</td>
+      <td>{{wizyta.email}}</td>
+    </tr>
+    <tr>
+      <td>Wizyty</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button>Odwołaj</button>
+        <button>Historia wizyt</button>
+      </td>
+    </tr>
+  </table>
+
+
+</div>
+<div class="modal-footer">
+  <button (click)="activeModal.close('anuluj')">
+    Anuluj
+  </button>
+
+
+</div>
