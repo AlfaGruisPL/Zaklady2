@@ -4,9 +4,7 @@ import {
   DzienTygodnia
 } from "../../../../../../reklamowa-strona-zakladu/src/app/one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/kalendarz/dzien-tygodnia";
 import {Wizyta} from "../../../klasy/panelPracownika/wizyta";
-import {GodzinyOtwarcia} from "../../../klasy/panelPracownika/mojZaklad/moj-zaklad";
 import {ListonoszService} from "../../../serwisy/listonosz.service";
-import {Drzwi} from "../../../enum/drzwi";
 import {KalendarzKomponentService} from "./kalendarz-komponent.service";
 
 @Component({
@@ -18,9 +16,6 @@ export class KalendarzKomponentComponent implements OnInit {
   @Output() wyslijKrok = new EventEmitter<number>();
   @Input() zarzadzanie = false
 
-
-  wizyty: Array<Wizyta> = []
-  godzinyOtwarcia: GodzinyOtwarcia = new GodzinyOtwarcia();
 
   licznikPrzyciskow = 0
   public godzinaRozpoczecia = 6;
@@ -46,31 +41,25 @@ export class KalendarzKomponentComponent implements OnInit {
 
   ngOnInit() {
     this.Kalendarz_.godzinaRozpoczecia = this.godzinaRozpoczecia
-    this.listonosz.pobierz(Drzwi.zarejestrowaneWizytyTerminy).then((k: { wizyty: Wizyta[], godzinyOtwarcia: GodzinyOtwarcia }) => {
-      k.wizyty.forEach(wizyta => {
-        const wizytaObj = new Wizyta(wizyta)
-        this.wizyty.push(wizytaObj)
-      })
-      Object.assign(this.godzinyOtwarcia, k.godzinyOtwarcia)
-    })
+    this.Kalendarz_.pobierzDane()
   }
 
   public czyPracuje(dzien: number) {
     switch (dzien) {
       case 0:
-        return this.godzinyOtwarcia.poniedzialek.czynnyDzien
+        return this.Kalendarz_.godzinyOtwarcia.poniedzialek.czynnyDzien
       case 1:
-        return this.godzinyOtwarcia.wtorek.czynnyDzien
+        return this.Kalendarz_.godzinyOtwarcia.wtorek.czynnyDzien
       case 2:
-        return this.godzinyOtwarcia.sroda.czynnyDzien
+        return this.Kalendarz_.godzinyOtwarcia.sroda.czynnyDzien
       case 3:
-        return this.godzinyOtwarcia.czwartek.czynnyDzien
+        return this.Kalendarz_.godzinyOtwarcia.czwartek.czynnyDzien
       case 4:
-        return this.godzinyOtwarcia.piatek.czynnyDzien
+        return this.Kalendarz_.godzinyOtwarcia.piatek.czynnyDzien
       case 5:
-        return this.godzinyOtwarcia.sobota.czynnyDzien
+        return this.Kalendarz_.godzinyOtwarcia.sobota.czynnyDzien
       case 6:
-        return this.godzinyOtwarcia.niedziela.czynnyDzien
+        return this.Kalendarz_.godzinyOtwarcia.niedziela.czynnyDzien
     }
     return true
 
@@ -104,7 +93,7 @@ export class KalendarzKomponentComponent implements OnInit {
   }
 
   public terminyNaDzien(data: DzienTygodnia): Array<Wizyta> {
-    const tablica = this.wizyty.filter(usluga => {
+    const tablica = this.Kalendarz_.wizyty.filter(usluga => {
       if (usluga.terminPoczatek.getDate() == data.data.getDate()) {
         if (usluga.terminPoczatek.getFullYear() == data.data.getFullYear()) {
           if (usluga.terminPoczatek.getMonth() == data.data.getMonth()) {

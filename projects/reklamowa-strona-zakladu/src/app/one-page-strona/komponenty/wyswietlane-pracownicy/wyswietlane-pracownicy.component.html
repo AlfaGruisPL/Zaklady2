@@ -1,30 +1,6 @@
 <!-- <div class="pracownicyDuzy">
 
-  <div class="glider-contain pracownicy" id="pracownicy">
-    <div class="glider">
-      <div class="pracownik" *ngFor="let pracownik of listaPracownikow">
-        <div class="imieNazwisko">
-      <span>
-        {{pracownik.imie}} {{pracownik.nazwisko}}
-      </span>
-        </div>
-        <div class="zdjecie">
-          <img style="width:200px"
-               src="https://thumbs.dreamstime.com/z/wektorowa-ilustracja-mickey-mouse-137965016.jpg">
-        </div>
-        <div class="popatrz">
-          <button class="zobacz">Zobacz</button>
-        </div>
 
-
-      </div>
-
-    </div>
-
-    <button aria-label="Previous" class="glider-prev">«</button>
-    <button aria-label="Next" class="glider-next">»</button>
-    <div role="tablist" class="dots"></div>
-  </div>
 
 </div> -->
 
@@ -33,24 +9,52 @@
     <h3 class="nasiPracownicy">Nasi pracownicy</h3>
   </div>
   <div class="wierszPracownikow">
-    <div
-      class="pracownik"
-      *ngFor="let pracownik of listaPracownikow"
-      (click)="
+    <ng-container *ngIf="listaPracownikow.length <= 4 else slider">
+      <div
+        class="pracownik"
+        *ngFor="let pracownik of listaPracownikow"
+        (click)="
         czyPracownikKlikniety = true; daneKliknietegoPracownika = pracownik
       "
-    >
-      <div class="imieNazwisko">
-        <span> {{ pracownik.imie }} {{ pracownik.nazwisko }} </span>
+      >
+        <div class="imieNazwisko">
+          <span> {{ pracownik.imie }} {{ pracownik.nazwisko }} </span>
+        </div>
+        <div class="zdjecie">
+          <img
+            src="https://jakiprezent.pl/blog/wp-content/uploads/foto/30-urodziny/prezenty-na-30-dla-niego-b.jpg"
+          />
+        </div>
+        <div class="popatrz">
+          <button class="zobacz"><span>Zobacz</span></button>
+        </div>
       </div>
-      <div class="zdjecie">
-        <img
-          src="https://jakiprezent.pl/blog/wp-content/uploads/foto/30-urodziny/prezenty-na-30-dla-niego-b.jpg"
-        />
-      </div>
-      <div class="popatrz">
-        <button class="zobacz"><span>Zobacz</span></button>
-      </div>
-    </div>
+    </ng-container>
+
   </div>
 </div>
+<ng-template #slider>
+
+  <div class="glider-contain pracownicy" style="width: 90%;margin-left: 20px;margin-right: 20px">
+    <div class="glider">
+      <div class="pracownik" *ngFor="let pracownik of listaPracownikow">
+        <div class="imieNazwisko">
+          <span> {{ pracownik.imie }} {{ pracownik.nazwisko }} </span>
+        </div>
+        <div class="zdjecie">
+          <img
+            src="https://jakiprezent.pl/blog/wp-content/uploads/foto/30-urodziny/prezenty-na-30-dla-niego-b.jpg"
+          />
+        </div>
+        <div class="popatrz">
+          <button class="zobacz"><span>Zobacz</span></button>
+        </div>
+      </div>
+
+    </div>
+
+    <button aria-label="Previous" class="glider-prev">«</button>
+    <button aria-label="Next" class="glider-next">»</button>
+    <div role="tablist" class="dots"></div>
+  </div>
+</ng-template>

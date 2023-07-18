@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+import {KalendarzKomponentService} from "../kalendarz-komponent.service";
 
 @Component({
   selector: 'app-kalendarz-przerwa',
@@ -10,6 +11,6 @@ export class KalendarzPrzerwaComponent {
   @Input() godzinaRozpoczecia = new Date()
   @Input() godzinaZakonczenia = new Date()
 
-  constructor(public activeModal: NgbActiveModal) {
+  constructor(public activeModal: NgbActiveModal, public kalendarz_: KalendarzKomponentService) {
   }
 }

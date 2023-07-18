@@ -4,6 +4,11 @@ import {KalendarzPrzerwaComponent} from "./kalendarz-przerwa/kalendarz-przerwa.c
 import {
   DzienTygodnia
 } from "../../../../../../reklamowa-strona-zakladu/src/app/one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/kalendarz/dzien-tygodnia";
+import {Drzwi} from "../../../enum/drzwi";
+import {Wizyta} from "../../../klasy/panelPracownika/wizyta";
+import {GodzinyOtwarcia} from "../../../klasy/panelPracownika/mojZaklad/moj-zaklad";
+import {Pracownik} from "../../../klasy/panelPracownika/pracownicy/pracownik";
+import {ListonoszService} from "../../../serwisy/listonosz.service";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +16,29 @@ import {
 export class KalendarzKomponentService {
   public godzinaRozpoczecia = 6;
 
-  constructor(private modal: NgbModal,) {
+  wizyty: Array<Wizyta> = []
+  godzinyOtwarcia: GodzinyOtwarcia = new GodzinyOtwarcia();
+  wlasciciel = new Pracownik()
+  pracownicy: Partial<Pracownik>[] = []
+
+  constructor(private modal: NgbModal, private listonosz: ListonoszService) {
+  }
+
+
+  public pobierzDane() {
+    this.listonosz.pobierz(Drzwi.zarejestrowaneWizytyTerminy).then((k: { wizyty: Wizyta[], godzinyOtwarcia: GodzinyOtwarcia, pracownicy: Pracownik[], wlasciciel: number }) => {
+      k.wizyty.forEach(wizyta => {
+        const wizytaObj = new Wizyta(wizyta)
+        this.wizyty.push(wizytaObj)
+      })
+      Object.assign(this.wlasciciel, k.wlasciciel)
+      k.pracownicy.forEach(pracownik => {
+        const pracownikObj = new Pracownik()
+        Object.assign(pracownikObj, pracownik)
+        this.pracownicy.push(pracownikObj)
+      })
+      Object.assign(this.godzinyOtwarcia, k.godzinyOtwarcia)
+    })
   }
 
   public nowaPrzerwa(dzien: DzienTygodnia, index: number) {

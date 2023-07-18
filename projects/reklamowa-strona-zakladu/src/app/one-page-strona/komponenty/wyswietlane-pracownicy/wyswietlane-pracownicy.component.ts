@@ -46,9 +46,11 @@ export class WyswietlanePracownicyComponent implements OnInit {
           Object.assign(pracownikObj, pracownik);
           this.listaPracownikow.push(pracownikObj);
         });
-        setTimeout(() => {
-          // this.generowanieKaruzeli()
-        });
+        if (this.listaPracownikow.length > 4) {
+          setTimeout(() => {
+            this.generowanieKaruzeli();
+          });
+        }
       })
       .catch((niepobrane) => {});
   }
