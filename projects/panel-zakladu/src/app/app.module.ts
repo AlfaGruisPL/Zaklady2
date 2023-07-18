@@ -112,7 +112,9 @@ import {
 import {
   KalendarzZarzadzanieTerminemComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/kalendarz-komponent/kalendarz-zarzadzanie-terminem/kalendarz-zarzadzanie-terminem.component';
-import { KalendarzPrzerwaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/kalendarz-komponent/kalendarz-przerwa/kalendarz-przerwa.component';
+import {
+  KalendarzPrzerwaComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/kalendarz-komponent/kalendarz-przerwa/kalendarz-przerwa.component';
 
 @NgModule({
   declarations: [
