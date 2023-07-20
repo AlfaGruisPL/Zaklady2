@@ -17,6 +17,7 @@ export class NapiszNamComponent {
   public wiadomoscWyslana: boolean = false;
   public wiadomoscNieWyslana: boolean = false;
   public aktywnyPrzycisk: boolean = false;
+  public emailPrawidlowy: boolean = true;
 
   constructor(
     public listonosz: ListonoszService,
@@ -26,7 +27,7 @@ export class NapiszNamComponent {
   }
 
   public wyslij() {
-
+    this.emailPrawidlowy = true;
     this.napiszNam.napiszNamObj.czyWszystkoUzupelnioneFunkcja();
     this.wiadomoscNieWyslana = false;
     this.wiadomoscWyslana = false;
@@ -39,10 +40,19 @@ export class NapiszNamComponent {
         this.wiadomoscWyslana = true;
       })
       .catch((nieudane) => {
-        this.wiadomoscNieWyslana = true;
+        if (nieudane['error']['reasonCode'] == 1 && this.napiszNam.napiszNamObj.czyWszystkoUzupelnione == true) {
+          this.emailPrawidlowy = false;
+        } else {
+          this.wiadomoscNieWyslana = true;
+        }
+
       }).finally(() => {
       this.aktywnyPrzycisk = false;
     });
+  }
+
+  public czyEmailPrawidlowy_() {
+
   }
 
   public reset() {

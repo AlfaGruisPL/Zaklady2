@@ -18,7 +18,8 @@
       <td style="min-width: 100px; text-align: center">
 
         <input class="chekboxUsluga" type="checkbox" [(ngModel)]="usluga.wybrane" *ngIf="czyWykonuje(usluga)"/>
-        <span *ngIf="!czyWykonuje(usluga)">Niedostępne</span>
+        <span class="spanNiedostepna" *ngIf="!czyWykonuje(usluga)"
+              title="Ta usługa jest nieobsługiwana przez wybranego pracownika, wybierz innego pracownika">Niedostępne</span>
       </td>
     </tr>
   </table>

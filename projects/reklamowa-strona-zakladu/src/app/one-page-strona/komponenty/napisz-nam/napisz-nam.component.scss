@@ -3,7 +3,8 @@
   float: left;
   background: #fcfcfc;
   height: 600px;
-  margin-top: 20px;
+  padding-top: 15px;
+  box-sizing: border-box;
 
 
   .tytul {
@@ -148,6 +149,7 @@
   position: relative;
   top: 5px;
   font-size: 29px;
+  margin-right: 10px;
   filter: drop-shadow(0px 0px 1px #686868);
 }
 
