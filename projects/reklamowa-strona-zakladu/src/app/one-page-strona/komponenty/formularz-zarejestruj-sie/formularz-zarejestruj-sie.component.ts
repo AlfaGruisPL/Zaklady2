@@ -40,6 +40,8 @@ export class FormularzZarejestrujSieComponent implements OnInit {
   }
 
   public wyslijDane() {
+    console.log(this.daneKlientaKlasa);
+  
     this.daneKlientaKlasa.daneNieWyslane = false;
     const daneDTO = new DaneKlientaDTO(this.daneKlientaKlasa);
     this.listonosz

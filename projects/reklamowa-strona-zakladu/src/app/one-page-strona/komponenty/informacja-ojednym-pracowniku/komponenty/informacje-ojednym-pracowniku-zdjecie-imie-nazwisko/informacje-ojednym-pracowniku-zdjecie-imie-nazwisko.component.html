@@ -1,6 +1,8 @@
 <div class="zdjIprzycisk" (click)="wybierz()">
   <div class="zdjecie">
-    <img src="assets/fryzjer.jpg" />
+    <img
+      [src]="'http://fenek.tech:3000/pliki/wyswietlZdjecieProfilowe/'+daneOPracowniku.id |zdjecie"
+    />
   </div>
   <div class="przycisk">
     <button (click)="wybierz()">Zarejestruj się</button>

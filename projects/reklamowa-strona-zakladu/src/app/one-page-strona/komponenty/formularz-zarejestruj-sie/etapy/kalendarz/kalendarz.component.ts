@@ -15,7 +15,8 @@ export class KalendarzComponent implements OnInit {
   @Output() wyslijKrok = new EventEmitter<number>();
   licznikPrzyciskow = 0
   nieMoznaDalejKomunikat = false
-  public godzinaRozpoczecia = 6;
+  public godzinaRozpoczecia = 88
+  public godzinaZakonczenia = 0
   dni = dniTygodnia
   public miesiace: string[] = [
     "Styczeń",
@@ -73,16 +74,38 @@ export class KalendarzComponent implements OnInit {
 
   godzina(index: number) {
     const data = new Date()
-    data.setUTCHours(this.godzinaRozpoczecia, 0, 0, 0);
+
+    //  this.godzinaZakonczenia++;
+    //this.godzinaRozpoczecia--;
+
+
+    data.setHours(this.godzinaRozpoczecia, 0, 0, 0);
     const k = new Date(data.getTime() + (index * 60000 * 30))
     const godzina = k.getHours() < 10 ? '0' + k.getHours() : k.getHours();
     const minuta = k.getMinutes() < 10 ? '0' + k.getMinutes() : k.getMinutes();
     return godzina + ":" + minuta
   }
 
-
   ngOnInit() {
+    this.ObliczGodziny()
+    this.danePodstawowe.danePodstawoweObservable.subscribe(k => {
+      this.ObliczGodziny()
+    })
+  }
 
+  private ObliczGodziny() {
+    const tmp = this.danePodstawowe.danePodstawowe;
+    [tmp.poniedzialek, tmp.wtorek, tmp.sroda, tmp.czwartek, tmp.piatek, tmp.sobota, tmp.niedziela].forEach(dzien => {
+      if (dzien.czynnyDzien) {
+        const rozpoczenie = Number(dzien.otwarcie.split(':')[0])
+        const zakonczenie = Number(dzien.zamkniecie.split(':')[0])
+        this.godzinaRozpoczecia = rozpoczenie < this.godzinaRozpoczecia ? rozpoczenie : this.godzinaRozpoczecia
+        this.godzinaZakonczenia = zakonczenie > this.godzinaZakonczenia ? zakonczenie : this.godzinaZakonczenia
+      }
+    })
+    //this.godzinaRozpoczecia -= 1;
+    this.godzinaZakonczenia -= this.godzinaRozpoczecia
+    this.godzinaZakonczenia += 0.5;
   }
 
   kolorTla(dzien: DzienTygodnia) {
@@ -96,7 +119,7 @@ export class KalendarzComponent implements OnInit {
   }
 
   private CzyAktualne(data: Date) {
-    return !(data.setUTCHours(0, 0, 0, 0) < new Date().setUTCHours(0, 0, 0, 0))
+    return !(data.setHours(0, 0, 0, 0) < new Date().setHours(0, 0, 0, 0))
   }
 
   terminyNaDzien(data: DzienTygodnia): Array<any> {
@@ -130,15 +153,19 @@ export class KalendarzComponent implements OnInit {
     this.dni.forEach(k => {
       k.data = new Date(this.dataKursor)
       k.ustawDate()
+
+
     })
   }
 
   WLEWO() {
     this.licznikPrzyciskow--
     this.dataKursor = new Date(this.dataKursor.getTime() - (7 * 24 * 60 * 60 * 1000))
+
     this.dni.forEach(k => {
       k.data = new Date(this.dataKursor)
       k.ustawDate()
+
     })
   }
 

@@ -85,6 +85,17 @@ $kolor: #c4c4c4;
   display: flex;
   justify-content: center;
   padding-bottom: 10px;
+  position: relative;
+
+  .teraz {
+    position: absolute;
+    left: 50px;
+    background: #0dc004;
+
+    &:hover {
+      background: #058c04;
+    }
+  }
 }
 
 h2 {
@@ -162,5 +173,14 @@ $kolorPrzycisku: #313131;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.44);
     //  background: rgba(185, 185, 185, 0.32) !important;
 
+  }
+}
+
+.dzisiejszaData {
+
+
+  span {
+    color: #de0000;
+    text-shadow: 1px 1px 1px #000000;
   }
 }

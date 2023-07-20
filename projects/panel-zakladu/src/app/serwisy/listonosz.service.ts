@@ -52,7 +52,7 @@ export class ListonoszService {
     })
   }
 
-  public wyslij(drzwi: Drzwi, zawartosc: any): Promise<OdpowiedzPotwierdzajacaPoprawnosc<any> | any> {
+  public wyslij(drzwi: Drzwi | string, zawartosc: any): Promise<OdpowiedzPotwierdzajacaPoprawnosc<any> | any> {
 
     let opcjeWPudelku = {};
     if (this.token.tokenWartosc != undefined) {

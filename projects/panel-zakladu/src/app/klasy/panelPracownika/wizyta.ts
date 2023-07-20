@@ -14,5 +14,12 @@ export class Wizyta {
     Object.assign(this, k)
     this.terminPoczatek = new Date(this.terminPoczatek)
     this.terminKoniec = new Date(this.terminKoniec)
+
+    // @ts-ignore
+    if (k['dataPoczatek'] != undefined) {    // @ts-ignore
+      this.terminPoczatek = new Date(k['dataPoczatek'])    // @ts-ignore
+      this.terminKoniec = new Date(k['dataKoniec'])
+    }
+
   }
 }

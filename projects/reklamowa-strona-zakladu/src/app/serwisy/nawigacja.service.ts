@@ -7,7 +7,7 @@ import {NawigacjaEnum} from "../enum/nawigacja.enum";
   providedIn: 'root'
 })
 export class NawigacjaService {
-
+  public losowaLiczba = Math.round(Math.random() * 100000)
   public nav = NawigacjaEnum;
 
   constructor(private router: Router, private route: ActivatedRoute) {

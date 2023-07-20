@@ -91,6 +91,8 @@ export class DaneKlientaDTO {
   public nazwisko: string = '';
   public numerTelefonu: string = '';
   public email: string = '';
+  public poczatek: number = 0
+  public koniec: number = 0
 
 
   constructor(daneKlienta: DaneKlienta) {
@@ -99,5 +101,13 @@ export class DaneKlientaDTO {
     this.numerTelefonu =
       daneKlienta.prefiksTelefonu + '-' + daneKlienta.numerTelefonu;
     this.email = daneKlienta.email;
+    const k = daneKlienta.wybranyTermin;
+    if (k) {
+
+      this.poczatek = new Date(k.data).setHours(k.poczatek, k.poczatekMinuty)
+      this.koniec = new Date(k.data).setHours(k.koniec, k.koniecMinuty)
+    }
+    console.log(new Date(this.poczatek));
+    console.log(new Date(this.koniec));
   }
 }

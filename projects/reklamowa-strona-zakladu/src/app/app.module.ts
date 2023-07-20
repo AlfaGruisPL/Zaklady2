@@ -72,6 +72,7 @@ import {NgSelectModule} from '@ng-select/ng-select';
 import {NgbModule, NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { TerminComponent } from './one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/kalendarz/termin/termin.component';
+import { ZdjeciePipe } from './rurki/zdjecie.pipe';
 
 @NgModule({
   declarations: [
@@ -104,6 +105,7 @@ import { TerminComponent } from './one-page-strona/komponenty/formularz-zarejest
     WeryfikacjaComponent,
     ZegarComponent,
     TerminComponent,
+    ZdjeciePipe,
   ],
   imports: [
     LeafletModule,

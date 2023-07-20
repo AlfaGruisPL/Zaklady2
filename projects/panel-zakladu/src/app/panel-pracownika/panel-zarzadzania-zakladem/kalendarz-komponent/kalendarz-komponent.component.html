@@ -2,6 +2,8 @@
   <tr>
     <td colspan="8">
       <div class="sterowanie">
+        <button class="jakiTydzienButton teraz" (click)="teraz()  " *ngIf="licznikPrzyciskow !=0 ">Teraz
+        </button> &nbsp; &nbsp; &nbsp;
         <button class="jakiTydzienButton" (click)="WLEWO()">Poprzedni tydzień
         </button>
         <div class="jakiMiesiacDiv">
@@ -18,8 +20,10 @@
       Godzina:
     </th>
     <th *ngFor="let dzien of dni" class="naglowkiTabeli">
+      <span [ngClass]="{dzisiejszaData:czyToDzis(dzien.data)}">
       <span class="wyswietlaneDniSpan"> {{dzien.nazwa}}</span> <br>
       <span class="wyswietlaneDniSpan" style="font-size: 15px">{{dzien.samaData()}}</span>
+      </span>
       <div ngbDropdown class="zarzadzanie" *ngIf="zarzadzanie">
         <button type="button" class="btn btn-outline-primary " id="dropdownBasic1" ngbDropdownToggle>
           Zarządzanie dniem
@@ -36,14 +40,25 @@
     <td></td>
     <td style="position: relative;height: 0px" *ngFor="let dzien of dni">
       <ng-container *ngFor="let wizyta of terminyNaDzien(dzien)">
-        <app-termin-komponent [godzinaRozpoczecia]="godzinaRozpoczecia" style="width: 150px;"
+        <app-termin-komponent [godzinaRozpoczecia]="Kalendarz_.godzinaRozpoczecia" style="width: 150px;"
                               [wizyta]="wizyta"></app-termin-komponent>
+
+      </ng-container>
+
+
+      <ng-container *ngFor="let wolnyTermin of SymulatorWolneterminyNaDzien(dzien)">
+        <app-termin-komponent [godzinaRozpoczecia]="Kalendarz_.godzinaRozpoczecia" style="width: 150px;"
+                              [wizyta]="wolnyTermin"
+                              [symulator]="true"
+                              *ngIf="symulator"
+        ></app-termin-komponent>
 
       </ng-container>
     </td>
 
+
   </tr>
-  <tr class="godzina" *ngFor="let k of [].constructor(21);let index = index">
+  <tr class="godzina" *ngFor="let k of [].constructor(Kalendarz_.godzinaZakonczenia * 2);let index = index">
 
     <td style="position:relative;"><span class="wyswietlaneGodzinySpan">
       {{Kalendarz_.godzina(index)}}</span></td>
@@ -61,12 +76,17 @@
 
 ">
         <app-kalendarz-godzina-kreska-komponent
-          [poczatek]="[8,0]"
-          [koniec]="[18,0]"
-          [wysokosc]="(21*25.6)" [sumaCzasu]="(10*60)"></app-kalendarz-godzina-kreska-komponent>
+          [poczatek]="[Kalendarz_.godzinaRozpoczecia,0]"
+          [koniec]="[Kalendarz_.godzinaZakonczenia + Kalendarz_.godzinaRozpoczecia,0]"
+          [wysokosc]="((Kalendarz_.godzinaZakonczenia * 2)*25)"
+          [sumaCzasu]="(10*60)"></app-kalendarz-godzina-kreska-komponent>
 
       </div>
     </td>
 
   </tr>
 </table>
+<button (click)="symulator = !symulator;generujWIzyty()">Symulator</button>
+ID pracownika <input [(ngModel)]="symulatorPracownikID" (keydown)="generujWIzyty()">
+<br>
+ID wizyt <input [(ngModel)]="symulatorWizytyID" (keydown)="generujWIzyty()">

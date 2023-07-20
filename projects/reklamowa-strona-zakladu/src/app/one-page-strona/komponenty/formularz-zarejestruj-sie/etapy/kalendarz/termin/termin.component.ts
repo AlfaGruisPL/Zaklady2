@@ -24,7 +24,7 @@ export class TerminComponent implements OnInit {
     //  }
     const poczatek = this.termin.poczatek
     const koniec = this.termin.koniec
-    const roznica = (poczatek + (this.termin.poczatekMinuty / 60)) - 2 - this.godzinaRozpoczecia
+    const roznica = (poczatek + (this.termin.poczatekMinuty / 60)) - this.godzinaRozpoczecia
 
     this.top = (roznica * 26.9 * 2) + 'px'
     this.wysokosc = (((koniec + (this.termin.koniecMinuty / 60)) - (poczatek + (this.termin.poczatekMinuty / 60))) * 2 * 27) + "px"
@@ -33,6 +33,7 @@ export class TerminComponent implements OnInit {
 
   wybierzTermin() {
     this.zarejestrujSie_.DaneKlientaClass.wybranyTermin = this.termin;
+    console.log(this.termin)
   }
 
   wybrany() {

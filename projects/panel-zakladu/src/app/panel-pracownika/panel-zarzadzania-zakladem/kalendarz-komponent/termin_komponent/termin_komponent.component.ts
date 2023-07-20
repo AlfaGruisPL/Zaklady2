@@ -13,6 +13,7 @@ import {
 export class Termin_komponentComponent implements OnInit {
   @Input() godzinaRozpoczecia = 0
   @Input() wizyta: Wizyta = new Wizyta({})
+  @Input() symulator = false
 
   constructor(private modal: NgbModal) {
   }
@@ -25,7 +26,7 @@ export class Termin_komponentComponent implements OnInit {
     const poczatekMinuta = this.wizyta.terminPoczatek.getMinutes()
     const koniecGodzian = this.wizyta.terminKoniec.getHours()
     const koniecMinuta = this.wizyta.terminKoniec.getMinutes()
-    const roznica = (poczatekGodzian + (poczatekMinuta / 60)) - 2 - this.godzinaRozpoczecia
+    const roznica = (poczatekGodzian + (poczatekMinuta / 60)) - this.godzinaRozpoczecia
     this.top = (roznica * 26.9 * 2) + 'px'
     this.wysokosc = (((koniecGodzian + (koniecMinuta / 60)) - (poczatekGodzian + (poczatekMinuta / 60))) * 2 * 27) + "px"
   }

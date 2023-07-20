@@ -14,8 +14,8 @@ import {ListonoszService} from "../../../serwisy/listonosz.service";
   providedIn: 'root'
 })
 export class KalendarzKomponentService {
-  public godzinaRozpoczecia = 6;
-
+  public godzinaRozpoczecia = 88;
+  public godzinaZakonczenia = 0
   wizyty: Array<Wizyta> = []
   godzinyOtwarcia: GodzinyOtwarcia = new GodzinyOtwarcia();
   wlasciciel = new Pracownik()
@@ -38,6 +38,7 @@ export class KalendarzKomponentService {
         this.pracownicy.push(pracownikObj)
       })
       Object.assign(this.godzinyOtwarcia, k.godzinyOtwarcia)
+      this.ObliczGodziny()
     })
   }
 
@@ -58,10 +59,28 @@ export class KalendarzKomponentService {
 
   public godzina(index: number) {
     const data = new Date()
-    data.setUTCHours(this.godzinaRozpoczecia, 0, 0, 0);
+    data.setHours(this.godzinaRozpoczecia, 0, 0, 0);
     const k = new Date(data.getTime() + (index * 60000 * 30))
     const godzina = k.getHours() < 10 ? '0' + k.getHours() : k.getHours();
     const minuta = k.getMinutes() < 10 ? '0' + k.getMinutes() : k.getMinutes();
     return godzina + ":" + minuta
   }
+
+
+  private ObliczGodziny() {
+    const tmp = this.godzinyOtwarcia;
+    [tmp.poniedzialek, tmp.wtorek, tmp.sroda, tmp.czwartek, tmp.piatek, tmp.sobota, tmp.niedziela].forEach(dzien => {
+      if (dzien.czynnyDzien) {
+        const rozpoczenie = Number(dzien.otwarcie.split(':')[0])
+        const zakonczenie = Number(dzien.zamkniecie.split(':')[0])
+        this.godzinaRozpoczecia = rozpoczenie < this.godzinaRozpoczecia ? rozpoczenie : this.godzinaRozpoczecia
+        this.godzinaZakonczenia = zakonczenie > this.godzinaZakonczenia ? zakonczenie : this.godzinaZakonczenia
+
+      }
+    })
+    //this.godzinaRozpoczecia -= 1;
+    this.godzinaZakonczenia -= this.godzinaRozpoczecia
+    this.godzinaZakonczenia += 0.5;
+  }
+
 }
