@@ -55,11 +55,11 @@
         <span class="tytulJakiKrok">Krok 2</span>
         <p class="jasneNiebieskiNaglowkiReset">Na Twój adres e-mail
           wysłaliśmy wiadomość z
-          kodem, który potwierdza Twoją tożsamość, <br></p>
+          kodem, który potwierdza Twoją tożsamość<br></p>
         <table style="margin-bottom: 10px">
           <tr>
             <td><span class="WpiszOtrzymanyKod"> Wpisz otrzymany kod:  </span></td>
-            <td><span class="czasKodu" *ngIf="czasKodu != -1">Ważny: {{czasKodu}} sekund</span></td>
+            <td><span class="czasKodu" *ngIf="czasKodu != -1">ważny: {{czasKodu}} sekund</span></td>
           </tr>
         </table>
 
@@ -69,7 +69,7 @@
                [ngModelOptions]="{standalone: true}" [ngClass]="{'wpiszDane': pustyKod ||  nieprawidlowyKod}">
         <p class="wyslijKodPonownieNapis" (click)="wyslijEmail()">Wyślij kod ponownie</p>
         <span class="czerwoneKomunikaty" *ngIf="pustyKod">Wpisz kod!</span>
-        <span class="czerwoneKomunikaty" *ngIf="nieprawidlowyKod">Nieprawidłowy kod! <br> Spróbuj jeszcze raz</span>
+        <span class="czerwoneKomunikaty" *ngIf="nieprawidlowyKod">Nieprawidłowy kod!<br>Spróbuj jeszcze raz</span>
         <button (click)="wyslijKod()" type="submit" style="visibility: hidden"></button>
         <fa-icon class="icons" [icon]="fontAwesome.arrowWprawo" (click)="wyslijKod()"></fa-icon>
       </div>
@@ -87,7 +87,8 @@
                [ngClass]="{'wpiszDane': haslaRozne || haslaNieSpelniajaWymagan || niewpisaneHasla || zmianaHaslaNieudana}">
         <fa-icon class="Podglad" [icon]="haslo1Podglad?fontAwesome.oczko:fontAwesome.oczkoZamkniete"
                  (click)="haslo1Podglad =  !haslo1Podglad"
-                 style="position: absolute; right: 5px; top:33px; font-size: 13px"></fa-icon>
+                 style="position: absolute; right: 11px;
+top: 30px; font-size: 13px"></fa-icon>
 
         <input class="logInput" [type]="haslo2Podglad?'password':'text'" placeholder="powtórz nowe hasło"
                style="margin-top: 20px"
@@ -95,7 +96,8 @@
                [ngClass]="{'wpiszDane': haslaRozne || haslaNieSpelniajaWymagan || niewpisaneHasla || zmianaHaslaNieudana}">
         <fa-icon class="Podglad" [icon]="haslo2Podglad?fontAwesome.oczko:fontAwesome.oczkoZamkniete"
                  (click)="haslo2Podglad =  !haslo2Podglad"
-                 style="position: absolute; right: 5px; top:104px; font-size: 13px"></fa-icon>
+                 style="position: absolute; right: 11px;
+top: 90px; font-size: 13px"></fa-icon>
         <table>
           <tr>
             <td><span class="ciemneNiebieskiNaglowkiReset" style="font-size: 24px"> Wpisz nowe hasło</span></td>

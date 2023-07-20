@@ -3,13 +3,13 @@ import * as EmailValidator from 'email-validator';
 
 export class RejestracjaZakladu {
   public nazwaZakladu: string = 'k';
-  public powiat: string = 'k';
-  public wies: string = 'k';
-  public miasto: string = 'k';
+  public powiat: string = '';
+  public wies: string = '';
+  public miasto: string = '';
   public wojewodztwo: string = '';
   public ulica: string = "k";
   public nrDomu: string = "k";
-  public nrLokalu: string = "k";
+  public nrLokalu: string = "";
   public kodPocztowy1?: number = 1;
   public kodPocztowy2?: number = 1;
   public imie: string = "k";
@@ -187,7 +187,7 @@ export class RejestracjaZakladu {
       this.haslo2poprawne = false;
       this.czyWszystkoPoprawne = false;
     }
-
+  if(this.)
     return this.czyWszystkoPoprawne;
   }
 

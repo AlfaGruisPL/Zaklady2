@@ -2,13 +2,13 @@
   <div class="tytul">
     <h1 class="h1dlaTytuluPaneluZaklad">
       Zarejestruj swój zakład
-
+      <fa-icon class="iconWroc"
+               *ngIf="strzalka"
+               [icon]="fontAwesome.powrotIconka"
+               (click)="powrotOJedenKrok()"
+      ></fa-icon>
     </h1>
-    <fa-icon class="iconWroc"
-             *ngIf="strzalka"
-             [icon]="fontAwesome.powrotIconka"
-             (click)="powrotOJedenKrok()"
-    ></fa-icon>
+
   </div>
 </div>
 
@@ -111,14 +111,14 @@
               [(ngModel)]="daneRejestracji.nrDomu"
               [ngClass]="{ wpiszDane: !daneRejestracji.nrDomuPoprawny }"
               class="logInput"
-              style="width: 80px"
-            /> <span class="znaczek">/</span>
+              style="width: 80px; margin-left: 10px;margin-right: 15px"
+            /> <span class="znaczek1">/</span>
             <input
               size="4"
               [ngModelOptions]="{ standalone: true }"
               [(ngModel)]="daneRejestracji.nrLokalu"
               class="logInput"
-              style="width: 80px"
+              style="width: 80px; margin-left:17px"
             />
           </td>
         </tr>
@@ -137,8 +137,8 @@
               [(ngModel)]="daneRejestracji.kodPocztowy1"
               [ngClass]="{ wpiszDane: !daneRejestracji.kodPocztowy1Poprawny }"
               class="logInput"
-              style="width: 80px"
-            /><span class="znaczek">-</span>
+              style="width: 80px; margin-right: 15px"
+            /><span class="znaczek2">-</span>
             <input
               size="5"
               maxlength="3"
@@ -146,15 +146,12 @@
               [(ngModel)]="daneRejestracji.kodPocztowy2"
               [ngClass]="{ wpiszDane: !daneRejestracji.kodPocztowy2Poprawny }"
               class="logInput"
-              style="width: 80px"
+              style="width: 80px; margin-left:15px;margin-right: 0"
             />
           </td>
         </tr>
         <tr>
           <td colspan="2" class="miastoCzyWies">Miasto
-
-          </td>
-          <td>
             <button class="buttonWybierz" *ngIf="czyMiasto != 1" (click)="czyMiasto =1">Wybierz</button>
           </td>
         </tr>
@@ -168,6 +165,7 @@
               id="miasto"
               type="text"
               [ngModelOptions]="{ standalone: true }"
+              [ngClass]="{ wpiszDane: !daneRejestracji.miastoPoprawne }"
               [(ngModel)]="daneRejestracji.miasto"
               class="logInput"
             />
@@ -175,10 +173,7 @@
         </tr>
         <tr>
           <td colspan="2" class="miastoCzyWies">Wieś
-
-          </td>
-          <td>
-            <button *ngIf="czyMiasto != 2" (click)="czyMiasto =2">Wybierz</button>
+            <button class="buttonWybierz" *ngIf="czyMiasto != 2" (click)="czyMiasto =2">Wybierz</button>
           </td>
         </tr>
 
@@ -271,7 +266,7 @@
             >
           </td>
           <td>
-            <select class="logInput logInputPrefiksTelefonu" [(ngModel)]="daneRejestracji.prefiksTelefonu"
+            <select class="logInput" style="width: 75px" [(ngModel)]="daneRejestracji.prefiksTelefonu"
                     [ngModelOptions]="{ standalone: true } ">
               <option>
                 +48
@@ -287,8 +282,8 @@
               [(ngModel)]="daneRejestracji.numerTelefonu"
               [ngClass]="{ wpiszDane: !daneRejestracji.numerTelefonuPoprawny }"
               class="logInput"
-              style="width: 176px;
-margin-left: 2px"
+              style="width: 173px;
+margin-left: -9px"
             />
           </td>
         </tr>
@@ -435,28 +430,18 @@ margin-left: 2px"
         </span>
             </div>
           </td>
-        <tr>
-          <td colspan="2" style="text-align: right"><h3 class="naglowekTlumaczenie">* oznacza że pole jest wymagane</h3>
-          </td>
-
-        </tr>
-
-
-        <tr>
-          <td colspan="2" style="text-align: right"><h3 class="naglowekTlumaczenie">! oznacza że pole nie spełnia
-            wymagań</h3></td>
-
-        </tr>
       </table>
-
     </form>
-    <a style="padding-top: 20px"
-       class="chceszSieZalogowacLubZarejestrowac"
-       [routerLink]="['../logowanie']"
-    >
-      Logowanie do zarejestrowanego konta</a
-    >
+    <div class="linkRejestracjaDiv">
+      <a class="linkRejestracja chceszSieZalogowacLubZarejestrowac" [routerLink]="['../logowanie']">
+        Logowanie do zarejestrowanego konta</a>
+      <p class="naglowekTlumaczenie">* oznacza że pole jest wymagane <br>
+
+        ! oznacza że pole nie spełnia
+        wymagań</p>
+    </div>
   </div>
+
 
 </div>
 
