@@ -4,7 +4,8 @@
    </button> -->
   <div class="tytulIPowrotdoLogowania">
     <h2>Reset hasła
-      <fa-icon [icon]="fontAwesome.powrotIconka" (click)="powrotOJedenKrok()"></fa-icon>
+      <fa-icon
+        *ngIf="strzalka" [icon]="fontAwesome.powrotIconka" (click)="powrotOJedenKrok()"></fa-icon>
     </h2>
 
   </div>

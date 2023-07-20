@@ -46,8 +46,10 @@
       <div class="logowanieMarginButton">
         <button type="submit" (click)="logowanie()" class="ButtonZarejestrujIzaloguj">Zaloguj</button>
         <br>
-        <a [routerLink]="['../reset']" class="niePamietaszHasla">Nie pamiętasz hasła? Kliknij, aby zresetować</a>
-        <a class="chceszSieZalogowacLubZarejestrowac" [routerLink]="['../rejestracja']">Kliknij, aby zarejestrować nowy
+        <a [routerLink]="['../reset']" [queryParams]="{strzalka: true}" class="niePamietaszHasla">Nie pamiętasz hasła?
+          Kliknij, aby zresetować</a>
+        <a class="chceszSieZalogowacLubZarejestrowac" [queryParams]="{strzalka: true}"
+           [routerLink]="['../rejestracja']">Kliknij, aby zarejestrować nowy
           zakład</a>
       </div>
     </form>

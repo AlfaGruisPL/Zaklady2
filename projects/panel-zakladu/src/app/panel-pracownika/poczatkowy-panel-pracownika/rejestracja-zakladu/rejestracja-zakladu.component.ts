@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 import {ToastrService} from "ngx-toastr";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {RejestracjaZakladu, RejestracjaZakladuDTO} from "../../../klasy/rejestracja-zakladu";
 import {ListonoszService} from "../../../serwisy/listonosz.service";
 import {Drzwi} from "../../../enum/drzwi";
@@ -13,20 +13,28 @@ import {FontAwesomeService} from "../../../serwisy/font-awesome.service";
   templateUrl: './rejestracja-zakladu.component.html',
   styleUrls: ['./rejestracja-zakladu.component.scss']
 })
-export class RejestracjaZakladuComponent {
+export class RejestracjaZakladuComponent implements OnInit {
   public daneRejestracji = new RejestracjaZakladu();
   public podgladWlaczJeden: boolean = true;
   public podgladWlaczDwa: boolean = true;
   public rejestracjaUdana = false;
   public czyMiasto = 0
+  strzalka = false
 
   constructor(
     public fontAwesome: FontAwesomeService,
     private listonosz: ListonoszService,
     private komunikat: ToastrService,
     private Router: Router,
-    private location: Location
+    private location: Location,
+    private routing: ActivatedRoute
   ) {
+  }
+
+  ngOnInit() {
+    this.routing.queryParams.subscribe(k => {
+      this.strzalka = k['strzalka']
+    });
   }
 
   public zarejestruj() {

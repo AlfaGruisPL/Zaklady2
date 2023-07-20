@@ -3,7 +3,7 @@ import {FontAwesomeService} from "../../../serwisy/font-awesome.service";
 import {Location} from "@angular/common";
 import {ListonoszService} from "../../../serwisy/listonosz.service";
 import {Drzwi} from "../../../enum/drzwi";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 // @ts-ignore
 import passwordValidator from "password-validator";
@@ -46,9 +46,11 @@ export class ResetHaslaPracownikowComponent implements OnInit {
 
   public przycisk1Disabled = false
   public takieSameHaslo = false
+  public strzalka = false
 
   constructor(public fontAwesome: FontAwesomeService,
               private location: Location,
+              private routing: ActivatedRoute,
               private listonosz: ListonoszService,
               private Router: Router) {
   }
@@ -56,6 +58,9 @@ export class ResetHaslaPracownikowComponent implements OnInit {
   ngOnInit(): void {
     // @ts-ignore
     document.getElementById('Resetinput1').focus();
+    this.routing.queryParams.subscribe(k => {
+      this.strzalka = k['strzalka']
+    });
   }
 
   private sterownikCzasu: any;
