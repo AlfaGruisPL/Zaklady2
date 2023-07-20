@@ -187,7 +187,7 @@ export class RejestracjaZakladu {
       this.haslo2poprawne = false;
       this.czyWszystkoPoprawne = false;
     }
-  if(this.)
+
     return this.czyWszystkoPoprawne;
   }
 
