@@ -131,16 +131,17 @@
 }
 
 .buttonWybierz {
-  width: 65px;
-  background: #ffffff;
-  border: 1px solid #0804be;
+  width: 40px;
+  text-transform: uppercase;
+  background: transparent;
+  border: 2px solid #0804be;
   border-radius: 10px;
   color: #0e359f;
   font-family: math;
   text-shadow: 0px 0px 1px black;
   font-weight: bold;
   transition: 500ms;
-  font-size: 15px;
+  font-size: 11px;
 
   &:hover {
     cursor: pointer;
