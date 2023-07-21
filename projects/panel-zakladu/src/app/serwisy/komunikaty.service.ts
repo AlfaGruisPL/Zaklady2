@@ -72,6 +72,15 @@ export class KomunikatyService {
     this.komunikaty.success("Pracownik został dodany", 'Udane');
   }
 
+  public zdjecieProfiloweZmodyfikowane() {
+    this.komunikaty.success("Zdjęcie profilowe pracownika zostało zmienione", 'Udane');
+  }
+
+  public zdjecieProfiloweNieZmodyfikowane() {
+    this.komunikaty.error("Zdjęcie profilowe pracownika nie zostało zmienione", 'Bląd');
+  }
+
+
   public dodaniePracownikaNieUdane() {
     this.komunikaty.error("Pracownik  nie został dodany, skontaktuj się z administratorem", 'Udane')
   }

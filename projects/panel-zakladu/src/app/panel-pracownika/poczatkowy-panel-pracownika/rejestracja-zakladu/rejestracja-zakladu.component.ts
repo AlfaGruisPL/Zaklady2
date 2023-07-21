@@ -18,7 +18,7 @@ export class RejestracjaZakladuComponent implements OnInit {
   public podgladWlaczJeden: boolean = true;
   public podgladWlaczDwa: boolean = true;
   public rejestracjaUdana = false;
-  public czyMiasto = 0
+
   strzalka = false
 
   constructor(
@@ -40,6 +40,11 @@ export class RejestracjaZakladuComponent implements OnInit {
   public zarejestruj() {
     this.daneRejestracji.hasloSpelniaWymagania = true
     this.daneRejestracji.czyHaslaTakieSame_ = true
+    this.daneRejestracji.czyWszystkoPoprawne = true
+
+    this.daneRejestracji.emailWykorzystany = false;
+    this.daneRejestracji.nmumerTelefonuWykorzystany = false;
+    this.daneRejestracji.rejestracjaUdana = true;
     var czyHaslaTakieSame = this.daneRejestracji.czyHaslaTakieSame();
     var czyDaneDobre = this.daneRejestracji.czyWszystkiePolaUzupelnione();
     var czywalidacjadobra = this.daneRejestracji.czyDanePoprawne()
@@ -51,9 +56,7 @@ export class RejestracjaZakladuComponent implements OnInit {
     }
     if (czyDaneDobre && czyHaslaTakieSame && czywalidacjadobra && this.daneRejestracji.hasloSpelniaWymagania) {
 
-      this.daneRejestracji.emailWykorzystany = false;
-      this.daneRejestracji.nmumerTelefonuWykorzystany = false;
-      this.daneRejestracji.rejestracjaUdana = true;
+
       const daneDTO = new RejestracjaZakladuDTO(this.daneRejestracji);
       this.daneRejestracji.przyciskAktywny = false
       this.listonosz.wyslij(Drzwi.dodajZaklad, daneDTO).then(k => {

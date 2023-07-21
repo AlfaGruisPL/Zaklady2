@@ -57,6 +57,14 @@
           {{pracownikObj.numerTelefonu}}
         </td>
       </tr>
+      <tr>
+        <td>
+          <label class="naglowki2form"> Zdjęcie profilowe:</label>
+        </td>
+        <td><input type="file" (change)="wybierzPlik($event)" #inputTypeFile>
+          <input type="button" value="Wyczyść" (click)="formData = undefined;inputTypeFile.value = ''">
+        </td>
+      </tr>
     </table>
     <table>
       <tr>

@@ -20,6 +20,7 @@ export class DodawanieIModyfikacjaPracownikaComponent {
   public pracownikDodany: boolean = true;
   public pracownikZmodyfikowany: boolean = true;
   public blokowaniePrzycisku: boolean = false;
+  public formData: FormData | undefined = undefined
 
 
   constructor(public activeModal: NgbActiveModal,
@@ -41,9 +42,10 @@ export class DodawanieIModyfikacjaPracownikaComponent {
     if (this.iloscKlikniec >= 2) {
       this.blokowaniePrzycisku = true;
       const pracownikObjDTO = new PracownikDTO(this.pracownikObj);
-      this.listonosz.wyslij(Drzwi.dodaniePracownikaDoTablicy, pracownikObjDTO).then(dodano => {
+      this.listonosz.wyslij(Drzwi.dodaniePracownikaDoTablicy, pracownikObjDTO).then(async idPracownika => {
         this.pracownikDodany = true;
         this.komunikaty.dodaniePracownikaUdane();
+        await this.wyslijZdjecie(idPracownika)
         this.activeModal.close("Zapisanie udane");
       }).catch(nieudano => {
         this.pracownikDodany = false;
@@ -51,6 +53,7 @@ export class DodawanieIModyfikacjaPracownikaComponent {
       }).finally(() => {
         this.blokowaniePrzycisku = false;
       })
+
     }
 
 
@@ -61,9 +64,10 @@ export class DodawanieIModyfikacjaPracownikaComponent {
     if (this.iloscKlikniec >= 2) {
       const pracownikObjDTO = new PracownikDTO(this.pracownikObj);
       this.blokowaniePrzycisku = true
-      this.listonosz.aktualizuj(Drzwi.pracownik + this.idUzytkownika, pracownikObjDTO).then(dodano => {
+      this.listonosz.aktualizuj(Drzwi.pracownik + this.idUzytkownika, pracownikObjDTO).then(async dodano => {
         this.pracownikZmodyfikowany = true;
         this.komunikaty.modyfikowaniePracownikaUdane();
+        await this.wyslijZdjecie(this.idUzytkownika)
         this.activeModal.close("Zmodyfikowanie udane");
       }).catch(nieudano => {
         this.pracownikZmodyfikowany = false;
@@ -71,7 +75,28 @@ export class DodawanieIModyfikacjaPracownikaComponent {
       }).finally(() => {
         this.blokowaniePrzycisku = false;
       })
+
     }
   }
 
+  private async wyslijZdjecie(id: number) {
+    if (this.formData != undefined) {
+
+      try {
+        await this.listonosz.wyslij("/pliki/zdjecieProfilowe/" + id, this.formData)
+        this.komunikaty.zdjecieProfiloweZmodyfikowane();
+      } catch (error) {
+
+        this.komunikaty.zdjecieProfiloweNieZmodyfikowane();
+      }
+    }
+  }
+
+  wybierzPlik(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.formData = new FormData();
+      this.formData.append("file", file);
+    }
+  }
 }

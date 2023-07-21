@@ -10,6 +10,7 @@ import {Subscription} from "rxjs";
 import {KomunikatyService} from "../../../../serwisy/komunikaty.service";
 import {BledyNumery} from "../../../../enum/bledy-numery";
 import {CzyNaprawdeUsunacComponent} from "./okienka/czy-naprawde-usunac/czy-naprawde-usunac.component";
+import {PodreczneDaneService} from "../../../../serwisy/podreczne-dane.service";
 
 @Component({
   selector: 'app-pracownicy-pracownika',
@@ -25,6 +26,7 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
   constructor(private modalService: NgbModal,
               private listonosz: ListonoszService,
               private komunikaty: KomunikatyService,
+              private podreczneDane: PodreczneDaneService,
               private okienka: NgbModal) {
   }
 
@@ -147,6 +149,7 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
     this.sub2 = okienko.closed.subscribe(zamkniete => {
       if (zamkniete == "Zmodyfikowanie udane") {
         this.pobierzListePracownikow();
+        this.podreczneDane.wygenerujNowaLiczbeLosowaDlaZdjec()
 
       }
       this.sub2?.unsubscribe();

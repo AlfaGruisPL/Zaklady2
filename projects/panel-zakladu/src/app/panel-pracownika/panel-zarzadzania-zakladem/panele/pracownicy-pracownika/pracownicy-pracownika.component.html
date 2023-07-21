@@ -24,19 +24,22 @@
     <table class="tablica">
       <tr>
         <th>Nr</th>
+
         <th>Imię</th>
         <th>Nazwisko</th>
         <th>Adres e-mail</th>
         <th>Numer telefonu</th>
-        <th>Zarządzanie</th>
+        <th style="width: 125px;">Zarządzanie</th>
+        <th style="width: 80px;">Zdjęcie</th>
       </tr>
       <tr *ngFor="let pracownik of filtrowaniePracownikow(); let index = index">
         <td>{{index + 1}}</td>
+
         <td>{{pracownik.imie}}</td>
         <td>{{pracownik.nazwisko}}</td>
         <td>{{pracownik.adresEmail}}</td>
         <td>{{pracownik.prefiksTelefonu}}{{pracownik.numerTelefonu}}</td>
-        <td>
+        <td style="text-align: right;padding-right: 5px">
           <div ngbDropdown container="body">
             <button type="button" class="btn btn-outline-primary btn-sm" ngbDropdownToggle>Wybierz:</button>
             <div ngbDropdownMenu>
@@ -74,6 +77,9 @@
             </div>
           </div>
         </td>
+        <td style="text-align: center"><img style="max-height: 38px;max-width: 70px"
+                                            [src]="'http://fenek.tech:3000/pliki/wyswietlZdjecieProfilowe/'+pracownik.id+'/30' |zdjecie"
+        /></td>
       </tr>
     </table>
   </div>

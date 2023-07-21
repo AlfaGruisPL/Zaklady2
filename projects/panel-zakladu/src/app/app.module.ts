@@ -115,6 +115,7 @@ import {
 import {
   KalendarzPrzerwaComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/kalendarz-komponent/kalendarz-przerwa/kalendarz-przerwa.component';
+import {ZdjeciePipe} from "./rureczki/zdjecie.pipe";
 
 @NgModule({
   declarations: [
@@ -148,7 +149,7 @@ import {
     UslugiPracownikaComponent,
     UslugiPrzypisaniPracownicyComponent,
     RejestracjaUdanaComponent,
-    HarmonogramDniaComponent,
+    HarmonogramDniaComponent, ZdjeciePipe,
     HarmonogramDniaTerminComponent,
     KalendarzKomponentComponent, Termin_komponentComponent, KalendarzGodzinaKreskaKomponentComponent, KalendarzZarzadzanieTerminemComponent, KalendarzPrzerwaComponent
   ],

@@ -152,7 +152,9 @@
         </tr>
         <tr>
           <td colspan="2" class="miastoCzyWies">Miasto
-            <button class="buttonWybierz" *ngIf="czyMiasto != 1" (click)="czyMiasto =1">Wybierz</button>
+            <button class="buttonWybierz" *ngIf="daneRejestracji.czyMiasto != 1" (click)="daneRejestracji.czyMiasto =1">
+              Wybierz
+            </button>
           </td>
         </tr>
         <tr>
@@ -161,7 +163,7 @@
           </td>
           <td>
             <input
-              [disabled]="czyMiasto == 2|| czyMiasto == 0"
+              [disabled]="daneRejestracji.czyMiasto == 2|| daneRejestracji.czyMiasto == 0"
               id="miasto"
               type="text"
               [ngModelOptions]="{ standalone: true }"
@@ -173,7 +175,9 @@
         </tr>
         <tr>
           <td colspan="2" class="miastoCzyWies">Wieś
-            <button class="buttonWybierz" *ngIf="czyMiasto != 2" (click)="czyMiasto =2">Wybierz</button>
+            <button class="buttonWybierz" *ngIf="daneRejestracji.czyMiasto != 2" (click)="daneRejestracji.czyMiasto =2">
+              Wybierz
+            </button>
           </td>
         </tr>
 
@@ -182,7 +186,8 @@
             <label class="naglowekDwaWformularzu" for="powiat">Powiat</label>
           </td>
           <td><input class="logInput" id="powiat" type="text"
-                     [(ngModel)]="daneRejestracji.powiat" [disabled]="czyMiasto == 1|| czyMiasto == 0"
+                     [(ngModel)]="daneRejestracji.powiat"
+                     [disabled]="daneRejestracji.czyMiasto == 1|| daneRejestracji.czyMiasto == 0"
                      [ngClass]="{ wpiszDane: !daneRejestracji.powiatPoprawne }"
                      [ngModelOptions]="{ standalone: true}">
 
@@ -193,7 +198,8 @@
             <label class="naglowekDwaWformularzu" for="wies">Wieś</label>
           </td>
           <td><input class="logInput" id="wies" type="text"
-                     [(ngModel)]="daneRejestracji.wies" [disabled]="czyMiasto == 1 || czyMiasto == 0"
+                     [(ngModel)]="daneRejestracji.wies"
+                     [disabled]="daneRejestracji.czyMiasto == 1 || daneRejestracji.czyMiasto == 0"
                      [ngClass]="{ wpiszDane: !daneRejestracji.wiesPoprawne }"
                      [ngModelOptions]="{ standalone: true }"></td>
         </tr>
@@ -222,7 +228,6 @@
               [(ngModel)]="daneRejestracji.imie"
               [ngClass]="{ wpiszDane: !daneRejestracji.imiePoprawne }"
               class="logInput"
-              [ngClass]="{ wpiszDane: !daneRejestracji.miastoPoprawne }"
             />
           </td>
 

@@ -10,6 +10,12 @@ import {DanePodreczneClass} from "../klasy/panelPracownika/dane-podreczne";
 })
 export class PodreczneDaneService {
   public danePodreczneObiekt = new DanePodreczneClass();
+  public losowaLiczba = Math.round(Math.random() * 100000000)
+
+
+  wygenerujNowaLiczbeLosowaDlaZdjec() {
+    this.losowaLiczba += 1
+  }
 
   constructor(private listonosz: ListonoszService,
               private komunikaty: KomunikatyService) {

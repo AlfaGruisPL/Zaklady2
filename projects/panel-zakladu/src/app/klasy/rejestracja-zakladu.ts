@@ -25,6 +25,7 @@ export class RejestracjaZakladu {
 
   public przyciskAktywny = true;
 
+  public czyMiasto = 1
 
   public powiatPoprawne: boolean = true;
   public wiesPoprawne: boolean = true;
@@ -49,6 +50,10 @@ export class RejestracjaZakladu {
 
   public czyHaslaTakieSame(): boolean {
     this.czyHaslaTakieSame_ = true;
+    if (this.haslo1.length == 0 || this.haslo2.length == 0) {
+      this.czyHaslaTakieSame_ = true;
+      return this.czyHaslaTakieSame_;
+    }
     if (this.haslo1 == this.haslo2) {
       this.czyHaslaTakieSame_ = true;
     } else {
@@ -80,6 +85,10 @@ export class RejestracjaZakladu {
 
   public czyWszystkiePolaUzupelnione(): boolean {
     const regex_liczby = /^[0-9]+$/i;
+    this.miastoPoprawne = true;
+    this.wiesPoprawne = true;
+    this.powiatPoprawne = true
+
     this.czyWszystkoPoprawne = true;
     if (this.nazwaZakladu.length > 0) {
       this.nazwaZakladuPoprawne = true;
@@ -100,23 +109,28 @@ export class RejestracjaZakladu {
       this.ulicaPoprawna = false;
       this.czyWszystkoPoprawne = false;
     }
-    if (this.miasto.length > 0) {
-      this.miastoPoprawne = true;
-    } else {
-      this.miastoPoprawne = false;
-      this.czyWszystkoPoprawne = false;
+    if (this.czyMiasto == 1) {
+      if (this.miasto.length > 0) {
+        this.miastoPoprawne = true;
+      } else {
+        this.miastoPoprawne = false;
+        this.czyWszystkoPoprawne = false;
+      }
     }
-    if (this.wies.length > 0) {
-      this.wiesPoprawne = true;
-    } else {
-      this.wiesPoprawne = false;
-      this.czyWszystkoPoprawne = false;
-    }
-    if (this.powiat.length > 0) {
-      this.powiatPoprawne = true;
-    } else {
-      this.powiatPoprawne = false;
-      this.czyWszystkoPoprawne = false;
+    if (this.czyMiasto == 2) {
+      if (this.wies.length > 0) {
+        this.wiesPoprawne = true;
+      } else {
+        this.wiesPoprawne = false;
+        this.czyWszystkoPoprawne = false;
+      }
+
+      if (this.powiat.length > 0) {
+        this.powiatPoprawne = true;
+      } else {
+        this.powiatPoprawne = false;
+        this.czyWszystkoPoprawne = false;
+      }
     }
     if (this.nrDomu.length > 0) {
       this.nrDomuPoprawny = true;
@@ -187,6 +201,7 @@ export class RejestracjaZakladu {
       this.haslo2poprawne = false;
       this.czyWszystkoPoprawne = false;
     }
+
 
     return this.czyWszystkoPoprawne;
   }
