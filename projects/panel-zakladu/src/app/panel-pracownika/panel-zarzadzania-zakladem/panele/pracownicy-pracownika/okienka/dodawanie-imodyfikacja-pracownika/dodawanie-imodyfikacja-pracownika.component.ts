@@ -6,6 +6,7 @@ import {PracownikDTO} from "../../../../../../klasy/panelPracownika/pracownicy/p
 import {Drzwi} from "../../../../../../enum/drzwi";
 import {KomunikatyService} from "../../../../../../serwisy/komunikaty.service";
 import {BledyNumery} from "../../../../../../enum/bledy-numery";
+import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dodawanie-imodyfikacja-pracownika',
@@ -21,10 +22,13 @@ export class DodawanieIModyfikacjaPracownikaComponent {
   public pracownikZmodyfikowany: boolean = true;
   public blokowaniePrzycisku: boolean = false;
   public formData: FormData | undefined = undefined
+  public usunZdjecieProfiloweDTo = false
 
+  public safeImageUrl: SafeUrl | null = null;
 
   constructor(public activeModal: NgbActiveModal,
               public listonosz: ListonoszService,
+              private sanitizer: DomSanitizer,
               public komunikaty: KomunikatyService) {
   }
 
@@ -63,6 +67,7 @@ export class DodawanieIModyfikacjaPracownikaComponent {
     this.iloscKlikniec++;
     if (this.iloscKlikniec >= 2) {
       const pracownikObjDTO = new PracownikDTO(this.pracownikObj);
+      pracownikObjDTO.usunZdjecieProfilowe = this.usunZdjecieProfiloweDTo
       this.blokowaniePrzycisku = true
       this.listonosz.aktualizuj(Drzwi.pracownik + this.idUzytkownika, pracownikObjDTO).then(async dodano => {
         this.pracownikZmodyfikowany = true;
@@ -79,7 +84,13 @@ export class DodawanieIModyfikacjaPracownikaComponent {
     }
   }
 
+  usunZdjecieProfilowe() {
+    this.usunZdjecieProfiloweDTo = true;
+    this.safeImageUrl = null;
+  }
+
   private async wyslijZdjecie(id: number) {
+
     if (this.formData != undefined) {
 
       try {
@@ -93,10 +104,13 @@ export class DodawanieIModyfikacjaPracownikaComponent {
   }
 
   wybierzPlik(event: any) {
+    this.usunZdjecieProfiloweDTo = false
     const file: File = event.target.files[0];
     if (file) {
       this.formData = new FormData();
       this.formData.append("file", file);
+      // @ts-ignore
+      this.safeImageUrl = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(this.formData.get('file')));
     }
   }
 }

@@ -1,7 +1,7 @@
 
 .menuTresc {
   width: 100%;
-  height: calc(100vh - 77px);
+  height: calc(100vh - 75px);
   float: left;
   border-bottom: 1px solid #000;
   border-top: 1px solid #000;
@@ -13,7 +13,23 @@
     float: left;
     background: #e3e3e3;
     border-right: 1px solid #000;
-    overflow-y: auto;
+
+    position: relative;
+
+    .menuDiv {
+      height: calc(100% - 50px);
+      overflow-y: auto;
+    }
+
+    .godzina {
+      position: absolute;
+      left: 0px;
+      margin: 0;
+      bottom: 0px;
+      font-size: 30px;
+      width: 100%;
+      text-align: center;
+    }
   }
 
   .tresc {

@@ -77,9 +77,13 @@
             </div>
           </div>
         </td>
-        <td style="text-align: center"><img style="max-height: 38px;max-width: 70px"
-                                            [src]="'http://fenek.tech:3000/pliki/wyswietlZdjecieProfilowe/'+pracownik.id+'/30' |zdjecie"
-        /></td>
+        <td style="text-align: center">
+
+          <img style="max-height: 38px;max-width: 70px"
+
+               [src]="environment.linkDoZdjeciaProfilowego+pracownik.id+'?jakosc=30' |zdjecie:false"
+          />
+        </td>
       </tr>
     </table>
   </div>

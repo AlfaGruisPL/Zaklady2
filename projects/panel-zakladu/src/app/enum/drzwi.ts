@@ -34,5 +34,11 @@ export enum Drzwi {
   uslugiPanel = '/uslugi/panel',
 
 
-  zarejestrowaneWizytyTerminy = '/kalendarzTerminow/terminy'
+  zarejestrowaneWizytyTerminy = '/kalendarzTerminow/terminy',
+
+
+  wizytyDzis = '/wizyty/wizytyDzis',
+
+
+  listaKlientow = "/klienci/lista"
 }

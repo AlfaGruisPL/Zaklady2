@@ -8,8 +8,11 @@ export class ZdjeciePipe implements PipeTransform {
   constructor(private dane: PodreczneDaneService) {
   }
 
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return value + "?random=" + this.dane.losowaLiczba;
+  transform(value: unknown, first: boolean = false): unknown {
+    if (first) {
+      return value + "?random=" + this.dane.losowaLiczba;
+    }
+    return value + "&random=" + this.dane.losowaLiczba;
   }
 
 }

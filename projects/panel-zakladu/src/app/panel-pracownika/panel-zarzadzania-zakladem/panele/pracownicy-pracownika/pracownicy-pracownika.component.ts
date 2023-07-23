@@ -11,6 +11,7 @@ import {KomunikatyService} from "../../../../serwisy/komunikaty.service";
 import {BledyNumery} from "../../../../enum/bledy-numery";
 import {CzyNaprawdeUsunacComponent} from "./okienka/czy-naprawde-usunac/czy-naprawde-usunac.component";
 import {PodreczneDaneService} from "../../../../serwisy/podreczne-dane.service";
+import {environment} from "../../../../../environments/environment";
 
 @Component({
   selector: 'app-pracownicy-pracownika',
@@ -18,10 +19,12 @@ import {PodreczneDaneService} from "../../../../serwisy/podreczne-dane.service";
   styleUrls: ['./pracownicy-pracownika.component.scss']
 })
 export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
+
   public ListaPracownikow: Array<Pracownik> = [];
   private sub1?: Subscription;
   private sub2?: Subscription;
   public filter = "dostepni";
+  public environment = environment
 
   constructor(private modalService: NgbModal,
               private listonosz: ListonoszService,

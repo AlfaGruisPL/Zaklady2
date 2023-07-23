@@ -93,7 +93,7 @@ export class DaneKlientaDTO {
   public email: string = '';
   public poczatek: number = 0
   public koniec: number = 0
-
+  public uslugiId: number[] = []
 
   constructor(daneKlienta: DaneKlienta) {
     this.imie = daneKlienta.imie;
@@ -107,7 +107,11 @@ export class DaneKlientaDTO {
       this.poczatek = new Date(k.data).setHours(k.poczatek, k.poczatekMinuty)
       this.koniec = new Date(k.data).setHours(k.koniec, k.koniecMinuty)
     }
-    console.log(new Date(this.poczatek));
-    console.log(new Date(this.koniec));
+    daneKlienta.uslugi.forEach(usluga => {
+      if (usluga.wybrane) {
+        this.uslugiId.push(usluga.id)
+      }
+    })
+
   }
 }

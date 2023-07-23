@@ -7,3 +7,20 @@
   }
 
 }
+
+.wizyta {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+
+  .aktualna {
+    width: 300px;
+    background: red;
+
+  }
+
+  .nastepna {
+    width: 300px;
+    background: red;
+  }
+}

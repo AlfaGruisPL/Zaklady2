@@ -69,9 +69,6 @@ import {
   DodawanieIModyfikacjaPracownikaComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/panele/pracownicy-pracownika/okienka/dodawanie-imodyfikacja-pracownika/dodawanie-imodyfikacja-pracownika.component';
 import {
-  HarmonogramPracownikaComponent
-} from './panel-pracownika/panel-zarzadzania-zakladem/panele/harmonogram-pracownika/harmonogram-pracownika.component';
-import {
   ListaKlientowPracownikComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/lista-klientow-pracownik.component';
 import {UiSwitchModule} from 'ngx-ui-switch';
@@ -95,12 +92,6 @@ import {
   RejestracjaUdanaComponent
 } from './panel-pracownika/poczatkowy-panel-pracownika/rejestracja-zakladu/rejestracja-udana/rejestracja-udana.component';
 import {
-  HarmonogramDniaComponent
-} from './panel-pracownika/panel-zarzadzania-zakladem/panele/harmonogram-pracownika/harmonogram-dnia/harmonogram-dnia.component';
-import {
-  HarmonogramDniaTerminComponent
-} from './panel-pracownika/panel-zarzadzania-zakladem/panele/harmonogram-pracownika/harmonogram-dnia/harmonogram-dnia-termin/harmonogram-dnia-termin.component';
-import {
   KalendarzKomponentComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/kalendarz-komponent/kalendarz-komponent.component';
 import {
@@ -116,6 +107,10 @@ import {
   KalendarzPrzerwaComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/kalendarz-komponent/kalendarz-przerwa/kalendarz-przerwa.component';
 import {ZdjeciePipe} from "./rureczki/zdjecie.pipe";
+import {
+  HarmonogramModule
+} from "./panel-pracownika/panel-zarzadzania-zakladem/panele/harmonogram-pracownika/harmonogram.module";
+import { InformacjeOKliencieComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/informacje-okliencie/informacje-okliencie.component';
 
 @NgModule({
   declarations: [
@@ -141,17 +136,16 @@ import {ZdjeciePipe} from "./rureczki/zdjecie.pipe";
     StopkaPracownikComponent,
     MaxDlugoscPipe,
     DodawanieIModyfikacjaPracownikaComponent,
-    HarmonogramPracownikaComponent,
+
     ListaKlientowPracownikComponent,
 
     PracownicyMojZakladComponent,
     CzyNaprawdeUsunacComponent,
     UslugiPracownikaComponent,
     UslugiPrzypisaniPracownicyComponent,
-    RejestracjaUdanaComponent,
-    HarmonogramDniaComponent, ZdjeciePipe,
-    HarmonogramDniaTerminComponent,
-    KalendarzKomponentComponent, Termin_komponentComponent, KalendarzGodzinaKreskaKomponentComponent, KalendarzZarzadzanieTerminemComponent, KalendarzPrzerwaComponent
+    RejestracjaUdanaComponent, ZdjeciePipe,
+
+    KalendarzKomponentComponent, Termin_komponentComponent, KalendarzGodzinaKreskaKomponentComponent, KalendarzZarzadzanieTerminemComponent, KalendarzPrzerwaComponent, InformacjeOKliencieComponent
   ],
   imports: [
     BrowserModule,
@@ -174,7 +168,7 @@ import {ZdjeciePipe} from "./rureczki/zdjecie.pipe";
     }),
     NgbModule,
     PlatnosciPracownikaModule,
-    UslugaSmsPracownikaModule,
+    UslugaSmsPracownikaModule, HarmonogramModule
   ],
   providers: [NgbDropdown,
     provideTippyConfig({

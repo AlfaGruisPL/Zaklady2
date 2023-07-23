@@ -1,0 +1,58 @@
+<div class="modal-header">
+  <h4 class="modal-title">Lista wizyt klienta:</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close('Nie')"></button>
+</div>
+<div class="modal-body">
+  <h5>
+    {{klient.imie + " " + klient.nazwisko}}
+  </h5>
+  <h6>
+    {{klient.numerTelefonu + "   /   " + klient.email}}
+  </h6>
+  <table class="tablica">
+    <thead>
+    <tr>
+      <th>Nr.</th>
+      <th>Data</th>
+      <th>Kwota</th>
+      <th>Usługi</th>
+      <th>Zarządzanie</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let wizyta of klient.wizyty  | slice: (page-1) * pageSize : page * pageSize ;let index = index">
+      <td>{{(klient.wizyty.length - index - (pageSize * page) + pageSize)}}  </td>
+      <td>  {{wizyta.terminPoczatek|date:'dd.MM.yyyy      hh:mm/'}}{{wizyta.terminKoniec|date:'hh:mm'}}</td>
+      <td>{{wizyta.cena}}zł</td>
+      <td>
+        <ul>
+          <li *ngFor="let usluga of wizyta.uslugiTab">{{usluga.nazwa}} - {{usluga.cena}}zł</li>
+        </ul>
+      </td>
+      <td>
+        <button>Usuń</button>
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+  <div class="paggination">
+    <ngb-pagination
+      [(page)]="page"
+      [pageSize]="pageSize"
+      [collectionSize]="klient.wizyty.length"
+      [maxSize]="7"
+      [rotate]="true"
+      [boundaryLinks]="true"
+
+    ></ngb-pagination>
+  </div>
+</div>
+
+
+<div class="modal-footer">
+  <button (click)="activeModal.close('Nie')">
+    Wyjdź
+  </button>
+
+</div>

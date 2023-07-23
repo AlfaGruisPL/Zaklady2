@@ -1,4 +1,3 @@
 <div class="termin" [ngStyle]="{'left':przesuniecieWPrawo+'px','width':szerokosc + 'px'}">
-  {{termin.poczatek}}:{{termin.poczatekMinuta}}<br>
-  {{termin.koniec}}:{{termin.koniecMinuta}}
+  Wizyta <b>{{wizyta.terminPoczatek| date:'HH:mm'}}    {{wizyta.terminKoniec| date:'HH:mm'}}</b>
 </div>

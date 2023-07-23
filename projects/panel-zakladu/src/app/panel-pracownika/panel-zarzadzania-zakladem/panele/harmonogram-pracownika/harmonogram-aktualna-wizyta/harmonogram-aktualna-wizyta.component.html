@@ -1,0 +1,49 @@
+<div class="aktualna">
+  <b>Aktualna wizyta:</b>
+  <table *ngIf="aktualnaWizyta != undefined else brak">
+    <tr>
+      <td>Klient:</td>
+      <td>
+        {{aktualnaWizyta.imie + " " + aktualnaWizyta.nazwisko}}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Koniec za:
+      </td>
+      <td>
+        {{czasDoKoncaWizyty()}}
+      </td>
+    </tr>
+    <tr>
+      <td>Początek:</td>
+      <td>{{aktualnaWizyta.terminPoczatek|date:"HH:mm"}}</td>
+    </tr>
+    <tr>
+      <td>
+        Koniec:
+      </td>
+      <td>
+        {{aktualnaWizyta.terminKoniec|date:"HH:mm"}}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Usługi
+      </td>
+      <td>
+        <ul>
+          <li>Lorem ipsum dolor.</li>
+          <li>Lorem ipsum dolor.</li>
+          <li>Lorem ipsum dolor.</li>
+          <li>Lorem ipsum dolor.</li>
+          <li>Lorem ipsum dolor.</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<ng-template #brak>
+  Aktualnie nie odbywa się żadna wizyta
+</ng-template>

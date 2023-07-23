@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DaneKlienta, DaneKlientaDTO} from './etapy/klasy/dane-klienta';
+import {DaneKlientaDTO} from './etapy/klasy/dane-klienta';
 import {ListonoszService} from '../../../serwisy/listonosz.service';
 import {Drzwi} from '../../../enum/drzwi';
 import {ZarejestrujSieService} from './zarejestrujSie.service';
@@ -13,7 +13,7 @@ import {NawigacjaEnum} from "../../../enum/nawigacja.enum";
 })
 export class FormularzZarejestrujSieComponent implements OnInit {
   public krok: number = 2;
-  public daneKlientaKlasa = new DaneKlienta();
+
 
   constructor(
     public listonosz: ListonoszService,
@@ -23,10 +23,11 @@ export class FormularzZarejestrujSieComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.zarejestrujSieService.DaneKlientaClass = this.daneKlientaKlasa;
+
   }
 
   ustawKrok(nowyKrok: number) {
+
     if (nowyKrok == 5) {
       //kiedy kliknięte w 4
       this.wyslijDane();
@@ -40,26 +41,24 @@ export class FormularzZarejestrujSieComponent implements OnInit {
   }
 
   public wyslijDane() {
-    console.log(this.daneKlientaKlasa);
-  
-    this.daneKlientaKlasa.daneNieWyslane = false;
-    const daneDTO = new DaneKlientaDTO(this.daneKlientaKlasa);
+    this.zarejestrujSieService.DaneKlientaClass.daneNieWyslane = false;
+    const daneDTO = new DaneKlientaDTO(this.zarejestrujSieService.DaneKlientaClass);
     this.listonosz
       .wyslij(Drzwi.daneKlientaRejestracja, daneDTO)
       .then((identyfikatorWizyty) => {
-        this.daneKlientaKlasa.identyfikator = identyfikatorWizyty;
+        this.zarejestrujSieService.DaneKlientaClass.identyfikator = identyfikatorWizyty;
         this.krok = 5;
       })
       .catch((nieudane) => {
-        this.daneKlientaKlasa.daneNieWyslane = true;
+        this.zarejestrujSieService.DaneKlientaClass.daneNieWyslane = true;
       });
   }
 
   public wyslijKod() {
-    this.daneKlientaKlasa.niepoprawnyKod = false;
+    this.zarejestrujSieService.DaneKlientaClass.niepoprawnyKod = false;
     const kodDTO = {
-      kod: this.daneKlientaKlasa.kodWeryfikacja,
-      identyfikator: this.daneKlientaKlasa.identyfikator,
+      kod: this.zarejestrujSieService.DaneKlientaClass.kodWeryfikacja,
+      identyfikator: this.zarejestrujSieService.DaneKlientaClass.identyfikator,
     };
     this.listonosz
       .wyslij(Drzwi.kodWeryfikacyjnyIdentyfikator, kodDTO)
@@ -67,7 +66,7 @@ export class FormularzZarejestrujSieComponent implements OnInit {
         this.krok = 6;
       })
       .catch((nieudane) => {
-        this.daneKlientaKlasa.niepoprawnyKod = true;
+        this.zarejestrujSieService.DaneKlientaClass.niepoprawnyKod = true;
       });
   }
 }

@@ -135,6 +135,12 @@
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/panel-zakladu/src/environments/environment.ts",
+                  "with": "projects/panel-zakladu/src/environments/environment.prod.ts"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",
@@ -150,6 +156,12 @@
               "outputHashing": "all"
             },
             "development": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/panel-zakladu/src/environments/environment.ts",
+                  "with": "projects/panel-zakladu/src/environments/environment.dev.ts"
+                }
+              ],
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,
@@ -330,6 +342,12 @@
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/reklamowa-strona-zakladu/src/environments/environment.ts",
+                  "with": "projects/reklamowa-strona-zakladu/src/environments/environment.dev.ts"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",
@@ -345,6 +363,12 @@
               "outputHashing": "all"
             },
             "development": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/reklamowa-strona-zakladu/src/environments/environment.ts",
+                  "with": "projects/reklamowa-strona-zakladu/src/environments/environment.dev.ts"
+                }
+              ],
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,

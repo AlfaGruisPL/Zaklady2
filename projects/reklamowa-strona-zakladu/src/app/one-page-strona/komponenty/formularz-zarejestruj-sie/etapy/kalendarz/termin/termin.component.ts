@@ -33,7 +33,7 @@ export class TerminComponent implements OnInit {
 
   wybierzTermin() {
     this.zarejestrujSie_.DaneKlientaClass.wybranyTermin = this.termin;
-    console.log(this.termin)
+
   }
 
   wybrany() {

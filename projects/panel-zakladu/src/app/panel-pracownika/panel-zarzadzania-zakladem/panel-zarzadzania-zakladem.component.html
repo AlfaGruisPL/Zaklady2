@@ -1,7 +1,11 @@
 <app-banner-pracownik></app-banner-pracownik>
 <div class="menuTresc">
   <div class="menu">
-    <app-menu-pracownik></app-menu-pracownik>
+    <div class="menuDiv">
+
+      <app-menu-pracownik></app-menu-pracownik>
+    </div>
+    <p class="godzina">{{godzina|date:'dd.MM.YYYY  HH:mm:ss'}}</p>
   </div>
   <div class="tresc">
     <router-outlet></router-outlet>

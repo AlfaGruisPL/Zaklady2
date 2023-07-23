@@ -1,0 +1,22 @@
+.kreska {
+  width: 4px;
+  height: 40px;
+  background: #20f500;
+  position: absolute;
+  z-index: 200;
+  bottom: 5px;
+
+  &:after {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: red;
+    position: absolute;
+    top: 40px;
+    left: -4px;
+  }
+
+
+}

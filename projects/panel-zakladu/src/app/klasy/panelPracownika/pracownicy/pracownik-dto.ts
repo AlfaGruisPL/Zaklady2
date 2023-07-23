@@ -5,6 +5,7 @@ export class PracownikDTO {
   public nazwisko: string = "";
   public adresEmail: string = "";
   public numerTelefonu: string = "";
+  public usunZdjecieProfilowe = false
   public adres: {
     miasto?: string;
     ulica?: string;

@@ -28,7 +28,7 @@ export class KalendarzGodzinaKreskaKomponentComponent implements OnInit, OnDestr
   ustawKreske() {
     const data = new Date()
 
-    const minuty = (data.getHours() * 60) + data.getMinutes() - (8 * 60)
+    const minuty = (data.getHours() * 60) + data.getMinutes() - ((this.poczatek[0] + 2) * 60)
     this.top = minuty * (this.wysokosc / this.sumaCzasu)
     const poczatek = new Date().setHours(this.poczatek[0], this.poczatek[1])
     const koniec = new Date().setHours(this.koniec[0], this.koniec[1])

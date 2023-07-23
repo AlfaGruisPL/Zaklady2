@@ -57,7 +57,7 @@
           {{pracownikObj.numerTelefonu}}
         </td>
       </tr>
-      <tr>
+      <tr *ngIf="tryb != 'wyswietlenie'">
         <td>
           <label class="naglowki2form"> Zdjęcie profilowe:</label>
         </td>
@@ -65,6 +65,16 @@
           <input type="button" value="Wyczyść" (click)="formData = undefined;inputTypeFile.value = ''">
         </td>
       </tr>
+      <tr *ngIf="tryb == 'modyfikacja'">
+        <td>
+          <label class="naglowki2form">Usuń zdjęcie profilowe:</label>
+        </td>
+        <td>
+          <input type="button" value="Usuń zdjęcie profilowe" (click)="usunZdjecieProfilowe()">
+        </td>
+      </tr>
+
+
     </table>
     <table>
       <tr>
@@ -152,7 +162,10 @@
         </td>
       </tr>
     </table>
-
+    <img style="max-height: 250px;max-width: 150px" *ngIf="usunZdjecieProfiloweDTo == false && !safeImageUrl"
+         [src]="'http://fenek.tech:3000/pliki/wyswietlZdjecieProfilowe/'+idUzytkownika+'?jakosc=30' |zdjecie:false"
+    />
+    <img style="max-height: 250px;max-width: 150px" [src]="safeImageUrl" *ngIf="safeImageUrl">
 
   </div>
   <div class="modal-footer">
