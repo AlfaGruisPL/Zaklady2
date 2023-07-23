@@ -1,15 +1,24 @@
 .tabelka {
-  border: 1px solid blue;
+  margin: 20px;
+  box-sizing: border-box;
+  border: 2px inset #8edaff;
 
   .godzina {
-    border: 1px solid blue;
+    padding: 2px;
+    font-size: 15px;
+    font-family: math;
+    text-shadow: 0px 0px 1px black;
+    border: 2px inset #8edaff;
+
   }
 
   .podzial {
     height: 150px;
     width: 45px;
-    border: 1px solid blue;
+    border: 1px solid #a0a1a1;
     position: relative;
   }
 }
+
+
 

@@ -1,47 +1,50 @@
 <div class="aktualna">
-  <b>Aktualna wizyta:</b>
-  <table *ngIf="aktualnaWizyta != undefined else brak">
-    <tr>
-      <td>Klient:</td>
-      <td>
-        {{aktualnaWizyta.imie + " " + aktualnaWizyta.nazwisko}}
-      </td>
-    </tr>
-    <tr>
-      <td>
-        Koniec za:
-      </td>
-      <td>
-        {{czasDoKoncaWizyty()}}
-      </td>
-    </tr>
-    <tr>
-      <td>Początek:</td>
-      <td>{{aktualnaWizyta.terminPoczatek|date:"HH:mm"}}</td>
-    </tr>
-    <tr>
-      <td>
-        Koniec:
-      </td>
-      <td>
-        {{aktualnaWizyta.terminKoniec|date:"HH:mm"}}
-      </td>
-    </tr>
-    <tr>
-      <td>
-        Usługi
-      </td>
-      <td>
-        <ul>
-          <li>Lorem ipsum dolor.</li>
-          <li>Lorem ipsum dolor.</li>
-          <li>Lorem ipsum dolor.</li>
-          <li>Lorem ipsum dolor.</li>
-          <li>Lorem ipsum dolor.</li>
-        </ul>
-      </td>
-    </tr>
-  </table>
+  <h2 class="naglowki1form" style="text-decoration: underline">Aktualna wizyta:</h2>
+  <div class="block1">
+    <table *ngIf="aktualnaWizyta != undefined else brak">
+      <tr>
+        <td class="naglowki2form">Klient:</td>
+        <td>
+          {{aktualnaWizyta.imie + " " + aktualnaWizyta.nazwisko}}
+        </td>
+      </tr>
+      <tr>
+        <td class="naglowek">
+          Koniec za:
+        </td>
+        <td class="naglowek2">
+          {{czasDoKoncaWizyty()}}
+        </td>
+      </tr>
+      <tr>
+        <td class="naglowek">Początek:</td>
+        <td class="naglowek2">{{aktualnaWizyta.terminPoczatek|date:"HH:mm"}}</td>
+      </tr>
+      <tr>
+        <td class="naglowek">
+          Koniec:
+        </td>
+        <td class="naglowek2">
+          {{aktualnaWizyta.terminKoniec|date:"HH:mm"}}
+        </td>
+      </tr>
+      <tr>
+        <td class="naglowek">
+          Usługi
+        </td>
+        <td>
+          <ul class="naglowek2">
+            <li>Lorem ipsum dolor.</li>
+            <li>Lorem ipsum dolor.</li>
+            <li>Lorem ipsum dolor.</li>
+            <li>Lorem ipsum dolor.</li>
+            <li>Lorem ipsum dolor.</li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+  </div>
+
 </div>
 
 <ng-template #brak>

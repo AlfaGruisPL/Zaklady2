@@ -9,9 +9,12 @@
 }
 
 .wizyta {
+  padding: 50px;
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 50px;
+  box-sizing: border-box;
 
   .aktualna {
     width: 300px;

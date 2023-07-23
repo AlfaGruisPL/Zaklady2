@@ -1,43 +1,46 @@
 <div class="aktualna">
-  <b>Następna wizyta:</b>
-  <table *ngIf="nastepnaWizyta != undefined else brak">
-    <tr>
-      <td>Klient:</td>
-      <td>
-        {{nastepnaWizyta.imie + " " + nastepnaWizyta.nazwisko}}
-      </td>
-    </tr>
-    <tr>
-      <td>Pozostało:</td>
-      <td>{{czasDoWizyty()}}</td>
-    </tr>
-    <tr>
-      <td>Początek:</td>
-      <td>{{nastepnaWizyta.terminPoczatek|date:"HH:mm"}}</td>
-    </tr>
-    <tr>
-      <td>
-        Koniec:
-      </td>
-      <td>
-        {{nastepnaWizyta.terminKoniec|date:"HH:mm"}}
-      </td>
-    </tr>
-    <tr>
-      <td>
-        Usługi:
-      </td>
-      <td>
-        <ul>
-          <li>Lorem ipsum dolor.</li>
-          <li>Lorem ipsum dolor.</li>
-          <li>Lorem ipsum dolor.</li>
-          <li>Lorem ipsum dolor.</li>
-          <li>Lorem ipsum dolor.</li>
-        </ul>
-      </td>
-    </tr>
-  </table>
+  <h2 class="naglowki1form" style="text-decoration: underline">Następna wizyta:</h2>
+  <div class="block2">
+    <table *ngIf="nastepnaWizyta != undefined else brak">
+      <tr>
+        <td class="naglowki2form">Klient:</td>
+        <td>
+          {{nastepnaWizyta.imie + " " + nastepnaWizyta.nazwisko}}
+        </td>
+      </tr>
+      <tr>
+        <td class="naglowek">Pozostało:</td>
+        <td class="naglowek2">{{czasDoWizyty()}}</td>
+      </tr>
+      <tr>
+        <td class="naglowek">Początek:</td>
+        <td class="naglowek2">{{nastepnaWizyta.terminPoczatek|date:"HH:mm"}}</td>
+      </tr>
+      <tr>
+        <td class="naglowek">
+          Koniec:
+        </td>
+        <td class="naglowek2">
+          {{nastepnaWizyta.terminKoniec|date:"HH:mm"}}
+        </td>
+      </tr>
+      <tr>
+        <td class="naglowek">
+          Usługi:
+        </td>
+        <td>
+          <ul class="naglowek2">
+            <li>Lorem ipsum dolor.</li>
+            <li>Lorem ipsum dolor.</li>
+            <li>Lorem ipsum dolor.</li>
+            <li>Lorem ipsum dolor.</li>
+            <li>Lorem ipsum dolor.</li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+  </div>
+
 </div>
 <ng-template #brak>
   Nie ma więcej wizyt tego dnia
