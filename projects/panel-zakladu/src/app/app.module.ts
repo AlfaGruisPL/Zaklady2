@@ -110,7 +110,9 @@ import {ZdjeciePipe} from "./rureczki/zdjecie.pipe";
 import {
   HarmonogramModule
 } from "./panel-pracownika/panel-zarzadzania-zakladem/panele/harmonogram-pracownika/harmonogram.module";
-import { InformacjeOKliencieComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/informacje-okliencie/informacje-okliencie.component';
+import {
+  InformacjeOKliencieComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/informacje-okliencie/informacje-okliencie.component';
 
 @NgModule({
   declarations: [

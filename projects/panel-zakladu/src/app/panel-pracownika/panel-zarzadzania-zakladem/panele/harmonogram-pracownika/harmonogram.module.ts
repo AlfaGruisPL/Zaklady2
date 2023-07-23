@@ -8,7 +8,11 @@ import {HarmonogramAktualnaWizytaComponent} from "./harmonogram-aktualna-wizyta/
 import {HarmonogramNastepnaWizytaComponent} from "./harmonogram-nastepna-wizyta/harmonogram-nastepna-wizyta.component";
 import {HarmonogramPracownikaComponent} from "./harmonogram-pracownika.component";
 import {FormsModule} from "@angular/forms";
-import { HarmonogramDniaAktualnaGodzinaComponent } from './harmonogram-dnia/harmonogram-dnia-aktualna-godzina/harmonogram-dnia-aktualna-godzina.component';
+import {
+  HarmonogramDniaAktualnaGodzinaComponent
+} from './harmonogram-dnia/harmonogram-dnia-aktualna-godzina/harmonogram-dnia-aktualna-godzina.component';
+import {TippyDirective} from "@ngneat/helipopper";
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 
 @NgModule({
@@ -20,7 +24,8 @@ import { HarmonogramDniaAktualnaGodzinaComponent } from './harmonogram-dnia/harm
     HarmonogramDniaAktualnaGodzinaComponent],
   imports: [
     FormsModule,
-    CommonModule
+    CommonModule, TippyDirective, NgbModule,
+
   ]
 })
 export class HarmonogramModule {

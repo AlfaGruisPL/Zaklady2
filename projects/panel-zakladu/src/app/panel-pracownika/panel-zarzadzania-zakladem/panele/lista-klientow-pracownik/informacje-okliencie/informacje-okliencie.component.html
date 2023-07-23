@@ -3,12 +3,24 @@
   <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close('Nie')"></button>
 </div>
 <div class="modal-body">
-  <h5>
-    {{klient.imie + " " + klient.nazwisko}}
-  </h5>
-  <h6>
-    {{klient.numerTelefonu + "   /   " + klient.email}}
-  </h6>
+  <div class="top">
+    <h6>Dane klienta:</h6>
+    <table>
+      <tr>
+        <td>Klient:</td>
+        <td>   {{klient.imie + " " + klient.nazwisko}}</td>
+      </tr>
+      <tr>
+        <td>
+          Kontakt:
+        </td>
+        <td>
+          {{klient.numerTelefonu + "   /   " + klient.email}}
+        </td>
+      </tr>
+    </table>
+    <h6>Wizyty:</h6>
+  </div>
   <table class="tablica">
     <thead>
     <tr>
@@ -16,6 +28,7 @@
       <th>Data</th>
       <th>Kwota</th>
       <th>Usługi</th>
+      <th>Wykonawca</th>
       <th>Zarządzanie</th>
     </tr>
     </thead>
@@ -29,6 +42,7 @@
           <li *ngFor="let usluga of wizyta.uslugiTab">{{usluga.nazwa}} - {{usluga.cena}}zł</li>
         </ul>
       </td>
+      <td>{{wizyta.pracownik.imie + '  ' + wizyta.pracownik.nazwisko}}</td>
       <td>
         <button>Usuń</button>
       </td>

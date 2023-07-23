@@ -1,3 +1,5 @@
+import {Pracownik} from "./pracownicy/pracownik";
+
 export class Wizyta {
   dataPotwierdzenia = null
   email = ""
@@ -12,8 +14,11 @@ export class Wizyta {
   cena: number | undefined;
   uslugi: string | undefined;
   uslugiTab: UslugiMini[] = []
+  pracownik: Pracownik = new Pracownik();
+
 
   constructor(k: Partial<Wizyta>) {
+    Object.assign(this, k)
     this.terminPoczatek = new Date(this.terminPoczatek)
     this.terminKoniec = new Date(this.terminKoniec)
     // @ts-ignore
@@ -39,15 +44,11 @@ export class Wizyta {
           if (k2.nazwa.length > 0) {
             this.uslugiTab.push(k2)
           }
-
-
         })
-
       }
-
     }
 
-
+    console.log(this)
   }
 }
 

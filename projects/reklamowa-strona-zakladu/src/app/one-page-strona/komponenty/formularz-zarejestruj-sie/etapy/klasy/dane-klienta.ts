@@ -94,6 +94,7 @@ export class DaneKlientaDTO {
   public poczatek: number = 0
   public koniec: number = 0
   public uslugiId: number[] = []
+  public pracownikId: number | undefined = 0;
 
   constructor(daneKlienta: DaneKlienta) {
     this.imie = daneKlienta.imie;
@@ -101,6 +102,7 @@ export class DaneKlientaDTO {
     this.numerTelefonu =
       daneKlienta.prefiksTelefonu + '-' + daneKlienta.numerTelefonu;
     this.email = daneKlienta.email;
+    this.pracownikId = daneKlienta.wybranyPracownik
     const k = daneKlienta.wybranyTermin;
     if (k) {
 

@@ -1,3 +1,49 @@
-<div class="termin" [ngStyle]="{'left':przesuniecieWPrawo+'px','width':szerokosc + 'px'}">
+<div class="termin" [ngStyle]="{'left':przesuniecieWPrawo+'px','width':szerokosc + 'px'}"
+
+     placement="auto"
+     ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+     popoverTitle="Popover on top"
+     [animation]="true"
+     triggers="mouseenter:mouseleave"
+     [ngbPopover]="popContent" [popoverTitle]="popTitle"
+>
+
   Wizyta <b>{{wizyta.terminPoczatek| date:'HH:mm'}}    {{wizyta.terminKoniec| date:'HH:mm'}}</b>
 </div>
+
+
+<ng-template #popTitle>
+  <div style="width:240px">
+
+    Wizyta <b>{{wizyta.terminPoczatek| date:'HH:mm'}}    {{wizyta.terminKoniec| date:'HH:mm'}} </b>
+  </div>
+</ng-template>
+<ng-template #popContent>
+  <table>
+    <tr>
+      <td>
+        Klient:
+      </td>
+      <td>
+        {{wizyta.imie + " " + wizyta.nazwisko}}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Email:
+      </td>
+      <td>
+        {{wizyta.email}}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Telefon:
+      </td>
+      <td>
+        {{wizyta.numerTelefonu}}
+      </td>
+    </tr>
+  </table>
+
+</ng-template>
