@@ -113,6 +113,9 @@ import {
 import {
   InformacjeOKliencieComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/informacje-okliencie/informacje-okliencie.component';
+import {
+  KalendarzPrzerwaKomponentComponent
+} from "./panel-pracownika/panel-zarzadzania-zakladem/kalendarz-komponent/kalendarz-przerwa-komponent/kalendarz-przerwa-komponent.component";
 
 @NgModule({
   declarations: [
@@ -141,7 +144,7 @@ import {
 
     ListaKlientowPracownikComponent,
 
-    PracownicyMojZakladComponent,
+    PracownicyMojZakladComponent, KalendarzPrzerwaKomponentComponent,
     CzyNaprawdeUsunacComponent,
     UslugiPracownikaComponent,
     UslugiPrzypisaniPracownicyComponent,

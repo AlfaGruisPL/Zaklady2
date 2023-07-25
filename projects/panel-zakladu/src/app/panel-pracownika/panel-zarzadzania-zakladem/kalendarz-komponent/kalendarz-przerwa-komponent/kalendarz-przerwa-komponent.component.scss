@@ -1,0 +1,9 @@
+.przerwa {
+  width: 100%;
+  height: 50px;
+  background: rgba(56, 56, 56, 0.47);
+  position: absolute;
+  z-index: 100;
+  left: -1px;
+  pointer-events: none;
+}

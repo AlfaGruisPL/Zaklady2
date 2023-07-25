@@ -12,13 +12,13 @@
 >
 
   <h3>
-    {{wizyta.terminPoczatek| date:'HH:mm'}}    {{wizyta.terminKoniec| date:'HH:mm'}}
+    {{wizyta.poczatek| date:'HH:mm'}}    {{wizyta.koniec| date:'HH:mm'}}
   </h3>
 
   <div class="zarzadzaj" *ngIf="wizytaDiv.clientHeight >= 65">Zarządzaj</div>
 </div>
 <ng-template #popTitle>
-  Wizyta <b>{{wizyta.terminPoczatek| date:'HH:mm'}}    {{wizyta.terminKoniec| date:'HH:mm'}} </b></ng-template>
+  Wizyta <b>{{wizyta.poczatek| date:'HH:mm'}}    {{wizyta.koniec| date:'HH:mm'}} </b></ng-template>
 <ng-template #popContent>
   <table>
     <tr>

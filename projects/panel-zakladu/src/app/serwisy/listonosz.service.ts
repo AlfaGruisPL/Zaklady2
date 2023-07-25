@@ -43,6 +43,8 @@ export class ListonoszService {
         (next: OdpowiedzPotwierdzajacaPoprawnosc<LogowanieZwracajaceDaneItoken>) => {
           this.token.tokenWartosc = next.value?.token?.value;
           this.token.tokenTerminWaznosci = next.value?.token?.endLifeTime;
+          this.token.tokenGrupy = next.value?.userData?.grupy.map(k => k.groupId)
+
           this.token.stworzCookies();
           resolve(next)
         },

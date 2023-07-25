@@ -1,7 +1,13 @@
+Wyświetlane dane:<select [(ngModel)]="Kalendarz_.wybranyPracownik" (change)="Kalendarz_.pobierzDane()">
+  <option [value]="Kalendarz_.wlasciciel.id">Zalogowany użytkownik</option>
+  <option [value]="pracownik.id"
+          *ngFor="let pracownik of Kalendarz_.pracownicy">{{pracownik.imie + " " + pracownik.nazwisko}}</option>
+</select>
 <table style="width: 100%;">
   <tr>
     <td colspan="8">
       <div class="sterowanie">
+
         <button class="jakiTydzienButton teraz" (click)="teraz()  " *ngIf="licznikPrzyciskow !=0 ">Teraz
         </button> &nbsp; &nbsp; &nbsp;
         <button class="jakiTydzienButton" (click)="WLEWO()">Poprzedni tydzień
@@ -29,8 +35,9 @@
           Zarządzanie dniem
         </button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <button ngbDropdownItem>Oznacz jako dzień wolny</button>
-          <button ngbDropdownItem>Dodaj przerwę</button>
+          <button ngbDropdownItem (click)="Kalendarz_.oznaczJakoDzienWolny(dzien)">Oznacz jako dzień wolny</button>
+          <button ngbDropdownItem (click)="Kalendarz_.oznaczJakoDzienWolny(dzien)">Oznacz jako dzień pracy</button>
+          <button ngbDropdownItem (click)="Kalendarz_.nowaPrzerwa(dzien,undefined)"> Dodaj przerwę</button>
         </div>
       </div>
     </th>
@@ -44,7 +51,10 @@
                               [wizyta]="wizyta"></app-termin-komponent>
 
       </ng-container>
-
+      <ng-container *ngFor="let przerwaZakladu of Kalendarz_.przerwyZakladuNaDzien(dzien)">
+        <app-kalendarz-przerwa-komponent [Przerwa]="przerwaZakladu"
+                                         [godzinaRozpoczecia]="Kalendarz_.godzinaRozpoczecia"></app-kalendarz-przerwa-komponent>
+      </ng-container>
 
       <ng-container *ngFor="let wolnyTermin of SymulatorWolneterminyNaDzien(dzien)">
         <app-termin-komponent [godzinaRozpoczecia]="Kalendarz_.godzinaRozpoczecia" style="width: 150px;"
@@ -85,8 +95,16 @@
     </td>
 
   </tr>
+  <tr>
+    <td></td>
+    <td class='dzienInfo' *ngFor="let dzien of dni">
+      {{kolorTlaInformacje(dzien)}}
+    </td>
+  </tr>
+
 </table>
-<button (click)="symulator = !symulator;generujWIzyty()">Symulator</button>
-ID pracownika <input [(ngModel)]="symulatorPracownikID" (keydown)="generujWIzyty()">
+<br><br><br><br><br>
+<button (click)="symulator = !symulator;generujWizyty()">Symulator</button>
+ID pracownika <input [(ngModel)]="symulatorPracownikID" (keydown)="generujWizyty()">
 <br>
-ID wizyt <input [(ngModel)]="symulatorWizytyID" (keydown)="generujWIzyty()">
+ID wizyt <input [(ngModel)]="symulatorWizytyID" (keydown)="generujWizyty()">

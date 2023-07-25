@@ -27,24 +27,23 @@
       <td>
         Tryb:
       </td>
-      <td>
-        <select>
+      <td *ngIf="danePodreczne_.wlasciciel">
+        <select [(ngModel)]="wybranyPracownik">
           <option [value]="0">Zakład</option>
-          <option [defaultSelected]="true"
-                  [value]="kalendarz_.wlasciciel.id">{{kalendarz_.wlasciciel.imie + " " + kalendarz_.wlasciciel.nazwisko}}</option>
+          <option
+            [value]="kalendarz_.wlasciciel.id">{{kalendarz_.wlasciciel.imie + " " + kalendarz_.wlasciciel.nazwisko}}</option>
           <option [value]="pracownik.id" *ngFor="let pracownik of kalendarz_.pracownicy">
             Pracownik: {{pracownik.imie + " " + pracownik.nazwisko}}</option>
-
-
         </select>
       </td>
     </tr>
     <tr>
       <td>Powtarzanie:</td>
-      <td>Jednorazowe: <input type="radio" name="k">
+      <td>Jednorazowe:
+        <input type="radio" name="k" [value]="false" [(ngModel)]="regularne">
         &nbsp; &nbsp; &nbsp; &nbsp;
         Regularne:
-        <input type="radio" name="k">
+        <input type="radio" name="k" [value]="true" [(ngModel)]="regularne">
       </td>
     </tr>
   </table>
@@ -56,7 +55,7 @@
   <button (click)="activeModal.close('anuluj')">
     Anuluj
   </button>
-  <button (click)="activeModal.close('dodaj')">
+  <button (click)="dodaj()">
     Dodaj
   </button>
 

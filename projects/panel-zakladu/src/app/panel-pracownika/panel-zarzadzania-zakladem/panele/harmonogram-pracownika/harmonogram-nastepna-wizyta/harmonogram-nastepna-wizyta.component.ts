@@ -18,9 +18,9 @@ export class HarmonogramNastepnaWizytaComponent implements OnInit {
   ngOnInit() {
     this.sub1 = this.harmonogram_.wizytaDzisObserveble.subscribe(wizyty => {
       const aktualnyCzas = new Date().getTime();
-      wizyty.sort((wizyta1, wizyta2) => wizyta1.terminPoczatek.getTime() - wizyta2.terminPoczatek.getTime());
+      wizyty.sort((wizyta1, wizyta2) => wizyta1.poczatek.getTime() - wizyta2.poczatek.getTime());
       this.nastepnaWizyta = wizyty.find(wizyta => {
-        return wizyta.terminPoczatek.getTime() >= aktualnyCzas;
+        return wizyta.poczatek.getTime() >= aktualnyCzas;
       })
 
     })
@@ -32,7 +32,7 @@ export class HarmonogramNastepnaWizytaComponent implements OnInit {
     if (this.nastepnaWizyta == undefined) {
       return ""
     }
-    var wynik = Math.round((this.nastepnaWizyta.terminPoczatek.getTime() - czas.getTime()) / 60000)
+    var wynik = Math.round((this.nastepnaWizyta.poczatek.getTime() - czas.getTime()) / 60000)
     return wynik + 'min'
   }
 

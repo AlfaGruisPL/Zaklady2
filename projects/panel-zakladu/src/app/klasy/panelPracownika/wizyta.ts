@@ -9,8 +9,8 @@ export class Wizyta {
   nazwisko = ""
   numerTelefonu = ""
   potwierdzone = true
-  terminKoniec = new Date();
-  terminPoczatek = new Date();
+  koniec = new Date();
+  poczatek = new Date();
   cena: number | undefined;
   uslugi: string | undefined;
   uslugiTab: UslugiMini[] = []
@@ -19,19 +19,9 @@ export class Wizyta {
 
   constructor(k: Partial<Wizyta>) {
     Object.assign(this, k)
-    this.terminPoczatek = new Date(this.terminPoczatek)
-    this.terminKoniec = new Date(this.terminKoniec)
-    // @ts-ignore
-    if (k['dataPoczatek'] != undefined) {    // @ts-ignore
-      this.terminPoczatek = new Date(k['dataPoczatek'])    // @ts-ignore
-      this.terminKoniec = new Date(k['dataKoniec'])
-    }
+    this.poczatek = new Date(this.poczatek)
+    this.koniec = new Date(this.koniec)
 
-    // @ts-ignore
-    if (k['terminPoczatek'] != undefined) {    // @ts-ignore
-      this.terminPoczatek = new Date(k['terminPoczatek'])    // @ts-ignore
-      this.terminKoniec = new Date(k['terminKoniec'])
-    }
     if (k.cena != undefined) {
       this.cena = k.cena
       if (k.uslugi != undefined) {
@@ -48,7 +38,6 @@ export class Wizyta {
       }
     }
 
-    console.log(this)
   }
 }
 

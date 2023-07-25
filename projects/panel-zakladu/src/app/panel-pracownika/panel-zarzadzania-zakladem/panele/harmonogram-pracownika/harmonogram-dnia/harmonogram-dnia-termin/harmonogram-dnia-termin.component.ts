@@ -19,10 +19,10 @@ export class HarmonogramDniaTerminComponent implements OnInit {
   }
 
   ngOnInit() {
-    const poczatekGodzian = this.wizyta.terminPoczatek.getHours()
-    const poczatekMinuta = this.wizyta.terminPoczatek.getMinutes()
-    const koniecGodzian = this.wizyta.terminKoniec.getHours()
-    const koniecMinuta = this.wizyta.terminKoniec.getMinutes()
+    const poczatekGodzian = this.wizyta.poczatek.getHours()
+    const poczatekMinuta = this.wizyta.poczatek.getMinutes()
+    const koniecGodzian = this.wizyta.koniec.getHours()
+    const koniecMinuta = this.wizyta.koniec.getMinutes()
     const roznica = (poczatekGodzian + (poczatekMinuta / 60)) - this.godzinaRozpoczecia
     this.przesuniecieWPrawo = (roznica * 45 * 2)
     this.szerokosc = (((koniecGodzian + (koniecMinuta / 60)) - (poczatekGodzian + (poczatekMinuta / 60))) * 2 * 45)

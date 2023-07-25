@@ -35,7 +35,7 @@
     <tbody>
     <tr *ngFor="let wizyta of klient.wizyty  | slice: (page-1) * pageSize : page * pageSize ;let index = index">
       <td>{{(klient.wizyty.length - index - (pageSize * page) + pageSize)}}  </td>
-      <td>  {{wizyta.terminPoczatek|date:'dd.MM.yyyy      hh:mm/'}}{{wizyta.terminKoniec|date:'hh:mm'}}</td>
+      <td>  {{wizyta.poczatek|date:'dd.MM.yyyy      hh:mm/'}}{{wizyta.koniec|date:'hh:mm'}}</td>
       <td>{{wizyta.cena}}zł</td>
       <td>
         <ul>

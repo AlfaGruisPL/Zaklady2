@@ -91,8 +91,8 @@ export class DaneKlientaDTO {
   public nazwisko: string = '';
   public numerTelefonu: string = '';
   public email: string = '';
-  public poczatek: number = 0
-  public koniec: number = 0
+  public poczatek: Date = new Date()
+  public koniec: Date = new Date()
   public uslugiId: number[] = []
   public pracownikId: number | undefined = 0;
 
@@ -106,8 +106,8 @@ export class DaneKlientaDTO {
     const k = daneKlienta.wybranyTermin;
     if (k) {
 
-      this.poczatek = new Date(k.data).setHours(k.poczatek, k.poczatekMinuty)
-      this.koniec = new Date(k.data).setHours(k.koniec, k.koniecMinuty)
+      this.poczatek = k.poczatek
+      this.koniec = k.koniec
     }
     daneKlienta.uslugi.forEach(usluga => {
       if (usluga.wybrane) {

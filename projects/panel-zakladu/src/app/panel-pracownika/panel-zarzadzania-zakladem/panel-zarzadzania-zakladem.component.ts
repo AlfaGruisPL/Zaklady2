@@ -21,6 +21,7 @@ export class PanelZarzadzaniaZaklademComponent implements OnInit, OnDestroy {
       this.godzina = new Date()
     }, 1000)
     this.DanePodreczne.pobierajaca();
+    this.DanePodreczne.ustawZmienneTypuUzytkownika()
   }
 
   ngOnDestroy() {

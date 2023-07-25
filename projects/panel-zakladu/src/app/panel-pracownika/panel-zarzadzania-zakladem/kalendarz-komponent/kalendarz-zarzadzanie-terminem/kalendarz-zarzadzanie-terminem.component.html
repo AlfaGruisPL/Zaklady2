@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h4 class="modal-title">{{wizyta.terminPoczatek|date:'HH:mm'}} - {{wizyta.terminKoniec|date:'HH:mm'}}</h4>
+  <h4 class="modal-title">{{wizyta.poczatek|date:'HH:mm'}} - {{wizyta.koniec|date:'HH:mm'}}</h4>
   <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close('Nie')"></button>
 </div>
 <div class="modal-body">
@@ -17,7 +17,7 @@
         Termin:
       </td>
       <td>
-        {{wizyta.terminPoczatek | date:'dd.LL.YYYY'}}
+        {{wizyta.poczatek | date:'dd.LL.YYYY'}}
       </td>
     </tr>
     <tr>
@@ -25,7 +25,7 @@
         Godziny:
       </td>
       <td>
-        {{wizyta.terminPoczatek|date:'HH:mm'}} - {{wizyta.terminKoniec|date:'HH:mm'}}
+        {{wizyta.poczatek|date:'HH:mm'}} - {{wizyta.koniec|date:'HH:mm'}}
       </td>
     </tr>
     <tr>

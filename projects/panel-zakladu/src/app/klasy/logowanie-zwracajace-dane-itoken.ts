@@ -6,7 +6,8 @@ export class LogowanieZwracajaceDaneItoken {
     nazwisko: string;
     grupy: [{
       id: number,
-      nazwa: string
+      nazwa: string,
+      groupId: number
     }];
   }
   public token?: {

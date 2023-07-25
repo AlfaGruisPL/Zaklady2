@@ -8,7 +8,7 @@
      [ngbPopover]="popContent" [popoverTitle]="popTitle"
 >
 
-  <span>Wizyta: </span> <b>{{wizyta.terminPoczatek| date:'HH:mm'}}<span>/</span>{{wizyta.terminKoniec| date:'HH:mm'}}
+  <span>Wizyta: </span> <b>{{wizyta.poczatek| date:'HH:mm'}}<span>/</span>{{wizyta.koniec| date:'HH:mm'}}
 </b>
 </div>
 
@@ -16,7 +16,7 @@
 <ng-template #popTitle>
   <div style="width:240px">
 
-    Wizyta <b>{{wizyta.terminPoczatek| date:'HH:mm'}}    {{wizyta.terminKoniec| date:'HH:mm'}} </b>
+    Wizyta <b>{{wizyta.poczatek| date:'HH:mm'}}    {{wizyta.koniec| date:'HH:mm'}} </b>
   </div>
 </ng-template>
 <ng-template #popContent>

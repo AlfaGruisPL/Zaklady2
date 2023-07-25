@@ -7,6 +7,7 @@ import {CookieService} from "ngx-cookie";
 export class TokenService {
   public tokenTerminWaznosci?: Date;
   public tokenWartosc: string | undefined = "";
+  public tokenGrupy: number[] | undefined = []
 
   constructor(private cookieService: CookieService) {
   }
@@ -14,13 +15,14 @@ export class TokenService {
   public stworzCookies() {
     console.log(this.tokenWartosc)
     if (this.tokenWartosc != undefined) {
-
+      this.cookieService.put('grupy', JSON.stringify(this.tokenGrupy), {expires: this.tokenTerminWaznosci})
       this.cookieService.put('token', this.tokenWartosc, {expires: this.tokenTerminWaznosci})
     }
   }
 
   public odczytajCookies() {
     this.tokenWartosc = this.cookieService.get('token')
+    this.tokenGrupy = JSON.parse(<string>this.cookieService.get('grupy'))
   }
 
   public usunCiasteczka() {

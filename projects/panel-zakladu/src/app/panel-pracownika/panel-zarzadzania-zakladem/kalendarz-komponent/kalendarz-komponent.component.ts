@@ -15,8 +15,8 @@ import {KalendarzKomponentService} from './kalendarz-komponent.service';
 export class KalendarzKomponentComponent implements OnInit {
   @Output() wyslijKrok = new EventEmitter<number>();
   @Input() zarzadzanie = false;
-  symulatorPracownikID = '211';
-  symulatorWizytyID = '1475,1476,1477,1478';
+  symulatorPracownikID = '183';
+  symulatorWizytyID = '1497,1498,1499';
   symulatorWolneTerminy: any = []
   symulator = false
   licznikPrzyciskow = 0;
@@ -46,13 +46,14 @@ export class KalendarzKomponentComponent implements OnInit {
 
   ngOnInit() {
     this.Kalendarz_.godzinaRozpoczecia = this.godzinaRozpoczecia;
-    this.Kalendarz_.pobierzDane();
     if (this.symulatorPracownikID.length > 0) {
-      this.generujWIzyty()
+      this.generujWizyty()
     }
+    this.Kalendarz_.pobierzPodstawoweDane()
+
   }
 
-  generujWIzyty() {
+  generujWizyty() {
     this.symulatorWolneTerminy = []
     const dane = this.symulatorWizytyID.split(',')
     this.listonosz
@@ -96,7 +97,28 @@ export class KalendarzKomponentComponent implements OnInit {
     }
   }
 
+  public kolorTlaInformacje(dzien: DzienTygodnia): string {
+    const k = this.czyDzisWolnyDzien(dzien)
+    if (k != undefined) {
+      return "Dzien wolny dla zakładu"
+    }
+    if (!this.czyPracuje(dzien.dzien)) {
+      return "Zakład zamknięty"
+    }
+    return ""
+
+
+  }
+
   public kolorTla(dzien: DzienTygodnia, index: number) {
+    //sprawdzenie czy nie dzien oznaczony jako wolny
+    if (this.czyDzisWolnyDzien(dzien) != undefined) {
+      if (index % 2 == 0) {
+        return {'background-color': 'rgba(255,35,35,0.31)'};
+      }
+      return {'background-color': 'rgba(211,8,8,0.31)'};
+    }
+
     if (!this.CzyAktualne(dzien.data)) {
       if (index % 2 == 0) {
         return {'background-color': 'rgba(229,229,229,0.31)'};
@@ -113,12 +135,26 @@ export class KalendarzKomponentComponent implements OnInit {
     return {};
   }
 
+  private czyDzisWolnyDzien(dzien: DzienTygodnia) {
+    return this.Kalendarz_.dniWolne.find(wolnydzien => {
+      if (wolnydzien.data.getDate() == dzien.data.getDate()) {
+        if (wolnydzien.data.getFullYear() == dzien.data.getFullYear()) {
+          if (wolnydzien.data.getMonth() == dzien.data.getMonth()) {
+            return true;
+          }
+        }
+      }
+      return false
+    })
+
+  }
+
   public terminyNaDzien(data: DzienTygodnia): Array<Wizyta> {
 
     const tablica = this.Kalendarz_.wizyty.filter((usluga) => {
-      if (usluga.terminPoczatek.getDate() == data.data.getDate()) {
-        if (usluga.terminPoczatek.getFullYear() == data.data.getFullYear()) {
-          if (usluga.terminPoczatek.getMonth() == data.data.getMonth()) {
+      if (usluga.poczatek.getDate() == data.data.getDate()) {
+        if (usluga.poczatek.getFullYear() == data.data.getFullYear()) {
+          if (usluga.poczatek.getMonth() == data.data.getMonth()) {
             return true;
           }
         }
@@ -129,10 +165,13 @@ export class KalendarzKomponentComponent implements OnInit {
   }
 
   public SymulatorWolneterminyNaDzien(data: DzienTygodnia): Array<Wizyta> {
+
     const tablica = this.symulatorWolneTerminy.filter((usluga: any) => {
-      if (usluga.terminPoczatek.getDate() == data.data.getDate()) {
-        if (usluga.terminPoczatek.getFullYear() == data.data.getFullYear()) {
-          if (usluga.terminPoczatek.getMonth() == data.data.getMonth()) {
+      if (usluga.poczatek.getDate() == data.data.getDate()) {
+        console.log('.')
+        if (usluga.poczatek.getFullYear() == data.data.getFullYear()) {
+          if (usluga.poczatek.getMonth() == data.data.getMonth()) {
+
             return true;
           }
         }
@@ -160,6 +199,7 @@ export class KalendarzKomponentComponent implements OnInit {
     }
     return false;
   }
+
 
   public WPrawo() {
     this.licznikPrzyciskow++;

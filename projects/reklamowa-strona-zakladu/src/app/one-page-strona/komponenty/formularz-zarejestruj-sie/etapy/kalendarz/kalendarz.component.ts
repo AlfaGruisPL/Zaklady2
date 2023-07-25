@@ -124,9 +124,9 @@ export class KalendarzComponent implements OnInit {
 
   terminyNaDzien(data: DzienTygodnia): Array<any> {
     const tablica = this.ZarejestrujSie.DaneKlientaClass.wszystkieTerminy.filter(usluga => {
-      if (usluga.data.getDate() == data.data.getDate()) {
-        if (usluga.data.getFullYear() == data.data.getFullYear()) {
-          if (usluga.data.getMonth() == data.data.getMonth()) {
+      if (usluga.poczatek.getDate() == data.data.getDate()) {
+        if (usluga.poczatek.getFullYear() == data.data.getFullYear()) {
+          if (usluga.poczatek.getMonth() == data.data.getMonth()) {
             return true
           }
         }

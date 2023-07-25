@@ -22,12 +22,12 @@ export class TerminComponent implements OnInit {
 
     //this.termin = this.zarejestrujSie_.DaneKlientaClass.wybranyTermin
     //  }
-    const poczatek = this.termin.poczatek
-    const koniec = this.termin.koniec
-    const roznica = (poczatek + (this.termin.poczatekMinuty / 60)) - this.godzinaRozpoczecia
+    const poczatek = this.termin.poczatek.getHours()
+    const koniec = this.termin.koniec.getHours()
+    const roznica = (poczatek + (this.termin.poczatek.getMinutes() / 60)) - this.godzinaRozpoczecia
 
     this.top = (roznica * 26.9 * 2) + 'px'
-    this.wysokosc = (((koniec + (this.termin.koniecMinuty / 60)) - (poczatek + (this.termin.poczatekMinuty / 60))) * 2 * 27) + "px"
+    this.wysokosc = (((koniec + (this.termin.koniec.getMinutes() / 60)) - (poczatek + (this.termin.poczatek.getMinutes() / 60))) * 2 * 27) + "px"
 
   }
 

@@ -19,7 +19,7 @@ export class HarmonogramAktualnaWizytaComponent implements OnInit, OnDestroy {
     this.sub1 = this.harmonogram_.wizytaDzisObserveble.subscribe(wizyty => {
       const aktualnyCzas = new Date().getTime();
       this.aktualnaWizyta = wizyty.find(wizyta => {
-        return wizyta.terminPoczatek.getTime() <= aktualnyCzas && wizyta.terminKoniec.getTime() >= aktualnyCzas;
+        return wizyta.poczatek.getTime() <= aktualnyCzas && wizyta.koniec.getTime() >= aktualnyCzas;
       })
 
     })
@@ -31,7 +31,7 @@ export class HarmonogramAktualnaWizytaComponent implements OnInit, OnDestroy {
     if (this.aktualnaWizyta == undefined) {
       return ""
     }
-    var wynik = Math.round((this.aktualnaWizyta.terminKoniec.getTime() - czas.getTime()) / 60000)
+    var wynik = Math.round((this.aktualnaWizyta.koniec.getTime() - czas.getTime()) / 60000)
     return wynik + 'min'
   }
 

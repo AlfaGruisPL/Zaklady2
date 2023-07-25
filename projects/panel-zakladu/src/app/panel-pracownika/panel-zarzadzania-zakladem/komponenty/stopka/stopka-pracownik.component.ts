@@ -6,5 +6,5 @@ import {Component} from '@angular/core';
   styleUrls: ['./stopka-pracownik.component.scss']
 })
 export class StopkaPracownikComponent {
-
+  public data = new Date()
 }

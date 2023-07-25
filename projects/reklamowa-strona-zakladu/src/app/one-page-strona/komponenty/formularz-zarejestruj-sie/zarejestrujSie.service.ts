@@ -25,11 +25,8 @@ export class ZarejestrujSieService {
         this.DaneKlientaClass.wszystkieTerminy = []
         odpowiedz.forEach(termin_ => {
           const terminOBJ = new Termin()
-          terminOBJ.koniecMinuty = termin_.koniecMinuty
-          terminOBJ.koniec = termin_.koniec
-          terminOBJ.poczatek = termin_.poczatek
-          terminOBJ.poczatekMinuty = termin_.poczatekMinuty
-          terminOBJ.data = new Date(termin_.data)
+          terminOBJ.poczatek = new Date(termin_.poczatek)
+          terminOBJ.koniec = new Date(termin_.koniec)
           this.DaneKlientaClass.wszystkieTerminy.push(terminOBJ)
         })
       }
