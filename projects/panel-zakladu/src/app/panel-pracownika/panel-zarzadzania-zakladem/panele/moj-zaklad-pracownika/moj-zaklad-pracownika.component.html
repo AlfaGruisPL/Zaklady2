@@ -710,13 +710,23 @@
               ></ui-switch>
             </td>
           </tr>
+          <tr>
+            <td>Identyfikator</td>
+            <td><input type="text" [disabled]="!zapiszButton || !zmienIdentyfikator"
+                       [(ngModel)]="mojZakladKlasa.identyfikator"
+                       [ngModelOptions]="{ standalone: true }"
+                       class="logInputZaklad"
+                       style="width: 300px">
+              <button (click)="zmienIdentyfikatorFun()" *ngIf="!zmienIdentyfikator">Zmień</button>
+            </td>
+          </tr>
         </table>
       </div>
     </div>
     <div class="divNaPrzycisk">
       <button
         type="submit"
-        *ngIf="zapiszButton == true"
+        *ngIf="zapiszButton == true" [disabled]="zablokowanyPrzycisk"
         class="zmodyfikujZapiszButton"
         (click)="zapisz()"
       >
@@ -724,6 +734,7 @@
       </button>
       <button
         *ngIf="zmodyfikuj == true"
+
         class="zmodyfikujZapiszButton"
         (click)="zmodyfikujFunkcja()"
       >

@@ -2,10 +2,63 @@
   <span class="nazwaFirmy">  zaklad.pl</span>
   <h1 style="position: relative">{{DanePodreczne.danePodreczneObiekt.tytulZakladu | maxDlugosc:40}}
   </h1>
+
+  <button id="powiadomieniaButtonID"
+          class="powiadomieniaButton"
+          placement="bottom-right"
+          [animation]="true"
+          [ngClass]="{powiadomienieAnimacja:powiadomienia_.nieOdczytanePowiadomienia().length>0}"
+          (document:click)="zamkniecie($event,ngbPopover);"
+          [ngbPopover]="popContent"
+          [autoClose]="false"
+          triggers="manual"
+          #ngbPopover="ngbPopover"
+          (click)="ngbPopover.open()"
+          [popoverTitle]="popTitle"
+
+  >
+    <div class="iloscPowiadomien">{{powiadomienia_.nieOdczytanePowiadomienia().length}}</div>
+    <span><fa-icon icon="envelope"></fa-icon></span>
+
+  </button>
   <button class="wstronaStartowaButton">
-    <fa-icon [icon]="fontAwesome.dom" [routerLink]="['/panelPracownika/harmonogram']"></fa-icon>
+    <fa-icon [icon]="fontAwesome.dom"
+             [routerLink]="['/panelPracownika/harmonogram']"></fa-icon>
   </button>
   <button class="wylogujButton" (click)="wyloguj()">
     <fa-icon [icon]="fontAwesome.wylogowanieIconka"></fa-icon>
   </button>
 </div>
+
+
+<ng-template #popTitle>
+  <span class="powiadomieniaTytul">Powiadomienia:
+    <button (click)="PrzeczytajWszystko()" [disabled]="powiadomienia_.nieOdczytanePowiadomienia().length == 0">Przeczytaj wszystko</button>
+    <button (click)="UsunWszystko()"
+            [disabled]="powiadomienia_.nieUsunietePowiadomienia().length == 0">Usuń wszystko</button>
+
+  </span>
+
+</ng-template>
+<ng-template #popContent>
+  <div class="powiadomienieTresc BrakBialejRamkiPopOver">
+    <div class="powiadomienie"
+         [ngClass]="{usuniete:powiadomienie.usuniete}"
+
+         *ngFor="let powiadomienie of powiadomienia_.powiadomienia">
+      <fa-icon icon="x" class="usuniecie" (click)="powiadomienia_.usunPowiadomienie(powiadomienie)"></fa-icon>
+      <fa-icon class="icon" icon="flag" (click)="powiadomienia_.odczytajPowiadomienie(powiadomienie)"
+               [ngClass]="{odczytane:powiadomienie.odczytane}"></fa-icon>
+      <h3>{{powiadomienie.tytul}}</h3>
+      <span class="data">{{powiadomienie.data|date:'dd.MM.yyyy   hh:mm'}}</span>
+      <p>
+        {{powiadomienie.tresc}}
+      </p>
+      <!--  <a herf="#">Przczytaj więcej</a>-->
+      <p class="podpis">Sracz.pl</p>
+    </div>
+  </div>
+</ng-template>
+
+
+

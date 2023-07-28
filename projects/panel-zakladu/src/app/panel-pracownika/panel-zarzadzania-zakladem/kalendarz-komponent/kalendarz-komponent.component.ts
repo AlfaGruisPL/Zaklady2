@@ -135,7 +135,7 @@ export class KalendarzKomponentComponent implements OnInit {
     return {};
   }
 
-  private czyDzisWolnyDzien(dzien: DzienTygodnia) {
+  czyDzisWolnyDzien(dzien: DzienTygodnia) {
     return this.Kalendarz_.dniWolne.find(wolnydzien => {
       if (wolnydzien.data.getDate() == dzien.data.getDate()) {
         if (wolnydzien.data.getFullYear() == dzien.data.getFullYear()) {

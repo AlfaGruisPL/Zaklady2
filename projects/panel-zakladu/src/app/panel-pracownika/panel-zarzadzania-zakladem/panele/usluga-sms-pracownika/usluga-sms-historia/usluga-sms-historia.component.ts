@@ -176,8 +176,9 @@ export class UslugaSmsHistoriaComponent implements OnInit, OnDestroy {
             this.labels[0] = "Wczoraj"
           }
         }
-
-        // @ts-ignore
+        if (this.chart) {
+          this.chart.destroy();
+        }
         this.chart = new Chart("MyChart", this.config)
         this.chart.update();
       }

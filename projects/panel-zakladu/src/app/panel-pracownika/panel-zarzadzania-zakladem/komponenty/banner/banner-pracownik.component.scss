@@ -44,6 +44,44 @@
     }
   }
 
+
+  .powiadomieniaButton {
+
+    position: absolute;
+    right: 103px;
+    top: 6px;
+    color: #fffcf3;
+    filter: drop-shadow(0px 1px 1px black);
+    font-size: 27px;
+    background: transparent;
+    border: none;
+
+    &:hover {
+      cursor: pointer;
+      filter: drop-shadow(0px 1px 2px black);
+    }
+
+    .iloscPowiadomien {
+      position: absolute;
+      height: 19px;
+      width: 19px;
+      border-radius: 100%;
+      color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: white;
+      border: 1px solid black;
+      font-size: 11px;
+      font-weight: bolder;
+      padding-right: 1px;
+      padding-bottom: 1px;
+      right: -6px;
+      top: 22px;
+      text-align: center;
+    }
+  }
+
   .wstronaStartowaButton {
     position: absolute;
     right: 58px;
@@ -58,4 +96,181 @@
       filter: drop-shadow(0px 1px 2px black);
     }
   }
+}
+
+.powiadomieniaTytul {
+  color: #000000;
+  position: relative;
+  width: 100%;
+  display: block;
+  font-size: 30px;
+
+  button {
+    font-size: 12px;
+    position: absolute;
+    top: -5px;
+    right: -9px;
+    background: rgba(206, 60, 60, 0.4);
+    font-weight: bolder;
+
+    &:first-child {
+      background: rgba(211, 186, 255, 0.45);
+      top: 20px;
+    }
+
+  }
+}
+
+.powiadomienieTresc {
+  width: 600px;
+  max-height: calc(100vh - 200px);
+  overflow-y: scroll;
+  position: relative;
+  z-index: 1000;
+
+
+  .powiadomienie {
+    max-height: 2000px;
+    position: relative;
+    padding: 0 10px 10px 70px;
+
+    &:not(:last-of-type) {
+      border-bottom: 2px solid #8f8f8f;
+    }
+
+    .usuniecie {
+      position: absolute;
+      right: 25px;
+      top: 15px;
+      font-size: 20px;
+
+      &:hover {
+        filter: drop-shadow(0px 0px 1px #000000);
+        cursor: pointer;
+      }
+    }
+
+    h3 {
+      margin: 0;
+      padding-top: 10px;
+      padding-bottom: 4px;
+      color: #000000;
+    }
+
+    .data {
+      color: #0c57a2;
+      width: 100%;
+      display: block;
+      padding-bottom: 7px;
+    }
+
+    p {
+      padding-bottom: 10px;
+      color: #151515;
+    }
+
+    a {
+      color: #000000;
+      font-size: 18px;
+      font-weight: bolder;
+
+      &:hover {
+        filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.3));
+        cursor: pointer;
+      }
+    }
+
+    .icon {
+      left: 20px;
+      top: 10px;
+      position: absolute;
+      font-size: 27px;
+      color: #31a236;
+
+    }
+
+    .podpis {
+      margin: 0;
+      padding: 4px;
+      position: absolute;
+      right: 25px;
+      bottom: 4px;
+    }
+  }
+
+}
+
+.odczytane {
+  color: #9b9b9b !important;
+}
+
+.powiadomienieAnimacja {
+  // animation: tilt-n-move-shaking 7s infinite;;
+
+  span {
+    animation: blink 2s infinite
+  }
+}
+
+@keyframes blink {
+  0% {
+    color: red;
+
+    scale: 1;
+
+  }
+  50% {
+    color: whitesmoke;
+
+
+    scale: 1.105;
+
+
+  }
+  100% {
+    color: red;
+
+    scale: 1;
+
+  }
+
+}
+
+@keyframes tilt-n-move-shaking {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  1% {
+    transform: translate(1px, 1px) rotate(5deg);
+  }
+  2% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  3% {
+    transform: translate(-2px, -2px) rotate(-5deg);
+  }
+  4% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+}
+
+.usuniete {
+  animation: he 500ms normal;
+
+}
+
+@keyframes he {
+  0% {
+    //height: min-content;
+    opacity: 1;
+  }
+
+  100% {
+    max-height: 0px;
+    opacity: 0;
+
+  }
+
+
 }

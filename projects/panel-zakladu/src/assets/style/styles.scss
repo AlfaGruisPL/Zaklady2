@@ -3,6 +3,15 @@
 @import "../../../../../node_modules/tippy.js/dist/tippy.css";
 @import "../../../../../node_modules/tippy.js/themes/light.css";
 @import "../../../../../node_modules/tippy.js/animations/scale.css";
+//usunięcie limitu szerokośći dla popover
+.popover {
+  max-width: 100% !important;
+  min-width: min-content;
+}
+
+.BrakBialejRamkiPopOverRodzic {
+  padding: 0 !important;
+}
 
 :root {
   --ciemnyNiebieski: #000618;

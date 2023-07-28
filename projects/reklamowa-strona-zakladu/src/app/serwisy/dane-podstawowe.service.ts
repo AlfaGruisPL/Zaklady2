@@ -3,6 +3,8 @@ import {ListonoszService} from './listonosz.service';
 import {Drzwi} from '../enum/drzwi';
 import {DanePodstawowe} from '../klasy/dane-podstawowe';
 import {Subject} from 'rxjs';
+import {HttpError} from "../../../../klasy/httpError";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +12,9 @@ import {Subject} from 'rxjs';
 export class DanePodstawoweService {
   public danePodstawowe = new DanePodstawowe();
   public danePodstawoweObservable = new Subject<DanePodstawowe>();
+  public subDomainID = false;
 
-  constructor(public listonosz: ListonoszService) {
+  constructor(public listonosz: ListonoszService, private router: Router) {
   }
 
   public pobieranieDanychPodstawowych() {
@@ -22,7 +25,11 @@ export class DanePodstawoweService {
         this.danePodstawoweObservable.next(this.danePodstawowe);
         console.log(this.danePodstawowe);
       })
-      .catch((niepobrane) => {
+      .catch((niepobrane: HttpError) => {
+        if (niepobrane.error?.reasonCode) {
+          this.router.navigate(['pageNotFound'])
+
+        }
       });
   }
 }

@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ListonoszService} from "../../../serwisy/listonosz.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 import {FontAwesomeService} from "../../../serwisy/font-awesome.service";
-import {Drzwi} from "../../../enum/drzwi";
+import {PodreczneDaneService} from "../../../serwisy/podreczne-dane.service";
 
 @Component({
   selector: 'app-panel-logowania-pracownikow',
@@ -28,13 +28,6 @@ export class PanelLogowaniaPracownikowComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log(1)
-
-    // this.subDomain = window.location.href.split('.')[0].split("//")[1]
-    //  console.log(this.subDomain)
-    this.listonosz.pobierz(Drzwi.nazwaZakladu).then(k => {
-      this.subDomain = k.nazwa
-    })
   }
 
   public czyDaneWpisane() {
@@ -56,12 +49,17 @@ export class PanelLogowaniaPracownikowComponent implements OnInit {
 
   }
 
-  constructor(private listonosz: ListonoszService, private Router: Router,
+  constructor(private listonosz: ListonoszService,
+              private Router: Router,
+              private route: ActivatedRoute,
               private toasts: ToastrService,
+              public podreczne_: PodreczneDaneService,
               public fontAwesome: FontAwesomeService) {
   }
 
   public logowanie() {
+    const identyfikator = this.podreczne_.wartoscAutomatycznegoIdentyfikatora
+
     this.czyPrawidloweDane = true;
     this.czyWolnoLogowac = true;
     this.czyDaneWpisane();
@@ -75,7 +73,8 @@ export class PanelLogowaniaPracownikowComponent implements OnInit {
     this.bladPrzyLogowaniu = true;
     this.czyKontoPotwierdzone = true;
     this.listonosz.zaloguj(dane).then(udane => {
-      this.Router.navigate(['panelPracownika']);
+
+      this.Router.navigate([identyfikator + '/panelPracownika']);
     }).catch(blad => {
       switch (blad['error']['reasonCode']) {
         case 3:

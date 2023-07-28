@@ -3,6 +3,7 @@ import {DaneKlienta, pracownikUslugiDTO} from './etapy/klasy/dane-klienta';
 import {ListonoszService} from "../../../serwisy/listonosz.service";
 import {Drzwi} from "../../../enum/drzwi";
 import {Termin} from "./etapy/kalendarz/termin";
+import {environment} from 'projects/panel-zakladu/src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -10,8 +11,8 @@ import {Termin} from "./etapy/kalendarz/termin";
 export class ZarejestrujSieService {
   DaneKlientaClass: DaneKlienta = new DaneKlienta();
   wyswietlanieFormualrza = true;
-  public niepobranyKalendarz: boolean = false;
-
+  environment = environment
+  public niepobranyKalendarz: boolean = environment.production;
 
   constructor(private listonosz: ListonoszService) {
   }

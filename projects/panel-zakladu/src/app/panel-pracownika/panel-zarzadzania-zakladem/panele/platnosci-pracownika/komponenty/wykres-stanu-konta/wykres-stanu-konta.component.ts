@@ -110,6 +110,9 @@ export class WykresStanuKontaComponent implements OnInit {
         this.datasets.push(dane.wartosc / 100)
       })
       this.labels[0] = "Dziś"
+      if (this.chart) {
+        this.chart.destroy();
+      }
       // @ts-ignore
       this.chart = new Chart("MyChart", this.config)
       this.chart.update();

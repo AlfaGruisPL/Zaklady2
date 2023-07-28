@@ -1,13 +1,34 @@
 <div class="logowanie">
-  <h1 class="h1dlaTytuluPaneluZaklad">Zakład "{{subDomain}}"</h1>
+  <h1 class="h1dlaTytuluPaneluZaklad">Zakład
+    <ng-container
+      *ngIf="podreczne_.zakladZnaleziony_domenowe == false else nazwa">
+
+    </ng-container>
+    <ng-template #nazwa>
+
+      "{{podreczne_.nazwaZakladu_domenowe}}"
+    </ng-template>
+  </h1>
   <h1 class="h1dlaTytuluPaneluLogowanie">Panel logowania
   </h1>
+
+
   <div class="formularz">
-    <form>
+    <div class="informacja" *ngIf="podreczne_.zakladZnaleziony_domenowe == false">
+      <h1>
+        Zakład nie znaleziony
+      </h1>
+      <p>Podany identyfikator zakładu nie został odnaleziony. Sprawdź adres URL wpisany w przeglądarkę, jeżeli adres
+        jest
+        poprawny skontaktuj się z właścicielem zakładu lub administratorem strony</p>
+    </div>
+
+    <form *ngIf="podreczne_.zakladZnaleziony_domenowe == true">
       <table>
         <tr>
           <td><input class="logInput" type="text" placeholder="E-mail" [ngModelOptions]="{standalone: true}"
                      [(ngModel)]="email"
+                     [disabled]="podreczne_.nazwaZakladu_domenowe.length == 0"
                      [ngClass]="{'wpiszDane': !czyEmailWpisany || !czyPrawidloweDane}">
           </td>
         </tr>
@@ -16,6 +37,7 @@
                                                 placeholder="Hasło"
                                                 [ngModelOptions]="{standalone: true}"
                                                 [(ngModel)]="haslo"
+                                                [disabled]="podreczne_.nazwaZakladu_domenowe.length == 0"
                                                 [ngClass]="{'wpiszDane': !czyHasloWpisane || !czyPrawidloweDane}">
             <fa-icon class="Podglad" (click)="this.Podglad = !this.Podglad" style="position: absolute; top:34px"
                      [icon]="!this.Podglad ? this.fontAwesome.oczko : this.fontAwesome.oczkoZamkniete"></fa-icon>
@@ -44,7 +66,10 @@
         </tr>
       </table>
       <div class="logowanieMarginButton">
-        <button type="submit" (click)="logowanie()" class="ButtonZarejestrujIzaloguj">Zaloguj</button>
+        <button type="submit" (click)="logowanie()" class="ButtonZarejestrujIzaloguj"
+                [disabled]="podreczne_.nazwaZakladu_domenowe.length == 0"
+        >Zaloguj
+        </button>
         <br>
         <a [routerLink]="['../reset']" [queryParams]="{strzalka: true}" class="niePamietaszHasla">Nie pamiętasz hasła?
           Kliknij, aby zresetować</a>

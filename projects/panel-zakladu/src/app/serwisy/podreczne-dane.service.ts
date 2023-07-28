@@ -15,6 +15,10 @@ export class PodreczneDaneService {
   public danePodreczneObserveble = new BehaviorSubject<DanePodreczneClass | undefined>(undefined)
   public losowaLiczba = Math.round(Math.random() * 100000000)
   public wlasciciel = false
+  public nazwaZakladu_domenowe = ''
+  public zakladZnaleziony_domenowe: boolean = true
+  public subDomainID = false;
+  public wartoscAutomatycznegoIdentyfikatora = '_';
 
   wygenerujNowaLiczbeLosowaDlaZdjec() {
     this.losowaLiczba += 1
@@ -25,6 +29,14 @@ export class PodreczneDaneService {
               private token_: TokenService) {
   }
 
+  public async identyfikacjaZakladu() {
+    await this.listonosz.pobierz(Drzwi.nazwaZakladu).then(k => {
+      this.nazwaZakladu_domenowe = k.nazwa
+      this.zakladZnaleziony_domenowe = true
+    }).catch(error => {
+      this.zakladZnaleziony_domenowe = false
+    })
+  }
 
   public ustawZmienneTypuUzytkownika() {
     if (this.token_.tokenGrupy != undefined) {

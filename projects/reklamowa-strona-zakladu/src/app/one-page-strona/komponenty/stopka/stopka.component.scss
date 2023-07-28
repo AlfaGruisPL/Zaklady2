@@ -12,8 +12,47 @@
     width: 60%;
     height: 100%;
     float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .tabela, .tekst {
+      padding: 20px;
+      flex-wrap: wrap;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .tabela {
+      width: 50%;
+      order: 2;
+      color: white;
+
+      table {
 
 
+        tr {
+          td {
+            color: white;
+
+          }
+        }
+      }
+    }
+
+    .tekst {
+      order: 1;
+      width: 50%;
+      color: white;
+    }
+
+    .tytul {
+      width: 100%;
+      color: white;
+      text-align: center;
+      padding-bottom: 20px;
+    }
   }
 
   .mapaDiv {

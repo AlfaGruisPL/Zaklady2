@@ -1,6 +1,7 @@
 {
   "name": "zaklady",
   "version": "0.0.0",
+  "data_wydania": "26.07.2023",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -29,6 +30,7 @@
     "@ng-select/ng-select": "^10.0.4",
     "@ngneat/helipopper": "^7.1.1",
     "@ngneat/overview": "^4.1.0",
+    "@nguniversal/express-engine": "^15.2.1",
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
     "chart.js": "^4.3.0",

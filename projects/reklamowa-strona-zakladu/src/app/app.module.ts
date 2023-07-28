@@ -73,6 +73,7 @@ import {NgbModule, NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { TerminComponent } from './one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/kalendarz/termin/termin.component';
 import { ZdjeciePipe } from './rurki/zdjecie.pipe';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -106,6 +107,7 @@ import { ZdjeciePipe } from './rurki/zdjecie.pipe';
     ZegarComponent,
     TerminComponent,
     ZdjeciePipe,
+    PageNotFoundComponent,
   ],
   imports: [
     LeafletModule,

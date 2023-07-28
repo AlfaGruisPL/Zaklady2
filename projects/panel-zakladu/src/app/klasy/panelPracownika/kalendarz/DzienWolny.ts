@@ -9,3 +9,13 @@ export class DzienWolny {
     )
   }
 }
+
+export class DzienWolnyDto {
+  data = new Date()
+  regularne: boolean | undefined = true
+
+  constructor(Dane: Partial<DzienWolny>) {
+    this.regularne = Dane.regularne
+    this.data = new Date(this.data)
+  }
+}

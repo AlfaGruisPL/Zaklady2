@@ -35,8 +35,23 @@ Wyświetlane dane:<select [(ngModel)]="Kalendarz_.wybranyPracownik" (change)="Ka
           Zarządzanie dniem
         </button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-          <button ngbDropdownItem (click)="Kalendarz_.oznaczJakoDzienWolny(dzien)">Oznacz jako dzień wolny</button>
-          <button ngbDropdownItem (click)="Kalendarz_.oznaczJakoDzienWolny(dzien)">Oznacz jako dzień pracy</button>
+          Zakład
+          <button ngbDropdownItem
+
+                  *ngIf="czyDzisWolnyDzien(dzien) == undefined else dzienPracy"
+
+                  (click)="Kalendarz_.oznaczJakoDzienWolny(dzien)">Oznacz jako dzień wolny
+          </button>
+          <ng-template #dzienPracy>
+            <button ngbDropdownItem (click)="Kalendarz_.oznaczJakoDzienPracy(dzien)">Oznacz jako dzień pracy</button>
+          </ng-template>
+
+          <hr style="margin:4px 0 4px 0">
+          Wybrany pracownik: <p class="pracownikDropDown">Mateusz Osikowski</p>
+          <button ngbDropdownItem
+                  *ngIf="czyDzisWolnyDzien(dzien) == undefined else dzienPracy"
+                  (click)="Kalendarz_.oznaczJakoDzienWolny(dzien)">Oznacz jako dzień wolny
+          </button>
           <button ngbDropdownItem (click)="Kalendarz_.nowaPrzerwa(dzien,undefined)"> Dodaj przerwę</button>
         </div>
       </div>
@@ -108,3 +123,4 @@ Wyświetlane dane:<select [(ngModel)]="Kalendarz_.wybranyPracownik" (change)="Ka
 ID pracownika <input [(ngModel)]="symulatorPracownikID" (keydown)="generujWizyty()">
 <br>
 ID wizyt <input [(ngModel)]="symulatorWizytyID" (keydown)="generujWizyty()">
+<input type="number">

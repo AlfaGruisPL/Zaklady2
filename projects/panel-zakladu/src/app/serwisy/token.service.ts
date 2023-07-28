@@ -22,7 +22,10 @@ export class TokenService {
 
   public odczytajCookies() {
     this.tokenWartosc = this.cookieService.get('token')
-    this.tokenGrupy = JSON.parse(<string>this.cookieService.get('grupy'))
+    if (<string>this.cookieService.get('grupy') != undefined) {
+      this.tokenGrupy = JSON.parse(<string>this.cookieService.get('grupy'))
+    }
+
   }
 
   public usunCiasteczka() {

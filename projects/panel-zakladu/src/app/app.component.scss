@@ -3,10 +3,19 @@
   bottom: -7px;
   right: 10px;
   z-index: 1000;
-  color: rgba(255, 0, 0, 0.73);
+  color: rgba(255, 0, 0, 0.83);
   opacity: 0.3;
   font-weight: bolder;
-  font-size: 50px;
+  font-size: 40px;
   user-select: none;
-  user-select: none;
+  user-focus: none;
+
+  .wersja {
+    font-size: 20px
+  }
+
+  .data {
+    padding-left: 20px;
+    font-size: 20px
+  }
 }

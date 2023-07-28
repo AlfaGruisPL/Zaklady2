@@ -22,6 +22,17 @@ export class PanelZarzadzaniaZaklademComponent implements OnInit, OnDestroy {
     }, 1000)
     this.DanePodreczne.pobierajaca();
     this.DanePodreczne.ustawZmienneTypuUzytkownika()
+
+
+    setInterval(() => {
+      const elementy = document.getElementsByClassName('BrakBialejRamkiPopOver')
+      for (var k = 0; k < elementy.length; ++k) {
+        // @ts-ignore
+        elementy[k].parentElement.classList.add("BrakBialejRamkiPopOverRodzic");
+
+
+      }
+    }, 10)
   }
 
   ngOnDestroy() {

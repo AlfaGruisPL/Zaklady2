@@ -1,16 +1,17 @@
+import {environment} from "projects/panel-zakladu/src/environments/environment";
 import {usluga} from "../../../../../klasy/dane-podstawowe";
 import {Termin} from "../kalendarz/termin";
 
 export class DaneKlienta {
-  public imie: string = 'Korneliia';
-  public nazwisko: string = 'Mushak';
-  public prefiksTelefonu: string = '+48';
-  public numerTelefonu: string = '530322879';
-  public email: string = 'korneliamushak@gmail.com';
-  public wybranyPracownik: number | undefined = 183;
+  public imie: string = '';
+  public nazwisko: string = '';
+  public prefiksTelefonu: string = '';
+  public numerTelefonu: string = '';
+  public email: string = '';
+  public wybranyPracownik: number | undefined = undefined;
   public niewybranyPracownik: boolean = false;
   public uslugi: Array<usluga> = []; //wszystkie uslugi pobierane z api
-  public kodWeryfikacja: string = '8';
+  public kodWeryfikacja: string = '';
   public identyfikator: string = '';
   public kodWeryfikacjaPusty: boolean = false;
   public czyWszystkoUzupelnione: boolean = true;
@@ -22,6 +23,19 @@ export class DaneKlienta {
   public niepoprawnyKod: boolean = false;
   public wybranyTermin: Termin | undefined;
   public wszystkieTerminy: Array<Termin> = []
+
+  constructor() {
+    if (!environment.production) {
+      this.imie = 'Korneliia';
+      this.nazwisko = 'Mushak';
+      this.prefiksTelefonu = '+48';
+      this.numerTelefonu = '530322879';
+      this.email = 'korneliamushak@gmail.com';
+      this.wybranyPracownik = 183;
+      this.kodWeryfikacja = '8';
+    }
+
+  }
 
   public czyKodWerifikacjaWpisany() {
     this.kodWeryfikacjaPusty = false;
@@ -73,6 +87,7 @@ export class pracownikUslugiDTO {
   public uslugiId: Array<number> = [];
 
   constructor(pracownikUslugi: DaneKlienta) {
+
 
     pracownikUslugi.uslugi.forEach(usluga => {
       if (usluga.wybrane) {

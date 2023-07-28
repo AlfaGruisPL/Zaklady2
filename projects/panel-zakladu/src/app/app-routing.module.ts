@@ -50,94 +50,119 @@ import {
   UslugaSmsPracownikaComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/panele/usluga-sms-pracownika/usluga-sms-pracownika.component';
 import {UslugiPracownikaComponent} from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/uslugi.component';
+import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
+import {IdentyfikatorGuard} from "./straznicy/identyfikator.guard";
+import {ZalogowanyGuard} from "./straznicy/zalogowany.guard";
 
-const routes: Routes = [
+
+const zakladDzieci: Routes = [
   {
-    path: 'zaklad',
-    component: PoczatkowyPanelPracownikaComponent,
-    children: [
-      {
-        path: 'logowanie',
-        component: PanelLogowaniaPracownikowComponent,
-      },
-      {
-        path: 'reset',
-        component: ResetHaslaPracownikowComponent,
-      },
-      {
-        path: 'rejestracja',
-        component: RejestracjaZakladuComponent,
-      },
-      {
-        path: '',
-        redirectTo: 'logowanie',
-        pathMatch: 'full',
-      },
-    ],
+    path: 'logowanie',
+    component: PanelLogowaniaPracownikowComponent,
+  },
+  {
+    path: 'reset',
+    component: ResetHaslaPracownikowComponent,
+  },
+  {
+    path: 'rejestracja',
+    component: RejestracjaZakladuComponent,
+  },
+  {
+    path: '',
+    redirectTo: 'logowanie',
+    pathMatch: 'full',
+  },
+]
+const panelePracownika: Routes = [
+  {
+    path: 'stronaStartowa',
+    component: StronaStartowaPracownikaComponent,
+  },
+  {
+    path: 'mojeKonto',
+    component: MojeKontoPracownikaComponent,
+  },
+  {
+    path: 'zarejestrowaneWizyty',
+    component: ZarejestrowaneWizytyPracownikaComponent,
+  },
+  {
+    path: 'zarzadzaniePracownikami',
+    component: PracownicyPracownikaComponent,
+  },
+  {
+    path: 'kalendarzTerminow',
+    component: KalendarzTerminowComponent,
   },
 
+  {
+    path: 'uslugi',
+    component: UslugiPracownikaComponent,
+  },
+  {
+    path: 'stronaReprezentacyjnaUstawienia',
+    component: StronaReprezentacyjnaPracownikaComponent,
+  },
+  {
+    path: 'mojZaklad',
+    component: MojZakladPracownikaComponent,
+  },
+  {
+    path: 'platnosci',
+    component: PlatnosciPracownikaComponent,
+  },
+  {
+    path: 'sms',
+    component: UslugaSmsPracownikaComponent,
+  },
+  {
+    path: 'harmonogram',
+    component: HarmonogramPracownikaComponent,
+  },
+  {
+    path: 'listaKlientow',
+    component: ListaKlientowPracownikComponent,
+  },
+  {
+    path: '',
+    redirectTo: 'stronaStartowa',
+    pathMatch: 'full',
+  },
+]
+
+const typy: Routes = [{
+  path: 'zaklad',
+  component: PoczatkowyPanelPracownikaComponent,
+  children: zakladDzieci
+},
   {
     path: 'panelPracownika',
     component: PanelZarzadzaniaZaklademComponent,
-    children: [
-      {
-        path: 'stronaStartowa',
-        component: StronaStartowaPracownikaComponent,
-      },
-      {
-        path: 'mojeKonto',
-        component: MojeKontoPracownikaComponent,
-      },
-      {
-        path: 'zarejestrowaneWizyty',
-        component: ZarejestrowaneWizytyPracownikaComponent,
-      },
-      {
-        path: 'zarzadzaniePracownikami',
-        component: PracownicyPracownikaComponent,
-      },
-      {
-        path: 'kalendarzTerminow',
-        component: KalendarzTerminowComponent,
-      },
+    children: panelePracownika,
+    canActivate: [ZalogowanyGuard],
+  },
+  {path: '', redirectTo: 'zaklad', pathMatch: 'full'},
 
-      {
-        path: 'uslugi',
-        component: UslugiPracownikaComponent,
-      },
-      {
-        path: 'stronaReprezentacyjnaUstawienia',
-        component: StronaReprezentacyjnaPracownikaComponent,
-      },
-      {
-        path: 'mojZaklad',
-        component: MojZakladPracownikaComponent,
-      },
-      {
-        path: 'platnosci',
-        component: PlatnosciPracownikaComponent,
-      },
-      {
-        path: 'sms',
-        component: UslugaSmsPracownikaComponent,
-      },
-      {
-        path: 'harmonogram',
-        component: HarmonogramPracownikaComponent,
-      },
-      {
-        path: 'listaKlientow',
-        component: ListaKlientowPracownikComponent,
-      },
-      {
-        path: '',
-        redirectTo: 'stronaStartowa',
-        pathMatch: 'full',
-      },
-    ],
+
+]
+const routes: Routes = [
+  {
+    path: ':identyfikator',
+    canActivate: [IdentyfikatorGuard],
+    children: typy,
+  },
+  {
+    path: '',
+    canActivate: [IdentyfikatorGuard],
+    children: typy
   },
 
-  {path: '', redirectTo: 'zaklad', pathMatch: 'full'},
+
+  {path: 'pageNotFound', component: PageNotFoundComponent},
+
+
+  // {path: '', redirectTo: 'zaklad', pathMatch: 'full', canActivate: [IdentyfikatorGuard]},
 ];
 
 @NgModule({

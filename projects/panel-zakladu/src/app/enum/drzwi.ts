@@ -41,7 +41,13 @@ export enum Drzwi {
 
   kalendarzTerminowPrzerwa = 'kalendarzTerminow/przerwa',
   kalendarzTerminowDniWolneIPrzerwyZakladu = '/dniWolnePrzerwy',
+  kalendarzOznaczJakoDzienWolny = '/dniWolne/dzienWolny',
+  kalendarzOznaczJakoDzienPracy = '/dniWolne/dzienPracy',
+  listaKlientow = "/klienci/lista",
 
 
-  listaKlientow = "/klienci/lista"
+  //powiadomienia
+  listaPowiadomienDlaZakladu = '/powiadomienia',
+  listaPowiadomienOdczytajPowiadomienie = '/powiadomienia/odczytaj/',
+  listaPowiadomienUsunPowiadomienie = '/powiadomienia/usun/'
 }

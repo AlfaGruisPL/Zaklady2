@@ -5,6 +5,7 @@ import {OdpowiedzPotwierdzajacaPoprawnosc} from "../klasy/odpowiedz-potwierdzaja
 import {TokenService} from "./token.service";
 import {LogowanieZwracajaceDaneItoken} from "../klasy/logowanie-zwracajace-dane-itoken";
 import {HttpHeaders} from "@angular/common/http";
+import {HttpError} from "../../../../klasy/httpError";
 
 @Injectable({
   providedIn: 'root'
@@ -31,13 +32,13 @@ export class ListonoszService {
           this.token.usunCiasteczka();
           resolve(next)
         },
-        error => {
+        (error: HttpError) => {
           reject(error)
         })
     })
   }
 
-  public zaloguj(zawartosc: any) {
+  public zaloguj(zawartosc: any): Promise<any | HttpError> {
     return new Promise((resolve, reject) => {
       this.listy.wyslij(Drzwi.logowanie, zawartosc, {}).subscribe(
         (next: OdpowiedzPotwierdzajacaPoprawnosc<LogowanieZwracajaceDaneItoken>) => {
@@ -48,13 +49,13 @@ export class ListonoszService {
           this.token.stworzCookies();
           resolve(next)
         },
-        error => {
+        (error: HttpError) => {
           reject(error)
         })
     })
   }
 
-  public wyslij(drzwi: Drzwi | string, zawartosc: any): Promise<OdpowiedzPotwierdzajacaPoprawnosc<any> | any> {
+  public wyslij(drzwi: Drzwi | string, zawartosc: any): Promise<any | HttpError> {
 
     let opcjeWPudelku = {};
     if (this.token.tokenWartosc != undefined) {
@@ -67,7 +68,7 @@ export class ListonoszService {
       this.listy.wyslij(drzwi, zawartosc, opcjeWPudelku).subscribe((next: OdpowiedzPotwierdzajacaPoprawnosc<any>) => {
           resolve(next.value)
         },
-        error => {
+        (error: HttpError) => {
           reject(error)
         })
     });
@@ -75,7 +76,7 @@ export class ListonoszService {
   }
 
 
-  public usun(drzwi: Drzwi | string): Promise<OdpowiedzPotwierdzajacaPoprawnosc<any> | any> {
+  public usun(drzwi: Drzwi | string): Promise<any | HttpError> {
 
     let opcjeWPudelku = {};
     if (this.token.tokenWartosc != undefined) {
@@ -88,7 +89,7 @@ export class ListonoszService {
       this.listy.usun(drzwi, opcjeWPudelku).subscribe((next: OdpowiedzPotwierdzajacaPoprawnosc<any>) => {
           resolve(next.value)
         },
-        error => {
+        (error: HttpError) => {
           reject(error)
         })
     });
@@ -96,7 +97,7 @@ export class ListonoszService {
   }
 
 
-  public pobierz(drzwi: Drzwi | string): Promise<OdpowiedzPotwierdzajacaPoprawnosc<any> | any> {
+  public pobierz(drzwi: Drzwi | string): Promise<any | HttpError> {
 
     let opcjeWPudelku = {};
     if (this.token.tokenWartosc != undefined) {
@@ -110,14 +111,14 @@ export class ListonoszService {
       this.listy.pobierz(drzwi, opcjeWPudelku).subscribe((next: OdpowiedzPotwierdzajacaPoprawnosc<any>) => {
           resolve(next.value)
         },
-        error => {
+        (error: HttpError) => {
           reject(error)
         })
     });
 
   }
 
-  public aktualizuj(drzwi: Drzwi | string, zawartosc: any): Promise<OdpowiedzPotwierdzajacaPoprawnosc<any> | any> {
+  public aktualizuj(drzwi: Drzwi | string, zawartosc: any): Promise<any | HttpError> {
     let opcjeWPudelku = {};
     if (this.token.tokenWartosc != undefined) {
       const opcje = new HttpHeaders({
@@ -129,7 +130,7 @@ export class ListonoszService {
       this.listy.aktualizuj(drzwi, zawartosc, opcjeWPudelku).subscribe((next: OdpowiedzPotwierdzajacaPoprawnosc<any>) => {
           resolve(next.value)
         },
-        error => {
+        (error: HttpError) => {
           reject(error)
         })
     });

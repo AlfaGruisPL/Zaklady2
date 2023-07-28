@@ -10,7 +10,9 @@ import {GodzinyOtwarcia} from "../../../klasy/panelPracownika/mojZaklad/moj-zakl
 import {Pracownik} from "../../../klasy/panelPracownika/pracownicy/pracownik";
 import {ListonoszService} from "../../../serwisy/listonosz.service";
 import {Przerwa} from "../../../klasy/panelPracownika/kalendarz/przerwa.dto";
-import {DzienWolny} from "../../../klasy/panelPracownika/kalendarz/DzienWolny";
+import {DzienWolny, DzienWolnyDto} from "../../../klasy/panelPracownika/kalendarz/DzienWolny";
+import {KomunikatyService} from "../../../serwisy/komunikaty.service";
+import {Udane} from "../../../enum/udane";
 
 @Injectable({
   providedIn: 'root'
@@ -26,12 +28,17 @@ export class KalendarzKomponentService {
   dniWolne: Array<DzienWolny> = []
   przerwyZakladu: Array<Przerwa> = []
 
-  constructor(private modal: NgbModal, private listonosz: ListonoszService) {
+  constructor(private modal: NgbModal, private listonosz: ListonoszService, private komunikaty_: KomunikatyService) {
   }
 
   public pobierzPodstawoweDane() {
     this.listonosz.pobierz(Drzwi.zarejestrowaneWizytyTerminy)
-      .then((k: { godzinyOtwarcia: GodzinyOtwarcia, pracownicy: Pracownik[], wlasciciel: number, przerwyZakladu: Przerwa[] }) => {
+      .then((k: {
+        godzinyOtwarcia: GodzinyOtwarcia,
+        pracownicy: Pracownik[],
+        wlasciciel: number,
+        przerwyZakladu: Przerwa[]
+      }) => {
         Object.assign(this.wlasciciel, k.wlasciciel)
         if (this.pracownicy.length == 0) {
           k.pracownicy.forEach(pracownik => {
@@ -49,6 +56,8 @@ export class KalendarzKomponentService {
       })
 
     this.listonosz.pobierz(Drzwi.kalendarzTerminowDniWolneIPrzerwyZakladu).then(dane => {
+      this.przerwyZakladu = []
+      this.dniWolne = []
       dane['przerwy'].forEach((przerwa: any) => {
         const obj = new Przerwa(przerwa)
         this.przerwyZakladu.push(obj)
@@ -108,8 +117,29 @@ export class KalendarzKomponentService {
   }
 
   public oznaczJakoDzienWolny(dzien: DzienTygodnia) {
+    const dzienWolnyDTO = new DzienWolnyDto({})
+    dzienWolnyDTO.data = new Date(dzien.data)
+    dzienWolnyDTO.regularne = false
+    this.listonosz.wyslij(Drzwi.kalendarzOznaczJakoDzienWolny, dzienWolnyDTO).then(udane => {
+      this.komunikaty_.komunikatUdane(Udane.oznaczJakoDzienWolny)
+    }).catch(error => {
+      this.komunikaty_.modyfikacjaNieUdana()
+    }).finally(() => {
+      this.pobierzPodstawoweDane()
+    })
   }
 
+  oznaczJakoDzienPracy(dzien: DzienTygodnia) {
+    const dzienWolnyDTO = new DzienWolnyDto({})
+    dzienWolnyDTO.data = new Date(dzien.data)
+    this.listonosz.wyslij(Drzwi.kalendarzOznaczJakoDzienPracy, dzienWolnyDTO).then(udane => {
+      this.komunikaty_.komunikatUdane(Udane.oznaczJakoDzienPracy)
+    }).catch(error => {
+      this.komunikaty_.modyfikacjaNieUdana()
+    }).finally(() => {
+      this.pobierzPodstawoweDane()
+    })
+  }
 
   public nowaWizyta(dzien: DzienTygodnia, index: number) {
 

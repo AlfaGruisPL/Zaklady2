@@ -41,6 +41,8 @@ export class MojZakladDTO {
   public email: string = '';
   public numerTelefonu: string = '';
 
+  public identyfikator = ''
+
   constructor(mojZakladKlasa: MojZaklad) {
     this.nazwa = mojZakladKlasa.nazwa;
     this.miasto = mojZakladKlasa.miasto;
@@ -84,6 +86,8 @@ export class MojZakladDTO {
     this.iloscPracownikowCzyWyswietlic = mojZakladKlasa.iloscPracownikowCzyWyswietlic;
     this.daneZakladuCzyWyswietlic = mojZakladKlasa.daneZakladuCzyWyswietlic;
     this.naszKontaktCzyWyswietlic = mojZakladKlasa.naszKontaktCzyWyswietlic;
+
+    this.identyfikator = mojZakladKlasa.identyfikator
   }
 }
 

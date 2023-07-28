@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {ToastrService} from "ngx-toastr";
 import {BledyNumery} from "../enum/bledy-numery";
+import {Bledy} from "../enum/bledy";
+import {Udane} from "../enum/udane";
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +10,19 @@ import {BledyNumery} from "../enum/bledy-numery";
 export class KomunikatyService {
 
   constructor(private komunikaty: ToastrService) {
+  }
+
+  public komunikatUdane(udane: Udane) {
+    this.komunikaty.success(udane, 'Udane');
+  }
+
+  public komunikatBledu(Blad: Bledy) {
+    this.komunikaty.error(Blad, 'Błąd');
+  }
+
+  public ZmianaIdentyfikatora() {
+    this.komunikaty.info("Zmiana identyfiaktora możliwa jest co 5 minut", "UWAGA", {timeOut: 10000})
+    this.komunikaty.info("Zmiana identyfikatora zmienia adres logowania do wszystkiego ", "UWAGA", {timeOut: 10000})
   }
 
   public uslugaSmsWlaczona() {

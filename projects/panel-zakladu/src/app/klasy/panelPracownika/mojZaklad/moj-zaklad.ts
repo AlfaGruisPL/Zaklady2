@@ -40,6 +40,7 @@ export class MojZaklad {
   public email: string = '';
   public prefiksTelefonu = '';
   public numerTelefonu: string = '';
+  public identyfikator = ''
 }
 
 export class dzien {
