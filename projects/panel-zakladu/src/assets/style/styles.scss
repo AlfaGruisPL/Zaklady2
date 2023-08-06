@@ -3,6 +3,17 @@
 @import "../../../../../node_modules/tippy.js/dist/tippy.css";
 @import "../../../../../node_modules/tippy.js/themes/light.css";
 @import "../../../../../node_modules/tippy.js/animations/scale.css";
+
+.toast-top-right {
+  top: 55px !important;
+
+}
+
+.powiadomienieCiemnyText {
+  font-weight: bold;
+  color: black;
+}
+
 //usunięcie limitu szerokośći dla popover
 .popover {
   max-width: 100% !important;

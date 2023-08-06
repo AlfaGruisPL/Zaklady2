@@ -19,6 +19,7 @@ export class IdentyfikatorGuard implements CanActivate {
 
     const sub = window.location.href.split('.')[0].split("//")[1];
     const id = route.paramMap.get('identyfikator');
+    console.log(id)
     this.podreczneDane_.subDomainID = false
     // if (!this.podreczneDane_.zakladZnaleziony_domenowe) {
     //  }

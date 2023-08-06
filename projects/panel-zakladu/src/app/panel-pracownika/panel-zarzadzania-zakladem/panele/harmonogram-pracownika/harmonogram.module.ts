@@ -13,6 +13,7 @@ import {
 } from './harmonogram-dnia/harmonogram-dnia-aktualna-godzina/harmonogram-dnia-aktualna-godzina.component';
 import {TippyDirective} from "@ngneat/helipopper";
 import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import { HarmonogramPodsumowanieAdministratoraComponent } from './harmonogram-podsumowanie-administratora/harmonogram-podsumowanie-administratora.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
     HarmonogramDniaTerminComponent,
     HarmonogramAktualnaWizytaComponent, HarmonogramPracownikaComponent,
     HarmonogramNastepnaWizytaComponent,
-    HarmonogramDniaAktualnaGodzinaComponent],
+    HarmonogramDniaAktualnaGodzinaComponent,
+    HarmonogramPodsumowanieAdministratoraComponent],
   imports: [
     FormsModule,
     CommonModule, TippyDirective, NgbModule,

@@ -27,6 +27,8 @@
   background: #edce41;;
   box-shadow: 0px 2px 4px 0px #999;
   padding: 5px;
+  position: relative;
+  z-index: 100;
 
   .naglowek1Wzoltym, .naglowek1Wzoltym2 {
     font-size: 20px;
@@ -57,6 +59,7 @@
   font-weight: bolder;
   color: #1c1c1c;
   text-shadow: 0px 0px 1px black;
+  letter-spacing: 1px;
 }
 
 .naglowki2form {

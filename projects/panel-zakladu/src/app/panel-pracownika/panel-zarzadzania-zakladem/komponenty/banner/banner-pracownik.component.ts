@@ -1,22 +1,25 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FontAwesomeService} from "../../../../serwisy/font-awesome.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {PodreczneDaneService} from "../../../../serwisy/podreczne-dane.service";
 import {KomunikatyService} from "../../../../serwisy/komunikaty.service";
 import {ListonoszService} from "../../../../serwisy/listonosz.service";
 import {PowiadomieniaService} from "./powiadomienia.service";
+import {StraznicyService} from "../../../../straznicy/straznicy.service";
+
 
 @Component({
   selector: 'app-banner-pracownik',
   templateUrl: './banner-pracownik.component.html',
   styleUrls: ['./banner-pracownik.component.scss']
 })
-export class BannerPracownikComponent implements OnInit {
+export class BannerPracownikComponent implements OnInit, OnDestroy {
   constructor(public fontAwesome: FontAwesomeService,
               private Router: Router,
               private route: ActivatedRoute,
               public DanePodreczne: PodreczneDaneService,
               public powiadomienia_: PowiadomieniaService,
+              private straznik_: StraznicyService,
               public komunikaty: KomunikatyService,
               private listonosz: ListonoszService) {
   }
@@ -28,8 +31,35 @@ export class BannerPracownikComponent implements OnInit {
 
   }
 
+  doHarmonogramu() {
+    const identyfikator = this.route.snapshot.paramMap.get('identyfikator');
+    this.Router.navigate([identyfikator + '/panelPracownika/harmonogram']);
+  }
+
+  popoverUzytkownika: any;
+  popoverZakladu: any;
+
+  otworz(popover: any) {
+    popover.open()
+    this.popoverZakladu = popover
+    if (this.popoverUzytkownika != undefined) {
+      this.popoverUzytkownika.close()
+    }
+
+  }
+
+  otworzZakladu(popover: any) {
+    popover.open()
+    this.popoverUzytkownika = popover
+    this.popoverZakladu.close()
+    if (this.popoverZakladu != undefined) {
+      this.popoverZakladu.close()
+    }
+  }
+
 
   public wyloguj() {
+    this.straznik_.zatrzymajSprawdzanie()
     this.listonosz.wyloguj().then(k => {
       this.komunikaty.wylogowanieUdane();
     }).catch(k => {
@@ -41,20 +71,21 @@ export class BannerPracownikComponent implements OnInit {
 
   }
 
-  zamkniecie(event: any, popover: any) {
+
+  zamkniecie(event: any, popover: any, id: string) {
+    //  console.log(popoverDrugi)
     var znaleziono = false;
     var tmp = event.target
     var ikonka = tmp.tagName == 'path'
-    if (tmp.className == 'iloscPowiadomien') {
-      ikonka = true
-    }
     for (let k = 0; k < 15; k++) {
       if (tmp != undefined) {
-
-
+        if (tmp.id == 'powiadomienieZakladu_button' || tmp.id == 'powiadomieniaUzytkownika_Button') {
+          ikonka = true
+        }
+        if (tmp.id == popover.id) {
+        }
         if (tmp.localName == 'ngb-popover-window') {
           znaleziono = true
-          console.log(1)
         }
         tmp = tmp.parentElement
       }
@@ -62,18 +93,35 @@ export class BannerPracownikComponent implements OnInit {
     if (!znaleziono && !ikonka) {
       popover.close()
     }
+    console.groupEnd()
   }
 
   UsunWszystko() {
-    this.powiadomienia_.powiadomienia.forEach(powiadomienie => {
-      this.powiadomienia_.usunPowiadomienie(powiadomienie)
+    this.powiadomienia_.powiadomieniaZakladu.forEach(powiadomienie => {
+      this.powiadomienia_.usunPowiadomienieZakladu(powiadomienie)
     })
   }
 
   PrzeczytajWszystko() {
-    this.powiadomienia_.powiadomienia.forEach(powiadomienie => {
-      this.powiadomienia_.odczytajPowiadomienie(powiadomienie)
+    this.powiadomienia_.powiadomieniaZakladu.forEach(powiadomienie => {
+      this.powiadomienia_.odczytajPowiadomienieZakladu(powiadomienie)
     })
   }
 
+
+  UsunWszystkoUzytkownika() {
+    this.powiadomienia_.powiadomieniaUzytkownika.forEach(powiadomienie => {
+      this.powiadomienia_.usunPowiadomienieUzytkownika(powiadomienie)
+    })
+  }
+
+  PrzeczytajWszystkoUzytkownika() {
+    this.powiadomienia_.powiadomieniaUzytkownika.forEach(powiadomienie => {
+      this.powiadomienia_.odczytajPowiadomienieZakladu(powiadomienie)
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.powiadomienia_.zatrzymajPobieraniePowiadomien()
+  }
 }

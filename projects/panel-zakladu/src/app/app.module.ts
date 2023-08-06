@@ -41,14 +41,8 @@ import {
   ZarejestrowaneWizytyPracownikaComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/panele/zarejestrowane-wizyty-pracownika/zarejestrowane-wizyty-pracownika.component';
 import {
-  PracownicyPracownikaComponent
-} from './panel-pracownika/panel-zarzadzania-zakladem/panele/pracownicy-pracownika/pracownicy-pracownika.component';
-import {
   KalendarzTerminowComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/panele/kalendarz-terminow/kalendarz-terminow.component';
-import {
-  StronaReprezentacyjnaPracownikaComponent
-} from './panel-pracownika/panel-zarzadzania-zakladem/panele/strona-reprezentacyjna-pracownika/strona-reprezentacyjna-pracownika.component';
 import {
   MojZakladPracownikaComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moj-zaklad-pracownika/moj-zaklad-pracownika.component';
@@ -63,11 +57,7 @@ import {
   StopkaPracownikComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/komponenty/stopka/stopka-pracownik.component';
 import {CookieModule} from 'ngx-cookie';
-import {MaxDlugoscPipe} from './rureczki/max-dlugosc.pipe';
 import {NgbDropdown, NgbDropdownModule, NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {
-  DodawanieIModyfikacjaPracownikaComponent
-} from './panel-pracownika/panel-zarzadzania-zakladem/panele/pracownicy-pracownika/okienka/dodawanie-imodyfikacja-pracownika/dodawanie-imodyfikacja-pracownika.component';
 import {
   ListaKlientowPracownikComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/lista-klientow-pracownik.component';
@@ -75,9 +65,6 @@ import {UiSwitchModule} from 'ngx-ui-switch';
 import {
   PracownicyMojZakladComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moj-zaklad-pracownika/pracownicy-moj-zaklad/pracownicy-moj-zaklad.component';
-import {
-  CzyNaprawdeUsunacComponent
-} from './panel-pracownika/panel-zarzadzania-zakladem/panele/pracownicy-pracownika/okienka/czy-naprawde-usunac/czy-naprawde-usunac.component';
 import {
   PlatnosciPracownikaModule
 } from './panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/platnosciPracownika.module';
@@ -106,7 +93,6 @@ import {
 import {
   KalendarzPrzerwaComponent
 } from './panel-pracownika/panel-zarzadzania-zakladem/kalendarz-komponent/kalendarz-przerwa/kalendarz-przerwa.component';
-import {ZdjeciePipe} from "./rureczki/zdjecie.pipe";
 import {
   HarmonogramModule
 } from "./panel-pracownika/panel-zarzadzania-zakladem/panele/harmonogram-pracownika/harmonogram.module";
@@ -116,6 +102,13 @@ import {
 import {
   KalendarzPrzerwaKomponentComponent
 } from "./panel-pracownika/panel-zarzadzania-zakladem/kalendarz-komponent/kalendarz-przerwa-komponent/kalendarz-przerwa-komponent.component";
+import {
+  PracownicyModule
+} from "./panel-pracownika/panel-zarzadzania-zakladem/panele/pracownicy-pracownika/pracownicy.module";
+import {RureczkiModule} from "./rureczki/rureczki.module";
+import {
+  StronaReprezentacyjnaModule
+} from "./panel-pracownika/panel-zarzadzania-zakladem/panele/strona-reprezentacyjna-pracownika/strona-reprezentacyjna.module";
 
 @NgModule({
   declarations: [
@@ -131,37 +124,34 @@ import {
     StronaStartowaPracownikaComponent,
     MojeKontoPracownikaComponent,
     ZarejestrowaneWizytyPracownikaComponent,
-    PracownicyPracownikaComponent,
     KalendarzTerminowComponent,
-    StronaReprezentacyjnaPracownikaComponent,
-
     MojZakladPracownikaComponent,
     RejestracjaZakladuComponent,
     BannerPracownikComponent,
     StopkaPracownikComponent,
-    MaxDlugoscPipe,
-    DodawanieIModyfikacjaPracownikaComponent,
-
     ListaKlientowPracownikComponent,
-
-    PracownicyMojZakladComponent, KalendarzPrzerwaKomponentComponent,
-    CzyNaprawdeUsunacComponent,
+    PracownicyMojZakladComponent,
+    KalendarzPrzerwaKomponentComponent,
     UslugiPracownikaComponent,
     UslugiPrzypisaniPracownicyComponent,
-    RejestracjaUdanaComponent, ZdjeciePipe,
-
-    KalendarzKomponentComponent, Termin_komponentComponent, KalendarzGodzinaKreskaKomponentComponent, KalendarzZarzadzanieTerminemComponent, KalendarzPrzerwaComponent, InformacjeOKliencieComponent
+    RejestracjaUdanaComponent,
+    KalendarzKomponentComponent,
+    Termin_komponentComponent,
+    KalendarzGodzinaKreskaKomponentComponent,
+    KalendarzZarzadzanieTerminemComponent,
+    KalendarzPrzerwaComponent,
+    InformacjeOKliencieComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
+    HttpClientModule, RureczkiModule, StronaReprezentacyjnaModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({closeButton: true}),
     CookieModule.withOptions(),
     FontAwesomeModule, NgbDropdownModule,
-    TippyDirective,
+    TippyDirective, PracownicyModule,
     UiSwitchModule.forRoot({
       size: 'small',
       color: 'rgb(16 67 207)',

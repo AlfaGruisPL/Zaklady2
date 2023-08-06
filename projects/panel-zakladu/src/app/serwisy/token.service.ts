@@ -5,7 +5,7 @@ import {CookieService} from "ngx-cookie";
   providedIn: 'root'
 })
 export class TokenService {
-  public tokenTerminWaznosci?: Date;
+  public tokenTerminWaznosci: Date = new Date();
   public tokenWartosc: string | undefined = "";
   public tokenGrupy: number[] | undefined = []
 
@@ -13,7 +13,6 @@ export class TokenService {
   }
 
   public stworzCookies() {
-    console.log(this.tokenWartosc)
     if (this.tokenWartosc != undefined) {
       this.cookieService.put('grupy', JSON.stringify(this.tokenGrupy), {expires: this.tokenTerminWaznosci})
       this.cookieService.put('token', this.tokenWartosc, {expires: this.tokenTerminWaznosci})
@@ -33,4 +32,11 @@ export class TokenService {
     this.cookieService.remove('token');
   }
 
+  zaaktualizujToken(dane: any) {
+    if (dane['endLifeTime'] != undefined) {
+      this.tokenTerminWaznosci = new Date(dane['endLifeTime']);
+
+      this.stworzCookies()
+    }
+  }
 }

@@ -1,0 +1,32 @@
+$colorRamki: 2px solid #afb0b4;
+.podsumowanieAdministratora {
+  display: flex;
+  justify-content: space-evenly;
+
+  table:nth-child(1) {
+    border-bottom: $colorRamki;
+    border-left: $colorRamki;
+  }
+
+  table:nth-child(2) {
+    border-bottom: $colorRamki;
+
+  }
+
+  table:nth-child(3) {
+
+    border-right: $colorRamki;
+    border-bottom: $colorRamki;
+  }
+
+  table {
+    padding: 10px;
+
+    th {
+      font-size: 15px;
+      letter-spacing: 1px;
+      padding-right: 10px;
+      text-shadow: 0px 0px 1px black;
+    }
+  }
+}

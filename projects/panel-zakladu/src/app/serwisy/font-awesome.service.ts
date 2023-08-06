@@ -12,6 +12,7 @@ import {
   faEyeSlash,
   faFlag,
   faForward,
+  faGear,
   faHomeUser,
   faPersonThroughWindow,
   faTags,
@@ -66,6 +67,7 @@ export class FontAwesomeService {
     library.addIcons(faEnvelope);
     library.addIcons(faFlag);
     library.addIcons(faX);
+    library.addIcons(faGear);
 
   }
 }

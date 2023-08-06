@@ -1,23 +1,18 @@
-<div class="panelZakladu">
-  <div class=naglowekZolty>
+<div class=naglowekZolty>
     <span
       class="naglowek1Wzoltym">Tu będą informacje o stronie prezentacyjnej</span>
+</div>
+<div class="panelZakladu">
+  <div class="left">
+    <app-strona-reprezentacyjna-ustawienia (odswiez)="OdswiezPodglad()"></app-strona-reprezentacyjna-ustawienia>
   </div>
-  <div class="tabelka">
-    <tr>
-      <td><label for="link">Link do strony reprezentacyjnej: </label></td>
-      <td id="link"><a href="http://kroliczek.localhost:8008">Link do strony</a></td>
-    </tr>
-    <tr>
-      <td>Status strony reprezentacyjnej</td>
-      <td>
-        <ui-switch
-          class="przelacznikPublicznePrywatne"
-          checkedLabel="Włączona"
-          uncheckedLabel="Wyłączona"
-        ></ui-switch>
-      </td>
-    </tr>
+  <div class="right">
+    <h3>Podgląd strony reklamowej:</h3>
+    <div class="iframe-container">
+      <iframe [src]="bezpiecznyLink" *ngIf="bezpiecznyLink != ''"
+              frameborder="0"></iframe>
+    </div>
+
 
   </div>
 </div>

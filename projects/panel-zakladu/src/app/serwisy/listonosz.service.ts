@@ -13,6 +13,7 @@ import {HttpError} from "../../../../klasy/httpError";
 export class ListonoszService {
 
   constructor(private listy: ListyService,
+              private token_: TokenService,
               private token: TokenService) {
   }
 
@@ -28,7 +29,7 @@ export class ListonoszService {
       this.listy.pobierz(Drzwi.wylogowanie, opcjeWPudelku).subscribe(
         (next: OdpowiedzPotwierdzajacaPoprawnosc<LogowanieZwracajaceDaneItoken>) => {
           this.token.tokenWartosc = undefined;
-          this.token.tokenTerminWaznosci = undefined;
+          this.token.tokenTerminWaznosci = new Date();
           this.token.usunCiasteczka();
           resolve(next)
         },
@@ -43,7 +44,8 @@ export class ListonoszService {
       this.listy.wyslij(Drzwi.logowanie, zawartosc, {}).subscribe(
         (next: OdpowiedzPotwierdzajacaPoprawnosc<LogowanieZwracajaceDaneItoken>) => {
           this.token.tokenWartosc = next.value?.token?.value;
-          this.token.tokenTerminWaznosci = next.value?.token?.endLifeTime;
+          // @ts-ignore
+          this.token.tokenTerminWaznosci = new Date(next.value.token.endLifeTime)
           this.token.tokenGrupy = next.value?.userData?.grupy.map(k => k.groupId)
 
           this.token.stworzCookies();
@@ -66,6 +68,7 @@ export class ListonoszService {
     }
     return new Promise((resolve, reject) => {
       this.listy.wyslij(drzwi, zawartosc, opcjeWPudelku).subscribe((next: OdpowiedzPotwierdzajacaPoprawnosc<any>) => {
+
           resolve(next.value)
         },
         (error: HttpError) => {
@@ -87,6 +90,7 @@ export class ListonoszService {
     }
     return new Promise((resolve, reject) => {
       this.listy.usun(drzwi, opcjeWPudelku).subscribe((next: OdpowiedzPotwierdzajacaPoprawnosc<any>) => {
+          this.token_.zaaktualizujToken(next.token)
           resolve(next.value)
         },
         (error: HttpError) => {
@@ -109,6 +113,7 @@ export class ListonoszService {
 
     return new Promise((resolve, reject) => {
       this.listy.pobierz(drzwi, opcjeWPudelku).subscribe((next: OdpowiedzPotwierdzajacaPoprawnosc<any>) => {
+          this.token_.zaaktualizujToken(next.token)
           resolve(next.value)
         },
         (error: HttpError) => {
@@ -128,6 +133,7 @@ export class ListonoszService {
     }
     return new Promise((resolve, reject) => {
       this.listy.aktualizuj(drzwi, zawartosc, opcjeWPudelku).subscribe((next: OdpowiedzPotwierdzajacaPoprawnosc<any>) => {
+          this.token_.zaaktualizujToken(next.token)
           resolve(next.value)
         },
         (error: HttpError) => {

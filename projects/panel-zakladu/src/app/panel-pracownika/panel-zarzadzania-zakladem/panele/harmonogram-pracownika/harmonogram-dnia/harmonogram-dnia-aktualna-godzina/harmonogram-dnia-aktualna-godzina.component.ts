@@ -31,13 +31,14 @@ export class HarmonogramDniaAktualnaGodzinaComponent implements OnInit, OnDestro
     this.lewo = minuty * (this.wysokosc / (this.godzinaZakonczenia * 60)) - 10
 
     const rozpoczecie = new Date().setHours(this.godzinaRozpoczecia)
-    const zakonczenie = new Date().setHours(this.godzinaZakonczenia)
+    const zakonczenie = new Date().setHours(this.godzinaZakonczenia + this.godzinaRozpoczecia, 0, 0, 0)
+
     if (data.getTime() < rozpoczecie || data.getTime() > zakonczenie) {
       this.widocznosc = false
     } else {
       this.widocznosc = true
     }
-    this.widocznosc = true
+
   }
 
   ngOnDestroy() {

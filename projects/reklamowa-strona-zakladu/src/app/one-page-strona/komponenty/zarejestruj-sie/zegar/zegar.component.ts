@@ -1,18 +1,26 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, PLATFORM_ID} from '@angular/core';
+import {isPlatformBrowser} from "@angular/common";
 
 @Component({
   selector: 'app-zegar',
   templateUrl: './zegar.component.html',
   styleUrls: ['./zegar.component.scss']
 })
-export class ZegarComponent implements OnInit{
+export class ZegarComponent implements OnInit {
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+  ) {
+  }
+
   ngOnInit() {
-    this.initLocalClocks()
-setInterval(()=>{
-  this.initLocalClocks()
-},600000 ) //10 minut
-    this.setUpMinuteHands()
-    this.moveSecondHands()
+    if (isPlatformBrowser(this.platformId)) {
+      this.initLocalClocks()
+      setInterval(() => {
+        this.initLocalClocks()
+      }, 600000) //10 minut
+      this.setUpMinuteHands()
+      this.moveSecondHands()
+    }
   }
 
 
@@ -55,11 +63,11 @@ setInterval(()=>{
     }
   }
 
-    setUpMinuteHands() {
+  setUpMinuteHands() {
     // Find out how far into the minute we are
     var containers = document.querySelectorAll('.minutes-container');
     var secondAngle = containers[0].getAttribute("data-second-angle");
-    if(secondAngle == null) {
+    if (secondAngle == null) {
       console.log(1)
       return
     }
@@ -72,7 +80,7 @@ setInterval(()=>{
     }
   }
 
-  moveMinuteHands(containers:any) {
+  moveMinuteHands(containers: any) {
     for (var i = 0; i < containers.length; i++) {
       containers[i].style.webkitTransform = 'rotateZ(6deg)';
       containers[i].style.transform = 'rotateZ(6deg)';
@@ -94,7 +102,7 @@ setInterval(()=>{
 
   moveSecondHands() {
     var containers = document.querySelectorAll('.seconds-container');
-    setInterval(function() {
+    setInterval(function () {
       for (var i = 0; i < containers.length; i++) {
         // @ts-ignore
         if (containers[i].angle === undefined) {
@@ -105,9 +113,9 @@ setInterval(()=>{
           containers[i].angle += 6;
         }
         // @ts-ignore
-        containers[i].style.webkitTransform = 'rotateZ('+ containers[i].angle +'deg)';
+        containers[i].style.webkitTransform = 'rotateZ(' + containers[i].angle + 'deg)';
         // @ts-ignore
-        containers[i].style.transform = 'rotateZ('+ containers[i].angle +'deg)';
+        containers[i].style.transform = 'rotateZ(' + containers[i].angle + 'deg)';
       }
     }, 1000);
   }

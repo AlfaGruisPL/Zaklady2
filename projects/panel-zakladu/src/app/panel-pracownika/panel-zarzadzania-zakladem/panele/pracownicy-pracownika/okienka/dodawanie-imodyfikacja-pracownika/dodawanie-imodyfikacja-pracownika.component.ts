@@ -90,9 +90,7 @@ export class DodawanieIModyfikacjaPracownikaComponent {
   }
 
   private async wyslijZdjecie(id: number) {
-
     if (this.formData != undefined) {
-
       try {
         await this.listonosz.wyslij("/pliki/zdjecieProfilowe/" + id, this.formData)
         this.komunikaty.zdjecieProfiloweZmodyfikowane();

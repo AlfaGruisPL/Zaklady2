@@ -1,0 +1,29 @@
+<div class="tabelka">
+  <tr>
+    <td><label for="link">Link do strony reprezentacyjnej: </label></td>
+    <td id="link"><a href="http://kroliczek.localhost:8008">Link do strony</a></td>
+  </tr>
+  <tr>
+    <td>Status strony reprezentacyjnej</td>
+    <td>
+      <ui-switch
+        class="przelacznikPublicznePrywatne"
+        checkedLabel="Włączona"
+        uncheckedLabel="Wyłączona"
+        [(ngModel)]="ustawienia.stronaReklamowaPrzelacznik"
+      ></ui-switch>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      Zdjęcie banneru
+    </th>
+    <td>
+      <input type="file" (change)="wybierzPlik($event)">
+      <img class="bannerImg" *ngIf="zdjecieBanerRefresh"
+           [src]="environment.linkDoBaneruStronyReklamowej+zdjecieBanerRefresh">
+    </td>
+  </tr>
+
+</div>
+<input type="button" value="Zapisz" (click)="zapisz()">

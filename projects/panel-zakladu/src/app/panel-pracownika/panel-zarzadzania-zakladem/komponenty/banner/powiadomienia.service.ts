@@ -2,19 +2,30 @@ import {Injectable} from '@angular/core';
 import {ListonoszService} from "../../../../serwisy/listonosz.service";
 import {Drzwi} from "../../../../enum/drzwi";
 import {Powiadomienie} from "../../../../klasy/panelPracownika/powiadomienie";
+import {KomunikatyService} from "../../../../serwisy/komunikaty.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PowiadomieniaService {
-  powiadomienia: Powiadomienie[] = []
+  powiadomieniaZakladu: Powiadomienie[] = []
+  powiadomieniaUzytkownika: Powiadomienie[] = []
 
-  constructor(private listonosz: ListonoszService) {
+  powiadomieniaPierwszyRaz = false;
+  powiadomieniaPierwszyRazUzytkownika = false;
+
+
+  constructor(private listonosz: ListonoszService, private komunikaty_: KomunikatyService) {
   }
 
   private powiadomieniaInteral: any;
 
+  zatrzymajPobieraniePowiadomien() {
+    clearInterval(this.powiadomieniaInteral)
+  }
+
   async pobierzPowiadomienia() {
+
     await this.pobierzPowiadomieniaInterval()
     this.powiadomieniaInteral = setInterval(async () => {
       await this.pobierzPowiadomieniaInterval()
@@ -24,16 +35,36 @@ export class PowiadomieniaService {
   private async pobierzPowiadomieniaInterval() {
     try {
       const wynik = await this.listonosz.pobierz(Drzwi.listaPowiadomienDlaZakladu)
-      this.powiadomienia = wynik;
+      if (JSON.stringify(this.powiadomieniaZakladu) != JSON.stringify(wynik)) {
+        if (this.powiadomieniaPierwszyRaz) {
+          this.komunikaty_.nowePowiadomienia()
+        }
+        this.powiadomieniaPierwszyRaz = true
+        this.powiadomieniaZakladu = wynik;
+      }
     } catch (error) {
+      console.warn("Błąd pobierania powiadomień dla administratora ", error)
+    }
 
+
+    try {
+      const wynik = await this.listonosz.pobierz(Drzwi.listaPowiadomienDlaUzytkownika)
+      if (JSON.stringify(this.powiadomieniaUzytkownika) != JSON.stringify(wynik)) {
+        if (this.powiadomieniaPierwszyRazUzytkownika) {
+          this.komunikaty_.nowePowiadomienia()
+        }
+        this.powiadomieniaPierwszyRazUzytkownika = true
+        this.powiadomieniaUzytkownika = wynik;
+      }
+    } catch (error) {
+      console.warn("Błąd pobierania powiadomień dla uzytkownika ", error)
     }
   }
 
-  public usunPowiadomienie(powiadomienie: Powiadomienie) {
+  public usunPowiadomienieZakladu(powiadomienie: Powiadomienie) {
     powiadomienie.usuniete = true
     setTimeout(() => {
-      this.powiadomienia = this.powiadomienia.filter(k => k.id != powiadomienie.id)
+      this.powiadomieniaZakladu = this.powiadomieniaZakladu.filter(k => k.id != powiadomienie.id)
     }, 500)
     this.listonosz.usun(Drzwi.listaPowiadomienUsunPowiadomienie + powiadomienie.id).then(k => {
 
@@ -42,17 +73,47 @@ export class PowiadomieniaService {
     })
   }
 
-  nieOdczytanePowiadomienia() {
-    return this.powiadomienia.filter(k => !k.odczytane)
+  nieOdczytanePowiadomieniaZakladu() {
+    return this.powiadomieniaZakladu.filter(k => !k.odczytane)
   }
 
-  nieUsunietePowiadomienia() {
-    return this.powiadomienia.filter(k => !k.usuniete)
+  nieUsunietePowiadomieniaZakladu() {
+    return this.powiadomieniaZakladu.filter(k => !k.usuniete)
   }
 
-  public odczytajPowiadomienie(powiadomienie: Powiadomienie) {
+  public odczytajPowiadomienieZakladu(powiadomienie: Powiadomienie) {
     powiadomienie.odczytane = true
     this.listonosz.usun(Drzwi.listaPowiadomienOdczytajPowiadomienie + powiadomienie.id).then(k => {
+
+    }).catch(error => {
+
+    })
+  }
+
+
+  public usunPowiadomienieUzytkownika(powiadomienie: Powiadomienie) {
+    powiadomienie.usuniete = true
+    setTimeout(() => {
+      this.powiadomieniaUzytkownika = this.powiadomieniaUzytkownika.filter(k => k.id != powiadomienie.id)
+    }, 500)
+    this.listonosz.usun(Drzwi.listaPowiadomienUzytkownikaUsunPowiadomienie + powiadomienie.id).then(k => {
+
+    }).catch(error => {
+
+    })
+  }
+
+  nieOdczytanePowiadomieniaUzytkownika() {
+    return this.powiadomieniaUzytkownika.filter(k => !k.odczytane)
+  }
+
+  nieUsunietePowiadomieniaUzytkownika() {
+    return this.powiadomieniaUzytkownika.filter(k => !k.usuniete)
+  }
+
+  public odczytajPowiadomienieUzytkownika(powiadomienie: Powiadomienie) {
+    powiadomienie.odczytane = true
+    this.listonosz.usun(Drzwi.listaPowiadomienUzytkownikaOdczytajPowiadomienie + powiadomienie.id).then(k => {
 
     }).catch(error => {
 

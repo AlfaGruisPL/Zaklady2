@@ -6,4 +6,5 @@ export enum Drzwi {
   listaPracownikowRejestracja = 'wizyty/listaPracownikow',
   danePodstawowe = 'stronaReklamowa/danePodstawowe',
   pobierzTerminy = 'stronaReklamowa/wizyty/terminyWizyt',
+  informacjeOWizycieDoOdwolania = 'stronaReklamowa/wizyty/odwolanie/informacje/'
 }

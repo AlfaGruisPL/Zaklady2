@@ -46,8 +46,17 @@ export enum Drzwi {
   listaKlientow = "/klienci/lista",
 
 
-  //powiadomienia
+  //powiadomienia zakładu
   listaPowiadomienDlaZakladu = '/powiadomienia',
   listaPowiadomienOdczytajPowiadomienie = '/powiadomienia/odczytaj/',
-  listaPowiadomienUsunPowiadomienie = '/powiadomienia/usun/'
+  listaPowiadomienUsunPowiadomienie = '/powiadomienia/usun/',
+
+  //powiadomienia uzytkownika
+  listaPowiadomienDlaUzytkownika = '/powiadomieniaUzytkownika',
+  listaPowiadomienUzytkownikaUsunPowiadomienie = '/powiadomieniaUzytkownika/usun/',
+  listaPowiadomienUzytkownikaOdczytajPowiadomienie = '/powiadomieniaUzytkownika/odczytaj/',
+
+//strona reklamowa
+  UstawieniaStronyReklamowej = '/stronaReklamowaDane/ustawieniaStronyReklamowej',
+
 }

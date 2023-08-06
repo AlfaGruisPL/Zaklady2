@@ -1,0 +1,68 @@
+section {
+  background-color: #fcfcfc;
+  width: 100%;
+  float: left;
+}
+
+
+header {
+  height: 100%;
+
+  h1 {
+    font-size: 35px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: brown;
+    text-shadow: 1px 1px 1px brown;
+    font-family: math;
+    text-align: center;
+  }
+}
+
+.tresc {
+  display: flex;
+  justify-content: center;
+
+  table {
+    tr {
+      th {
+        padding-right: 40px;
+      }
+    }
+  }
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  padding-left: 300px;
+  padding-bottom: 30px;
+
+  button {
+    margin-left: 20px;
+  }
+}
+
+.parallax1 {
+  background-image: url("../../../../assets/tlo1.png");
+  height: 5px;
+  width: 100%;
+  float: left;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.parallax {
+  background-image: url("../../../../assets/tlo1.png");
+  height: 20px;
+  width: 100%;
+  float: left;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+

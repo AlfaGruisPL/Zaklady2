@@ -322,7 +322,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/reklamowa-strona-zakladu",
+            "outputPath": "dist/reklamowaStronaZakladu/browser",
             "index": "projects/reklamowa-strona-zakladu/src/index.html",
             "main": "projects/reklamowa-strona-zakladu/src/main.ts",
             "polyfills": [
@@ -352,7 +352,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -418,6 +418,73 @@
             ],
             "scripts": []
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/reklamowaStronaZakladu/server",
+            "main": "projects/reklamowa-strona-zakladu/server.ts",
+            "tsConfig": "projects/reklamowa-strona-zakladu/tsconfig.server.json",
+            "inlineStyleLanguage": "scss"
+          },
+          "configurations": {
+            "inlineCritical": false,
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "projects/reklamowa-strona-zakladu/src/environments/environment.ts",
+                  "with": "projects/reklamowa-strona-zakladu/src/environments/environment.dev.ts"
+                }
+              ]
+            },
+            "development": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/reklamowa-strona-zakladu/src/environments/environment.ts",
+                  "with": "projects/reklamowa-strona-zakladu/src/environments/environment.dev.ts"
+                }
+              ],
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "vendorChunk": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "reklamowaStronaZakladu:build:development",
+              "serverTarget": "reklamowaStronaZakladu:server:development"
+            },
+            "production": {
+              "browserTarget": "reklamowaStronaZakladu:build:production",
+              "serverTarget": "reklamowaStronaZakladu:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "reklamowaStronaZakladu:build:production",
+              "serverTarget": "reklamowaStronaZakladu:server:production"
+            },
+            "development": {
+              "browserTarget": "reklamowaStronaZakladu:build:development",
+              "serverTarget": "reklamowaStronaZakladu:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

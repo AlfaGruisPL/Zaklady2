@@ -34,6 +34,7 @@ export class MojZakladPracownikaComponent implements OnInit {
 
   ngOnInit() {
     this.pobieranieDanych();
+
   }
 
   pobieranieDanych() {
@@ -76,7 +77,18 @@ export class MojZakladPracownikaComponent implements OnInit {
     this.listonosz
       .wyslij(Drzwi.daneMojZakladPracownik, dane)
       .then((udane) => {
+        if (typeof udane == 'string') {
+          if (udane.split('_')[0] == 'reload') {
+            const okno = this.komunikaty.zmianaIdentyfikatoraPrzekierowanie()
+            okno.onHidden.subscribe(k => {
+              window.location.replace("http://parametr.localhost:8005/#/" + udane.split('_')[1]);
+
+            })
+          }
+
+        }
         this.komunikaty.modyfikacjaUdana();
+        console.log(udane)
 
       })
       .catch((blad: HttpError) => {

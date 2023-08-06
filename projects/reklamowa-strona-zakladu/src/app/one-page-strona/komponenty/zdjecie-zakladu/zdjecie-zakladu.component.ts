@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-zdjecie-zakladu',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./zdjecie-zakladu.component.scss']
 })
 export class ZdjecieZakladuComponent {
-
+  env = environment
 }

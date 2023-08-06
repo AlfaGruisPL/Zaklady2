@@ -12,6 +12,27 @@ export class KomunikatyService {
   constructor(private komunikaty: ToastrService) {
   }
 
+
+  public zmianaIdentyfikatoraPrzekierowanie() {
+    return this.komunikaty.warning("Zmiana identyfikatora wymusza przekierowanie na tymczasowy adres panelu administratora.  <br><span class='powiadomienieCiemnyText'>Nowy adres jest w trakcie przetwarzania i proces tem może zająć od kilku minut do kilku godzin<br>Automatyczne przekierowanie nastąpi po zniknięciu tego komunikatu.</span>", "Zmiana identyfikatora",
+      {
+        positionClass: "toast-top-full-width",
+        enableHtml: true,
+        extendedTimeOut: 20000,
+        progressBar: true,
+        timeOut: 15000,
+        tapToDismiss: false
+      });
+  }
+
+  public automatyczneWylogowanie() {
+    this.komunikaty.warning("Nastąpiło automatyczne wylogowanie. Zaloguj się ponownie aby móc dalej korzystać z systemu.", 'Automatyczne wylogowanie!!');
+  }
+
+  public nowePowiadomienia() {
+    this.komunikaty.info("Nowe powiadomienia !!!", 'Powiadomienia');
+  }
+
   public komunikatUdane(udane: Udane) {
     this.komunikaty.success(udane, 'Udane');
   }
@@ -22,7 +43,9 @@ export class KomunikatyService {
 
   public ZmianaIdentyfikatora() {
     this.komunikaty.info("Zmiana identyfiaktora możliwa jest co 5 minut", "UWAGA", {timeOut: 10000})
-    this.komunikaty.info("Zmiana identyfikatora zmienia adres logowania do wszystkiego ", "UWAGA", {timeOut: 10000})
+    this.komunikaty.warning("Zmiana identyfikatora zmienia adres logowania do wszystkiego. Może spowodować brak dostępu do panelu administratora przez czas od kilku minut do kilku godzin", "UWAGA", {
+      timeOut: 20000
+    })
   }
 
   public uslugaSmsWlaczona() {

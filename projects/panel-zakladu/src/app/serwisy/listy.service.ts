@@ -14,6 +14,8 @@ export class ListyService {
   }
 
   private PrzygotwujId() {
+
+
     var parametr = '';
     if (this.identyfikatorWParametrze.length > 0) {
       parametr = '?identyfikator=' + this.identyfikatorWParametrze
