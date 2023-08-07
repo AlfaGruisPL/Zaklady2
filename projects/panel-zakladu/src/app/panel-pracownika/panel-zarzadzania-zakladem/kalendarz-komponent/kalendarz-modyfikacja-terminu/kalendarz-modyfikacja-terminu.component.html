@@ -1,0 +1,86 @@
+<div class="modal-header">
+  <h4 class="modal-title">Rejestracja wizyty:</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close('Nie')"></button>
+</div>
+<form [formGroup]="formualrzRejestracjiWizyty" (ngSubmit)="wyslij()">
+
+  <div class="modal-body">
+    <table>
+      <tr>
+        <td>
+          Klient*:
+        </td>
+        <td>
+          <input placeholder="imie" formControlName="imie">
+          <input placeholder="nazwisko" formControlName='nazwisko'>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Termin*:
+        </td>
+        <td>
+          <input type="date" formControlName='termin'>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Godziny*:
+        </td>
+        <td>
+          <input type="time" value="12:12" formControlName='poczatek'> <input type="time" formControlName='koniec'>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Telefon*:
+        </td>
+        <td>
+          <select type="text" formControlName='prefix'>
+            <option>+48</option>
+            <option>+380</option>
+          </select><input type="tel" formControlName='telefon'>
+        </td>
+
+      </tr>
+      <tr>
+        <td>Email:</td>
+        <td><input type="email" formControlName='email'></td>
+      </tr>
+      <tr>
+        <th>Konifguracja</th>
+        <td>Ręczna: <input type="radio" name="type" value="manual" (click)="zmianaOkna($event)" [(ngModel)]="tryb"
+                           [ngModelOptions]="{standalone: true}">
+          &nbsp; &nbsp;Automatyczna:
+          <input type="radio" (click)="zmianaOkna($event)" [(ngModel)]="tryb" [ngModelOptions]="{standalone: true}"
+                 name="type"
+                 value="auto"></td>
+
+      </tr>
+      <tr>
+        <th>Cena</th>
+        <td><input type="number" formControlName="cena" style="width: 100px">zł</td>
+      </tr>
+    </table>
+    <div class="auto" *ngIf="tryb =='auto'"><h4>Usługi ({{obliczCene()}}zł)</h4>
+      <div class="listaUslug">
+
+        <ul>
+          <li *ngFor="let usluga of uslugi_.listaUslug">
+            <input type="checkbox" (click)="klikniecie($event,usluga)">&nbsp;{{usluga.nazwa}}</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+
+    Otworzenie wizyty jest jednoznaczne z powiadomieniem użytkownika z utworzeniem wizyty.
+    <button type="button" (click)="activeModal.close('anuluj')">
+      Anuluj
+    </button>
+    <button type="submit" [disabled]="formualrzRejestracjiWizyty.invalid">Zarejestruj</button>
+
+
+  </div>
+</form>

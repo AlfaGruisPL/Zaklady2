@@ -1,36 +1,65 @@
 <div class="podsumowanieAdministratora">
+  <h4>Podsumowanie dla zakładu:</h4>
   <table style="display: inline-block">
     <tr>
       <th>Stan konta:</th>
-      <td>55zł</td>
+      <td>{{HarmonogramDaneDlaAdministratora.konto / 100}}zł</td>
     </tr>
-    <tr>
-      <th>
-        Zarezerwowane wizyty:
-      </th>
-      <td>
-        33
-      </td>
-    </tr>
-  </table>
-  <table style="display: inline-block">
     <tr>
       <th>Subskrypcja ważna do:</th>
-      <td>04.08.2023</td>
+      <td>{{HarmonogramDaneDlaAdministratora.subskrypcjaDo | date:'dd.MM.yyyy'}}</td>
     </tr>
     <tr>
       <th>Lorem ipsum dolor.</th>
       <td>Lorem ipsum dolor.</td>
     </tr>
+    <tr>
+      <th>Lorem ipsum dolor.</th>
+      <td>Lorem ipsum dolor.</td>
+    </tr>
+
+  </table>
+  <table style="display: inline-block">
+
+    <tr>
+      <th>Lorem ipsum dolor.</th>
+      <td>Lorem ipsum dolor.</td>
+    </tr>
+
+    <tr>
+      <th>
+        Zarezerwowane wizyty:
+      </th>
+      <td>
+        {{HarmonogramDaneDlaAdministratora.zrealizowaneWizyty}}
+      </td>
+    </tr>
+    <tr>
+      <th>Lorem ipsum dolor.</th>
+      <td>Lorem ipsum dolor.</td>
+    </tr>
+    <tr>
+      <th>Lorem ipsum dolor.</th>
+      <td>Lorem ipsum dolor.</td>
+    </tr>
+
   </table>
   <table style="display: inline-block">
     <tr>
+      <th>Wizyty dziś:</th>
+      <td>{{HarmonogramDaneDlaAdministratora.wizytyDzis}}</td>
+    </tr>
+    <tr>
       <th>Wizyty w tym tygodniu:</th>
-      <td>12</td>
+      <td>{{HarmonogramDaneDlaAdministratora.wizytyWTymTygodniu}}</td>
     </tr>
     <tr>
       <th>Wizyty w tym miesiącu:</th>
-      <td>43</td>
+      <td>{{HarmonogramDaneDlaAdministratora.wizytyWTymMiesiacu}}</td>
+    </tr>
+    <tr>
+      <th>Suma zarezerwowanych wizyty:</th>
+      <td>{{HarmonogramDaneDlaAdministratora.zarezerwowaneWizyty}}</td>
     </tr>
   </table>
 </div>

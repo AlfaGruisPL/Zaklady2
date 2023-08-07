@@ -29,6 +29,7 @@
           [ngClass]="{powiadomienieAnimacja:powiadomienia_.nieOdczytanePowiadomieniaZakladu().length>0}"
           (document:click)="zamkniecie($event,ngbPopover,'powiadomienieZakladu_button');"
           [ngbPopover]="powiadomieniaZakladuTresc"
+          *ngIf="token_.czyWlasciciel()"
           [autoClose]="false"
           triggers="manual"
           #ngbPopover="ngbPopover"

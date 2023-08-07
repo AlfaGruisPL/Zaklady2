@@ -12,6 +12,11 @@ export class TokenService {
   constructor(private cookieService: CookieService) {
   }
 
+
+  czyWlasciciel() {
+    return this.tokenGrupy?.find(k => k == 2) != undefined
+  }
+
   public stworzCookies() {
     if (this.tokenWartosc != undefined) {
       this.cookieService.put('grupy', JSON.stringify(this.tokenGrupy), {expires: this.tokenTerminWaznosci})
@@ -34,6 +39,7 @@ export class TokenService {
 
   zaaktualizujToken(dane: any) {
     if (dane['endLifeTime'] != undefined) {
+      console.log(dane['endLifeTime'])
       this.tokenTerminWaznosci = new Date(dane['endLifeTime']);
 
       this.stworzCookies()

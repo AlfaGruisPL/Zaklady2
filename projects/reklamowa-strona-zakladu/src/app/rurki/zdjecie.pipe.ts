@@ -8,7 +8,7 @@ export class ZdjeciePipe implements PipeTransform {
   constructor(private nav: NawigacjaService) {
   }
 
-  transform(value: unknown, ...args: unknown[]): unknown {
+  transform(value: unknown, ...args: unknown[]): string {
     return value + "?random=" + this.nav.losowaLiczba;
   }
 

@@ -17,13 +17,13 @@
       <span> Moje konto </span>
     </li>
   </a>
-  <a [routerLink]="['mojZaklad']" routerLinkActive="aktywneMenu">
+  <a [routerLink]="['mojZaklad']" routerLinkActive="aktywneMenu" *ngIf="token_.czyWlasciciel()">
     <li>
       <fa-icon [icon]="ikonki.wiezowiec"></fa-icon>
       <span> Mój zakład </span>
     </li>
   </a>
-  <a [routerLink]="['uslugi']" routerLinkActive="aktywneMenu">
+  <a [routerLink]="['uslugi']" routerLinkActive="aktywneMenu" *ngIf="token_.czyWlasciciel()">
     <li>
       <fa-icon [icon]="ikonki.tag"></fa-icon>
       <span> Usługi </span>
@@ -35,7 +35,7 @@
       <span> Zarejestrowane wizyty </span>
     </li>
   </a>
-  <a [routerLink]="['zarzadzaniePracownikami']" routerLinkActive="aktywneMenu">
+  <a [routerLink]="['zarzadzaniePracownikami']" routerLinkActive="aktywneMenu" *ngIf="token_.czyWlasciciel()">
     <li>
       <fa-icon [icon]="ikonki.czlowieczki"></fa-icon>
       <span> Pracownicy </span>
@@ -48,20 +48,20 @@
     </li>
   </a>
 
-  <a [routerLink]="['platnosci']" routerLinkActive="aktywneMenu">
+  <a [routerLink]="['platnosci']" routerLinkActive="aktywneMenu" *ngIf="token_.czyWlasciciel()">
     <li>
       <fa-icon [icon]="ikonki.kartaPlatnicza"></fa-icon>
       <span> Płatności </span>
     </li>
   </a>
-  <a [routerLink]="['sms']" routerLinkActive="aktywneMenu">
+  <a [routerLink]="['sms']" routerLinkActive="aktywneMenu" *ngIf="token_.czyWlasciciel()">
     <li>
       <fa-icon [icon]="ikonki.sms"></fa-icon>
       <span> Usługa SMS </span>
     </li>
   </a>
   <a
-    [routerLink]="['stronaReprezentacyjnaUstawienia']"
+    [routerLink]="['stronaReprezentacyjnaUstawienia']" *ngIf="token_.czyWlasciciel()"
     routerLinkActive="aktywneMenu"
   >
     <li>

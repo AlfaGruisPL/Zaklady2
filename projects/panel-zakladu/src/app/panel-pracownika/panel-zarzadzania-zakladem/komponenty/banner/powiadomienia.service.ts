@@ -1,13 +1,14 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {ListonoszService} from "../../../../serwisy/listonosz.service";
 import {Drzwi} from "../../../../enum/drzwi";
 import {Powiadomienie} from "../../../../klasy/panelPracownika/powiadomienie";
 import {KomunikatyService} from "../../../../serwisy/komunikaty.service";
+import {TokenService} from "../../../../serwisy/token.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class PowiadomieniaService {
+export class PowiadomieniaService implements OnInit {
   powiadomieniaZakladu: Powiadomienie[] = []
   powiadomieniaUzytkownika: Powiadomienie[] = []
 
@@ -15,7 +16,11 @@ export class PowiadomieniaService {
   powiadomieniaPierwszyRazUzytkownika = false;
 
 
-  constructor(private listonosz: ListonoszService, private komunikaty_: KomunikatyService) {
+  constructor(private listonosz: ListonoszService, private komunikaty_: KomunikatyService, private token_: TokenService) {
+  }
+
+  ngOnInit() {
+    this.token_.czyWlasciciel()
   }
 
   private powiadomieniaInteral: any;
@@ -33,19 +38,20 @@ export class PowiadomieniaService {
   }
 
   private async pobierzPowiadomieniaInterval() {
-    try {
-      const wynik = await this.listonosz.pobierz(Drzwi.listaPowiadomienDlaZakladu)
-      if (JSON.stringify(this.powiadomieniaZakladu) != JSON.stringify(wynik)) {
-        if (this.powiadomieniaPierwszyRaz) {
-          this.komunikaty_.nowePowiadomienia()
+    if (this.token_.czyWlasciciel()) {
+      try {
+        const wynik = await this.listonosz.pobierz(Drzwi.listaPowiadomienDlaZakladu)
+        if (JSON.stringify(this.powiadomieniaZakladu) != JSON.stringify(wynik)) {
+          if (this.powiadomieniaPierwszyRaz) {
+            this.komunikaty_.nowePowiadomienia()
+          }
+          this.powiadomieniaPierwszyRaz = true
+          this.powiadomieniaZakladu = wynik;
         }
-        this.powiadomieniaPierwszyRaz = true
-        this.powiadomieniaZakladu = wynik;
+      } catch (error) {
+        console.warn("Błąd pobierania powiadomień dla administratora ", error)
       }
-    } catch (error) {
-      console.warn("Błąd pobierania powiadomień dla administratora ", error)
     }
-
 
     try {
       const wynik = await this.listonosz.pobierz(Drzwi.listaPowiadomienDlaUzytkownika)

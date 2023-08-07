@@ -13,6 +13,9 @@ import {Przerwa} from "../../../klasy/panelPracownika/kalendarz/przerwa.dto";
 import {DzienWolny, DzienWolnyDto} from "../../../klasy/panelPracownika/kalendarz/DzienWolny";
 import {KomunikatyService} from "../../../serwisy/komunikaty.service";
 import {Udane} from "../../../enum/udane";
+import {
+  KalendarzModyfikacjaTerminuComponent
+} from "./kalendarz-modyfikacja-terminu/kalendarz-modyfikacja-terminu.component";
 
 @Injectable({
   providedIn: 'root'
@@ -142,7 +145,20 @@ export class KalendarzKomponentService {
   }
 
   public nowaWizyta(dzien: DzienTygodnia, index: number) {
+    const okno = this.modal.open(KalendarzModyfikacjaTerminuComponent)
+    const k = dzien.data;
+    const miesiac = (k.getMonth() + 1) < 10 ? '0' + (k.getMonth() + 1) : (k.getMonth() + 1);
+    const dzien2 = k.getDate() < 10 ? '0' + k.getDate() : k.getDate();
+    const termin = dzien.data.getFullYear() + '-' + miesiac + "-" + dzien2
 
+    okno.componentInstance.formualrzRejestracjiWizyty.patchValue(
+      {
+        termin: termin, poczatek: this.godzina(index),
+        koniec: this.godzina(index + 2)
+      })
+    okno.closed.subscribe(k => {
+      this.pobierzDane()
+    })
   }
 
   public godzina(index: number) {

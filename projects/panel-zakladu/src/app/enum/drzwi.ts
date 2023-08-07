@@ -39,11 +39,21 @@ export enum Drzwi {
 
   wizytyDzis = '/wizyty/wizytyDzis',
 
+
   kalendarzTerminowPrzerwa = 'kalendarzTerminow/przerwa',
+  kalendarzRejestracjaWizytyZPanelu = '/kalendarzTerminow/rejestracjaWizyty',
+
+
   kalendarzTerminowDniWolneIPrzerwyZakladu = '/dniWolnePrzerwy',
   kalendarzOznaczJakoDzienWolny = '/dniWolne/dzienWolny',
   kalendarzOznaczJakoDzienPracy = '/dniWolne/dzienPracy',
+
+
   listaKlientow = "/klienci/lista",
+
+
+  //harmonogram dnia
+  harmonogramDniaInformacjeDlaAdministratora = '/panelPracownika/harmonogram/daneDlaAdministratora',
 
 
   //powiadomienia zakładu
@@ -58,5 +68,8 @@ export enum Drzwi {
 
 //strona reklamowa
   UstawieniaStronyReklamowej = '/stronaReklamowaDane/ustawieniaStronyReklamowej',
+  banerStronyReklamowej = "/pliki/banerStronyReklamowej",
+  logoStronyReklamowej = "/pliki/logoStronyReklamowej",
+
 
 }

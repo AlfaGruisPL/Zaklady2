@@ -68,6 +68,7 @@ export class ListonoszService {
     }
     return new Promise((resolve, reject) => {
       this.listy.wyslij(drzwi, zawartosc, opcjeWPudelku).subscribe((next: OdpowiedzPotwierdzajacaPoprawnosc<any>) => {
+          this.token_.zaaktualizujToken(next.token)
 
           resolve(next.value)
         },

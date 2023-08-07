@@ -9,12 +9,12 @@
   z-index: 110;
 
   .logoINazwaZakladu {
-    width: 30%;
+    width: 60%;
     height: 100%;
     float: left;
 
     .logo {
-      width: 30%;
+      width: 10%;
       height: 100%;
       display: flex;
       justify-content: center;
@@ -30,7 +30,7 @@
 
     .nazwa {
       float: left;
-      width: 70%;
+      width: 90%;
       height: 100%;
       display: flex;
       align-items: center;
@@ -45,7 +45,7 @@
   }
 
   .menu {
-    width: 60%;
+    width: 40%;
     height: 100%;
     display: flex;
     justify-content: center;

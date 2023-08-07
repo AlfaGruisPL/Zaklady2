@@ -711,6 +711,18 @@
             </td>
           </tr>
           <tr>
+            <th>Możliwość płątności kartą</th>
+            <td>
+              <ui-switch
+                class="przelacznikPublicznePrywatne"
+                [disabled]="!zapiszButton"
+                class="unchecked"
+                checkedLabel="tak"
+                uncheckedLabel="nie"
+              ></ui-switch>
+            </td>
+          </tr>
+          <tr>
             <td>Identyfikator</td>
             <td><input type="text" [disabled]="!zapiszButton || !zmienIdentyfikator"
                        [(ngModel)]="mojZakladKlasa.identyfikator"

@@ -21,6 +21,9 @@ export class StronaReprezentacyjnaUstawieniaComponent {
   bannerZdjecieUrl = new FormData();
   zdjecieBanerRefresh = "?random=" + Math.round(Math.random() * 10000);
 
+  LogoZdjecieUrl = new FormData();
+  LogoZdjecie_formData: undefined | FormData = undefined;
+
   constructor(private listonosz: ListonoszService, private komunikaty: KomunikatyService) {
   }
 
@@ -31,22 +34,15 @@ export class StronaReprezentacyjnaUstawieniaComponent {
     })
   }
 
-  zapisz() {
+  async zapisz() {
     const dane = new UstawieniaStronyReklamowejDto(this.ustawienia)
     this.listonosz.wyslij(Drzwi.UstawieniaStronyReklamowej, dane).then(dane => {
       console.log('udane')
       this.odswiez.emit()
     })
-    if (this.bannerZdjecie_formData != undefined) {
 
-      this.wyslijZdjecie().then(dane => {
-        console.log('udane')
-      }).finally(() => {
-        this.zdjecieBanerRefresh = "?random=" + Math.round(Math.random() * 10000);
+    await this.wyslijZdjecie()
 
-        this.odswiez.emit()
-      })
-    }
   }
 
   wybierzPlik(event: any) {
@@ -54,20 +50,36 @@ export class StronaReprezentacyjnaUstawieniaComponent {
     if (file) {
       this.bannerZdjecie_formData = new FormData();
       this.bannerZdjecie_formData.append("file", file);
-      // @ts-ignore
-      this.bannerZdjecieUrl = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(this.formData.get('file')));
+      //  this.bannerZdjecieUrl = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(this.formData.get('file')));
+    }
+  }
+
+  wybierzPlikLogo(event: any) {
+    const file: File = event.target.files[0];
+    if (file) {
+      this.LogoZdjecie_formData = new FormData();
+      this.LogoZdjecie_formData.append("file", file);
+
     }
   }
 
   private async wyslijZdjecie() {
-    if (this.bannerZdjecie_formData != undefined) {
-      try {
-        await this.listonosz.wyslij("/pliki/banerStronyReklamowej", this.bannerZdjecie_formData)
+    try {
+      if (this.bannerZdjecie_formData != undefined) {
+        await this.listonosz.wyslij(Drzwi.banerStronyReklamowej, this.bannerZdjecie_formData)
         this.komunikaty.zdjecieProfiloweZmodyfikowane();
-      } catch (error) {
-
-        this.komunikaty.zdjecieProfiloweNieZmodyfikowane();
       }
+      console.warn('wysylanie logo')
+      if (this.LogoZdjecie_formData != undefined) {
+        console.warn('wysylanie logo')
+        await this.listonosz.wyslij(Drzwi.logoStronyReklamowej, this.LogoZdjecie_formData)
+        this.komunikaty.zdjecieProfiloweZmodyfikowane();
+      }
+      this.zdjecieBanerRefresh = "?random=" + Math.round(Math.random() * 10000);
+      this.odswiez.emit()
+    } catch (error) {
+      console.error(error)
+      this.komunikaty.zdjecieProfiloweNieZmodyfikowane();
     }
   }
 }

@@ -17,6 +17,7 @@ export class HarmonogramDniaComponent implements OnInit {
   ngOnInit() {
     this.podreczneDane_.danePodreczneObserveble.subscribe(dane => {
       if (dane != undefined) {
+        
         this.generujDzien()
       }
 

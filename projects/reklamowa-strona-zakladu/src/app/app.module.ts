@@ -82,6 +82,8 @@ import {OdwolanieWizytyModule} from "./one-page-strona/komponenty/odwolanie-wizy
 import {StronaWylaczonaComponent} from "./strony/strona-wylaczona/strona-wylaczona.component";
 import {SerwerNieDostepnyComponent} from "./strony/serwer-nie-dostepny/serwer-nie-dostepny.component";
 import {StronaLadowaniaComponent} from "./strony/strona-ladowania/strona-ladowania.component";
+import {IdentyfikatorPipe} from "./rurki/identyfikator.pipe";
+import {SafePipe} from "./rurki/safe.pipe";
 
 @NgModule({
     declarations: [
@@ -114,7 +116,7 @@ import {StronaLadowaniaComponent} from "./strony/strona-ladowania/strona-ladowan
         WeryfikacjaComponent,
         ZegarComponent,
         TerminComponent,
-        ZdjeciePipe,
+        ZdjeciePipe, IdentyfikatorPipe, SafePipe,
         PageNotFoundComponent,
         StopkaComponent,
         StronaWylaczonaComponent,
@@ -137,7 +139,6 @@ import {StronaLadowaniaComponent} from "./strony/strona-ladowania/strona-ladowan
         LeafletModule,
         OdwolanieWizytyModule,
     ],
-    providers: [],
     bootstrap: [AppComponent],
 })
 export class AppModule {

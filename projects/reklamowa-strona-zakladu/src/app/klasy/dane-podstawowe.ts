@@ -1,4 +1,5 @@
 export class DanePodstawowe {
+  public nazwa: string = '';
   public dataZalozenia: Date = new Date();
   public iloscPracownikow: number = 0;
   public NIP: string = '';

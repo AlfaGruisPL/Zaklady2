@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {FontAwesomeService} from "../../../../serwisy/font-awesome.service";
 import {Router} from "@angular/router";
+import {TokenService} from "../../../../serwisy/token.service";
 
 @Component({
   selector: 'app-menu-pracownik',
@@ -8,7 +9,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./menu-pracownik.component.scss']
 })
 export class MenuPracownikComponent {
-  constructor(public ikonki: FontAwesomeService, private router: Router) {
+  constructor(public ikonki: FontAwesomeService, private router: Router, public token_: TokenService) {
   }
 
   /*

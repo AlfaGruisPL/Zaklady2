@@ -43,6 +43,15 @@
                      [icon]="!this.Podglad ? this.fontAwesome.oczko : this.fontAwesome.oczkoZamkniete"></fa-icon>
           </td>
         </tr>
+        <tr>
+          <td><select (change)="latweLogowanie($event)">
+            <option default>Brak</option>
+            <option [value]="['korneliamushak@gmail.com','haslo']">Właściciel</option>
+            <option [value]="['alfagruis@gmail.com','haslo']">ja pracownik</option>
+
+
+          </select></td>
+        </tr>
         <tr *ngIf="!czyPrawidloweDane">
           <td class="czerwoneKomunikaty">Nieprawidłowe dane,spróbuj ponownie!</td>
         </tr>

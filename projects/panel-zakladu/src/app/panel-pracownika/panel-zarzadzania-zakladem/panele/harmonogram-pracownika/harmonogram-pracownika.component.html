@@ -7,7 +7,8 @@
   Witaj {{podreczneDane_.danePodreczneObiekt.zalogowanyUzytkownik?.imie }} {{podreczneDane_.danePodreczneObiekt.zalogowanyUzytkownik?.nazwisko }}
 </h2>
 <hr style="color: gray">
-<app-harmonogram-podsumowanie-administratora></app-harmonogram-podsumowanie-administratora>
+<app-harmonogram-podsumowanie-administratora
+  *ngIf="token_.czyWlasciciel()"></app-harmonogram-podsumowanie-administratora>
 <div class="harmonogram">
   <app-harmonogram-dnia></app-harmonogram-dnia>
 </div>

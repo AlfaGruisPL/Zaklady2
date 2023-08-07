@@ -168,7 +168,6 @@ export class KalendarzKomponentComponent implements OnInit {
 
     const tablica = this.symulatorWolneTerminy.filter((usluga: any) => {
       if (usluga.poczatek.getDate() == data.data.getDate()) {
-        console.log('.')
         if (usluga.poczatek.getFullYear() == data.data.getFullYear()) {
           if (usluga.poczatek.getMonth() == data.data.getMonth()) {
 

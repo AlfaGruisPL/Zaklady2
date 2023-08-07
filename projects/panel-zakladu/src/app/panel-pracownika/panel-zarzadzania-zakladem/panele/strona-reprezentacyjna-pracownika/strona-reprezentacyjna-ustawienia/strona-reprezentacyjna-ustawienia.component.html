@@ -24,6 +24,15 @@
            [src]="environment.linkDoBaneruStronyReklamowej+zdjecieBanerRefresh">
     </td>
   </tr>
+  <tr>
+    <th>Logo zakładu:</th>
+    <td>
+      <input type="file" (change)="wybierzPlikLogo($event)">
+      <img class="bannerImg" *ngIf="zdjecieBanerRefresh"
+           [src]="environment.linkDoLogaStronyReklamowej+zdjecieBanerRefresh">
+    </td>
+  </tr>
+
 
 </div>
 <input type="button" value="Zapisz" (click)="zapisz()">

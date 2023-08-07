@@ -6,6 +6,7 @@ import {KomunikatyService} from "../../../../serwisy/komunikaty.service";
 import {ListonoszService} from "../../../../serwisy/listonosz.service";
 import {PowiadomieniaService} from "./powiadomienia.service";
 import {StraznicyService} from "../../../../straznicy/straznicy.service";
+import {TokenService} from "../../../../serwisy/token.service";
 
 
 @Component({
@@ -20,6 +21,7 @@ export class BannerPracownikComponent implements OnInit, OnDestroy {
               public DanePodreczne: PodreczneDaneService,
               public powiadomienia_: PowiadomieniaService,
               private straznik_: StraznicyService,
+              public token_: TokenService,
               public komunikaty: KomunikatyService,
               private listonosz: ListonoszService) {
   }
@@ -27,6 +29,7 @@ export class BannerPracownikComponent implements OnInit, OnDestroy {
   losowaLiczba = Math.round(Math.random() * 100)
 
   async ngOnInit() {
+    this.token_.czyWlasciciel()
     await this.powiadomienia_.pobierzPowiadomienia()
 
   }

@@ -9,7 +9,7 @@ import {
 import {
   PanelLogowaniaPracownikowComponent
 } from './panel-pracownika/poczatkowy-panel-pracownika/panel-logowania-pracownikow/panel-logowania-pracownikow.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {
   ResetHaslaPracownikowComponent
 } from './panel-pracownika/poczatkowy-panel-pracownika/reset-hasla-pracownikow/reset-hasla-pracownikow.component';
@@ -109,6 +109,9 @@ import {RureczkiModule} from "./rureczki/rureczki.module";
 import {
   StronaReprezentacyjnaModule
 } from "./panel-pracownika/panel-zarzadzania-zakladem/panele/strona-reprezentacyjna-pracownika/strona-reprezentacyjna.module";
+import {
+  KalendarzModyfikacjaTerminuComponent
+} from './panel-pracownika/panel-zarzadzania-zakladem/kalendarz-komponent/kalendarz-modyfikacja-terminu/kalendarz-modyfikacja-terminu.component';
 
 @NgModule({
   declarations: [
@@ -140,7 +143,8 @@ import {
     KalendarzGodzinaKreskaKomponentComponent,
     KalendarzZarzadzanieTerminemComponent,
     KalendarzPrzerwaComponent,
-    InformacjeOKliencieComponent
+    InformacjeOKliencieComponent,
+    KalendarzModyfikacjaTerminuComponent
   ],
   imports: [
     BrowserModule,
@@ -163,7 +167,7 @@ import {
     }),
     NgbModule,
     PlatnosciPracownikaModule,
-    UslugaSmsPracownikaModule, HarmonogramModule
+    UslugaSmsPracownikaModule, HarmonogramModule, ReactiveFormsModule
   ],
   providers: [NgbDropdown,
     provideTippyConfig({

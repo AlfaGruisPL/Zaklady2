@@ -30,6 +30,11 @@ export class PanelLogowaniaPracownikowComponent implements OnInit {
   ngOnInit() {
   }
 
+  latweLogowanie(event: any) {
+    this.email = event.target.value.split(',')[0]
+    this.haslo = event.target.value.split(',')[1]
+  }
+
   public czyDaneWpisane() {
     this.czyWszystkieDaneWpisane = true;
     if (this.email.length > 0) {

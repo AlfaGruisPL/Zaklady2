@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {HarmonogramService} from "./harmonogram.service";
 import {PodreczneDaneService} from "../../../../serwisy/podreczne-dane.service";
+import {TokenService} from "../../../../serwisy/token.service";
 
 @Component({
   selector: 'app-harmonogram-pracownika',
@@ -8,7 +9,7 @@ import {PodreczneDaneService} from "../../../../serwisy/podreczne-dane.service";
   styleUrls: ['./harmonogram-pracownika.component.scss']
 })
 export class HarmonogramPracownikaComponent implements OnInit, OnDestroy {
-  constructor(private harmonogram_: HarmonogramService, public podreczneDane_: PodreczneDaneService) {
+  constructor(private harmonogram_: HarmonogramService, public podreczneDane_: PodreczneDaneService, public token_: TokenService) {
   }
 
   private interval: any;

@@ -1,0 +1,21 @@
+.auto {
+  height: 270px;
+  width: 400px;
+  border-left: 1px solid black;
+
+  .listaUslug {
+    overflow-y: auto;
+    height: 78%;
+  }
+
+  h4 {
+    padding-left: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+.modal-body {
+  display: flex;
+  padding-bottom: 0;
+
+}
