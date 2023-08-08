@@ -61,6 +61,14 @@ export class KalendarzModyfikacjaTerminuComponent implements OnInit {
 
   wyslij() {
     const data = this.formualrzRejestracjiWizyty.value
+    const uslugiId: number[] = []
+    if (this.tryb = 'auto') {
+      this.kliknieteUslugi.forEach(k => {
+        uslugiId.push(k.id)
+      })
+      data['uslugiId'] = uslugiId
+    }
+
     this.listonosz.wyslij(Drzwi.kalendarzRejestracjaWizytyZPanelu, data).then(k => {
       this.activeModal.close()
       console.log(k)
