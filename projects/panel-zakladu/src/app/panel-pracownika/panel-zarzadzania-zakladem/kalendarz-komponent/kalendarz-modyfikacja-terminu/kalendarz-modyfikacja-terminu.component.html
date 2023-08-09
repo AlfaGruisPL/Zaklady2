@@ -57,6 +57,20 @@
                  value="auto"></td>
 
       </tr>
+      <tr *ngIf="token_.czyWlasciciel()">
+        <th>Przypisanie:</th>
+        <td>
+          <select formControlName='wykonawca'>
+
+            <option [defaultSelected]="true" [value]="kalendarz_.wlasciciel.id"
+            >{{kalendarz_.wlasciciel.imie + " " + kalendarz_.wlasciciel.imie}}
+            </option>
+            <option [value]="pracownik.id"
+                    *ngFor="let pracownik of kalendarz_.pracownicy">{{pracownik.imie + " " + pracownik.nazwisko}}
+            </option>
+          </select>
+        </td>
+      </tr>
       <tr>
         <th>Cena</th>
         <td><input type="number" formControlName="cena" style="width: 100px">zł</td>
@@ -72,15 +86,29 @@
       </div>
     </div>
 
+    <div class="manual" *ngIf="tryb =='manual'"><h4>Usługi</h4>
+      <table>
+        <tr>
+          <th>Opis usługi</th>
+          <td><textarea formControlName="opis" placeholder="Opis zaplanowanych usług"></textarea></td>
+        </tr>
+      </table>
+    </div>
+
+
   </div>
   <div class="modal-footer">
+    <p class="info">
+      Utworzenie wizyty jest jednoznaczne z powiadomieniem użytkownika w formie email oraz sms(jeżeli usługa włączona).
+    </p>
 
-    Otworzenie wizyty jest jednoznaczne z powiadomieniem użytkownika z utworzeniem wizyty.
-    <button type="button" (click)="activeModal.close('anuluj')">
-      Anuluj
-    </button>
-    <button type="submit" [disabled]="formualrzRejestracjiWizyty.invalid">Zarejestruj</button>
+    <div>
 
+      <button type="button" (click)="activeModal.close('anuluj')">
+        Anuluj
+      </button>&nbsp;
+      <button type="submit" [disabled]="formualrzRejestracjiWizyty.invalid">Zarejestruj</button>
+    </div>
 
   </div>
 </form>

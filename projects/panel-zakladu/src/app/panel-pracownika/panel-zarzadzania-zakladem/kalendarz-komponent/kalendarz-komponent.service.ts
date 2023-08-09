@@ -16,6 +16,7 @@ import {Udane} from "../../../enum/udane";
 import {
   KalendarzModyfikacjaTerminuComponent
 } from "./kalendarz-modyfikacja-terminu/kalendarz-modyfikacja-terminu.component";
+import {TokenService} from "../../../serwisy/token.service";
 
 @Injectable({
   providedIn: 'root'
@@ -26,12 +27,13 @@ export class KalendarzKomponentService {
   wizyty: Array<Wizyta> = []
   godzinyOtwarcia: GodzinyOtwarcia = new GodzinyOtwarcia();
   wlasciciel = new Pracownik()
+  zalogowanyUzytkownikId = 0
   pracownicy: Partial<Pracownik>[] = []
   wybranyPracownik = -1
   dniWolne: Array<DzienWolny> = []
   przerwyZakladu: Array<Przerwa> = []
 
-  constructor(private modal: NgbModal, private listonosz: ListonoszService, private komunikaty_: KomunikatyService) {
+  constructor(private modal: NgbModal, private token_: TokenService, private listonosz: ListonoszService, private komunikaty_: KomunikatyService) {
   }
 
   public pobierzPodstawoweDane() {
@@ -40,6 +42,7 @@ export class KalendarzKomponentService {
         godzinyOtwarcia: GodzinyOtwarcia,
         pracownicy: Pracownik[],
         wlasciciel: number,
+        zalogowanyUzytkownik: number,
         przerwyZakladu: Przerwa[]
       }) => {
         Object.assign(this.wlasciciel, k.wlasciciel)
@@ -50,9 +53,10 @@ export class KalendarzKomponentService {
             this.pracownicy.push(pracownikObj)
           })
         }
+        this.zalogowanyUzytkownikId = k.zalogowanyUzytkownik
 
 
-        this.wybranyPracownik = this.wlasciciel.id
+        this.wybranyPracownik = this.zalogowanyUzytkownikId
         Object.assign(this.godzinyOtwarcia, k.godzinyOtwarcia)
         this.ObliczGodziny()
         this.pobierzDane()
@@ -145,7 +149,14 @@ export class KalendarzKomponentService {
   }
 
   public nowaWizyta(dzien: DzienTygodnia, index: number) {
-    const okno = this.modal.open(KalendarzModyfikacjaTerminuComponent)
+    if (this.zalogowanyUzytkownikId != this.wybranyPracownik && !this.token_.czyWlasciciel()) {
+      this.komunikaty_.nieMaszUprawnienDoDodaniaWizyty()
+      return
+    }
+    const okno = this.modal.open(KalendarzModyfikacjaTerminuComponent, {
+      size: 'lg',
+      backdrop: 'static'
+    })
     const k = dzien.data;
     const miesiac = (k.getMonth() + 1) < 10 ? '0' + (k.getMonth() + 1) : (k.getMonth() + 1);
     const dzien2 = k.getDate() < 10 ? '0' + k.getDate() : k.getDate();

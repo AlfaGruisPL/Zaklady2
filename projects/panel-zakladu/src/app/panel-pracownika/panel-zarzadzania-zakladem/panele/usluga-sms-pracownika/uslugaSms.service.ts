@@ -31,8 +31,6 @@ export class UslugaSmsService {
       })
       delete k.historia
       Object.assign(this.dane, k)
-      console.log(this.dane)
-
       this.daneObserveble.next(this.dane)
     }).catch(k => {
 

@@ -19,8 +19,16 @@ export class TokenService {
 
   public stworzCookies() {
     if (this.tokenWartosc != undefined) {
-      this.cookieService.put('grupy', JSON.stringify(this.tokenGrupy), {expires: this.tokenTerminWaznosci})
-      this.cookieService.put('token', this.tokenWartosc, {expires: this.tokenTerminWaznosci})
+      this.cookieService.put('grupy', JSON.stringify(this.tokenGrupy), {
+        expires: this.tokenTerminWaznosci,
+        sameSite: 'none',
+        secure: true
+      })
+      this.cookieService.put('token', this.tokenWartosc, {
+        expires: this.tokenTerminWaznosci,
+        sameSite: 'none',
+        secure: true
+      })
     }
   }
 
@@ -39,9 +47,7 @@ export class TokenService {
 
   zaaktualizujToken(dane: any) {
     if (dane['endLifeTime'] != undefined) {
-      console.log(dane['endLifeTime'])
       this.tokenTerminWaznosci = new Date(dane['endLifeTime']);
-
       this.stworzCookies()
     }
   }

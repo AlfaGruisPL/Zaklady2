@@ -1,45 +1,6 @@
 <div class="naglowekZolty">
   <h1 class="naglowek1Wzoltym">Lista klientów</h1>
-
 </div>
-<table class="tablica">
-  <tr>
-    <th>Nr</th>
-    <th>Imię</th>
-    <th>Nazwisko</th>
-    <th>Adres e-mail</th>
-    <th>Numer telefonu</th>
-    <th>Wizyty</th>
-    <th style="width: 125px;">Zarządzanie</th>
-  </tr>
-  <tr *ngFor="let klient of listaKlientow  | slice: (page-1) * pageSize : page * pageSize ;let index = index">
-    <td>{{(listaKlientow.length - index - (pageSize * page) + pageSize)}}  </td>
-    <td>{{klient.imie}}</td>
-    <td>{{klient.nazwisko}}</td>
-    <td>{{klient.email}}</td>
-    <td>{{klient.numerTelefonu}}</td>
-    <td>{{klient.wizyty.length}}</td>
-    <td>
-      <div ngbDropdown container="body">
-        <button type="button" class="btn btn-outline-primary btn-sm" ngbDropdownToggle>Wybierz:</button>
-
-        <div ngbDropdownMenu>
-          <button ngbDropdownItem (click)="wyswietlInformacje(klient)">Wyświetl wizyty</button>
-          <button ngbDropdownItem>Usuń</button>
-        </div>
-      </div>
-
-    </td>
-  </tr>
-</table>
-<div class="paggination">
-  <ngb-pagination
-    [(page)]="page"
-    [pageSize]="pageSize"
-    [collectionSize]="listaKlientow.length"
-    [maxSize]="7"
-    [rotate]="true"
-    [boundaryLinks]="true"
-
-  ></ngb-pagination>
-</div>
+<app-lista-klientow-podsumowanie></app-lista-klientow-podsumowanie>
+<app-lista-klientow-filter></app-lista-klientow-filter>
+<app-lista-klientow-tablica></app-lista-klientow-tablica>

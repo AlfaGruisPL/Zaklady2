@@ -54,7 +54,6 @@ export class BannerPracownikComponent implements OnInit, OnDestroy {
   otworzZakladu(popover: any) {
     popover.open()
     this.popoverUzytkownika = popover
-    this.popoverZakladu.close()
     if (this.popoverZakladu != undefined) {
       this.popoverZakladu.close()
     }

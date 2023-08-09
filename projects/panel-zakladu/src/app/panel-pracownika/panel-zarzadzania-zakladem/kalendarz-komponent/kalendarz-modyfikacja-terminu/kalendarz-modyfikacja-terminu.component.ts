@@ -6,6 +6,8 @@ import {ListonoszService} from "../../../../serwisy/listonosz.service";
 import {Drzwi} from "../../../../enum/drzwi";
 import {UslugiService} from "../../panele/uslugi/uslugi.service";
 import {Usluga} from "../../../../klasy/panelPracownika/usluga/usluga";
+import {KalendarzKomponentService} from "../kalendarz-komponent.service";
+import {TokenService} from "../../../../serwisy/token.service";
 
 @Component({
   selector: 'app-kalendarz-modyfikacja-terminu',
@@ -17,22 +19,28 @@ export class KalendarzModyfikacjaTerminuComponent implements OnInit {
   public tryb = 'manual'
   public wizyta = new Wizyta({})
   kliknieteUslugi: Usluga[] = []
+  formualrzDirty = false
 
   constructor(public activeModal: NgbActiveModal,
               private fb: FormBuilder,
+              public kalendarz_: KalendarzKomponentService,
               private listonosz: ListonoszService,
+              public token_: TokenService,
               public uslugi_: UslugiService) {
     this.formualrzRejestracjiWizyty = this.fb.group({
       imie: ['', [Validators.required]],
       nazwisko: ['', [Validators.required]],
       termin: ['', [Validators.required]],
       poczatek: ['12:00', [Validators.required]],
-      prefix: ['', [Validators.required]],
+      prefix: ['+48', [Validators.required]],
       koniec: ['12:00', [Validators.required]],
       telefon: ['', [Validators.required]],
+      wykonawca: [this.kalendarz_.wlasciciel.id, [Validators.required]],
+      opis: ['', []],
       cena: [0, [Validators.required]],
       email: ['', []]
     })
+
 
   }
 
@@ -56,17 +64,22 @@ export class KalendarzModyfikacjaTerminuComponent implements OnInit {
 
   ngOnInit() {
 
+
     this.uslugi_.pobieranieDanych()
   }
 
   wyslij() {
     const data = this.formualrzRejestracjiWizyty.value
     const uslugiId: number[] = []
-    if (this.tryb = 'auto') {
+    if (this.tryb == 'auto') {
       this.kliknieteUslugi.forEach(k => {
         uslugiId.push(k.id)
       })
       data['uslugiId'] = uslugiId
+    }
+    data['tryb'] = this.tryb
+    if (!this.token_.czyWlasciciel()) {
+      data['wykonawca'] = -1;
     }
 
     this.listonosz.wyslij(Drzwi.kalendarzRejestracjaWizytyZPanelu, data).then(k => {
@@ -79,12 +92,5 @@ export class KalendarzModyfikacjaTerminuComponent implements OnInit {
 
   zmianaOkna(event: any) {
     this.tryb = event.target.value
-    if (this.tryb == 'manual') {
-      this.activeModal.update({size: ''})
-
-    } else {
-      this.activeModal.update({size: 'lg'})
-
-    }
   }
 }

@@ -33,28 +33,23 @@ export enum Drzwi {
 
   uslugiPanel = '/uslugi/panel',
 
-
   zarejestrowaneWizytyTerminy = '/kalendarzTerminow/terminy',
   zarejestrowaneWizytyDlaPracownika = '/kalendarzTerminow/terminyDlaPracownika',
 
   wizytyDzis = '/wizyty/wizytyDzis',
 
-
   kalendarzTerminowPrzerwa = 'kalendarzTerminow/przerwa',
   kalendarzRejestracjaWizytyZPanelu = '/kalendarzTerminow/rejestracjaWizyty',
-
 
   kalendarzTerminowDniWolneIPrzerwyZakladu = '/dniWolnePrzerwy',
   kalendarzOznaczJakoDzienWolny = '/dniWolne/dzienWolny',
   kalendarzOznaczJakoDzienPracy = '/dniWolne/dzienPracy',
 
-
-  listaKlientow = "/klienci/lista",
-
-
+  listaKlientowCalosc = '/klienci/listaCalosc',
+  listaKlientowZalogowanegoUzytkownika = '/klienci/lista',
+  listaKlientowUzytkownika = '/klienci/lista',
   //harmonogram dnia
   harmonogramDniaInformacjeDlaAdministratora = '/panelPracownika/harmonogram/daneDlaAdministratora',
-
 
   //powiadomienia zakładu
   listaPowiadomienDlaZakladu = '/powiadomienia',
@@ -66,10 +61,8 @@ export enum Drzwi {
   listaPowiadomienUzytkownikaUsunPowiadomienie = '/powiadomieniaUzytkownika/usun/',
   listaPowiadomienUzytkownikaOdczytajPowiadomienie = '/powiadomieniaUzytkownika/odczytaj/',
 
-//strona reklamowa
+  //strona reklamowa
   UstawieniaStronyReklamowej = '/stronaReklamowaDane/ustawieniaStronyReklamowej',
-  banerStronyReklamowej = "/pliki/banerStronyReklamowej",
-  logoStronyReklamowej = "/pliki/logoStronyReklamowej",
-
-
+  banerStronyReklamowej = '/pliki/banerStronyReklamowej',
+  logoStronyReklamowej = '/pliki/logoStronyReklamowej',
 }

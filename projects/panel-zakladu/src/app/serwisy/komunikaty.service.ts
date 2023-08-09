@@ -163,4 +163,8 @@ export class KomunikatyService {
   public pracownikNieDodanyDoUrlopu() {
     this.komunikaty.error("Pracownik nie został dodany do tabeli 'Urlop'", 'Udane')
   }
+
+  nieMaszUprawnienDoDodaniaWizyty() {
+    this.komunikaty.info("Nie możesz dodać wizyty innemu użytkownikowi", "Brak uprawnień")
+  }
 }

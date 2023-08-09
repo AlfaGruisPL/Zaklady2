@@ -8,8 +8,12 @@
      [ngbPopover]="popContent" [popoverTitle]="popTitle"
 >
 
-  <span>Wizyta: </span> <b>{{wizyta.poczatek| date:'HH:mm'}}<span>/</span>{{wizyta.koniec| date:'HH:mm'}}
-</b>
+  <span> {{wizyta.poczatek| date:'HH'}}    <b>:</b></span> <br>
+  <span> {{wizyta.poczatek| date:'mm'}}    <b>/</b></span> <br>
+  <span> {{wizyta.koniec| date:'HH'}}    <b>:</b></span> <br>
+  <span> {{wizyta.koniec| date:'mm'}}   </span>
+
+
 </div>
 
 
@@ -29,7 +33,7 @@
         {{wizyta.imie + " " + wizyta.nazwisko}}
       </td>
     </tr>
-    <tr>
+    <tr *ngIf="wizyta.email.length > 0">
       <td>
         Email:
       </td>

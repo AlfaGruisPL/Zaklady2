@@ -1,0 +1,62 @@
+<div class="filtry" *ngIf="token_.czyWlasciciel()">
+  <div class="switchButtonDiv">
+    <button
+      (click)="lista_.filter = 0; lista_.pobierzDane()"
+      class="switchButton"
+      [ngClass]="{ switchButtonAktywny: lista_.filter == 0 }">
+      Zakładu
+    </button>
+    <button
+      (click)="
+        lista_.filter = podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id;
+        lista_.pobierzDane()
+      "
+      class="switchButton"
+      [ngClass]="{
+        switchButtonAktywny:
+          lista_.filter ==
+          podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id
+      }">
+      Zalogowanego użytkownika
+    </button>
+    <select
+      [ngStyle]="{
+        width:
+          [0, podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id].indexOf(
+            lista_.filter
+          ) != -1
+            ? '105px'
+            : ''
+      }"
+      (change)="lista_.ustawFilter($event); lista_.pobierzDane()"
+      class="switchButton"
+      [ngClass]="{
+        switchButtonAktywny:
+          [0, podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id].indexOf(
+            lista_.filter
+          ) == -1
+      }">
+      <option
+        [disabled]="true"
+        [selected]="
+          [0, podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id].indexOf(
+            lista_.filter
+          ) != -1
+        ">
+        Wybierz
+      </option>
+      <ng-container
+        *ngFor="let pracownik of podreczne_.danePodreczneObiekt.pracownicy">
+        <option
+          [value]="pracownik.id"
+          *ngIf="
+            pracownik.id !=
+            podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id
+          "
+          [selected]="pracownik.id == lista_.filter">
+          {{ pracownik.imie }} {{ pracownik.nazwisko }}
+        </option>
+      </ng-container>
+    </select>
+  </div>
+</div>

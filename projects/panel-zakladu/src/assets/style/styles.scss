@@ -363,17 +363,23 @@ body {
     }
   }
 
+  select.switchButton {
+    height: 30px;
+    padding-right: 20px;
+    text-align: center;
+  }
+
   .switchButton {
     color: white;
     font-weight: bolder;
     letter-spacing: 1px;
 
-    &:first-of-type {
+    &:first-child {
       border-bottom-left-radius: 5px;
       border-top-left-radius: 5px;
     }
 
-    &:last-of-type {
+    &:last-child {
       border-bottom-right-radius: 5px;
       border-top-right-radius: 5px;
     }

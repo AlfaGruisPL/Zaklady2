@@ -2,15 +2,18 @@
 <div class="menuTresc">
   <div class="menu">
     <div class="menuDiv">
-
       <app-menu-pracownik></app-menu-pracownik>
     </div>
-    <p class="godzina">{{godzina|date:'dd.MM.YYYY  HH:mm:ss'}}</p>
+    <p class="godzina">{{ godzina | date : 'dd.MM.YYYY  HH:mm:ss' }}</p>
+    <p class="tutulStrony" *ngIf="!DanePodreczne.token_.czyWlasciciel()">
+      Panel pracownika
+    </p>
+    <p class="tutulStrony" *ngIf="DanePodreczne.token_.czyWlasciciel()">
+      Panel właściciela
+    </p>
   </div>
   <div class="tresc">
     <router-outlet></router-outlet>
   </div>
 </div>
 <app-stopka-pracownik></app-stopka-pracownik>
-
-

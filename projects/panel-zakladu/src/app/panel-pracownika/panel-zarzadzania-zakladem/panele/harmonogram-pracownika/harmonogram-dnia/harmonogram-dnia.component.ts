@@ -17,7 +17,7 @@ export class HarmonogramDniaComponent implements OnInit {
   ngOnInit() {
     this.podreczneDane_.danePodreczneObserveble.subscribe(dane => {
       if (dane != undefined) {
-        
+
         this.generujDzien()
       }
 
@@ -29,8 +29,8 @@ export class HarmonogramDniaComponent implements OnInit {
 
   private generujDzien() {
     const tmp = this.podreczneDane_.danePodreczneObiekt.godzinyOtwarcia;
+    console.log(tmp);
     [tmp.poniedzialek, tmp.wtorek, tmp.sroda, tmp.czwartek, tmp.piatek, tmp.sobota, tmp.niedziela].forEach(dzien => {
-
       if (dzien.czynnyDzien) {
         const rozpoczenie = Number(dzien.otwarcie.split(':')[0])
         const zakonczenie = Number(dzien.zamkniecie.split(':')[0])

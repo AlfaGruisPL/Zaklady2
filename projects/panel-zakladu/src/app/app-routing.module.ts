@@ -125,8 +125,8 @@ const panelePracownika: Routes = [
     component: ListaKlientowPracownikComponent,
   },
   {
-    path: '',
-    redirectTo: 'stronaStartowa',
+    path: '**',
+    redirectTo: 'harmonogram',
     pathMatch: 'full',
   },
 ]

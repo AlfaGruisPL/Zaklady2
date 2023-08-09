@@ -1,49 +1,65 @@
 <div class="modal-header">
-  <h4 class="modal-title">{{wizyta.poczatek|date:'HH:mm'}} - {{wizyta.koniec|date:'HH:mm'}}</h4>
+  <h4 class="modal-title">Informacje o wizycie: {{wizyta.poczatek|date:'HH:mm'}} - {{wizyta.koniec|date:'HH:mm'}}</h4>
   <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close('Nie')"></button>
 </div>
 <div class="modal-body">
   <table>
     <tr>
-      <td>
+      <th>
         Klient:
-      </td>
+      </th>
       <td>
         {{wizyta.imie + " " + wizyta.nazwisko}}
       </td>
     </tr>
     <tr>
-      <td>
+      <th>
         Termin:
-      </td>
+      </th>
       <td>
         {{wizyta.poczatek | date:'dd.LL.YYYY'}}
       </td>
     </tr>
     <tr>
-      <td>
+      <th>
         Godziny:
-      </td>
+      </th>
       <td>
         {{wizyta.poczatek|date:'HH:mm'}} - {{wizyta.koniec|date:'HH:mm'}}
       </td>
     </tr>
     <tr>
-      <td>
+      <th>
         Telefon:
-      </td>
+      </th>
       <td>
         {{wizyta.numerTelefonu}}
       </td>
 
     </tr>
     <tr>
-      <td>Email:</td>
+      <th>Email:</th>
       <td>{{wizyta.email}}</td>
     </tr>
     <tr>
-      <td>Wizyty</td>
+      <th>Poprzednie wizyty</th>
       <td>3</td>
+    </tr>
+    <tr>
+      <th>Sposób utworzenia</th>
+      <td *ngIf="['manual','auto'].indexOf(wizyta.tryb) != -1">Ręcznie w panelu zarządzania</td>
+      <td *ngIf="wizyta.tryb =='reklamowa'">Automatycznie za pośrednictwem strony reklamowej</td>
+    </tr>
+    <tr>
+      <th>Usluga:</th>
+      <td *ngIf="['manual'].indexOf(wizyta.tryb) != -1">
+        {{wizyta.uslugi}}
+      </td>
+      <td *ngIf="['auto','reklamowa'].indexOf(wizyta.tryb) != -1">
+        <ul>
+          <li *ngFor="let usluga of wizyta.uslugiTab">{{usluga.nazwa}}</li>
+        </ul>
+      </td>
     </tr>
     <tr>
       <td colspan="2">

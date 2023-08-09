@@ -1,7 +1,21 @@
-Wyświetlane dane:<select [(ngModel)]="Kalendarz_.wybranyPracownik" (change)="Kalendarz_.pobierzDane()">
-  <option [value]="Kalendarz_.wlasciciel.id">Zalogowany użytkownik</option>
-  <option [value]="pracownik.id"
-          *ngFor="let pracownik of Kalendarz_.pracownicy">{{pracownik.imie + " " + pracownik.nazwisko}}</option>
+Wyświetlane dane:
+<select
+  [(ngModel)]="Kalendarz_.wybranyPracownik"
+
+  (change)="Kalendarz_.pobierzDane()">
+
+  <option
+    [value]="pracownik.id"
+    *ngFor="let pracownik of Kalendarz_.pracownicy">
+      <span *ngIf="pracownik.id != Kalendarz_.zalogowanyUzytkownikId else zalogowanyUzytkownik">
+        {{pracownik.imie + " " + pracownik.nazwisko}}
+      </span>
+    <ng-template #zalogowanyUzytkownik>
+      <span>
+        Zalogowany użytkownik
+      </span>
+    </ng-template>
+  </option>
 </select>
 <table style="width: 100%;">
   <tr>

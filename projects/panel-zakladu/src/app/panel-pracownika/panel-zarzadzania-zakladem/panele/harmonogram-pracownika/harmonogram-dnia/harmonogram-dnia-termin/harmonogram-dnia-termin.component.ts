@@ -19,6 +19,7 @@ export class HarmonogramDniaTerminComponent implements OnInit {
   }
 
   ngOnInit() {
+
     const poczatekGodzian = this.wizyta.poczatek.getHours()
     const poczatekMinuta = this.wizyta.poczatek.getMinutes()
     const koniecGodzian = this.wizyta.koniec.getHours()
