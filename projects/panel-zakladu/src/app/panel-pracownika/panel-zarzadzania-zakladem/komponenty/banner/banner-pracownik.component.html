@@ -1,5 +1,4 @@
 <div class="pasekTytulowy" style="position: relative">
-  <span class="nazwaFirmy"> www.mojzaklad.pl</span>
   <h1 style="position: relative">
     {{ DanePodreczne.danePodreczneObiekt.tytulZakladu | maxDlugosc : 40 }}
   </h1>
@@ -55,7 +54,7 @@
       {{ powiadomienia_.nieOdczytanePowiadomieniaZakladu().length }}
     </div>
     <span
-      ><fa-icon icon="envelope"></fa-icon> <fa-icon icon="gear"></fa-icon
+    ><fa-icon icon="envelope"></fa-icon> <fa-icon icon="gear"></fa-icon
     ></span>
   </button>
   <button class="wstronaStartowaButton">
@@ -68,7 +67,7 @@
 
 <ng-template #PowiadomieniaZakladuTytul id="powiadomienieZakladu_tytul">
   <span class="powiadomieniaTytul"
-    >Powiadomienia systemowe:
+  >Powiadomienia systemowe:
     <button
       (click)="PrzeczytajWszystko()"
       [disabled]="
@@ -103,7 +102,7 @@
       <h3>{{ powiadomienie.tytul }}</h3>
       <span class="data">{{
         powiadomienie.data | date : 'dd.MM.yyyy   hh:mm'
-      }}</span>
+        }}</span>
       <p [innerHTML]="powiadomienie.tresc"></p>
       <p class="podpis">Sracz.pl</p>
     </div>
@@ -112,7 +111,7 @@
 
 <ng-template #powiadomieniaUzytkonikaTytul>
   <span class="powiadomieniaTytul"
-    >Powiadomienia:
+  >Powiadomienia:
     <button
       (click)="PrzeczytajWszystkoUzytkownika()"
       [disabled]="
@@ -149,7 +148,7 @@
       <h3>{{ powiadomienie.tytul }}</h3>
       <span class="data">{{
         powiadomienie.data | date : 'dd.MM.yyyy   hh:mm'
-      }}</span>
+        }}</span>
       <p [innerHTML]="powiadomienie.tresc"></p>
       <p class="podpis">Sracz.pl</p>
     </div>
