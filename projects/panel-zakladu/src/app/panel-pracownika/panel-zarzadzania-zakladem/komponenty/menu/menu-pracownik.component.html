@@ -17,13 +17,19 @@
       <span> Moje konto </span>
     </li>
   </a>
-  <a [routerLink]="['mojZaklad']" routerLinkActive="aktywneMenu" *ngIf="token_.czyWlasciciel()">
+  <a
+    [routerLink]="['mojZaklad']"
+    routerLinkActive="aktywneMenu"
+    *ngIf="token_.czyWlasciciel()">
     <li>
       <fa-icon [icon]="ikonki.wiezowiec"></fa-icon>
       <span> Mój zakład </span>
     </li>
   </a>
-  <a [routerLink]="['uslugi']" routerLinkActive="aktywneMenu" *ngIf="token_.czyWlasciciel()">
+  <a
+    [routerLink]="['uslugi']"
+    routerLinkActive="aktywneMenu"
+    *ngIf="token_.czyWlasciciel()">
     <li>
       <fa-icon [icon]="ikonki.tag"></fa-icon>
       <span> Usługi </span>
@@ -35,7 +41,10 @@
       <span> Zarejestrowane wizyty </span>
     </li>
   </a>
-  <a [routerLink]="['zarzadzaniePracownikami']" routerLinkActive="aktywneMenu" *ngIf="token_.czyWlasciciel()">
+  <a
+    [routerLink]="['zarzadzaniePracownikami']"
+    routerLinkActive="aktywneMenu"
+    *ngIf="token_.czyWlasciciel()">
     <li>
       <fa-icon [icon]="ikonki.czlowieczki"></fa-icon>
       <span> Pracownicy </span>
@@ -48,24 +57,39 @@
     </li>
   </a>
 
-  <a [routerLink]="['platnosci']" routerLinkActive="aktywneMenu" *ngIf="token_.czyWlasciciel()">
+  <a
+    [routerLink]="['platnosci']"
+    routerLinkActive="aktywneMenu"
+    *ngIf="token_.czyWlasciciel()">
     <li>
       <fa-icon [icon]="ikonki.kartaPlatnicza"></fa-icon>
       <span> Płatności </span>
     </li>
   </a>
-  <a [routerLink]="['sms']" routerLinkActive="aktywneMenu" *ngIf="token_.czyWlasciciel()">
+  <a
+    [routerLink]="['sms']"
+    routerLinkActive="aktywneMenu"
+    *ngIf="token_.czyWlasciciel()">
     <li>
       <fa-icon [icon]="ikonki.sms"></fa-icon>
       <span> Usługa SMS </span>
     </li>
   </a>
   <a
-    [routerLink]="['stronaReprezentacyjnaUstawienia']" *ngIf="token_.czyWlasciciel()"
-    routerLinkActive="aktywneMenu"
-  >
+    [routerLink]="['stronaReprezentacyjnaUstawienia']"
+    *ngIf="token_.czyWlasciciel()"
+    routerLinkActive="aktywneMenu">
     <li>
+      <fa-icon [icon]="ikonki.zdjecie"></fa-icon>
+      <span> Strona reprezentacyjna </span>
+    </li>
+  </a>
 
+  <a
+    [href]="podreczne_.linkDoStronyReklamowej()"
+    target="_blank"
+    *ngIf="!token_.czyWlasciciel()">
+    <li>
       <fa-icon [icon]="ikonki.zdjecie"></fa-icon>
       <span> Strona reprezentacyjna </span>
     </li>

@@ -1,17 +1,14 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {ListonoszService} from '../../../../../../serwisy/listonosz.service';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {OknoPlatnosciComponent} from '../okna/okno-platnosci/okno-platnosci.component';
-import {
-  InformacjeDoPaneluPlatnosci
-} from '../../../../../../klasy/panelPracownika/platnosci/informacje-do-panelu-platnosci';
-import {Drzwi} from '../../../../../../enum/drzwi';
-import {KomunikatyService} from '../../../../../../serwisy/komunikaty.service';
-import {
-  PlatnosciPracownikaPotwierdzenieAkcjiComponent
-} from '../../komunikaty/platnosci-pracownika-potwierdzenie-akcji/platnosci-pracownika-potwierdzenie-akcji.component';
-import {PlatnosciSMSOknoComponent} from '../okna/platnosci-smsokno/platnosci-smsokno.component';
-import {StartStopUslugaComponent} from '../okna/start-stop-usluga/start-stop-usluga.component';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ListonoszService } from '../../../../../../serwisy/listonosz.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { OknoPlatnosciComponent } from '../okna/okno-platnosci/okno-platnosci.component';
+import { InformacjeDoPaneluPlatnosci } from '../../../../../../klasy/panelPracownika/platnosci/informacje-do-panelu-platnosci';
+import { Drzwi } from '../../../../../../enum/drzwi';
+import { KomunikatyService } from '../../../../../../serwisy/komunikaty.service';
+import { PlatnosciPracownikaPotwierdzenieAkcjiComponent } from '../../komunikaty/platnosci-pracownika-potwierdzenie-akcji/platnosci-pracownika-potwierdzenie-akcji.component';
+import { PlatnosciSMSOknoComponent } from '../okna/platnosci-smsokno/platnosci-smsokno.component';
+import { StartStopUslugaComponent } from '../okna/start-stop-usluga/start-stop-usluga.component';
+import { PodreczneDaneService } from '../../../../../../serwisy/podreczne-dane.service';
 
 @Component({
   selector: 'app-platnosci-pracownika-naglowek',
@@ -26,9 +23,9 @@ export class PlatnosciPracownikaNaglowekComponent {
   constructor(
     private modalService: NgbModal,
     private listonosz: ListonoszService,
+    public podreczne_: PodreczneDaneService,
     private komunikaty: KomunikatyService
-  ) {
-  }
+  ) {}
 
   otworzSMS() {
     this.modalService.open(PlatnosciSMSOknoComponent, {
@@ -50,10 +47,10 @@ export class PlatnosciPracownikaNaglowekComponent {
     });
     okno.componentInstance.tryb = 'wlacz';
     okno.result
-      .then((k) => {
+      .then(k => {
         this.aktywacjaKontaZapytanie();
       })
-      .catch((k) => {
+      .catch(k => {
         console.log(1, k);
       });
   }
@@ -64,11 +61,10 @@ export class PlatnosciPracownikaNaglowekComponent {
     });
     okno.componentInstance.tryb = 'wylacz';
     okno.result
-      .then((k) => {
+      .then(k => {
         this.wstrzymajKontoZapytanie();
       })
-      .catch((k) => {
-      });
+      .catch(k => {});
   }
 
   DodajPracownika() {
@@ -78,21 +74,20 @@ export class PlatnosciPracownikaNaglowekComponent {
     okienko.componentInstance.tresc =
       'Zmodyfikowanie ilości pracowników może wiązać się z pobraniem dodatkowej opłaty zgodnej z cennikiem.';
     okienko.result.then(
-      (result) => {
+      result => {
         this.DodajPracownikaZapytanie();
       },
-      (reason) => {
-      }
+      reason => {}
     );
   }
 
   DodajPracownikaZapytanie() {
     this.listonosz
-      .wyslij(Drzwi.PlatnosciIloscPracownikow, {tryb: 'dodaj'})
-      .then((k) => {
+      .wyslij(Drzwi.PlatnosciIloscPracownikow, { tryb: 'dodaj' })
+      .then(k => {
         console.log(k);
       })
-      .catch((k) => {
+      .catch(k => {
         console.log('Źle');
       })
       .finally(() => {
@@ -107,21 +102,20 @@ export class PlatnosciPracownikaNaglowekComponent {
     okienko.componentInstance.tresc =
       'Zmniejszenie liczby pracowników może wiązać się z zmianami na stronie reprezentacyjnej';
     okienko.result.then(
-      (result) => {
+      result => {
         this.OdejmijPracownikaZapytanie();
       },
-      (reason) => {
-      }
+      reason => {}
     );
   }
 
   OdejmijPracownikaZapytanie() {
     this.listonosz
-      .wyslij(Drzwi.PlatnosciIloscPracownikow, {tryb: 'odejmij'})
-      .then((k) => {
+      .wyslij(Drzwi.PlatnosciIloscPracownikow, { tryb: 'odejmij' })
+      .then(k => {
         console.log(k);
       })
-      .catch((k) => {
+      .catch(k => {
         console.log('Źle');
       })
       .finally(() => {
@@ -131,11 +125,11 @@ export class PlatnosciPracownikaNaglowekComponent {
 
   private aktywacjaKontaZapytanie() {
     this.listonosz
-      .wyslij(Drzwi.aktywacjaKonta, {aktywnosc: true})
-      .then((k) => {
+      .wyslij(Drzwi.aktywacjaKonta, { aktywnosc: true })
+      .then(k => {
         this.komunikaty.kontoAktywowane();
       })
-      .catch((k) => {
+      .catch(k => {
         if (k['error']['reasonCode'] == 3) {
           this.komunikaty.kontoNieAktywowane_zabrakloPieniedzy();
         } else {
@@ -149,11 +143,11 @@ export class PlatnosciPracownikaNaglowekComponent {
 
   private wstrzymajKontoZapytanie() {
     this.listonosz
-      .wyslij(Drzwi.aktywacjaKonta, {aktywnosc: false})
-      .then((k) => {
+      .wyslij(Drzwi.aktywacjaKonta, { aktywnosc: false })
+      .then(k => {
         this.komunikaty.kontoWstrzymane();
       })
-      .catch((k) => {
+      .catch(k => {
         this.komunikaty.kontoNieWstrzymane();
       })
       .finally(() => {

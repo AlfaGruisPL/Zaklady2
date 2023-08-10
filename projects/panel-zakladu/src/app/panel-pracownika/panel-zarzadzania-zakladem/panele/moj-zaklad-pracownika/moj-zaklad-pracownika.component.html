@@ -1,7 +1,7 @@
 <div class="panelZakladu">
   <div class="naglowekZolty">
     <span class="naglowek1Wzoltym"
-    >Uzupełnij formularz danymi o swoim zakładzie
+      >Uzupełnij formularz danymi o swoim zakładzie
     </span>
     <span class="naglowek1Wzoltym2">
       * oznacza że pole jest zalecane do uzupełnienia
@@ -17,15 +17,15 @@
       <div class="tabela1">
         <table class="daneZakladuTab">
           <tr>
-            <td colspan="2" class="naglowki1form">Dane zakładu:
+            <td colspan="2" class="naglowki1form">
+              Dane zakładu:
               <ui-switch
                 class="przelacznikPublicznePrywatne"
                 [disabled]="!zapiszButton"
                 checkedLabel="Publiczne"
                 uncheckedLabel="Prywatne"
                 [(ngModel)]="mojZakladKlasa.daneZakladuCzyWyswietlic"
-                [ngModelOptions]="{ standalone: true }"
-              ></ui-switch>
+                [ngModelOptions]="{ standalone: true }"></ui-switch>
             </td>
           </tr>
           <tr>
@@ -37,8 +37,7 @@
                 id="nazwa"
                 type="text"
                 [(ngModel)]="mojZakladKlasa.nazwa"
-                [ngModelOptions]="{ standalone: true }"
-              />
+                [ngModelOptions]="{ standalone: true }" />
             </td>
           </tr>
           <tr>
@@ -50,8 +49,7 @@
                 id="Nip"
                 [(ngModel)]="mojZakladKlasa.nip"
                 [ngModelOptions]="{ standalone: true }"
-                type="text"
-              />
+                type="text" />
             </td>
             <td class="unchecked">
               <ui-switch
@@ -60,8 +58,7 @@
                 checkedLabel="Publiczne"
                 uncheckedLabel="Prywatne"
                 [(ngModel)]="mojZakladKlasa.nipCzyWyswietlic"
-                [ngModelOptions]="{ standalone: true }"
-              ></ui-switch>
+                [ngModelOptions]="{ standalone: true }"></ui-switch>
             </td>
           </tr>
           <tr>
@@ -73,8 +70,7 @@
                 id="Regon"
                 [(ngModel)]="mojZakladKlasa.regon"
                 [ngModelOptions]="{ standalone: true }"
-                type="text"
-              />
+                type="text" />
             </td>
             <td class="unchecked">
               <ui-switch
@@ -83,8 +79,7 @@
                 checkedLabel="Publiczne"
                 uncheckedLabel="Prywatne"
                 [(ngModel)]="mojZakladKlasa.regonCzyWyswietlic"
-                [ngModelOptions]="{ standalone: true }"
-              ></ui-switch>
+                [ngModelOptions]="{ standalone: true }"></ui-switch>
             </td>
           </tr>
           <tr>
@@ -99,8 +94,7 @@
                 id="dataZalozenia"
                 [(ngModel)]="mojZakladKlasa.dataZalozenia"
                 [ngModelOptions]="{ standalone: true }"
-                type="date"
-              />
+                type="date" />
             </td>
             <td class="unchecked">
               <ui-switch
@@ -109,13 +103,12 @@
                 checkedLabel="Publiczne"
                 uncheckedLabel="Prywatne"
                 [(ngModel)]="mojZakladKlasa.dataZalozeniayCzyWyswietlic"
-                [ngModelOptions]="{ standalone: true }"
-              ></ui-switch>
+                [ngModelOptions]="{ standalone: true }"></ui-switch>
             </td>
           </tr>
           <tr>
             <td class="naglowki2form">Ilość pracowników</td>
-            <td class="naglowki2form">{{mojZakladKlasa.iloscPracownikow}}</td>
+            <td class="naglowki2form">{{ mojZakladKlasa.iloscPracownikow }}</td>
             <td>
               <ui-switch
                 class="przelacznikPublicznePrywatne"
@@ -123,8 +116,7 @@
                 checkedLabel="Publiczne"
                 uncheckedLabel="Prywatne"
                 [(ngModel)]="mojZakladKlasa.iloscPracownikowCzyWyswietlic"
-                [ngModelOptions]="{ standalone: true }"
-              ></ui-switch>
+                [ngModelOptions]="{ standalone: true }"></ui-switch>
             </td>
           </tr>
           <tr>
@@ -143,8 +135,7 @@
                 [(ngModel)]="mojZakladKlasa.wojewodztwo"
                 style="height: 32px"
                 class="logInputZaklad"
-                [ngModelOptions]="{ standalone: true }"
-              >
+                [ngModelOptions]="{ standalone: true }">
                 <option value="dolnoslaskie">Dolnośląskie</option>
                 <option value="kujawsko-pomorskie">Kujawsko-pomorskie</option>
                 <option value="lubelskie">Lubelskie</option>
@@ -175,8 +166,7 @@
                 id="nazwaUlicy"
                 type="text"
                 [(ngModel)]="mojZakladKlasa.nazwaUlicy"
-                [ngModelOptions]="{ standalone: true }"
-              />
+                [ngModelOptions]="{ standalone: true }" />
             </td>
           </tr>
           <tr>
@@ -188,8 +178,7 @@
                 style="width: 164px"
                 [(ngModel)]="mojZakladKlasa.numerDomu"
                 [ngModelOptions]="{ standalone: true }"
-                type="text"
-              />
+                type="text" />
               <span style="font-size: 25px"> / </span>
               <input
                 [disabled]="!zapiszButton"
@@ -197,8 +186,7 @@
                 style="width: 164px"
                 [(ngModel)]="mojZakladKlasa.numerLokalu"
                 [ngModelOptions]="{ standalone: true }"
-                type="text"
-              />
+                type="text" />
             </td>
           </tr>
           <tr>
@@ -214,8 +202,7 @@
                 id="kodPocztowy"
                 type="text"
                 [(ngModel)]="mojZakladKlasa.kodPocztowy1"
-                [ngModelOptions]="{ standalone: true }"
-              />
+                [ngModelOptions]="{ standalone: true }" />
               <span style="font-size: 25px"> - </span>
               <input
                 [disabled]="!zapiszButton"
@@ -224,8 +211,7 @@
                 class="logInputZaklad"
                 type="text"
                 [(ngModel)]="mojZakladKlasa.kodPocztowy2"
-                [ngModelOptions]="{ standalone: true }"
-              />
+                [ngModelOptions]="{ standalone: true }" />
             </td>
           </tr>
           <tr>
@@ -245,8 +231,7 @@
                 type="text"
                 id="miasto"
                 [(ngModel)]="mojZakladKlasa.miasto"
-                [ngModelOptions]="{ standalone: true }"
-              />
+                [ngModelOptions]="{ standalone: true }" />
               <input
                 type="button"
                 value="Włącz"
@@ -255,8 +240,7 @@
                   czyMiasto = true;
                   mojZakladKlasa.powiat = '';
                   mojZakladKlasa.wies = ''
-                "
-              />
+                " />
             </td>
           </tr>
 
@@ -274,14 +258,12 @@
                 class="logInputZaklad"
                 type="text"
                 [(ngModel)]="mojZakladKlasa.powiat"
-                [ngModelOptions]="{ standalone: true }"
-              />
+                [ngModelOptions]="{ standalone: true }" />
               <input
                 type="button"
                 value="Włącz"
                 *ngIf="czyMiasto && zapiszButton"
-                (click)="czyMiasto = false; mojZakladKlasa.miasto = ''"
-              />
+                (click)="czyMiasto = false; mojZakladKlasa.miasto = ''" />
             </td>
           </tr>
           <tr>
@@ -293,8 +275,7 @@
                 class="logInputZaklad"
                 type="text"
                 [(ngModel)]="mojZakladKlasa.wies"
-                [ngModelOptions]="{ standalone: true }"
-              />
+                [ngModelOptions]="{ standalone: true }" />
             </td>
           </tr>
 
@@ -307,8 +288,7 @@
                 type="text"
                 [(ngModel)]="mojZakladKlasa.opisZakladu"
                 [ngModelOptions]="{ standalone: true }"
-                style="width: 420px; height: 200px; resize: none"
-              >
+                style="width: 420px; height: 200px; resize: none">
               </textarea>
             </td>
           </tr>
@@ -327,8 +307,7 @@
                   checkedLabel="Publiczne"
                   uncheckedLabel="Prywatne"
                   [(ngModel)]="mojZakladKlasa.godzinyCzyWyswietlic"
-                  [ngModelOptions]="{ standalone: true }"
-                ></ui-switch>
+                  [ngModelOptions]="{ standalone: true }"></ui-switch>
               </span>
             </td>
           </tr>
@@ -343,8 +322,7 @@
                 type="time"
                 placeholder="Otwarcie"
                 [(ngModel)]="mojZakladKlasa.niedziela.otwarcie"
-                [ngModelOptions]="{ standalone: true }"
-              />
+                [ngModelOptions]="{ standalone: true }" />
             </td>
             <td>
               <input
@@ -355,16 +333,14 @@
                 type="time"
                 placeholder="Zamknięcie"
                 [(ngModel)]="mojZakladKlasa.niedziela.zamkniecie"
-                [ngModelOptions]="{ standalone: true }"
-              />
+                [ngModelOptions]="{ standalone: true }" />
               <ui-switch
                 class="przelacznikCzynneNieczynne"
                 [(ngModel)]="mojZakladKlasa.niedziela.czynnyDzien"
                 [disabled]="!zapiszButton"
                 checkedLabel="Czynne"
                 [ngModelOptions]="{ standalone: true }"
-                uncheckedLabel="Nieczynne"
-              ></ui-switch>
+                uncheckedLabel="Nieczynne"></ui-switch>
             </td>
           </tr>
           <tr>
@@ -378,8 +354,7 @@
                 type="time"
                 placeholder="Otwarcie"
                 [(ngModel)]="mojZakladKlasa.poniedzialek.otwarcie"
-                [ngModelOptions]="{ standalone: true }"
-              />
+                [ngModelOptions]="{ standalone: true }" />
             </td>
             <td>
               <input
@@ -390,16 +365,14 @@
                 type="time"
                 placeholder="Zamknięcie"
                 [(ngModel)]="mojZakladKlasa.poniedzialek.zamkniecie"
-                [ngModelOptions]="{ standalone: true }"
-              />
+                [ngModelOptions]="{ standalone: true }" />
               <ui-switch
                 class="przelacznikCzynneNieczynne"
                 [(ngModel)]="mojZakladKlasa.poniedzialek.czynnyDzien"
                 [disabled]="!zapiszButton"
                 checkedLabel="Czynne"
                 [ngModelOptions]="{ standalone: true }"
-                uncheckedLabel="Nieczynne"
-              ></ui-switch>
+                uncheckedLabel="Nieczynne"></ui-switch>
             </td>
           </tr>
           <tr>
@@ -411,8 +384,7 @@
                 type="time"
                 placeholder="Otwarcie"
                 [(ngModel)]="mojZakladKlasa.wtorek.otwarcie"
-                [ngModelOptions]="{ standalone: true }"
-              />
+                [ngModelOptions]="{ standalone: true }" />
             </td>
             <td>
               <input
@@ -421,16 +393,14 @@
                 type="time"
                 placeholder="Zamknięcie"
                 [(ngModel)]="mojZakladKlasa.wtorek.zamkniecie"
-                [ngModelOptions]="{ standalone: true }"
-              />
+                [ngModelOptions]="{ standalone: true }" />
               <ui-switch
                 class="przelacznikCzynneNieczynne"
                 [(ngModel)]="mojZakladKlasa.wtorek.czynnyDzien"
                 [disabled]="!zapiszButton"
                 checkedLabel="Czynne"
                 [ngModelOptions]="{ standalone: true }"
-                uncheckedLabel="Nieczynne"
-              ></ui-switch>
+                uncheckedLabel="Nieczynne"></ui-switch>
             </td>
           </tr>
           <tr>
@@ -442,8 +412,7 @@
                 type="time"
                 placeholder="Otwarcie"
                 [(ngModel)]="mojZakladKlasa.sroda.otwarcie"
-                [ngModelOptions]="{ standalone: true }"
-              />
+                [ngModelOptions]="{ standalone: true }" />
             </td>
             <td>
               <input
@@ -452,16 +421,14 @@
                 type="time"
                 placeholder="Zamknięcie"
                 [(ngModel)]="mojZakladKlasa.sroda.zamkniecie"
-                [ngModelOptions]="{ standalone: true }"
-              />
+                [ngModelOptions]="{ standalone: true }" />
               <ui-switch
                 class="przelacznikCzynneNieczynne"
                 [(ngModel)]="mojZakladKlasa.sroda.czynnyDzien"
                 [disabled]="!zapiszButton"
                 checkedLabel="Czynne"
                 [ngModelOptions]="{ standalone: true }"
-                uncheckedLabel="Nieczynne"
-              ></ui-switch>
+                uncheckedLabel="Nieczynne"></ui-switch>
             </td>
           </tr>
           <tr>
@@ -475,8 +442,7 @@
                 type="time"
                 placeholder="Otwarcie"
                 [(ngModel)]="mojZakladKlasa.czwartek.otwarcie"
-                [ngModelOptions]="{ standalone: true }"
-              />
+                [ngModelOptions]="{ standalone: true }" />
             </td>
             <td>
               <input
@@ -487,16 +453,14 @@
                 type="time"
                 placeholder="Zamknięcie"
                 [(ngModel)]="mojZakladKlasa.czwartek.zamkniecie"
-                [ngModelOptions]="{ standalone: true }"
-              />
+                [ngModelOptions]="{ standalone: true }" />
               <ui-switch
                 class="przelacznikCzynneNieczynne"
                 [(ngModel)]="mojZakladKlasa.czwartek.czynnyDzien"
                 [disabled]="!zapiszButton"
                 checkedLabel="Czynne"
                 [ngModelOptions]="{ standalone: true }"
-                uncheckedLabel="Nieczynne"
-              ></ui-switch>
+                uncheckedLabel="Nieczynne"></ui-switch>
             </td>
           </tr>
           <tr>
@@ -508,8 +472,7 @@
                 type="time"
                 placeholder="Otwarcie"
                 [(ngModel)]="mojZakladKlasa.piatek.otwarcie"
-                [ngModelOptions]="{ standalone: true }"
-              />
+                [ngModelOptions]="{ standalone: true }" />
             </td>
             <td>
               <input
@@ -518,16 +481,14 @@
                 type="time"
                 placeholder="Zamknięcie"
                 [(ngModel)]="mojZakladKlasa.piatek.zamkniecie"
-                [ngModelOptions]="{ standalone: true }"
-              />
+                [ngModelOptions]="{ standalone: true }" />
               <ui-switch
                 class="przelacznikCzynneNieczynne"
                 [(ngModel)]="mojZakladKlasa.piatek.czynnyDzien"
                 [disabled]="!zapiszButton"
                 checkedLabel="Czynne"
                 [ngModelOptions]="{ standalone: true }"
-                uncheckedLabel="Nieczynne"
-              ></ui-switch>
+                uncheckedLabel="Nieczynne"></ui-switch>
             </td>
           </tr>
           <tr>
@@ -539,8 +500,7 @@
                 type="time"
                 placeholder="Otwarcie"
                 [(ngModel)]="mojZakladKlasa.sobota.otwarcie"
-                [ngModelOptions]="{ standalone: true }"
-              />
+                [ngModelOptions]="{ standalone: true }" />
             </td>
             <td>
               <input
@@ -549,16 +509,14 @@
                 type="time"
                 placeholder="Zamknięcie"
                 [(ngModel)]="mojZakladKlasa.sobota.zamkniecie"
-                [ngModelOptions]="{ standalone: true }"
-              />
+                [ngModelOptions]="{ standalone: true }" />
               <ui-switch
                 class="przelacznikCzynneNieczynne"
                 [(ngModel)]="mojZakladKlasa.sobota.czynnyDzien"
                 [disabled]="!zapiszButton"
                 checkedLabel="Czynne"
                 [ngModelOptions]="{ standalone: true }"
-                uncheckedLabel="Nieczynne"
-              ></ui-switch>
+                uncheckedLabel="Nieczynne"></ui-switch>
             </td>
           </tr>
         </table>
@@ -574,8 +532,7 @@
                 checkedLabel="Publiczne"
                 uncheckedLabel="Prywatne"
                 [(ngModel)]="mojZakladKlasa.naszKontaktCzyWyswietlic"
-                [ngModelOptions]="{ standalone: true }"
-              ></ui-switch>
+                [ngModelOptions]="{ standalone: true }"></ui-switch>
             </td>
           </tr>
           <tr>
@@ -587,8 +544,7 @@
                 [(ngModel)]="mojZakladKlasa.email"
                 [ngModelOptions]="{ standalone: true }"
                 id="email"
-                type="text"
-              />
+                type="text" />
             </td>
             <td class="unchecked">
               <ui-switch
@@ -597,8 +553,7 @@
                 checkedLabel="Publiczne"
                 uncheckedLabel="Prywatne"
                 [(ngModel)]="mojZakladKlasa.emailCzyWyswietlic"
-                [ngModelOptions]="{ standalone: true }"
-              ></ui-switch>
+                [ngModelOptions]="{ standalone: true }"></ui-switch>
             </td>
           </tr>
           <tr>
@@ -611,8 +566,7 @@
                 class="logInputZaklad"
                 style="width: 80px"
                 [(ngModel)]="mojZakladKlasa.prefiksTelefonu"
-                [ngModelOptions]="{ standalone: true }"
-              >
+                [ngModelOptions]="{ standalone: true }">
                 <option>+48</option>
                 <option>+380</option>
               </select>
@@ -624,8 +578,7 @@
                 [(ngModel)]="mojZakladKlasa.numerTelefonu"
                 [ngModelOptions]="{ standalone: true }"
                 id="numerTelefonu"
-                type="text"
-              />
+                type="text" />
             </td>
             <td class="unchecked">
               <ui-switch
@@ -634,8 +587,7 @@
                 checkedLabel="Publiczne"
                 uncheckedLabel="Prywatne"
                 [(ngModel)]="mojZakladKlasa.telefonCzyWyswietlic"
-                [ngModelOptions]="{ standalone: true }"
-              ></ui-switch>
+                [ngModelOptions]="{ standalone: true }"></ui-switch>
             </td>
           </tr>
         </table>
@@ -651,8 +603,7 @@
                 checkedLabel="Publiczne"
                 uncheckedLabel="Prywatne"
                 [(ngModel)]="mojZakladKlasa.mapaCzyWyswietlic"
-                [ngModelOptions]="{ standalone: true }"
-              ></ui-switch>
+                [ngModelOptions]="{ standalone: true }"></ui-switch>
             </td>
           </tr>
           <tr>
@@ -666,8 +617,7 @@
                 [(ngModel)]="mojZakladKlasa.wysokosc"
                 [ngModelOptions]="{ standalone: true }"
                 id="wysokosc"
-                type="text"
-              />
+                type="text" />
             </td>
           </tr>
           <tr>
@@ -681,16 +631,14 @@
                 [(ngModel)]="mojZakladKlasa.szerokosc"
                 [ngModelOptions]="{ standalone: true }"
                 id="Szerokosc"
-                type="text"
-              />
+                type="text" />
             </td>
           </tr>
         </table>
       </div>
       <div class="tabela5">
         <app-pracownicy-moj-zaklad
-          [czyWidoczne]="zapiszButton"
-        ></app-pracownicy-moj-zaklad>
+          [czyWidoczne]="zapiszButton"></app-pracownicy-moj-zaklad>
       </div>
       <div class="tabela6">
         <table>
@@ -706,8 +654,7 @@
                 checkedLabel="Publiczne"
                 uncheckedLabel="Prywatne"
                 [(ngModel)]="mojZakladKlasa.uslugiCzyWyswietlic"
-                [ngModelOptions]="{ standalone: true }"
-              ></ui-switch>
+                [ngModelOptions]="{ standalone: true }"></ui-switch>
             </td>
           </tr>
           <tr>
@@ -718,18 +665,24 @@
                 [disabled]="!zapiszButton"
                 class="unchecked"
                 checkedLabel="tak"
-                uncheckedLabel="nie"
-              ></ui-switch>
+                uncheckedLabel="nie"></ui-switch>
             </td>
           </tr>
           <tr>
             <td>Identyfikator</td>
-            <td><input type="text" [disabled]="!zapiszButton || !zmienIdentyfikator"
-                       [(ngModel)]="mojZakladKlasa.identyfikator"
-                       [ngModelOptions]="{ standalone: true }"
-                       class="logInputZaklad"
-                       style="width: 300px">
-              <button (click)="zmienIdentyfikatorFun()" *ngIf="!zmienIdentyfikator">Zmień</button>
+            <td>
+              <input
+                type="text"
+                [disabled]="!zapiszButton || !zmienIdentyfikator"
+                [(ngModel)]="mojZakladKlasa.identyfikator"
+                [ngModelOptions]="{ standalone: true }"
+                class="logInputZaklad"
+                style="width: 300px" />
+              <button
+                (click)="zmienIdentyfikatorFun()"
+                *ngIf="!zmienIdentyfikator && zapiszButton">
+                Zmień
+              </button>
             </td>
           </tr>
         </table>
@@ -738,18 +691,16 @@
     <div class="divNaPrzycisk">
       <button
         type="submit"
-        *ngIf="zapiszButton == true" [disabled]="zablokowanyPrzycisk"
+        *ngIf="zapiszButton == true"
+        [disabled]="zablokowanyPrzycisk"
         class="zmodyfikujZapiszButton"
-        (click)="zapisz()"
-      >
+        (click)="zapisz()">
         Zapisz
       </button>
       <button
         *ngIf="zmodyfikuj == true"
-
         class="zmodyfikujZapiszButton"
-        (click)="zmodyfikujFunkcja()"
-      >
+        (click)="zmodyfikujFunkcja()">
         Zmodyfikuj
       </button>
     </div>

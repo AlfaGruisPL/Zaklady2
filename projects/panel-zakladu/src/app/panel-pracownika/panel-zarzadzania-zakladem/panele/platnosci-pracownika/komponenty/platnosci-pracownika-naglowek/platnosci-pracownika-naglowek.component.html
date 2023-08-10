@@ -5,14 +5,14 @@
         <th colspan="3">Dodatki:</th>
       </tr>
       <tr>
-        <td>Pracownicy</td>
+        <td>Miejsca na pracowników</td>
         <td>
           <button (click)="DodajPracownika()">Dodaj</button>
+          zajęte {{ podreczne_.danePodreczneObiekt.pracownicy.length - 1 }} z
           {{ dane.iloscPracownikow }}
           <button (click)="OdejmijPracownika()">Usuń</button>
         </td>
       </tr>
-
 
       <tr>
         <td style="font-weight: bolder">Usługa email</td>
@@ -36,7 +36,7 @@
         <td>
           <span class="status">
             <span *ngIf="dane.status == -1" style="color: #00b0ff"
-            >Testowe</span
+              >Testowe</span
             >
             <span *ngIf="dane.status == 1" style="color: green">Aktywne</span>
             <span *ngIf="dane.status == 0" style="color: red">Nieaktywne</span>
@@ -56,8 +56,8 @@
         <td colspan="2">
           <span class="opis">
             <b>System aktywny do:</b>
-            {{ dane.aktywneDo | date : "dd.MM.yyyy   HH:MM" }}
-            <br/>
+            {{ dane.aktywneDo | date : 'dd.MM.yyyy   HH:MM' }}
+            <br />
           </span>
         </td>
       </tr>
@@ -68,15 +68,13 @@
     <button
       class="przyciskPlatnosci"
       (click)="aktywacjaKonta()"
-      *ngIf="dane.status == -1 || dane.status == 0"
-    >
+      *ngIf="dane.status == -1 || dane.status == 0">
       Aktywuj konto
     </button>
     <button
       class="przyciskPlatnosci"
       (click)="wstrzymajKonto()"
-      *ngIf="dane.status == 1"
-    >
+      *ngIf="dane.status == 1">
       Wstrzymaj
     </button>
   </div>

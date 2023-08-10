@@ -32,6 +32,10 @@ export class PodreczneDaneService {
     public token_: TokenService
   ) {}
 
+  public linkDoStronyReklamowej(): string {
+    return 'http://www.smtp.localhost:8008';
+  }
+
   public async identyfikacjaZakladu() {
     await this.listonosz
       .pobierz(Drzwi.nazwaZakladu)
