@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ProjectTreeColorHighlighter">
     <files>
+      <node color="1" path="$PROJECT_DIR$/projects/klasy" />
       <node color="6" path="$PROJECT_DIR$/projects/panel-zakladu" />
       <node color="8" path="$PROJECT_DIR$/projects/panel-zarzadzania-zakladami" />
       <node color="3" path="$PROJECT_DIR$/projects/reklamowa-strona-zakladu" />
       <node color="5" path="$PROJECT_DIR$/projects/strona-reklamowa" />
     </files>
     <colors>
-      <color id="1" value="#4f060d" name="Color 1" enabled="true" />
+      <color id="1" value="#4f0508" name="Color 1" enabled="true" />
       <color id="2" value="#44220e" name="Color 2" enabled="true" />
       <color id="3" value="#084b0022" name="Color 3" enabled="true" />
       <color id="4" value="#162c16" name="Color 4" enabled="true" />
