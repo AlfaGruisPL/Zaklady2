@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { CookieService } from 'ngx-cookie';
-import { HttpError } from '../../../../klasy/httpError';
-import { ListonoszService } from '../serwisy/listonosz.service';
-import { Router } from '@angular/router';
-import { KomunikatyService } from '../serwisy/komunikaty.service';
+import {Injectable} from '@angular/core';
+import {CookieService} from 'ngx-cookie';
+import {HttpError} from '../../../../klasy/httpError';
+import {ListonoszService} from '../serwisy/listonosz.service';
+import {Router} from '@angular/router';
+import {KomunikatyService} from '../serwisy/komunikaty.service';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +18,8 @@ export class StraznicyService {
     private router: Router,
     private komunikaty_: KomunikatyService,
     private listonosz: ListonoszService
-  ) {}
+  ) {
+  }
 
   zatrzymajSprawdzanie() {
     clearInterval(this.interval);
@@ -36,19 +37,18 @@ export class StraznicyService {
             this.licznik = 10;
             this.listonosz
               .pobierz('/token/aktywnosc')
-              .then(k => {})
+              .then(k => {
+              })
               .catch((error: HttpError) => {
                 // todo: poprawić to żeby serwer wysyłał odpowiedz konkretną kiedy znalazł token ale ten jest już nie ważny, bo tereaz różne błędy mogą to wywoływać
                 if (error.status == 401) {
                   console.log('token stracił ważność na podstawie bazy danych');
-                  alert(1);
                 }
                 //   this.wyluguj()
               });
           }
         } else {
           console.log('token stracił ważność na podstawie ciasteczek');
-          alert(2);
           //   this.wyluguj()
         }
       }, 1000);
