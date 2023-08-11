@@ -1,13 +1,14 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {MojZaklad} from '../../../../klasy/panelPracownika/mojZaklad/moj-zaklad';
-import {ListonoszService} from '../../../../serwisy/listonosz.service';
-import {Drzwi} from '../../../../enum/drzwi';
-import {MojZakladDTO} from '../../../../klasy/panelPracownika/mojZaklad/moj-zaklad-dto';
-import {KomunikatyService} from '../../../../serwisy/komunikaty.service';
-import {PodreczneDaneService} from '../../../../serwisy/podreczne-dane.service';
-import {PracownicyMojZakladComponent} from './pracownicy-moj-zaklad/pracownicy-moj-zaklad.component';
-import {HttpError} from "../../../../../../../klasy/httpError";
-import {Bledy} from "../../../../enum/bledy";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MojZaklad } from '../../../../klasy/panelPracownika/mojZaklad/moj-zaklad';
+import { ListonoszService } from '../../../../serwisy/listonosz.service';
+import { Drzwi } from '../../../../enum/drzwi';
+import { MojZakladDTO } from '../../../../klasy/panelPracownika/mojZaklad/moj-zaklad-dto';
+import { KomunikatyService } from '../../../../serwisy/komunikaty.service';
+import { PodreczneDaneService } from '../../../../serwisy/podreczne-dane.service';
+import { PracownicyMojZakladComponent } from './pracownicy-moj-zaklad/pracownicy-moj-zaklad.component';
+import { HttpError } from '../../../../../../../klasy/httpError';
+import { Bledy } from '../../../../enum/bledy';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-moj-zaklad-pracownika',
@@ -22,19 +23,17 @@ export class MojZakladPracownikaComponent implements OnInit {
   public mojZakladKlasa = new MojZaklad();
   public zapiszButton: boolean = false;
   public zmodyfikuj: boolean = true;
-  public zablokowanyPrzycisk = false
-  public zmienIdentyfikator = false
+  public zablokowanyPrzycisk = false;
+  public zmienIdentyfikator = false;
 
   constructor(
     private listonosz: ListonoszService,
     private komunikaty: KomunikatyService,
     public PodreczneDane: PodreczneDaneService
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.pobieranieDanych();
-
   }
 
   pobieranieDanych() {
@@ -76,20 +75,21 @@ export class MojZakladPracownikaComponent implements OnInit {
     this.zablokowanyPrzycisk = true;
     this.listonosz
       .wyslij(Drzwi.daneMojZakladPracownik, dane)
-      .then((udane) => {
+      .then(udane => {
         if (typeof udane == 'string') {
           if (udane.split('_')[0] == 'reload') {
-            const okno = this.komunikaty.zmianaIdentyfikatoraPrzekierowanie()
+            const okno = this.komunikaty.zmianaIdentyfikatoraPrzekierowanie();
             okno.onHidden.subscribe(k => {
-              window.location.replace("http://parametr.localhost:8005/#/" + udane.split('_')[1]);
-
-            })
+              var adr = `http://${dane.identyfikator}.panel.fenek.tech`;
+              if (!environment.production) {
+                adr = `http://${dane.identyfikator}.panel.localhost:8005`;
+              }
+              window.location.replace(adr);
+            });
           }
-
         }
         this.komunikaty.modyfikacjaUdana();
-        console.log(udane)
-
+        console.log(udane);
       })
       .catch((blad: HttpError) => {
         switch (blad.error?.reasonCode) {
@@ -97,23 +97,22 @@ export class MojZakladPracownikaComponent implements OnInit {
             this.komunikaty.komunikatBledu(Bledy.IdentyfikatorJestJuzUzywany);
             break;
           case 2:
-            this.komunikaty.komunikatBledu(Bledy.zaCzestaZmianaIdentyfiaktora)
+            this.komunikaty.komunikatBledu(Bledy.zaCzestaZmianaIdentyfiaktora);
             break;
           default:
             this.komunikaty.modyfikacjaNieUdana();
         }
-      }).finally(() => {
+      })
+      .finally(() => {
         this.PodreczneDane.pobierajaca();
         this.pobieranieDanych();
         this.zablokowanyPrzycisk = false;
-      }
-    );
+      });
   }
 
-
   public zmienIdentyfikatorFun() {
-    this.zmienIdentyfikator = true
-    this.komunikaty.ZmianaIdentyfikatora()
+    this.zmienIdentyfikator = true;
+    this.komunikaty.ZmianaIdentyfikatora();
   }
 
   public zmodyfikujFunkcja() {

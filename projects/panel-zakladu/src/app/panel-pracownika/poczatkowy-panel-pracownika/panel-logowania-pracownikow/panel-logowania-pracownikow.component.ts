@@ -1,18 +1,18 @@
-import {Component, OnInit} from '@angular/core';
-import {ListonoszService} from "../../../serwisy/listonosz.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {ToastrService} from "ngx-toastr";
-import {FontAwesomeService} from "../../../serwisy/font-awesome.service";
-import {PodreczneDaneService} from "../../../serwisy/podreczne-dane.service";
+import { Component, OnInit } from '@angular/core';
+import { ListonoszService } from '../../../serwisy/listonosz.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { FontAwesomeService } from '../../../serwisy/font-awesome.service';
+import { PodreczneDaneService } from '../../../serwisy/podreczne-dane.service';
 
 @Component({
   selector: 'app-panel-logowania-pracownikow',
   templateUrl: './panel-logowania-pracownikow.component.html',
-  styleUrls: ['./panel-logowania-pracownikow.component.scss']
+  styleUrls: ['./panel-logowania-pracownikow.component.scss'],
 })
 export class PanelLogowaniaPracownikowComponent implements OnInit {
-  public email: string = "korneliamushak@gmail.com";
-  public haslo: string = "";
+  public email: string = 'korneliamushak@gmail.com';
+  public haslo: string = '';
   public czyPrawidloweDane: boolean = true;
 
   public czyEmailWpisany: boolean = true;
@@ -24,15 +24,13 @@ export class PanelLogowaniaPracownikowComponent implements OnInit {
   public bladPrzyLogowaniu: boolean = true;
 
   public Podglad: boolean = false;
-  subDomain = ""
+  subDomain = '';
 
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   latweLogowanie(event: any) {
-    this.email = event.target.value.split(',')[0]
-    this.haslo = event.target.value.split(',')[1]
+    this.email = event.target.value.split(',')[0];
+    this.haslo = event.target.value.split(',')[1];
   }
 
   public czyDaneWpisane() {
@@ -50,21 +48,19 @@ export class PanelLogowaniaPracownikowComponent implements OnInit {
       this.czyHasloWpisane = false;
       this.czyWszystkieDaneWpisane = false;
     }
-    return this.czyWszystkieDaneWpisane
-
+    return this.czyWszystkieDaneWpisane;
   }
 
-  constructor(private listonosz: ListonoszService,
-              private Router: Router,
-              private route: ActivatedRoute,
-              private toasts: ToastrService,
-              public podreczne_: PodreczneDaneService,
-              public fontAwesome: FontAwesomeService) {
-  }
+  constructor(
+    private listonosz: ListonoszService,
+    private Router: Router,
+    private route: ActivatedRoute,
+    private toasts: ToastrService,
+    public podreczne_: PodreczneDaneService,
+    public fontAwesome: FontAwesomeService
+  ) {}
 
   public logowanie() {
-    const identyfikator = this.podreczne_.wartoscAutomatycznegoIdentyfikatora
-
     this.czyPrawidloweDane = true;
     this.czyWolnoLogowac = true;
     this.czyDaneWpisane();
@@ -73,27 +69,29 @@ export class PanelLogowaniaPracownikowComponent implements OnInit {
     }
     const dane = {
       email: this.email,
-      haslo: this.haslo
-    }
+      haslo: this.haslo,
+    };
     this.bladPrzyLogowaniu = true;
     this.czyKontoPotwierdzone = true;
-    this.listonosz.zaloguj(dane).then(udane => {
-
-      this.Router.navigate([identyfikator + '/panelPracownika']);
-    }).catch(blad => {
-      switch (blad['error']['reasonCode']) {
-        case 3:
-          this.czyWolnoLogowac = false
-          break;
-        case 4:
-          this.czyKontoPotwierdzone = false;
-          break;
-        case 5:
-          this.czyPrawidloweDane = false;
-          break;
-        default:
-          this.bladPrzyLogowaniu = false
-      }
-    })
+    this.listonosz
+      .zaloguj(dane)
+      .then(udane => {
+        this.Router.navigate(['/panelPracownika']);
+      })
+      .catch(blad => {
+        switch (blad['error']['reasonCode']) {
+          case 3:
+            this.czyWolnoLogowac = false;
+            break;
+          case 4:
+            this.czyKontoPotwierdzone = false;
+            break;
+          case 5:
+            this.czyPrawidloweDane = false;
+            break;
+          default:
+            this.bladPrzyLogowaniu = false;
+        }
+      });
   }
 }

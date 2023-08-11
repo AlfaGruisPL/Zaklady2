@@ -1,6 +1,6 @@
-import {environment} from "projects/panel-zakladu/src/environments/environment";
-import {usluga} from "../../../../../klasy/dane-podstawowe";
-import {Termin} from "../kalendarz/termin";
+import { environment } from 'projects/panel-zakladu/src/environments/environment';
+import { usluga } from '../../../../../klasy/dane-podstawowe';
+import { Termin } from '../kalendarz/termin';
 
 export class DaneKlienta {
   public imie: string = '';
@@ -22,9 +22,10 @@ export class DaneKlienta {
   public daneNieWyslane: boolean = false;
   public niepoprawnyKod: boolean = false;
   public wybranyTermin: Termin | undefined;
-  public wszystkieTerminy: Array<Termin> = []
+  public wszystkieTerminy: Array<Termin> = [];
 
   constructor() {
+    // informacje do rejestracji
     if (!environment.production) {
       this.imie = 'Korneliia';
       this.nazwisko = 'Mushak';
@@ -34,7 +35,6 @@ export class DaneKlienta {
       this.wybranyPracownik = 183;
       this.kodWeryfikacja = '8';
     }
-
   }
 
   public czyKodWerifikacjaWpisany() {
@@ -87,17 +87,14 @@ export class pracownikUslugiDTO {
   public uslugiId: Array<number> = [];
 
   constructor(pracownikUslugi: DaneKlienta) {
-
-
     pracownikUslugi.uslugi.forEach(usluga => {
       if (usluga.wybrane) {
         this.uslugiId.push(usluga.id);
       }
-    })
+    });
     if (pracownikUslugi.wybranyPracownik != undefined) {
       this.pracownikId = pracownikUslugi.wybranyPracownik;
     }
-
   }
 }
 
@@ -106,9 +103,9 @@ export class DaneKlientaDTO {
   public nazwisko: string = '';
   public numerTelefonu: string = '';
   public email: string = '';
-  public poczatek: Date = new Date()
-  public koniec: Date = new Date()
-  public uslugiId: number[] = []
+  public poczatek: Date = new Date();
+  public koniec: Date = new Date();
+  public uslugiId: number[] = [];
   public pracownikId: number | undefined = 0;
 
   constructor(daneKlienta: DaneKlienta) {
@@ -117,18 +114,16 @@ export class DaneKlientaDTO {
     this.numerTelefonu =
       daneKlienta.prefiksTelefonu + '-' + daneKlienta.numerTelefonu;
     this.email = daneKlienta.email;
-    this.pracownikId = daneKlienta.wybranyPracownik
+    this.pracownikId = daneKlienta.wybranyPracownik;
     const k = daneKlienta.wybranyTermin;
     if (k) {
-
-      this.poczatek = k.poczatek
-      this.koniec = k.koniec
+      this.poczatek = k.poczatek;
+      this.koniec = k.koniec;
     }
     daneKlienta.uslugi.forEach(usluga => {
       if (usluga.wybrane) {
-        this.uslugiId.push(usluga.id)
+        this.uslugiId.push(usluga.id);
       }
-    })
-
+    });
   }
 }

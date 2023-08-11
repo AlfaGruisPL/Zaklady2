@@ -345,7 +345,7 @@
               "fileReplacements": [
                 {
                   "replace": "projects/reklamowa-strona-zakladu/src/environments/environment.ts",
-                  "with": "projects/reklamowa-strona-zakladu/src/environments/environment.dev.ts"
+                  "with": "projects/reklamowa-strona-zakladu/src/environments/environment.prod.ts"
                 }
               ],
               "budgets": [
@@ -442,7 +442,7 @@
               "fileReplacements": [
                 {
                   "replace": "projects/reklamowa-strona-zakladu/src/environments/environment.ts",
-                  "with": "projects/reklamowa-strona-zakladu/src/environments/environment.dev.ts"
+                  "with": "projects/reklamowa-strona-zakladu/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": false,

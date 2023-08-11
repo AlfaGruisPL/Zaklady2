@@ -1,4 +1,4 @@
-import {dzien, MojZaklad} from './moj-zaklad';
+import { dzien, MojZaklad } from './moj-zaklad';
 
 export class MojZakladDTO {
   public nazwa: string = '';
@@ -30,8 +30,8 @@ export class MojZakladDTO {
   public dataZalozeniayCzyWyswietlic = false;
   public mapaCzyWyswietlic = false;
   public godzinyCzyWyswietlic = false;
-  public iloscPracownikowCzyWyswietlic = false
-  public daneZakladuCzyWyswietlic = false
+  public iloscPracownikowCzyWyswietlic = false;
+  public daneZakladuCzyWyswietlic = false;
   public naszKontaktCzyWyswietlic = false;
   public wysokosc: string = '';
   public szerokosc: string = '';
@@ -41,7 +41,7 @@ export class MojZakladDTO {
   public email: string = '';
   public numerTelefonu: string = '';
 
-  public identyfikator = ''
+  public identyfikator = '';
 
   constructor(mojZakladKlasa: MojZaklad) {
     this.nazwa = mojZakladKlasa.nazwa;
@@ -49,10 +49,8 @@ export class MojZakladDTO {
     this.nazwaUlicy = mojZakladKlasa.nazwaUlicy;
     this.numerDomu = mojZakladKlasa.numerDomu;
     this.numerLokalu = mojZakladKlasa.numerLokalu;
-    this.opisZakladu = mojZakladKlasa.opisZakladu;
     this.dataZalozenia = mojZakladKlasa.dataZalozenia;
-    this.kodPocztowy =
-      mojZakladKlasa.kodPocztowy1 + '-' + mojZakladKlasa.kodPocztowy2;
+    this.kodPocztowy = mojZakladKlasa.kodPocztowy1 + '-' + mojZakladKlasa.kodPocztowy2;
     this.wojewodztwo = mojZakladKlasa.wojewodztwo;
     this.niedziela = new dzienDTO(mojZakladKlasa.niedziela);
     this.poniedzialek = new dzienDTO(mojZakladKlasa.poniedzialek);
@@ -66,8 +64,7 @@ export class MojZakladDTO {
     this.wysokosc = mojZakladKlasa.wysokosc;
     this.szerokosc = mojZakladKlasa.szerokosc;
     this.email = mojZakladKlasa.email;
-    this.numerTelefonu =
-      mojZakladKlasa.prefiksTelefonu + '-' + mojZakladKlasa.numerTelefonu;
+    this.numerTelefonu = mojZakladKlasa.prefiksTelefonu + '-' + mojZakladKlasa.numerTelefonu;
     this.powiat = mojZakladKlasa.powiat;
     this.wies = mojZakladKlasa.wies;
 
@@ -76,10 +73,8 @@ export class MojZakladDTO {
     this.regonCzyWyswietlic = mojZakladKlasa.regonCzyWyswietlic;
     this.emailCzyWyswietlic = mojZakladKlasa.emailCzyWyswietlic;
     this.telefonCzyWyswietlic = mojZakladKlasa.telefonCzyWyswietlic;
-    this.opisCzyWyswietlic = mojZakladKlasa.opisCzyWyswietlic;
     this.uslugiCzyWyswietlic = mojZakladKlasa.uslugiCzyWyswietlic;
-    this.dataZalozeniayCzyWyswietlic =
-      mojZakladKlasa.dataZalozeniayCzyWyswietlic;
+    this.dataZalozeniayCzyWyswietlic = mojZakladKlasa.dataZalozeniayCzyWyswietlic;
     this.mapaCzyWyswietlic = mojZakladKlasa.mapaCzyWyswietlic;
     this.godzinyCzyWyswietlic = mojZakladKlasa.godzinyCzyWyswietlic;
 
@@ -87,7 +82,7 @@ export class MojZakladDTO {
     this.daneZakladuCzyWyswietlic = mojZakladKlasa.daneZakladuCzyWyswietlic;
     this.naszKontaktCzyWyswietlic = mojZakladKlasa.naszKontaktCzyWyswietlic;
 
-    this.identyfikator = mojZakladKlasa.identyfikator
+    this.identyfikator = mojZakladKlasa.identyfikator;
   }
 }
 

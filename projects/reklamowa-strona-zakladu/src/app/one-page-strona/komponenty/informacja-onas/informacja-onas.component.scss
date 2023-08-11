@@ -69,7 +69,7 @@
   .podstawoweInformacje {
     grid-area: podstawoweInformacje;
     display: flex;
-    align-items: start;
+    align-items: flex-start;
     justify-content: right;
 
 
@@ -127,7 +127,7 @@
 
 .uslugi {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   justify-content: right;
 }
 

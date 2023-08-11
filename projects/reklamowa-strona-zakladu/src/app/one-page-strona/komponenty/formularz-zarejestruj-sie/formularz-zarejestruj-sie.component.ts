@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {DaneKlientaDTO} from './etapy/klasy/dane-klienta';
-import {ListonoszService} from '../../../serwisy/listonosz.service';
-import {Drzwi} from '../../../enum/drzwi';
-import {ZarejestrujSieService} from './zarejestrujSie.service';
-import {NawigacjaService} from "../../../serwisy/nawigacja.service";
-import {NawigacjaEnum} from "../../../enum/nawigacja.enum";
+import { Component, OnInit } from '@angular/core';
+import { DaneKlientaDTO } from './etapy/klasy/dane-klienta';
+import { ListonoszService } from '../../../serwisy/listonosz.service';
+import { Drzwi } from '../../../enum/drzwi';
+import { ZarejestrujSieService } from './zarejestrujSie.service';
+import { NawigacjaService } from '../../../serwisy/nawigacja.service';
+import { NawigacjaEnum } from '../../../enum/nawigacja.enum';
 
 @Component({
   selector: 'app-formularz-zarejestruj-sie',
@@ -12,22 +12,17 @@ import {NawigacjaEnum} from "../../../enum/nawigacja.enum";
   styleUrls: ['./formularz-zarejestruj-sie.component.scss'],
 })
 export class FormularzZarejestrujSieComponent implements OnInit {
-  public krok: number = 2;
-
+  public krok: number = 1;
 
   constructor(
     public listonosz: ListonoszService,
     public zarejestrujSieService: ZarejestrujSieService,
     private nawigacja_: NawigacjaService
-  ) {
-  }
+  ) {}
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   ustawKrok(nowyKrok: number) {
-
     if (nowyKrok == 5) {
       //kiedy kliknięte w 4
       this.wyslijDane();
@@ -37,19 +32,22 @@ export class FormularzZarejestrujSieComponent implements OnInit {
     } else {
       this.krok = nowyKrok;
     }
-    this.nawigacja_.przeniesDoPanelu(NawigacjaEnum.rejestracjaFormularz)
+    this.nawigacja_.przeniesDoPanelu(NawigacjaEnum.rejestracjaFormularz);
   }
 
   public wyslijDane() {
     this.zarejestrujSieService.DaneKlientaClass.daneNieWyslane = false;
-    const daneDTO = new DaneKlientaDTO(this.zarejestrujSieService.DaneKlientaClass);
+    const daneDTO = new DaneKlientaDTO(
+      this.zarejestrujSieService.DaneKlientaClass
+    );
     this.listonosz
       .wyslij(Drzwi.daneKlientaRejestracja, daneDTO)
-      .then((identyfikatorWizyty) => {
-        this.zarejestrujSieService.DaneKlientaClass.identyfikator = identyfikatorWizyty;
+      .then(identyfikatorWizyty => {
+        this.zarejestrujSieService.DaneKlientaClass.identyfikator =
+          identyfikatorWizyty;
         this.krok = 5;
       })
-      .catch((nieudane) => {
+      .catch(nieudane => {
         this.zarejestrujSieService.DaneKlientaClass.daneNieWyslane = true;
       });
   }
@@ -62,10 +60,10 @@ export class FormularzZarejestrujSieComponent implements OnInit {
     };
     this.listonosz
       .wyslij(Drzwi.kodWeryfikacyjnyIdentyfikator, kodDTO)
-      .then((udane) => {
+      .then(udane => {
         this.krok = 6;
       })
-      .catch((nieudane) => {
+      .catch(nieudane => {
         this.zarejestrujSieService.DaneKlientaClass.niepoprawnyKod = true;
       });
   }

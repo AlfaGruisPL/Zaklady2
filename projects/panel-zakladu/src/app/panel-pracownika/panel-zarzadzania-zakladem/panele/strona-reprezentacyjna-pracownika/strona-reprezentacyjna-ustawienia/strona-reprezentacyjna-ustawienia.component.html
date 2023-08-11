@@ -1,38 +1,52 @@
-<div class="tabelka">
-  <tr>
-    <td><label for="link">Link do strony reprezentacyjnej: </label></td>
-    <td id="link"><a href="http://kroliczek.localhost:8008">Link do strony</a></td>
-  </tr>
-  <tr>
-    <td>Status strony reprezentacyjnej</td>
-    <td>
-      <ui-switch
-        class="przelacznikPublicznePrywatne"
-        checkedLabel="Włączona"
-        uncheckedLabel="Wyłączona"
-        [(ngModel)]="ustawienia.stronaReklamowaPrzelacznik"
-      ></ui-switch>
-    </td>
-  </tr>
-  <tr>
-    <th>
-      Zdjęcie banneru
-    </th>
-    <td>
-      <input type="file" (change)="wybierzPlik($event)">
-      <img class="bannerImg" *ngIf="zdjecieBanerRefresh"
-           [src]="environment.linkDoBaneruStronyReklamowej+zdjecieBanerRefresh">
-    </td>
-  </tr>
-  <tr>
-    <th>Logo zakładu:</th>
-    <td>
-      <input type="file" (change)="wybierzPlikLogo($event)">
-      <img class="bannerImg" *ngIf="zdjecieBanerRefresh"
-           [src]="environment.linkDoLogaStronyReklamowej+zdjecieBanerRefresh">
-    </td>
-  </tr>
-
-
-</div>
-<input type="button" value="Zapisz" (click)="zapisz()">
+<form>
+  <div class="tabelka">
+    <table>
+      <tr>
+        <td><label for="link">Link do strony reprezentacyjnej: </label></td>
+        <td id="link"><a href="http://kroliczek.localhost:8008">Link do strony</a></td>
+      </tr>
+      <tr>
+        <td>Status strony reprezentacyjnej</td>
+        <td>
+          <ui-switch
+            class="przelacznikPublicznePrywatne"
+            checkedLabel="Włączona"
+            uncheckedLabel="Wyłączona"
+            [(ngModel)]="ustawienia.stronaReklamowaPrzelacznik"></ui-switch>
+        </td>
+      </tr>
+      <tr>
+        <th>Zdjęcie banneru</th>
+        <td>
+          <input type="file" (change)="wybierzPlik($event)" />
+          <img
+            class="bannerImg"
+            *ngIf="zdjecieBanerRefresh"
+            [src]="environment.linkDoBaneruStronyReklamowej + zdjecieBanerRefresh" />
+        </td>
+      </tr>
+      <tr>
+        <th>Logo zakładu:</th>
+        <td>
+          <input type="file" (change)="wybierzPlikLogo($event)" />
+          <img
+            class="bannerImg"
+            *ngIf="zdjecieBanerRefresh"
+            [src]="environment.linkDoLogaStronyReklamowej + zdjecieBanerRefresh" />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <textarea
+            class="loInputZagklad"
+            id="opis"
+            type="text"
+            formControlName="opisZakladu"
+            style="width: 420px; height: 200px; resize: none">
+          </textarea>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <input type="button" value="Zapisz" (click)="zapisz()" />
+</form>

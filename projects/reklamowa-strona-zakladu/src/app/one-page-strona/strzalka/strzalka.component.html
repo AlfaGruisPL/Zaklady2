@@ -1,4 +1,6 @@
-<div class="strzalka" (click)="strzalka()">
-
+<div
+  class="strzalka"
+  [ngClass]="{ wyswietlStrzalke: wyswietlStrzalke, strzalkaKreciSie: strzalkaKreciSie }"
+  (click)="strzalka()">
   <div class="strz"></div>
 </div>

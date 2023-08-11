@@ -4,7 +4,6 @@ export class MojZaklad {
   public nazwaUlicy: string = '';
   public numerDomu: string = '';
   public numerLokalu: string = '';
-  public opisZakladu: string = '';
   public dataZalozenia?: Date;
   public kodPocztowy1: string = '';
   public kodPocztowy2: string = '';
@@ -25,12 +24,11 @@ export class MojZaklad {
   public emailCzyWyswietlic = false;
   public telefonCzyWyswietlic = false;
   public godzinyCzyWyswietlic = false;
-  public opisCzyWyswietlic = false;
   public uslugiCzyWyswietlic = false;
   public dataZalozeniayCzyWyswietlic = false;
   public mapaCzyWyswietlic = false;
-  public iloscPracownikowCzyWyswietlic = false
-  public daneZakladuCzyWyswietlic = false
+  public iloscPracownikowCzyWyswietlic = false;
+  public daneZakladuCzyWyswietlic = false;
   public naszKontaktCzyWyswietlic = false;
 
   public wysokosc: string = '';
@@ -40,7 +38,7 @@ export class MojZaklad {
   public email: string = '';
   public prefiksTelefonu = '';
   public numerTelefonu: string = '';
-  public identyfikator = ''
+  public identyfikator = '';
 }
 
 export class dzien {

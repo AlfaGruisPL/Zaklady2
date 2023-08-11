@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -39,7 +38,6 @@ import {
 } from '@ng-bootstrap/ng-bootstrap';
 import { UiSwitchModule } from 'ngx-ui-switch';
 import { PracownicyMojZakladComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moj-zaklad-pracownika/pracownicy-moj-zaklad/pracownicy-moj-zaklad.component';
-import { PlatnosciPracownikaModule } from './panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/platnosciPracownika.module';
 import { UslugaSmsPracownikaModule } from './panel-pracownika/panel-zarzadzania-zakladem/panele/usluga-sms-pracownika/usluga-sms-pracownika.module';
 import { UslugiPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/uslugi.component';
 import { UslugiPrzypisaniPracownicyComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/uslugi-przypisani-pracownicy/uslugi-przypisani-pracownicy.component';
@@ -49,7 +47,6 @@ import { Termin_komponentComponent } from './panel-pracownika/panel-zarzadzania-
 import { KalendarzGodzinaKreskaKomponentComponent } from './panel-pracownika/panel-zarzadzania-zakladem/kalendarz-komponent/kalendarz-godzina-kreska-komponent/kalendarz-godzina-kreska-komponent.component';
 import { KalendarzZarzadzanieTerminemComponent } from './panel-pracownika/panel-zarzadzania-zakladem/kalendarz-komponent/kalendarz-zarzadzanie-terminem/kalendarz-zarzadzanie-terminem.component';
 import { KalendarzPrzerwaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/kalendarz-komponent/kalendarz-przerwa/kalendarz-przerwa.component';
-import { HarmonogramModule } from './panel-pracownika/panel-zarzadzania-zakladem/panele/harmonogram-pracownika/harmonogram.module';
 import { InformacjeOKliencieComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/informacje-okliencie/informacje-okliencie.component';
 import { KalendarzPrzerwaKomponentComponent } from './panel-pracownika/panel-zarzadzania-zakladem/kalendarz-komponent/kalendarz-przerwa-komponent/kalendarz-przerwa-komponent.component';
 import { PracownicyModule } from './panel-pracownika/panel-zarzadzania-zakladem/panele/pracownicy-pracownika/pracownicy.module';
@@ -57,6 +54,7 @@ import { RureczkiModule } from './rureczki/rureczki.module';
 import { StronaReprezentacyjnaModule } from './panel-pracownika/panel-zarzadzania-zakladem/panele/strona-reprezentacyjna-pracownika/strona-reprezentacyjna.module';
 import { KalendarzModyfikacjaTerminuComponent } from './panel-pracownika/panel-zarzadzania-zakladem/kalendarz-komponent/kalendarz-modyfikacja-terminu/kalendarz-modyfikacja-terminu.component';
 import { ListaKlientowModule } from './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/lista-klientow.module';
+import { SharedModule } from './shared.module';
 
 @NgModule({
   declarations: [
@@ -92,7 +90,7 @@ import { ListaKlientowModule } from './panel-pracownika/panel-zarzadzania-zaklad
     KalendarzModyfikacjaTerminuComponent,
   ],
   imports: [
-    BrowserModule,
+    SharedModule,
     AppRoutingModule,
     FormsModule,
     ListaKlientowModule,
@@ -116,9 +114,7 @@ import { ListaKlientowModule } from './panel-pracownika/panel-zarzadzania-zaklad
       uncheckedTextColor: 'rgb(0,0,0)',
     }),
     NgbModule,
-    PlatnosciPracownikaModule,
     UslugaSmsPracownikaModule,
-    HarmonogramModule,
     ReactiveFormsModule,
   ],
   providers: [

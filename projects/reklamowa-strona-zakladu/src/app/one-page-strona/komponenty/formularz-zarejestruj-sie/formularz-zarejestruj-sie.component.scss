@@ -4,7 +4,7 @@
   min-height: 400px;
   background: #fcfcfc;
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   float: left;
@@ -162,7 +162,7 @@
   height: min-content;
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
 
   span {
     font-family: math;

@@ -26,11 +26,8 @@ export class PanelZarzadzaniaZaklademComponent implements OnInit, OnDestroy {
     this.DanePodreczne.ustawZmienneTypuUzytkownika();
 
     setInterval(() => {
-      const elementy = document.getElementsByClassName(
-        'BrakBialejRamkiPopOver'
-      );
+      const elementy: HTMLCollectionOf<Element> | any = document.getElementsByClassName('BrakBialejRamkiPopOver');
       for (var k = 0; k < elementy.length; ++k) {
-        // @ts-ignore
         elementy[k].parentElement.classList.add('BrakBialejRamkiPopOverRodzic');
       }
     }, 10);

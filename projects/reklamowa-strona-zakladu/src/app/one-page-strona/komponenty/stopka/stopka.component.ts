@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as Leaflet from 'leaflet';
-import {LayerGroup} from 'leaflet';
-import {DanePodstawoweService} from '../../../serwisy/dane-podstawowe.service';
+import { LayerGroup } from 'leaflet';
+import { DanePodstawoweService } from '../../../serwisy/dane-podstawowe.service';
 
 @Component({
   selector: 'app-stopka',
@@ -9,8 +9,7 @@ import {DanePodstawoweService} from '../../../serwisy/dane-podstawowe.service';
   styleUrls: ['./stopka.component.scss'],
 })
 export class StopkaComponent implements OnInit {
-  constructor(public danePodstawowe: DanePodstawoweService) {
-  }
+  constructor(public danePodstawowe: DanePodstawoweService) {}
 
   public map: Leaflet.Map | undefined;
   markersLayer = new Leaflet.LayerGroup();
@@ -18,31 +17,29 @@ export class StopkaComponent implements OnInit {
   options: Leaflet.MapOptions = {
     layers: getLayers(),
     zoom: 1,
-    center: new Leaflet.LatLng(
-      22, 22
-    ),
+    center: new Leaflet.LatLng(22, 22),
   };
 
   ngOnInit() {
     this.danePodstawowe.danePodstawoweObservable.subscribe(k => {
-
-      console.log(this.map)
-
-
       if (this.map == undefined) {
         const k2 = setInterval(() => {
           if (this.map != undefined) {
-            console.log(1)
             // @ts-ignore
-            this.map.flyTo([this.danePodstawowe.danePodstawowe.wysokosc, this.danePodstawowe.danePodstawowe.szerokosc], 17, {animate: false});
-            clearInterval(k2)
+            this.map.flyTo(
+              [
+                this.danePodstawowe.danePodstawowe.wysokosc,
+                this.danePodstawowe.danePodstawowe.szerokosc,
+              ],
+              17,
+              { animate: false }
+            );
+            clearInterval(k2);
           }
-        }, 100)
+        }, 100);
       }
-
-    })
+    });
   }
-
 
   onMapReady(map: Leaflet.Map) {
     setTimeout(() => {
@@ -55,14 +52,14 @@ export class StopkaComponent implements OnInit {
       let icon;
       icon = new Leaflet.DivIcon({
         className: 'test',
-        html: `<img class="pizenka" src='assets/address-icon.png'/>`,
+        html: `<img class="pizenka" src="assets/address-icon.png"/>`,
       });
       const marker = Leaflet.marker(
         [
           this.danePodstawowe.danePodstawowe.wysokosc,
           this.danePodstawowe.danePodstawowe.szerokosc,
         ],
-        {icon}
+        { icon }
       );
       this.sMarkersLayer.addLayer(marker);
 
