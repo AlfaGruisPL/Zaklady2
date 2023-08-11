@@ -32,6 +32,15 @@ body {
   margin: 0;
 }
 
+@font-face {
+  font-family: "varta";
+  src: url("../fonts/varta/static/Varta-Regular.ttf");
+}
+
+* {
+  font-family: varta;
+}
+
 //RejestracjaPracownika/Klienta, reset hasła i logowanie//
 //*buttons*//
 .ButtonZarejestrujIzaloguj {
