@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectTreeColorHighlighter">
     <files>
-      <node color="1" path="$PROJECT_DIR$/projects/klasy" />
+      <node color="3" path="$PROJECT_DIR$/projects/klasy" />
       <node color="6" path="$PROJECT_DIR$/projects/panel-zakladu" />
       <node color="8" path="$PROJECT_DIR$/projects/panel-zarzadzania-zakladami" />
-      <node color="3" path="$PROJECT_DIR$/projects/reklamowa-strona-zakladu" />
+      <node color="7" path="$PROJECT_DIR$/projects/reklamowa-strona-zakladu" />
       <node color="5" path="$PROJECT_DIR$/projects/strona-reklamowa" />
     </files>
     <colors>

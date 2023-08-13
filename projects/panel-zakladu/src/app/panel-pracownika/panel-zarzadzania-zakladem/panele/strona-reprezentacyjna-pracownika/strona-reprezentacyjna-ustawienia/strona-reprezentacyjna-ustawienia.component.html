@@ -1,4 +1,4 @@
-<form>
+<form [formGroup]="formualrz">
   <div class="tabelka">
     <table>
       <tr>
@@ -11,28 +11,28 @@
           <ui-switch
             class="przelacznikPublicznePrywatne"
             checkedLabel="Włączona"
-            uncheckedLabel="Wyłączona"
+            uncheckedLabel="Wyłączona" [ngModelOptions]="{standalone: true}"
             [(ngModel)]="ustawienia.stronaReklamowaPrzelacznik"></ui-switch>
         </td>
       </tr>
       <tr>
         <th>Zdjęcie banneru</th>
         <td>
-          <input type="file" (change)="wybierzPlik($event)" />
+          <input type="file" (change)="wybierzPlik($event)"/>
           <img
             class="bannerImg"
             *ngIf="zdjecieBanerRefresh"
-            [src]="environment.linkDoBaneruStronyReklamowej + zdjecieBanerRefresh" />
+            [src]="environment.linkDoBaneruStronyReklamowej + zdjecieBanerRefresh"/>
         </td>
       </tr>
       <tr>
         <th>Logo zakładu:</th>
         <td>
-          <input type="file" (change)="wybierzPlikLogo($event)" />
+          <input type="file" (change)="wybierzPlikLogo($event)"/>
           <img
             class="bannerImg"
             *ngIf="zdjecieBanerRefresh"
-            [src]="environment.linkDoLogaStronyReklamowej + zdjecieBanerRefresh" />
+            [src]="environment.linkDoLogaStronyReklamowej + zdjecieBanerRefresh"/>
         </td>
       </tr>
       <tr>
@@ -48,5 +48,5 @@
       </tr>
     </table>
   </div>
-  <input type="button" value="Zapisz" (click)="zapisz()" />
+  <input type="button" value="Zapisz" (click)="zapisz()"/>
 </form>

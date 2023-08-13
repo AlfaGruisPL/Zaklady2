@@ -160,7 +160,7 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
   }
 
   public wyswietlUzytkownika(id: number) {
-    const okienko = this.modalService.open(DodawanieIModyfikacjaPracownikaComponent, {backdrop: "static", size: 'xl'});
+    const okienko = this.modalService.open(DodawanieIModyfikacjaPracownikaComponent, {size: 'xl'});
     okienko.componentInstance.tryb = "wyswietlenie";
     okienko.componentInstance.idUzytkownika = id;
     okienko.componentInstance.pobierzPracownika();

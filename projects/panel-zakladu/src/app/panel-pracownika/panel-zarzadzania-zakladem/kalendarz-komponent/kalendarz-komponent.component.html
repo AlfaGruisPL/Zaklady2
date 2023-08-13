@@ -1,22 +1,22 @@
-Wyświetlane dane:
-<select
-  [(ngModel)]="Kalendarz_.wybranyPracownik"
-
-  (change)="Kalendarz_.pobierzDane()">
-
-  <option
-    [value]="pracownik.id"
-    *ngFor="let pracownik of Kalendarz_.pracownicy">
+<div class="pracownikSelectAndLabel">
+  <label for="pracownikSelect">Filtrowanie danych:</label>
+  <select id="pracownikSelect"
+          [(ngModel)]="Kalendarz_.wybranyPracownik"
+          (change)="Kalendarz_.pobierzDane()">
+    <option
+      [value]="pracownik.id"
+      *ngFor="let pracownik of Kalendarz_.pracownicy">
       <span *ngIf="pracownik.id != Kalendarz_.zalogowanyUzytkownikId else zalogowanyUzytkownik">
         {{pracownik.imie + " " + pracownik.nazwisko}}
       </span>
-    <ng-template #zalogowanyUzytkownik>
+      <ng-template #zalogowanyUzytkownik>
       <span>
         Zalogowany użytkownik
       </span>
-    </ng-template>
-  </option>
-</select>
+      </ng-template>
+    </option>
+  </select>
+</div>
 <table style="width: 100%;">
   <tr>
     <td colspan="8">
@@ -110,7 +110,8 @@ Wyświetlane dane:
       (click)="kliknietoPole(dzien,index)"
 
     >
-      <span *ngIf="!czyPracuje(dzien.dzien)" style="width: 100%;text-align: center;display: block;color:#343434">---------</span>
+      <span *ngIf="!czyPracuje(dzien.dzien)"
+            style="width: 100%;text-align: center;display: block;color:#343434">---------</span>
       <div *ngIf="czyToDzis(dzien.data) && index == 0
 
 ">

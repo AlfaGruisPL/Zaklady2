@@ -4,14 +4,14 @@ import {
   StronaReprezentacyjnaUstawieniaComponent
 } from "./strona-reprezentacyjna-ustawienia/strona-reprezentacyjna-ustawienia.component";
 import {StronaReprezentacyjnaPracownikaComponent} from "./strona-reprezentacyjna-pracownika.component";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {UiSwitchModule} from "ngx-ui-switch";
 
 
 @NgModule({
   declarations: [StronaReprezentacyjnaUstawieniaComponent, StronaReprezentacyjnaPracownikaComponent],
   imports: [
-    FormsModule,
+    FormsModule, ReactiveFormsModule,
     CommonModule,
     UiSwitchModule
   ]
