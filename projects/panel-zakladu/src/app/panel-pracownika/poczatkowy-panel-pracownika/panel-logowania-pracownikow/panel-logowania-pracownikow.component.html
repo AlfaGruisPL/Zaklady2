@@ -1,56 +1,59 @@
 <div class="logowanie">
-  <h1 class="h1dlaTytuluPaneluZaklad">Zakład
-    <ng-container
-      *ngIf="podreczne_.zakladZnaleziony_domenowe == false else nazwa">
-
-    </ng-container>
-    <ng-template #nazwa>
-
-      "{{podreczne_.nazwaZakladu_domenowe}}"
-    </ng-template>
+  <h1 class="h1dlaTytuluPaneluZaklad">
+    Zakład
+    <ng-container *ngIf="podreczne_.zakladZnaleziony_domenowe == false; else nazwa"></ng-container>
+    <ng-template #nazwa> "{{ podreczne_.nazwaZakladu_domenowe }}"</ng-template>
   </h1>
-  <h1 class="h1dlaTytuluPaneluLogowanie">Panel logowania
-  </h1>
-
+  <h1 class="h1dlaTytuluPaneluLogowanie">Panel logowania</h1>
 
   <div class="formularz">
     <div class="informacja" *ngIf="podreczne_.zakladZnaleziony_domenowe == false">
-      <h1>
-        Zakład nie znaleziony
-      </h1>
-      <p>Podany identyfikator zakładu nie został odnaleziony. Sprawdź adres URL wpisany w przeglądarkę, jeżeli adres
-        jest
-        poprawny skontaktuj się z właścicielem zakładu lub administratorem strony</p>
+      <h1>Zakład nie znaleziony</h1>
+      <p>
+        Podany identyfikator zakładu nie został odnaleziony. Sprawdź adres URL wpisany w przeglądarkę, jeżeli adres jest
+        poprawny skontaktuj się z właścicielem zakładu lub administratorem strony
+      </p>
     </div>
 
     <form *ngIf="podreczne_.zakladZnaleziony_domenowe == true">
       <table>
         <tr>
-          <td><input class="logInput" type="text" placeholder="E-mail" [ngModelOptions]="{standalone: true}"
-                     [(ngModel)]="email"
-                     [disabled]="podreczne_.nazwaZakladu_domenowe.length == 0"
-                     [ngClass]="{'wpiszDane': !czyEmailWpisany || !czyPrawidloweDane}">
+          <td>
+            <input
+              class="logInput"
+              type="text"
+              placeholder="E-mail"
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="email"
+              [disabled]="podreczne_.nazwaZakladu_domenowe.length == 0"
+              [ngClass]="{ wpiszDane: !czyEmailWpisany || !czyPrawidloweDane }" />
           </td>
         </tr>
         <tr>
-          <td style="position: relative"><input class="logInput" [type]="!this.Podglad ? 'password': 'text'"
-                                                placeholder="Hasło"
-                                                [ngModelOptions]="{standalone: true}"
-                                                [(ngModel)]="haslo"
-                                                [disabled]="podreczne_.nazwaZakladu_domenowe.length == 0"
-                                                [ngClass]="{'wpiszDane': !czyHasloWpisane || !czyPrawidloweDane}">
-            <fa-icon class="Podglad" (click)="this.Podglad = !this.Podglad" style="position: absolute; top:34px"
-                     [icon]="!this.Podglad ? this.fontAwesome.oczko : this.fontAwesome.oczkoZamkniete"></fa-icon>
+          <td style="position: relative">
+            <input
+              class="logInput"
+              [type]="!this.Podglad ? 'password' : 'text'"
+              placeholder="Hasło"
+              [ngModelOptions]="{ standalone: true }"
+              [(ngModel)]="haslo"
+              [disabled]="podreczne_.nazwaZakladu_domenowe.length == 0"
+              [ngClass]="{ wpiszDane: !czyHasloWpisane || !czyPrawidloweDane }" />
+            <fa-icon
+              class="Podglad"
+              (click)="this.Podglad = !this.Podglad"
+              style="position: absolute; top: 34px"
+              [icon]="!this.Podglad ? this.fontAwesome.oczko : this.fontAwesome.oczkoZamkniete"></fa-icon>
           </td>
         </tr>
         <tr>
-          <td><select (change)="latweLogowanie($event)">
-            <option default>Brak</option>
-            <option [value]="['korneliamushak@gmail.com','haslo']">Właściciel</option>
-            <option [value]="['alfagruis@gmail.com','haslo']">ja pracownik</option>
-
-
-          </select></td>
+          <td>
+            <select (change)="latweLogowanie($event)">
+              <option default>Brak</option>
+              <option [value]="['korneliamushak@gmail.com', 'haslo']">Właściciel</option>
+              <option [value]="['alfagruis@gmail.com', 'haslo']">ja pracownik</option>
+            </select>
+          </td>
         </tr>
         <tr *ngIf="!czyPrawidloweDane">
           <td class="czerwoneKomunikaty">Nieprawidłowe dane,spróbuj ponownie!</td>
@@ -62,29 +65,41 @@
           <td class="czerwoneKomunikaty">Twoje konto nie zostało potwierdzone!</td>
         </tr>
         <tr *ngIf="!czyWolnoLogowac">
-          <td class="czerwoneKomunikaty" style="padding-top:0;">Nie masz uprawnień aby logować<br> się od tego panelu!
+          <td class="czerwoneKomunikaty" style="padding-top: 0">
+            Nie masz uprawnień aby logować<br />
+            się od tego panelu!
           </td>
         </tr>
-        <tr *ngIf="bladPrzyLogowaniu == false;">
-          <td class="czerwoneKomunikaty">Wystąpił nieznany błąd przy logowaniu,<br>skontaktuj się z administratorem!
+        <tr *ngIf="bladPrzyLogowaniu == false">
+          <td class="czerwoneKomunikaty">
+            Wystąpił nieznany błąd przy logowaniu,<br />skontaktuj się z administratorem!
           </td>
         </tr>
         <tr
-          *ngIf="czyWszystkieDaneWpisane && czyPrawidloweDane && czyWolnoLogowac && bladPrzyLogowaniu && czyKontoPotwierdzone">
+          *ngIf="
+            czyWszystkieDaneWpisane && czyPrawidloweDane && czyWolnoLogowac && bladPrzyLogowaniu && czyKontoPotwierdzone
+          ">
           <td class="czerwoneKomunikaty">&nbsp;</td>
         </tr>
       </table>
       <div class="logowanieMarginButton">
-        <button type="submit" (click)="logowanie()" class="ButtonZarejestrujIzaloguj"
-                [disabled]="podreczne_.nazwaZakladu_domenowe.length == 0"
-        >Zaloguj
+        <button
+          type="submit"
+          (click)="logowanie()"
+          class="ButtonZarejestrujIzaloguj"
+          [disabled]="podreczne_.nazwaZakladu_domenowe.length == 0 || trwaLogowanie">
+          Zaloguj
         </button>
-        <br>
-        <a [routerLink]="['../reset']" [queryParams]="{strzalka: true}" class="niePamietaszHasla">Nie pamiętasz hasła?
-          Kliknij, aby zresetować</a>
-        <a class="chceszSieZalogowacLubZarejestrowac" [queryParams]="{strzalka: true}"
-           [routerLink]="['../rejestracja']">Kliknij, aby zarejestrować nowy
-          zakład</a>
+        <br />
+        <a [routerLink]="['../reset']" [queryParams]="{ strzalka: true }" class="niePamietaszHasla"
+          >Nie pamiętasz hasła? Kliknij, aby zresetować</a
+        >
+        <a
+          class="chceszSieZalogowacLubZarejestrowac"
+          [queryParams]="{ strzalka: true }"
+          [routerLink]="['../rejestracja']"
+          >Kliknij, aby zarejestrować nowy zakład</a
+        >
       </div>
     </form>
   </div>

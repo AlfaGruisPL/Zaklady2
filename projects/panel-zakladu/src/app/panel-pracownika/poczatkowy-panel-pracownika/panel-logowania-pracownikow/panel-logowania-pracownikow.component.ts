@@ -24,13 +24,14 @@ export class PanelLogowaniaPracownikowComponent implements OnInit {
   public bladPrzyLogowaniu: boolean = true;
 
   public Podglad: boolean = false;
-  subDomain = '';
+  trwaLogowanie = false;
 
   ngOnInit() {}
 
   latweLogowanie(event: any) {
     this.email = event.target.value.split(',')[0];
     this.haslo = event.target.value.split(',')[1];
+    this.logowanie();
   }
 
   public czyDaneWpisane() {
@@ -73,6 +74,7 @@ export class PanelLogowaniaPracownikowComponent implements OnInit {
     };
     this.bladPrzyLogowaniu = true;
     this.czyKontoPotwierdzone = true;
+    this.trwaLogowanie = true;
     this.listonosz
       .zaloguj(dane)
       .then(udane => {
@@ -92,6 +94,9 @@ export class PanelLogowaniaPracownikowComponent implements OnInit {
           default:
             this.bladPrzyLogowaniu = false;
         }
+      })
+      .finally(() => {
+        this.trwaLogowanie = false;
       });
   }
 }
