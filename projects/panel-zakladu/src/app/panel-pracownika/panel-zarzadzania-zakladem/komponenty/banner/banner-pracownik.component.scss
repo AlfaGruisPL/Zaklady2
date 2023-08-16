@@ -1,6 +1,6 @@
 .pasekTytulowy {
   width: 100%;
-  height: 50px;
+  height: 35px;
   background: #001dbf;
   display: flex;
   align-items: center;
@@ -13,7 +13,7 @@
   .nazwaFirmy {
     color: darkblue;
     font-style: italic;
-    font-size: 30px;
+    font-size: 28px;
     padding-right: 100px;
     text-shadow: 1px 1px 1px black;
     left: 11px;
@@ -25,7 +25,7 @@
     letter-spacing: 5px;
     color: white;
     font-weight: bolder;
-    font-size: 25px;
+    font-size: 23px;
     padding-left: 274px;
     text-shadow: 0px 0px 1px black;
   }
@@ -35,7 +35,7 @@
     right: 18px;
     color: #fffcf3;
     filter: drop-shadow(0px 1px 1px black);
-    font-size: 25px;
+    font-size: 22px;
     background: transparent;
     border: none;
 
@@ -50,10 +50,10 @@
 
     position: absolute;
     right: 103px;
-    top: 6px;
+    top: 1px;
     color: #fffcf3;
     filter: drop-shadow(0px 1px 1px black);
-    font-size: 27px;
+    font-size: 22px;
     background: transparent;
     border: none;
 
@@ -67,8 +67,8 @@
 
   .iloscPowiadomien {
     position: absolute;
-    height: 19px;
-    width: 19px;
+    height: 16px;
+    width: 16px;
     border-radius: 100%;
     color: black;
     display: flex;
@@ -76,12 +76,12 @@
     align-items: center;
     background: white;
     border: 1px solid black;
-    font-size: 11px;
+    font-size: 9px;
     font-weight: bolder;
     padding-right: 1px;
     padding-bottom: 1px;
     right: -6px;
-    top: 22px;
+    top: 16px;
     text-align: center;
     z-index: 25;
   }
@@ -89,10 +89,10 @@
   .powiadomieniaAdminButton {
     position: absolute;
     right: 153px;
-    top: 6px;
+    top: 1px;
     color: #fffcf3;
     filter: drop-shadow(0px 1px 1px black);
-    font-size: 27px;
+    font-size: 22px;
     background: transparent;
     border: none;
 
@@ -104,9 +104,10 @@
     fa-icon:nth-child(2) {
       position: absolute;
       font-size: 15px;
-      z-index: 19;
+      z-index: 21;
       right: -5px;
-      top: 1px;
+      top: -3px;
+      color: #a8a8a8;
     }
   }
 
@@ -116,7 +117,7 @@
     right: 58px;
     color: #fffcf3;
     filter: drop-shadow(0px 1px 1px black);
-    font-size: 25px;
+    font-size: 22px;
     background: transparent;
     border: none;
 
@@ -132,26 +133,26 @@
   position: relative;
   width: 100%;
   display: block;
-  font-size: 30px;
+  font-size: 19px;
 
   button {
     font-size: 12px;
     position: absolute;
-    top: -5px;
-    right: -9px;
+    top: 3px;
+    right: 120px;
     background: rgba(206, 60, 60, 0.4);
     font-weight: bolder;
 
     &:first-child {
       background: rgba(211, 186, 255, 0.45);
-      top: 20px;
+      right: -10px;
     }
 
   }
 }
 
 .powiadomienieTresc {
-  width: 600px;
+  width: 480px;
   max-height: calc(100vh - 200px);
   overflow-y: scroll;
   position: relative;
@@ -161,7 +162,7 @@
   .powiadomienie {
     max-height: 2000px;
     position: relative;
-    padding: 0 10px 10px 70px;
+    padding: 0 10px 10px 10px;
 
     &:not(:last-of-type) {
       border-bottom: 2px solid #8f8f8f;
@@ -180,9 +181,11 @@
     }
 
     h3 {
+      font-size: 20px;
       margin: 0;
       padding-top: 10px;
       padding-bottom: 4px;
+      padding-left: 60px;
       color: #000000;
     }
 
@@ -213,7 +216,7 @@
       left: 20px;
       top: 10px;
       position: absolute;
-      font-size: 27px;
+      font-size: 23px;
       color: #31a236;
 
     }
@@ -301,4 +304,43 @@
   }
 
 
+}
+
+@-webkit-keyframes rotating /* Safari and Chrome */
+{
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.rotating {
+  -webkit-animation: rotating 30s linear infinite;
+  -moz-animation: rotating 30s linear infinite;
+  -ms-animation: rotating 30s linear infinite;
+  -o-animation: rotating 30s linear infinite;
+  animation: rotating 30s linear infinite;
 }

@@ -2,17 +2,12 @@
   <div class="uslugi">
     <div class="naglowekZolty">
       <span class="naglowek1Wzoltym"
-      >Uzupełnij formularz danymi o usługach, jakie oferuje Twój zakład i
-        przypisz do nich pracowników
+        >Uzupełnij formularz danymi o usługach, jakie oferuje Twój zakład i przypisz do nich pracowników
       </span>
     </div>
     <div class="uslugiDiv">
       <div class="divPlus">
-        <fa-icon
-          [icon]="fontAwesome.plusWKolku"
-          class="buttonPlus"
-          (click)="dodajWiersz()"
-        ></fa-icon>
+        <fa-icon [icon]="fontAwesome.plusWKolku" class="buttonPlus" (click)="dodajWiersz()"></fa-icon>
       </div>
 
       <div class="daneZakladuTab">
@@ -27,11 +22,7 @@
           </tr>
           <tr *ngFor="let usluga of listaUslug; let index = index">
             <td>
-              <fa-icon
-                [icon]="fontAwesome.minusWKolku"
-                class="buttonMinus"
-                (click)="usunWiersz(index)"
-              ></fa-icon>
+              <fa-icon [icon]="fontAwesome.minusWKolku" class="buttonMinus" (click)="usunWiersz(index)"></fa-icon>
             </td>
             <td class="zlotyID">{{ index + 1 }}.</td>
             <td>
@@ -39,8 +30,7 @@
                 class="logInputZaklad"
                 style="width: 600px"
                 [(ngModel)]="usluga.nazwa"
-                [ngModelOptions]="{ standalone: true }"
-              />
+                [ngModelOptions]="{ standalone: true }" />
             </td>
             <td>
               <input
@@ -50,16 +40,21 @@
                 class="logInputZaklad"
                 style="width: 110px"
                 [ngModelOptions]="{ standalone: true }"
-                [(ngModel)]="usluga.cena"
-              />
+                [(ngModel)]="usluga.cena" />
             </td>
-            <td><input type="number" class="logInputZaklad" style="width: 130px"
-                       [ngModelOptions]="{ standalone: true }" [(ngModel)]="usluga.czas"></td>
             <td>
-              <fa-icon (click)="modyfikacjaPracownikow(usluga)"
-                       [icon]="fontAwesome.czlowieczek"
-                       class="iconkaUser"
-              ></fa-icon>
+              <input
+                type="number"
+                class="logInputZaklad"
+                style="width: 130px"
+                [ngModelOptions]="{ standalone: true }"
+                [(ngModel)]="usluga.czas" />
+            </td>
+            <td class="pracownicyTd">
+              <fa-icon
+                (click)="modyfikacjaPracownikow(usluga)"
+                [icon]="fontAwesome.czlowieczek"
+                class="iconkaUser"></fa-icon>
             </td>
           </tr>
         </table>

@@ -1,27 +1,21 @@
 <div class="modal-header">
-  <h4 class="modal-title">PRzypisywanie pracowników do usługi</h4>
+  <h4 class="modal-title">Przypisywanie pracowników do usługi</h4>
   <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close('Nie')"></button>
 </div>
 <div class="modal-body">
-  <h3>
-    {{usluga.nazwa}}
-  </h3>
-  <br>
+  <h3>Usługa: {{ usluga.nazwa }}</h3>
+  <br />
   <table>
     <tr>
-      <th>Pracownik</th>
+      <th>Wykonawca</th>
       <th>Dołączenie</th>
     </tr>
     <tr *ngFor="let pracownik of pracownicy">
-      <td>{{pracownik.imie}} {{pracownik.nazwisko}}</td>
-      <td><input type="checkbox" [checked]="czyZaznaczony(pracownik)" (click)="ustaw($event,pracownik)"></td>
+      <td>{{ pracownik.imie }} {{ pracownik.nazwisko }}</td>
+      <td><input type="checkbox" [checked]="czyZaznaczony(pracownik)" (click)="ustaw($event, pracownik)" /></td>
     </tr>
   </table>
 </div>
 <div class="modal-footer">
-  <button (click)="activeModal.close('Nie')">
-    Zamknij
-  </button>
-
-
+  <button (click)="activeModal.close('Nie')">Zamknij</button>
 </div>

@@ -18,7 +18,8 @@ export class DanePodstawowe {
   public uslugi: Array<usluga> = [];
   public wysokosc = 0;
   public szerokosc = 0;
-  public wyswietlaneDane: wyswietlaneDane = new wyswietlaneDane()
+  public opisZakladuWStopce = '';
+  public wyswietlaneDane: wyswietlaneDane = new wyswietlaneDane();
 }
 
 export class dzien {
@@ -38,8 +39,8 @@ export class wyswietlaneDane {
   public dataZalozeniayCzyWyswietlic = false;
   public mapaCzyWyswietlic = false;
   public uslugiCzyWyswietlic = false;
-  public iloscPracownikowCzyWyswietlic = false
-  public daneZakladuCzyWyswietlic = false
+  public iloscPracownikowCzyWyswietlic = false;
+  public daneZakladuCzyWyswietlic = false;
   public naszKontaktCzyWyswietlic = false;
 }
 

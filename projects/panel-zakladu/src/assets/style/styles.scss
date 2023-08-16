@@ -3,6 +3,8 @@
 @import "../../../../../node_modules/tippy.js/dist/tippy.css";
 @import "../../../../../node_modules/tippy.js/themes/light.css";
 @import "../../../../../node_modules/tippy.js/animations/scale.css";
+@import "https://cdn.jsdelivr.net/npm/suneditor@latest/dist/css/suneditor.min.css";
+
 
 .toast-top-right {
   top: 55px !important;
@@ -257,7 +259,7 @@ body {
 .tablica {
   width: calc(100% - 20px);
   margin: 10px 10px 10px 10px;
-  font-size: 20px;
+  font-size: 17px;
 
   tr:not(:last-child) td {
     border-bottom: 1px solid #f1f1f1;
@@ -267,8 +269,14 @@ body {
     background: #fdfdfd;
 
     td {
+      padding: 0;
       height: 40px;
     }
+  }
+
+  tr td {
+    padding: 0;
+
   }
 
   tr:nth-of-type(odd) {

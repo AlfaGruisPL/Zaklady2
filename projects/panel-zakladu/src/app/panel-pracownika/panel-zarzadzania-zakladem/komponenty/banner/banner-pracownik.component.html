@@ -9,16 +9,9 @@
     placement="bottom-right"
     [animation]="true"
     [ngClass]="{
-      powiadomienieAnimacja:
-        powiadomienia_.nieOdczytanePowiadomieniaUzytkownika().length > 0
+      powiadomienieAnimacja: powiadomienia_.nieOdczytanePowiadomieniaUzytkownika().length > 0
     }"
-    (document:click)="
-      zamkniecie(
-        $event,
-        ngbPopoverUzytkownika,
-        'powiadomieniaUzytkownika_Button'
-      )
-    "
+    (document:click)="zamkniecie($event, ngbPopoverUzytkownika, 'powiadomieniaUzytkownika_Button')"
     [ngbPopover]="powiadomieniaUzytkonikaTresc"
     [autoClose]="false"
     triggers="manual"
@@ -37,12 +30,9 @@
     placement="bottom-right"
     [animation]="true"
     [ngClass]="{
-      powiadomienieAnimacja:
-        powiadomienia_.nieOdczytanePowiadomieniaZakladu().length > 0
+      powiadomienieAnimacja: powiadomienia_.nieOdczytanePowiadomieniaZakladu().length > 0
     }"
-    (document:click)="
-      zamkniecie($event, ngbPopover, 'powiadomienieZakladu_button')
-    "
+    (document:click)="zamkniecie($event, ngbPopover, 'powiadomienieZakladu_button')"
     [ngbPopover]="powiadomieniaZakladuTresc"
     *ngIf="token_.czyWlasciciel()"
     [autoClose]="false"
@@ -53,9 +43,7 @@
     <div class="iloscPowiadomien">
       {{ powiadomienia_.nieOdczytanePowiadomieniaZakladu().length }}
     </div>
-    <span
-    ><fa-icon icon="envelope"></fa-icon> <fa-icon icon="gear"></fa-icon
-    ></span>
+    <span><fa-icon icon="envelope"></fa-icon> <fa-icon class="rotating" icon="gear"></fa-icon></span>
   </button>
   <button class="wstronaStartowaButton">
     <fa-icon [icon]="fontAwesome.dom" (click)="doHarmonogramu()"></fa-icon>
@@ -67,17 +55,11 @@
 
 <ng-template #PowiadomieniaZakladuTytul id="powiadomienieZakladu_tytul">
   <span class="powiadomieniaTytul"
-  >Powiadomienia systemowe:
-    <button
-      (click)="PrzeczytajWszystko()"
-      [disabled]="
-        powiadomienia_.nieOdczytanePowiadomieniaZakladu().length == 0
-      ">
+    >Powiadomienia systemowe:
+    <button (click)="PrzeczytajWszystko()" [disabled]="powiadomienia_.nieOdczytanePowiadomieniaZakladu().length == 0">
       Przeczytaj wszystko
     </button>
-    <button
-      (click)="UsunWszystko()"
-      [disabled]="powiadomienia_.nieUsunietePowiadomieniaZakladu().length == 0">
+    <button (click)="UsunWszystko()" [disabled]="powiadomienia_.nieUsunietePowiadomieniaZakladu().length == 0">
       Usuń wszystko
     </button>
   </span>
@@ -88,21 +70,14 @@
       class="powiadomienie"
       [ngClass]="{ usuniete: powiadomienie.usuniete }"
       *ngFor="let powiadomienie of powiadomienia_.powiadomieniaZakladu">
-      <fa-icon
-        icon="x"
-        class="usuniecie"
-        (click)="
-          powiadomienia_.usunPowiadomienieZakladu(powiadomienie)
-        "></fa-icon>
+      <fa-icon icon="x" class="usuniecie" (click)="powiadomienia_.usunPowiadomienieZakladu(powiadomienie)"></fa-icon>
       <fa-icon
         class="icon"
         icon="flag"
         (click)="powiadomienia_.odczytajPowiadomienieZakladu(powiadomienie)"
         [ngClass]="{ odczytane: powiadomienie.odczytane }"></fa-icon>
       <h3>{{ powiadomienie.tytul }}</h3>
-      <span class="data">{{
-        powiadomienie.data | date : 'dd.MM.yyyy   hh:mm'
-        }}</span>
+      <span class="data">{{ powiadomienie.data | date : 'dd.MM.yyyy   hh:mm' }}</span>
       <p [innerHTML]="powiadomienie.tresc"></p>
       <p class="podpis">Sracz.pl</p>
     </div>
@@ -111,19 +86,15 @@
 
 <ng-template #powiadomieniaUzytkonikaTytul>
   <span class="powiadomieniaTytul"
-  >Powiadomienia:
+    >Powiadomienia:
     <button
       (click)="PrzeczytajWszystkoUzytkownika()"
-      [disabled]="
-        powiadomienia_.nieOdczytanePowiadomieniaUzytkownika().length == 0
-      ">
+      [disabled]="powiadomienia_.nieOdczytanePowiadomieniaUzytkownika().length == 0">
       Przeczytaj wszystko
     </button>
     <button
       (click)="UsunWszystkoUzytkownika()"
-      [disabled]="
-        powiadomienia_.nieUsunietePowiadomieniaUzytkownika().length == 0
-      ">
+      [disabled]="powiadomienia_.nieUsunietePowiadomieniaUzytkownika().length == 0">
       Usuń wszystko
     </button>
   </span>
@@ -137,18 +108,14 @@
       <fa-icon
         icon="x"
         class="usuniecie"
-        (click)="
-          powiadomienia_.usunPowiadomienieUzytkownika(powiadomienie)
-        "></fa-icon>
+        (click)="powiadomienia_.usunPowiadomienieUzytkownika(powiadomienie)"></fa-icon>
       <fa-icon
         class="icon"
         icon="flag"
         (click)="powiadomienia_.odczytajPowiadomienieUzytkownika(powiadomienie)"
         [ngClass]="{ odczytane: powiadomienie.odczytane }"></fa-icon>
       <h3>{{ powiadomienie.tytul }}</h3>
-      <span class="data">{{
-        powiadomienie.data | date : 'dd.MM.yyyy   hh:mm'
-        }}</span>
+      <span class="data">{{ powiadomienie.data | date : 'dd.MM.yyyy   hh:mm' }}</span>
       <p [innerHTML]="powiadomienie.tresc"></p>
       <p class="podpis">Sracz.pl</p>
     </div>

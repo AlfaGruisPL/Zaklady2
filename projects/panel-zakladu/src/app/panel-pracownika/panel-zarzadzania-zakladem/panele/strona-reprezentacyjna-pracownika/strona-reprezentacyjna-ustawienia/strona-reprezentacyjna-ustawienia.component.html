@@ -2,51 +2,50 @@
   <div class="tabelka">
     <table>
       <tr>
-        <td><label for="link">Link do strony reprezentacyjnej: </label></td>
+        <th><label for="link">Link do strony reprezentacyjnej: </label></th>
         <td id="link"><a href="http://kroliczek.localhost:8008">Link do strony</a></td>
       </tr>
       <tr>
-        <td>Status strony reprezentacyjnej</td>
+        <th>Status strony reprezentacyjnej</th>
         <td>
           <ui-switch
             class="przelacznikPublicznePrywatne"
             checkedLabel="Włączona"
-            uncheckedLabel="Wyłączona" [ngModelOptions]="{standalone: true}"
+            uncheckedLabel="Wyłączona"
+            [ngModelOptions]="{ standalone: true }"
             [(ngModel)]="ustawienia.stronaReklamowaPrzelacznik"></ui-switch>
         </td>
       </tr>
       <tr>
         <th>Zdjęcie banneru</th>
         <td>
-          <input type="file" (change)="wybierzPlik($event)"/>
+          <input type="file" (change)="wybierzPlik($event)" />
           <img
             class="bannerImg"
             *ngIf="zdjecieBanerRefresh"
-            [src]="environment.linkDoBaneruStronyReklamowej + zdjecieBanerRefresh"/>
+            [src]="environment.linkDoBaneruStronyReklamowej + zdjecieBanerRefresh" />
         </td>
       </tr>
       <tr>
         <th>Logo zakładu:</th>
         <td>
-          <input type="file" (change)="wybierzPlikLogo($event)"/>
+          <input type="file" (change)="wybierzPlikLogo($event)" />
           <img
             class="bannerImg"
             *ngIf="zdjecieBanerRefresh"
-            [src]="environment.linkDoLogaStronyReklamowej + zdjecieBanerRefresh"/>
+            [src]="environment.linkDoLogaStronyReklamowej + zdjecieBanerRefresh" />
         </td>
       </tr>
       <tr>
-        <td>
-          <textarea
-            class="loInputZagklad"
-            id="opis"
-            type="text"
-            formControlName="opisZakladu"
-            style="width: 420px; height: 200px; resize: none">
-          </textarea>
+        <th>
+          Opis zakładu umiejscowiony<br />
+          w stopce strony reprezentacyjnej
+        </th>
+        <td style="width: 600px; height: 300px">
+          <ngx-suneditor></ngx-suneditor>
         </td>
       </tr>
     </table>
   </div>
-  <input type="button" value="Zapisz" (click)="zapisz()"/>
+  <input type="button" value="Zapisz" (click)="zapisz()" />
 </form>

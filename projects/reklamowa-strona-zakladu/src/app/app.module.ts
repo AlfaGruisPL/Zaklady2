@@ -46,6 +46,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { OdwolanieWizytyModule } from './one-page-strona/komponenty/odwolanie-wizyty/odwolanie-wizyty.module';
 import { IdentyfikatorPipe } from './rurki/identyfikator.pipe';
 import { SafePipe } from './rurki/safe.pipe';
+import { HtmlSanitizerPipe } from './rurki/html-sanitizer.pipe';
 
 @NgModule({
   declarations: [
@@ -81,6 +82,7 @@ import { SafePipe } from './rurki/safe.pipe';
     ZdjeciePipe,
     IdentyfikatorPipe,
     SafePipe,
+    HtmlSanitizerPipe,
     PageNotFoundComponent,
     StopkaComponent,
   ],

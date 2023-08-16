@@ -19,19 +19,19 @@
 .naglowekZolty {
   width: 100%;
   height: min-content;
-  min-height: 50px;
+  min-height: 35px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   background: #edce41;;
   box-shadow: 0px 2px 4px 0px #999;
-  padding: 5px;
+  padding-top: 1px;
   position: relative;
   z-index: 100;
 
   .naglowek1Wzoltym, .naglowek1Wzoltym2 {
-    font-size: 20px;
+    font-size: 17px;
     letter-spacing: 1px;
     font-weight: bolder;
     margin: 0;
@@ -41,7 +41,7 @@
   }
 
   .naglowek1Wzoltym2 {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 
@@ -55,7 +55,7 @@
 
 .naglowki1form {
   font-family: math;
-  font-size: 22px;
+  font-size: 19px;
   font-weight: bolder;
   color: #1c1c1c;
   text-shadow: 0px 0px 1px black;
@@ -64,7 +64,7 @@
 
 .naglowki2form {
   font-family: math;
-  font-size: 19px;
+  font-size: 17px;
   font-weight: bolder;
   color: #1c1c1c;
   text-shadow: 0px 0px 1px black;

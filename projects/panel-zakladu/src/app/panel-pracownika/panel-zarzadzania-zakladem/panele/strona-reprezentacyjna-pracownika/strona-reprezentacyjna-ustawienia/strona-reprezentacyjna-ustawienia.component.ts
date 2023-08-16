@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { environment } from '../../../../../../environments/environment';
 import {
   UstawieniaStronyReklamowej,
@@ -7,15 +7,18 @@ import {
 import { ListonoszService } from '../../../../../serwisy/listonosz.service';
 import { KomunikatyService } from '../../../../../serwisy/komunikaty.service';
 import { Drzwi } from '../../../../../enum/drzwi';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { NgxSuneditorComponent } from 'ngx-suneditor';
 
 @Component({
   selector: 'app-strona-reprezentacyjna-ustawienia',
   templateUrl: './strona-reprezentacyjna-ustawienia.component.html',
   styleUrls: ['./strona-reprezentacyjna-ustawienia.component.scss'],
 })
-export class StronaReprezentacyjnaUstawieniaComponent {
+export class StronaReprezentacyjnaUstawieniaComponent implements AfterViewInit {
   protected readonly environment = environment;
+  @ViewChild(NgxSuneditorComponent) ngxSunEditor: NgxSuneditorComponent | undefined;
+
   @Output() odswiez = new EventEmitter();
   ustawienia = new UstawieniaStronyReklamowej();
   bannerZdjecie_formData: undefined | FormData = undefined;
@@ -25,19 +28,40 @@ export class StronaReprezentacyjnaUstawieniaComponent {
 
   constructor(private listonosz: ListonoszService, private komunikaty: KomunikatyService, private fb: FormBuilder) {
     this.formualrz = this.fb.group({
-      opisZakladu: ['', [Validators.required]],
+      //  opisZakladuWStopce: ['', [Validators.required]],
     });
+  }
+
+  ngAfterViewInit() {
+    const buttonList = [
+      ['undo', 'redo'],
+      ['font', 'fontSize', 'formatBlock'],
+      ['paragraphStyle', 'blockquote'],
+      ['bold', 'underline', 'italic', 'strike', 'subscript', 'superscript'],
+      ['fontColor', 'hiliteColor'],
+      ['removeFormat'],
+      ['outdent', 'indent'],
+      ['align', 'horizontalRule', 'list', 'lineHeight'],
+      ['table', 'link'],
+    ];
+    this.ngxSunEditor?.setToolbarButtons(buttonList);
+    this.ngxSunEditor?.setOptions({ height: '300px' });
+    this.ngxSunEditor?.disabled();
   }
 
   ngOnInit() {
     this.listonosz.pobierz(Drzwi.UstawieniaStronyReklamowej).then(dane => {
       this.ustawienia.wstawDane(dane);
-      console.log(this.ustawienia);
+      this.formualrz.patchValue(dane);
+      // @ts-ignore
+      this.ngxSunEditor?.getEditor().insertHTML(this.ustawienia.opisZakladuWStopce);
+      this.ngxSunEditor?.enabled();
     });
   }
 
   async zapisz() {
     const dane = new UstawieniaStronyReklamowejDto(this.ustawienia);
+    dane.opisZakladuWStopce = this.ngxSunEditor?.getContents(true);
     this.listonosz.wyslij(Drzwi.UstawieniaStronyReklamowej, dane).then(dane => {
       console.log('udane');
       this.odswiez.emit();
@@ -82,4 +106,6 @@ export class StronaReprezentacyjnaUstawieniaComponent {
       this.komunikaty.zdjecieProfiloweNieZmodyfikowane();
     }
   }
+
+  protected readonly String = String;
 }

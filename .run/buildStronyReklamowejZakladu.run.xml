@@ -9,4 +9,14 @@
     <envs />
     <method v="2" />
   </configuration>
+  <configuration default="false" name="buildStronyReklamowejZakladu" type="js.build_tools.npm" folderName="Budowa" nameIsGenerated="true">
+    <package-json value="$PROJECT_DIR$/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="buildStronyReklamowejZakladu" />
+    </scripts>
+    <node-interpreter value="project" />
+    <envs />
+    <method v="2" />
+  </configuration>
 </component>

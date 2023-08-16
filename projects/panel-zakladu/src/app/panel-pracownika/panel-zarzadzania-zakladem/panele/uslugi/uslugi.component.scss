@@ -91,7 +91,7 @@
 .buttonMinus {
   background: transparent;
   border: none;
-  font-size: 25px;
+  font-size: 21px;
   color: #d20101;
   filter: drop-shadow(1px 1px 1px #ffffff);
   width: min-content;
@@ -121,4 +121,15 @@
   font-weight: bold;
   padding-left: 5px;
   padding-right: 5px;
+}
+
+.pracownicyTd {
+  text-align: center;
+
+  .iloscPracownikow {
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 17px;
+    position: relative;
+  }
 }
