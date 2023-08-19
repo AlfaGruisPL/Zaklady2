@@ -1,0 +1,80 @@
+
+.pracownikSelectAndLabel {
+  padding: 10px 0px 14px 10px;
+  display: flex;
+  width: min-content;
+
+  label {
+    padding-right: 20px;
+    font-weight: bold;
+    font-size: 20px;
+    white-space: nowrap;
+    height: min-content;
+  }
+
+  select {
+    margin-top: 5px;
+    height: min-content;
+
+  }
+
+
+}
+
+.sterowanie {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+  position: relative;
+
+  .teraz {
+    position: absolute;
+    left: 50px;
+    background: #0dc004;
+
+    &:hover {
+      background: #058c04;
+    }
+  }
+
+  .jakiTydzienButton {
+    width: 145px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 20px;
+    background: #2138b5;
+    color: white;
+    text-shadow: 1px 1px 3px black;
+    box-shadow: 0px 0px 2px 1px #0e064a;
+    border: inset 1px #250ba4;
+    font-family: math;
+    letter-spacing: 1px;
+
+    &:hover:not([disabled]) {
+      cursor: pointer;
+      background: #243cc0;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      background: gray;
+      border: solid 1px #242424;
+      box-shadow: none;
+    }
+  }
+
+  .jakiMiesiacDiv {
+    width: 300px;
+    text-align: center;
+
+    span {
+      font-family: math;
+      font-size: 21px;
+      font-weight: bold;
+      color: #013a70;
+      text-shadow: 0px 0px 1px black;
+    }
+  }
+}
+

@@ -1,0 +1,82 @@
+<div class="modal-body">
+  <table>
+    <tr>
+      <th>Dotyczy:</th>
+      <td>
+        <select id="pracownikSelect" [(ngModel)]="dotyczy" (change)="kalendarz_.pobierzDane()">
+          <option [value]="pracownik.id" *ngFor="let pracownik of kalendarz_.pracownicy">
+            <span *ngIf="pracownik.id != kalendarz_.zalogowanyUzytkownikId; else zalogowanyUzytkownik">
+              {{ pracownik.imie + ' ' + pracownik.nazwisko }}
+            </span>
+            <ng-template #zalogowanyUzytkownik>
+              <span> Zalogowany użytkownik</span>
+            </ng-template>
+          </option>
+        </select>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Początek:</td>
+      <td>
+        <input
+          type="time"
+          [ngModel]="godzinaRozpoczecia | date : 'HH:mm'"
+          (ngModelChange)="godzinaRozpoczecia = $event" />
+      </td>
+    </tr>
+
+    <tr>
+      <td>Koniec:</td>
+      <td>
+        <input
+          type="time"
+          [ngModel]="godzinaZakonczenia | date : 'HH:mm'"
+          (ngModelChange)="godzinaZakonczenia = $event" />
+      </td>
+    </tr>
+    <tr>
+      <td>Tryb:</td>
+      <td *ngIf="danePodreczne_.wlasciciel">
+        <select [(ngModel)]="wybranyPracownik">
+          <option [value]="0">Zakład</option>
+          <option [value]="kalendarz_.wlasciciel.id">
+            {{ kalendarz_.wlasciciel.imie + ' ' + kalendarz_.wlasciciel.nazwisko }}
+          </option>
+          <option [value]="pracownik.id" *ngFor="let pracownik of kalendarz_.pracownicy">
+            Pracownik: {{ pracownik.imie + ' ' + pracownik.nazwisko }}
+          </option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Powtarzanie:</td>
+      <td>
+        Jednorazowe:
+        <input type="radio" name="k" [value]="false" [(ngModel)]="regularne" />
+        &nbsp; &nbsp; &nbsp; &nbsp; Regularne:
+        <input type="radio" name="k" [value]="true" [(ngModel)]="regularne" />
+      </td>
+    </tr>
+    <ng-container *ngIf="regularne">
+      <tr>
+        <th>Początek</th>
+        <td><input type="date" /></td>
+      </tr>
+      <tr>
+        <th>Koniec</th>
+        <td><input type="date" /></td>
+      </tr>
+    </ng-container>
+    <ng-container *ngIf="!regularne">
+      <tr>
+        <th>Data</th>
+        <td><input type="date" /></td>
+      </tr>
+    </ng-container>
+  </table>
+</div>
+<div class="modal-footer">
+  <button (click)="activeModal.close('anuluj')">Anuluj</button>
+  <button (click)="dodaj()">Dodaj</button>
+</div>

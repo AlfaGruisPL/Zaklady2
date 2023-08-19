@@ -1,0 +1,29 @@
+<table class="tablica">
+  <tr class="wyszukiwarka">
+    <td colspan="5" class="title">
+      <h3>Sracz:</h3>
+    </td>
+    <td colspan="5" class="wyszukiwarkaTD">
+      <fa-icon icon="magnifying-glass"></fa-icon>
+      <input placeholder="wyszukiwarka (wartość wartość2 itd.)" (keyup)="onSearchChange($event)" />
+    </td>
+  </tr>
+  <tr>
+    <th>Lp</th>
+    <th>Data</th>
+    <th>Typ</th>
+    <th>Zakres</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>dzis</td>
+    <td>Regularne</td>
+    <td>Zakład</td>
+  </tr>
+</table>
+<div class="paggination">
+  <ngb-pagination [maxSize]="7" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+  <select>
+    <option *ngFor="let k of [10, 20, 50, 100]">{{ k }}</option>
+  </select>
+</div>
