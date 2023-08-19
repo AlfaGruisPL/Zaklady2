@@ -1,5 +1,5 @@
 <h3 class="historiaTransakcjiH3">Historia transakcji:</h3>
-<table class="historiaTransakcji tablica tablicaPierwszyWierszJakoNaglowe">
+<table class="historiaTransakcji tablica">
   <tr #naglowek>
     <th>Nr.</th>
     <th>Nazwa</th>
@@ -7,30 +7,34 @@
     <th>Kwota</th>
     <th colspan="2">Status</th>
   </tr>
-  <ng-container *ngFor="let k of listaPlatnosci  | slice: (page-1) * pageSize : page * pageSize ;let index2 = index">
+  <ng-container *ngFor="let k of listaPlatnosci | slice : (page - 1) * pageSize : page * pageSize; let index2 = index">
     <tr>
-      <td>{{(listaPlatnosci.length - index2 - (pageSize * page) + pageSize)}}  </td>
-      <td>{{k.opis}}</td>
-      <td>{{k.dataUtworzenia  | date : "dd.MM.yyyy  HH:mm"}}</td>
-      <td>{{liczba(k.kwota) / 100}}zł</td>
-      <ng-container [ngSwitch]="k.probyPlatnosci[k.probyPlatnosci.length-1].status">
-        <td *ngSwitchCase="'NEW'" class="statusyPlatnosci" style="color:#005200">Nowa</td>
-        <td *ngSwitchCase="'CONFIRMED'" class="statusyPlatnosci" style="color:green">Zatwierdzona</td>
-        <td *ngSwitchCase="'PENDING'" class="statusyPlatnosci" style="color:#d3b500">Oczekująca</td>
-        <td *ngSwitchCase="'ERROR'" class="statusyPlatnosci" style="color:#ff0000">Błąd</td>
-        <td *ngSwitchCase="'EXPIRED'" class="statusyPlatnosci" style="color:#4b4b4b">Przeterminowana</td>
-        <td *ngSwitchCase="'ABANDONED'" class="statusyPlatnosci" style="color:#0010c5">Opuszczona</td>
-        <td *ngSwitchCase="'REJECTED'" class="statusyPlatnosci" style="color:#000000">Odrzucona</td>
+      <td>{{ listaPlatnosci.length - index2 - pageSize * page + pageSize }}</td>
+      <td>{{ k.opis }}</td>
+      <td>{{ k.dataUtworzenia | date : 'dd.MM.yyyy  HH:mm' }}</td>
+      <td>{{ liczba(k.kwota) / 100 }}zł</td>
+      <ng-container [ngSwitch]="k.probyPlatnosci[k.probyPlatnosci.length - 1].status">
+        <td *ngSwitchCase="'NEW'" class="statusyPlatnosci" style="color: #005200">Nowa</td>
+        <td *ngSwitchCase="'CONFIRMED'" class="statusyPlatnosci" style="color: green">Zatwierdzona</td>
+        <td *ngSwitchCase="'PENDING'" class="statusyPlatnosci" style="color: #d3b500">Oczekująca</td>
+        <td *ngSwitchCase="'ERROR'" class="statusyPlatnosci" style="color: #ff0000">Błąd</td>
+        <td *ngSwitchCase="'EXPIRED'" class="statusyPlatnosci" style="color: #4b4b4b">Przeterminowana</td>
+        <td *ngSwitchCase="'ABANDONED'" class="statusyPlatnosci" style="color: #0010c5">Opuszczona</td>
+        <td *ngSwitchCase="'REJECTED'" class="statusyPlatnosci" style="color: #000000">Odrzucona</td>
       </ng-container>
 
-
       <td>
-        <button *ngIf="k.czyRozwiniete" (click)="zamknijWszystkie();" class="przyciskRozwijania">Zwiń</button>
-        <button *ngIf="!k.czyRozwiniete" (click)="zamknijWszystkie();k.czyRozwiniete = true" class="przyciskRozwijania">
+        <button *ngIf="k.czyRozwiniete" (click)="zamknijWszystkie()" class="przyciskRozwijania">Zwiń</button>
+        <button
+          *ngIf="!k.czyRozwiniete"
+          (click)="zamknijWszystkie(); k.czyRozwiniete = true"
+          class="przyciskRozwijania">
           Rozwiń
         </button>
-        <button *ngIf="k.probyPlatnosci[k.probyPlatnosci.length-1].status =='NEW' &&k.linkDoPlatnosci!=undefined"
-                (click)="otworzPlatnosc(k.linkDoPlatnosci)">Opłać ponownie
+        <button
+          *ngIf="k.probyPlatnosci[k.probyPlatnosci.length - 1].status == 'NEW' && k.linkDoPlatnosci != undefined"
+          (click)="otworzPlatnosc(k.linkDoPlatnosci)">
+          Opłać ponownie
         </button>
       </td>
     </tr>
@@ -46,34 +50,34 @@
               <th>Status</th>
             </tr>
             <ng-container>
-              <tr *ngFor="let k3 of k.probyPlatnosci;let index = index" class="PodTabelaTr"
-                  [ngClass]="{'ostatni':index == k.probyPlatnosci.length-1}">
+              <tr
+                *ngFor="let k3 of k.probyPlatnosci; let index = index"
+                class="PodTabelaTr"
+                [ngClass]="{ ostatni: index == k.probyPlatnosci.length - 1 }">
                 <td colspan="2"></td>
-                <td>{{index + 1}}</td>
-                <td>{{k3.identyfikatorPayNow}}</td>
-                <td>{{k3.data | date : "dd.MM.yyyy  HH:MM"}}</td>
+                <td>{{ index + 1 }}</td>
+                <td>{{ k3.identyfikatorPayNow }}</td>
+                <td>{{ k3.data | date : 'dd.MM.yyyy  HH:MM' }}</td>
                 <ng-container [ngSwitch]="k3.status">
-                  <td *ngSwitchCase="'NEW'" class="statusyPlatnosci" style="color:#005200">Nowa</td>
-                  <td *ngSwitchCase="'CONFIRMED'" class="statusyPlatnosci" style="color:green">Zatwierdzona</td>
-                  <td *ngSwitchCase="'PENDING'" class="statusyPlatnosci" style="color:#d3b500">Oczekująca</td>
-                  <td *ngSwitchCase="'ERROR'" class="statusyPlatnosci" style="color:#ff0000">Błąd</td>
-                  <td *ngSwitchCase="'EXPIRED'" class="statusyPlatnosci" style="color:#4b4b4b">Przeterminowana</td>
-                  <td *ngSwitchCase="'ABANDONED'" class="statusyPlatnosci" style="color:#0010c5">Opuszczona</td>
-                  <td *ngSwitchCase="'REJECTED'" class="statusyPlatnosci" style="color:#000000">Odrzucona</td>
+                  <td *ngSwitchCase="'NEW'" class="statusyPlatnosci" style="color: #005200">Nowa</td>
+                  <td *ngSwitchCase="'CONFIRMED'" class="statusyPlatnosci" style="color: green">Zatwierdzona</td>
+                  <td *ngSwitchCase="'PENDING'" class="statusyPlatnosci" style="color: #d3b500">Oczekująca</td>
+                  <td *ngSwitchCase="'ERROR'" class="statusyPlatnosci" style="color: #ff0000">Błąd</td>
+                  <td *ngSwitchCase="'EXPIRED'" class="statusyPlatnosci" style="color: #4b4b4b">Przeterminowana</td>
+                  <td *ngSwitchCase="'ABANDONED'" class="statusyPlatnosci" style="color: #0010c5">Opuszczona</td>
+                  <td *ngSwitchCase="'REJECTED'" class="statusyPlatnosci" style="color: #000000">Odrzucona</td>
                 </ng-container>
               </tr>
-
             </ng-container>
-
           </table>
-
         </td>
       </tr>
     </ng-container>
-
   </ng-container>
   <tr
-    *ngFor="let k of [].constructor(pageSize - (listaPlatnosci | slice: (page - 1) * pageSize : page * pageSize).length)">
+    *ngFor="
+      let k of [].constructor(pageSize - (listaPlatnosci | slice : (page - 1) * pageSize : page * pageSize).length)
+    ">
     <td></td>
     <td></td>
     <td></td>
@@ -82,7 +86,6 @@
     <td></td>
     <td></td>
   </tr>
-
 </table>
 <div class="paggination">
   <ngb-pagination
@@ -91,11 +94,6 @@
     [collectionSize]="listaPlatnosci.length"
     [maxSize]="7"
     [rotate]="true"
-    [boundaryLinks]="true"
-
-  ></ngb-pagination>
-  <span class="tekst">
-
-  Wyświetlono {{page}} z {{pageCount()}} stron.
-  </span>
+    [boundaryLinks]="true"></ngb-pagination>
+  <span class="tekst"> Wyświetlono {{ page }} z {{ pageCount() }} stron. </span>
 </div>

@@ -1,10 +1,9 @@
 <h3 class="historiaTransakcjiH3">Historia opłat za usługę:</h3>
-<div class="chart-container" style="max-height: 300px;width: 90%">
-  <canvas id="MyChart" style="max-height: 300px;width: 90%"> {{ chart }}</canvas>
+<div class="chart-container" style="max-height: 300px; width: 90%">
+  <canvas id="MyChart" style="max-height: 300px; width: 90%"> {{ chart }}</canvas>
 </div>
 
-
-<table class="historiaTransakcji tablica tablicaPierwszyWierszJakoNaglowe">
+<table class="historiaTransakcji tablica">
   <tr #naglowek>
     <th>Nr.</th>
     <th>Data</th>
@@ -13,21 +12,24 @@
     <th>Status</th>
   </tr>
   <ng-container
-    *ngFor="let sms of service.dane.historia  | slice: (page-1) * pageSize : page * pageSize ;let index = index">
+    *ngFor="let sms of service.dane.historia | slice : (page - 1) * pageSize : page * pageSize; let index = index">
     <tr>
-      <td>{{service.dane.historia.length - index }}</td>
-      <td>{{sms.termin}}</td>
-      <td>{{sms.wyslaneSMS}}</td>
-      <td>{{sms.kwota()}}zł</td>
+      <td>{{ service.dane.historia.length - index }}</td>
+      <td>{{ sms.termin }}</td>
+      <td>{{ sms.wyslaneSMS }}</td>
+      <td>{{ sms.kwota() }}zł</td>
       <td *ngIf="sms.oplacone">Zapłacone</td>
       <td *ngIf="!sms.oplacone"></td>
     </tr>
   </ng-container>
   <tr
-    *ngFor="let k of [].constructor(pageSize - ( service.dane.historia | slice: (page - 1) * pageSize : page * pageSize).length)">
+    *ngFor="
+      let k of [].constructor(
+        pageSize - (service.dane.historia | slice : (page - 1) * pageSize : page * pageSize).length
+      )
+    ">
     <td *ngFor="let k of [].constructor(naglowek.cells.length)"></td>
   </tr>
-
 </table>
 <div class="paggination">
   <ngb-pagination
@@ -36,14 +38,7 @@
     [collectionSize]="service.dane.historia.length"
     [maxSize]="7"
     [rotate]="true"
-    [boundaryLinks]="true"
+    [boundaryLinks]="true"></ngb-pagination>
 
-
-  ></ngb-pagination>
-
-
-  <span class="tekst">
-
-  Wyświetlono {{page}} z {{pageCount()}} stron.
-  </span>
+  <span class="tekst"> Wyświetlono {{ page }} z {{ pageCount() }} stron. </span>
 </div>

@@ -1,16 +1,5 @@
 $kolor: #c4c4c4;
-.jakiMiesiacDiv {
-  width: 300px;
-  text-align: center;
 
-  span {
-    font-family: math;
-    font-size: 21px;
-    font-weight: bold;
-    color: #013a70;
-    text-shadow: 0px 0px 1px black;
-  }
-}
 
 .naglowkiTabeli {
 
@@ -80,23 +69,6 @@ $kolor: #c4c4c4;
   }
 }
 
-.sterowanie {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding-bottom: 10px;
-  position: relative;
-
-  .teraz {
-    position: absolute;
-    left: 50px;
-    background: #0dc004;
-
-    &:hover {
-      background: #058c04;
-    }
-  }
-}
 
 .pracownikDropDown {
   font-size: 10px;
@@ -116,32 +88,6 @@ h2 {
 
   span {
 
-  }
-}
-
-.jakiTydzienButton {
-  width: 145px;
-  font-size: 15px;
-  font-weight: bold;
-  border-radius: 20px;
-  background: #2138b5;
-  color: white;
-  text-shadow: 1px 1px 3px black;
-  box-shadow: 0px 0px 2px 1px #0e064a;
-  border: inset 1px #250ba4;
-  font-family: math;
-  letter-spacing: 1px;
-
-  &:hover:not([disabled]) {
-    cursor: pointer;
-    background: #243cc0;
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-    background: gray;
-    border: solid 1px #242424;
-    box-shadow: none;
   }
 }
 
@@ -196,26 +142,56 @@ $kolorPrzycisku: #313131;
   font-weight: bold;
 }
 
-.pracownikSelectAndLabel {
-  padding: 10px 20px 14px 10px;
+.pracownikIFilter {
+  width: 100%;
   display: flex;
-  width: min-content;
-  border-bottom: 1px solid #7c7c7c;
-  border-right: 1px solid #7c7c7c;
+  padding-top: 20px;
+}
 
-  label {
-    padding-right: 20px;
-    font-weight: bold;
-    font-size: 20px;
-    white-space: nowrap;
-    height: min-content;
+
+table.ladowanieDanych {
+  position: relative;
+  z-index: 100;
+
+  tr:not(:first-child) {
+    td {
+      &:not(:first-child) {
+        filter: blur(4px);
+      }
+    }
+
   }
 
-  select {
-    margin-top: 5px;
-    height: min-content;
-    
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    filter: blur(7px);
+    width: 100%;
+    //  background-color: rgba(0, 0, 0, 0.11);
+    z-index: 101;
   }
 
-
+  &:after {
+    content: "";
+    position: absolute;
+    top: calc(50% - 50px);
+    left: calc(50% - 50px);
+    width: 100px;
+    height: 100px;
+    background-image: url("../../../../assets/gear.png");
+    background-size: 100px 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    $time: 2s;
+    -webkit-animation: rotating $time linear infinite;
+    -moz-animation: rotating $time linear infinite;
+    -ms-animation: rotating $time linear infinite;
+    -o-animation: rotating $time linear infinite;
+    animation: rotating $time linear infinite;
+    z-index: 102;
+  }
 }

@@ -33,6 +33,15 @@ export class PanelZarzadzaniaZaklademComponent implements OnInit, OnDestroy {
     }, 10);
   }
 
+  private heightLast = 0;
+
+  setHeight(height: number) {
+    setInterval(() => {
+      this.heightLast = height;
+    }, 1);
+    return this.heightLast;
+  }
+
   ngOnDestroy() {
     clearInterval(this.godzinaInterval);
   }

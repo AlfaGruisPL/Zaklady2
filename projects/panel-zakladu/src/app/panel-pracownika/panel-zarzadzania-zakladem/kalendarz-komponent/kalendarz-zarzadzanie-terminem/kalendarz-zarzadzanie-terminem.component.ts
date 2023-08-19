@@ -1,15 +1,14 @@
-import {Component, Input} from '@angular/core';
-import {Wizyta} from "../../../../klasy/panelPracownika/wizyta";
-import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
+import { Component, Input } from '@angular/core';
+import { Wizyta } from '../../../../klasy/panelPracownika/wizyta';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-kalendarz-zarzadzanie-terminem',
   templateUrl: './kalendarz-zarzadzanie-terminem.component.html',
-  styleUrls: ['./kalendarz-zarzadzanie-terminem.component.scss']
+  styleUrls: ['./kalendarz-zarzadzanie-terminem.component.scss'],
 })
 export class KalendarzZarzadzanieTerminemComponent {
-  @Input() wizyta: Wizyta = new Wizyta({})
+  @Input() wizyta: Wizyta = new Wizyta({});
 
-  constructor(public activeModal: NgbActiveModal) {
-  }
+  constructor(public activeModal: NgbActiveModal) {}
 }

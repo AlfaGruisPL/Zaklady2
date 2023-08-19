@@ -11,11 +11,7 @@ import { HttpError } from '../../../../klasy/httpError';
   providedIn: 'root',
 })
 export class ListonoszService {
-  constructor(
-    private listy: ListyService,
-    private token_: TokenService,
-    private token: TokenService
-  ) {}
+  constructor(private listy: ListyService, private token_: TokenService, private token: TokenService) {}
 
   public wyloguj() {
     let opcjeWPudelku = {};
@@ -27,9 +23,7 @@ export class ListonoszService {
     }
     return new Promise((resolve, reject) => {
       this.listy.pobierz(Drzwi.wylogowanie, opcjeWPudelku).subscribe(
-        (
-          next: OdpowiedzPotwierdzajacaPoprawnosc<LogowanieZwracajaceDaneItoken>
-        ) => {
+        (next: OdpowiedzPotwierdzajacaPoprawnosc<LogowanieZwracajaceDaneItoken>) => {
           this.token.tokenWartosc = undefined;
           this.token.tokenTerminWaznosci = new Date();
           this.token.usunCiasteczka();
@@ -45,18 +39,14 @@ export class ListonoszService {
   public zaloguj(zawartosc: any): Promise<any | HttpError> {
     return new Promise((resolve, reject) => {
       this.listy.wyslij(Drzwi.logowanie, zawartosc, {}).subscribe(
-        (
-          next: OdpowiedzPotwierdzajacaPoprawnosc<LogowanieZwracajaceDaneItoken>
-        ) => {
+        (next: OdpowiedzPotwierdzajacaPoprawnosc<LogowanieZwracajaceDaneItoken>) => {
           this.token.tokenWartosc = next.value?.token?.value;
 
           this.token.tokenTerminWaznosci = new Date(
             // @ts-ignore
             next.value.token.endLifeTime
           );
-          this.token.tokenGrupy = next.value?.userData?.grupy.map(
-            k => k.groupId
-          );
+          this.token.tokenGrupy = next.value?.userData?.grupy.map(k => k.groupId);
 
           this.token.stworzCookies();
           resolve(next);
@@ -68,10 +58,7 @@ export class ListonoszService {
     });
   }
 
-  public wyslij(
-    drzwi: Drzwi | string,
-    zawartosc: any
-  ): Promise<any | HttpError> {
+  public wyslij(drzwi: Drzwi | string, zawartosc: any): Promise<any | HttpError> {
     let opcjeWPudelku = {};
     if (this.token.tokenWartosc != undefined) {
       const opcje = new HttpHeaders({
@@ -114,10 +101,7 @@ export class ListonoszService {
     });
   }
 
-  public pobierz(
-    drzwi: Drzwi | string,
-    params: HttpParams = new HttpParams()
-  ): Promise<any | HttpError> {
+  public pobierz(drzwi: Drzwi | string, params: HttpParams = new HttpParams()): Promise<any | HttpError> {
     let opcjeWPudelku = {};
     if (this.token.tokenWartosc != undefined) {
       const opcje = new HttpHeaders({
@@ -139,10 +123,7 @@ export class ListonoszService {
     });
   }
 
-  public aktualizuj(
-    drzwi: Drzwi | string,
-    zawartosc: any
-  ): Promise<any | HttpError> {
+  public aktualizuj(drzwi: Drzwi | string, zawartosc: any): Promise<any | HttpError> {
     let opcjeWPudelku = {};
     if (this.token.tokenWartosc != undefined) {
       const opcje = new HttpHeaders({

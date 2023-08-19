@@ -36,7 +36,9 @@ export enum Drzwi {
   zarejestrowaneWizytyTerminy = '/kalendarzTerminow/terminy',
   zarejestrowaneWizytyDlaPracownika = '/kalendarzTerminow/terminyDlaPracownika',
 
+  //wizyty
   wizytyDzis = '/wizyty/wizytyDzis',
+  wizytyZakladu = '/wizyty/wizytyZakladu',
 
   kalendarzTerminowPrzerwa = 'kalendarzTerminow/przerwa',
   kalendarzRejestracjaWizytyZPanelu = '/kalendarzTerminow/rejestracjaWizyty',

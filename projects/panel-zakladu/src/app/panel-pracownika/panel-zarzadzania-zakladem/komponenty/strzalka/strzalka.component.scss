@@ -1,0 +1,62 @@
+.strzalka {
+  width: 40px;
+  height: 40px;
+  background: rgba(105, 105, 105, 0.55);
+  //background: rgba(255, 28, 28, 0.65);
+  position: fixed;
+  right: 15px;
+
+  border-radius: 50%;
+  border: 2px solid rgba(45, 45, 45, 0.55);
+  // border: 2px solid rgba(162, 0, 0, 0.67);
+  z-index: 99900;
+  transition: 0.5s ease-out, opacity 0.5s ease-in-out, transform 0.5s;
+  bottom: -70px;
+  opacity: 0;
+
+  &:hover {
+    cursor: pointer;
+
+
+    scale: 1.1;
+
+  }
+
+  .strz {
+    transition: 0.5s ease-out;
+  }
+
+
+  .strz:after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 3px;
+    right: 6px;
+    top: 16px;
+    transform: rotate(45deg);
+    background: white;
+  }
+
+  .strz:before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 3px;
+    right: 15px;
+    top: 16px;
+    transform: rotate(-225deg);
+    background: white;
+  }
+
+
+}
+
+.wyswietlStrzalke {
+  opacity: 1;
+  bottom: 35px;
+}
+
+.strzalkaKreciSie {
+  transform: rotate(180deg); /* Ustaw obrócony kąt obrotu */
+}

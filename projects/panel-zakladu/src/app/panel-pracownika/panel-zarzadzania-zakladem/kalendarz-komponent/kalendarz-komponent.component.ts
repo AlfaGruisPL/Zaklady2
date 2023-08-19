@@ -1,11 +1,12 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   dniTygodnia,
   DzienTygodnia,
 } from '../../../../../../reklamowa-strona-zakladu/src/app/one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/kalendarz/dzien-tygodnia';
-import {Wizyta} from '../../../klasy/panelPracownika/wizyta';
-import {ListonoszService} from '../../../serwisy/listonosz.service';
-import {KalendarzKomponentService} from './kalendarz-komponent.service';
+import { Wizyta } from '../../../klasy/panelPracownika/wizyta';
+import { ListonoszService } from '../../../serwisy/listonosz.service';
+import { KalendarzKomponentService } from './kalendarz-komponent.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-kalendarz-komponent',
@@ -17,55 +18,33 @@ export class KalendarzKomponentComponent implements OnInit {
   @Input() zarzadzanie = false;
   symulatorPracownikID = '183';
   symulatorWizytyID = '1497,1498,1499';
-  symulatorWolneTerminy: any = []
-  symulator = false
-  licznikPrzyciskow = 0;
+  symulatorWolneTerminy: any = [];
+  symulator = false;
   public godzinaRozpoczecia = 6;
   dni = dniTygodnia;
-  dataKursor = new Date();
-  public miesiace: string[] = [
-    'Styczeń',
-    'Luty',
-    'Marzec',
-    'Kwiecień',
-    'Maj',
-    'Czerwiec',
-    'Lipiec',
-    'Sierpień',
-    'Wrzesień',
-    'Październik',
-    'Listopad',
-    'Grudzień',
-  ];
 
-  constructor(
-    private listonosz: ListonoszService,
-    public Kalendarz_: KalendarzKomponentService
-  ) {
-  }
+  constructor(private listonosz: ListonoszService, public Kalendarz_: KalendarzKomponentService) {}
 
   ngOnInit() {
     this.Kalendarz_.godzinaRozpoczecia = this.godzinaRozpoczecia;
     if (this.symulatorPracownikID.length > 0) {
-      this.generujWizyty()
+      this.generujWizyty();
     }
-    this.Kalendarz_.pobierzPodstawoweDane()
-
+    this.Kalendarz_.pobierzPodstawoweDane();
   }
 
   generujWizyty() {
-    this.symulatorWolneTerminy = []
-    const dane = this.symulatorWizytyID.split(',')
+    this.symulatorWolneTerminy = [];
+    const dane = this.symulatorWizytyID.split(',');
     this.listonosz
       .wyslij('/stronaReklamowa/wizyty/terminyWizyt', {
         uslugiId: dane,
         pracownikId: this.symulatorPracownikID,
       })
-      .then((k) => {
-
+      .then(k => {
         k.forEach((k2: any) => {
-          this.symulatorWolneTerminy.push(new Wizyta(k2))
-        })
+          this.symulatorWolneTerminy.push(new Wizyta(k2));
+        });
       });
   }
 
@@ -98,38 +77,36 @@ export class KalendarzKomponentComponent implements OnInit {
   }
 
   public kolorTlaInformacje(dzien: DzienTygodnia): string {
-    const k = this.czyDzisWolnyDzien(dzien)
+    const k = this.czyDzisWolnyDzien(dzien);
     if (k != undefined) {
-      return "Dzien wolny dla zakładu"
+      return 'Dzien wolny dla zakładu';
     }
     if (!this.czyPracuje(dzien.dzien)) {
-      return "Zakład zamknięty"
+      return 'Zakład zamknięty';
     }
-    return ""
-
-
+    return '';
   }
 
   public kolorTla(dzien: DzienTygodnia, index: number) {
     //sprawdzenie czy nie dzien oznaczony jako wolny
     if (this.czyDzisWolnyDzien(dzien) != undefined) {
       if (index % 2 == 0) {
-        return {'background-color': 'rgba(255,35,35,0.31)'};
+        return { 'background-color': 'rgba(255,35,35,0.31)' };
       }
-      return {'background-color': 'rgba(211,8,8,0.31)'};
+      return { 'background-color': 'rgba(211,8,8,0.31)' };
     }
 
     if (!this.CzyAktualne(dzien.data)) {
       if (index % 2 == 0) {
-        return {'background-color': 'rgba(229,229,229,0.31)'};
+        return { 'background-color': 'rgba(229,229,229,0.31)' };
       }
-      return {'background-color': 'rgba(211,211,211,0.31)'};
+      return { 'background-color': 'rgba(211,211,211,0.31)' };
     }
     if (!this.czyPracuje(dzien.dzien)) {
       if (index % 2 == 0) {
-        return {'background-color': 'rgba(180,180,180,0.31)'};
+        return { 'background-color': 'rgba(180,180,180,0.31)' };
       }
-      return {'background-color': 'rgba(148,148,148,0.31)'};
+      return { 'background-color': 'rgba(148,148,148,0.31)' };
     }
 
     return {};
@@ -144,14 +121,12 @@ export class KalendarzKomponentComponent implements OnInit {
           }
         }
       }
-      return false
-    })
-
+      return false;
+    });
   }
 
   public terminyNaDzien(data: DzienTygodnia): Array<Wizyta> {
-
-    const tablica = this.Kalendarz_.wizyty.filter((usluga) => {
+    const tablica = this.Kalendarz_.wizyty.filter(usluga => {
       if (usluga.poczatek.getDate() == data.data.getDate()) {
         if (usluga.poczatek.getFullYear() == data.data.getFullYear()) {
           if (usluga.poczatek.getMonth() == data.data.getMonth()) {
@@ -165,12 +140,10 @@ export class KalendarzKomponentComponent implements OnInit {
   }
 
   public SymulatorWolneterminyNaDzien(data: DzienTygodnia): Array<Wizyta> {
-
     const tablica = this.symulatorWolneTerminy.filter((usluga: any) => {
       if (usluga.poczatek.getDate() == data.data.getDate()) {
         if (usluga.poczatek.getFullYear() == data.data.getFullYear()) {
           if (usluga.poczatek.getMonth() == data.data.getMonth()) {
-
             return true;
           }
         }
@@ -178,14 +151,6 @@ export class KalendarzKomponentComponent implements OnInit {
       return false;
     });
     return tablica;
-  }
-
-  public miesiac() {
-    return this.dataKursor.getMonth() + 1;
-  }
-
-  public tydzien() {
-    return Math.ceil(this.dataKursor.getDate() / 7);
   }
 
   public czyToDzis(data: Date): boolean {
@@ -199,42 +164,9 @@ export class KalendarzKomponentComponent implements OnInit {
     return false;
   }
 
-
-  public WPrawo() {
-    this.licznikPrzyciskow++;
-    this.dataKursor = new Date(
-      this.dataKursor.getTime() + 7 * 24 * 60 * 60 * 1000
-    );
-
-    this.dni.forEach((k) => {
-      k.data = new Date(this.dataKursor);
-      k.ustawDate();
-    });
-  }
-
-  public teraz() {
-    this.licznikPrzyciskow = 0;
-    this.dataKursor = new Date(
-
-    );
-    this.dni.forEach((k) => {
-      k.data = new Date(this.dataKursor);
-      k.ustawDate();
-    });
-  }
-
-  public WLEWO() {
-    this.licznikPrzyciskow--;
-    this.dataKursor = new Date(
-      this.dataKursor.getTime() - 7 * 24 * 60 * 60 * 1000
-    );
-    this.dni.forEach((k) => {
-      k.data = new Date(this.dataKursor);
-      k.ustawDate();
-    });
-  }
-
   private CzyAktualne(data: Date) {
     return !(data.setUTCHours(0, 0, 0, 0) < new Date().setUTCHours(0, 0, 0, 0));
   }
+
+  protected readonly environment = environment;
 }

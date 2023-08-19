@@ -1,45 +1,42 @@
 <div class="modal-header">
-  <h4 class="modal-title">Informacje o wizycie: {{wizyta.poczatek|date:'HH:mm'}} - {{wizyta.koniec|date:'HH:mm'}}</h4>
+  <h4 class="modal-title">
+    Informacje o wizycie: {{ wizyta.poczatek | date : 'HH:mm' }} - {{ wizyta.koniec | date : 'HH:mm' }}
+  </h4>
   <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close('Nie')"></button>
 </div>
 <div class="modal-body">
   <table>
     <tr>
-      <th>
-        Klient:
-      </th>
+      <th>Klient:</th>
       <td>
-        {{wizyta.imie + " " + wizyta.nazwisko}}
+        {{ wizyta.imie + ' ' + wizyta.nazwisko }}
       </td>
     </tr>
     <tr>
-      <th>
-        Termin:
-      </th>
+      <th>Termin:</th>
       <td>
-        {{wizyta.poczatek | date:'dd.LL.YYYY'}}
+        {{ wizyta.poczatek | date : 'dd.LL.YYYY' }}
       </td>
     </tr>
     <tr>
-      <th>
-        Godziny:
-      </th>
+      <th>Godziny:</th>
+      <td>{{ wizyta.poczatek | date : 'HH:mm' }} - {{ wizyta.koniec | date : 'HH:mm' }}</td>
+    </tr>
+    <tr>
+      <th>Data rejestracji</th>
       <td>
-        {{wizyta.poczatek|date:'HH:mm'}} - {{wizyta.koniec|date:'HH:mm'}}
+        {{ wizyta.dataUtworzenia | date : 'dd.LL.YYYY  HH:mm' }}
       </td>
     </tr>
     <tr>
-      <th>
-        Telefon:
-      </th>
+      <th>Telefon:</th>
       <td>
-        {{wizyta.numerTelefonu}}
+        {{ wizyta.numerTelefonu }}
       </td>
-
     </tr>
     <tr>
       <th>Email:</th>
-      <td>{{wizyta.email}}</td>
+      <td>{{ wizyta.email }}</td>
     </tr>
     <tr>
       <th>Poprzednie wizyty</th>
@@ -47,17 +44,17 @@
     </tr>
     <tr>
       <th>Sposób utworzenia</th>
-      <td *ngIf="['manual','auto'].indexOf(wizyta.tryb) != -1">Ręcznie w panelu zarządzania</td>
-      <td *ngIf="wizyta.tryb =='reklamowa'">Automatycznie za pośrednictwem strony reklamowej</td>
+      <td *ngIf="['manual', 'auto'].indexOf(wizyta.tryb) != -1">Ręcznie w panelu zarządzania</td>
+      <td *ngIf="wizyta.tryb == 'reklamowa'">Automatycznie za pośrednictwem strony reklamowej</td>
     </tr>
     <tr>
       <th>Usluga:</th>
       <td *ngIf="['manual'].indexOf(wizyta.tryb) != -1">
-        {{wizyta.uslugi}}
+        {{ wizyta.uslugi }}
       </td>
-      <td *ngIf="['auto','reklamowa'].indexOf(wizyta.tryb) != -1">
+      <td *ngIf="['auto', 'reklamowa'].indexOf(wizyta.tryb) != -1">
         <ul>
-          <li *ngFor="let usluga of wizyta.uslugiTab">{{usluga.nazwa}}</li>
+          <li *ngFor="let usluga of wizyta.uslugiTab">{{ usluga.nazwa }}</li>
         </ul>
       </td>
     </tr>
@@ -68,13 +65,7 @@
       </td>
     </tr>
   </table>
-
-
 </div>
 <div class="modal-footer">
-  <button (click)="activeModal.close('anuluj')">
-    Anuluj
-  </button>
-
-
+  <button (click)="activeModal.close('anuluj')">Anuluj</button>
 </div>

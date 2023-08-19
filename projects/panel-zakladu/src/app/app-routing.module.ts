@@ -6,9 +6,7 @@ import { PanelLogowaniaPracownikowComponent } from './panel-pracownika/poczatkow
 import { PanelZarzadzaniaZaklademComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panel-zarzadzania-zakladem.component';
 import { StronaStartowaPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/strona-startowa-pracownika/strona-startowa-pracownika.component';
 import { MojeKontoPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moje-konto-pracownika/moje-konto-pracownika.component';
-import { ZarejestrowaneWizytyPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/zarejestrowane-wizyty-pracownika/zarejestrowane-wizyty-pracownika.component';
 import { PracownicyPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/pracownicy-pracownika/pracownicy-pracownika.component';
-import { KalendarzTerminowComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/kalendarz-terminow/kalendarz-terminow.component';
 import { StronaReprezentacyjnaPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/strona-reprezentacyjna-pracownika/strona-reprezentacyjna-pracownika.component';
 
 import { MojZakladPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moj-zaklad-pracownika/moj-zaklad-pracownika.component';
@@ -48,7 +46,10 @@ const panelePracownika: Routes = [
   },
   {
     path: 'zarejestrowaneWizyty',
-    component: ZarejestrowaneWizytyPracownikaComponent,
+    loadChildren: () =>
+      import(
+        './panel-pracownika/panel-zarzadzania-zakladem/panele/zarejestrowane-wizyty-pracownika/zarejestrowane-wizyty.module'
+      ).then(k => k.ZarejestrowaneWizytyModule),
   },
   {
     path: 'zarzadzaniePracownikami',
@@ -56,7 +57,10 @@ const panelePracownika: Routes = [
   },
   {
     path: 'kalendarzTerminow',
-    component: KalendarzTerminowComponent,
+    loadChildren: () =>
+      import('./panel-pracownika/panel-zarzadzania-zakladem/panele/kalendarz-terminow/kalendarz-terminow.module').then(
+        k => k.KalendarzTerminowModule
+      ),
   },
 
   {
@@ -85,9 +89,9 @@ const panelePracownika: Routes = [
   {
     path: 'harmonogram',
     loadChildren: () =>
-      import(
-        './panel-pracownika/panel-zarzadzania-zakladem/panele/harmonogram-pracownika/harmonogram.module'
-      ).then(k => k.HarmonogramModule),
+      import('./panel-pracownika/panel-zarzadzania-zakladem/panele/harmonogram-pracownika/harmonogram.module').then(
+        k => k.HarmonogramModule
+      ),
   },
   {
     path: 'listaKlientow',

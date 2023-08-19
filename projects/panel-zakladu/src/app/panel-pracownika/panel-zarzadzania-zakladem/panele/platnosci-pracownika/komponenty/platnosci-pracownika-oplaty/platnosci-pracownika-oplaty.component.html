@@ -1,5 +1,5 @@
 <h3 class="historiaTransakcjiH3">Historia opłat:</h3>
-<table class="historiaTransakcji tablica tablicaPierwszyWierszJakoNaglowe">
+<table class="historiaTransakcji tablica">
   <tr #naglowek>
     <th>Nr.</th>
     <th>Nazwa</th>
@@ -8,19 +8,21 @@
     <th>Kwota</th>
     <th>Status</th>
   </tr>
-  <ng-container *ngFor="let k of listaPlatnosci | slice: (page-1) * pageSize : page * pageSize ;let index2 = index">
+  <ng-container *ngFor="let k of listaPlatnosci | slice : (page - 1) * pageSize : page * pageSize; let index2 = index">
     <tr>
-      <td>{{(listaPlatnosci.length - index2 - (pageSize * page) + pageSize)}}  </td>
-      <td>{{k.opis}}</td>
-      <td>{{k.dataUtworzenia | date : "dd.MM.yyyy  HH:mm"}}</td>
-      <td>{{k.dataKonca | date : "dd.MM.yyyy  HH:mm"}}</td>
-      <td>{{k.kwota / 100}}zł</td>
-      <td *ngIf="k.status==0" style="font-weight: bolder;color:darkred">Nieudane</td>
-      <td *ngIf="k.status==1" style="font-weight: bolder;color:  #0e7908">Udane</td>
+      <td>{{ listaPlatnosci.length - index2 - pageSize * page + pageSize }}</td>
+      <td>{{ k.opis }}</td>
+      <td>{{ k.dataUtworzenia | date : 'dd.MM.yyyy  HH:mm' }}</td>
+      <td>{{ k.dataKonca | date : 'dd.MM.yyyy  HH:mm' }}</td>
+      <td>{{ k.kwota / 100 }}zł</td>
+      <td *ngIf="k.status == 0" style="font-weight: bolder; color: darkred">Nieudane</td>
+      <td *ngIf="k.status == 1" style="font-weight: bolder; color: #0e7908">Udane</td>
     </tr>
   </ng-container>
   <tr
-    *ngFor="let k of [].constructor(pageSize - (listaPlatnosci | slice: (page - 1) * pageSize : page * pageSize).length)">
+    *ngFor="
+      let k of [].constructor(pageSize - (listaPlatnosci | slice : (page - 1) * pageSize : page * pageSize).length)
+    ">
     <td></td>
     <td></td>
     <td></td>
@@ -29,8 +31,6 @@
     <td></td>
     <td></td>
   </tr>
-
-
 </table>
 <div class="paggination">
   <ngb-pagination
@@ -39,11 +39,6 @@
     [collectionSize]="listaPlatnosci.length"
     [maxSize]="7"
     [rotate]="true"
-    [boundaryLinks]="true"
-  ></ngb-pagination>
-  <span class="tekst">
-
-  Wyświetlono {{page}} z {{pageCount()}} stron.
-  </span>
+    [boundaryLinks]="true"></ngb-pagination>
+  <span class="tekst"> Wyświetlono {{ page }} z {{ pageCount() }} stron. </span>
 </div>
-

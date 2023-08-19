@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import {
   faArrowRightFromBracket,
   faCircleCheck,
@@ -14,6 +14,7 @@ import {
   faForward,
   faGear,
   faHomeUser,
+  faMagnifyingGlass,
   faPersonThroughWindow,
   faTags,
   faX,
@@ -30,8 +31,8 @@ import {
   faMoneyBill1,
   faUser,
 } from '@fortawesome/free-regular-svg-icons';
-import {faCalendarDays} from '@fortawesome/free-regular-svg-icons/faCalendarDays';
-import {FaIconLibrary} from "@fortawesome/angular-fontawesome";
+import { faCalendarDays } from '@fortawesome/free-regular-svg-icons/faCalendarDays';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 
 @Injectable({
   providedIn: 'root',
@@ -61,13 +62,13 @@ export class FontAwesomeService {
   sms = faCommentSms;
   plusWKolku = faCirclePlus;
   minusWKolku = faCircleMinus;
-  koperta = faEnvelope
+  koperta = faEnvelope;
 
   constructor(library: FaIconLibrary) {
     library.addIcons(faEnvelope);
     library.addIcons(faFlag);
     library.addIcons(faX);
     library.addIcons(faGear);
-
+    library.addIcons(faMagnifyingGlass);
   }
 }

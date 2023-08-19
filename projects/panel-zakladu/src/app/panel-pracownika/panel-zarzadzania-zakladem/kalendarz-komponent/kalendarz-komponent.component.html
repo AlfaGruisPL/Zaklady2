@@ -1,141 +1,101 @@
-<div class="pracownikSelectAndLabel">
-  <label for="pracownikSelect">Filtrowanie danych:</label>
-  <select id="pracownikSelect"
-          [(ngModel)]="Kalendarz_.wybranyPracownik"
-          (change)="Kalendarz_.pobierzDane()">
-    <option
-      [value]="pracownik.id"
-      *ngFor="let pracownik of Kalendarz_.pracownicy">
-      <span *ngIf="pracownik.id != Kalendarz_.zalogowanyUzytkownikId else zalogowanyUzytkownik">
-        {{pracownik.imie + " " + pracownik.nazwisko}}
-      </span>
-      <ng-template #zalogowanyUzytkownik>
-      <span>
-        Zalogowany użytkownik
-      </span>
-      </ng-template>
-    </option>
-  </select>
-</div>
-<table style="width: 100%;">
+<app-kalendarz-panel-sterowania></app-kalendarz-panel-sterowania>
+<table style="width: 100%" [ngClass]="{ ladowanieDanych: Kalendarz_.loadingData }">
   <tr>
-    <td colspan="8">
-      <div class="sterowanie">
-
-        <button class="jakiTydzienButton teraz" (click)="teraz()  " *ngIf="licznikPrzyciskow !=0 ">Teraz
-        </button> &nbsp; &nbsp; &nbsp;
-        <button class="jakiTydzienButton" (click)="WLEWO()">Poprzedni tydzień
-        </button>
-        <div class="jakiMiesiacDiv">
-          <span>  {{miesiace[miesiac() - 1]}} - Tydzień: {{tydzien()}}</span>
-
-        </div>
-        <button class="jakiTydzienButton" (click)="WPrawo()"> Następny tydzień</button>
-      </div>
-    </td>
-  </tr>
-
-  <tr>
-    <th class="wyswietlaneGodzinySpan" style="font-size: 18px">
-      Godzina:
-    </th>
+    <th class="wyswietlaneGodzinySpan" style="font-size: 18px">:</th>
     <th *ngFor="let dzien of dni" class="naglowkiTabeli">
-      <span [ngClass]="{dzisiejszaData:czyToDzis(dzien.data)}">
-      <span class="wyswietlaneDniSpan"> {{dzien.nazwa}}</span> <br>
-      <span class="wyswietlaneDniSpan" style="font-size: 15px">{{dzien.samaData()}}</span>
+      <span [ngClass]="{ dzisiejszaData: czyToDzis(dzien.data) }">
+        <span class="wyswietlaneDniSpan"> {{ dzien.nazwa }}</span> <br />
+        <span class="wyswietlaneDniSpan" style="font-size: 15px">{{ dzien.samaData() }}</span>
       </span>
       <div ngbDropdown class="zarzadzanie" *ngIf="zarzadzanie">
-        <button type="button" class="btn btn-outline-primary " id="dropdownBasic1" ngbDropdownToggle>
+        <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
           Zarządzanie dniem
         </button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
           Zakład
-          <button ngbDropdownItem
-
-                  *ngIf="czyDzisWolnyDzien(dzien) == undefined else dzienPracy"
-
-                  (click)="Kalendarz_.oznaczJakoDzienWolny(dzien)">Oznacz jako dzień wolny
+          <button
+            ngbDropdownItem
+            *ngIf="czyDzisWolnyDzien(dzien) == undefined; else dzienPracy"
+            (click)="Kalendarz_.oznaczJakoDzienWolny(dzien)">
+            Oznacz jako dzień wolny
           </button>
           <ng-template #dzienPracy>
             <button ngbDropdownItem (click)="Kalendarz_.oznaczJakoDzienPracy(dzien)">Oznacz jako dzień pracy</button>
           </ng-template>
 
-          <hr style="margin:4px 0 4px 0">
-          Wybrany pracownik: <p class="pracownikDropDown">Mateusz Osikowski</p>
-          <button ngbDropdownItem
-                  *ngIf="czyDzisWolnyDzien(dzien) == undefined else dzienPracy"
-                  (click)="Kalendarz_.oznaczJakoDzienWolny(dzien)">Oznacz jako dzień wolny
+          <hr style="margin: 4px 0 4px 0" />
+          Wybrany pracownik:
+          <p class="pracownikDropDown">Mateusz Osikowski</p>
+          <button
+            ngbDropdownItem
+            *ngIf="czyDzisWolnyDzien(dzien) == undefined; else dzienPracy"
+            (click)="Kalendarz_.oznaczJakoDzienWolny(dzien)">
+            Oznacz jako dzień wolny
           </button>
-          <button ngbDropdownItem (click)="Kalendarz_.nowaPrzerwa(dzien,undefined)"> Dodaj przerwę</button>
+          <button ngbDropdownItem (click)="Kalendarz_.nowaPrzerwa(dzien, undefined)">Dodaj przerwę</button>
         </div>
       </div>
     </th>
-
   </tr>
   <tr>
     <td></td>
-    <td style="position: relative;height: 0px" *ngFor="let dzien of dni">
+    <td style="position: relative; height: 0px" *ngFor="let dzien of dni">
       <ng-container *ngFor="let wizyta of terminyNaDzien(dzien)">
-        <app-termin-komponent [godzinaRozpoczecia]="Kalendarz_.godzinaRozpoczecia" style="width: 150px;"
-                              [wizyta]="wizyta"></app-termin-komponent>
-
+        <app-termin-komponent
+          [godzinaRozpoczecia]="Kalendarz_.godzinaRozpoczecia"
+          style="width: 150px"
+          [wizyta]="wizyta"></app-termin-komponent>
       </ng-container>
       <ng-container *ngFor="let przerwaZakladu of Kalendarz_.przerwyZakladuNaDzien(dzien)">
-        <app-kalendarz-przerwa-komponent [Przerwa]="przerwaZakladu"
-                                         [godzinaRozpoczecia]="Kalendarz_.godzinaRozpoczecia"></app-kalendarz-przerwa-komponent>
+        <app-kalendarz-przerwa-komponent
+          [Przerwa]="przerwaZakladu"
+          [godzinaRozpoczecia]="Kalendarz_.godzinaRozpoczecia"></app-kalendarz-przerwa-komponent>
       </ng-container>
 
       <ng-container *ngFor="let wolnyTermin of SymulatorWolneterminyNaDzien(dzien)">
-        <app-termin-komponent [godzinaRozpoczecia]="Kalendarz_.godzinaRozpoczecia" style="width: 150px;"
-                              [wizyta]="wolnyTermin"
-                              [symulator]="true"
-                              *ngIf="symulator"
-        ></app-termin-komponent>
-
+        <app-termin-komponent
+          [godzinaRozpoczecia]="Kalendarz_.godzinaRozpoczecia"
+          style="width: 150px"
+          [wizyta]="wolnyTermin"
+          [symulator]="true"
+          *ngIf="symulator"></app-termin-komponent>
       </ng-container>
     </td>
-
-
   </tr>
-  <tr class="godzina" *ngFor="let k of [].constructor(Kalendarz_.godzinaZakonczenia * 2);let index = index">
-
-    <td style="position:relative;"><span class="wyswietlaneGodzinySpan">
-      {{Kalendarz_.godzina(index)}}</span></td>
+  <tr class="godzina" *ngFor="let k of [].constructor(Kalendarz_.godzinaZakonczenia * 2); let index = index">
+    <td style="position: relative">
+      <span class="wyswietlaneGodzinySpan"> {{ Kalendarz_.godzina(index) }}</span>
+    </td>
     <td
-      [ngStyle]="kolorTla(dzien,index)"
-
-      style="position: relative;height: 25px"
+      [ngStyle]="kolorTla(dzien, index)"
+      style="position: relative; height: 25px"
       *ngFor="let dzien of dni"
-      [ngClass]="{poleKlikalne:true}"
-      (click)="kliknietoPole(dzien,index)"
-
-    >
-      <span *ngIf="!czyPracuje(dzien.dzien)"
-            style="width: 100%;text-align: center;display: block;color:#343434">---------</span>
-      <div *ngIf="czyToDzis(dzien.data) && index == 0
-
-">
+      [ngClass]="{ poleKlikalne: true }"
+      (click)="kliknietoPole(dzien, index)">
+      <span *ngIf="!czyPracuje(dzien.dzien)" style="width: 100%; text-align: center; display: block; color: #343434"
+        >---------</span
+      >
+      <div *ngIf="czyToDzis(dzien.data) && index == 0">
         <app-kalendarz-godzina-kreska-komponent
-          [poczatek]="[Kalendarz_.godzinaRozpoczecia,0]"
-          [koniec]="[Kalendarz_.godzinaZakonczenia + Kalendarz_.godzinaRozpoczecia,0]"
-          [wysokosc]="((Kalendarz_.godzinaZakonczenia * 2)*25)"
-          [sumaCzasu]="(10*60)"></app-kalendarz-godzina-kreska-komponent>
-
+          [poczatek]="[Kalendarz_.godzinaRozpoczecia, 0]"
+          [koniec]="[Kalendarz_.godzinaZakonczenia + Kalendarz_.godzinaRozpoczecia, 0]"
+          [wysokosc]="Kalendarz_.godzinaZakonczenia * 2 * 25"
+          [sumaCzasu]="10 * 60"></app-kalendarz-godzina-kreska-komponent>
       </div>
     </td>
-
   </tr>
   <tr>
     <td></td>
-    <td class='dzienInfo' *ngFor="let dzien of dni">
-      {{kolorTlaInformacje(dzien)}}
+    <td class="dzienInfo" *ngFor="let dzien of dni">
+      {{ kolorTlaInformacje(dzien) }}
     </td>
   </tr>
-
 </table>
-<br><br><br><br><br>
-<button (click)="symulator = !symulator;generujWizyty()">Symulator</button>
-ID pracownika <input [(ngModel)]="symulatorPracownikID" (keydown)="generujWizyty()">
-<br>
-ID wizyt <input [(ngModel)]="symulatorWizytyID" (keydown)="generujWizyty()">
-<input type="number">
+<ng-container *ngIf="!environment.production">
+  <br /><br /><br /><br /><br />
+  <button (click)="symulator = !symulator; generujWizyty()">Symulator</button>
+  ID pracownika <input [(ngModel)]="symulatorPracownikID" (keydown)="generujWizyty()" />
+  <br />
+  ID wizyt <input [(ngModel)]="symulatorWizytyID" (keydown)="generujWizyty()" />
+  <input type="number" />
+</ng-container>
