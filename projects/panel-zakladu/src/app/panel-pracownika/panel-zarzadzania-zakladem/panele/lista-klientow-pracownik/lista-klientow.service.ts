@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Klient } from '../../../../klasy/listaKlientow/klient';
-import { Drzwi } from '../../../../enum/drzwi';
-import { PodreczneDaneService } from '../../../../serwisy/podreczne-dane.service';
-import { ListonoszService } from '../../../../serwisy/listonosz.service';
-import { HttpParams } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Klient} from '../../../../klasy/listaKlientow/klient';
+import {Drzwi} from '../../../../enum/drzwi';
+import {PodreczneDaneService} from '../../../../serwisy/podreczne-dane.service';
+import {ListonoszService} from '../../../../serwisy/listonosz.service';
+import {HttpParams} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -18,13 +18,15 @@ export class ListaKlientowService {
   constructor(
     public podreczne_: PodreczneDaneService,
     private listonosz: ListonoszService
-  ) {}
+  ) {
+  }
 
   ustawFilter(event: any) {
     this.filter = event.target.value;
   }
 
   pobierzDane() {
+    console.log(1)
     let drzwi: any;
     switch (this.filter) {
       case 0:

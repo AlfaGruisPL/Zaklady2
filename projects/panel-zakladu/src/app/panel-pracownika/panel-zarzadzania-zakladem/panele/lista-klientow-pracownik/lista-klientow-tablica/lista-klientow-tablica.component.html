@@ -48,6 +48,10 @@
     <td></td>
   </tr>
 </table>
+<app-table-pagination [(page)]="lista_.page"
+                      [pageSize]="lista_.pageSize"
+                      [collectionSize]="lista_.iloscKlientow"
+></app-table-pagination>
 <div class="paggination">
   <ngb-pagination
     [(page)]="lista_.page"

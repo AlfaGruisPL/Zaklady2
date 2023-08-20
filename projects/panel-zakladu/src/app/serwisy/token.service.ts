@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { CookieService } from 'ngx-cookie';
+import {Injectable} from '@angular/core';
+import {CookieService} from 'ngx-cookie';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +9,8 @@ export class TokenService {
   public tokenWartosc: string | undefined = '';
   public tokenGrupy: number[] | undefined = [];
 
-  constructor(private cookieService: CookieService) {}
+  constructor(private cookieService: CookieService) {
+  }
 
   czyWlasciciel() {
     return this.tokenGrupy?.find(k => k == 2) != undefined;
@@ -19,12 +20,12 @@ export class TokenService {
     if (this.tokenWartosc != undefined) {
       this.cookieService.put('grupy', JSON.stringify(this.tokenGrupy), {
         expires: this.tokenTerminWaznosci,
-        sameSite: 'none',
+        sameSite: 'lax',
         secure: false,
       });
       this.cookieService.put('token', this.tokenWartosc, {
         expires: this.tokenTerminWaznosci,
-        sameSite: 'none',
+        sameSite: 'lax',
         //todo: tu powinno być chyba true, ale na serwerze nie działa bez https
         secure: false,
       });

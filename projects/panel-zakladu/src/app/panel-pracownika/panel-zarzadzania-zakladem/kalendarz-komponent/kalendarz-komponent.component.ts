@@ -1,12 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {
-  dniTygodnia,
   DzienTygodnia,
 } from '../../../../../../reklamowa-strona-zakladu/src/app/one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/kalendarz/dzien-tygodnia';
-import { Wizyta } from '../../../klasy/panelPracownika/wizyta';
-import { ListonoszService } from '../../../serwisy/listonosz.service';
-import { KalendarzKomponentService } from './kalendarz-komponent.service';
-import { environment } from '../../../../environments/environment';
+import {Wizyta} from '../../../klasy/panelPracownika/wizyta';
+import {ListonoszService} from '../../../serwisy/listonosz.service';
+import {KalendarzKomponentService} from './kalendarz-komponent.service';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-kalendarz-komponent',
@@ -21,9 +20,9 @@ export class KalendarzKomponentComponent implements OnInit {
   symulatorWolneTerminy: any = [];
   symulator = false;
   public godzinaRozpoczecia = 6;
-  dni = dniTygodnia;
 
-  constructor(private listonosz: ListonoszService, public Kalendarz_: KalendarzKomponentService) {}
+  constructor(private listonosz: ListonoszService, public Kalendarz_: KalendarzKomponentService) {
+  }
 
   ngOnInit() {
     this.Kalendarz_.godzinaRozpoczecia = this.godzinaRozpoczecia;
@@ -91,22 +90,22 @@ export class KalendarzKomponentComponent implements OnInit {
     //sprawdzenie czy nie dzien oznaczony jako wolny
     if (this.czyDzisWolnyDzien(dzien) != undefined) {
       if (index % 2 == 0) {
-        return { 'background-color': 'rgba(255,35,35,0.31)' };
+        return {'background-color': 'rgba(255,35,35,0.31)'};
       }
-      return { 'background-color': 'rgba(211,8,8,0.31)' };
+      return {'background-color': 'rgba(211,8,8,0.31)'};
     }
 
     if (!this.CzyAktualne(dzien.data)) {
       if (index % 2 == 0) {
-        return { 'background-color': 'rgba(229,229,229,0.31)' };
+        return {'background-color': 'rgba(229,229,229,0.31)'};
       }
-      return { 'background-color': 'rgba(211,211,211,0.31)' };
+      return {'background-color': 'rgba(211,211,211,0.31)'};
     }
     if (!this.czyPracuje(dzien.dzien)) {
       if (index % 2 == 0) {
-        return { 'background-color': 'rgba(180,180,180,0.31)' };
+        return {'background-color': 'rgba(180,180,180,0.31)'};
       }
-      return { 'background-color': 'rgba(148,148,148,0.31)' };
+      return {'background-color': 'rgba(148,148,148,0.31)'};
     }
 
     return {};
@@ -126,10 +125,14 @@ export class KalendarzKomponentComponent implements OnInit {
   }
 
   public terminyNaDzien(data: DzienTygodnia): Array<Wizyta> {
+
+
     const tablica = this.Kalendarz_.wizyty.filter(usluga => {
+
       if (usluga.poczatek.getDate() == data.data.getDate()) {
         if (usluga.poczatek.getFullYear() == data.data.getFullYear()) {
           if (usluga.poczatek.getMonth() == data.data.getMonth()) {
+
             return true;
           }
         }

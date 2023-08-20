@@ -5,8 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "startPaneluZakladu": " ng serve PanelZakladu --port 8005  --host=0.0.0.0 --disable-host-check",
-    "startStronyReklamowejZakladu": "ng serve reklamowaStronaZakladu --port 8008  --host=0.0.0.0 --disable-host-check",
+    "startPaneluZakladu": " ng serve PanelZakladu --port 8005  --host=0.0.0.0 --disable-host-check --hmr=true",
+    "startStronyReklamowejZakladu": "ng serve reklamowaStronaZakladu --port 8008  --host=0.0.0.0 --disable-host-check --hmr=true",
     "buildPanelZakladu": "ng build PanelZakladu --base-href ./",
     "buildStronyReklamowejZakladu": "ng build reklamowaStronaZakladu --base-href ./",
     "watch": "ng build --watch --configuration development",

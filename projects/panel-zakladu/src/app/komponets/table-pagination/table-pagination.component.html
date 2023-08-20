@@ -1,0 +1,12 @@
+<div class="paggination">
+  <ngb-pagination [page]="page" [maxSize]="7"
+                  (pageChange)="pageChange.emit($event)"
+                  [pageSize]="pageSize"
+                  [collectionSize]="collectionSize"
+
+                  [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+  <select>
+    <option *ngFor="let k of [10, 20, 50, 100]">{{ k }}</option>
+  </select>
+</div>
+

@@ -12,8 +12,7 @@ export class DzienTygodnia {
 
   ustawDate() {
     const teraz = this.data;
-    const dzienDzis = teraz.getDate() - 7;
-    console.log(11);
+    const dzienDzis = teraz.getDate() - teraz.getDay() - (6 - teraz.getDay());
     this.data = new Date(teraz.setDate(dzienDzis - (teraz.getDay() - 1) + this.dzien));
   }
 

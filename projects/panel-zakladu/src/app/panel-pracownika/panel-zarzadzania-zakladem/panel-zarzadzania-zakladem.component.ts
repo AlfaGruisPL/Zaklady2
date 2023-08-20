@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FontAwesomeService } from '../../serwisy/font-awesome.service';
-import { Router } from '@angular/router';
-import { PodreczneDaneService } from '../../serwisy/podreczne-dane.service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {FontAwesomeService} from '../../serwisy/font-awesome.service';
+import {Router} from '@angular/router';
+import {PodreczneDaneService} from '../../serwisy/podreczne-dane.service';
 
 @Component({
   selector: 'app-panel-zarzadzania-zakladem',
@@ -16,9 +16,11 @@ export class PanelZarzadzaniaZaklademComponent implements OnInit, OnDestroy {
     public fontAwesome: FontAwesomeService,
     public DanePodreczne: PodreczneDaneService,
     private Router: Router
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
+
     this.godzinaInterval = setInterval(() => {
       this.godzina = new Date();
     }, 1000);

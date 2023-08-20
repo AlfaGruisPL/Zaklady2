@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
-import { ListonoszService } from '../../../../serwisy/listonosz.service';
-import { KalendarzKomponentService } from '../kalendarz-komponent.service';
-import { dniTygodnia } from '../dzien-tygodnia';
+import {Component} from '@angular/core';
+import {ListonoszService} from '../../../../serwisy/listonosz.service';
+import {KalendarzKomponentService} from '../kalendarz-komponent.service';
 
 @Component({
   selector: 'app-kalendarz-panel-sterowania',
@@ -11,15 +10,15 @@ import { dniTygodnia } from '../dzien-tygodnia';
 export class KalendarzPanelSterowaniaComponent {
   licznikPrzyciskow = 0;
   dataKursor = new Date();
-  dni = dniTygodnia;
 
-  constructor(private listonosz: ListonoszService, public Kalendarz_: KalendarzKomponentService) {}
+  constructor(private listonosz: ListonoszService, public Kalendarz_: KalendarzKomponentService) {
+  }
 
   public WPrawo() {
     this.licznikPrzyciskow++;
     this.dataKursor = new Date(this.dataKursor.getTime() + 7 * 24 * 60 * 60 * 1000);
 
-    this.dni.forEach(k => {
+    this.Kalendarz_.dni.forEach(k => {
       k.data = new Date(this.dataKursor);
       k.ustawDate();
     });
@@ -30,7 +29,7 @@ export class KalendarzPanelSterowaniaComponent {
   public teraz() {
     this.licznikPrzyciskow = 0;
     this.dataKursor = new Date();
-    this.dni.forEach(k => {
+    this.Kalendarz_.dni.forEach(k => {
       k.data = new Date(this.dataKursor);
       k.ustawDate();
     });
@@ -41,7 +40,7 @@ export class KalendarzPanelSterowaniaComponent {
   public WLEWO() {
     this.licznikPrzyciskow--;
     this.dataKursor = new Date(this.dataKursor.getTime() - 7 * 24 * 60 * 60 * 1000);
-    this.dni.forEach(k => {
+    this.Kalendarz_.dni.forEach(k => {
       k.data = new Date(this.dataKursor);
       k.ustawDate();
     });

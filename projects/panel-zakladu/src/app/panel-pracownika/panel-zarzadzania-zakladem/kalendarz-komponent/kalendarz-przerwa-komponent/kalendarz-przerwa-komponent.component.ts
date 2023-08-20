@@ -18,8 +18,8 @@ export class KalendarzPrzerwaKomponentComponent {
     const poczatekGodzian = this.Przerwa.poczatek.getHours()
     const poczatekMinuta = this.Przerwa.poczatek.getMinutes()
     const koniecGodzian = this.Przerwa.koniec.getHours()
+    console.log(1);
     const koniecMinuta = this.Przerwa.koniec.getMinutes()
-    console.log(poczatekGodzian, koniecGodzian)
     const roznica = (poczatekGodzian + (poczatekMinuta / 60)) - this.godzinaRozpoczecia
     this.top = (roznica * 26.9 * 2) + 'px'
     this.wysokosc = (((koniecGodzian + (koniecMinuta / 60)) - (poczatekGodzian + (poczatekMinuta / 60))) * 2 * 27) + "px"

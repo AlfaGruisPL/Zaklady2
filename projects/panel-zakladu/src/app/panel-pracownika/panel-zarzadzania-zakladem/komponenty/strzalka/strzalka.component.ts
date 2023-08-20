@@ -1,17 +1,23 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, Input, SimpleChanges} from '@angular/core';
+import {Router} from '@angular/router';
+import {CommonModule} from "@angular/common";
 
 @Component({
   selector: 'app-strzalka',
   templateUrl: './strzalka.component.html',
   styleUrls: ['./strzalka.component.scss'],
+  imports: [
+    CommonModule
+  ],
+  standalone: true
 })
 export class StrzalkaComponent {
   @Input() ScrollTop = 0;
   wyswietlStrzalke = false;
   strzalkaKreciSie = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+  }
 
   private poprzedniaWysokosc = 0;
 

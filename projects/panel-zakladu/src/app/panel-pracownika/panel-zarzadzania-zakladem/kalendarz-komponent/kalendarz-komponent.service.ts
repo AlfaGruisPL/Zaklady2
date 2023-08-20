@@ -1,19 +1,20 @@
-import { Injectable } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { KalendarzPrzerwaComponent } from './kalendarz-przerwa/kalendarz-przerwa.component';
-import { DzienTygodnia } from '../../../../../../reklamowa-strona-zakladu/src/app/one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/kalendarz/dzien-tygodnia';
-import { Drzwi } from '../../../enum/drzwi';
-import { Wizyta } from '../../../klasy/panelPracownika/wizyta';
-import { GodzinyOtwarcia } from '../../../klasy/panelPracownika/mojZaklad/moj-zaklad';
-import { Pracownik } from '../../../klasy/panelPracownika/pracownicy/pracownik';
-import { ListonoszService } from '../../../serwisy/listonosz.service';
-import { Przerwa } from '../../../klasy/panelPracownika/kalendarz/przerwa.dto';
-import { DzienWolny, DzienWolnyDto } from '../../../klasy/panelPracownika/kalendarz/DzienWolny';
-import { KomunikatyService } from '../../../serwisy/komunikaty.service';
-import { Udane } from '../../../enum/udane';
-import { KalendarzModyfikacjaTerminuComponent } from './kalendarz-modyfikacja-terminu/kalendarz-modyfikacja-terminu.component';
-import { TokenService } from '../../../serwisy/token.service';
-import { HttpParams } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {KalendarzPrzerwaComponent} from './kalendarz-przerwa/kalendarz-przerwa.component';
+
+import {Drzwi} from '../../../enum/drzwi';
+import {Wizyta} from '../../../klasy/panelPracownika/wizyta';
+import {GodzinyOtwarcia} from '../../../klasy/panelPracownika/mojZaklad/moj-zaklad';
+import {Pracownik} from '../../../klasy/panelPracownika/pracownicy/pracownik';
+import {ListonoszService} from '../../../serwisy/listonosz.service';
+import {Przerwa} from '../../../klasy/panelPracownika/kalendarz/przerwa.dto';
+import {DzienWolny, DzienWolnyDto} from '../../../klasy/panelPracownika/kalendarz/DzienWolny';
+import {KomunikatyService} from '../../../serwisy/komunikaty.service';
+import {Udane} from '../../../enum/udane';
+import {KalendarzModyfikacjaTerminuComponent} from './kalendarz-modyfikacja-terminu/kalendarz-modyfikacja-terminu.component';
+import {TokenService} from '../../../serwisy/token.service';
+import {HttpParams} from '@angular/common/http';
+import {dniTygodnia, DzienTygodnia} from "./dzien-tygodnia";
 
 @Injectable({
   providedIn: 'root',
@@ -31,6 +32,8 @@ export class KalendarzKomponentService {
   przerwyZakladu: Array<Przerwa> = [];
   kursor = new Date();
   loadingData = false;
+  dni = dniTygodnia;
+
   public miesiace: string[] = [
     'Styczeń',
     'Luty',
@@ -51,9 +54,11 @@ export class KalendarzKomponentService {
     private token_: TokenService,
     private listonosz: ListonoszService,
     private komunikaty_: KomunikatyService
-  ) {}
+  ) {
+  }
 
   public pobierzPodstawoweDane() {
+
     this.listonosz
       .pobierz(Drzwi.zarejestrowaneWizytyTerminy)
       .then(
