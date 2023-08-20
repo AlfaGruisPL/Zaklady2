@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ListonoszService } from '../../../../serwisy/listonosz.service';
 import { KalendarzKomponentService } from '../kalendarz-komponent.service';
-import { dniTygodnia } from '../../../../../../../reklamowa-strona-zakladu/src/app/one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/kalendarz/dzien-tygodnia';
+import { dniTygodnia } from '../dzien-tygodnia';
 
 @Component({
   selector: 'app-kalendarz-panel-sterowania',

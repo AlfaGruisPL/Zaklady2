@@ -58,8 +58,8 @@ const panelePracownika: Routes = [
   {
     path: 'kalendarzTerminow',
     loadChildren: () =>
-      import('./panel-pracownika/panel-zarzadzania-zakladem/panele/kalendarz-terminow/kalendarz-terminow.module').then(
-        k => k.KalendarzTerminowModule
+      import('./panel-pracownika/panel-zarzadzania-zakladem/panele/kalendarz-terminow/kalendarz-terminow-routing').then(
+        k => k.routes
       ),
   },
 

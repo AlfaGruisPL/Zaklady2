@@ -1,1 +1,34 @@
-<p>tabela-przerw-filter works!</p>
+<div class="filtry">
+  <div class="switchButtonDiv">
+    <button
+      (click)="filter = 'przerwy'; zmianaFiltra()"
+      class="switchButton"
+      [ngClass]="{ switchButtonAktywny: filter == 'przerwy' }">
+      Przerwy
+    </button>
+    <button
+      (click)="filter = 'dniwolne'; zmianaFiltra()"
+      class="switchButton"
+      [ngClass]="{ switchButtonAktywny: filter == 'dniwolne' }">
+      Dni wolne
+    </button>
+  </div>
+
+  <div class="switchButtonDiv">
+    <button
+      (click)="filterTyp = 'uzytkownikaZalogowanego'; zmianaFiltra()"
+      class="switchButton"
+      [ngClass]="{ switchButtonAktywny: filterTyp == 'przerwy' }">
+      Zalogowanego użytkownika
+    </button>
+    <button
+      (click)="filterTyp = 'zakladu'; zmianaFiltra()"
+      class="switchButton"
+      [ngClass]="{ switchButtonAktywny: filterTyp == 'zakladu' }">
+      Zakładu
+    </button>
+    <select class="switchButton">
+      <option>123123</option>
+    </select>
+  </div>
+</div>

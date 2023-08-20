@@ -12,7 +12,6 @@ import { PlatnosciSMSOknoComponent } from './komponenty/okna/platnosci-smsokno/p
 import { WykresStanuKontaComponent } from './komponenty/wykres-stanu-konta/wykres-stanu-konta.component';
 import { StartStopUslugaComponent } from './komponenty/okna/start-stop-usluga/start-stop-usluga.component';
 import { PlatnosciRouterModule } from './platnosci-router.module';
-import { SharedModule } from '../../../../shared.module';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
@@ -27,14 +26,7 @@ import { CommonModule } from '@angular/common';
     WykresStanuKontaComponent,
     StartStopUslugaComponent,
   ],
-  imports: [
-    SharedModule,
-    CommonModule,
-    FormsModule,
-    NgbPagination,
-    UiSwitchModule,
-    PlatnosciRouterModule,
-  ],
+  imports: [CommonModule, FormsModule, NgbPagination, UiSwitchModule, PlatnosciRouterModule],
   providers: [],
   bootstrap: [],
 })
