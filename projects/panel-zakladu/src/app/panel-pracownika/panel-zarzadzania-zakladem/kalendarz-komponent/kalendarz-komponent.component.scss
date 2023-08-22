@@ -49,15 +49,15 @@ $kolor: #c4c4c4;
     height: 14px;
     border-left: 1px solid $kolor;
     border-bottom: 1px solid darken($kolor, 61%);
-    width: calc(calc(100% - 30px) / 7);
-
+    width: calc(100% / 7.2);
 
     &:first-of-type {
       border-left: none;
       border-bottom: none;
-      width: 30px;
+      width: 42px;
       font-weight: bold;
       font-family: math;
+      display: block;
       font-size: 15px;
 
     }

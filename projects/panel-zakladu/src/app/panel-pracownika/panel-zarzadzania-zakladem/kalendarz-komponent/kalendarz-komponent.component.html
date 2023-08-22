@@ -4,7 +4,7 @@
     <th class="wyswietlaneGodzinySpan" style="font-size: 18px">:</th>
     <th *ngFor="let dzien of Kalendarz_.dni" class="naglowkiTabeli">
       <span [ngClass]="{ dzisiejszaData: czyToDzis(dzien.data) }">
-        <span class="wyswietlaneDniSpan"> {{ dzien.nazwa }}</span> <br/>
+        <span class="wyswietlaneDniSpan"> {{ dzien.nazwa }}</span> <br />
         <span class="wyswietlaneDniSpan" style="font-size: 15px">{{ dzien.samaData() }}</span>
       </span>
       <div ngbDropdown class="zarzadzanie" *ngIf="zarzadzanie">
@@ -23,7 +23,7 @@
             <button ngbDropdownItem (click)="Kalendarz_.oznaczJakoDzienPracy(dzien)">Oznacz jako dzień pracy</button>
           </ng-template>
 
-          <hr style="margin: 4px 0 4px 0"/>
+          <hr style="margin: 4px 0 4px 0" />
           Wybrany pracownik:
           <p class="pracownikDropDown">Mateusz Osikowski</p>
           <button
@@ -92,10 +92,10 @@
   </tr>
 </table>
 <ng-container *ngIf="!environment.production">
-  <br/><br/><br/><br/><br/>
+  <br /><br /><br /><br /><br />
   <button (click)="symulator = !symulator; generujWizyty()">Symulator</button>
-  ID pracownika <input [(ngModel)]="symulatorPracownikID" (keydown)="generujWizyty()"/>
-  <br/>
-  ID wizyt <input [(ngModel)]="symulatorWizytyID" (keydown)="generujWizyty()"/>
-  <input type="number"/>
+  ID pracownika <input [(ngModel)]="symulatorPracownikID" (keydown)="generujWizyty()" />
+  <br />
+  ID wizyt <input [(ngModel)]="symulatorWizytyID" (keydown)="generujWizyty()" />
+  <input type="number" />
 </ng-container>

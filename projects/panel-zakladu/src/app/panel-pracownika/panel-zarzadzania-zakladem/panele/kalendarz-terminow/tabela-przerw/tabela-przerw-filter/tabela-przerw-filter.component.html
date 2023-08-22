@@ -1,6 +1,21 @@
 <div class="filtry">
   <div class="switchButtonDiv">
     <button
+      (click)="filterRegularnosci = 'regularne'; zmianaFiltra()"
+      class="switchButton"
+      [ngClass]="{ switchButtonAktywny: filterRegularnosci == 'regularne' }">
+      Regularne
+    </button>
+    <button
+      (click)="filterRegularnosci = 'jednorazowe'; zmianaFiltra()"
+      class="switchButton"
+      [ngClass]="{ switchButtonAktywny: filterRegularnosci == 'jednorazowe' }">
+      Jednorazowe
+    </button>
+  </div>
+
+  <div class="switchButtonDiv">
+    <button
       (click)="filter = 'przerwy'; zmianaFiltra()"
       class="switchButton"
       [ngClass]="{ switchButtonAktywny: filter == 'przerwy' }">
@@ -14,21 +29,67 @@
     </button>
   </div>
 
+
   <div class="switchButtonDiv">
     <button
-      (click)="filterTyp = 'uzytkownikaZalogowanego'; zmianaFiltra()"
+      (click)="filterTyp = 0;  zmianaFiltra()"
       class="switchButton"
-      [ngClass]="{ switchButtonAktywny: filterTyp == 'przerwy' }">
-      Zalogowanego użytkownika
-    </button>
-    <button
-      (click)="filterTyp = 'zakladu'; zmianaFiltra()"
-      class="switchButton"
-      [ngClass]="{ switchButtonAktywny: filterTyp == 'zakladu' }">
+      [ngClass]="{ switchButtonAktywny: filterTyp == 0 }">
       Zakładu
     </button>
-    <select class="switchButton">
-      <option>123123</option>
+    <button
+      (click)="
+        filterTyp = podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id;
+
+      "
+      class="switchButton"
+      [ngClass]="{
+        switchButtonAktywny:
+       filterTyp ==
+          podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id
+      }">
+      Zalogowanego użytkownika
+    </button>
+    <select *ngIf="podreczne_.token_.czyWlasciciel()"
+            [ngStyle]="{
+        width:
+          [0, podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id].indexOf(
+           filterTyp
+          ) != -1
+            ? '105px'
+            : ''
+      }"
+            (change)="ustawFilter($event);"
+            class="switchButton"
+            [ngClass]="{
+        switchButtonAktywny:
+          [0, podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id].indexOf(
+            filterTyp
+          ) == -1
+      }">
+      <option
+        [disabled]="true"
+        [selected]="
+          [0, podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id].indexOf(
+            filterTyp
+          ) != -1
+        ">
+        Wybierz
+      </option>
+      <ng-container
+        *ngFor="let pracownik of podreczne_.danePodreczneObiekt.pracownicy">
+        <option
+          [value]="pracownik.id"
+          *ngIf="
+            pracownik.id !=
+            podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id
+          "
+          [selected]="pracownik.id == filterTyp">
+          {{ pracownik.imie }} {{ pracownik.nazwisko }}
+        </option>
+      </ng-container>
     </select>
   </div>
+
+
 </div>

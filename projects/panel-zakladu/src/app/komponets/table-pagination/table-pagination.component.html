@@ -5,8 +5,9 @@
                   [collectionSize]="collectionSize"
 
                   [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
-  <select>
+  <select [(ngModel)]="pageSize" (change)="pageSizeChange.emit(pageSize)">
     <option *ngFor="let k of [10, 20, 50, 100]">{{ k }}</option>
   </select>
+  <span class="tekst">sracz Wyświetlono {{ page }} z {{ pageCount() }} stron. </span>
 </div>
 

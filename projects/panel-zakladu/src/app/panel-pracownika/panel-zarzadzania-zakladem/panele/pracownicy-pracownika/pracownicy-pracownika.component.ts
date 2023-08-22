@@ -1,22 +1,22 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import {
   DodawanieIModyfikacjaPracownikaComponent
 } from "./okienka/dodawanie-imodyfikacja-pracownika/dodawanie-imodyfikacja-pracownika.component";
-import {ListonoszService} from "../../../../serwisy/listonosz.service";
-import {Drzwi} from "../../../../enum/drzwi";
-import {Pracownik} from "../../../../klasy/panelPracownika/pracownicy/pracownik";
-import {Subscription} from "rxjs";
-import {KomunikatyService} from "../../../../serwisy/komunikaty.service";
-import {BledyNumery} from "../../../../enum/bledy-numery";
-import {CzyNaprawdeUsunacComponent} from "./okienka/czy-naprawde-usunac/czy-naprawde-usunac.component";
-import {PodreczneDaneService} from "../../../../serwisy/podreczne-dane.service";
-import {environment} from "../../../../../environments/environment";
+import { ListonoszService } from "../../../../serwisy/listonosz.service";
+import { Drzwi } from "../../../../enum/drzwi";
+import { Pracownik } from "../../../../klasy/panelPracownika/pracownicy/pracownik";
+import { Subscription } from "rxjs";
+import { KomunikatyService } from "../../../../serwisy/komunikaty.service";
+import { BledyNumery } from "../../../../enum/bledy-numery";
+import { CzyNaprawdeUsunacComponent } from "./okienka/czy-naprawde-usunac/czy-naprawde-usunac.component";
+import { PodreczneDaneService } from "../../../../serwisy/podreczne-dane.service";
+import { environment } from "../../../../../environments/environment";
 
 @Component({
-  selector: 'app-pracownicy-pracownika',
-  templateUrl: './pracownicy-pracownika.component.html',
-  styleUrls: ['./pracownicy-pracownika.component.scss']
+  selector: "app-pracownicy-pracownika",
+  templateUrl: "./pracownicy-pracownika.component.html",
+  styleUrls: ["./pracownicy-pracownika.component.scss"]
 })
 export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
 
@@ -24,7 +24,7 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
   private sub1?: Subscription;
   private sub2?: Subscription;
   public filter = "dostepni";
-  public environment = environment
+  public environment = environment;
 
   constructor(private modalService: NgbModal,
               private listonosz: ListonoszService,
@@ -32,6 +32,7 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
               private podreczneDane: PodreczneDaneService,
               private okienka: NgbModal) {
   }
+
 
   ngOnInit() {
     this.pobierzListePracownikow();
@@ -43,14 +44,14 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
       pobrane.forEach(pracownik => {
         const pracownikObj = new Pracownik();
 
-        Object.assign(pracownikObj, pracownik)
+        Object.assign(pracownikObj, pracownik);
 
 
-        this.ListaPracownikow.push(pracownikObj)
-      })
+        this.ListaPracownikow.push(pracownikObj);
+      });
     }).catch(niepobrane => {
       this.komunikaty.wyswietlenieBladNumer(BledyNumery.NiePobieraSieListaPracownikowPanelPracownicy);
-    })
+    });
   }
 
 
@@ -78,18 +79,18 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
           } else {
             return false;
           }
-          break
+          break;
 
         default:
           return true;
       }
 
-    })
+    });
   }
 
 
   public dodajPracownika() {
-    const okienko = this.modalService.open(DodawanieIModyfikacjaPracownikaComponent, {backdrop: "static", size: 'xl'});
+    const okienko = this.modalService.open(DodawanieIModyfikacjaPracownikaComponent, { backdrop: "static", size: "xl" });
     okienko.componentInstance.tryb = "dodawanie";
 
     this.sub1 = okienko.closed.subscribe(zamkniete => {
@@ -98,16 +99,16 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
 
       }
       this.sub1?.unsubscribe();
-    })
+    });
   }
 
   public zarchiwizujUzytkownika(id: number) {
-    this.listonosz.aktualizuj(Drzwi.zwolnionyPrzywroconyPracownikMojZaklad + "/" + id, {status: "zarchiwizuj"}).then(udane => {
+    this.listonosz.aktualizuj(Drzwi.zwolnionyPrzywroconyPracownikMojZaklad + "/" + id, { status: "zarchiwizuj" }).then(udane => {
       this.komunikaty.pracownikZarchiwizowany();
       this.pobierzListePracownikow();
     }).catch(nieudane => {
       this.komunikaty.pracownikNieZarchiwizowany();
-    })
+    });
   }
 
   public urlop(id: number) {
@@ -115,11 +116,11 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
       urlop: true,
       status: "dostepni"
     }).then(udane => {
-      this.komunikaty.pracownikDodanyDoUrlopu()
+      this.komunikaty.pracownikDodanyDoUrlopu();
       this.pobierzListePracownikow();
     }).catch(nieudane => {
       this.komunikaty.pracownikNieDodanyDoUrlopu();
-    })
+    });
   }
 
   public przywrocUzytkownika(id: number) {
@@ -130,37 +131,37 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
       this.komunikaty.pracownikPrzywrocony();
       this.pobierzListePracownikow();
     }).catch(nieudane => {
-      this.komunikaty.pracownikNiePrzywrocony()
-    })
+      this.komunikaty.pracownikNiePrzywrocony();
+    });
   }
 
   public przywrocUzytkownikaZUrlopu(id: number) {
-    this.listonosz.aktualizuj(Drzwi.zwolnionyPrzywroconyPracownikMojZaklad + "/" + id, {urlop: false}).then(udane => {
+    this.listonosz.aktualizuj(Drzwi.zwolnionyPrzywroconyPracownikMojZaklad + "/" + id, { urlop: false }).then(udane => {
       this.komunikaty.pracownikPrzywrocony();
       this.pobierzListePracownikow();
     }).catch(nieudane => {
-      this.komunikaty.pracownikNiePrzywrocony()
-    })
+      this.komunikaty.pracownikNiePrzywrocony();
+    });
   }
 
 
   public zmodyfikujUzytkownika(id: number) {
-    const okienko = this.modalService.open(DodawanieIModyfikacjaPracownikaComponent, {backdrop: "static", size: 'xl'});
+    const okienko = this.modalService.open(DodawanieIModyfikacjaPracownikaComponent, { backdrop: "static", size: "xl" });
     okienko.componentInstance.tryb = "modyfikacja";
     okienko.componentInstance.idUzytkownika = id;
     okienko.componentInstance.pobierzPracownika();
     this.sub2 = okienko.closed.subscribe(zamkniete => {
       if (zamkniete == "Zmodyfikowanie udane") {
         this.pobierzListePracownikow();
-        this.podreczneDane.wygenerujNowaLiczbeLosowaDlaZdjec()
+        this.podreczneDane.wygenerujNowaLiczbeLosowaDlaZdjec();
 
       }
       this.sub2?.unsubscribe();
-    })
+    });
   }
 
   public wyswietlUzytkownika(id: number) {
-    const okienko = this.modalService.open(DodawanieIModyfikacjaPracownikaComponent, {size: 'xl'});
+    const okienko = this.modalService.open(DodawanieIModyfikacjaPracownikaComponent, { size: "xl" });
     okienko.componentInstance.tryb = "wyswietlenie";
     okienko.componentInstance.idUzytkownika = id;
     okienko.componentInstance.pobierzPracownika();
@@ -168,21 +169,21 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
 
 
   public usunPracownika(pracownikId: number) {
-    const sterowanie = this.okienka.open(CzyNaprawdeUsunacComponent, {size: 'lg'});
+    const sterowanie = this.okienka.open(CzyNaprawdeUsunacComponent, { size: "lg" });
     const sub = sterowanie.closed.subscribe(k => {
       if (k == "Nie") {
-        return
+        return;
       } else {
-        this.listonosz.usun(Drzwi.pracownik + pracownikId + '/true').then(usunieto => {
+        this.listonosz.usun(Drzwi.pracownik + pracownikId + "/true").then(usunieto => {
           this.komunikaty.pracownikUsuniety();
         }).catch(nieusunieto => {
           this.komunikaty.pracownikNieUsuniety();
         }).finally(() => {
           this.pobierzListePracownikow();
-        })
+        });
       }
       sub.unsubscribe();
-    })
+    });
 
 
   }
@@ -190,7 +191,7 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     // if(this.sub1 != undefined){
     this.sub1?.unsubscribe();
-    this.sub2?.unsubscribe()
+    this.sub2?.unsubscribe();
     //  }
   }
 }

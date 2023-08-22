@@ -68,7 +68,13 @@
   </tr>
 </table>
 <div class="paggination">
-  <ngb-pagination
+  <app-table-pagination [(page)]="strona"
+                        [(pageSize)]="pageSize"
+                        (pageChange)="pobierzDane()"
+                        (pageSizeChange)="pobierzDane()"
+                        [collectionSize]="iloscWizytOgolna"></app-table-pagination>
+
+  <!--<ngb-pagination
     [(page)]="strona"
     [pageSize]="pageSize"
     [collectionSize]="iloscWizytOgolna"
@@ -78,5 +84,5 @@
     (pageChange)="pobierzDane()"></ngb-pagination>
   <select [(ngModel)]="pageSize" (change)="pobierzDane()">
     <option *ngFor="let k of [10, 20, 50, 100]">{{ k }}</option>
-  </select>
+  </select>-->
 </div>

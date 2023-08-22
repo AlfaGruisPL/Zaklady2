@@ -1,9 +1,9 @@
-import { KalendarzTerminowComponent } from './kalendarz-terminow.component';
-import { Route } from '@angular/router';
+import { Route } from "@angular/router";
+import { KalendarzTerminowComponent } from "./kalendarz-terminow.component";
 
 export const routes: Route[] = [
   {
-    path: '',
-    component: KalendarzTerminowComponent,
-  },
+    path: "",
+    component: KalendarzTerminowComponent
+  }
 ];

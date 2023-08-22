@@ -1,17 +1,17 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FontAwesomeService } from '../../../../serwisy/font-awesome.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { PodreczneDaneService } from '../../../../serwisy/podreczne-dane.service';
-import { KomunikatyService } from '../../../../serwisy/komunikaty.service';
-import { ListonoszService } from '../../../../serwisy/listonosz.service';
-import { PowiadomieniaService } from './powiadomienia.service';
-import { StraznicyService } from '../../../../straznicy/straznicy.service';
-import { TokenService } from '../../../../serwisy/token.service';
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { FontAwesomeService } from "../../../../serwisy/font-awesome.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { PodreczneDaneService } from "../../../../serwisy/podreczne-dane.service";
+import { KomunikatyService } from "../../../../serwisy/komunikaty.service";
+import { ListonoszService } from "../../../../serwisy/listonosz.service";
+import { PowiadomieniaService } from "./powiadomienia.service";
+import { StraznicyService } from "../../../../straznicy/straznicy.service";
+import { TokenService } from "../../../../serwisy/token.service";
 
 @Component({
-  selector: 'app-banner-pracownik',
-  templateUrl: './banner-pracownik.component.html',
-  styleUrls: ['./banner-pracownik.component.scss'],
+  selector: "app-banner-pracownik",
+  templateUrl: "./banner-pracownik.component.html",
+  styleUrls: ["./banner-pracownik.component.scss"]
 })
 export class BannerPracownikComponent implements OnInit, OnDestroy {
   constructor(
@@ -24,7 +24,8 @@ export class BannerPracownikComponent implements OnInit, OnDestroy {
     public token_: TokenService,
     public komunikaty: KomunikatyService,
     private listonosz: ListonoszService
-  ) {}
+  ) {
+  }
 
   losowaLiczba = Math.round(Math.random() * 100);
 
@@ -33,8 +34,25 @@ export class BannerPracownikComponent implements OnInit, OnDestroy {
     await this.powiadomienia_.pobierzPowiadomienia();
   }
 
+  ngAfterViewChecked() {
+    //todo: to poprawić
+    if (this.popoverZakladu != undefined) {
+      this.changeBody();
+    }
+    if (this.popoverUzytkownika != undefined) {
+      this.changeBody();
+    }
+  }
+
+  changeBody() {
+    const elementy: HTMLCollectionOf<Element> | any = document.getElementsByClassName("BrakBialejRamkiPopOver");
+    for (var k = 0; k < elementy.length; ++k) {
+      elementy[k].parentElement.classList.add("BrakBialejRamkiPopOverRodzic");
+    }
+  }
+
   doHarmonogramu() {
-    this.Router.navigate(['/panelPracownika/harmonogram']);
+    this.Router.navigate(["/panelPracownika/harmonogram"]);
   }
 
   popoverUzytkownika: any;
@@ -67,7 +85,7 @@ export class BannerPracownikComponent implements OnInit, OnDestroy {
         this.komunikaty.wylogowanieNieUdane();
       })
       .finally(() => {
-        this.Router.navigate(['']);
+        this.Router.navigate([""]);
       });
   }
 
@@ -75,19 +93,20 @@ export class BannerPracownikComponent implements OnInit, OnDestroy {
     //  console.log(popoverDrugi)
     var znaleziono = false;
     var tmp = event.target;
-    var ikonka = tmp.tagName == 'path';
+    var ikonka = tmp.tagName == "path";
     for (let k = 0; k < 15; k++) {
       if (tmp != undefined) {
         if (
-          tmp.id == 'powiadomienieZakladu_button' ||
-          tmp.id == 'powiadomieniaUzytkownika_Button'
+          tmp.id == "powiadomienieZakladu_button" ||
+          tmp.id == "powiadomieniaUzytkownika_Button"
         ) {
           ikonka = true;
         }
         if (tmp.id == popover.id) {
         }
-        if (tmp.localName == 'ngb-popover-window') {
+        if (tmp.localName == "ngb-popover-window") {
           znaleziono = true;
+
         }
         tmp = tmp.parentElement;
       }

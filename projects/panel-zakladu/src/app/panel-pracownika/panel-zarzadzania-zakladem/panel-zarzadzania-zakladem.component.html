@@ -8,9 +8,9 @@
     <p class="tutulStrony" *ngIf="!DanePodreczne.token_.czyWlasciciel()">Panel pracownika</p>
     <p class="tutulStrony" *ngIf="DanePodreczne.token_.czyWlasciciel()">Panel właściciela</p>
   </div>
-  <div class="tresc" #trescPaneluAdministratora id="trescPaneluAdministratoraID">
+  <div class="tresc" id="trescPaneluAdministratoraID">
     <router-outlet></router-outlet>
-    <app-strzalka [ScrollTop]="setHeight(trescPaneluAdministratora.scrollTop)"></app-strzalka>
+    <app-strzalka [ScrollTop]="height"></app-strzalka>
   </div>
 </div>
 <app-stopka-pracownik></app-stopka-pracownik>
