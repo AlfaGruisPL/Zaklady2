@@ -1,95 +1,78 @@
 <div class="filtry">
   <div class="switchButtonDiv">
     <button
-      (click)="filterRegularnosci = 'regularne'; zmianaFiltra()"
-      class="switchButton"
-      [ngClass]="{ switchButtonAktywny: filterRegularnosci == 'regularne' }">
+      (click)="tabelaPrzerw_.filterRegularnosci.next('regularne')"
+      [ngClass]="{ switchButtonAktywny: tabelaPrzerw_.filterRegularnosci.value == 'regularne' }"
+      class="switchButton">
       Regularne
     </button>
     <button
-      (click)="filterRegularnosci = 'jednorazowe'; zmianaFiltra()"
-      class="switchButton"
-      [ngClass]="{ switchButtonAktywny: filterRegularnosci == 'jednorazowe' }">
+      (click)="tabelaPrzerw_.filterRegularnosci.next('jednorazowe')"
+      [ngClass]="{ switchButtonAktywny: tabelaPrzerw_.filterRegularnosci.value == 'jednorazowe' }"
+      class="switchButton">
       Jednorazowe
     </button>
   </div>
 
   <div class="switchButtonDiv">
     <button
-      (click)="filter = 'przerwy'; zmianaFiltra()"
-      class="switchButton"
-      [ngClass]="{ switchButtonAktywny: filter == 'przerwy' }">
+      (click)="tabelaPrzerw_.filter.next('przerwy')"
+      [ngClass]="{ switchButtonAktywny: tabelaPrzerw_.filter.value == 'przerwy' }"
+      class="switchButton">
       Przerwy
     </button>
     <button
-      (click)="filter = 'dniwolne'; zmianaFiltra()"
-      class="switchButton"
-      [ngClass]="{ switchButtonAktywny: filter == 'dniwolne' }">
+      (click)="tabelaPrzerw_.filter.next('dniwolne')"
+      [ngClass]="{ switchButtonAktywny: tabelaPrzerw_.filter.value == 'dniwolne' }"
+      class="switchButton">
       Dni wolne
     </button>
   </div>
 
-
   <div class="switchButtonDiv">
     <button
-      (click)="filterTyp = 0;  zmianaFiltra()"
-      class="switchButton"
-      [ngClass]="{ switchButtonAktywny: filterTyp == 0 }">
+      (click)="tabelaPrzerw_.filterTyp.next(0)"
+      [ngClass]="{ switchButtonAktywny: tabelaPrzerw_.filterTyp.value == 0 }"
+      class="switchButton">
       Zakładu
     </button>
     <button
-      (click)="
-        filterTyp = podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id;
-
-      "
-      class="switchButton"
+      (click)="tabelaPrzerw_.filterTyp.next(podreczne_.danePodreczneObiekt.returnZalogowanyPracownik().id)"
       [ngClass]="{
-        switchButtonAktywny:
-       filterTyp ==
-          podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id
-      }">
+        switchButtonAktywny: tabelaPrzerw_.filterTyp.value == podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id
+      }"
+      class="switchButton">
       Zalogowanego użytkownika
     </button>
-    <select *ngIf="podreczne_.token_.czyWlasciciel()"
-            [ngStyle]="{
+    <select
+      (change)="ustawFilter($event)"
+      *ngIf="podreczne_.token_.czyWlasciciel()"
+      [ngClass]="{
+        switchButtonAktywny:
+          [0, podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id].indexOf(tabelaPrzerw_.filterTyp.value) == -1
+      }"
+      [ngStyle]="{
         width:
-          [0, podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id].indexOf(
-           filterTyp
-          ) != -1
+          [0, podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id].indexOf(tabelaPrzerw_.filterTyp.value) != -1
             ? '105px'
             : ''
       }"
-            (change)="ustawFilter($event);"
-            class="switchButton"
-            [ngClass]="{
-        switchButtonAktywny:
-          [0, podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id].indexOf(
-            filterTyp
-          ) == -1
-      }">
+      class="switchButton">
       <option
         [disabled]="true"
         [selected]="
-          [0, podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id].indexOf(
-            filterTyp
-          ) != -1
+          [0, podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id].indexOf(tabelaPrzerw_.filterTyp.value) != -1
         ">
         Wybierz
       </option>
-      <ng-container
-        *ngFor="let pracownik of podreczne_.danePodreczneObiekt.pracownicy">
+      <ng-container *ngFor="let pracownik of podreczne_.danePodreczneObiekt.pracownicy">
         <option
-          [value]="pracownik.id"
-          *ngIf="
-            pracownik.id !=
-            podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id
-          "
-          [selected]="pracownik.id == filterTyp">
+          *ngIf="pracownik.id != podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id"
+          [selected]="pracownik.id == tabelaPrzerw_.filterTyp.value"
+          [value]="pracownik.id">
           {{ pracownik.imie }} {{ pracownik.nazwisko }}
         </option>
       </ng-container>
     </select>
   </div>
-
-
 </div>

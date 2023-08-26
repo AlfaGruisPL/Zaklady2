@@ -6,4 +6,11 @@ export class DanePodreczneClass {
   public zalogowanyUzytkownik: undefined | Pracownik = undefined;
   public godzinyOtwarcia: GodzinyOtwarcia = new GodzinyOtwarcia();
   public pracownicy: Pracownik[] = [];
+
+  returnZalogowanyPracownik() {
+    if (this.zalogowanyUzytkownik) {
+      return this.zalogowanyUzytkownik;
+    }
+    return new Pracownik();
+  }
 }

@@ -1,16 +1,8 @@
 <div class="pracownikIFilter">
   <div class="pracownikSelectAndLabel">
-    <label for="pracownikSelect">Filtrowanie danych:</label>
-    <select id="pracownikSelect" [(ngModel)]="Kalendarz_.wybranyPracownik" (change)="Kalendarz_.pobierzDane()">
-      <option [value]="pracownik.id" *ngFor="let pracownik of Kalendarz_.pracownicy">
-        <span *ngIf="pracownik.id != Kalendarz_.zalogowanyUzytkownikId; else zalogowanyUzytkownik">
-          {{ pracownik.imie + ' ' + pracownik.nazwisko }}
-        </span>
-        <ng-template #zalogowanyUzytkownik>
-          <span> Zalogowany użytkownik </span>
-        </ng-template>
-      </option>
-    </select>
+    <label>Filtrowanie danych:</label>
+    <app-select-dotyczy
+      (dotyczyChange)="Kalendarz_.wybranyPracownik.next($event);Kalendarz_.pobierzDane()"></app-select-dotyczy>
   </div>
   <div class="sterowanie">
     <button class="jakiTydzienButton teraz" (click)="teraz()" *ngIf="licznikPrzyciskow != 0">Teraz</button> &nbsp;

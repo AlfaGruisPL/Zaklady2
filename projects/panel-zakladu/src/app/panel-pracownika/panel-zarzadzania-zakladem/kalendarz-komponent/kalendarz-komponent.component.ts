@@ -1,25 +1,26 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import {
-  DzienTygodnia,
-} from '../../../../../../reklamowa-strona-zakladu/src/app/one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/kalendarz/dzien-tygodnia';
-import {Wizyta} from '../../../klasy/panelPracownika/wizyta';
-import {ListonoszService} from '../../../serwisy/listonosz.service';
-import {KalendarzKomponentService} from './kalendarz-komponent.service';
-import {environment} from '../../../../environments/environment';
+  DzienTygodnia
+} from "../../../../../../reklamowa-strona-zakladu/src/app/one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/kalendarz/dzien-tygodnia";
+import { Wizyta } from "../../../klasy/panelPracownika/wizyta";
+import { ListonoszService } from "../../../serwisy/listonosz.service";
+import { KalendarzKomponentService } from "./kalendarz-komponent.service";
+import { environment } from "../../../../environments/environment";
 
 @Component({
-  selector: 'app-kalendarz-komponent',
-  templateUrl: './kalendarz-komponent.component.html',
-  styleUrls: ['./kalendarz-komponent.component.scss'],
+  selector: "app-kalendarz-komponent",
+  templateUrl: "./kalendarz-komponent.component.html",
+  styleUrls: ["./kalendarz-komponent.component.scss"]
 })
 export class KalendarzKomponentComponent implements OnInit {
   @Output() wyslijKrok = new EventEmitter<number>();
   @Input() zarzadzanie = false;
-  symulatorPracownikID = '183';
-  symulatorWizytyID = '1497,1498,1499';
+  symulatorPracownikID = "183";
+  symulatorWizytyID = "1497,1498,1499";
   symulatorWolneTerminy: any = [];
   symulator = false;
   public godzinaRozpoczecia = 6;
+  public wyswieitlanieSymulatora = false;
 
   constructor(private listonosz: ListonoszService, public Kalendarz_: KalendarzKomponentService) {
   }
@@ -34,11 +35,11 @@ export class KalendarzKomponentComponent implements OnInit {
 
   generujWizyty() {
     this.symulatorWolneTerminy = [];
-    const dane = this.symulatorWizytyID.split(',');
+    const dane = this.symulatorWizytyID.split(",");
     this.listonosz
-      .wyslij('/stronaReklamowa/wizyty/terminyWizyt', {
+      .wyslij("/stronaReklamowa/wizyty/terminyWizyt", {
         uslugiId: dane,
-        pracownikId: this.symulatorPracownikID,
+        pracownikId: this.symulatorPracownikID
       })
       .then(k => {
         k.forEach((k2: any) => {
@@ -78,34 +79,34 @@ export class KalendarzKomponentComponent implements OnInit {
   public kolorTlaInformacje(dzien: DzienTygodnia): string {
     const k = this.czyDzisWolnyDzien(dzien);
     if (k != undefined) {
-      return 'Dzien wolny dla zakładu';
+      return "Dzien wolny dla zakładu";
     }
     if (!this.czyPracuje(dzien.dzien)) {
-      return 'Zakład zamknięty';
+      return "Zakład zamknięty";
     }
-    return '';
+    return "";
   }
 
   public kolorTla(dzien: DzienTygodnia, index: number) {
     //sprawdzenie czy nie dzien oznaczony jako wolny
     if (this.czyDzisWolnyDzien(dzien) != undefined) {
       if (index % 2 == 0) {
-        return {'background-color': 'rgba(255,35,35,0.31)'};
+        return { "background-color": "rgba(255,35,35,0.31)" };
       }
-      return {'background-color': 'rgba(211,8,8,0.31)'};
+      return { "background-color": "rgba(211,8,8,0.31)" };
     }
 
     if (!this.CzyAktualne(dzien.data)) {
       if (index % 2 == 0) {
-        return {'background-color': 'rgba(229,229,229,0.31)'};
+        return { "background-color": "rgba(229,229,229,0.31)" };
       }
-      return {'background-color': 'rgba(211,211,211,0.31)'};
+      return { "background-color": "rgba(211,211,211,0.31)" };
     }
     if (!this.czyPracuje(dzien.dzien)) {
       if (index % 2 == 0) {
-        return {'background-color': 'rgba(180,180,180,0.31)'};
+        return { "background-color": "rgba(180,180,180,0.31)" };
       }
-      return {'background-color': 'rgba(148,148,148,0.31)'};
+      return { "background-color": "rgba(148,148,148,0.31)" };
     }
 
     return {};

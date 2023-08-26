@@ -1,0 +1,12 @@
+<select id="pracownikSelect" [(ngModel)]="dotyczy" (change)="dotyczyChange.emit(dotyczy)">
+  <option *ngIf="wyswietlanieOpcjiZakladu" [value]="0">Zakład</option>
+  <option [value]="pracownik.id" *ngFor="let pracownik of danePodreczne.danePodreczneObiekt.pracownicy">
+            <span
+              *ngIf="pracownik.id != danePodreczne.danePodreczneObiekt.zalogowanyUzytkownik?.id; else zalogowanyUzytkownik">
+              {{ pracownik.imie + ' ' + pracownik.nazwisko }}
+            </span>
+    <ng-template #zalogowanyUzytkownik>
+      <span> Zalogowany użytkownik</span>
+    </ng-template>
+  </option>
+</select>

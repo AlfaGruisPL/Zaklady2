@@ -9,7 +9,7 @@
     <th style="width: 125px">Zarządzanie</th>
   </tr>
   <tr *ngFor="let klient of lista_.listaKlientow; let index = index">
-    <td>{{ index + lista_.page * lista_.pageSize - lista_.pageSize + 1 }}</td>
+    <td>{{ paggination.indexCount(index) }}</td>
     <td>{{ klient.imie }}</td>
     <td>{{ klient.nazwisko }}</td>
     <td>{{ klient.email }}</td>
@@ -48,19 +48,9 @@
     <td></td>
   </tr>
 </table>
-<!--
 <app-table-pagination [(page)]="lista_.page"
-                      [pageSize]="lista_.pageSize"
                       [collectionSize]="lista_.iloscKlientow"
-></app-table-pagination>
--->
-<div class="paggination">
-  <ngb-pagination
-    [(page)]="lista_.page"
-    [pageSize]="lista_.pageSize"
-    [collectionSize]="lista_.iloscKlientow"
-    [maxSize]="7"
-    [rotate]="true"
-    [boundaryLinks]="true"
-    (pageChange)="lista_.pobierzDane()"></ngb-pagination>
-</div>
+                      (pageChange)="lista_.pobierzDane()"
+                      #paggination
+                      [pageSize]="lista_.pageSize"></app-table-pagination>
+

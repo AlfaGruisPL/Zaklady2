@@ -1,35 +1,49 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Wizyta } from '../../../../../klasy/panelPracownika/wizyta';
 import { ListonoszService } from '../../../../../serwisy/listonosz.service';
 import { Drzwi } from '../../../../../enum/drzwi';
 import { HttpParams } from '@angular/common/http';
-import { BehaviorSubject, debounceTime, skip } from 'rxjs';
+import { BehaviorSubject, debounceTime, skip, Subscription } from 'rxjs';
 import { KalendarzZarzadzanieTerminemComponent } from '../../../kalendarz-komponent/kalendarz-zarzadzanie-terminem/kalendarz-zarzadzanie-terminem.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { KalendarzKomponentService } from '../../../kalendarz-komponent/kalendarz-komponent.service';
 
 @Component({
   selector: 'app-zarejestrowane-wizyty-tabela',
   templateUrl: './zarejestrowane-wizyty-tabela.component.html',
   styleUrls: ['./zarejestrowane-wizyty-tabela.component.scss'],
 })
-export class ZarejestrowaneWizytyTabelaComponent implements OnInit {
+export class ZarejestrowaneWizytyTabelaComponent implements OnInit, OnDestroy {
   filter = 'przyszle';
   pageSize = 10;
   wizyty: Array<Wizyta> = [];
   iloscWizytOgolna = 0;
   strona = 1;
   pobieranieDanych = false;
-
   wyszukiwarkaSub = new BehaviorSubject<string>('');
+  protected readonly Math = Math;
+  private sub: undefined | Subscription;
 
-  constructor(private listonosz: ListonoszService, private modal: NgbModal) {
+  constructor(
+    private listonosz: ListonoszService,
+    private modal: NgbModal,
+    public Kalendarz_: KalendarzKomponentService
+  ) {
     this.wyszukiwarkaSub.pipe(skip(1), debounceTime(300)).subscribe(term => {
       this.pobierzDane();
     });
   }
 
+  ngOnDestroy() {
+    if (this.sub) {
+      this.sub?.unsubscribe();
+    }
+  }
+
   ngOnInit() {
-    this.pobierzDane();
+    this.sub = this.Kalendarz_.wybranyPracownik.pipe(skip(1), debounceTime(200)).subscribe(id => {
+      this.pobierzDane();
+    });
   }
 
   public pobierzDane() {
@@ -40,7 +54,7 @@ export class ZarejestrowaneWizytyTabelaComponent implements OnInit {
     params = params.append('limit', this.pageSize);
     params = params.append('finder', this.wyszukiwarkaSub.value);
     this.listonosz
-      .pobierz(Drzwi.wizytyZakladu, params)
+      .pobierz(Drzwi.wizytyZakladu + '/' + this.Kalendarz_.wybranyPracownik.value, params)
       .then((dane: { dane: Array<Wizyta>; size: number; limit: number }) => {
         this.wizyty = [];
         for (let wizyta of dane.dane) {
@@ -72,6 +86,4 @@ export class ZarejestrowaneWizytyTabelaComponent implements OnInit {
     const okno = this.modal.open(KalendarzZarzadzanieTerminemComponent);
     okno.componentInstance.wizyta = wizyta;
   }
-
-  protected readonly Math = Math;
 }

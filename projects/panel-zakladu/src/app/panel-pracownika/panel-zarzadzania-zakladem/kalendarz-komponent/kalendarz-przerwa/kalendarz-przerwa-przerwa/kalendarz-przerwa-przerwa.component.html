@@ -1,71 +1,59 @@
 <div class="modal-body">
   <table>
     <tr>
-      <th>Dotyczy:</th>
-      <td>
-        <select id="pracownikSelect" [(ngModel)]="dotyczy" (change)="kalendarz_.pobierzDane()">
-          <option [value]="pracownik.id" *ngFor="let pracownik of kalendarz_.pracownicy">
-            <span *ngIf="pracownik.id != kalendarz_.zalogowanyUzytkownikId; else zalogowanyUzytkownik">
-              {{ pracownik.imie + ' ' + pracownik.nazwisko }}
-            </span>
-            <ng-template #zalogowanyUzytkownik>
-              <span> Zalogowany użytkownik</span>
-            </ng-template>
-          </option>
-        </select>
-      </td>
-    </tr>
-
-    <tr>
-      <td>Początek:</td>
+      <th>Początek:</th>
       <td>
         <input
-          type="time"
+          (ngModelChange)="godzinaRozpoczecia = $event"
           [ngModel]="godzinaRozpoczecia | date : 'HH:mm'"
-          (ngModelChange)="godzinaRozpoczecia = $event" />
+          type="time" />
       </td>
     </tr>
 
     <tr>
-      <td>Koniec:</td>
+      <th>Koniec:</th>
       <td>
         <input
-          type="time"
+          (ngModelChange)="godzinaZakonczenia = $event"
           [ngModel]="godzinaZakonczenia | date : 'HH:mm'"
-          (ngModelChange)="godzinaZakonczenia = $event" />
+          type="time" />
       </td>
     </tr>
     <tr>
-      <td>Tryb:</td>
+      <th>Dotyczy:</th>
       <td *ngIf="danePodreczne_.wlasciciel">
-        <select [(ngModel)]="wybranyPracownik">
-          <option [value]="0">Zakład</option>
-          <option [value]="kalendarz_.wlasciciel.id">
-            {{ kalendarz_.wlasciciel.imie + ' ' + kalendarz_.wlasciciel.nazwisko }}
-          </option>
-          <option [value]="pracownik.id" *ngFor="let pracownik of kalendarz_.pracownicy">
-            Pracownik: {{ pracownik.imie + ' ' + pracownik.nazwisko }}
-          </option>
-        </select>
+        <app-select-dotyczy (dotyczyChange)="dotyczy = $event" [wyswietlanieOpcjiZakladu]="true"></app-select-dotyczy>
       </td>
     </tr>
     <tr>
-      <td>Powtarzanie:</td>
+      <th>Powtarzanie:</th>
       <td>
         Jednorazowe:
-        <input type="radio" name="k" [value]="false" [(ngModel)]="regularne" />
+        <input [(ngModel)]="regularne" [value]="false" name="k" type="radio" />
         &nbsp; &nbsp; &nbsp; &nbsp; Regularne:
-        <input type="radio" name="k" [value]="true" [(ngModel)]="regularne" />
+        <input [(ngModel)]="regularne" [value]="true" name="k" type="radio" />
       </td>
     </tr>
     <ng-container *ngIf="regularne">
       <tr>
         <th>Początek</th>
-        <td><input type="date" /></td>
+        <td><input [(ngModel)]="dataPoczatek" type="date" /></td>
       </tr>
       <tr>
         <th>Koniec</th>
-        <td><input type="date" /></td>
+        <td><input [(ngModel)]="dataKoniec" type="date" /></td>
+      </tr>
+      <tr>
+        <th>Dni:</th>
+        <td>
+          <input [(ngModel)]="dniTygodnia.poniedzialek" type="checkbox" /> Poniedziałek<br />
+          <input [(ngModel)]="dniTygodnia.wtorek" type="checkbox" /> Wtorek<br />
+          <input [(ngModel)]="dniTygodnia.sroda" type="checkbox" /> Środa<br />
+          <input [(ngModel)]="dniTygodnia.czwartek" type="checkbox" /> Czwartek<br />
+          <input [(ngModel)]="dniTygodnia.piatek" type="checkbox" /> Piątek<br />
+          <input [(ngModel)]="dniTygodnia.sobota" type="checkbox" /> Sobota<br />
+          <input [(ngModel)]="dniTygodnia.niedziela" type="checkbox" /> Niedziela<br />
+        </td>
       </tr>
     </ng-container>
     <ng-container *ngIf="!regularne">
@@ -74,6 +62,10 @@
         <td><input type="date" /></td>
       </tr>
     </ng-container>
+    <tr>
+      <th>Opis</th>
+      <td><textarea cols="35" rows="2"></textarea></td>
+    </tr>
   </table>
 </div>
 <div class="modal-footer">

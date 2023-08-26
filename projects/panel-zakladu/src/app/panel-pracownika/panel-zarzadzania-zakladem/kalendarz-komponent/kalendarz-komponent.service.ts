@@ -1,23 +1,26 @@
-import {Injectable} from '@angular/core';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {KalendarzPrzerwaComponent} from './kalendarz-przerwa/kalendarz-przerwa.component';
+import { Injectable } from "@angular/core";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { KalendarzPrzerwaComponent } from "./kalendarz-przerwa/kalendarz-przerwa.component";
 
-import {Drzwi} from '../../../enum/drzwi';
-import {Wizyta} from '../../../klasy/panelPracownika/wizyta';
-import {GodzinyOtwarcia} from '../../../klasy/panelPracownika/mojZaklad/moj-zaklad';
-import {Pracownik} from '../../../klasy/panelPracownika/pracownicy/pracownik';
-import {ListonoszService} from '../../../serwisy/listonosz.service';
-import {Przerwa} from '../../../klasy/panelPracownika/kalendarz/przerwa.dto';
-import {DzienWolny, DzienWolnyDto} from '../../../klasy/panelPracownika/kalendarz/DzienWolny';
-import {KomunikatyService} from '../../../serwisy/komunikaty.service';
-import {Udane} from '../../../enum/udane';
-import {KalendarzModyfikacjaTerminuComponent} from './kalendarz-modyfikacja-terminu/kalendarz-modyfikacja-terminu.component';
-import {TokenService} from '../../../serwisy/token.service';
-import {HttpParams} from '@angular/common/http';
-import {dniTygodnia, DzienTygodnia} from "./dzien-tygodnia";
+import { Drzwi } from "../../../enum/drzwi";
+import { Wizyta } from "../../../klasy/panelPracownika/wizyta";
+import { GodzinyOtwarcia } from "../../../klasy/panelPracownika/mojZaklad/moj-zaklad";
+import { Pracownik } from "../../../klasy/panelPracownika/pracownicy/pracownik";
+import { ListonoszService } from "../../../serwisy/listonosz.service";
+import { Przerwa } from "../../../klasy/panelPracownika/kalendarz/przerwa.dto";
+import { DzienWolny, DzienWolnyDto } from "../../../klasy/panelPracownika/kalendarz/DzienWolny";
+import { KomunikatyService } from "../../../serwisy/komunikaty.service";
+import { Udane } from "../../../enum/udane";
+import {
+  KalendarzModyfikacjaTerminuComponent
+} from "./kalendarz-modyfikacja-terminu/kalendarz-modyfikacja-terminu.component";
+import { TokenService } from "../../../serwisy/token.service";
+import { HttpParams } from "@angular/common/http";
+import { dniTygodnia, DzienTygodnia } from "./dzien-tygodnia";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root"
 })
 export class KalendarzKomponentService {
   public godzinaRozpoczecia = 88;
@@ -27,7 +30,7 @@ export class KalendarzKomponentService {
   wlasciciel = new Pracownik();
   zalogowanyUzytkownikId = 0;
   pracownicy: Partial<Pracownik>[] = [];
-  wybranyPracownik = -1;
+  wybranyPracownik = new BehaviorSubject<number>(-1);
   dniWolne: Array<DzienWolny> = [];
   przerwyZakladu: Array<Przerwa> = [];
   kursor = new Date();
@@ -35,18 +38,18 @@ export class KalendarzKomponentService {
   dni = dniTygodnia;
 
   public miesiace: string[] = [
-    'Styczeń',
-    'Luty',
-    'Marzec',
-    'Kwiecień',
-    'Maj',
-    'Czerwiec',
-    'Lipiec',
-    'Sierpień',
-    'Wrzesień',
-    'Październik',
-    'Listopad',
-    'Grudzień',
+    "Styczeń",
+    "Luty",
+    "Marzec",
+    "Kwiecień",
+    "Maj",
+    "Czerwiec",
+    "Lipiec",
+    "Sierpień",
+    "Wrzesień",
+    "Październik",
+    "Listopad",
+    "Grudzień"
   ];
 
   constructor(
@@ -79,7 +82,8 @@ export class KalendarzKomponentService {
           }
           this.zalogowanyUzytkownikId = k.zalogowanyUzytkownik;
 
-          this.wybranyPracownik = this.zalogowanyUzytkownikId;
+          this.wybranyPracownik.next(this.zalogowanyUzytkownikId)
+          ;
           Object.assign(this.godzinyOtwarcia, k.godzinyOtwarcia);
           this.ObliczGodziny();
           this.pobierzDane();
@@ -89,11 +93,11 @@ export class KalendarzKomponentService {
     this.listonosz.pobierz(Drzwi.kalendarzTerminowDniWolneIPrzerwyZakladu).then(dane => {
       this.przerwyZakladu = [];
       this.dniWolne = [];
-      dane['przerwy'].forEach((przerwa: any) => {
+      dane["przerwy"].forEach((przerwa: any) => {
         const obj = new Przerwa(przerwa);
         this.przerwyZakladu.push(obj);
       });
-      dane['dniWolne'].forEach((przerwa: any) => {
+      dane["dniWolne"].forEach((przerwa: any) => {
         const obj = new DzienWolny(przerwa);
         this.dniWolne.push(obj);
       });
@@ -103,9 +107,10 @@ export class KalendarzKomponentService {
   public pobierzDane() {
     this.loadingData = true;
     let params = new HttpParams();
-    params = params.append('kursor', this.kursor.getTime());
+    params = params.append("kursor", this.kursor.getTime());
     this.listonosz
-      .pobierz(Drzwi.zarejestrowaneWizytyDlaPracownika + '/' + this.wybranyPracownik, params)
+      .pobierz(Drzwi.zarejestrowaneWizytyDlaPracownika + "/" + this.wybranyPracownik.value
+        , params)
       .then((k: { wizyty: Wizyta[] }) => {
         this.wizyty = [];
         k.wizyty.forEach(wizyta => {
@@ -121,8 +126,8 @@ export class KalendarzKomponentService {
   public nowaPrzerwa(dzien: DzienTygodnia, index: number | undefined) {
     const okno = this.modal.open(KalendarzPrzerwaComponent);
     if (index != null) {
-      const godzina = Number(this.godzina(index).split(':')[0]);
-      const minuta = Number(this.godzina(index).split(':')[1]);
+      const godzina = Number(this.godzina(index).split(":")[0]);
+      const minuta = Number(this.godzina(index).split(":")[1]);
       const rozpoczecie = new Date(new Date().setHours(godzina, minuta));
       const zakonczenie = new Date(new Date().setHours(godzina, minuta + 30));
       okno.componentInstance.godzinaRozpoczecia = rozpoczecie;
@@ -181,24 +186,25 @@ export class KalendarzKomponentService {
   }
 
   public nowaWizyta(dzien: DzienTygodnia, index: number) {
-    if (this.zalogowanyUzytkownikId != this.wybranyPracownik && !this.token_.czyWlasciciel()) {
+    if (this.zalogowanyUzytkownikId != this.wybranyPracownik.value
+      && !this.token_.czyWlasciciel()) {
       this.komunikaty_.nieMaszUprawnienDoDodaniaWizyty();
       return;
     }
     const okno = this.modal.open(KalendarzModyfikacjaTerminuComponent, {
-      size: 'lg',
+      size: "lg"
       //todo: tu naprawić static, chodzi o to że jak jest static i kliknie się poza to on się nie zmniejsza i blokuje klikanie na całej stronie,i chyba hcodzi o browser aniamtion module
       //  backdrop: 'static',
     });
     const k = dzien.data;
-    const miesiac = k.getMonth() + 1 < 10 ? '0' + (k.getMonth() + 1) : k.getMonth() + 1;
-    const dzien2 = k.getDate() < 10 ? '0' + k.getDate() : k.getDate();
-    const termin = dzien.data.getFullYear() + '-' + miesiac + '-' + dzien2;
+    const miesiac = k.getMonth() + 1 < 10 ? "0" + (k.getMonth() + 1) : k.getMonth() + 1;
+    const dzien2 = k.getDate() < 10 ? "0" + k.getDate() : k.getDate();
+    const termin = dzien.data.getFullYear() + "-" + miesiac + "-" + dzien2;
 
     okno.componentInstance.formualrzRejestracjiWizyty.patchValue({
       termin: termin,
       poczatek: this.godzina(index),
-      koniec: this.godzina(index + 2),
+      koniec: this.godzina(index + 2)
     });
     okno.closed.subscribe(k => {
       this.pobierzDane();
@@ -209,17 +215,17 @@ export class KalendarzKomponentService {
     const data = new Date();
     data.setHours(this.godzinaRozpoczecia, 0, 0, 0);
     const k = new Date(data.getTime() + index * 60000 * 30);
-    const godzina = k.getHours() < 10 ? '0' + k.getHours() : k.getHours();
-    const minuta = k.getMinutes() < 10 ? '0' + k.getMinutes() : k.getMinutes();
-    return godzina + ':' + minuta;
+    const godzina = k.getHours() < 10 ? "0" + k.getHours() : k.getHours();
+    const minuta = k.getMinutes() < 10 ? "0" + k.getMinutes() : k.getMinutes();
+    return godzina + ":" + minuta;
   }
 
   private ObliczGodziny() {
     const tmp = this.godzinyOtwarcia;
     [tmp.poniedzialek, tmp.wtorek, tmp.sroda, tmp.czwartek, tmp.piatek, tmp.sobota, tmp.niedziela].forEach(dzien => {
       if (dzien.czynnyDzien) {
-        const rozpoczenie = Number(dzien.otwarcie.split(':')[0]);
-        const zakonczenie = Number(dzien.zamkniecie.split(':')[0]);
+        const rozpoczenie = Number(dzien.otwarcie.split(":")[0]);
+        const zakonczenie = Number(dzien.zamkniecie.split(":")[0]);
         this.godzinaRozpoczecia = rozpoczenie < this.godzinaRozpoczecia ? rozpoczenie : this.godzinaRozpoczecia;
         this.godzinaZakonczenia = zakonczenie > this.godzinaZakonczenia ? zakonczenie : this.godzinaZakonczenia;
       }

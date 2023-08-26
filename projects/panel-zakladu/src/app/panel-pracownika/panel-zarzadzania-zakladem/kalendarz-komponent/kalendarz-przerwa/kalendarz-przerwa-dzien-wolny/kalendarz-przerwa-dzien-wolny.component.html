@@ -1,1 +1,24 @@
-<p>kalendarz-przerwa-dzien-wolny works!</p>
+<div class="modal-body">
+  <table>
+    <tr>
+      <th>Dotyczy:</th>
+      <td *ngIf="danePodreczne_.wlasciciel">
+        <app-select-dotyczy (dotyczyChange)="dotyczy = $event" [wyswietlanieOpcjiZakladu]="true"></app-select-dotyczy>
+      </td>
+    </tr>
+    <tr>
+      <th>Data</th>
+      <td>
+        <input type="date" />
+      </td>
+    </tr>
+    <tr>
+      <th>Opis</th>
+      <td><textarea cols="35" rows="2"></textarea></td>
+    </tr>
+  </table>
+</div>
+<div class="modal-footer">
+  <button (click)="activeModal.close('anuluj')">Anuluj</button>
+  <button (click)="dodaj()">Dodaj</button>
+</div>

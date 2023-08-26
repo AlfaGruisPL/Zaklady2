@@ -7,9 +7,10 @@
     <th>Kwota</th>
     <th colspan="2">Status</th>
   </tr>
-  <ng-container *ngFor="let k of listaPlatnosci | slice : (page - 1) * pageSize : page * pageSize; let index2 = index">
+  <ng-container
+    *ngFor="let k of listaPlatnosci | slice : (page - 1) * paggination.pageSize : page * paggination.pageSize; let index2 = index">
     <tr>
-      <td>{{ listaPlatnosci.length - index2 - pageSize * page + pageSize }}</td>
+      <td>{{ paggination.indexCount(index2) }}</td>
       <td>{{ k.opis }}</td>
       <td>{{ k.dataUtworzenia | date : 'dd.MM.yyyy  HH:mm' }}</td>
       <td>{{ liczba(k.kwota) / 100 }}zł</td>
@@ -76,7 +77,7 @@
   </ng-container>
   <tr
     *ngFor="
-      let k of [].constructor(pageSize - (listaPlatnosci | slice : (page - 1) * pageSize : page * pageSize).length)
+      let k of [].constructor(paggination.savePageSize- (listaPlatnosci | slice : (page - 1) * paggination.savePageSize : page *paggination.savePageSize).length)
     ">
     <td></td>
     <td></td>
@@ -87,13 +88,8 @@
     <td></td>
   </tr>
 </table>
-<div class="paggination">
-  <ngb-pagination
-    [(page)]="page"
-    [pageSize]="pageSize"
-    [collectionSize]="listaPlatnosci.length"
-    [maxSize]="7"
-    [rotate]="true"
-    [boundaryLinks]="true"></ngb-pagination>
-  <span class="tekst"> Wyświetlono {{ page }} z {{ pageCount() }} stron. </span>
-</div>
+<app-table-pagination [(page)]="page"
+                      [collectionSize]="listaPlatnosci.length"
+                      [pageSizeArray]="[5,7,10,20,50,100]"
+                      #paggination
+                      [pageSize]="pageSize"></app-table-pagination>

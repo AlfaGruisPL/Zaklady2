@@ -63,7 +63,7 @@
       </div>
     </td>
   </tr>
-  <tr *ngFor="let k of [].constructor(Math.abs(pageSize - wizyty.length))">
+  <tr *ngFor="let k of [].constructor(Math.abs(paggination.savePageSize - wizyty.length))">
     <td *ngFor="let k2 of [].constructor(tablica.childNodes[1].childNodes.length)"></td>
   </tr>
 </table>
@@ -72,6 +72,7 @@
                         [(pageSize)]="pageSize"
                         (pageChange)="pobierzDane()"
                         (pageSizeChange)="pobierzDane()"
+                        #paggination
                         [collectionSize]="iloscWizytOgolna"></app-table-pagination>
 
   <!--<ngb-pagination

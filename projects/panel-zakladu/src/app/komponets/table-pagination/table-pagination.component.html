@@ -1,13 +1,14 @@
 <div class="paggination">
-  <ngb-pagination [page]="page" [maxSize]="7"
-                  (pageChange)="pageChange.emit($event)"
-                  [pageSize]="pageSize"
-                  [collectionSize]="collectionSize"
-
-                  [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
-  <select [(ngModel)]="pageSize" (change)="pageSizeChange.emit(pageSize)">
-    <option *ngFor="let k of [10, 20, 50, 100]">{{ k }}</option>
+  <ngb-pagination
+    (pageChange)="pageChange.emit($event); emit()"
+    [boundaryLinks]="true"
+    [collectionSize]="collectionSize"
+    [maxSize]="7"
+    [pageSize]="pageSize"
+    [page]="page"
+    [rotate]="true"></ngb-pagination>
+  <select (change)="pageSizeChange.emit(pageSize); ngAfterViewInit(); emit()" [(ngModel)]="pageSize">
+    <option *ngFor="let k of pageSizeArray">{{ k }}</option>
   </select>
-  <span class="tekst">sracz Wyświetlono {{ page }} z {{ pageCount() }} stron. </span>
+  <span class="tekst">Wyświetlono {{ page }} z {{ pageCount() }} stron. </span>
 </div>
-

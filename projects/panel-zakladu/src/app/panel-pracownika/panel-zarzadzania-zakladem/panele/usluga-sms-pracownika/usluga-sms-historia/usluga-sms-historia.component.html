@@ -12,7 +12,7 @@
     <th>Status</th>
   </tr>
   <ng-container
-    *ngFor="let sms of service.dane.historia | slice : (page - 1) * pageSize : page * pageSize; let index = index">
+    *ngFor="let sms of service.dane.historia | slice : (page - 1) * paggination.pageSize : page * paggination.pageSize; let index = index">
     <tr>
       <td>{{ service.dane.historia.length - index }}</td>
       <td>{{ sms.termin }}</td>
@@ -25,20 +25,15 @@
   <tr
     *ngFor="
       let k of [].constructor(
-        pageSize - (service.dane.historia | slice : (page - 1) * pageSize : page * pageSize).length
+        paggination.pageSize - (service.dane.historia | slice : (page - 1) * paggination.pageSize : page * paggination.pageSize).length
       )
     ">
     <td *ngFor="let k of [].constructor(naglowek.cells.length)"></td>
   </tr>
 </table>
-<div class="paggination">
-  <ngb-pagination
-    [(page)]="page"
-    [pageSize]="pageSize"
-    [collectionSize]="service.dane.historia.length"
-    [maxSize]="7"
-    [rotate]="true"
-    [boundaryLinks]="true"></ngb-pagination>
 
-  <span class="tekst"> Wyświetlono {{ page }} z {{ pageCount() }} stron. </span>
-</div>
+<app-table-pagination [(page)]="page"
+                      [collectionSize]="service.dane.historia.length"
+                      [pageSizeArray]="[5,7,10,20,50,100]"
+                      #paggination
+                      [pageSize]="pageSize"></app-table-pagination>

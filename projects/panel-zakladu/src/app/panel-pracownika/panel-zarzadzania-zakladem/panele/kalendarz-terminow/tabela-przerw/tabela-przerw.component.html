@@ -1,31 +1,50 @@
 <app-tabela-przerw-filter></app-tabela-przerw-filter>
-<table class="tablica">
+<table [ngClass]="{ tablicaLoading: tabelaPrzerw_.pobieranieDanych }" class="tablica">
   <tr class="wyszukiwarka">
-    <td colspan="5" class="title">
+    <td class="title" colspan="5">
       <h3>Sracz:</h3>
     </td>
-    <td colspan="5" class="wyszukiwarkaTD">
+    <td class="wyszukiwarkaTD" colspan="5">
       <fa-icon icon="magnifying-glass"></fa-icon>
-      <input placeholder="wyszukiwarka (wartość wartość2 itd.)" (keyup)="onSearchChange($event)" />
+      <input (keyup)="onSearchChange($event)" placeholder="wyszukiwarka (wartość wartość2 itd.)" />
     </td>
   </tr>
-  <tr>
+  <tr #naglowek>
     <th>Lp</th>
     <th>Data</th>
+    <th>Poczatek</th>
+    <th>Koniec</th>
+    <th>Powtarzalność</th>
+    <th>Dotyczy</th>
     <th>Typ</th>
-    <th>Zakres</th>
+    <th>Zarządzanie</th>
   </tr>
-  <tr>
-    <td>1</td>
-    <td>dzis</td>
-    <td>Regularne</td>
-    <td>Zakład</td>
+  <tr *ngFor="let element of tabelaPrzerw_.dane; let index = index">
+    <td>{{ paggination.indexCount(index) }}</td>
+    <td *ngIf="czyWolnyDzien(element)">{{ element.data }}</td>
+    <td *ngIf="czyPrzerwa(element)">{{ element.poczatek }}</td>
+    <td *ngIf="czyPrzerwa(element)">{{ element.koniec }}</td>
+    <td>{{ tabelaPrzerw_.filterRegularnosci.value }}</td>
+    <td>{{ tabelaPrzerw_.filterTyp.value }}</td>
+    <td>{{ tabelaPrzerw_.filter.value }}</td>
+    <td>
+      <div container="body" ngbDropdown>
+        <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle type="button">Wybierz:</button>
+
+        <div ngbDropdownMenu>
+          <button ngbDropdownItem>Wyświetl wizyty</button>
+          <button ngbDropdownItem>Usuń</button>
+        </div>
+      </div>
+    </td>
+  </tr>
+  <tr *ngFor="let k of [].constructor(paggination.pageSize - tabelaPrzerw_.dane.length)">
+    <td *ngFor="let k of [].constructor(naglowek.cells.length)"></td>
   </tr>
 </table>
-<div class="paggination">
-  <app-table-pagination></app-table-pagination>
-  <ngb-pagination [maxSize]="7" [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
-  <select>
-    <option *ngFor="let k of [10, 20, 50, 100]">{{ k }}</option>
-  </select>
-</div>
+<app-table-pagination
+  #paggination
+  (changeData)="getDataFormPaggination($event)"
+  [collectionSize]="tabelaPrzerw_.daneSize"
+  [pageSizeArray]="[2, 5, 7, 10, 20, 50, 100]"
+  [page]="tabelaPrzerw_.page.value"></app-table-pagination>

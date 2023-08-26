@@ -9,7 +9,7 @@
   .mojeKonto {
     width: calc(100% - 100px);
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     margin: 20px 50px 20px 50px;
 
     .informacjeTable {
@@ -46,7 +46,7 @@
     height: 150px;
     min-height: auto;
     position: relative;
-    
+
   }
 }
 
