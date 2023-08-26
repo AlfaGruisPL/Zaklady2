@@ -11,21 +11,19 @@
   </tr>
   <tr #naglowek>
     <th>Lp</th>
-    <th>Data</th>
-    <th>Poczatek</th>
-    <th>Koniec</th>
+    <th *ngIf="czyWolnyDzien()">Data</th>
+    <th *ngIf="czyPrzerwa()">Poczatek</th>
+    <th *ngIf="czyPrzerwa()">Koniec</th>
     <th>Powtarzalność</th>
-    <th>Dotyczy</th>
     <th>Typ</th>
     <th>Zarządzanie</th>
   </tr>
   <tr *ngFor="let element of tabelaPrzerw_.dane; let index = index">
     <td>{{ paggination.indexCount(index) }}</td>
-    <td *ngIf="czyWolnyDzien(element)">{{ element.data }}</td>
-    <td *ngIf="czyPrzerwa(element)">{{ element.poczatek }}</td>
-    <td *ngIf="czyPrzerwa(element)">{{ element.koniec }}</td>
+    <td *ngIf="czyWolnyDzien()">{{ element.data }}</td>
+    <td *ngIf="czyPrzerwa()">{{ element.poczatek }}</td>
+    <td *ngIf="czyPrzerwa()">{{ element.koniec }}</td>
     <td>{{ tabelaPrzerw_.filterRegularnosci.value }}</td>
-    <td>{{ tabelaPrzerw_.filterTyp.value }}</td>
     <td>{{ tabelaPrzerw_.filter.value }}</td>
     <td>
       <div container="body" ngbDropdown>

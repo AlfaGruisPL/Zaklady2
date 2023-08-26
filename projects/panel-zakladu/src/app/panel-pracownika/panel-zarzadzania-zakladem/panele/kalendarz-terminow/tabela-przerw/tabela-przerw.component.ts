@@ -12,7 +12,6 @@ import { CommonModule } from '@angular/common';
 import { PodreczneDaneService } from '../../../../../serwisy/podreczne-dane.service';
 import { TablePaginationComponent } from '../../../../../komponets/table-pagination/table-pagination.component';
 import { TabelaPrzerwService } from './tabela-przerw.service';
-import { PrzerwyDniWolne } from '../../../../../klasy/panelPracownika/PrzerwyDniWolne';
 
 @Component({
   selector: 'app-tabela-przerw',
@@ -52,7 +51,11 @@ export class TabelaPrzerwComponent implements OnInit, OnDestroy, AfterViewInit {
 
   onSearchChange(event: any) {}
 
-  czyWolnyDzien(element: PrzerwyDniWolne) {}
+  czyWolnyDzien() {
+    return this.tabelaPrzerw_.filter.value != 'przerwy';
+  }
 
-  PrzerwyDniWolne(element: PrzerwyDniWolne) {}
+  czyPrzerwa() {
+    return this.tabelaPrzerw_.filter.value == 'przerwy';
+  }
 }

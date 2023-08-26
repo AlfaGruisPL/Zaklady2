@@ -16,6 +16,23 @@
       <th>Opis</th>
       <td><textarea cols="35" rows="2"></textarea></td>
     </tr>
+    <tr>
+      <th>Powtarzanie:</th>
+      <td>
+        Jednorazowe:
+        <input [(ngModel)]="regularne" [value]="false" name="k" type="radio" />
+        &nbsp; &nbsp; &nbsp; &nbsp; Regularne:
+        <input [(ngModel)]="regularne" [value]="true" name="k" type="radio" />
+      </td>
+    </tr>
+    <tr>
+      <th>Powtarzanie:</th>
+      <td>
+        <input type="checkbox" />Co tydzień<br />
+        <input type="checkbox" /> Co miesiąc<br />
+        <input type="checkbox" /> Co rok<br />
+      </td>
+    </tr>
   </table>
 </div>
 <div class="modal-footer">
