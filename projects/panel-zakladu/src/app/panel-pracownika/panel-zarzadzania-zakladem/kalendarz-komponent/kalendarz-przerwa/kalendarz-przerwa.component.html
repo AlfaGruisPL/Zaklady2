@@ -5,25 +5,24 @@
       <div class="switchButtonDiv">
         <button
           (click)="filter = 'przerwa'"
-          class="switchButton"
-          [ngClass]="{ switchButtonAktywny: filter == 'przerwa' }">
+          [ngClass]="{ switchButtonAktywny: filter == 'przerwa' }"
+          class="switchButton">
           przerwą
         </button>
-        <button (click)="filter = 'dzien'" class="switchButton" [ngClass]="{ switchButtonAktywny: filter == 'dzien' }">
+        <button (click)="filter = 'dzien'" [ngClass]="{ switchButtonAktywny: filter == 'dzien' }" class="switchButton">
           dniem wolnym
         </button>
       </div>
     </div>
   </h4>
-  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close('Nie')"></button>
+  <button (click)="activeModal.close('Nie')" aria-label="Close" class="btn-close" type="button"></button>
 </div>
 <ng-container *ngIf="filter == 'przerwa'">
   <app-kalendarz-przerwa-przerwa
-    [godzinaRozpoczecia]="godzinaRozpoczecia"
-    [godzinaZakonczenia]="godzinaZakonczenia"></app-kalendarz-przerwa-przerwa>
+    [data]="data | date : 'yyyy-MM-dd'"
+    [godzinaRozpoczecia]="godzinaRozpoczecia | date : 'HH:mm'"
+    [godzinaZakonczenia]="godzinaZakonczenia | date : 'HH:mm'"></app-kalendarz-przerwa-przerwa>
 </ng-container>
 <ng-container *ngIf="filter == 'dzien'">
-  <app-kalendarz-przerwa-dzien-wolny
-    [godzinaRozpoczecia]="godzinaRozpoczecia"
-    [godzinaZakonczenia]="godzinaZakonczenia"></app-kalendarz-przerwa-dzien-wolny>
+  <app-kalendarz-przerwa-dzien-wolny [data]="data | date : 'yyyy-MM-dd'"></app-kalendarz-przerwa-dzien-wolny>
 </ng-container>

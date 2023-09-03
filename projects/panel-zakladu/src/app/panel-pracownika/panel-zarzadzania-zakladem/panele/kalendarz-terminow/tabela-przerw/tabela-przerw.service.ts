@@ -6,6 +6,7 @@ import { PodreczneDaneService } from '../../../../../serwisy/podreczne-dane.serv
 import { BehaviorSubject, combineLatest } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
 import { PrzerwyDniWolne } from '../../../../../klasy/panelPracownika/PrzerwyDniWolne';
+import { KalendarzKomponentService } from '../../../kalendarz-komponent/kalendarz-komponent.service';
 
 class tabelaPrzerwDane {
   przerwy: {
@@ -31,18 +32,22 @@ class tabelaPrzerwDane {
 export class TabelaPrzerwService {
   dane: PrzerwyDniWolne[] = [];
   filter = new BehaviorSubject('przerwy');
-  filterTyp: BehaviorSubject<number> = new BehaviorSubject(0);
+  ///filterTyp: BehaviorSubject<number> = new BehaviorSubject(0);
   filterRegularnosci = new BehaviorSubject('regularne');
   pageSize: BehaviorSubject<number> = new BehaviorSubject(0);
   page: BehaviorSubject<number> = new BehaviorSubject(1);
   daneSize = 0;
   pobieranieDanych = false;
 
-  constructor(private listonosz: ListonoszService, private podreczne_: PodreczneDaneService) {}
+  constructor(
+    private listonosz: ListonoszService,
+    private podreczne_: PodreczneDaneService,
+    public Kalendarz_: KalendarzKomponentService
+  ) {}
 
   serviceStart() {
     console.log('start');
-    const combined = combineLatest([this.filter, this.filterTyp, this.filterRegularnosci]);
+    const combined = combineLatest([this.Kalendarz_.wybranyPracownik, this.filter, this.filterRegularnosci]);
     combined.subscribe(dane => {
       this.getData();
       console.log(dane);
@@ -60,7 +65,7 @@ export class TabelaPrzerwService {
     const regularne = this.filterRegularnosci.value == 'regularne';
     const przerwy = this.filter.value == 'przerwy';
     this.listonosz
-      .pobierz(Drzwi.tabelaPrzerwDane + `/${regularne}/${przerwy}/${this.filterTyp.value}`, params)
+      .pobierz(Drzwi.tabelaPrzerwDane + `/${regularne}/${przerwy}/${this.Kalendarz_.wybranyPracownik.value}`, params)
       .then((dane: any) => {
         this.dane = dane.dane;
         this.daneSize = dane.size;

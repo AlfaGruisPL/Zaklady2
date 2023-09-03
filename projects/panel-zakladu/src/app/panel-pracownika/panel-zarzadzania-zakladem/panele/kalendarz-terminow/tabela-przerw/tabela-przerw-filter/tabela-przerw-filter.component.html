@@ -31,15 +31,16 @@
 
   <div class="switchButtonDiv">
     <button
-      (click)="tabelaPrzerw_.filterTyp.next(0)"
-      [ngClass]="{ switchButtonAktywny: tabelaPrzerw_.filterTyp.value == 0 }"
+      (click)="Kalendarz_.wybranyPracownik.next(0)"
+      [ngClass]="{ switchButtonAktywny: Kalendarz_.wybranyPracownik.value == 0 }"
       class="switchButton">
       Zakładu
     </button>
     <button
-      (click)="tabelaPrzerw_.filterTyp.next(podreczne_.danePodreczneObiekt.returnZalogowanyPracownik().id)"
+      (click)="Kalendarz_.wybranyPracownik.next(podreczne_.danePodreczneObiekt.returnZalogowanyPracownik().id)"
       [ngClass]="{
-        switchButtonAktywny: tabelaPrzerw_.filterTyp.value == podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id
+        switchButtonAktywny:
+          Kalendarz_.wybranyPracownik.value == podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id
       }"
       class="switchButton">
       Zalogowanego użytkownika
@@ -49,11 +50,11 @@
       *ngIf="podreczne_.token_.czyWlasciciel()"
       [ngClass]="{
         switchButtonAktywny:
-          [0, podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id].indexOf(tabelaPrzerw_.filterTyp.value) == -1
+          [0, podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id].indexOf(Kalendarz_.wybranyPracownik.value) == -1
       }"
       [ngStyle]="{
         width:
-          [0, podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id].indexOf(tabelaPrzerw_.filterTyp.value) != -1
+          [0, podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id].indexOf(Kalendarz_.wybranyPracownik.value) != -1
             ? '105px'
             : ''
       }"
@@ -61,14 +62,14 @@
       <option
         [disabled]="true"
         [selected]="
-          [0, podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id].indexOf(tabelaPrzerw_.filterTyp.value) != -1
+          [0, podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id].indexOf(Kalendarz_.wybranyPracownik.value) != -1
         ">
         Wybierz
       </option>
       <ng-container *ngFor="let pracownik of podreczne_.danePodreczneObiekt.pracownicy">
         <option
           *ngIf="pracownik.id != podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id"
-          [selected]="pracownik.id == tabelaPrzerw_.filterTyp.value"
+          [selected]="pracownik.id == Kalendarz_.wybranyPracownik.value"
           [value]="pracownik.id">
           {{ pracownik.imie }} {{ pracownik.nazwisko }}
         </option>

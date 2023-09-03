@@ -1,6 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { PodreczneDaneService } from '../../../../../serwisy/podreczne-dane.service';
+import { ListonoszService } from '../../../../../serwisy/listonosz.service';
+import { Drzwi } from '../../../../../enum/drzwi';
+import { KomunikatyService } from '../../../../../serwisy/komunikaty.service';
+import { Udane } from '../../../../../enum/udane';
+import { Bledy } from '../../../../../enum/bledy';
 
 @Component({
   selector: 'app-kalendarz-przerwa-dzien-wolny',
@@ -8,12 +13,34 @@ import { PodreczneDaneService } from '../../../../../serwisy/podreczne-dane.serv
   styleUrls: ['./kalendarz-przerwa-dzien-wolny.component.scss'],
 })
 export class KalendarzPrzerwaDzienWolnyComponent {
-  @Input() godzinaRozpoczecia = new Date();
-  @Input() godzinaZakonczenia = new Date();
+  @Input() data: string | null = '';
   dotyczy = null;
   regularne = false;
+  coIle = 'false';
+  opis = '';
 
-  constructor(public activeModal: NgbActiveModal, public danePodreczne_: PodreczneDaneService) {}
+  constructor(
+    public activeModal: NgbActiveModal,
+    public danePodreczne_: PodreczneDaneService,
+    private listonosz: ListonoszService,
+    public komunikat_: KomunikatyService
+  ) {}
 
-  dodaj() {}
+  dodaj() {
+    const dane: any = {};
+    dane.regularne = this.regularne;
+    dane.coIle = this.coIle;
+    dane.data = this.data;
+    dane.dotyczy = this.dotyczy;
+    dane.opis = this.opis;
+    this.listonosz
+      .wyslij(Drzwi.utworzWolnyDzien, dane)
+      .then(dane => {
+        this.activeModal.close();
+        this.komunikat_.komunikatUdane(Udane.dzienWolnyUtworzony);
+      })
+      .catch(() => {
+        this.komunikat_.komunikatBledu(Bledy.dzienWolnyNieUtworzony);
+      });
+  }
 }

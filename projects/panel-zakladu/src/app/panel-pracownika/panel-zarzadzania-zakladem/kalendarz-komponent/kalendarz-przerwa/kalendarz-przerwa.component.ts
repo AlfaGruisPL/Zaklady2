@@ -11,8 +11,10 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./kalendarz-przerwa.component.scss'],
 })
 export class KalendarzPrzerwaComponent implements OnInit {
-  @Input() godzinaRozpoczecia = new Date();
-  @Input() godzinaZakonczenia = new Date();
+  @Input() godzinaRozpoczecia: any = new Date();
+  @Input() godzinaZakonczenia: any = new Date();
+  @Input() data = new Date();
+
   filter = 'przerwa';
 
   constructor(

@@ -1,9 +1,39 @@
 .przerwa {
-  width: 100%;
+  width: 50%;
   height: 50px;
   background: rgba(56, 56, 56, 0.47);
   position: absolute;
-  z-index: 100;
+  z-index: 10;
   left: -1px;
   pointer-events: none;
+  border-bottom: 1px solid black;
+
+  p {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+  }
+
+  button {
+    pointer-events: all;
+    height: 20px;
+    padding: 0;
+    padding-bottom: 5px;
+    width: 14px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    line-height: 15px;
+    border: 1px solid rgba(33, 33, 33, 0.4);
+    background: rgba(238, 238, 238, 0.32);
+  }
+}
+
+.zaklad {
+  background: rgba(213, 186, 1, 0.4);
+  left: 50%;
+}
+
+.regularne {
+  border-bottom: 3px dashed #000000;
 }

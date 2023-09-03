@@ -30,13 +30,10 @@ $kolor: #d4e4fc;
 }
 
 .godzina {
-
-
   tr:first-of-type {
     border-top: 1px solid $kolor;
     border-bottom: 1px solid $kolor;
   }
-
 
   td {
     height: 14px;
@@ -54,7 +51,6 @@ $kolor: #d4e4fc;
     &:last-of-type {
       border-right: 1px solid $kolor;
     }
-
   }
 }
 
@@ -75,7 +71,6 @@ h2 {
   height: min-content;
 
   span {
-
   }
 }
 
@@ -102,5 +97,13 @@ h2 {
     background: gray;
     border: solid 1px #242424;
     box-shadow: none;
+  }
+}
+
+.dzis {
+  span {
+    color: #af0000 !important;
+    font-weight: bold;
+    font-size: 17px;
   }
 }

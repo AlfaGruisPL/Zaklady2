@@ -3,20 +3,14 @@
     <tr>
       <th>Początek:</th>
       <td>
-        <input
-          (ngModelChange)="godzinaRozpoczecia = $event"
-          [ngModel]="godzinaRozpoczecia | date : 'HH:mm'"
-          type="time" />
+        <input (ngModelChange)="godzinaRozpoczecia = $event" [ngModel]="godzinaRozpoczecia" type="time" />
       </td>
     </tr>
 
     <tr>
       <th>Koniec:</th>
       <td>
-        <input
-          (ngModelChange)="godzinaZakonczenia = $event"
-          [ngModel]="godzinaZakonczenia | date : 'HH:mm'"
-          type="time" />
+        <input (ngModelChange)="godzinaZakonczenia = $event" [ngModel]="godzinaZakonczenia" type="time" />
       </td>
     </tr>
     <tr>
@@ -59,12 +53,12 @@
     <ng-container *ngIf="!regularne">
       <tr>
         <th>Data</th>
-        <td><input type="date" /></td>
+        <td><input [(ngModel)]="data" type="date" /></td>
       </tr>
     </ng-container>
     <tr>
       <th>Opis</th>
-      <td><textarea cols="35" rows="2"></textarea></td>
+      <td><textarea [(ngModel)]="opis" cols="35" rows="2"></textarea></td>
     </tr>
   </table>
 </div>

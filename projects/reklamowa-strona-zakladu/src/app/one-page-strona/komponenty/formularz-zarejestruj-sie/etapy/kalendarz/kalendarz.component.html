@@ -1,54 +1,48 @@
 <div class="naglowek">
   <span>Proponowane wolne terminy:</span>
 </div>
-<div class="divNaSpan" *ngIf="ZarejestrujSie.niepobranyKalendarz == true">
-  <span class="czerwone">Wystąpił błąd przy pobieraniu kalendarza, <br>zgłoś problem administratorowi</span>
+<div *ngIf="ZarejestrujSie.niepobranyKalendarz == true" class="divNaSpan">
+  <span class="czerwone">Wystąpił błąd przy pobieraniu kalendarza, <br />zgłoś problem administratorowi</span>
 </div>
 
 <table *ngIf="ZarejestrujSie.niepobranyKalendarz == false">
   <tr>
     <td colspan="8">
       <div class="sterowanie">
-        <button class="jakiTydzienButton" (click)="WLEWO()" [disabled]="licznikPrzyciskow <= 0">Poprzedni tydzień
+        <button (click)="WLEWO()" [disabled]="licznikPrzyciskow <= 0" class="jakiTydzienButton">
+          Poprzedni tydzień
         </button>
         <div class="jakiMiesiacDiv">
-          <span>  {{miesiace[miesiac() - 1]}} - Tydzień: {{tydzien()}}</span>
-
+          <span> {{ miesiace[miesiac() - 1] }} - Tydzień: {{ tydzien() }}</span>
         </div>
-        <button class="jakiTydzienButton" (click)="WPrawo()"> Następny tydzień</button>
+        <button (click)="WPrawo()" class="jakiTydzienButton">Następny tydzień</button>
       </div>
     </td>
   </tr>
 
   <tr>
-    <th class="wyswietlaneGodzinySpan" style="font-size: 18px">
-      Godzina:
+    <th class="wyswietlaneGodzinySpan" style="font-size: 18px">Godzina:</th>
+    <th *ngFor="let dzien of dni" [ngClass]="{ dzis: czyDzis(dzien) }" style="width: 125px">
+      <span class="wyswietlaneDniSpan"> {{ dzien.nazwa }}</span> <br />
+      <span class="wyswietlaneDniSpan" style="font-size: 15px">{{ dzien.samaData() }}</span>
     </th>
-    <th *ngFor="let dzien of dni" style="width: 125px">
-      <span class="wyswietlaneDniSpan"> {{dzien.nazwa}}</span> <br>
-      <span class="wyswietlaneDniSpan" style="font-size: 15px">{{dzien.samaData()}}</span>
-    </th>
-
   </tr>
-  <tr class="godzina" *ngFor="let k of [].constructor(godzinaZakonczenia *2);let index = index">
-    <td style="position:relative;"><span class="wyswietlaneGodzinySpan">
-      {{godzina(index)}}</span></td>
-    <td
-      [ngStyle]="kolorTla(dzien)"
-      style="position: relative;height: 25px"
-      *ngFor="let dzien of dni"
-    >
-
-      <span *ngIf="!czyPracuje(dzien.dzien)" style="width: 100%;text-align: center;display: block;color:#343434">---------</span>
+  <tr *ngFor="let k of [].constructor(godzinaZakonczenia * 2); let index = index" class="godzina">
+    <td style="position: relative">
+      <span class="wyswietlaneGodzinySpan"> {{ godzina(index) }}</span>
+    </td>
+    <td *ngFor="let dzien of dni" [ngStyle]="kolorTla(dzien)" style="position: relative; height: 25px">
+      <span *ngIf="!czyPracuje(dzien.dzien)" style="width: 100%; text-align: center; display: block; color: #343434"
+        >---------</span
+      >
       <ng-container *ngFor="let termin of terminyNaDzien(dzien)">
-        <app-termin *ngIf="index==0" [godzinaRozpoczecia]="godzinaRozpoczecia" [termin]="termin"></app-termin>
+        <app-termin *ngIf="index == 0" [godzinaRozpoczecia]="godzinaRozpoczecia" [termin]="termin"></app-termin>
       </ng-container>
     </td>
-
   </tr>
 </table>
 <div class="divNaPrzycisk">
-  <span class="czerwone" *ngIf="nieMoznaDalejKomunikat">Wybierz termin, aby przejść dalej</span>
-  <button [disabled]="ZarejestrujSie.niepobranyKalendarz" class="buttonDalej" (click)="przejdzDalej()">Dalej</button>
-  <button class="buttonCofnij" (click)="cofnij()">Cofnij</button>
+  <span *ngIf="nieMoznaDalejKomunikat" class="czerwone">Wybierz termin, aby przejść dalej</span>
+  <button (click)="przejdzDalej()" [disabled]="ZarejestrujSie.niepobranyKalendarz" class="buttonDalej">Dalej</button>
+  <button (click)="cofnij()" class="buttonCofnij">Cofnij</button>
 </div>

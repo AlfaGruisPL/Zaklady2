@@ -1,66 +1,60 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {dniTygodnia, DzienTygodnia} from "./dzien-tygodnia";
-import {ZarejestrujSieService} from "../../zarejestrujSie.service";
-import {DanePodstawoweService} from "../../../../../serwisy/dane-podstawowe.service";
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { dniTygodnia, DzienTygodnia } from './dzien-tygodnia';
+import { ZarejestrujSieService } from '../../zarejestrujSie.service';
+import { DanePodstawoweService } from '../../../../../serwisy/dane-podstawowe.service';
 
 @Component({
   selector: 'app-kalendarz',
   templateUrl: './kalendarz.component.html',
-  styleUrls: [
-    './kalendarz.component.scss',
-    '../../formularz-zarejestruj-sie.component.scss',
-  ],
+  styleUrls: ['./kalendarz.component.scss', '../../formularz-zarejestruj-sie.component.scss'],
 })
 export class KalendarzComponent implements OnInit {
   @Output() wyslijKrok = new EventEmitter<number>();
-  licznikPrzyciskow = 0
-  nieMoznaDalejKomunikat = false
-  public godzinaRozpoczecia = 88
-  public godzinaZakonczenia = 0
-  dni = dniTygodnia
+  licznikPrzyciskow = 0;
+  nieMoznaDalejKomunikat = false;
+  public godzinaRozpoczecia = 88;
+  public godzinaZakonczenia = 0;
+  dni = dniTygodnia;
   public miesiace: string[] = [
-    "Styczeń",
-    "Luty",
-    "Marzec",
-    "Kwiecień",
-    "Maj",
-    "Czerwiec",
-    "Lipiec",
-    "Sierpień",
-    "Wrzesień",
-    "Październik",
-    "Listopad",
-    "Grudzień"
+    'Styczeń',
+    'Luty',
+    'Marzec',
+    'Kwiecień',
+    'Maj',
+    'Czerwiec',
+    'Lipiec',
+    'Sierpień',
+    'Wrzesień',
+    'Październik',
+    'Listopad',
+    'Grudzień',
   ];
+  dataKursor = new Date();
 
-  constructor(public ZarejestrujSie: ZarejestrujSieService, public danePodstawowe: DanePodstawoweService) {
-  }
+  constructor(public ZarejestrujSie: ZarejestrujSieService, public danePodstawowe: DanePodstawoweService) {}
 
   public czyPracuje(dzien: number) {
-
     switch (dzien) {
       case 0:
-        return this.danePodstawowe.danePodstawowe.poniedzialek.czynnyDzien
+        return this.danePodstawowe.danePodstawowe.poniedzialek.czynnyDzien;
       case 1:
-        return this.danePodstawowe.danePodstawowe.wtorek.czynnyDzien
+        return this.danePodstawowe.danePodstawowe.wtorek.czynnyDzien;
       case 2:
-        return this.danePodstawowe.danePodstawowe.sroda.czynnyDzien
+        return this.danePodstawowe.danePodstawowe.sroda.czynnyDzien;
       case 3:
-        return this.danePodstawowe.danePodstawowe.czwartek.czynnyDzien
+        return this.danePodstawowe.danePodstawowe.czwartek.czynnyDzien;
       case 4:
-        return this.danePodstawowe.danePodstawowe.piatek.czynnyDzien
+        return this.danePodstawowe.danePodstawowe.piatek.czynnyDzien;
       case 5:
-        return this.danePodstawowe.danePodstawowe.sobota.czynnyDzien
+        return this.danePodstawowe.danePodstawowe.sobota.czynnyDzien;
       case 6:
-        return this.danePodstawowe.danePodstawowe.niedziela.czynnyDzien
-
+        return this.danePodstawowe.danePodstawowe.niedziela.czynnyDzien;
     }
-    return true
-
+    return true;
   }
 
   public przejdzDalej() {
-    this.nieMoznaDalejKomunikat = false
+    this.nieMoznaDalejKomunikat = false;
     if (this.ZarejestrujSie.DaneKlientaClass.wybranyTermin == undefined) {
       this.nieMoznaDalejKomunikat = true;
       return;
@@ -73,53 +67,39 @@ export class KalendarzComponent implements OnInit {
   }
 
   godzina(index: number) {
-    const data = new Date()
+    const data = new Date();
 
     //  this.godzinaZakonczenia++;
     //this.godzinaRozpoczecia--;
 
-
     data.setHours(this.godzinaRozpoczecia, 0, 0, 0);
-    const k = new Date(data.getTime() + (index * 60000 * 30))
+    const k = new Date(data.getTime() + index * 60000 * 30);
     const godzina = k.getHours() < 10 ? '0' + k.getHours() : k.getHours();
     const minuta = k.getMinutes() < 10 ? '0' + k.getMinutes() : k.getMinutes();
-    return godzina + ":" + minuta
+    return godzina + ':' + minuta;
   }
 
   ngOnInit() {
-    this.ObliczGodziny()
+    this.ObliczGodziny();
     this.danePodstawowe.danePodstawoweObservable.subscribe(k => {
-      this.ObliczGodziny()
-    })
-  }
-
-  private ObliczGodziny() {
-    const tmp = this.danePodstawowe.danePodstawowe;
-    [tmp.poniedzialek, tmp.wtorek, tmp.sroda, tmp.czwartek, tmp.piatek, tmp.sobota, tmp.niedziela].forEach(dzien => {
-      if (dzien.czynnyDzien) {
-        const rozpoczenie = Number(dzien.otwarcie.split(':')[0])
-        const zakonczenie = Number(dzien.zamkniecie.split(':')[0])
-        this.godzinaRozpoczecia = rozpoczenie < this.godzinaRozpoczecia ? rozpoczenie : this.godzinaRozpoczecia
-        this.godzinaZakonczenia = zakonczenie > this.godzinaZakonczenia ? zakonczenie : this.godzinaZakonczenia
-      }
-    })
-    //this.godzinaRozpoczecia -= 1;
-    this.godzinaZakonczenia -= this.godzinaRozpoczecia
-    this.godzinaZakonczenia += 0.5;
+      this.ObliczGodziny();
+    });
+    this.licznikPrzyciskow = 0;
+    this.dataKursor = new Date();
+    this.dni.forEach(k => {
+      k.data = new Date(this.dataKursor);
+      k.ustawDate();
+    });
   }
 
   kolorTla(dzien: DzienTygodnia) {
     if (!this.CzyAktualne(dzien.data)) {
-      return {'background-color': "rgba(211,211,211,0.31)"}
+      return { 'background-color': 'rgba(211,211,211,0.31)' };
     }
     if (!this.czyPracuje(dzien.dzien)) {
-      return {'background-color': "rgba(148,148,148,0.31)"}
+      return { 'background-color': 'rgba(148,148,148,0.31)' };
     }
-    return {}
-  }
-
-  private CzyAktualne(data: Date) {
-    return !(data.setHours(0, 0, 0, 0) < new Date().setHours(0, 0, 0, 0))
+    return {};
   }
 
   terminyNaDzien(data: DzienTygodnia): Array<any> {
@@ -127,46 +107,70 @@ export class KalendarzComponent implements OnInit {
       if (usluga.poczatek.getDate() == data.data.getDate()) {
         if (usluga.poczatek.getFullYear() == data.data.getFullYear()) {
           if (usluga.poczatek.getMonth() == data.data.getMonth()) {
-            return true
+            return true;
           }
         }
       }
-      return false
-    })
-    return tablica
+      return false;
+    });
+    return tablica;
   }
 
-  dataKursor = new Date()
-
   public miesiac() {
-    return this.dataKursor.getMonth() + 1
+    return this.dataKursor.getMonth() + 1;
   }
 
   public tydzien() {
-    return Math.ceil(this.dataKursor.getDate() / 7)
+    return Math.ceil(this.dataKursor.getDate() / 7);
   }
 
   WPrawo() {
-    this.licznikPrzyciskow++
-    this.dataKursor = new Date(this.dataKursor.getTime() + (7 * 24 * 60 * 60 * 1000))
+    this.licznikPrzyciskow++;
+    this.dataKursor = new Date(this.dataKursor.getTime() + 7 * 24 * 60 * 60 * 1000);
 
     this.dni.forEach(k => {
-      k.data = new Date(this.dataKursor)
-      k.ustawDate()
-
-
-    })
+      k.data = new Date(this.dataKursor);
+      k.ustawDate();
+    });
   }
 
   WLEWO() {
-    this.licznikPrzyciskow--
-    this.dataKursor = new Date(this.dataKursor.getTime() - (7 * 24 * 60 * 60 * 1000))
+    this.licznikPrzyciskow--;
+    this.dataKursor = new Date(this.dataKursor.getTime() - 7 * 24 * 60 * 60 * 1000);
 
     this.dni.forEach(k => {
-      k.data = new Date(this.dataKursor)
-      k.ustawDate()
-
-    })
+      k.data = new Date(this.dataKursor);
+      k.ustawDate();
+    });
   }
 
+  czyDzis(dzien: DzienTygodnia) {
+    if (
+      dzien.data.getDay() == new Date().getDay() &&
+      dzien.data.getMonth() == new Date().getMonth() &&
+      dzien.data.getFullYear() == new Date().getFullYear()
+    ) {
+      return true;
+    }
+    return false;
+  }
+
+  private ObliczGodziny() {
+    const tmp = this.danePodstawowe.danePodstawowe;
+    [tmp.poniedzialek, tmp.wtorek, tmp.sroda, tmp.czwartek, tmp.piatek, tmp.sobota, tmp.niedziela].forEach(dzien => {
+      if (dzien.czynnyDzien) {
+        const rozpoczenie = Number(dzien.otwarcie.split(':')[0]);
+        const zakonczenie = Number(dzien.zamkniecie.split(':')[0]);
+        this.godzinaRozpoczecia = rozpoczenie < this.godzinaRozpoczecia ? rozpoczenie : this.godzinaRozpoczecia;
+        this.godzinaZakonczenia = zakonczenie > this.godzinaZakonczenia ? zakonczenie : this.godzinaZakonczenia;
+      }
+    });
+    //this.godzinaRozpoczecia -= 1;
+    this.godzinaZakonczenia -= this.godzinaRozpoczecia;
+    this.godzinaZakonczenia += 0.5;
+  }
+
+  private CzyAktualne(data: Date) {
+    return !(data.setHours(0, 0, 0, 0) < new Date().setHours(0, 0, 0, 0));
+  }
 }

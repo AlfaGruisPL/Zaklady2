@@ -33,7 +33,7 @@ export enum Drzwi {
 
   uslugiPanel = '/uslugi/panel',
 
-  zarejestrowaneWizytyTerminy = '/kalendarzTerminow/terminy',
+  zarejestrowaneWizytyTerminy = '/kalendarzTerminow/dane',
   zarejestrowaneWizytyDlaPracownika = '/kalendarzTerminow/terminyDlaPracownika',
 
   //wizyty
@@ -47,6 +47,9 @@ export enum Drzwi {
   kalendarzOznaczJakoDzienWolny = '/dniWolne/dzienWolny',
   kalendarzOznaczJakoDzienPracy = '/dniWolne/dzienPracy',
   tabelaPrzerwDane = '/dniWolnePrzerwy/daneDoTabeli',
+
+  utworzWolnyDzien = '/dniWolne/dzienWolny',
+  utworzPrzerwe = '/przerwy',
 
   listaKlientowCalosc = '/klienci/listaCalosc',
   listaKlientowZalogowanegoUzytkownika = '/klienci/lista',

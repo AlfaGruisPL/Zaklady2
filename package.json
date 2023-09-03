@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "ng serve",
     "startPaneluZakladu": " ng serve PanelZakladu --port 8005  --host=0.0.0.0 --disable-host-check --hmr=true",
-    "startStronyReklamowejZakladu": "ng serve reklamowaStronaZakladu --port 8008  --host=0.0.0.0 --disable-host-check --hmr=true",
+    "startStronyReklamowejZakladu": "ng serve reklamowaStronaZakladu --port 8008  --host=0.0.0.0 --disable-host-check --hmr=false",
     "buildPanelZakladu": "ng build PanelZakladu --base-href ./",
     "buildStronyReklamowejZakladu": "ng build reklamowaStronaZakladu --base-href ./",
     "watch": "ng build --watch --configuration development",

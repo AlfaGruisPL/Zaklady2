@@ -15,14 +15,16 @@ import { Bledy } from '../../../../../enum/bledy';
   styleUrls: ['./kalendarz-przerwa-przerwa.component.scss'],
 })
 export class KalendarzPrzerwaPrzerwaComponent {
-  @Input() godzinaRozpoczecia = new Date();
-  @Input() godzinaZakonczenia = new Date();
+  @Input() godzinaRozpoczecia: any;
+  @Input() godzinaZakonczenia: any;
+  @Input() data: string | null = '';
   dataPoczatek: undefined | string = undefined;
   dataKoniec: undefined | string = undefined;
   wybranyPracownik = 0;
   regularne = false;
   formularz: any;
-  dotyczy = null;
+  dotyczy = 0;
+  opis = '';
   filter = 'przerwa';
   dniTygodnia = {
     poniedzialek: false,
@@ -33,7 +35,6 @@ export class KalendarzPrzerwaPrzerwaComponent {
     sobota: false,
     niedziela: false,
   };
-  protected readonly undefined = undefined;
 
   constructor(
     public listonosz: ListonoszService,
@@ -47,19 +48,22 @@ export class KalendarzPrzerwaPrzerwaComponent {
 
   dodaj() {
     const dto = new PrzerwaDto();
-    dto.poczatek = this.godzinaRozpoczecia;
-    dto.koniec = this.godzinaZakonczenia;
+    dto.godzinaRozpoczecia = this.godzinaRozpoczecia;
+    dto.godzinaZakonczenia = this.godzinaZakonczenia;
     dto.regularne = this.regularne;
+    dto.dotyczy = this.dotyczy;
+    dto.data = this.data;
+    dto.opis = this.opis;
     dto.dniTygodnia = this.dniTygodnia;
     this.listonosz
-      .wyslij(Drzwi.kalendarzTerminowPrzerwa, dto)
+      .wyslij(Drzwi.utworzPrzerwe, dto)
       .then(k => {
         this.komunikaty_.komunikatUdane(Udane.przerwaZostalaDodana);
+        this.activeModal.close('dodaj');
       })
       .catch(k => {
         this.komunikaty_.komunikatBledu(Bledy.przerwaNieZostalaDodana);
         console.log(k);
       });
-    this.activeModal.close('dodaj');
   }
 }

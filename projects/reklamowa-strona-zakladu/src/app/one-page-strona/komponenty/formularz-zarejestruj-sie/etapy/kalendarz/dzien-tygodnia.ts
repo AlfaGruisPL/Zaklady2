@@ -3,6 +3,12 @@ export class DzienTygodnia {
   nazwa: string = '-----';
   data: Date = new Date();
 
+  constructor(dzien: number, nazwa: string) {
+    this.dzien = dzien;
+    this.nazwa = nazwa;
+    this.ustawDate();
+  }
+
   samaData() {
     const k = this.data;
     const miesiac = k.getMonth() + 1 < 10 ? '0' + (k.getMonth() + 1) : k.getMonth() + 1;
@@ -12,14 +18,8 @@ export class DzienTygodnia {
 
   ustawDate() {
     const teraz = this.data;
-    const dzienDzis = teraz.getDate() - teraz.getDay() - (6 - teraz.getDay());
+    const dzienDzis = teraz.getDate() - teraz.getDay() - (0 - teraz.getDay());
     this.data = new Date(teraz.setDate(dzienDzis - (teraz.getDay() - 1) + this.dzien));
-  }
-
-  constructor(dzien: number, nazwa: string) {
-    this.dzien = dzien;
-    this.nazwa = nazwa;
-    this.ustawDate();
   }
 }
 

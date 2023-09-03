@@ -2,15 +2,17 @@
   <div class="pracownikSelectAndLabel">
     <label>Filtrowanie danych:</label>
     <app-select-dotyczy
-      (dotyczyChange)="Kalendarz_.wybranyPracownik.next($event);Kalendarz_.pobierzDane()"></app-select-dotyczy>
+      (dotyczyChange)="Kalendarz_.wybranyPracownik.next($event)"
+      (ustawChange)="Kalendarz_.pobierzDane()"
+      [ustaw]="Kalendarz_.wybranyPracownik"></app-select-dotyczy>
   </div>
   <div class="sterowanie">
-    <button class="jakiTydzienButton teraz" (click)="teraz()" *ngIf="licznikPrzyciskow != 0">Teraz</button> &nbsp;
-    &nbsp; &nbsp;
-    <button class="jakiTydzienButton" (click)="WLEWO()">Poprzedni tydzień</button>
+    <button (click)="teraz()" *ngIf="Kalendarz_.licznikPrzyciskow != 0" class="jakiTydzienButton teraz">Teraz</button>
+    &nbsp; &nbsp; &nbsp;
+    <button (click)="WLEWO()" class="jakiTydzienButton">Poprzedni tydzień</button>
     <div class="jakiMiesiacDiv">
       <span> {{ Kalendarz_.miesiace[miesiac() - 1] }} - Tydzień: {{ tydzien() }}</span>
     </div>
-    <button class="jakiTydzienButton" (click)="WPrawo()">Następny tydzień</button>
+    <button (click)="WPrawo()" class="jakiTydzienButton">Następny tydzień</button>
   </div>
 </div>

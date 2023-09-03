@@ -1,31 +1,41 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import {
-  DzienTygodnia
-} from "../../../../../../reklamowa-strona-zakladu/src/app/one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/kalendarz/dzien-tygodnia";
-import { Wizyta } from "../../../klasy/panelPracownika/wizyta";
-import { ListonoszService } from "../../../serwisy/listonosz.service";
-import { KalendarzKomponentService } from "./kalendarz-komponent.service";
-import { environment } from "../../../../environments/environment";
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { DzienTygodnia } from '../../../../../../reklamowa-strona-zakladu/src/app/one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/kalendarz/dzien-tygodnia';
+import { Wizyta } from '../../../klasy/panelPracownika/wizyta';
+import { ListonoszService } from '../../../serwisy/listonosz.service';
+import { KalendarzKomponentService } from './kalendarz-komponent.service';
+import { environment } from '../../../../environments/environment';
+import { WolnyDzien } from '../../../klasy/panelPracownika/kalendarz/przerwa.dto';
 
 @Component({
-  selector: "app-kalendarz-komponent",
-  templateUrl: "./kalendarz-komponent.component.html",
-  styleUrls: ["./kalendarz-komponent.component.scss"]
+  selector: 'app-kalendarz-komponent',
+  templateUrl: './kalendarz-komponent.component.html',
+  styleUrls: ['./kalendarz-komponent.component.scss'],
 })
-export class KalendarzKomponentComponent implements OnInit {
+export class KalendarzKomponentComponent implements OnInit, OnDestroy {
   @Output() wyslijKrok = new EventEmitter<number>();
   @Input() zarzadzanie = false;
-  symulatorPracownikID = "183";
-  symulatorWizytyID = "1497,1498,1499";
+  symulatorPracownikID = '183';
+  symulatorWizytyID = '1520,1530';
   symulatorWolneTerminy: any = [];
   symulator = false;
   public godzinaRozpoczecia = 6;
   public wyswieitlanieSymulatora = false;
+  protected readonly environment = environment;
 
-  constructor(private listonosz: ListonoszService, public Kalendarz_: KalendarzKomponentService) {
+  constructor(private listonosz: ListonoszService, public Kalendarz_: KalendarzKomponentService) {}
+
+  ngOnDestroy() {
+    this.Kalendarz_.resetdanych();
   }
 
   ngOnInit() {
+    if (environment.production == false) {
+      this.Kalendarz_.wybranyPracownik.subscribe(k => {
+        this.symulatorPracownikID = k.toString();
+        this.generujWizyty();
+      });
+    }
+
     this.Kalendarz_.godzinaRozpoczecia = this.godzinaRozpoczecia;
     if (this.symulatorPracownikID.length > 0) {
       this.generujWizyty();
@@ -35,11 +45,11 @@ export class KalendarzKomponentComponent implements OnInit {
 
   generujWizyty() {
     this.symulatorWolneTerminy = [];
-    const dane = this.symulatorWizytyID.split(",");
+    const dane = this.symulatorWizytyID.split(',');
     this.listonosz
-      .wyslij("/stronaReklamowa/wizyty/terminyWizyt", {
+      .wyslij('/stronaReklamowa/wizyty/terminyWizyt', {
         uslugiId: dane,
-        pracownikId: this.symulatorPracownikID
+        pracownikId: this.symulatorPracownikID,
       })
       .then(k => {
         k.forEach((k2: any) => {
@@ -77,43 +87,64 @@ export class KalendarzKomponentComponent implements OnInit {
   }
 
   public kolorTlaInformacje(dzien: DzienTygodnia): string {
-    const k = this.czyDzisWolnyDzien(dzien);
-    if (k != undefined) {
-      return "Dzien wolny dla zakładu";
+    let wynik = '';
+
+    if (this.czyDzisWolnyDzien(dzien, this.Kalendarz_.dniWolnePracownika) != undefined) {
+      wynik += 'Dzien wolny dla pracownika<br>';
+    }
+
+    if (this.czyDzisWolnyDzien(dzien, this.Kalendarz_.dniWolneZakladu) != undefined) {
+      wynik += 'Dzien wolny dla zakładu<br>';
     }
     if (!this.czyPracuje(dzien.dzien)) {
-      return "Zakład zamknięty";
+      wynik += 'Zakład zamknięty<br>';
     }
-    return "";
+    return wynik;
   }
 
   public kolorTla(dzien: DzienTygodnia, index: number) {
     //sprawdzenie czy nie dzien oznaczony jako wolny
-    if (this.czyDzisWolnyDzien(dzien) != undefined) {
+    if (
+      this.czyDzisWolnyDzien(dzien, this.Kalendarz_.dniWolneZakladu) != undefined &&
+      this.czyDzisWolnyDzien(dzien, this.Kalendarz_.dniWolnePracownika) != undefined
+    ) {
       if (index % 2 == 0) {
-        return { "background-color": "rgba(255,35,35,0.31)" };
+        return { 'background-color': 'rgba(228,35,248,0.14)' };
       }
-      return { "background-color": "rgba(211,8,8,0.31)" };
+      return { 'background-color': 'rgba(191,29,208,0.14)' };
+    }
+
+    if (this.czyDzisWolnyDzien(dzien, this.Kalendarz_.dniWolneZakladu) != undefined) {
+      if (index % 2 == 0) {
+        return { 'background-color': 'rgba(255,35,35,0.14)' };
+      }
+      return { 'background-color': 'rgba(211,8,8,0.14)' };
+    }
+    if (this.czyDzisWolnyDzien(dzien, this.Kalendarz_.dniWolnePracownika) != undefined) {
+      if (index % 2 == 0) {
+        return { 'background-color': 'rgba(69,248,57,0.14)' };
+      }
+      return { 'background-color': 'rgba(67,218,58,0.14)' };
     }
 
     if (!this.CzyAktualne(dzien.data)) {
       if (index % 2 == 0) {
-        return { "background-color": "rgba(229,229,229,0.31)" };
+        return { 'background-color': 'rgba(229,229,229,0.14)' };
       }
-      return { "background-color": "rgba(211,211,211,0.31)" };
+      return { 'background-color': 'rgba(211,211,211,0.14)' };
     }
     if (!this.czyPracuje(dzien.dzien)) {
       if (index % 2 == 0) {
-        return { "background-color": "rgba(180,180,180,0.31)" };
+        return { 'background-color': 'rgba(180,180,180,0.21)' };
       }
-      return { "background-color": "rgba(148,148,148,0.31)" };
+      return { 'background-color': 'rgba(148,148,148,0.21)' };
     }
 
     return {};
   }
 
-  czyDzisWolnyDzien(dzien: DzienTygodnia) {
-    return this.Kalendarz_.dniWolne.find(wolnydzien => {
+  czyDzisWolnyDzien(dzien: DzienTygodnia, dane: WolnyDzien[] = this.Kalendarz_.dniWolneZakladu) {
+    return dane.find(wolnydzien => {
       if (wolnydzien.data.getDate() == dzien.data.getDate()) {
         if (wolnydzien.data.getFullYear() == dzien.data.getFullYear()) {
           if (wolnydzien.data.getMonth() == dzien.data.getMonth()) {
@@ -126,14 +157,10 @@ export class KalendarzKomponentComponent implements OnInit {
   }
 
   public terminyNaDzien(data: DzienTygodnia): Array<Wizyta> {
-
-
     const tablica = this.Kalendarz_.wizyty.filter(usluga => {
-
       if (usluga.poczatek.getDate() == data.data.getDate()) {
         if (usluga.poczatek.getFullYear() == data.data.getFullYear()) {
           if (usluga.poczatek.getMonth() == data.data.getMonth()) {
-
             return true;
           }
         }
@@ -171,6 +198,4 @@ export class KalendarzKomponentComponent implements OnInit {
   private CzyAktualne(data: Date) {
     return !(data.setUTCHours(0, 0, 0, 0) < new Date().setUTCHours(0, 0, 0, 0));
   }
-
-  protected readonly environment = environment;
 }

@@ -49,7 +49,6 @@ export class TablePaginationComponent {
   }
 
   indexCount(index: number) {
-    console.log(index, this.page, this.pageSize);
     return index + this.page * this.pageSize - this.pageSize + 1;
   }
 }

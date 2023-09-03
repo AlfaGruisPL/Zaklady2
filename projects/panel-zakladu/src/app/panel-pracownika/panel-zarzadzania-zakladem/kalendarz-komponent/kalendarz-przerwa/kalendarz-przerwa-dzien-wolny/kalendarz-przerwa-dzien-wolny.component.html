@@ -9,12 +9,12 @@
     <tr>
       <th>Data</th>
       <td>
-        <input type="date" />
+        <input [(ngModel)]="data" type="date" />
       </td>
     </tr>
     <tr>
       <th>Opis</th>
-      <td><textarea cols="35" rows="2"></textarea></td>
+      <td><textarea [(ngModel)]="opis" cols="35" rows="2"></textarea></td>
     </tr>
     <tr>
       <th>Powtarzanie:</th>
@@ -25,12 +25,12 @@
         <input [(ngModel)]="regularne" [value]="true" name="k" type="radio" />
       </td>
     </tr>
-    <tr>
+    <tr *ngIf="regularne">
       <th>Powtarzanie:</th>
       <td>
-        <input type="checkbox" />Co tydzień<br />
-        <input type="checkbox" /> Co miesiąc<br />
-        <input type="checkbox" /> Co rok<br />
+        <input [(ngModel)]="coIle" [value]="'tydzien'" name="powtarzenieRadio" type="radio" />Co tydzień<br />
+        <input [(ngModel)]="coIle" [value]="'miesiac'" name="powtarzenieRadio" type="radio" /> Co miesiąc<br />
+        <input [(ngModel)]="coIle" [value]="'rok'" name="powtarzenieRadio" type="radio" /> Co rok<br />
       </td>
     </tr>
   </table>

@@ -1,3 +1,40 @@
-<div class="przerwa"
-     [ngStyle]="{'top':top,height:wysokosc}">
+<div
+  [ngClass]="{ zaklad: zaklad, regularne: Przerwa.regularne }"
+  [ngStyle]="{ top: top, height: wysokosc }"
+  class="przerwa">
+  <ng-container *ngIf="wysokoscNumber > 20">
+    <p>{{ Przerwa.poczatek | date : 'hh:mm' }}-{{ Przerwa.koniec | date : 'hh:mm' }}</p></ng-container
+  >
+  <button
+    [animation]="true"
+    [container]="'body'"
+    [ngbPopover]="popContent"
+    [popoverTitle]="popTitle"
+    placement="top"
+    triggers="mouseenter:mouseleave">
+    ?
+  </button>
 </div>
+
+<ng-template #popTitle>
+  Przerwa <b>{{ Przerwa.poczatek | date : 'hh:mm' }}-{{ Przerwa.koniec | date : 'hh:mm' }}</b></ng-template
+>
+<ng-template #popContent>
+  <table>
+    <tr>
+      <td>Dotyczy:</td>
+      <td *ngIf="Przerwa.pracownikId != 0; else zaklad">
+        {{ pracownik()?.imie + ' ' + pracownik()?.nazwisko }}
+      </td>
+      <ng-template #zaklad>
+        <td>Zakład</td>
+      </ng-template>
+    </tr>
+    <tr>
+      <td>Data:</td>
+      <td>
+        {{ Przerwa.data | date : 'dd.MM.YYYY' }}
+      </td>
+    </tr>
+  </table>
+</ng-template>
