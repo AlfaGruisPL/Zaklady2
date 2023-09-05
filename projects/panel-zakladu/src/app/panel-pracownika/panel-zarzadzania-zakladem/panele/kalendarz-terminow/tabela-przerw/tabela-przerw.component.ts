@@ -31,19 +31,22 @@ import { TabelaPrzerwService } from './tabela-przerw.service';
   ],
 })
 export class TabelaPrzerwComponent implements OnInit, OnDestroy, AfterViewInit {
+  protected readonly Math = Math;
+
   constructor(public danePodreczne_: PodreczneDaneService, public tabelaPrzerw_: TabelaPrzerwService) {}
+
+  /*
+    getDataFormPaggination(event: TablePaginationComponent) {
+      this.tabelaPrzerw_.pageSize.next(event.pageSize);
+      this.tabelaPrzerw_.page.next(event.page);
+      this.tabelaPrzerw_.getData();
+    }*/
 
   ngOnInit() {
     this.tabelaPrzerw_.serviceStart();
   }
 
   ngAfterViewInit() {}
-
-  getDataFormPaggination(event: TablePaginationComponent) {
-    this.tabelaPrzerw_.pageSize.next(event.pageSize);
-    this.tabelaPrzerw_.page.next(event.page);
-    this.tabelaPrzerw_.getData();
-  }
 
   ngOnDestroy() {
     this.tabelaPrzerw_.serviceStop();

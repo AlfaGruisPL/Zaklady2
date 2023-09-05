@@ -38,8 +38,8 @@ export class TabelaPrzerwService {
   filter = new BehaviorSubject('przerwy');
   ///filterTyp: BehaviorSubject<number> = new BehaviorSubject(0);
   filterRegularnosci = new BehaviorSubject('regularne');
-  pageSize: BehaviorSubject<number> = new BehaviorSubject(0);
-  page: BehaviorSubject<number> = new BehaviorSubject(1);
+  pageSize = 10;
+  page = 1;
   daneSize = 0;
   pobieranieDanych = false;
   sub1: Subscription | undefined;
@@ -68,18 +68,16 @@ export class TabelaPrzerwService {
   getData() {
     this.pobieranieDanych = true;
     let params = new HttpParams();
-    params = params.append('limit', this.pageSize.value);
-    params = params.append('page', this.page.value);
+    params = params.append('limit', this.pageSize);
+    params = params.append('page', this.page);
     params = params.append('filter', '');
     const regularne = this.filterRegularnosci.value == 'regularne';
     const przerwy = this.filter.value == 'przerwy';
     this.listonosz
       .pobierz(Drzwi.tabelaPrzerwDane + `/${regularne}/${przerwy}/${this.Kalendarz_.wybranyPracownik.value}`, params)
       .then((dane: any) => {
-        this.dane = dane.dane;
         this.daneSize = dane.size;
-        // this.dane.przerwy.dane = dane.przerwy?.dane;
-        // this.dane.dniWolne.dane = dane.dniWolne?.dane;
+        this.dane = dane.dane;
       })
       .catch(error => {
         this.dane = [];

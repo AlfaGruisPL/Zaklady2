@@ -39,13 +39,15 @@
       </div>
     </td>
   </tr>
-  <tr *ngFor="let k of paggination.emptyRowArray()">
+  <tr *ngFor="let k of [].constructor(Math.abs(tabelaPrzerw_.pageSize - tabelaPrzerw_.dane.length))">
     <td *ngFor="let k of [].constructor(naglowek.cells.length)"></td>
   </tr>
 </table>
 <app-table-pagination
   #paggination
-  (changeData)="getDataFormPaggination($event)"
+  (pageChange)="tabelaPrzerw_.getData()"
+  [(page)]="tabelaPrzerw_.page"
+  [(pageSize)]="tabelaPrzerw_.pageSize"
   [collectionSize]="tabelaPrzerw_.daneSize"
-  [pageSizeArray]="[2, 5, 7, 10, 20, 50, 100]"
-  [page]="tabelaPrzerw_.page.value"></app-table-pagination>
+  [pageSizeArray]="[2, 5, 7, 10, 20, 50, 100]"></app-table-pagination>
+<!-- (changeData)="getDataFormPaggination($event)"-->

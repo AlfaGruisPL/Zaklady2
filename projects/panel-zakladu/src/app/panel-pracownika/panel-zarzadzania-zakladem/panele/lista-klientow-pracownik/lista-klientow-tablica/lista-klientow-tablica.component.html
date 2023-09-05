@@ -1,4 +1,4 @@
-<table class="tablica">
+<table [ngClass]="{ tablicaLoading: lista_.ladowanieDanych }" class="tablica">
   <tr>
     <th>Nr</th>
     <th>Imię</th>
@@ -16,29 +16,17 @@
     <td>{{ klient.numerTelefonu }}</td>
     <td>{{ klient.wizyty.length }}</td>
     <td>
-      <div ngbDropdown container="body">
-        <button
-          type="button"
-          class="btn btn-outline-primary btn-sm"
-          ngbDropdownToggle>
-          Wybierz:
-        </button>
+      <div container="body" ngbDropdown>
+        <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle type="button">Wybierz:</button>
 
         <div ngbDropdownMenu>
-          <button ngbDropdownItem (click)="wyswietlInformacje(klient)">
-            Wyświetl wizyty
-          </button>
+          <button (click)="wyswietlInformacje(klient)" ngbDropdownItem>Wyświetl wizyty</button>
           <button ngbDropdownItem>Usuń</button>
         </div>
       </div>
     </td>
   </tr>
-  <tr
-    *ngFor="
-      let k of [].constructor(
-        Math.abs(lista_.pageSize - lista_.listaKlientow.length)
-      )
-    ">
+  <tr *ngFor="let k of [].constructor(Math.abs(lista_.pageSize - lista_.listaKlientow.length))">
     <td></td>
     <td></td>
     <td></td>
@@ -48,9 +36,9 @@
     <td></td>
   </tr>
 </table>
-<app-table-pagination [(page)]="lista_.page"
-                      [collectionSize]="lista_.iloscKlientow"
-                      (pageChange)="lista_.pobierzDane()"
-                      #paggination
-                      [pageSize]="lista_.pageSize"></app-table-pagination>
-
+<app-table-pagination
+  #paggination
+  (pageChange)="lista_.pobierzDane()"
+  [(page)]="lista_.page"
+  [collectionSize]="lista_.iloscKlientow"
+  [pageSize]="lista_.pageSize"></app-table-pagination>

@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {Klient} from '../../../../klasy/listaKlientow/klient';
-import {Drzwi} from '../../../../enum/drzwi';
-import {PodreczneDaneService} from '../../../../serwisy/podreczne-dane.service';
-import {ListonoszService} from '../../../../serwisy/listonosz.service';
-import {HttpParams} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Klient } from '../../../../klasy/listaKlientow/klient';
+import { Drzwi } from '../../../../enum/drzwi';
+import { PodreczneDaneService } from '../../../../serwisy/podreczne-dane.service';
+import { ListonoszService } from '../../../../serwisy/listonosz.service';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -14,19 +14,16 @@ export class ListaKlientowService {
   public page = 1;
   public pageSize = 12;
   public iloscKlientow = 12;
+  public ladowanieDanych = false;
 
-  constructor(
-    public podreczne_: PodreczneDaneService,
-    private listonosz: ListonoszService
-  ) {
-  }
+  constructor(public podreczne_: PodreczneDaneService, private listonosz: ListonoszService) {}
 
   ustawFilter(event: any) {
     this.filter = event.target.value;
   }
 
   pobierzDane() {
-    console.log(1)
+    console.log(1);
     let drzwi: any;
     switch (this.filter) {
       case 0:
@@ -39,18 +36,21 @@ export class ListaKlientowService {
         drzwi = Drzwi.listaKlientowUzytkownika + '/' + this.filter;
     }
 
-    this.listaKlientow = [];
     let params = new HttpParams();
     params = params.append('page', this.page);
-
+    this.ladowanieDanych = true;
     this.listonosz
       .pobierz(drzwi, params)
       .then((dane: { lista: Array<Klient>; size: number; limit: number }) => {
+        this.listaKlientow = [];
         dane.lista.forEach(klient => {
           this.listaKlientow.push(new Klient(klient));
         });
         this.iloscKlientow = dane.size;
         this.pageSize = dane.limit;
+      })
+      .finally(() => {
+        this.ladowanieDanych = false;
       });
   }
 }

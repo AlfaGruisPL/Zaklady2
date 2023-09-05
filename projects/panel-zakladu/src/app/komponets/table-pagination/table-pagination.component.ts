@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './table-pagination.component.html',
   styleUrls: ['./table-pagination.component.scss'],
 })
-export class TablePaginationComponent {
+export class TablePaginationComponent implements OnChanges {
   savePageSize = 0;
   @Input()
   page: number = 0;
@@ -45,8 +45,12 @@ export class TablePaginationComponent {
     return Math.ceil(this.collectionSize / this.pageSize);
   }
 
-  emit() {
-    this.changeData.emit(this);
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes);
+    this.calcEmptyCell();
+  }
+
+  calcEmptyCell() {
     console.log(this.pageSize, this.collectionSize);
     let k = this.pageSize - this.collectionSize;
     if (k < 1) {
