@@ -14,6 +14,7 @@
     <th *ngIf="czyWolnyDzien()">Data</th>
     <th *ngIf="czyPrzerwa()">Poczatek</th>
     <th *ngIf="czyPrzerwa()">Koniec</th>
+    <th>Opis</th>
     <th>Powtarzalność</th>
     <th>Typ</th>
     <th>Zarządzanie</th>
@@ -23,20 +24,22 @@
     <td *ngIf="czyWolnyDzien()">{{ element.data }}</td>
     <td *ngIf="czyPrzerwa()">{{ element.poczatek }}</td>
     <td *ngIf="czyPrzerwa()">{{ element.koniec }}</td>
-    <td>{{ tabelaPrzerw_.filterRegularnosci.value }}</td>
-    <td>{{ tabelaPrzerw_.filter.value }}</td>
+    <td>{{ element.opis }}</td>
+    <td *ngIf="tabelaPrzerw_.filterRegularnosci.value == 'jednorazowe'">Jednorazowe</td>
+    <td *ngIf="!(tabelaPrzerw_.filterRegularnosci.value == 'jednorazowe')">Regularne</td>
+    <td *ngIf="tabelaPrzerw_.filter.value == 'dniwolne'">Dni wolne</td>
+    <td *ngIf="!(tabelaPrzerw_.filter.value == 'dniwolne')">Przerwy</td>
     <td>
       <div container="body" ngbDropdown>
         <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle type="button">Wybierz:</button>
 
         <div ngbDropdownMenu>
-          <button ngbDropdownItem>Wyświetl wizyty</button>
-          <button ngbDropdownItem>Usuń</button>
+          <button (click)="usun(element)" ngbDropdownItem>Usuń</button>
         </div>
       </div>
     </td>
   </tr>
-  <tr *ngFor="let k of [].constructor(paggination.pageSize - tabelaPrzerw_.dane.length)">
+  <tr *ngFor="let k of paggination.emptyRowArray()">
     <td *ngFor="let k of [].constructor(naglowek.cells.length)"></td>
   </tr>
 </table>

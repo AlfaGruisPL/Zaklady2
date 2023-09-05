@@ -32,6 +32,7 @@ export class TablePaginationComponent {
 
   @Output()
   changeData = new EventEmitter();
+  kback = 0;
   private this2 = this;
 
   ngAfterViewInit() {
@@ -46,9 +47,20 @@ export class TablePaginationComponent {
 
   emit() {
     this.changeData.emit(this);
+    console.log(this.pageSize, this.collectionSize);
+    let k = this.pageSize - this.collectionSize;
+    if (k < 1) {
+      this.kback = 0;
+    } else {
+      this.kback = k;
+    }
   }
 
   indexCount(index: number) {
     return index + this.page * this.pageSize - this.pageSize + 1;
+  }
+
+  emptyRowArray() {
+    return [].constructor(this.kback);
   }
 }

@@ -58,4 +58,8 @@ export class TabelaPrzerwComponent implements OnInit, OnDestroy, AfterViewInit {
   czyPrzerwa() {
     return this.tabelaPrzerw_.filter.value == 'przerwy';
   }
+
+  usun(element: any) {
+    this.tabelaPrzerw_.usun(element);
+  }
 }

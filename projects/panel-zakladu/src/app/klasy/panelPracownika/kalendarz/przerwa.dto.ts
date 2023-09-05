@@ -1,9 +1,5 @@
-export class WolnyDzien {
-  data = new Date();
-  pracownikId = 0;
-}
-
 export class Przerwa {
+  id: number = 0;
   poczatek = new Date();
   koniec = new Date();
   data: Date | string = new Date();

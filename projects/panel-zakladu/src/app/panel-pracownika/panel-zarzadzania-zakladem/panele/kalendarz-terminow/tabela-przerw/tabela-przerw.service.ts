@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { ListonoszService } from '../../../../../serwisy/listonosz.service';
 import { Drzwi } from '../../../../../enum/drzwi';
-import { Przerwa, WolnyDzien } from '../../../../../klasy/panelPracownika/kalendarz/przerwa.dto';
+import { Przerwa } from '../../../../../klasy/panelPracownika/kalendarz/przerwa.dto';
 import { PodreczneDaneService } from '../../../../../serwisy/podreczne-dane.service';
-import { BehaviorSubject, combineLatest } from 'rxjs';
+import { BehaviorSubject, combineLatest, Subscription } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
 import { PrzerwyDniWolne } from '../../../../../klasy/panelPracownika/PrzerwyDniWolne';
 import { KalendarzKomponentService } from '../../../kalendarz-komponent/kalendarz-komponent.service';
+import { DzienWolny } from '../../../../../klasy/panelPracownika/kalendarz/DzienWolny';
+import { KomunikatyService } from '../../../../../serwisy/komunikaty.service';
+import { Udane } from '../../../../../enum/udane';
+import { Bledy } from '../../../../../enum/bledy';
 
 class tabelaPrzerwDane {
   przerwy: {
@@ -15,7 +19,7 @@ class tabelaPrzerwDane {
     size: number;
   };
   dniWolne: {
-    dane: WolnyDzien[];
+    dane: DzienWolny[];
     limit: number;
     size: number;
   };
@@ -38,23 +42,28 @@ export class TabelaPrzerwService {
   page: BehaviorSubject<number> = new BehaviorSubject(1);
   daneSize = 0;
   pobieranieDanych = false;
+  sub1: Subscription | undefined;
 
   constructor(
     private listonosz: ListonoszService,
     private podreczne_: PodreczneDaneService,
+    private komuniakty_: KomunikatyService,
     public Kalendarz_: KalendarzKomponentService
   ) {}
 
   serviceStart() {
-    console.log('start');
     const combined = combineLatest([this.Kalendarz_.wybranyPracownik, this.filter, this.filterRegularnosci]);
     combined.subscribe(dane => {
       this.getData();
-      console.log(dane);
+    });
+    this.sub1 = this.Kalendarz_.pobieranieDanychObservable.subscribe(() => {
+      this.getData();
     });
   }
 
-  serviceStop() {}
+  serviceStop() {
+    this.sub1?.unsubscribe();
+  }
 
   getData() {
     this.pobieranieDanych = true;
@@ -77,6 +86,43 @@ export class TabelaPrzerwService {
       })
       .finally(() => {
         this.pobieranieDanych = false;
+      });
+  }
+
+  usun(element: DzienWolny | Przerwa) {
+    let drzwi = '';
+    if (this.filterRegularnosci.value == 'regularne') {
+      if (this.filter.value == 'przerwy') {
+        drzwi = Drzwi.usunPrzerweRegularna;
+        console.log(element.id, 'regularne', 'przerwy');
+      } else {
+        console.log(element.id, 'regularne', 'dniWolne');
+        drzwi = Drzwi.usunWolnyDzienRegularny;
+      }
+    } else {
+      if (this.filter.value == 'przerwy') {
+        drzwi = Drzwi.usunPrzerweNieRegularna;
+        console.log(element.id, 'nieregularne', 'przerwy');
+      } else {
+        console.log(element.id, 'nieregularne', 'dniWolne');
+        drzwi = Drzwi.usunWolnyDzienNieRegularny;
+      }
+    }
+    this.listonosz
+      .usun(drzwi + '/' + element.id)
+      .then(udane => {
+        if (this.filter.value == 'przerwy') {
+          this.komuniakty_.komunikatUdane(Udane.usuwaniePrzerwy);
+        } else {
+          this.komuniakty_.komunikatUdane(Udane.usuwanieDniaWolnego);
+        }
+      })
+      .catch(error => {
+        this.komuniakty_.komunikatBledu(Bledy.bladUsuwania);
+      })
+      .finally(() => {
+        this.getData();
+        this.Kalendarz_.pobierzDane(true);
       });
   }
 }

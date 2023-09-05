@@ -3,4 +3,6 @@ export enum Udane {
   oznaczJakoDzienPracy = 'Dzień został oznaczony jako dzień pracy',
   przerwaZostalaDodana = 'Przerwa została dodana pomyślnie',
   dzienWolnyUtworzony = 'Dzien wolny został dodany',
+  usuwaniePrzerwy = 'Przerwa została usunięta',
+  usuwanieDniaWolnego = 'Dzień wolny został usunięty',
 }

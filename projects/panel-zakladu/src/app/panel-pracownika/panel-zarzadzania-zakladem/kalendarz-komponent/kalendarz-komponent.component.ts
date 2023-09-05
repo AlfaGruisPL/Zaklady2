@@ -4,7 +4,7 @@ import { Wizyta } from '../../../klasy/panelPracownika/wizyta';
 import { ListonoszService } from '../../../serwisy/listonosz.service';
 import { KalendarzKomponentService } from './kalendarz-komponent.service';
 import { environment } from '../../../../environments/environment';
-import { WolnyDzien } from '../../../klasy/panelPracownika/kalendarz/przerwa.dto';
+import { DzienWolny } from '../../../klasy/panelPracownika/kalendarz/DzienWolny';
 
 @Component({
   selector: 'app-kalendarz-komponent',
@@ -30,20 +30,21 @@ export class KalendarzKomponentComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     if (environment.production == false) {
-      this.Kalendarz_.wybranyPracownik.subscribe(k => {
-        this.symulatorPracownikID = k.toString();
-        this.generujWizyty();
-      });
+      setTimeout(() => {
+        this.Kalendarz_.wybranyPracownik.subscribe(k => {
+          this.symulatorPracownikID = k.toString();
+          this.generujWizyty();
+        });
+      }, 1000);
     }
 
     this.Kalendarz_.godzinaRozpoczecia = this.godzinaRozpoczecia;
-    if (this.symulatorPracownikID.length > 0) {
-      this.generujWizyty();
-    }
+
     this.Kalendarz_.pobierzPodstawoweDane();
   }
 
   generujWizyty() {
+    if (!this.symulator) return;
     this.symulatorWolneTerminy = [];
     const dane = this.symulatorWizytyID.split(',');
     this.listonosz
@@ -143,7 +144,7 @@ export class KalendarzKomponentComponent implements OnInit, OnDestroy {
     return {};
   }
 
-  czyDzisWolnyDzien(dzien: DzienTygodnia, dane: WolnyDzien[] = this.Kalendarz_.dniWolneZakladu) {
+  czyDzisWolnyDzien(dzien: DzienTygodnia, dane: DzienWolny[] = this.Kalendarz_.dniWolneZakladu) {
     return dane.find(wolnydzien => {
       if (wolnydzien.data.getDate() == dzien.data.getDate()) {
         if (wolnydzien.data.getFullYear() == dzien.data.getFullYear()) {

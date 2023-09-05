@@ -48,8 +48,14 @@ export enum Drzwi {
   kalendarzOznaczJakoDzienPracy = '/dniWolne/dzienPracy',
   tabelaPrzerwDane = '/dniWolnePrzerwy/daneDoTabeli',
 
+  //wolne dni/przerwy
   utworzWolnyDzien = '/dniWolne/dzienWolny',
   utworzPrzerwe = '/przerwy',
+
+  usunPrzerweRegularna = '/przerwy/regularne',
+  usunWolnyDzienRegularny = '/dniWolne/regularne',
+  usunPrzerweNieRegularna = '/przerwy',
+  usunWolnyDzienNieRegularny = '/dniWolne',
 
   listaKlientowCalosc = '/klienci/listaCalosc',
   listaKlientowZalogowanegoUzytkownika = '/klienci/lista',
