@@ -13,9 +13,9 @@
         <input (ngModelChange)="godzinaZakonczenia = $event" [ngModel]="godzinaZakonczenia" type="time" />
       </td>
     </tr>
-    <tr>
+    <tr *ngIf="danePodreczne_.wlasciciel">
       <th>Dotyczy:</th>
-      <td *ngIf="danePodreczne_.wlasciciel">
+      <td>
         <app-select-dotyczy (dotyczyChange)="dotyczy = $event" [wyswietlanieOpcjiZakladu]="true"></app-select-dotyczy>
       </td>
     </tr>
@@ -63,6 +63,6 @@
   </table>
 </div>
 <div class="modal-footer">
-  <button (click)="activeModal.close('anuluj')">Anuluj</button>
+  <button (click)="activeModal.dismiss('anuluj')">Anuluj</button>
   <button (click)="dodaj()">Dodaj</button>
 </div>

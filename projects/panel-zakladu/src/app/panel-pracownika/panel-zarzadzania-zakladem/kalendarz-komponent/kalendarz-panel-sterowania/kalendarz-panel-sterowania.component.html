@@ -4,7 +4,8 @@
     <app-select-dotyczy
       (dotyczyChange)="Kalendarz_.wybranyPracownik.next($event)"
       (ustawChange)="Kalendarz_.pobierzDane()"
-      [ustaw]="Kalendarz_.wybranyPracownik"></app-select-dotyczy>
+      [ustaw]="Kalendarz_.wybranyPracownik"
+      [wyswietlanieOpcjiZakladu]="true"></app-select-dotyczy>
   </div>
   <div class="sterowanie">
     <button (click)="teraz()" *ngIf="Kalendarz_.licznikPrzyciskow != 0" class="jakiTydzienButton teraz">Teraz</button>

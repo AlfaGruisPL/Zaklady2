@@ -1,28 +1,23 @@
 <div class="banner">
   <div class="logoINazwaZakladu">
     <div class="logo">
-      <img [src]="env.linkDoLogaStronyReklamowej | zdjecie|identyfikator" alt="logo zakładu">
+      <img [src]="env.linkDoLogaStronyReklamowej | zdjecie | identyfikator" alt="logo zakładu" />
     </div>
-    <div class="nazwa"><h1>{{danePodstawowe.danePodstawowe.nazwa}}</h1></div>
+    <div class="nazwa">
+      <h1>{{ danePodstawowe.danePodstawowe.nazwa }}</h1>
+    </div>
   </div>
   <div class="menu">
     <ul>
-      <li (click)="nawigacja.przeniesDoPanelu(nawigacja.nav.ONas)">
-        O nas
-      </li>
-      <li (click)="nawigacja.przeniesDoPanelu(nawigacja.nav.pracownicy)">
-        Pracownicy
-      </li>
-      <li (click)="nawigacja.przeniesDoPanelu(nawigacja.nav.rejestracja)">
-        Rejestracja
-      </li>
-      <li (click)="nawigacja.przeniesDoPanelu(nawigacja.nav.mapa)">
-        Mapa
-      </li>
+      <li (click)="nawigacja.przeniesDoPanelu(nawigacja.nav.rejestracja)">Rejestracja</li>
+      <li (click)="nawigacja.przeniesDoPanelu(nawigacja.nav.ONas)">O nas</li>
+      <li (click)="nawigacja.przeniesDoPanelu(nawigacja.nav.pracownicy)">Pracownicy</li>
+      <li (click)="nawigacja.przeniesDoPanelu(nawigacja.nav.mapa)">Mapa</li>
     </ul>
   </div>
   <div class="napiszDoNasPrzycisk">
-    <button class="napiszDoNasButton" (click)="nawigacja.przeniesDoPanelu(nawigacja.nav.napiszNam)">Napisz do nas
+    <button (click)="nawigacja.przeniesDoPanelu(nawigacja.nav.napiszNam)" class="napiszDoNasButton">
+      Napisz do nas
     </button>
   </div>
 </div>

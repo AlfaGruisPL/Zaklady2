@@ -3,4 +3,5 @@ export enum Bledy {
   zaCzestaZmianaIdentyfiaktora = 'Nie można zmieniać identyfikatora częściej niż raz na 5 minut',
   przerwaNieZostalaDodana = 'Przerwa nie została dodana',
   dzienWolnyNieUtworzony = 'Dzien wolny nie został utworzony',
+  bladUsuwania = 'Usuwanie nie udało się',
 }

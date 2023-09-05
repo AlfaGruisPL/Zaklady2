@@ -3,4 +3,5 @@ export class PrzerwyDniWolne {
   data = new Date();
   poczatek = new Date();
   koniec = new Date();
+  opis = '';
 }

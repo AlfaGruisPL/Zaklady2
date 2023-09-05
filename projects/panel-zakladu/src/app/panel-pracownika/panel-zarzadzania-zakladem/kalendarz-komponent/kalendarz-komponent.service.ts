@@ -15,7 +15,7 @@ import { KalendarzModyfikacjaTerminuComponent } from './kalendarz-modyfikacja-te
 import { TokenService } from '../../../serwisy/token.service';
 import { HttpParams } from '@angular/common/http';
 import { dniTygodnia, DzienTygodnia } from './dzien-tygodnia';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -37,6 +37,7 @@ export class KalendarzKomponentService {
   loadingData = false;
   dni = dniTygodnia;
   licznikPrzyciskow = 0;
+  pobieranieDanychObservable = new Subject();
   public miesiace: string[] = [
     'Styczeń',
     'Luty',
@@ -88,7 +89,8 @@ export class KalendarzKomponentService {
       );
   }
 
-  public pobierzDane() {
+  public pobierzDane(silent = false) {
+    if (!silent) this.pobieranieDanychObservable.next(null);
     this.loadingData = true;
     let params = new HttpParams();
     params = params.append('kursor', this.kursor.getTime());

@@ -14,7 +14,7 @@ export class ZegarComponent implements OnInit {
       this.initLocalClocks();
       setInterval(() => {
         this.initLocalClocks();
-      }, 20000); //10 minut
+      }, 1000); //10 minut
       this.setUpMinuteHands();
       this.moveSecondHands();
     }

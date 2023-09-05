@@ -44,10 +44,10 @@ export class SelectDotyczyComponent implements OnInit, OnDestroy {
       this.sub1 = this.ustaw.subscribe(dane => {
         //blokada przed przedwczesnym ponownym pobieraniu danych
         if (!this.zablokowanyChangeDetection) {
-          if (!this.wyswietlanieOpcjiZakladu && dane != 0) {
-            this.dotyczy = dane;
-            this.ustawChange.emit();
-          }
+          //if (!(this.wyswietlanieOpcjiZakladu && dane == 0)) {
+          this.dotyczy = dane;
+          this.ustawChange.emit();
+          //    }
         }
       });
     }
