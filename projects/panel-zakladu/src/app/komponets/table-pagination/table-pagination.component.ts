@@ -33,7 +33,8 @@ export class TablePaginationComponent implements OnChanges {
   @Output()
   changeData = new EventEmitter();
   kback = 0;
-  private this2 = this;
+  @Input()
+  disabled = false;
 
   ngAfterViewInit() {
     setTimeout(() => {

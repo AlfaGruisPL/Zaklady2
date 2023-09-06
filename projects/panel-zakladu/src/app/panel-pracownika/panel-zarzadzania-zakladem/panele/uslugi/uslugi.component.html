@@ -6,8 +6,8 @@
       </span>
     </div>
     <div class="uslugiDiv">
-      <div class="divPlus">
-        <fa-icon [icon]="fontAwesome.plusWKolku" class="buttonPlus" (click)="dodajWiersz()"></fa-icon>
+      <div [ngClass]="{ disabled: ladoowanieDanych }" class="divPlus">
+        <fa-icon (click)="dodajWiersz()" [icon]="fontAwesome.plusWKolku" class="buttonPlus"></fa-icon>
       </div>
 
       <div class="daneZakladuTab">
@@ -22,33 +22,33 @@
           </tr>
           <tr *ngFor="let usluga of listaUslug; let index = index">
             <td>
-              <fa-icon [icon]="fontAwesome.minusWKolku" class="buttonMinus" (click)="usunWiersz(index)"></fa-icon>
+              <fa-icon (click)="usunWiersz(index)" [icon]="fontAwesome.minusWKolku" class="buttonMinus"></fa-icon>
             </td>
             <td class="zlotyID">{{ index + 1 }}.</td>
             <td>
               <input
-                class="logInputZaklad"
-                style="width: 600px"
                 [(ngModel)]="usluga.nazwa"
-                [ngModelOptions]="{ standalone: true }" />
+                [ngModelOptions]="{ standalone: true }"
+                class="logInputZaklad"
+                style="width: 600px" />
             </td>
             <td>
               <input
-                type="number"
+                [(ngModel)]="usluga.cena"
+                [ngModelOptions]="{ standalone: true }"
+                class="logInputZaklad"
                 min="0.00"
                 step="0.01"
-                class="logInputZaklad"
                 style="width: 110px"
-                [ngModelOptions]="{ standalone: true }"
-                [(ngModel)]="usluga.cena" />
+                type="number" />
             </td>
             <td>
               <input
-                type="number"
+                [(ngModel)]="usluga.czas"
+                [ngModelOptions]="{ standalone: true }"
                 class="logInputZaklad"
                 style="width: 130px"
-                [ngModelOptions]="{ standalone: true }"
-                [(ngModel)]="usluga.czas" />
+                type="number" />
             </td>
             <td class="pracownicyTd">
               <fa-icon
@@ -60,7 +60,7 @@
         </table>
       </div>
       <div class="divButton">
-        <button class="buttonZapisz" (click)="zapisz()">Zapisz</button>
+        <button (click)="zapisz()" [disabled]="ladoowanieDanych" class="buttonZapisz">Zapisz</button>
       </div>
     </div>
   </div>

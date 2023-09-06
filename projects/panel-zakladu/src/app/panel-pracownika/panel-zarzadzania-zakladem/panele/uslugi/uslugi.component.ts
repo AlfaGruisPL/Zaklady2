@@ -16,6 +16,7 @@ import { KomunikatyService } from '../../../../serwisy/komunikaty.service';
 export class UslugiPracownikaComponent implements OnInit {
   public listaUslug: Array<Usluga> = [new Usluga()];
   public pracownicy: Array<Pracownik> = [];
+  public ladoowanieDanych = false;
 
   constructor(
     public fontAwesome: FontAwesomeService,
@@ -30,7 +31,7 @@ export class UslugiPracownikaComponent implements OnInit {
 
   @HostListener('window:beforeunload', ['$event'])
   unloadNotification($event: any): void {
-    console.log('test');
+    // console.log('test');
   }
 
   public dodajWiersz() {
@@ -81,11 +82,17 @@ export class UslugiPracownikaComponent implements OnInit {
   }
 
   private pobieranieDanych() {
-    this.listonosz.pobierz(Drzwi.uslugiPanel).then(dane => {
-      this.listaUslug = [];
-      Object.assign(this.listaUslug, dane['uslugi']);
-      this.pracownicy = [];
-      Object.assign(this.pracownicy, dane['pracownicy']);
-    });
+    this.ladoowanieDanych = true;
+    this.listonosz
+      .pobierz(Drzwi.uslugiPanel)
+      .then(dane => {
+        this.listaUslug = [];
+        Object.assign(this.listaUslug, dane['uslugi']);
+        this.pracownicy = [];
+        Object.assign(this.pracownicy, dane['pracownicy']);
+      })
+      .finally(() => {
+        this.ladoowanieDanych = false;
+      });
   }
 }

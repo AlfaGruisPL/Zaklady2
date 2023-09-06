@@ -2,32 +2,32 @@
   <div class="switchButtonDiv">
     <button
       (click)="filter = 'przyszle'; zmianaFiltra()"
-      class="switchButton"
-      [ngClass]="{ switchButtonAktywny: filter == 'przyszle' }">
+      [ngClass]="{ switchButtonAktywny: filter == 'przyszle' }"
+      class="switchButton">
       Przyszłe
     </button>
     <button
       (click)="filter = 'zakonczone'; zmianaFiltra()"
-      class="switchButton"
-      [ngClass]="{ switchButtonAktywny: filter == 'zakonczone' }">
+      [ngClass]="{ switchButtonAktywny: filter == 'zakonczone' }"
+      class="switchButton">
       Zakończone
     </button>
     <button
       (click)="filter = 'odwolane'; zmianaFiltra()"
-      class="switchButton"
-      [ngClass]="{ switchButtonAktywny: filter == 'odwolane' }">
+      [ngClass]="{ switchButtonAktywny: filter == 'odwolane' }"
+      class="switchButton">
       Odwołane
     </button>
   </div>
 </div>
-<table class="tablica" [ngClass]="{ tablicaLoading: pobieranieDanych }" #tablica>
+<table #tablica [ngClass]="{ tablicaLoading: pobieranieDanych }" class="tablica">
   <tr class="wyszukiwarka">
-    <td colspan="5" class="title">
+    <td class="title" colspan="5">
       <h3>Wizyty:</h3>
     </td>
-    <td colspan="5" class="wyszukiwarkaTD">
+    <td class="wyszukiwarkaTD" colspan="5">
       <fa-icon icon="magnifying-glass"></fa-icon>
-      <input placeholder="wyszukiwarka (wartość wartość2 itd.)" (keyup)="onSearchChange($event)" />
+      <input (keyup)="onSearchChange($event)" placeholder="wyszukiwarka (wartość wartość2 itd.)" />
     </td>
   </tr>
   <tr>
@@ -53,11 +53,11 @@
     <td>{{ wizyta.email }}</td>
     <td>{{ wizyta.uslugiTab.length }}</td>
     <td>
-      <div ngbDropdown container="body">
-        <button type="button" class="btn btn-outline-primary btn-sm" ngbDropdownToggle>Wybierz:</button>
+      <div container="body" ngbDropdown>
+        <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle type="button">Wybierz:</button>
 
         <div ngbDropdownMenu>
-          <button ngbDropdownItem (click)="wyswietl(wizyta)">Wyświetl</button>
+          <button (click)="wyswietl(wizyta)" ngbDropdownItem>Wyświetl</button>
           <button ngbDropdownItem>Odwołaj</button>
         </div>
       </div>
@@ -68,12 +68,14 @@
   </tr>
 </table>
 <div class="paggination">
-  <app-table-pagination [(page)]="strona"
-                        [(pageSize)]="pageSize"
-                        (pageChange)="pobierzDane()"
-                        (pageSizeChange)="pobierzDane()"
-                        #paggination
-                        [collectionSize]="iloscWizytOgolna"></app-table-pagination>
+  <app-table-pagination
+    #paggination
+    (pageChange)="pobierzDane()"
+    (pageSizeChange)="pobierzDane()"
+    [(page)]="strona"
+    [(pageSize)]="pageSize"
+    [collectionSize]="iloscWizytOgolna"
+    [disabled]="pobieranieDanych"></app-table-pagination>
 
   <!--<ngb-pagination
     [(page)]="strona"

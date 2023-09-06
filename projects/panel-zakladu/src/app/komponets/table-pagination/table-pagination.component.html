@@ -1,4 +1,4 @@
-<div class="paggination">
+<div [ngClass]="{ disabled: disabled }" class="paggination">
   <ngb-pagination
     (pageChange)="pageChange.emit($event)"
     [boundaryLinks]="true"
