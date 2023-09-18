@@ -32,6 +32,10 @@
 
   float: left;
 
+  @media (max-width: 800px) {
+    width: 95vw;
+  }
+
   h2 {
     text-align: center;
     width: 100%;
@@ -54,6 +58,13 @@
   justify-content: center;
   align-items: flex-start;
   padding: 10px;
+  @media (max-width: 900px) {
+    width: 95vw;
+  }
+  @media (max-width: 800px) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .napiszDoMnieButton {
@@ -74,5 +85,21 @@
     background-color: #b90b0b;
     border: 2px solid #a80505;
     cursor: pointer;
+  }
+}
+
+.napiszDoMnieButton2 {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .napiszDoMnieButton1 {
+    display: none;
+  }
+  .napiszDoMnieButton2 {
+    width: 100%;
+    text-align: right;
+    display: block;
+    padding: 10px 10px 0 0;
   }
 }

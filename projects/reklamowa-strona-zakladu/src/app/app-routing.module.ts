@@ -12,6 +12,10 @@ const routes: Routes = [
     path: '',
     component: OnePageStronaComponent,
   },
+  {
+    path: '**',
+    redirectTo: '',
+  },
 ];
 
 @NgModule({

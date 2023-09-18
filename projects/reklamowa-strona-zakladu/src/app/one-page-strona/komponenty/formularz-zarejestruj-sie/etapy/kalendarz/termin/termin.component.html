@@ -1,13 +1,14 @@
-<div class="termin" [ngStyle]="{'top':top,height:wysokosc}" (click)="wybierzTermin()"
-     [ngClass]="{'wybranyTermin':wybrany()}">
-  <h3>
-    {{termin.poczatek.getHours()}}:{{termin.poczatek.getMinutes()}} - {{termin.koniec.getHours()}}
-    :{{termin.koniec.getMinutes()}}
+<div
+  #element
+  (click)="wybierzTermin()"
+  [ngClass]="{ wybranyTermin: wybrany() }"
+  [ngStyle]="{ top: top, height: sprawdzWysokosc() + 'px' }"
+  class="termin">
+  <h3 *ngIf="element.clientHeight > 25 || wybrany()">
+    <span>{{ termin.poczatek | date : 'hh:mm' }}</span> <span class="kreska">-</span>
+    <span>{{ termin.koniec | date : 'hh:mm' }}</span>
   </h3>
 
-  <div class="wybierz" *ngIf="!wybrany()">Wybierz</div>
-  <div class="anuluj" *ngIf="wybrany()" (click)="anuluj()">Anuluj
-  </div>
-
-
+  <!--<div *ngIf="!wybrany()" class="wybierz">Wybierz</div>-->
+  <div *ngIf="wybrany()" class="anuluj">Anuluj</div>
 </div>

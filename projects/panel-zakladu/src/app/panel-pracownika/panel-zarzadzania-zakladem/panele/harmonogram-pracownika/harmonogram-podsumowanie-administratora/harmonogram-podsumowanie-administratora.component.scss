@@ -7,6 +7,9 @@ $colorRamki: 2px solid #afb0b4;
   h4 {
     width: 100%;
     text-align: center;
+    @media (max-width: 700px) {
+      font-size: 15px;
+    }
   }
 
   table:nth-of-type(1) {
@@ -16,11 +19,9 @@ $colorRamki: 2px solid #afb0b4;
 
   table:nth-of-type(2) {
     border-bottom: $colorRamki;
-
   }
 
   table:nth-of-type(3) {
-
     border-right: $colorRamki;
     border-bottom: $colorRamki;
   }
@@ -28,11 +29,20 @@ $colorRamki: 2px solid #afb0b4;
   table {
     padding: 10px;
 
+    td {
+      @media (max-width: 700px) {
+        font-size: 12px;
+      }
+    }
+
     th {
       font-size: 15px;
       letter-spacing: 1px;
       padding-right: 10px;
       text-shadow: 0px 0px 1px black;
+      @media (max-width: 700px) {
+        font-size: 12px;
+      }
     }
   }
 }

@@ -1,6 +1,18 @@
 $borderSelect: 2px inset #4096e3;
 
-@import "~@ng-select/ng-select/themes/default.theme.css";
+@import '~@ng-select/ng-select/themes/default.theme.css';
+.__se__solid {
+  opacity: 1 !important;
+  width: 100% !important;
+}
+
+html {
+  height: 100dvh;
+}
+
+.tekst p {
+  width: 100%;
+}
 
 body {
   margin: 0;
@@ -31,6 +43,12 @@ html {
   border-radius: 20px;
   padding-left: 10px;
   padding-right: 10px;
+  @media (max-width: 500px) {
+    width: 200px;
+  }
+  @media (max-width: 400px) {
+    width: 170px;
+  }
 
   .ng-placeholder {
     color: silver;
@@ -52,6 +70,10 @@ html {
   width: 280px !important;
   border: $borderSelect;
   border-top: none;
+  @media (max-width: 500px) {
+    border-top: solid;
+    width: min-content !important;
+  }
 }
 
 .ng-select.selectPracownicy .ng-value-label {
@@ -60,6 +82,21 @@ html {
   font-family: math;
   text-shadow: 0px 0px 1px black;
   font-size: 18px !important;
+  @media (max-width: 900px) {
+    font-size: 16px !important;
+  }
+  @media (max-width: 700px) {
+    font-size: 15px !important;
+  }
+  @media (max-width: 600px) {
+    font-size: 14px !important;
+  }
+  @media (max-width: 500px) {
+    font-size: 12px !important;
+  }
+  @media (max-width: 400px) {
+    font-size: 11px !important;
+  }
 }
 
 .ng-select.selectPracownicy .ng-dropdown-panel-items {
@@ -76,5 +113,3 @@ html {
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
-
-

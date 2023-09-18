@@ -1,44 +1,27 @@
 <div class="rejestracja">
   <div class="naglowek">
-    <span>Rejestracja na wizyte</span>
+    <span>Rejestracja na wizytę</span>
   </div>
   <div class="kroki">
     <div
-      class="kolko kolko1"
+      *ngFor="let k of [].constructor(6); let index = index"
       [ngClass]="{
         kolkoJuzPo: index + 1 < krok,
         kolkoAktywne: index + 1 == krok
       }"
-      *ngFor="let k of [].constructor(6); let index = index"
-    >
+      class="kolko kolko1">
       <p>{{ index + 1 }}</p>
     </div>
     <!-- Wybór pracownika -> wybór usługi -> wpisanieDanych-->
   </div>
   <div class="formularz">
     <ng-container [ngSwitch]="krok">
-      <app-wybor-pracownika
-        *ngSwitchCase="1"
-        (wyslijKrok)="ustawKrok($event)"
-      ></app-wybor-pracownika>
-      <app-wybor-uslug
-        *ngSwitchCase="2"
-        (wyslijKrok)="ustawKrok($event)"
-      ></app-wybor-uslug>
-      <app-kalendarz
-        *ngSwitchCase="3"
-        (wyslijKrok)="ustawKrok($event)"
-      ></app-kalendarz>
-      <app-wpisanie-danych
-        *ngSwitchCase="4"
-        (wyslijKrok)="ustawKrok($event)"
-      ></app-wpisanie-danych>
-      <app-weryfikacja *ngSwitchCase="5" (wyslijKrok)="ustawKrok($event)">
-      </app-weryfikacja>
-      <app-podsumowanie
-        *ngSwitchCase="6"
-        (wyslijKrok)="ustawKrok($event)"
-      ></app-podsumowanie>
+      <app-wybor-pracownika (wyslijKrok)="ustawKrok($event)" *ngSwitchCase="1"></app-wybor-pracownika>
+      <app-wybor-uslug (wyslijKrok)="ustawKrok($event)" *ngSwitchCase="2"></app-wybor-uslug>
+      <app-kalendarz (wyslijKrok)="ustawKrok($event)" *ngSwitchCase="3"></app-kalendarz>
+      <app-wpisanie-danych (wyslijKrok)="ustawKrok($event)" *ngSwitchCase="4"></app-wpisanie-danych>
+      <app-weryfikacja (wyslijKrok)="ustawKrok($event)" *ngSwitchCase="5"> </app-weryfikacja>
+      <app-podsumowanie (wyslijKrok)="ustawKrok($event)" *ngSwitchCase="6"></app-podsumowanie>
     </ng-container>
   </div>
 </div>

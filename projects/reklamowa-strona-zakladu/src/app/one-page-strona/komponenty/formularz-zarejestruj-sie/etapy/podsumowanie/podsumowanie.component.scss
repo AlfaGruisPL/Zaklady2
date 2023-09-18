@@ -12,6 +12,9 @@
   min-height: 700px;
   padding-top: 40px;
   top: 44px;
+  @media (max-width: 800px) {
+    margin-left: 40px;
+  }
 }
 
 .textDiv {
@@ -21,18 +24,35 @@
 
 table {
   margin-top: 52px;
+  @media (max-width: 800px) {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 }
 
 .naglowek2 {
   display: block;
 }
 
-.naglowek2, .naglowek3 {
+.naglowek2,
+.naglowek3 {
   font-size: 21px;
   font-weight: bold;
   font-family: math;
   position: relative;
   z-index: 12;
+  @media (max-width: 800px) {
+    font-size: 18px;
+  }
+  @media (max-width: 600px) {
+    font-size: 16px;
+  }
+  @media (max-width: 500px) {
+    font-size: 13px;
+  }
+  @media (max-width: 300px) {
+    font-size: 11px;
+  }
 }
 
 .naglowek3 {
@@ -58,7 +78,6 @@ table {
   width: 400px;
 }
 */
-
 
 .pdf {
   float: left;
@@ -105,6 +124,16 @@ table {
     top: -04px;
     height: 880px;
     width: 1070px;
+    @media (max-width: 1070px) {
+      height: 680px;
+      width: 100%;
+      opacity: 0.4;
+      left: 10px;
+    }
+    @media (max-width: 680px) {
+      opacity: 0.5;
+      width: 95%;
+    }
   }
 }
 
@@ -133,5 +162,17 @@ table {
 }
 
 .dane {
+  @media (max-width: 1200px) {
+    margin-left: 80px;
+    margin-right: 75px;
+  }
 
+  @media (max-width: 1070px) {
+    margin-left: 70px;
+    margin-right: 65px;
+  }
+  @media (max-width: 680px) {
+    margin-left: 50px;
+    margin-right: 35px;
+  }
 }

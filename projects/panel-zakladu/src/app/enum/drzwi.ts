@@ -11,7 +11,7 @@ export enum Drzwi {
   logowanieKlienta = '/klient/auth/login',
   daneMojZakladPracownik = '/zaklady/daneZakladu',
   podreczneDanePobierz = '/panelPracownika/daneStartowe',
-  pobierzPracownikow = '/uzytkownicyWZakladach/pracownicyZakladu',
+  pobierzPracownikow = '/listaPracownikow/pracownicyZakladu',
   dodaniePracownikaDoTablicy = '/uzytkownicyWZakladach/dodawaniePracownika',
   pobierzPracownikowMojZaklad = '/uzytkownicyWZakladach/pracownikWidocznosc',
   aktualizujPracownikowMojZaklad = '/uzytkownicyWZakladach/pracownikWidocznosc',
@@ -77,4 +77,9 @@ export enum Drzwi {
   UstawieniaStronyReklamowej = '/stronaReklamowaDane/ustawieniaStronyReklamowej',
   banerStronyReklamowej = '/pliki/banerStronyReklamowej',
   logoStronyReklamowej = '/pliki/logoStronyReklamowej',
+
+  //podsumowanie
+  podsumowanieDaneDoWykresu = '/wizyty/daneDoWykresuPodsumowanie',
+  podsumowanieTabela = '/podsumowanieZakladu/tabela',
+  podsumowanieInformacje = '/podsumowanieZakladu/informacje',
 }

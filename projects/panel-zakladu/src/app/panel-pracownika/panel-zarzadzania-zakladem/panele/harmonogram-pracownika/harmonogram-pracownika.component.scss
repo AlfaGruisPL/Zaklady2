@@ -6,10 +6,12 @@ h2 {
   width: 100%;
   display: flex;
   justify-content: center;
+  @media (max-width: 1250px) {
+    display: none;
+  }
 
   table {
   }
-
 }
 
 .wizyta {
@@ -19,17 +21,21 @@ h2 {
   justify-content: center;
   gap: 50px;
   box-sizing: border-box;
+  @media (max-width: 850px) {
+    flex-direction: column;
+
+    align-content: center;
+  }
 
   .aktualna {
     width: 300px;
     background: red;
-
+    max-width: 450px;
   }
 
   .nastepna {
     width: 300px;
     background: red;
+    max-width: 450px;
   }
 }
-
-

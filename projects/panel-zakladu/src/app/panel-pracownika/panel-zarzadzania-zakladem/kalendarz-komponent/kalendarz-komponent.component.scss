@@ -1,15 +1,39 @@
 $kolor: #c4c4c4;
 
-
 .naglowkiTabeli {
-
   text-align: center;
   line-height: 14px;
   //  padding-bottom: 10px;
+  line-height: 21px;
 
   span {
     font-size: 24px;
+    @media (max-width: 600px) {
+      font-size: 12px;
+    }
+    position: relative;
 
+    span:first-child {
+      @media (max-width: 600px) {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 22px;
+        display: block;
+        height: 1.2em;
+        white-space: nowrap;
+      }
+    }
+
+    span:last-child {
+      width: 0px;
+      height: 65px;
+      @media (max-width: 600px) {
+        position: relative;
+        top: -30px;
+        display: block;
+        transform: rotate(74deg);
+      }
+    }
   }
 }
 
@@ -20,7 +44,9 @@ $kolor: #c4c4c4;
   font-size: 15px;
   color: #404040;
   text-shadow: 0px 0px 1px black;
-
+  @media (max-width: 600px) {
+    font-size: 10px;
+  }
 }
 
 .wyswietlaneDniSpan {
@@ -29,11 +55,20 @@ $kolor: #c4c4c4;
   font-weight: bold;
   color: #404040;
   text-shadow: 0px 0px 1px black;
+  padding-bottom: 10px;
+  @media (max-width: 600px) {
+    font-size: 13px;
+  }
+}
+
+.wyswietlaneDniSpan.data {
+  font-size: 15px;
+  @media (max-width: 600px) {
+    font-size: 12px;
+  }
 }
 
 .godzina {
-
-
   tr:first-of-type {
     border-top: 1px solid $kolor;
     border-bottom: 1px solid $kolor;
@@ -59,16 +94,13 @@ $kolor: #c4c4c4;
       font-family: math;
       display: block;
       font-size: 15px;
-
     }
 
     &:last-of-type {
       border-right: 1px solid $kolor;
     }
-
   }
 }
-
 
 .pracownikDropDown {
   font-size: 10px;
@@ -87,7 +119,6 @@ h2 {
   height: min-content;
 
   span {
-
   }
 }
 
@@ -102,6 +133,10 @@ $kolorPrzycisku: #313131;
     padding: 0;
     border-color: $kolorPrzycisku;
     color: $kolorPrzycisku;
+    @media (max-width: 800px) {
+      white-space: normal;
+      font-size: 7px;
+    }
   }
 
   div {
@@ -119,18 +154,14 @@ $kolorPrzycisku: #313131;
 }
 
 .poleKlikalne {
-
   &:hover {
     cursor: pointer;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.44);
     //  background: rgba(185, 185, 185, 0.32) !important;
-
   }
 }
 
 .dzisiejszaData {
-
-
   span {
     color: #de0000;
     text-shadow: 1px 1px 1px #000000;
@@ -140,6 +171,9 @@ $kolorPrzycisku: #313131;
 .dzienInfo {
   text-align: center;
   font-weight: bold;
+  @media (max-width: 600px) {
+    font-size: 6px;
+  }
 }
 
 .pracownikIFilter {
@@ -147,7 +181,6 @@ $kolorPrzycisku: #313131;
   display: flex;
   padding-top: 20px;
 }
-
 
 table.ladowanieDanych {
   position: relative;
@@ -159,11 +192,10 @@ table.ladowanieDanych {
         filter: blur(4px);
       }
     }
-
   }
 
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -175,13 +207,13 @@ table.ladowanieDanych {
   }
 
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     top: calc(50% - 50px);
     left: calc(50% - 50px);
     width: 100px;
     height: 100px;
-    background-image: url("../../../../assets/gear.png");
+    background-image: url('../../../../assets/gear.png');
     background-size: 100px 100px;
     display: flex;
     justify-content: center;

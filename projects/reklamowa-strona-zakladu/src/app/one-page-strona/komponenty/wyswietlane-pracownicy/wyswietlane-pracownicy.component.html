@@ -9,54 +9,45 @@
     <h3 class="nasiPracownicy">Nasi pracownicy</h3>
   </div>
   <div class="wierszPracownikow">
-    <ng-container *ngIf="listaPracownikow.length <= 4 else slider">
+    <ng-container *ngIf="listaPracownikow.length <= 4; else slider">
       <div
-        class="pracownik"
+        (click)="czyPracownikKlikniety = true; daneKliknietegoPracownika = pracownik"
         *ngFor="let pracownik of listaPracownikow"
-        (click)="
-        czyPracownikKlikniety = true; daneKliknietegoPracownika = pracownik
-      "
-      >
+        class="pracownik">
         <div class="imieNazwisko">
           <span> {{ pracownik.imie }} {{ pracownik.nazwisko }} </span>
         </div>
         <div class="zdjecie">
-          <img
-            [src]="'http://fenek.tech:3000/pliki/wyswietlZdjecieProfilowe/'+pracownik.id |zdjecie"
-          />
+          <img [src]="'http://fenek.tech:3000/pliki/wyswietlZdjecieProfilowe/' + pracownik.id | zdjecie" />
         </div>
         <div class="popatrz">
           <button class="zobacz"><span>Zobacz</span></button>
         </div>
       </div>
     </ng-container>
-
   </div>
 </div>
 <ng-template #slider>
-
-  <div class="glider-contain pracownicy" style="width: 90%;margin-left: 20px;margin-right: 20px">
+  <div class="glider-contain pracownicy" style="width: 90%; margin-left: 20px; margin-right: 20px">
     <div class="glider">
-      <div class="pracownik" *ngFor="let pracownik of listaPracownikow" (click)="
-        czyPracownikKlikniety = true; daneKliknietegoPracownika = pracownik
-      ">
+      <div
+        (click)="czyPracownikKlikniety = true; daneKliknietegoPracownika = pracownik"
+        *ngFor="let pracownik of listaPracownikow"
+        class="pracownik">
         <div class="imieNazwisko">
           <span> {{ pracownik.imie }} {{ pracownik.nazwisko }} </span>
         </div>
         <div class="zdjecie">
-          <img
-            [src]="'http://fenek.tech:3000/pliki/wyswietlZdjecieProfilowe/'+pracownik.id |zdjecie"
-          />
+          <img [src]="'http://fenek.tech:3000/pliki/wyswietlZdjecieProfilowe/' + pracownik.id | zdjecie" />
         </div>
         <div class="popatrz">
           <button class="zobacz"><span>Zobacz</span></button>
         </div>
       </div>
-
     </div>
 
     <button aria-label="Previous" class="glider-prev">«</button>
     <button aria-label="Next" class="glider-next">»</button>
-    <div role="tablist" class="dots"></div>
+    <div class="dots" role="tablist"></div>
   </div>
 </ng-template>

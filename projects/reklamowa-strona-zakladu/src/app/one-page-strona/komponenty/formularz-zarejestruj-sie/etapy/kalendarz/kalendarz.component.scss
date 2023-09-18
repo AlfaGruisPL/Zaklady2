@@ -2,6 +2,13 @@ $kolor: #d4e4fc;
 .jakiMiesiacDiv {
   width: 300px;
   text-align: center;
+  @media (max-width: 700px) {
+    width: 40%;
+    max-width: 300px;
+  }
+  @media (max-width: 600px) {
+    width: 40%;
+  }
 
   span {
     font-family: math;
@@ -9,6 +16,12 @@ $kolor: #d4e4fc;
     font-weight: bold;
     color: #013a70;
     text-shadow: 0px 0px 1px black;
+    @media (max-width: 700px) {
+      font-size: 15px;
+    }
+    @media (max-width: 600px) {
+      font-size: 12px;
+    }
   }
 }
 
@@ -21,12 +34,59 @@ $kolor: #d4e4fc;
   text-shadow: 0px 0px 1px black;
 }
 
+.wyswietlaneGodzinySpan.tekst {
+  font-size: 18px;
+  @media (max-width: 700px) {
+    font-size: 15px;
+  }
+  @media (max-width: 500px) {
+    visibility: hidden;
+  }
+}
+
 .wyswietlaneDniSpan {
   font-family: math;
   font-size: 18px;
   font-weight: bold;
   color: #404040;
   text-shadow: 0px 0px 1px black;
+
+  &.krotkie {
+    display: none;
+  }
+
+  @media (max-width: 700px) {
+    font-size: 15px;
+  }
+  @media (max-width: 600px) {
+    font-size: 12px;
+    &:first-of-type {
+      width: calc(100vw / 10);
+      text-overflow: ellipsis;
+      overflow: hidden;
+      height: 1.2em;
+      display: block;
+      white-space: nowrap;
+    }
+    &.krotkie {
+      display: block;
+      text-align: center;
+    }
+    &.dlugie {
+      display: none;
+    }
+  }
+
+  &:last-of-type {
+    font-size: 16px;
+  }
+}
+
+.wyswietladnieDniaTh {
+  width: 125px;
+  @media (max-width: 700px) {
+    width: auto;
+  }
 }
 
 .godzina {
@@ -58,6 +118,9 @@ $kolor: #d4e4fc;
   width: 100%;
   display: flex;
   justify-content: center;
+  @media (max-width: 700px) {
+    padding-bottom: 10px;
+  }
 }
 
 h2 {
@@ -87,6 +150,18 @@ h2 {
   font-family: math;
   letter-spacing: 1px;
 
+  @media (max-width: 700px) {
+    font-size: 14px;
+  }
+  @media (max-width: 500px) {
+    width: min-content;
+    font-size: 12px;
+    height: 26px;
+    span {
+      display: none;
+    }
+  }
+
   &:hover:not([disabled]) {
     cursor: pointer;
     background: #243cc0;
@@ -105,5 +180,24 @@ h2 {
     color: #af0000 !important;
     font-weight: bold;
     font-size: 17px;
+    @media (max-width: 700px) {
+      font-size: 14px;
+    }
+    @media (max-width: 400px) {
+      font-size: 13px;
+    }
+  }
+}
+
+.dzienBezPracy {
+  width: 100%;
+  text-align: center;
+  display: block;
+  color: #343434;
+  @media (max-width: 700px) {
+    font-size: 3px;
+  }
+  @media (max-width: 400px) {
+    font-size: 1px;
   }
 }

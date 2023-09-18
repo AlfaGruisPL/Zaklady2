@@ -10,23 +10,25 @@
       <th>Cena</th>
       <th>Wybierz</th>
     </tr>
-    <tr *ngFor="let usluga of uslugi();let index = index" [ngClass]="{'niedostepnaUsluga':!czyWykonuje(usluga)}">
-      <td class="uslugiSpan" style="min-width: 80px">{{index + 1}}.</td>
-      <td class="uslugiSpan" style="min-width: 550px;">{{usluga.nazwa}}</td>
-      <td class="uslugiSpan" style="min-width: 100px">{{usluga.cena}} złotych</td>
+    <tr *ngFor="let usluga of uslugi(); let index = index" [ngClass]="{ niedostepnaUsluga: !czyWykonuje(usluga) }">
+      <td class="uslugiSpan" class="td1" style="">{{ index + 1 }}.</td>
+      <td class="uslugiSpan" class="td2" style="">{{ usluga.nazwa }}</td>
+      <td class="uslugiSpan" class="td3" style="">{{ usluga.cena }} złotych</td>
 
-      <td style="min-width: 100px; text-align: center">
-
-        <input class="chekboxUsluga" type="checkbox" [(ngModel)]="usluga.wybrane" *ngIf="czyWykonuje(usluga)"/>
-        <span class="spanNiedostepna" *ngIf="!czyWykonuje(usluga)"
-              title="Ta usługa jest nieobsługiwana przez wybranego pracownika, wybierz innego pracownika">Niedostępne</span>
+      <td class="td4">
+        <input *ngIf="czyWykonuje(usluga)" [(ngModel)]="usluga.wybrane" class="chekboxUsluga" type="checkbox" />
+        <span
+          *ngIf="!czyWykonuje(usluga)"
+          class="spanNiedostepna"
+          title="Ta usługa jest nieobsługiwana przez wybranego pracownika, wybierz innego pracownika"
+          >Niedostępne</span
+        >
       </td>
     </tr>
   </table>
-
+  <span *ngIf="niewybranaUsluga" class="czerwone"><br />Wybierz usługę,aby przejść dalej</span>
 </div>
 <div class="divNaPrzycisk">
-  <span class="czerwone" *ngIf="niewybranaUsluga">Wybierz usługę,aby przejść dalej</span>
-  <button class="buttonDalej" (click)="przejdzDalej()">Dalej</button>
-  <button class="buttonCofnij" (click)="cofnij()">Cofnij</button>
+  <button (click)="przejdzDalej()" class="buttonDalej">Dalej</button>
+  <button (click)="cofnij()" class="buttonCofnij">Cofnij</button>
 </div>

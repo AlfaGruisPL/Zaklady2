@@ -16,10 +16,18 @@ export class DzienTygodnia {
     return dzien + '.' + miesiac + '.' + k.getFullYear();
   }
 
+  samaDatBR() {
+    const k = this.data;
+    const miesiac = k.getMonth() + 1 < 10 ? '0' + (k.getMonth() + 1) : k.getMonth() + 1;
+    const dzien = k.getDate() < 10 ? '0' + k.getDate() : k.getDate();
+    return dzien + '<br>' + miesiac + '<br>' + k.getFullYear();
+  }
+
   ustawDate() {
     const teraz = this.data;
-    const dzienDzis = teraz.getDate() - teraz.getDay() - (0 - teraz.getDay());
-    this.data = new Date(teraz.setDate(dzienDzis - (teraz.getDay() - 1) + this.dzien));
+    const currentDayOfWeek = teraz.getDay();
+    const daysToSubtract = (currentDayOfWeek + 6) % 7;
+    this.data.setDate(this.data.getDate() - daysToSubtract + this.dzien);
   }
 }
 

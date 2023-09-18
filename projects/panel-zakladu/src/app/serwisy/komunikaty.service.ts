@@ -45,11 +45,7 @@ export class KomunikatyService {
   }
 
   public ZmianaIdentyfikatora() {
-    this.komunikaty.info(
-      'Zmiana identyfiaktora możliwa jest co 5 minut',
-      'UWAGA',
-      { timeOut: 10000 }
-    );
+    this.komunikaty.info('Zmiana identyfiaktora możliwa jest co 5 minut', 'UWAGA', { timeOut: 10000 });
     this.komunikaty.warning(
       'Zmiana identyfikatora zmienia adres logowania do panelu administratora oraz do strony reklamowej.',
       'UWAGA',
@@ -84,10 +80,7 @@ export class KomunikatyService {
   }
 
   public wyswietlenieBladNumer(numer: BledyNumery) {
-    this.komunikaty.error(
-      'Wystąpił błąd numer ' + numer + ' Zgłoś numer błędu administratoru',
-      'Błąd'
-    );
+    this.komunikaty.error('Wystąpił błąd numer ' + numer + ' Zgłoś numer błędu administratoru', 'Błąd');
   }
 
   public wylogowanieUdane() {
@@ -107,10 +100,7 @@ export class KomunikatyService {
   }
 
   public kontoNieAktywowane_zabrakloPieniedzy() {
-    this.komunikaty.error(
-      'Twoje konto nie zostało aktywowane, za mało funduszy na koncie',
-      'Bląd'
-    );
+    this.komunikaty.error('Twoje konto nie zostało aktywowane, za mało funduszy na koncie', 'Bląd');
   }
 
   public kontoNieAktywowane() {
@@ -126,24 +116,15 @@ export class KomunikatyService {
   }
 
   public zdjecieProfiloweZmodyfikowane() {
-    this.komunikaty.success(
-      'Zdjęcie profilowe pracownika zostało zmienione',
-      'Udane'
-    );
+    this.komunikaty.success('Zdjęcie profilowe pracownika zostało zmienione', 'Udane');
   }
 
   public zdjecieProfiloweNieZmodyfikowane() {
-    this.komunikaty.error(
-      'Zdjęcie profilowe pracownika nie zostało zmienione',
-      'Bląd'
-    );
+    this.komunikaty.error('Zdjęcie profilowe pracownika nie zostało zmienione', 'Bląd');
   }
 
   public dodaniePracownikaNieUdane() {
-    this.komunikaty.error(
-      'Pracownik  nie został dodany, skontaktuj się z administratorem',
-      'Udane'
-    );
+    this.komunikaty.error('Pracownik  nie został dodany, skontaktuj się z administratorem', 'Udane');
   }
 
   public modyfikowaniePracownikaUdane() {
@@ -151,10 +132,7 @@ export class KomunikatyService {
   }
 
   public modyfikowaniePracownikaNieUdane() {
-    this.komunikaty.error(
-      'Dane o pracowniku nie zostały zmodyfikowane, skontaktuj się z administratorem',
-      'Udane'
-    );
+    this.komunikaty.error('Dane o pracowniku nie zostały zmodyfikowane, skontaktuj się z administratorem', 'Udane');
   }
 
   public pracownikUsuniety() {
@@ -162,58 +140,34 @@ export class KomunikatyService {
   }
 
   public pracownikNieUsuniety() {
-    this.komunikaty.error(
-      'Dane o pracowniku nie zostały usunięte, skontaktuj się z administratorem',
-      'Udane'
-    );
+    this.komunikaty.error('Dane o pracowniku nie zostały usunięte, skontaktuj się z administratorem', 'Udane');
   }
 
   public pracownikZarchiwizowany() {
-    this.komunikaty.success(
-      "Pracownik został przeniesiony do tabeli 'Archiwum'",
-      'Udane'
-    );
+    this.komunikaty.success("Pracownik został przeniesiony do tabeli 'Archiwum'", 'Udane');
   }
 
   public pracownikPrzywrocony() {
-    this.komunikaty.success(
-      "Pracownik został przywrocony do tabeli 'Dostępni'",
-      'Udane'
-    );
+    this.komunikaty.success("Pracownik został przywrocony do tabeli 'Dostępni'", 'Udane');
   }
 
   public pracownikNiePrzywrocony() {
-    this.komunikaty.error(
-      "Pracownik nie został przywrocony do tabeli 'Dostępni'",
-      'Udane'
-    );
+    this.komunikaty.error("Pracownik nie został przywrocony do tabeli 'Dostępni'", 'Udane');
   }
 
   public pracownikNieZarchiwizowany() {
-    this.komunikaty.error(
-      "Pracownik nie został przeniesiony do tabeli 'Archiwum'",
-      'Udane'
-    );
+    this.komunikaty.error("Pracownik nie został przeniesiony do tabeli 'Archiwum'", 'Udane');
   }
 
   public pracownikDodanyDoUrlopu() {
-    this.komunikaty.success(
-      "Pracownik został przeniesiony  do tabeli 'Urlop'",
-      'Udane'
-    );
+    this.komunikaty.success("Pracownik został przeniesiony  do tabeli 'Urlop'", 'Udane');
   }
 
   public pracownikNieDodanyDoUrlopu() {
-    this.komunikaty.error(
-      "Pracownik nie został dodany do tabeli 'Urlop'",
-      'Udane'
-    );
+    this.komunikaty.error("Pracownik nie został dodany do tabeli 'Urlop'", 'Udane');
   }
 
   nieMaszUprawnienDoDodaniaWizyty() {
-    this.komunikaty.info(
-      'Nie możesz dodać wizyty innemu użytkownikowi',
-      'Brak uprawnień'
-    );
+    this.komunikaty.info('Nie możesz dodać wizyty innemu użytkownikowi', 'Brak uprawnień');
   }
 }

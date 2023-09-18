@@ -6,6 +6,9 @@
     text-align: center;
     padding-top: 20px;
     width: 100%;
+    @media (max-width: 750px) {
+      font-size: 20px;
+    }
   }
 }
 
@@ -22,11 +25,23 @@
     height: 400px;
     justify-content: flex-start;
     align-items: center;
+    @media (max-width: 550px) {
+      width: 90%;
+      height: auto;
+      .logInput {
+        width: 90%;
+      }
+    }
 
     form {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+      @media (max-width: 550px) {
+        table {
+          width: 100%;
+        }
+      }
     }
 
     .logowanieMarginButton {
@@ -52,7 +67,8 @@
     margin: 30px 0 0 0;
   }
 
-  &:focus, &:focus-visible {
+  &:focus,
+  &:focus-visible {
     border: 4px inset transparent;
   }
 
@@ -63,4 +79,7 @@
 
 .czerwoneKomunikaty {
   padding-top: 20px;
+  @media (max-width: 550px) {
+    padding-top: 10px;
+  }
 }

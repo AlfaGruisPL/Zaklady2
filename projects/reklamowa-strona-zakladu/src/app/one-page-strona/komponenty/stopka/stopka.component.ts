@@ -9,8 +9,7 @@ import { DanePodstawoweService } from '../../../serwisy/dane-podstawowe.service'
   styleUrls: ['./stopka.component.scss'],
 })
 export class StopkaComponent implements OnInit {
-  constructor(public danePodstawowe: DanePodstawoweService) {}
-
+  public data = new Date();
   public map: Leaflet.Map | undefined;
   markersLayer = new Leaflet.LayerGroup();
   sMarkersLayer: LayerGroup = new Leaflet.LayerGroup();
@@ -20,6 +19,8 @@ export class StopkaComponent implements OnInit {
     center: new Leaflet.LatLng(22, 22),
   };
 
+  constructor(public danePodstawowe: DanePodstawoweService) {}
+
   ngOnInit() {
     this.danePodstawowe.danePodstawoweObservable.subscribe(k => {
       if (this.map == undefined) {
@@ -27,10 +28,7 @@ export class StopkaComponent implements OnInit {
           if (this.map != undefined) {
             // @ts-ignore
             this.map.flyTo(
-              [
-                this.danePodstawowe.danePodstawowe.wysokosc,
-                this.danePodstawowe.danePodstawowe.szerokosc,
-              ],
+              [this.danePodstawowe.danePodstawowe.wysokosc, this.danePodstawowe.danePodstawowe.szerokosc],
               17,
               { animate: false }
             );
@@ -47,18 +45,13 @@ export class StopkaComponent implements OnInit {
       this.map = map;
       map.addLayer(this.markersLayer);
 
-      const link = 'https://cdn-icons-png.flaticon.com/512/836/836417.png';
-
       let icon;
       icon = new Leaflet.DivIcon({
         className: 'test',
         html: `<img class="pizenka" src="assets/address-icon.png"/>`,
       });
       const marker = Leaflet.marker(
-        [
-          this.danePodstawowe.danePodstawowe.wysokosc,
-          this.danePodstawowe.danePodstawowe.szerokosc,
-        ],
+        [this.danePodstawowe.danePodstawowe.wysokosc, this.danePodstawowe.danePodstawowe.szerokosc],
         { icon }
       );
       this.sMarkersLayer.addLayer(marker);

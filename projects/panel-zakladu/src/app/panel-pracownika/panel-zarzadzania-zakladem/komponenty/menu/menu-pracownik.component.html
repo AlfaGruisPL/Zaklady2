@@ -1,97 +1,60 @@
-<ul>
+<nav>
   <a [routerLink]="['harmonogram']" routerLinkActive="aktywneMenu">
-    <li>
-      <fa-icon [icon]="ikonki.flaga"></fa-icon>
-      <span> Harmonogram na dziś </span>
-    </li>
+    <fa-icon [icon]="ikonki.flaga"></fa-icon>
+    <span> Harmonogram na dziś </span>
+  </a>
+  <a [routerLink]="['podsumowanie']" routerLinkActive="aktywneMenu">
+    <fa-icon [icon]="ikonki.flaga"></fa-icon>
+    <span>Podsumowanie </span>
   </a>
   <a [routerLink]="['listaKlientow']" routerLinkActive="aktywneMenu">
-    <li>
-      <fa-icon [icon]="ikonki.klienci"></fa-icon>
-      <span> Lista klientów </span>
-    </li>
+    <fa-icon [icon]="ikonki.klienci"></fa-icon>
+    <span> Lista klientów </span>
   </a>
   <a [routerLink]="['mojeKonto']" routerLinkActive="aktywneMenu">
-    <li>
-      <fa-icon [icon]="ikonki.czlowieczek"></fa-icon>
-      <span> Moje konto </span>
-    </li>
+    <fa-icon [icon]="ikonki.czlowieczek"></fa-icon>
+    <span> Moje konto </span>
   </a>
-  <a
-    [routerLink]="['mojZaklad']"
-    routerLinkActive="aktywneMenu"
-    *ngIf="token_.czyWlasciciel()">
-    <li>
-      <fa-icon [icon]="ikonki.wiezowiec"></fa-icon>
-      <span> Mój zakład </span>
-    </li>
+  <a *ngIf="token_.czyWlasciciel()" [routerLink]="['mojZaklad']" routerLinkActive="aktywneMenu">
+    <fa-icon [icon]="ikonki.wiezowiec"></fa-icon>
+    <span> Mój zakład </span>
   </a>
-  <a
-    [routerLink]="['uslugi']"
-    routerLinkActive="aktywneMenu"
-    *ngIf="token_.czyWlasciciel()">
-    <li>
-      <fa-icon [icon]="ikonki.tag"></fa-icon>
-      <span> Usługi </span>
-    </li>
+  <a *ngIf="token_.czyWlasciciel()" [routerLink]="['uslugi']" routerLinkActive="aktywneMenu">
+    <fa-icon [icon]="ikonki.tag"></fa-icon>
+    <span> Usługi </span>
   </a>
   <a [routerLink]="['zarejestrowaneWizyty']" routerLinkActive="aktywneMenu">
-    <li>
-      <fa-icon [icon]="ikonki.karta"></fa-icon>
-      <span> Zarejestrowane wizyty </span>
-    </li>
+    <fa-icon [icon]="ikonki.karta"></fa-icon>
+    <span> Zarejestrowane wizyty </span>
   </a>
-  <a
-    [routerLink]="['zarzadzaniePracownikami']"
-    routerLinkActive="aktywneMenu"
-    *ngIf="token_.czyWlasciciel()">
-    <li>
-      <fa-icon [icon]="ikonki.czlowieczki"></fa-icon>
-      <span> Pracownicy </span>
-    </li>
+  <a *ngIf="token_.czyWlasciciel()" [routerLink]="['zarzadzaniePracownikami']" routerLinkActive="aktywneMenu">
+    <fa-icon [icon]="ikonki.czlowieczki"></fa-icon>
+    <span> Pracownicy </span>
   </a>
   <a [routerLink]="['kalendarzTerminow']" routerLinkActive="aktywneMenu">
-    <li>
-      <fa-icon [icon]="ikonki.kalendarz"></fa-icon>
-      <span> Kalendarz terminów </span>
-    </li>
+    <fa-icon [icon]="ikonki.kalendarz"></fa-icon>
+    <span> Kalendarz terminów </span>
   </a>
 
-  <a
-    [routerLink]="['platnosci']"
-    routerLinkActive="aktywneMenu"
-    *ngIf="token_.czyWlasciciel()">
-    <li>
-      <fa-icon [icon]="ikonki.kartaPlatnicza"></fa-icon>
-      <span> Płatności </span>
-    </li>
+  <a *ngIf="token_.czyWlasciciel()" [routerLink]="['platnosci']" routerLinkActive="aktywneMenu">
+    <fa-icon [icon]="ikonki.kartaPlatnicza"></fa-icon>
+    <span> Płatności </span>
   </a>
-  <a
-    [routerLink]="['sms']"
-    routerLinkActive="aktywneMenu"
-    *ngIf="token_.czyWlasciciel()">
-    <li>
-      <fa-icon [icon]="ikonki.sms"></fa-icon>
-      <span> Usługa SMS </span>
-    </li>
+  <a *ngIf="token_.czyWlasciciel()" [routerLink]="['sms']" routerLinkActive="aktywneMenu">
+    <fa-icon [icon]="ikonki.sms"></fa-icon>
+    <span> Usługa SMS </span>
   </a>
-  <a
-    [routerLink]="['stronaReprezentacyjnaUstawienia']"
-    *ngIf="token_.czyWlasciciel()"
-    routerLinkActive="aktywneMenu">
-    <li>
-      <fa-icon [icon]="ikonki.zdjecie"></fa-icon>
-      <span> Strona reprezentacyjna </span>
-    </li>
+  <a *ngIf="token_.czyWlasciciel()" [routerLink]="['stronaReprezentacyjnaUstawienia']" routerLinkActive="aktywneMenu">
+    <fa-icon [icon]="ikonki.zdjecie"></fa-icon>
+    <span> Strona reprezentacyjna </span>
+  </a>
+  <a [routerLink]="['raporty']" routerLinkActive="aktywneMenu">
+    <fa-icon [icon]="ikonki.flaga"></fa-icon>
+    <span>Raporty </span>
   </a>
 
-  <a
-    [href]="podreczne_.linkDoStronyReklamowej()"
-    target="_blank"
-    *ngIf="!token_.czyWlasciciel()">
-    <li>
-      <fa-icon [icon]="ikonki.zdjecie"></fa-icon>
-      <span> Strona reprezentacyjna </span>
-    </li>
+  <a *ngIf="!token_.czyWlasciciel()" [href]="podreczne_.linkDoStronyReklamowej()" target="_blank">
+    <fa-icon [icon]="ikonki.zdjecie"></fa-icon>
+    <span> Strona reprezentacyjna </span>
   </a>
-</ul>
+</nav>

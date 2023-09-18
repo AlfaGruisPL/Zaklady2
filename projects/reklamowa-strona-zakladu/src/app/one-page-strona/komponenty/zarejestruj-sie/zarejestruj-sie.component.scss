@@ -6,27 +6,62 @@
   box-shadow: 0px 1px 0px 1px #cac5c5;
   position: relative;
   z-index: 100;
-
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  @media (max-width: 900px) {
+    height: 250px;
+  }
+  @media (max-width: 700px) {
+    height: 220px;
+  }
+  @media (max-width: 600px) {
+    height: 190px;
+  }
+  @media (max-width: 500px) {
+    height: 160px;
+  }
+  @media (max-width: 400px) {
+    height: 130px;
+  }
 
   .zdj {
-    width: 30%;
+    width: 300px;
     height: 100%;
     display: flex;
     justify-content: right;
     align-items: center;
     float: left;
     position: relative;
+    @media (max-width: 1100px) {
+      scale: 0.9;
+      width: 300px;
+    }
+    @media (max-width: 900px) {
+      scale: 0.7;
+      width: calc(300px * 0.9);
+    }
+    @media (max-width: 700px) {
+      scale: 0.5;
+      width: calc(300px * 0.7);
+    }
+    @media (max-width: 500px) {
+      scale: 0.3;
+      width: calc(300px * 0.5);
+    }
+    @media (max-width: 400px) {
+      scale: 0.2;
+      width: calc(300px * 0.4);
+    }
 
     img {
       width: 300px;
       height: 300px;
     }
-
-
   }
 
   .tytulIButton {
-    width: 70%;
+    width: max-content;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -36,15 +71,33 @@
   }
 }
 
-
 .spanZapiszSie {
   font-size: 40px;
   font-weight: bold;
   letter-spacing: 1px;
   color: brown;
-  text-shadow: burlywood;
+
   text-shadow: 1px 1px 1px brown;
   font-family: math;
+  font-size: clamp(13px, 0.6rem + 2vw, 40px);
+
+  @media (max-width: 1100px) {
+    //  font-size: 35px;
+    padding-right: 10px;
+  }
+  @media (max-width: 900px) {
+    //  font-size: 30px;
+    text-align: center;
+  }
+  /* @media (max-width: 700px) {
+     font-size: 22px;
+   }
+   @media (max-width: 500px) {
+     font-size: 19px;
+   }
+   @media (max-width: 400px) {
+     font-size: 15px;
+   }*/
 }
 
 .rejestracjaButton {
@@ -60,6 +113,22 @@
   font-weight: bold;
   color: #027602;
   text-shadow: 0px 1px 2px green;
+
+  @media (max-width: 700px) {
+    width: 200px;
+    height: 35px;
+    font-size: 18px;
+  }
+  @media (max-width: 500px) {
+    width: 180px;
+    height: 31px;
+    font-size: 16px;
+  }
+  @media (max-width: 400px) {
+    width: 140px;
+    height: 28px;
+    font-size: 14px;
+  }
 
   &:hover {
     cursor: pointer;

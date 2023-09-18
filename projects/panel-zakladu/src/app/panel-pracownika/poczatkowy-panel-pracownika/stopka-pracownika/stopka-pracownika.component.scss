@@ -6,13 +6,23 @@
   border-top: 4px solid black;
   display: flex;
   justify-content: space-evenly;
-  .panel{
+  @media (max-width: 700px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 20px 20px 20px;
+    box-sizing: border-box;
+    gap: 20px;
+    height: min-content;
+  }
+
+  .panel {
     table {
       color: white;
       font-size: 20px;
       font-family: math;
     }
-    color:white;
-  }
 
+    color: white;
+  }
 }

@@ -1,5 +1,10 @@
 .glownyDiv {
   width: 100%;
+  @media (max-width: 900px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   .czesc {
     height: 200px;
@@ -9,14 +14,23 @@
 
     &:nth-of-type(1) {
       width: $czesc1Szerokowcs;
+      @media (max-width: 900px) {
+        width: auto;
+      }
     }
 
     &:nth-of-type(2) {
+      @media (max-width: 900px) {
+        display: none;
+      }
       width: calc(100% - $czesc1Szerokowcs - $czesc3Szerokowcs);
     }
 
     &:nth-of-type(3) {
       width: $czesc3Szerokowcs;
+      @media (max-width: 900px) {
+        width: auto;
+      }
 
       .statusTytul {
         font-size: 29px;
@@ -37,7 +51,6 @@
 }
 
 .przyciskPlatnosci {
-
 }
 
 .tabelaUslug {

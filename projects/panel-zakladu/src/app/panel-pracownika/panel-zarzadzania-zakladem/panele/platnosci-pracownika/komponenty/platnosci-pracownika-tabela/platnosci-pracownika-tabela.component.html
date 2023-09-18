@@ -8,7 +8,10 @@
     <th colspan="2">Status</th>
   </tr>
   <ng-container
-    *ngFor="let k of listaPlatnosci | slice : (page - 1) * paggination.pageSize : page * paggination.pageSize; let index2 = index">
+    *ngFor="
+      let k of listaPlatnosci | slice : (page - 1) * paggination.pageSize : page * paggination.pageSize;
+      let index2 = index
+    ">
     <tr>
       <td>{{ paggination.indexCount(index2) }}</td>
       <td>{{ k.opis }}</td>
@@ -25,16 +28,16 @@
       </ng-container>
 
       <td>
-        <button *ngIf="k.czyRozwiniete" (click)="zamknijWszystkie()" class="przyciskRozwijania">Zwiń</button>
+        <button (click)="zamknijWszystkie()" *ngIf="k.czyRozwiniete" class="przyciskRozwijania">Zwiń</button>
         <button
-          *ngIf="!k.czyRozwiniete"
           (click)="zamknijWszystkie(); k.czyRozwiniete = true"
+          *ngIf="!k.czyRozwiniete"
           class="przyciskRozwijania">
           Rozwiń
         </button>
         <button
-          *ngIf="k.probyPlatnosci[k.probyPlatnosci.length - 1].status == 'NEW' && k.linkDoPlatnosci != undefined"
-          (click)="otworzPlatnosc(k.linkDoPlatnosci)">
+          (click)="otworzPlatnosc(k.linkDoPlatnosci)"
+          *ngIf="k.probyPlatnosci[k.probyPlatnosci.length - 1].status == 'NEW' && k.linkDoPlatnosci != undefined">
           Opłać ponownie
         </button>
       </td>
@@ -43,7 +46,7 @@
       <tr>
         <td [attr.colspan]="naglowek.cells.length + 1">
           <table class="podTabela">
-            <tr style="" class="PodTabelaNaglowek">
+            <tr class="PodTabelaNaglowek" style="">
               <th colspan="2"></th>
               <th>Nr.</th>
               <th>Identyfikator</th>
@@ -53,8 +56,8 @@
             <ng-container>
               <tr
                 *ngFor="let k3 of k.probyPlatnosci; let index = index"
-                class="PodTabelaTr"
-                [ngClass]="{ ostatni: index == k.probyPlatnosci.length - 1 }">
+                [ngClass]="{ ostatni: index == k.probyPlatnosci.length - 1 }"
+                class="PodTabelaTr">
                 <td colspan="2"></td>
                 <td>{{ index + 1 }}</td>
                 <td>{{ k3.identyfikatorPayNow }}</td>
@@ -77,7 +80,10 @@
   </ng-container>
   <tr
     *ngFor="
-      let k of [].constructor(paggination.savePageSize- (listaPlatnosci | slice : (page - 1) * paggination.savePageSize : page *paggination.savePageSize).length)
+      let k of [].constructor(
+        paggination.savePageSize -
+          (listaPlatnosci | slice : (page - 1) * paggination.savePageSize : page * paggination.savePageSize).length
+      )
     ">
     <td></td>
     <td></td>
@@ -88,8 +94,9 @@
     <td></td>
   </tr>
 </table>
-<app-table-pagination [(page)]="page"
-                      [collectionSize]="listaPlatnosci.length"
-                      [pageSizeArray]="[5,7,10,20,50,100]"
-                      #paggination
-                      [pageSize]="pageSize"></app-table-pagination>
+<app-table-pagination
+  #paggination
+  [(page)]="page"
+  [collectionSize]="listaPlatnosci.length"
+  [pageSizeArray]="[5, 7, 10, 20, 50, 100]"
+  [pageSize]="pageSize"></app-table-pagination>

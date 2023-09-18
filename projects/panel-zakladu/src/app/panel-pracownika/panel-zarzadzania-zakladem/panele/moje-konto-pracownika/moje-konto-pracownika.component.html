@@ -1,113 +1,176 @@
 <div class="panelZakladu">
-  <div class=naglowekZolty>
-    <span
-      class="naglowek1Wzoltym">Uzupełnij formularz swoich danych osobowych </span>
+  <div class="naglowekZolty">
+    <span class="naglowek1Wzoltym">Uzupełnij formularz swoich danych osobowych </span>
     <span class="naglowek1Wzoltym2"> * oznacza że pole jest zalecane do uzupełnienia</span>
   </div>
   <div class="mojeKonto">
     <form>
       <table class="informacjeTable">
         <tr>
-          <th colspan="2" class="naglowki1form">Moje dane:</th>
-
+          <th class="naglowki1form" colspan="2">Moje dane:</th>
         </tr>
         <tr>
           <td><label class="naglowki2form" for="imie">Imię*</label></td>
-          <td><input class="logInputZaklad" [disabled]="!wlaczPrzyciskZapisz" id="imie" type="text"
-                     [(ngModel)]="mojeKontoObj.imie"
-                     [ngModelOptions]="{standalone: true}"></td>
+          <td>
+            <input
+              [(ngModel)]="mojeKontoObj.imie"
+              [disabled]="!wlaczPrzyciskZapisz"
+              [ngModelOptions]="{ standalone: true }"
+              class="logInputZaklad"
+              id="imie"
+              type="text" />
+          </td>
         </tr>
         <tr>
           <td><label class="naglowki2form" for="nazwisko">Nazwisko*</label></td>
-          <td><input class="logInputZaklad" [disabled]="!wlaczPrzyciskZapisz" id="nazwisko" type="text"
-                     [(ngModel)]="mojeKontoObj.nazwisko"
-                     [ngModelOptions]="{standalone: true}"></td>
-        </tr>
-        <tr>
-        <tr>
-          <td class="naglowki2form" colspan="2">
-            Adres zamieszkania
+          <td>
+            <input
+              [(ngModel)]="mojeKontoObj.nazwisko"
+              [disabled]="!wlaczPrzyciskZapisz"
+              [ngModelOptions]="{ standalone: true }"
+              class="logInputZaklad"
+              id="nazwisko"
+              type="text" />
           </td>
+        </tr>
+        <tr></tr>
+        <tr>
+          <td class="naglowki2form" colspan="2">Adres zamieszkania</td>
         </tr>
         <tr>
           <td><label class="naglowki2form" for="wojewodztwo">Województwo</label></td>
-          <td><select class="logInputZaklad" [disabled]="!wlaczPrzyciskZapisz" id="wojewodztwo"
-                      [(ngModel)]="mojeKontoObj.adres.wojewodztwo"
-                      [ngModelOptions]="{standalone: true}">
-            <option value="dolnoslaskie">Dolnośląskie</option>
-            <option value="kujawsko-pomorskie">Kujawsko-pomorskie</option>
-            <option value="lubelskie">Lubelskie</option>
-            <option value="lubuskie">Lubuskie</option>
-            <option value="lodzkie">Łódzkie</option>
-            <option value="malopolskie">Małopolskie</option>
-            <option value="mazowieckie">Mazowieckie</option>
-            <option value="opolskie">Opolskie</option>
-            <option value="podkarpackie">Podkarpackie</option>
-            <option value="podlaskie">Podlaskie</option>
-            <option value="pomorskie">Pomorskie</option>
-            <option value="slaskie">Śląskie</option>
-            <option value="swietokrzyskie">Świętokrzyskie</option>
-            <option value="warminsko-mazurskie">Warmińsko-mazurskie</option>
-            <option value="wielkopolskie">Wielkopolskie</option>
-            <option value="zachodniopomorskie">Zachodniopomorskie</option>
-          </select></td>
-        </tr>
-        <tr>
-          <td><label class="naglowki2form" for="miasto">Miasto</label></td>
-          <td><input class="logInputZaklad" [disabled]="!wlaczPrzyciskZapisz" id="miasto" type="text"
-                     [(ngModel)]="mojeKontoObj.adres.miasto"
-                     [ngModelOptions]="{standalone: true}"></td>
-        </tr>
-        <tr>
-          <td><label class="naglowki2form" for="ulica">Ulica</label></td>
-          <td><input class="logInputZaklad" [disabled]="!wlaczPrzyciskZapisz" id="ulica" type="text"
-                     [(ngModel)]="mojeKontoObj.adres.ulica"
-                     [ngModelOptions]="{standalone: true}"></td>
-        </tr>
-        <tr>
-          <td><label class="naglowki2form">Numer domu/lokalu</label></td>
-          <td><input class="logInputZaklad" style="width: 165px" [disabled]="!wlaczPrzyciskZapisz" type="text"
-                     [(ngModel)]="mojeKontoObj.adres.numerDomu"
-                     [ngModelOptions]="{standalone: true}">
-            <span style="font-size: 25px"> / </span>
-            <input class="logInputZaklad" style="width: 165px" [disabled]="!wlaczPrzyciskZapisz" type="text"
-                   [(ngModel)]="mojeKontoObj.adres.numerLokalu"
-                   [ngModelOptions]="{standalone: true}"></td>
-        </tr>
-        <tr>
-          <td><label class="naglowki2form">Kod pocztowy</label></td>
-          <td><input class="logInputZaklad" maxlength="2" style="width: 155px" [disabled]="!wlaczPrzyciskZapisz"
-                     type="text" [(ngModel)]="mojeKontoObj.adres.kodPocztowy1"
-                     [ngModelOptions]="{standalone: true}">
-            <span style="font-size: 25px"> - </span>
-            <input class="logInputZaklad" maxlength="3" style="width: 165px" [disabled]="!wlaczPrzyciskZapisz"
-                   type="text" [(ngModel)]="mojeKontoObj.adres.kodPocztowy2"
-                   [ngModelOptions]="{standalone: true}">
+          <td>
+            <select
+              [(ngModel)]="mojeKontoObj.adres.wojewodztwo"
+              [disabled]="!wlaczPrzyciskZapisz"
+              [ngModelOptions]="{ standalone: true }"
+              class="logInputZaklad"
+              id="wojewodztwo">
+              <option value="dolnoslaskie">Dolnośląskie</option>
+              <option value="kujawsko-pomorskie">Kujawsko-pomorskie</option>
+              <option value="lubelskie">Lubelskie</option>
+              <option value="lubuskie">Lubuskie</option>
+              <option value="lodzkie">Łódzkie</option>
+              <option value="malopolskie">Małopolskie</option>
+              <option value="mazowieckie">Mazowieckie</option>
+              <option value="opolskie">Opolskie</option>
+              <option value="podkarpackie">Podkarpackie</option>
+              <option value="podlaskie">Podlaskie</option>
+              <option value="pomorskie">Pomorskie</option>
+              <option value="slaskie">Śląskie</option>
+              <option value="swietokrzyskie">Świętokrzyskie</option>
+              <option value="warminsko-mazurskie">Warmińsko-mazurskie</option>
+              <option value="wielkopolskie">Wielkopolskie</option>
+              <option value="zachodniopomorskie">Zachodniopomorskie</option>
+            </select>
           </td>
         </tr>
         <tr>
-          <th style="padding-top: 20px" class="naglowki1form" colspan="2">Dane kontaktowe</th>
+          <td><label class="naglowki2form" for="miasto">Miasto</label></td>
+          <td>
+            <input
+              [(ngModel)]="mojeKontoObj.adres.miasto"
+              [disabled]="!wlaczPrzyciskZapisz"
+              [ngModelOptions]="{ standalone: true }"
+              class="logInputZaklad"
+              id="miasto"
+              type="text" />
+          </td>
+        </tr>
+        <tr>
+          <td><label class="naglowki2form" for="ulica">Ulica</label></td>
+          <td>
+            <input
+              [(ngModel)]="mojeKontoObj.adres.ulica"
+              [disabled]="!wlaczPrzyciskZapisz"
+              [ngModelOptions]="{ standalone: true }"
+              class="logInputZaklad"
+              id="ulica"
+              type="text" />
+          </td>
+        </tr>
+        <tr>
+          <td><label class="naglowki2form">Numer domu/lokalu</label></td>
+          <td>
+            <input
+              [(ngModel)]="mojeKontoObj.adres.numerDomu"
+              [disabled]="!wlaczPrzyciskZapisz"
+              [ngModelOptions]="{ standalone: true }"
+              class="logInputZaklad"
+              style="width: 165px"
+              type="text" />
+            <span style="font-size: 25px"> / </span>
+            <input
+              [(ngModel)]="mojeKontoObj.adres.numerLokalu"
+              [disabled]="!wlaczPrzyciskZapisz"
+              [ngModelOptions]="{ standalone: true }"
+              class="logInputZaklad"
+              style="width: 165px"
+              type="text" />
+          </td>
+        </tr>
+        <tr>
+          <td><label class="naglowki2form">Kod pocztowy</label></td>
+          <td>
+            <input
+              [(ngModel)]="mojeKontoObj.adres.kodPocztowy1"
+              [disabled]="!wlaczPrzyciskZapisz"
+              [ngModelOptions]="{ standalone: true }"
+              class="logInputZaklad"
+              maxlength="2"
+              style="width: 155px"
+              type="text" />
+            <span style="font-size: 25px"> - </span>
+            <input
+              [(ngModel)]="mojeKontoObj.adres.kodPocztowy2"
+              [disabled]="!wlaczPrzyciskZapisz"
+              [ngModelOptions]="{ standalone: true }"
+              class="logInputZaklad"
+              maxlength="3"
+              style="width: 165px"
+              type="text" />
+          </td>
+        </tr>
+        <tr>
+          <th class="naglowki1form" colspan="2" style="padding-top: 20px">Dane kontaktowe</th>
         </tr>
         <tr>
           <td><label class="naglowki2form" for="email">Adres e-mail*</label></td>
-          <td><input class="logInputZaklad" id="email" [disabled]="!wlaczPrzyciskZapisz"
-                     [(ngModel)]="mojeKontoObj.email"
-                     [ngModelOptions]="{standalone: true}"></td>
+          <td>
+            <input
+              [(ngModel)]="mojeKontoObj.email"
+              [disabled]="!wlaczPrzyciskZapisz"
+              [ngModelOptions]="{ standalone: true }"
+              class="logInputZaklad"
+              id="email" />
+          </td>
         </tr>
         <tr>
           <td><label class="naglowki2form" for="prefiks">Prefiks telefonu:*</label></td>
-          <td><select style="width: 85px" class="logInputZaklad" id="prefiks" [disabled]="!wlaczPrzyciskZapisz"
-                      [(ngModel)]="mojeKontoObj.prefiks"
-                      [ngModelOptions]="{standalone: true}">
-            <option>+48</option>
-            <option>+380</option>
-          </select></td>
+          <td>
+            <select
+              [(ngModel)]="mojeKontoObj.prefiks"
+              [disabled]="!wlaczPrzyciskZapisz"
+              [ngModelOptions]="{ standalone: true }"
+              class="logInputZaklad"
+              id="prefiks"
+              style="width: 85px">
+              <option>+48</option>
+              <option>+380</option>
+            </select>
+          </td>
         </tr>
         <tr>
           <td><label class="naglowki2form" for="numerTelefonu">Numer telefonu*</label></td>
-          <td><input class="logInputZaklad" id="numerTelefonu" maxlength="9" [disabled]="!wlaczPrzyciskZapisz"
-                     [(ngModel)]="mojeKontoObj.numerTelefonu"
-                     [ngModelOptions]="{standalone: true}"></td>
+          <td>
+            <input
+              [(ngModel)]="mojeKontoObj.numerTelefonu"
+              [disabled]="!wlaczPrzyciskZapisz"
+              [ngModelOptions]="{ standalone: true }"
+              class="logInputZaklad"
+              id="numerTelefonu"
+              maxlength="9" />
+          </td>
         </tr>
       </table>
     </form>
@@ -115,40 +178,57 @@
   <div class="zmianaHasla">
     <table class="zmianaHaslaTable">
       <tr>
-        <th class="naglowki1form">Zmiana hasła
-          <ui-switch style="position: relative;    top: -9px;"
-                     [disabled]="!wlaczPrzyciskZapisz" [(ngModel)]="mojeKontoObj.opcjaZmianyHasla"
-                     [ngModelOptions]="{standalone: true}"></ui-switch>
+        <th class="naglowki1form">
+          Zmiana hasła
+          <ui-switch
+            [(ngModel)]="mojeKontoObj.opcjaZmianyHasla"
+            [disabled]="!wlaczPrzyciskZapisz"
+            [ngModelOptions]="{ standalone: true }"
+            style="position: relative; top: -9px"></ui-switch>
         </th>
         <fa-icon
-          [ngClass]="{'wyloczone': !wlaczPrzyciskZapisz || !mojeKontoObj.opcjaZmianyHasla}"
-          [tp]="wymaganiaHasla" tpVariation="popper" class="zapytajnik"
-          [tpTrigger]="'mouseenter'" [tpClassName]="'wymaganiaHasla'"
-          [icon]="fontAwesome.znakZapytajnika"></fa-icon>
+          [icon]="fontAwesome.znakZapytajnika"
+          [ngClass]="{ wyloczone: !wlaczPrzyciskZapisz || !mojeKontoObj.opcjaZmianyHasla }"
+          [tpClassName]="'wymaganiaHasla'"
+          [tpTrigger]="'mouseenter'"
+          [tp]="wymaganiaHasla"
+          class="zapytajnik"
+          tpVariation="popper"></fa-icon>
       </tr>
       <tr>
         <td><label class="naglowki2form" for="noweHaslo">Nowe hasło</label></td>
-        <td><input class="logInputZaklad" [type]="this.podgladWlaczoneJeden ? 'text' : 'password'" id="noweHaslo"
-                   [disabled]="!wlaczPrzyciskZapisz || !mojeKontoObj.opcjaZmianyHasla"
-                   [(ngModel)]="mojeKontoObj.wpiszNoweHaslo"
-                   [ngModelOptions]="{standalone: true}">
+        <td>
+          <input
+            [(ngModel)]="mojeKontoObj.wpiszNoweHaslo"
+            [disabled]="!wlaczPrzyciskZapisz || !mojeKontoObj.opcjaZmianyHasla"
+            [ngModelOptions]="{ standalone: true }"
+            [type]="this.podgladWlaczoneJeden ? 'text' : 'password'"
+            class="logInputZaklad"
+            id="noweHaslo" />
         </td>
-        <fa-icon [ngClass]="{'wyloczone': !wlaczPrzyciskZapisz || !mojeKontoObj.opcjaZmianyHasla}"
-                 [icon]="this.podgladWlaczoneJeden ? fontAwesome.oczkoZamkniete : fontAwesome.oczko "
-                 (click)="this.podgladWlaczoneJeden =! this.podgladWlaczoneJeden"
-                 class="Podglad"></fa-icon>
+        <fa-icon
+          (click)="this.podgladWlaczoneJeden = !this.podgladWlaczoneJeden"
+          [icon]="this.podgladWlaczoneJeden ? fontAwesome.oczkoZamkniete : fontAwesome.oczko"
+          [ngClass]="{ wyloczone: !wlaczPrzyciskZapisz || !mojeKontoObj.opcjaZmianyHasla }"
+          class="Podglad"></fa-icon>
       </tr>
       <tr>
         <td><label class="naglowki2form" for="PowtorzNoweHaslo">Powtórz nowe hasło</label></td>
-        <td><input class="logInputZaklad"
-                   [type]="this.podgladWlaczoneDwa? 'text' : 'password'" id="PowtorzNoweHaslo"
-                   [disabled]="!wlaczPrzyciskZapisz || !mojeKontoObj.opcjaZmianyHasla"
-                   [(ngModel)]="mojeKontoObj.powtorzNoweHaslo" [ngModelOptions]="{standalone: true}"></td>
+        <td>
+          <input
+            [(ngModel)]="mojeKontoObj.powtorzNoweHaslo"
+            [disabled]="!wlaczPrzyciskZapisz || !mojeKontoObj.opcjaZmianyHasla"
+            [ngModelOptions]="{ standalone: true }"
+            [type]="this.podgladWlaczoneDwa ? 'text' : 'password'"
+            class="logInputZaklad"
+            id="PowtorzNoweHaslo" />
+        </td>
 
-        <fa-icon [ngClass]="{'wyloczone': !wlaczPrzyciskZapisz || !mojeKontoObj.opcjaZmianyHasla}"
-                 [icon]="this.podgladWlaczoneDwa ? fontAwesome.oczkoZamkniete : fontAwesome.oczko "
-                 (click)="this.podgladWlaczoneDwa =! this.podgladWlaczoneDwa"
-                 class="Podglad"></fa-icon>
+        <fa-icon
+          (click)="this.podgladWlaczoneDwa = !this.podgladWlaczoneDwa"
+          [icon]="this.podgladWlaczoneDwa ? fontAwesome.oczkoZamkniete : fontAwesome.oczko"
+          [ngClass]="{ wyloczone: !wlaczPrzyciskZapisz || !mojeKontoObj.opcjaZmianyHasla }"
+          class="Podglad"></fa-icon>
       </tr>
       <ng-container *ngIf="mojeKontoObj.opcjaZmianyHasla">
         <tr *ngIf="!mojeKontoObj.czyHaslaWpisane && mojeKontoObj.czyHaslaTakieSame">
@@ -160,36 +240,24 @@
       </ng-container>
     </table>
   </div>
+  <app-ustawienia-powiadomien></app-ustawienia-powiadomien>
+
   <div class="naPrzycisk">
-    <button class="zmodyfikujZapiszButton" (click)="wlaczPrzyciskZapisz = true">Zmodyfikuj</button>
-    <button *ngIf="wlaczPrzyciskZapisz == true" class="zmodyfikujZapiszButton" (click)="zapisz()">Zapisz</button>
+    <button (click)="wlaczPrzyciskZapisz = true" class="zmodyfikujZapiszButton">Zmodyfikuj</button>
+    <button (click)="zapisz()" *ngIf="wlaczPrzyciskZapisz == true" class="zmodyfikujZapiszButton">Zapisz</button>
   </div>
 </div>
 
-
 <ng-template #wymaganiaHasla let-hide>
-  <h6 style="font-size: 20px; color: darkblue; margin-top: 0; font-weight: bolder; margin-bottom: 0">Takie wymagania
-    powinno spełniać
-    hasło:</h6>
+  <h6 style="font-size: 20px; color: darkblue; margin-top: 0; font-weight: bolder; margin-bottom: 0">
+    Takie wymagania powinno spełniać hasło:
+  </h6>
   <ul style="font-size: 18px; color: #07579b">
-    <li>
-      Musi zawierać minimum 8 znaków;
-    </li>
-    <li>
-      Może zawierać maksymalnie 100 znaków;
-    </li>
-    <li>
-      Musi zawierać przynajmniej jedną dużą i jedną małą literę;
-    </li>
-    <li>
-      Musi zawierać przynajmniej jedną cyfrę;
-    </li>
-    <li>
-      Musi zawierać minimum jeden znak specjalny;
-    </li>
-    <li>
-      Nie może zawierać spację.
-    </li>
+    <li>Musi zawierać minimum 8 znaków;</li>
+    <li>Może zawierać maksymalnie 100 znaków;</li>
+    <li>Musi zawierać przynajmniej jedną dużą i jedną małą literę;</li>
+    <li>Musi zawierać przynajmniej jedną cyfrę;</li>
+    <li>Musi zawierać minimum jeden znak specjalny;</li>
+    <li>Nie może zawierać spację.</li>
   </ul>
-
 </ng-template>

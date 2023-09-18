@@ -1,53 +1,44 @@
-<div class="termin"
-     #wizytaDiv
-     (click)="zarzadzaj()"
-     [ngStyle]="{'top':top,height:wysokosc}"
-     [ngClass]="{'symulacja':symulator}"
-     placement="top"
-     ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-     popoverTitle="Popover on top"
-     [animation]="true"
-     triggers="mouseenter:mouseleave"
-     [ngbPopover]="popContent" [popoverTitle]="popTitle"
->
-
-  <h3>
-    {{wizyta.poczatek| date:'HH:mm'}}    {{wizyta.koniec| date:'HH:mm'}}
+<div
+  #wizytaDiv
+  (click)="zarzadzaj()"
+  [animation]="true"
+  [ngClass]="{ symulacja: symulator }"
+  [ngStyle]="{ top: top, height: wysokosc }"
+  [ngbPopover]="popContent"
+  [popoverTitle]="popTitle"
+  class="termin"
+  ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+  placement="top"
+  popoverTitle="Popover on top"
+  triggers="mouseenter:mouseleave">
+  <h3 *ngIf="wizytaDiv.clientHeight > 30">
+    {{ wizyta.poczatek | date : 'HH:mm' }} {{ wizyta.koniec | date : 'HH:mm' }}
   </h3>
 
-  <div class="zarzadzaj" *ngIf="wizytaDiv.clientHeight >= 65">Zarządzaj</div>
+  <div *ngIf="wizytaDiv.clientHeight >= 65" class="zarzadzaj">Zarządzaj</div>
 </div>
 <ng-template #popTitle>
-  Wizyta <b>{{wizyta.poczatek| date:'HH:mm'}}    {{wizyta.koniec| date:'HH:mm'}} </b></ng-template>
+  Wizyta <b>{{ wizyta.poczatek | date : 'HH:mm' }} {{ wizyta.koniec | date : 'HH:mm' }} </b></ng-template
+>
 <ng-template #popContent>
   <table>
     <tr>
+      <td>Klient:</td>
       <td>
-        Klient:
-      </td>
-      <td>
-        {{wizyta.imie + " " + wizyta.nazwisko}}
+        {{ wizyta.imie + ' ' + wizyta.nazwisko }}
       </td>
     </tr>
     <tr>
+      <td>Email:</td>
       <td>
-        Email:
-      </td>
-      <td>
-        {{wizyta.email}}
+        {{ wizyta.email }}
       </td>
     </tr>
     <tr>
+      <td>Telefon:</td>
       <td>
-        Telefon:
-      </td>
-      <td>
-        {{wizyta.numerTelefonu}}
+        {{ wizyta.numerTelefonu }}
       </td>
     </tr>
   </table>
-
 </ng-template>
-
-
-

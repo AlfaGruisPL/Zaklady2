@@ -2,20 +2,12 @@
   <div class="zdj">
     <img src="assets/kalendarz-bez-wskazuwek.png" />
     <app-zegar style="position:absolute"></app-zegar>
-    <!--
-       <div class="sekundy">
-         <div class="sekundy2"></div>
-       </div>
-       <div class="minuty"></div>
-       <div class="godziny"></div>
-     </div>
-     -->
   </div>
   <div class="tytulIButton">
     <span class="spanZapiszSie">
       Zapisz się na podchodzący dla Ciebie termin
     </span>
-    <button class="rejestracjaButton" (click)="pokazFormularzRejestracji()">
+    <button (click)="pokazFormularzRejestracji()" class="rejestracjaButton">
       Rejestracja
     </button>
   </div>

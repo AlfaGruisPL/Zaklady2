@@ -3,11 +3,11 @@
 </div>
 <div class="select">
   <ng-select
-    class="selectPracownicy inputyFormularz"
-    [items]="pracownicy"
     [(ngModel)]="ZarejestrujSieService.DaneKlientaClass.wybranyPracownik"
+    [items]="pracownicy" [searchable]="false"
     bindLabel="pracownik"
     bindValue="id"
+    class="selectPracownicy inputyFormularz"
     placeholder="Wybierz"
   >
   </ng-select>
@@ -25,5 +25,5 @@
   </ng-container>
   <ng-template #puste> <span style="visibility: hidden"> --</span></ng-template>
 </span>
-  <button class="buttonDalej" (click)="przejdzDalej()">Dalej</button>
+  <button (click)="przejdzDalej()" class="buttonDalej">Dalej</button>
 </div>

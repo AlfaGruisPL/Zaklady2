@@ -1,4 +1,15 @@
 .pasekTytulowy {
+  .hamburgerMenu {
+    display: none;
+
+    position: absolute;
+    left: 0;
+    top: -3px;
+    @media (max-width: 1500px) {
+      display: block;
+    }
+  }
+
   width: 100%;
   height: 35px;
   background: #001dbf;
@@ -10,16 +21,6 @@
   box-shadow: 0px 1px 2px 2px #030384;
   z-index: 200;
 
-  .nazwaFirmy {
-    color: darkblue;
-    font-style: italic;
-    font-size: 28px;
-    padding-right: 100px;
-    text-shadow: 1px 1px 1px black;
-    left: 11px;
-    position: absolute
-  }
-
   h1 {
     margin: 0;
     letter-spacing: 5px;
@@ -28,6 +29,9 @@
     font-size: 23px;
     padding-left: 274px;
     text-shadow: 0px 0px 1px black;
+    @media (max-width: 1200px) {
+      display: none;
+    }
   }
 
   .wylogujButton {
@@ -45,9 +49,7 @@
     }
   }
 
-
   .powiadomieniaButton {
-
     position: absolute;
     right: 103px;
     top: 1px;
@@ -61,8 +63,6 @@
       cursor: pointer;
       filter: drop-shadow(0px 1px 2px black);
     }
-
-
   }
 
   .iloscPowiadomien {
@@ -111,7 +111,6 @@
     }
   }
 
-
   .wstronaStartowaButton {
     position: absolute;
     right: 58px;
@@ -134,6 +133,7 @@
   width: 100%;
   display: block;
   font-size: 19px;
+  min-height: 1px;
 
   button {
     font-size: 12px;
@@ -142,12 +142,23 @@
     right: 120px;
     background: rgba(206, 60, 60, 0.4);
     font-weight: bolder;
-
-    &:first-child {
-      background: rgba(211, 186, 255, 0.45);
-      right: -10px;
+    @media (max-width: 800px) {
+      right: 140px;
     }
 
+    &:first-of-type {
+      background: rgba(211, 186, 255, 0.45);
+      right: -10px;
+      @media (max-width: 800px) {
+        right: 10px;
+      }
+    }
+  }
+}
+
+.popOverTitle {
+  @media (max-width: 800px) {
+    display: none;
   }
 }
 
@@ -157,7 +168,10 @@
   overflow-y: scroll;
   position: relative;
   z-index: 1000;
-
+  @media (max-width: 800px) {
+    width: 100%;
+    max-width: 100%;
+  }
 
   .powiadomienie {
     max-height: 2000px;
@@ -219,7 +233,6 @@
       position: absolute;
       font-size: 23px;
       color: #31a236;
-
     }
 
     .podpis {
@@ -230,7 +243,6 @@
       bottom: 4px;
     }
   }
-
 }
 
 .odczytane {
@@ -241,7 +253,7 @@
   // animation: tilt-n-move-shaking 7s infinite;;
 
   span {
-    animation: blink 2s infinite
+    animation: blink 2s infinite;
   }
 }
 
@@ -250,22 +262,16 @@
     color: #ffe60b;
 
     scale: 1;
-
   }
   50% {
     color: whitesmoke;
 
-
     scale: 1.105;
-
-
   }
   100% {
     color: #ffe60b;
     scale: 1;
-
   }
-
 }
 
 @keyframes tilt-n-move-shaking {
@@ -284,12 +290,10 @@
   4% {
     transform: translate(0, 0) rotate(0deg);
   }
-
 }
 
 .usuniete {
   animation: he 500ms normal;
-
 }
 
 @keyframes he {
@@ -301,9 +305,5 @@
   100% {
     max-height: 0px;
     opacity: 0;
-
   }
-
-
 }
-

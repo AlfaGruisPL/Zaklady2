@@ -124,14 +124,18 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/panel-zakladu/src/favicon.ico",
-              "projects/panel-zakladu/src/assets"
+              "projects/panel-zakladu/src/assets",
+              "projects/panel-zakladu/src/manifest.webmanifest",
+              "projects/panel-zakladu/src/manifest.webmanifest"
             ],
             "styles": [
               "projects/panel-zakladu/src/assets/style/zakladPracownik/pracownik.scss",
               "projects/panel-zakladu/src/assets/style/styles.scss",
               "./node_modules/ngx-ui-switch/ui-switch.component.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "serviceWorker": true,
+            "ngswConfigPath": "projects/panel-zakladu/ngsw-config.json"
           },
           "configurations": {
             "production": {
@@ -201,7 +205,9 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "projects/panel-zakladu/src/favicon.ico",
-              "projects/panel-zakladu/src/assets"
+              "projects/panel-zakladu/src/assets",
+              "projects/panel-zakladu/src/manifest.webmanifest",
+              "projects/panel-zakladu/src/manifest.webmanifest"
             ],
             "styles": [
               "projects/panel-zakladu/src/styles.scss"
@@ -338,7 +344,8 @@
               "projects/reklamowa-strona-zakladu/src/styles.scss",
               "./node_modules/leaflet/dist/leaflet.css"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           },
           "configurations": {
             "production": {

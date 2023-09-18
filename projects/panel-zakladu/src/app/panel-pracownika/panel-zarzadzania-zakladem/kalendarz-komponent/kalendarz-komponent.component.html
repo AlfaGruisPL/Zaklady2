@@ -5,7 +5,7 @@
     <th *ngFor="let dzien of Kalendarz_.dni" class="naglowkiTabeli">
       <span [ngClass]="{ dzisiejszaData: czyToDzis(dzien.data) }">
         <span class="wyswietlaneDniSpan"> {{ dzien.nazwa }}</span> <br />
-        <span class="wyswietlaneDniSpan" style="font-size: 15px">{{ dzien.samaData() }}</span>
+        <span class="wyswietlaneDniSpan data">{{ dzien.samaData() }}</span>
       </span>
       <div *ngIf="zarzadzanie" class="zarzadzanie" ngbDropdown>
         <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle type="button">
@@ -15,7 +15,7 @@
           Zakład
           <button
             (click)="Kalendarz_.oznaczJakoDzienWolny(dzien)"
-            *ngIf="czyDzisWolnyDzien(dzien) == undefined; else dzienPracy"
+            *ngIf="czyDzisWolnyDzien(dzien); else dzienPracy"
             ngbDropdownItem>
             Oznacz jako dzień wolny
           </button>

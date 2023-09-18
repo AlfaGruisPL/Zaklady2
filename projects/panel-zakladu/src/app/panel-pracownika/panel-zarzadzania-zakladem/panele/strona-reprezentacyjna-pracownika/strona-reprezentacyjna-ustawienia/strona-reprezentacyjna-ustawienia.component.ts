@@ -9,6 +9,8 @@ import { KomunikatyService } from '../../../../../serwisy/komunikaty.service';
 import { Drzwi } from '../../../../../enum/drzwi';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgxSuneditorComponent } from 'ngx-suneditor';
+import { Bledy } from '../../../../../enum/bledy';
+import { Udane } from '../../../../../enum/udane';
 
 @Component({
   selector: 'app-strona-reprezentacyjna-ustawienia',
@@ -16,15 +18,15 @@ import { NgxSuneditorComponent } from 'ngx-suneditor';
   styleUrls: ['./strona-reprezentacyjna-ustawienia.component.scss'],
 })
 export class StronaReprezentacyjnaUstawieniaComponent implements AfterViewInit {
-  protected readonly environment = environment;
   @ViewChild(NgxSuneditorComponent) ngxSunEditor: NgxSuneditorComponent | undefined;
-
   @Output() odswiez = new EventEmitter();
   ustawienia = new UstawieniaStronyReklamowej();
   bannerZdjecie_formData: undefined | FormData = undefined;
   zdjecieBanerRefresh = '?random=' + Math.round(Math.random() * 10000);
   LogoZdjecie_formData: undefined | FormData = undefined;
   formualrz: FormGroup = this.fb.group({});
+  protected readonly environment = environment;
+  protected readonly String = String;
 
   constructor(private listonosz: ListonoszService, private komunikaty: KomunikatyService, private fb: FormBuilder) {
     this.formualrz = this.fb.group({
@@ -53,8 +55,10 @@ export class StronaReprezentacyjnaUstawieniaComponent implements AfterViewInit {
     this.listonosz.pobierz(Drzwi.UstawieniaStronyReklamowej).then(dane => {
       this.ustawienia.wstawDane(dane);
       this.formualrz.patchValue(dane);
+
       // @ts-ignore
-      this.ngxSunEditor?.getEditor().insertHTML(this.ustawienia.opisZakladuWStopce);
+      this.ngxSunEditor?.getEditor().setContents(this.ustawienia.opisZakladuWStopce);
+      console.log(this.ngxSunEditor?.getEditor());
       this.ngxSunEditor?.enabled();
     });
   }
@@ -91,21 +95,20 @@ export class StronaReprezentacyjnaUstawieniaComponent implements AfterViewInit {
     try {
       if (this.bannerZdjecie_formData != undefined) {
         await this.listonosz.wyslij(Drzwi.banerStronyReklamowej, this.bannerZdjecie_formData);
-        this.komunikaty.zdjecieProfiloweZmodyfikowane();
+        this.komunikaty.komunikatUdane(Udane.bannerStronyZaktualizowany);
       }
       console.warn('wysylanie logo');
       if (this.LogoZdjecie_formData != undefined) {
         console.warn('wysylanie logo');
         await this.listonosz.wyslij(Drzwi.logoStronyReklamowej, this.LogoZdjecie_formData);
-        this.komunikaty.zdjecieProfiloweZmodyfikowane();
+        this.komunikaty.komunikatUdane(Udane.logoZakladuZaktualizowane);
       }
       this.zdjecieBanerRefresh = '?random=' + Math.round(Math.random() * 10000);
       this.odswiez.emit();
     } catch (error) {
       console.error(error);
+      this.komunikaty.komunikatBledu(Bledy.aktualizacjaNieUdana);
       this.komunikaty.zdjecieProfiloweNieZmodyfikowane();
     }
   }
-
-  protected readonly String = String;
 }

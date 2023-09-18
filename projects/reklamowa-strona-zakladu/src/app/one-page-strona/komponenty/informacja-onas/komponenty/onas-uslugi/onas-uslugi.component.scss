@@ -4,4 +4,10 @@
   font-size: 27px;
   top: 1px;
   filter: drop-shadow(1px 1px 1px #000);
+  @media (max-width: 600px) {
+    font-size: 23px;
+  }
+  @media (max-width: 500px) {
+    font-size: 17px;
+  }
 }

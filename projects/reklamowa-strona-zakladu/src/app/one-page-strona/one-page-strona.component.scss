@@ -6,7 +6,7 @@
 }
 
 .parallax {
-  background-image: url("../../assets/tlo1.png");
+  background-image: url('../../assets/tlo1.png');
   height: 80px;
   width: 100%;
   float: left;
@@ -14,10 +14,25 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  @media (max-width: 900px) {
+    height: 70px;
+  }
+  @media (max-width: 700px) {
+    height: 60px;
+  }
+  @media (max-width: 600px) {
+    height: 40px;
+  }
+  @media (max-width: 500px) {
+    height: 30px;
+  }
+  @media (max-width: 400px) {
+    height: 15px;
+  }
 }
 
 .parallax2 {
-  background-image: url("../../assets/tlo3.png");
+  background-image: url('../../assets/tlo3.png');
   height: 20px;
   width: 100%;
   float: left;
@@ -28,7 +43,7 @@
 }
 
 .parallax3 {
-  background-image: url("../../assets/tlo2.png");
+  background-image: url('../../assets/tlo2.png');
   height: 20px;
   filter: hue-rotate(1turn);
   width: 100%;

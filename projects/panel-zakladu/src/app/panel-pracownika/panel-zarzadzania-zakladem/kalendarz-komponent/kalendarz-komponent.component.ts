@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { DzienTygodnia } from '../../../../../../reklamowa-strona-zakladu/src/app/one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/kalendarz/dzien-tygodnia';
 import { Wizyta } from '../../../klasy/panelPracownika/wizyta';
 import { ListonoszService } from '../../../serwisy/listonosz.service';
 import { KalendarzKomponentService } from './kalendarz-komponent.service';
 import { environment } from '../../../../environments/environment';
 import { DzienWolny } from '../../../klasy/panelPracownika/kalendarz/DzienWolny';
+import { DzienTygodnia } from './dzien-tygodnia';
 
 @Component({
   selector: 'app-kalendarz-komponent',

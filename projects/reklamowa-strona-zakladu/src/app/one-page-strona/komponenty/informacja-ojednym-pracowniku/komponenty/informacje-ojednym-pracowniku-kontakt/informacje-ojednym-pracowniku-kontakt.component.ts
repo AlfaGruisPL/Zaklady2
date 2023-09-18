@@ -12,12 +12,10 @@ import { NapiszNamService } from '../../../napisz-nam/napisz-nam.service';
 export class InformacjeOJednymPracownikuKontaktComponent {
   @Input() daneOPracowniku: Pracownik = new Pracownik();
 
-  constructor(
-    public napiszNam: NapiszNamService,
-    private nawigacja: NawigacjaService
-  ) {}
+  constructor(public napiszNam: NapiszNamService, private nawigacja: NawigacjaService) {}
 
   wybierz() {
+    console.log(this.daneOPracowniku);
     this.nawigacja.przeniesDoPanelu(NawigacjaEnum.napiszNam);
     this.napiszNam.napiszNamObj.komuWyslac = this.daneOPracowniku.id.toString();
   }

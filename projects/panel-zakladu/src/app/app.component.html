@@ -1,6 +1,15 @@
+<div *ngIf="environment.production == false"></div>
+
 <router-outlet></router-outlet>
-<div class="dev" *ngIf="environment.production == false">
+<div *ngIf="environment.production == false" class="dev">
   Dev: <span class="wersja">{{ wersja }}</span>
   <span class="data">{{ data_wydania }}</span>
-  <span> Change detection {{count()}}{{ticsForSecond}}/s</span>
+  <span> Change detection {{ count() }}{{ ticsForSecond }}/s</span>
 </div>
+<app-ciasteczka-komunikat></app-ciasteczka-komunikat>
+<!--
+Tu ma być granted:<span id="kkk"></span>
+<p id="kkkkk"></p>
+<p id="kkkkk2"></p>
+<p id="kkkkk3"></p>
+-->

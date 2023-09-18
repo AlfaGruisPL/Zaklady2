@@ -5,4 +5,6 @@ export enum Udane {
   dzienWolnyUtworzony = 'Dzien wolny został dodany',
   usuwaniePrzerwy = 'Przerwa została usunięta',
   usuwanieDniaWolnego = 'Dzień wolny został usunięty',
+  logoZakladuZaktualizowane = 'Logo zakładu zostało zaktualizowane',
+  bannerStronyZaktualizowany = 'Banner zakładu został zaktualizowany',
 }

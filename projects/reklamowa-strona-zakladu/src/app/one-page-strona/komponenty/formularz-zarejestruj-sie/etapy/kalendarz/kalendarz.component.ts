@@ -146,7 +146,7 @@ export class KalendarzComponent implements OnInit {
 
   czyDzis(dzien: DzienTygodnia) {
     if (
-      dzien.data.getDay() == new Date().getDay() &&
+      dzien.data.getDate() == new Date().getDate() &&
       dzien.data.getMonth() == new Date().getMonth() &&
       dzien.data.getFullYear() == new Date().getFullYear()
     ) {

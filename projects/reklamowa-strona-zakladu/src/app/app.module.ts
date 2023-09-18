@@ -47,6 +47,9 @@ import { OdwolanieWizytyModule } from './one-page-strona/komponenty/odwolanie-wi
 import { IdentyfikatorPipe } from './rurki/identyfikator.pipe';
 import { SafePipe } from './rurki/safe.pipe';
 import { HtmlSanitizerPipe } from './rurki/html-sanitizer.pipe';
+import { HamburgerButtonComponent } from './one-page-strona/komponenty/banner/hamburger-button/hamburger-button.component';
+import { CiasteczkaKomunikatComponent } from './komponenty/ciasteczka-komunikat/ciasteczka-komunikat.component';
+import { CookieModule } from 'ngx-cookie';
 
 @NgModule({
   declarations: [
@@ -98,8 +101,11 @@ import { HtmlSanitizerPipe } from './rurki/html-sanitizer.pipe';
     NgbPaginationModule,
     NgbModule,
     FontAwesomeModule,
+    CookieModule.withOptions(),
     LeafletModule,
     OdwolanieWizytyModule,
+    HamburgerButtonComponent,
+    CiasteczkaKomunikatComponent,
   ],
   bootstrap: [AppComponent],
 })

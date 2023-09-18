@@ -1,26 +1,30 @@
 <div class="pracownicy">
-
   <div class="naglowekZolty">
     <h1 class="naglowek1Wzoltym">Panel zarządzania pracownikami</h1>
-
   </div>
   <div class="filtry">
     <div class="switchButtonDiv">
-      <button (click)="filter= 'dostepni'" class="switchButton"
-              [ngClass]="{'switchButtonAktywny':filter =='dostepni'}">Dostępni
+      <button
+        (click)="filter = 'dostepni'"
+        [ngClass]="{ switchButtonAktywny: filter == 'dostepni' }"
+        class="switchButton">
+        Dostępni
       </button>
-      <button (click)="filter= 'urlop'" class="switchButton"
-              [ngClass]="{'switchButtonAktywny':filter =='urlop'}">
+      <button (click)="filter = 'urlop'" [ngClass]="{ switchButtonAktywny: filter == 'urlop' }" class="switchButton">
         Urlop
       </button>
-      <button (click)="filter= 'zarchiwizuj'" class="switchButton"
-              [ngClass]="{'switchButtonAktywny':filter =='zarchiwizuj'}">
+      <button
+        (click)="filter = 'zarchiwizuj'"
+        [ngClass]="{ switchButtonAktywny: filter == 'zarchiwizuj' }"
+        class="switchButton">
         Archiwum
       </button>
     </div>
   </div>
-
   <div class="Divtabelka">
+    <span class="iloscPracownikow"
+      >Pracownicy <b>{{ ListaPracownikow.length }}</b> na <b>{{ limitPracownikow }}</b></span
+    >
     <table class="tablica">
       <tr>
         <th>Nr</th>
@@ -29,67 +33,63 @@
         <th>Nazwisko</th>
         <th>Adres e-mail</th>
         <th>Numer telefonu</th>
-        <th style="width: 125px;">Zarządzanie</th>
-        <th style="width: 80px;">Zdjęcie</th>
+        <th style="width: 125px">Zarządzanie</th>
+        <th style="width: 80px">Zdjęcie</th>
       </tr>
       <tr *ngFor="let pracownik of filtrowaniePracownikow(); let index = index">
-        <td>{{index + 1}}</td>
+        <td>{{ index + 1 }}</td>
 
-        <td>{{pracownik.imie}}</td>
-        <td>{{pracownik.nazwisko}}</td>
-        <td>{{pracownik.adresEmail}}</td>
-        <td>{{pracownik.prefiksTelefonu}}{{pracownik.numerTelefonu}}</td>
-        <td style="text-align: right;padding-right: 5px">
-          <div ngbDropdown container="body">
-            <button type="button" class="btn btn-outline-primary btn-sm" ngbDropdownToggle>Wybierz:</button>
+        <td>{{ pracownik.imie }}</td>
+        <td>{{ pracownik.nazwisko }}</td>
+        <td>{{ pracownik.adresEmail }}</td>
+        <td>{{ pracownik.prefiksTelefonu }}{{ pracownik.numerTelefonu }}</td>
+        <td style="text-align: right; padding-right: 5px">
+          <div container="body" ngbDropdown>
+            <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle type="button">Wybierz:</button>
             <div ngbDropdownMenu>
-              <button ngbDropdownItem (click)="wyswietlUzytkownika(pracownik.id)">Wyświetl</button>
-              <button ngbDropdownItem (click)="zmodyfikujUzytkownika(pracownik.id)">Zmodyfikuj</button>
+              <button (click)="wyswietlUzytkownika(pracownik.id)" ngbDropdownItem>Wyświetl</button>
+              <button (click)="zmodyfikujUzytkownika(pracownik.id)" ngbDropdownItem>Zmodyfikuj</button>
 
-              <ng-container *ngIf="filter != 'zarchiwizuj' else przyciskiDoArchiwizuj ">
-                <button ngbDropdownItem (click)="urlop(pracownik.id)"
-                        *ngIf="pracownik.urlop == false else przywrocUrlop "> Urlop
+              <ng-container *ngIf="filter != 'zarchiwizuj'; else przyciskiDoArchiwizuj">
+                <button
+                  (click)="urlop(pracownik.id)"
+                  *ngIf="pracownik.urlop == false; else przywrocUrlop"
+                  ngbDropdownItem>
+                  Urlop
                 </button>
-                <button ngbDropdownItem (click)="zarchiwizujUzytkownika(pracownik.id)"
-                        *ngIf="pracownik.status == 'dostepni' else przywrocArchiwum ">Zarchiwizuj
+                <button
+                  (click)="zarchiwizujUzytkownika(pracownik.id)"
+                  *ngIf="pracownik.status == 'dostepni'; else przywrocArchiwum"
+                  ngbDropdownItem>
+                  Zarchiwizuj
                 </button>
-
 
                 <ng-template #przywrocArchiwum>
-                  <button ngbDropdownItem (click)="przywrocUzytkownika(pracownik.id)">Przywróć</button>
+                  <button (click)="przywrocUzytkownika(pracownik.id)" ngbDropdownItem>Przywróć</button>
                 </ng-template>
                 <ng-template #przywrocUrlop>
-                  <button ngbDropdownItem (click)="przywrocUzytkownikaZUrlopu(pracownik.id)">DO pracy wio</button>
+                  <button (click)="przywrocUzytkownikaZUrlopu(pracownik.id)" ngbDropdownItem>DO pracy wio</button>
                 </ng-template>
-
               </ng-container>
               <ng-template #przyciskiDoArchiwizuj>
-
-                <button ngbDropdownItem (click)="urlop(pracownik.id)">Urlop
-                </button>
-                <button ngbDropdownItem (click)="przywrocUzytkownika(pracownik.id)">Dostepny</button>
-
+                <button (click)="urlop(pracownik.id)" ngbDropdownItem>Urlop</button>
+                <button (click)="przywrocUzytkownika(pracownik.id)" ngbDropdownItem>Dostepny</button>
               </ng-template>
 
-
               <div class="dropdown-divider"></div>
-              <button ngbDropdownItem (click)="usunPracownika(pracownik.id)">Usuń</button>
+              <button (click)="usunPracownika(pracownik.id)" ngbDropdownItem>Usuń</button>
             </div>
           </div>
         </td>
         <td style="text-align: center">
-
-          <img style="max-height: 38px;max-width: 70px"
-
-               [src]="environment.linkDoZdjeciaProfilowego+pracownik.id+'?jakosc=30' |zdjecie:false"
-          />
+          <img
+            [src]="environment.linkDoZdjeciaProfilowego + pracownik.id + '?jakosc=30' | zdjecie : false"
+            style="max-height: 38px; max-width: 70px" />
         </td>
       </tr>
     </table>
   </div>
   <div class="divNaPrzycisk">
-    <button class="DodajPracownikaButton" (click)="dodajPracownika()">Dodaj pracownika</button>
+    <button (click)="dodajPracownika()" class="DodajPracownikaButton">Dodaj pracownika</button>
   </div>
 </div>
-
-

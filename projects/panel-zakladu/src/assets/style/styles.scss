@@ -5,6 +5,22 @@
 @import '../../../../../node_modules/tippy.js/animations/scale.css';
 @import 'https://cdn.jsdelivr.net/npm/suneditor@latest/dist/css/suneditor.min.css';
 
+html {
+  height: 100dvh;
+}
+
+.NoMax1200 {
+  @media (max-width: 1200px) {
+    display: none;
+  }
+}
+
+.NotInMobile {
+  @media (max-width: 600px) {
+    display: none;
+  }
+}
+
 .toast-top-right {
   // top: 55px !important;
 }
@@ -16,14 +32,24 @@
 
 //usunięcie limitu szerokośći dla popover
 .popover {
-  max-width: 100% !important;
-  min-width: min-content;
+  @media (min-width: 700px) {
+    max-width: 100% !important;
+    min-width: min-content;
+  }
 }
 
 .BrakBialejRamkiPopOverRodzic {
   padding: 0 !important;
 }
 
+/*
+.popover-body,
+.popover-header {
+  @media (max-width: 700px) {
+    width: 60%;
+  }
+}
+*/
 :root {
   --ciemnyNiebieski: #000618;
 }
@@ -93,6 +119,9 @@ body {
   color: #9d1818;
   font-weight: bolder;
   font-family: math;
+  @media (max-width: 550px) {
+    font-size: 16px;
+  }
 }
 
 .wymaganiaHasla {
@@ -110,7 +139,8 @@ body {
 }
 
 .h1dlaTytuluPaneluZaklad,
-.h1dlaTytuluPaneluLogowanie {
+.h1dlaTytuluPaneluLogowanie,
+.h2laTytuluPaneluLogowanie {
   font-family: math;
   width: 100%;
   text-align: center;
@@ -120,10 +150,23 @@ body {
   color: darkblue;
   position: relative;
   margin: 0;
+  @media (max-width: 700px) {
+    font-size: 25px;
+  }
 }
 
 .h1dlaTytuluPaneluLogowanie {
   margin-bottom: 20px;
+  @media (max-width: 700px) {
+    margin-top: 20px;
+  }
+}
+
+.h2laTytuluPaneluLogowanie {
+  margin-bottom: 10px;
+  @media (max-width: 700px) {
+    margin-top: 15px;
+  }
 }
 
 .h1dlaTytuluPaneluZaklad {
@@ -147,6 +190,9 @@ body {
   color: #023296;
   font-weight: bolder;
   font-family: math;
+  @media (max-width: 550px) {
+    font-size: 18px;
+  }
 
   &:hover {
     color: #002f5e;
@@ -160,6 +206,9 @@ body {
   color: #020960;
   font-weight: bolder;
   font-family: math;
+  @media (max-width: 550px) {
+    font-size: 18px;
+  }
 
   &:hover {
     color: #030b70;
@@ -271,6 +320,12 @@ body {
 }
 
 .tablica {
+  .dropdown .dropdown-toggle {
+    @media (max-width: 600px) {
+      font-size: 9px;
+    }
+  }
+
   tr.wyszukiwarka {
     position: relative;
     z-index: 101;
@@ -280,6 +335,9 @@ body {
 
       h3 {
         letter-spacing: 1px;
+        @media (max-width: 600px) {
+          font-size: 17px;
+        }
       }
     }
 
@@ -291,6 +349,12 @@ body {
         margin-right: 10px;
         border: 2px inset #b7cff5;
         width: 300px;
+        @media (max-width: 700px) {
+          width: 150px;
+        }
+        @media (max-width: 500px) {
+          width: 50px;
+        }
       }
     }
   }
@@ -344,6 +408,11 @@ body {
   width: calc(100% - 17px);
   margin: 10px 10px 10px 00px;
   font-size: 17px;
+
+  @media (max-width: 600px) {
+    font-size: 12px;
+    width: 100%;
+  }
 
   .lupa {
     font-size: 14px;
@@ -422,6 +491,15 @@ body {
   button {
     width: 105px !important;
   }
+
+  @media (max-width: 700px) {
+    .switch.switch-small > .switch-pane > span {
+      font-size: 12px !important;
+    }
+    button {
+      width: 80px !important;
+    }
+  }
 }
 
 .przelacznikCzynneNieczynne {
@@ -429,6 +507,15 @@ body {
     width: 104px !important;
     margin-left: 10px;
     margin-right: 10px;
+  }
+
+  @media (max-width: 700px) {
+    .switch.switch-small > .switch-pane > span {
+      font-size: 12px !important;
+    }
+    .switch {
+      width: 84px !important;
+    }
   }
 
   .switch:not(.checked) {
@@ -457,6 +544,15 @@ body {
     width: 115px !important;
     margin-left: 10px;
     margin-right: 10px;
+  }
+
+  @media (max-width: 700px) {
+    .switch.switch-small > .switch-pane > span {
+      font-size: 12px !important;
+    }
+    .switch {
+      width: 99px !important;
+    }
   }
 
   .switch:not(.checked) {

@@ -1,0 +1,19 @@
+<div (click)="open()" [ngClass]="{ open: openHamburger }" class="hamburgerMenu" id="nav-icon2">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+<div class="nic" id="menuDiv">
+  <nav [ngClass]="{ open: openHamburger }" class="hamburgerMenuDiv">
+    <a (click)="nawigacja.przeniesDoPanelu(nawigacja.nav.rejestracja); close()">Rejestracja</a>
+    <a (click)="nawigacja.przeniesDoPanelu(nawigacja.nav.ONas); close()">O nas</a>
+    <a (click)="nawigacja.przeniesDoPanelu(nawigacja.nav.pracownicy); close()">Pracownicy</a>
+    <a (click)="nawigacja.przeniesDoPanelu(nawigacja.nav.mapa); close()">Mapa</a>
+    <button (click)="nawigacja.przeniesDoPanelu(nawigacja.nav.napiszNam); close()" class="napiszDoNasButton">
+      Napisz do nas
+    </button>
+  </nav>
+</div>

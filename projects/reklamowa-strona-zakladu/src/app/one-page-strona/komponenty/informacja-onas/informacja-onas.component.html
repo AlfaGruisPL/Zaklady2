@@ -1,5 +1,5 @@
 <div class="informacjaOnas" id="ONas">
-  <div class="container">
+  <div class="containerONas">
 
     <div class="dane">
       <div *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.naszKontaktCzyWyswietlic">
@@ -17,10 +17,10 @@
     </div>
 
     <div class="panel">
-      <span class="uslugi" *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.uslugiCzyWyswietlic">
+      <span *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.uslugiCzyWyswietlic" class="uslugi">
         <app-onas-uslugi></app-onas-uslugi>
       </span>
-      <div class="podstawoweInformacje" *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.daneZakladuCzyWyswietlic">
+      <div *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.daneZakladuCzyWyswietlic" class="podstawoweInformacje">
         <app-onas-dane-podstawowe></app-onas-dane-podstawowe>
       </div>
 

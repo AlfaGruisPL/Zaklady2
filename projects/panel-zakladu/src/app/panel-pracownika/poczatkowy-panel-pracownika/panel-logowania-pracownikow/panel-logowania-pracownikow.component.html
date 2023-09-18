@@ -1,13 +1,12 @@
 <div class="logowanie">
   <h1 class="h1dlaTytuluPaneluZaklad">
-    Zakład
     <ng-container *ngIf="podreczne_.zakladZnaleziony_domenowe == false; else nazwa"></ng-container>
-    <ng-template #nazwa> "{{ podreczne_.nazwaZakladu_domenowe }}"</ng-template>
+    <ng-template #nazwa>{{ podreczne_.nazwaZakladu_domenowe }}</ng-template>
   </h1>
-  <h1 class="h1dlaTytuluPaneluLogowanie">Panel logowania</h1>
+  <h2 class="h2laTytuluPaneluLogowanie">Panel logowania</h2>
 
   <div class="formularz">
-    <div class="informacja" *ngIf="podreczne_.zakladZnaleziony_domenowe == false">
+    <div *ngIf="podreczne_.zakladZnaleziony_domenowe == false" class="informacja">
       <h1>Zakład nie znaleziony</h1>
       <p>
         Podany identyfikator zakładu nie został odnaleziony. Sprawdź adres URL wpisany w przeglądarkę, jeżeli adres jest
@@ -20,30 +19,30 @@
         <tr>
           <td>
             <input
-              class="logInput"
-              type="text"
-              placeholder="E-mail"
-              [ngModelOptions]="{ standalone: true }"
               [(ngModel)]="email"
               [disabled]="podreczne_.nazwaZakladu_domenowe.length == 0"
-              [ngClass]="{ wpiszDane: !czyEmailWpisany || !czyPrawidloweDane }" />
+              [ngClass]="{ wpiszDane: !czyEmailWpisany || !czyPrawidloweDane }"
+              [ngModelOptions]="{ standalone: true }"
+              class="logInput"
+              placeholder="E-mail"
+              type="text" />
           </td>
         </tr>
         <tr>
           <td style="position: relative">
             <input
-              class="logInput"
-              [type]="!this.Podglad ? 'password' : 'text'"
-              placeholder="Hasło"
-              [ngModelOptions]="{ standalone: true }"
               [(ngModel)]="haslo"
               [disabled]="podreczne_.nazwaZakladu_domenowe.length == 0"
-              [ngClass]="{ wpiszDane: !czyHasloWpisane || !czyPrawidloweDane }" />
+              [ngClass]="{ wpiszDane: !czyHasloWpisane || !czyPrawidloweDane }"
+              [ngModelOptions]="{ standalone: true }"
+              [type]="!this.Podglad ? 'password' : 'text'"
+              class="logInput"
+              placeholder="Hasło" />
             <fa-icon
-              class="Podglad"
               (click)="this.Podglad = !this.Podglad"
-              style="position: absolute; top: 34px"
-              [icon]="!this.Podglad ? this.fontAwesome.oczko : this.fontAwesome.oczkoZamkniete"></fa-icon>
+              [icon]="!this.Podglad ? this.fontAwesome.oczko : this.fontAwesome.oczkoZamkniete"
+              class="Podglad"
+              style="position: absolute; top: 34px"></fa-icon>
           </td>
         </tr>
         <tr>
@@ -84,20 +83,20 @@
       </table>
       <div class="logowanieMarginButton">
         <button
-          type="submit"
           (click)="logowanie()"
+          [disabled]="podreczne_.nazwaZakladu_domenowe.length == 0 || trwaLogowanie"
           class="ButtonZarejestrujIzaloguj"
-          [disabled]="podreczne_.nazwaZakladu_domenowe.length == 0 || trwaLogowanie">
+          type="submit">
           Zaloguj
         </button>
         <br />
-        <a [routerLink]="['../reset']" [queryParams]="{ strzalka: true }" class="niePamietaszHasla"
+        <a [queryParams]="{ strzalka: true }" [routerLink]="['../reset']" class="niePamietaszHasla"
           >Nie pamiętasz hasła? Kliknij, aby zresetować</a
         >
         <a
-          class="chceszSieZalogowacLubZarejestrowac"
           [queryParams]="{ strzalka: true }"
           [routerLink]="['../rejestracja']"
+          class="chceszSieZalogowacLubZarejestrowac"
           >Kliknij, aby zarejestrować nowy zakład</a
         >
       </div>

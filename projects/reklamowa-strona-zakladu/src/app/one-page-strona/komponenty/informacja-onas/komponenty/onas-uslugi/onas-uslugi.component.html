@@ -1,10 +1,10 @@
 <div class="uslugiTable">
-  <table>
+  <table style="width: 100%;">
     <tr>
       <td colspan="2">
         <h1 class="informacjeOnasTytul">Nasze usługi
-          <fa-icon class="iconkaUslugi"
-                   [icon]="faIcons.uslugi"></fa-icon>
+          <fa-icon [icon]="faIcons.uslugi"
+                   class="iconkaUslugi"></fa-icon>
         </h1>
       </td>
       <td></td>
@@ -48,7 +48,7 @@
       <td class="informacjaNaglowek1"></td>
     </tr>
     <tr>
-      <td colspan="3" *ngIf="danePodstawowe.danePodstawowe.uslugi.length > 10">
+      <td *ngIf="danePodstawowe.danePodstawowe.uslugi.length > 10" colspan="3">
         <div
           style="
           display: flex;
@@ -58,12 +58,12 @@
         "
         >
           <ngb-pagination
-            [collectionSize]="danePodstawowe.danePodstawowe.uslugi.length"
             [(page)]="strona"
-            [maxSize]="5"
-            [rotate]="true"
-            [pageSize]="max"
             [boundaryLinks]="true"
+            [collectionSize]="danePodstawowe.danePodstawowe.uslugi.length"
+            [maxSize]="5"
+            [pageSize]="max"
+            [rotate]="true"
           ></ngb-pagination>
 
         </div>

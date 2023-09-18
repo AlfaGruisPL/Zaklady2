@@ -3,8 +3,8 @@
     <th>Nr</th>
     <th>Imię</th>
     <th>Nazwisko</th>
-    <th>Adres e-mail</th>
-    <th>Numer telefonu</th>
+    <th class="NotInMobile">Adres e-mail</th>
+    <th class="NotInMobile">Numer telefonu</th>
     <th>Wizyty</th>
     <th style="width: 125px">Zarządzanie</th>
   </tr>
@@ -12,8 +12,8 @@
     <td>{{ paggination.indexCount(index) }}</td>
     <td>{{ klient.imie }}</td>
     <td>{{ klient.nazwisko }}</td>
-    <td>{{ klient.email }}</td>
-    <td>{{ klient.numerTelefonu }}</td>
+    <td class="NotInMobile">{{ klient.email }}</td>
+    <td class="NotInMobile">{{ klient.numerTelefonu }}</td>
     <td>{{ klient.wizyty.length }}</td>
     <td>
       <div container="body" ngbDropdown>

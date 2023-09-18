@@ -1,0 +1,16 @@
+.ustawieniaPowiadomien {
+  margin: 40px 0 40px 40px;
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  position: relative;
+
+  .table {
+    width: 500px;
+    border-top: 2px dotted #afb0b4;
+    border-right: 2px dotted #afb0b4;
+    display: block;
+    padding: 20px;
+    //height: 150px;
+  }
+}

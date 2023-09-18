@@ -1,17 +1,13 @@
-import {
-  Component,
-  Inject,
-  InjectionToken,
-  OnInit,
-  Optional,
-  PLATFORM_ID,
-} from '@angular/core';
+import { Component, Inject, InjectionToken, OnInit, Optional, PLATFORM_ID } from '@angular/core';
 import { environment } from '../environments/environment';
 import packageInfo from '../../../../package.json';
 import { DanePodstawoweService } from './serwisy/dane-podstawowe.service';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { HOST_ID } from './host';
 import { StraznicyService } from './straznicy/straznicy.service';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
+
+declare let gtag: Function;
 
 @Component({
   selector: 'app-root',
@@ -22,15 +18,20 @@ export class AppComponent implements OnInit {
   environment = environment;
   wersja: string = packageInfo.version;
   data_wydania: string = packageInfo.data_wydania;
+  k = ['1', '2', '3'];
+  title = 'reklamowaStronaZakladu';
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     public danePodreczne: DanePodstawoweService,
+    private googleService_: GoogleAnalyticsService,
     private straznicy: StraznicyService,
     @Optional() @Inject(HOST_ID) private host: InjectionToken<string>
   ) {}
 
   ngOnInit(): void {
+    this.googleService_.event('enter_name', 'user_register_form', 'Name');
+    setInterval(() => {}, 1000);
     /*  setInterval(() => {
           this.straznicy.sprawdzenieCzySerwerAktywny()
           this.straznicy.sprawdzenieCzyStronaWlaczona()
@@ -50,6 +51,4 @@ export class AppComponent implements OnInit {
       //  console.log(this.host);
     }
   }
-
-  title = 'reklamowaStronaZakladu';
 }

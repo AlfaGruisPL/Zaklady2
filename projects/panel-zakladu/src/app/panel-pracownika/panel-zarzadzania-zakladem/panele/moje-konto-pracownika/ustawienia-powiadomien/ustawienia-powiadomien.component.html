@@ -1,0 +1,33 @@
+<div *ngIf="!environment.production" style="outline: 3px dotted red">
+  <div class="ustawieniaPowiadomien">
+    <table class="table">
+      <tr>
+        <th colspan="2"><h4>Ustawienia powiadomień</h4></th>
+      </tr>
+      <tr>
+        <th>Powiadomienia o nowej wizycie</th>
+        <td>
+          <ui-switch></ui-switch>
+        </td>
+      </tr>
+      <tr>
+        <th>Powiadomienia o odwołaniu wizyty</th>
+        <td>
+          <ui-switch></ui-switch>
+        </td>
+      </tr>
+      <tr>
+        <th>Powiadomienia o nowej wiadomości email</th>
+        <td>
+          <ui-switch></ui-switch>
+        </td>
+      </tr>
+      <tr>
+        <th>Powiadomienia o niskim pułapie środków na koncie</th>
+        <td>
+          <ui-switch></ui-switch>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

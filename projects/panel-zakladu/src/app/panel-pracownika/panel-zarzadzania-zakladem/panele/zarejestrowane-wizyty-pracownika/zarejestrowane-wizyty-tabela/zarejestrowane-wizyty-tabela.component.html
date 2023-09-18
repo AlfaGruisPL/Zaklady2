@@ -31,26 +31,27 @@
     </td>
   </tr>
   <tr>
-    <th>Lp.</th>
+    <th class="NotInMobile">Lp.</th>
     <th>Data</th>
     <th>Początek</th>
     <th>Koniec</th>
     <th>Imię</th>
     <th>Nazwisko</th>
-    <th>Telefon</th>
-    <th>Email</th>
-    <th>Usługi</th>
+    <th class="NotInMobile">Telefon</th>
+    <th class="NotInMobile">Email</th>
+    <th class="NotInMobile">Usługi</th>
     <th>Zarządzanie</th>
   </tr>
   <tr *ngFor="let wizyta of zwrocDane(); let index = index">
-    <td>{{ index + strona * 10 - 10 + 1 }}</td>
-    <td>{{ wizyta.poczatek | date : 'dd.MM.YYYY' }}</td>
+    <td class="NotInMobile">{{ index + strona * 10 - 10 + 1 }}</td>
+    <td *ngIf="napis(wizyta.poczatek) != undefined">{{ napis(wizyta.poczatek) }}</td>
+    <td *ngIf="napis(wizyta.poczatek) == undefined">{{ wizyta.poczatek | date : 'dd.MM.YYYY' }}</td>
     <td>{{ wizyta.poczatek | date : 'hh:mm' }}</td>
     <td>{{ wizyta.koniec | date : 'hh:mm' }}</td>
     <td>{{ wizyta.imie }}</td>
-    <td>{{ wizyta.nazwisko }}</td>
-    <td>{{ wizyta.numerTelefonu }}</td>
-    <td>{{ wizyta.email }}</td>
+    <td class="NotInMobile">{{ wizyta.nazwisko }}</td>
+    <td class="NotInMobile">{{ wizyta.numerTelefonu }}</td>
+    <td class="NotInMobile">{{ wizyta.email }}</td>
     <td>{{ wizyta.uslugiTab.length }}</td>
     <td>
       <div container="body" ngbDropdown>
@@ -70,8 +71,7 @@
 <div class="paggination">
   <app-table-pagination
     #paggination
-    (pageChange)="pobierzDane()"
-    (pageSizeChange)="pobierzDane()"
+    (changeData)="pobierzDane()"
     [(page)]="strona"
     [(pageSize)]="pageSize"
     [collectionSize]="iloscWizytOgolna"

@@ -1,44 +1,46 @@
-<div id="stopka" class="stopka">
-  <div class="mapaDiv" *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.mapaCzyWyswietlic">
+<div class="stopka" id="stopka">
+  <div *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.mapaCzyWyswietlic" class="mapaDiv">
     <div class="naglowekMapa">
       <h5>Tutaj nas znajdziesz:</h5>
     </div>
-    <div class="mapa" leaflet (leafletMapReady)="onMapReady($event)" [leafletOptions]="options"></div>
+    <div (leafletMapReady)="onMapReady($event)" [leafletOptions]="options" class="mapa" leaflet></div>
   </div>
 
-  <div class="informacje">
-    <div class="tekst" [innerHTML]="danePodstawowe.danePodstawowe.opisZakladuWStopce | htmlSanitizer">
-      <h3 class="tytul">Lorem ipsum dolor sit amet.</h3>
-      <p style="text-indent: 50px">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab adipisci aperiam, eaque esse expedita explicabo
-        fugit incidunt ipsam nam numquam obcaecati omnis qui quidem repellendus repudiandae ut. Ipsam, quisquam.<br />
-      </p>
-      <p style="text-indent: 50px">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto culpa, dolorem, dolores enim error
-        exercitationem itaque perspiciatis placeat possimus quos tenetur voluptas. A autem fugit iusto quas sequi
-        voluptatum.
-      </p>
-    </div>
-    <div class="tabela">
-      <h3 class="tytul">Informacje</h3>
-      <table>
-        <tr>
-          <td>Adres:</td>
-          <td>Czarnieckiego 16/5 <br />Jarosław 37-500</td>
-        </tr>
-        <tr>
-          <td>Rodo:</td>
-          <td><a href="#">pobierz</a></td>
-        </tr>
-        <tr>
-          <td>Regulamin:</td>
-          <td><a href="#">pobierz</a></td>
-        </tr>
-        <tr>
-          <td>Lorem</td>
-          <td>Lorem ipsum dolor.</td>
-        </tr>
-      </table>
-    </div>
+  <div [innerHTML]="danePodstawowe.danePodstawowe.opisZakladuWStopce | htmlSanitizer" class="tekst">
+    <h3 class="tytul">Lorem ipsum dolor sit amet.</h3>
+    <p style="text-indent: 50px">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab adipisci aperiam, eaque esse expedita explicabo
+      fugit incidunt ipsam nam numquam obcaecati omnis qui quidem repellendus repudiandae ut. Ipsam, quisquam.<br />
+    </p>
+    <p style="text-indent: 50px">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto culpa, dolorem, dolores enim error
+      exercitationem itaque perspiciatis placeat possimus quos tenetur voluptas. A autem fugit iusto quas sequi
+      voluptatum.
+    </p>
+  </div>
+  <div class="tabela">
+    <h3 class="tytul">Informacje</h3>
+    <table>
+      <tr>
+        <td>Adres:</td>
+        <td>Czarnieckiego 16/5 <br />Jarosław 37-500</td>
+      </tr>
+      <tr>
+        <td>Rodo:</td>
+        <td><a href="http://fenek.tech:3000/pliki/publiczne/rodo.pdf" target="_blank">wyświetl</a></td>
+      </tr>
+      <tr>
+        <td>Regulamin:</td>
+        <td><a href="http://fenek.tech:3000/pliki/publiczne/regulamin.pdf" target="_blank">wyświetl</a></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <br />Strona reklamowa wykonana przez <br /><a href="www.mojzaklad.pl" target="_blank">www.mojzaklad.pl</a>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">&copy; Copyright {{ data | date : 'yyyy' }}</td>
+      </tr>
+    </table>
   </div>
 </div>

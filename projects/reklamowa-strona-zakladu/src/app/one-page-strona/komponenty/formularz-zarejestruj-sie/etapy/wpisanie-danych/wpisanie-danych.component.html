@@ -7,71 +7,56 @@
       <tr>
         <td>
           <input
+            [(ngModel)]="ZarejestrujSieService.DaneKlientaClass.imie"
             [ngClass]="{
               czerwoneInputy: ZarejestrujSieService.DaneKlientaClass.imiePuste
             }"
-            class="inputyFormularz"
-            [(ngModel)]="ZarejestrujSieService.DaneKlientaClass.imie"
             [ngModelOptions]="{ standalone: true }"
-            placeholder="Imię"
-          />
+            class="inputyFormularz"
+            placeholder="Imię" />
         </td>
         <td>
           <input
-            [ngClass]="{
-              czerwoneInputy:
-                ZarejestrujSieService.DaneKlientaClass.nazwiskoPuste
-            }"
-            class="inputyFormularz"
             [(ngModel)]="ZarejestrujSieService.DaneKlientaClass.nazwisko"
+            [ngClass]="{
+              czerwoneInputy: ZarejestrujSieService.DaneKlientaClass.nazwiskoPuste
+            }"
             [ngModelOptions]="{ standalone: true }"
-            placeholder="Nazwisko"
-          />
+            class="inputyFormularz"
+            placeholder="Nazwisko" />
         </td>
       </tr>
       <tr>
         <td>
           <select
-            class="prefiks"
             [(ngModel)]="ZarejestrujSieService.DaneKlientaClass.prefiksTelefonu"
             [ngModelOptions]="{ standalone: true }"
-          >
+            class="prefiks">
             <option>+48</option>
             <option>+380</option>
           </select>
 
           <input
-            [ngClass]="{
-              czerwoneInputy:
-                ZarejestrujSieService.DaneKlientaClass.numerTelefonuPusty
-            }"
-            style="width: 208px;
-margin-left: 2px"
-            class="inputyFormularz"
             [(ngModel)]="ZarejestrujSieService.DaneKlientaClass.numerTelefonu"
+            [ngClass]="{
+              czerwoneInputy: ZarejestrujSieService.DaneKlientaClass.numerTelefonuPusty
+            }"
             [ngModelOptions]="{ standalone: true }"
-            placeholder="Numer telefonu"
-          />
+            class="inputyFormularz poSelect"
+            placeholder="Numer telefonu" />
         </td>
         <td>
           <input
-            [ngClass]="{
-              czerwoneInputy:
-                ZarejestrujSieService.DaneKlientaClass.adresEmailPusty
-            }"
-            class="inputyFormularz"
             [(ngModel)]="ZarejestrujSieService.DaneKlientaClass.email"
+            [ngClass]="{
+              czerwoneInputy: ZarejestrujSieService.DaneKlientaClass.adresEmailPusty
+            }"
             [ngModelOptions]="{ standalone: true }"
-            placeholder="Email"
-          />
+            class="inputyFormularz"
+            placeholder="Email" />
         </td>
       </tr>
-      <tr
-        *ngIf="
-          ZarejestrujSieService.DaneKlientaClass.daneNieWyslane;
-          else puste
-        "
-      >
+      <tr *ngIf="ZarejestrujSieService.DaneKlientaClass.daneNieWyslane; else puste">
         <td>Dane nie zostały wysłane! Skontaktuj się z administratorem</td>
       </tr>
       <ng-template #puste>
@@ -82,8 +67,10 @@ margin-left: 2px"
     </table>
   </div>
   <div class="divNaPrzycisk">
-    <span class="czerwone" *ngIf="!ZarejestrujSieService.DaneKlientaClass.czyWszystkoUzupelnione">Wprowadź wszystkie dane!</span>
-    <button class="buttonDalej" (click)="przejdzDalej()">Dalej</button>
-    <button class="buttonCofnij" (click)="cofnij()">Cofnij</button>
+    <span *ngIf="!ZarejestrujSieService.DaneKlientaClass.czyWszystkoUzupelnione" class="czerwone"
+      >Wprowadź wszystkie dane!</span
+    >
+    <button (click)="przejdzDalej()" class="buttonDalej">Dalej</button>
+    <button (click)="cofnij()" class="buttonCofnij">Cofnij</button>
   </div>
 </form>

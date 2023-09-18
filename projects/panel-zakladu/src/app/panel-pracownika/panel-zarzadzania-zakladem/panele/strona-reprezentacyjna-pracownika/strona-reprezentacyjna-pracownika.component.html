@@ -1,6 +1,5 @@
-<div class=naglowekZolty>
-    <span
-      class="naglowek1Wzoltym">Tu będą informacje o stronie prezentacyjnej</span>
+<div class="naglowekZolty">
+  <span class="naglowek1Wzoltym">Tu będą informacje o stronie prezentacyjnej</span>
 </div>
 <div class="panelZakladu">
   <div class="left">
@@ -9,10 +8,7 @@
   <div class="right">
     <h3>Podgląd strony reklamowej:</h3>
     <div class="iframe-container">
-      <iframe [src]="bezpiecznyLink" *ngIf="bezpiecznyLink != ''"
-              frameborder="0"></iframe>
+      <iframe *ngIf="bezpiecznyLink != ''" [src]="bezpiecznyLink" frameborder="0"></iframe>
     </div>
-
-
   </div>
 </div>

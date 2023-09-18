@@ -47,6 +47,7 @@ export class ZarejestrowaneWizytyTabelaComponent implements OnInit, OnDestroy {
   }
 
   public pobierzDane() {
+    console.log(this.strona);
     this.pobieranieDanych = true;
     let params = new HttpParams();
     params = params.append('filter', this.filter);
@@ -69,6 +70,17 @@ export class ZarejestrowaneWizytyTabelaComponent implements OnInit, OnDestroy {
 
   zmianaFiltra() {
     this.pobierzDane();
+  }
+
+  napis(wizyta: Date) {
+    if (
+      wizyta.getDay() == new Date().getDay() &&
+      wizyta.getMonth() == new Date().getMonth() &&
+      wizyta.getFullYear() == new Date().getFullYear()
+    ) {
+      return 'Dziś';
+    }
+    return undefined;
   }
 
   onSearchChange(event: Event): void {

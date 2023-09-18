@@ -1,20 +1,29 @@
 .banner {
-  width: 100%;
+  width: 100vw;
   height: 65px;
   float: left;
   display: flex;
   box-shadow: 0px 0px 2px 2px #858181;
   background-color: white;
   position: fixed;
+  left: 0;
+  top: 0;
+  -webkit-backface-visibility: hidden;
   z-index: 110;
+  @media (max-width: 800px) {
+    justify-content: space-between;
+  }
 
   .logoINazwaZakladu {
-    width: 60%;
+    width: calc(100% - 160px - 430px);
     height: 100%;
     float: left;
+    @media (max-width: 1200px) {
+      width: calc(100vw - 65px);
+    }
 
     .logo {
-      width: 10%;
+      width: 64px;
       height: 100%;
       display: flex;
       justify-content: center;
@@ -30,27 +39,31 @@
 
     .nazwa {
       float: left;
-      width: 90%;
+      width: calc(100% - 64px);
       height: 100%;
       display: flex;
       align-items: center;
 
       h1 {
-        font-size: 25px;
         font-family: math;
         margin: 0;
         color: #00009c;
         text-shadow: 0px 0px 1px black;
+
+        font-size: clamp(17px, 1rem + 0.7vw, 25px);
       }
     }
   }
 
   .menu {
-    width: 40%;
+    width: 430px;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    @media (max-width: 1200px) {
+      display: none;
+    }
 
     ul {
       display: flex;
@@ -88,11 +101,14 @@
   }
 
   .napiszDoNasPrzycisk {
-    width: 10%;
+    width: 160px;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    @media (max-width: 800px) {
+      display: none;
+    }
 
     .napiszDoNasButton {
       margin-right: 10px;

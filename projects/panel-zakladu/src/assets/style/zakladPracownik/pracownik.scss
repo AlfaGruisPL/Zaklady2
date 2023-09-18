@@ -4,17 +4,31 @@
   height: 32px;
   font-size: 20px;
   text-align: center;
+  @media (max-width: 1200px) {
+    width: 140px;
+    font-size: 12px;
+    border: 1px inset #b7cff5;
+    height: 22px;
+  }
+}
+
+.input32pxheight {
+  @media (max-width: 1200px) {
+    height: 22px;
+  }
 }
 
 .logInputZaklad_czas {
   width: 110px !important;
   height: 35px;
+  @media (max-width: 700px) {
+    width: 40px !important;
+    font-size: 10px;
+  }
 }
-
 
 /* Importing Bootstrap SCSS file. */
 @import '../../../../../../node_modules/bootstrap/scss/bootstrap';
-
 
 .naglowekZolty {
   width: 100%;
@@ -24,13 +38,17 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background: #edce41;;
+  background: #edce41;
   box-shadow: 0px 2px 4px 0px #999;
   padding-top: 1px;
   position: relative;
   z-index: 100;
+  @media (max-width: 800px) {
+    align-items: flex-start;
+  }
 
-  .naglowek1Wzoltym, .naglowek1Wzoltym2 {
+  .naglowek1Wzoltym,
+  .naglowek1Wzoltym2 {
     font-size: 17px;
     letter-spacing: 1px;
     font-weight: bolder;
@@ -38,13 +56,24 @@
     color: black;
     font-family: math;
     text-shadow: 0px 0px 2px #ffffff;
+    @media (max-width: 1200px) {
+      font-size: 11px;
+    }
+  }
+
+  .naglowek1Wzoltym {
+    @media (max-width: 1200px) {
+      padding-top: 4px;
+    }
   }
 
   .naglowek1Wzoltym2 {
     font-size: 16px;
+    @media (max-width: 1200px) {
+      font-size: 10px;
+    }
   }
 }
-
 
 .niebieskiKomunikatWzoltym {
   font-weight: bolder;
@@ -60,6 +89,9 @@
   color: #1c1c1c;
   text-shadow: 0px 0px 1px black;
   letter-spacing: 1px;
+  @media (max-width: 700px) {
+    font-size: 13px;
+  }
 }
 
 .naglowki2form {
@@ -68,8 +100,10 @@
   font-weight: bolder;
   color: #1c1c1c;
   text-shadow: 0px 0px 1px black;
+  @media (max-width: 700px) {
+    font-size: 12px;
+  }
 }
-
 
 .nieczynne {
   width: 70px;
@@ -121,8 +155,6 @@
   text-align: center;
   position: relative;
   padding: 10px;
-
-
 }
 
 .buttonZapiszZmodyfikuj {
@@ -138,17 +170,17 @@
   color: white;
   text-shadow: 1px 1px 0px black;
   box-shadow: 1px 1px 1px 1px #8d8a8a;
-  transition: 0.20s;
+  transition: 0.2s;
   right: 10px;
 
   &:hover:not([disabled]) {
     cursor: pointer;
     box-shadow: -1px -1px 1px 1px #8d8a8a;
   }
-
 }
 
-.zmodyfikujZapiszButton, .DodajPracownikaButton {
+.zmodyfikujZapiszButton,
+.DodajPracownikaButton {
   position: absolute;
   margin-top: 28px;
   margin-bottom: 20px;
@@ -172,7 +204,6 @@
 
 ///////////////////przyciski///////////////////////////
 
-
 .czerwoneKomunikatyZaklad {
   font-size: 20px;
   color: #9d1818;
@@ -180,11 +211,9 @@
   text-shadow: 0px 0px 1px black;
 }
 
-
 .unchecked {
   padding-left: 10px;
 }
-
 
 .wyswietlanieDanych {
   font-weight: 400;

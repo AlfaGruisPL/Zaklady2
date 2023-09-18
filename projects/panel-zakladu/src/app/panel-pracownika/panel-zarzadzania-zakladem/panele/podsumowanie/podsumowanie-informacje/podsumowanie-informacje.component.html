@@ -1,0 +1,43 @@
+<div class="panel">
+  <div class="mainPanel">
+    <h4>Podsumowanie zakładu</h4>
+    <div class="dane">
+      <table>
+        <tr>
+          <th>Wizyty dziś</th>
+          <td>{{ dane.wizytyDzis?.odbyte }} na {{ dane.wizytyDzis?.suma }}</td>
+        </tr>
+        <tr>
+          <th>Dochód dziś</th>
+          <td>{{ dane.dochodDzis }}zł</td>
+        </tr>
+        <tr>
+          <th>Wizyty w tym tygodniu</th>
+          <td>{{ dane.wizytyWTygodniu?.odbyte }} na {{ dane.wizytyWTygodniu?.suma }}</td>
+        </tr>
+        <tr>
+          <th>Dochód w tym tygodniu</th>
+          <td>{{ dane.dochodWTygodniu }}zł</td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <th>Wizyty wczoraj</th>
+          <td>{{ dane.wizytyWczoraj }}</td>
+        </tr>
+        <tr>
+          <th>Dochód wczoraj</th>
+          <td>{{ dane.dochodWczoraj }}zł</td>
+        </tr>
+        <tr>
+          <th>Wizyty w tygodniu poprzednim</th>
+          <td>{{ dane.wizytyWTygodniuPoprzednim }}</td>
+        </tr>
+        <tr>
+          <th>Dochód w tygodniu poprzednim</th>
+          <td>{{ dane.dochodWTygodniuPoprzednim }}zł</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

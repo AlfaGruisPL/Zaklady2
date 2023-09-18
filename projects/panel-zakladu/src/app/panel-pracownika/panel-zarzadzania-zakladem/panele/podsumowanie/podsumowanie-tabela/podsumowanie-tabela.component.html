@@ -1,0 +1,40 @@
+<table [ngClass]="{ tablicaLoading: false }" class="tablica">
+  <tr class="wyszukiwarka">
+    <td class="title" colspan="5">
+      <h3>Podsumowanie pracy pracowników:</h3>
+    </td>
+    <td class="wyszukiwarkaTD" colspan="5">
+      <fa-icon icon="magnifying-glass"></fa-icon>
+      <input placeholder="wyszukiwarka (wartość wartość2 itd.)" />
+    </td>
+  </tr>
+  <tr #naglowek>
+    <th>Lp</th>
+    <th>Pracownik</th>
+    <th>Wizyty dziś</th>
+    <th>Wizyty wczoraj</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let rekord of dane; let index = index">
+    <td>{{ index - 1 }}</td>
+    <td>{{ rekord.pracownik.imie + ' ' + rekord.pracownik.nazwisko }}</td>
+    <td>{{ rekord.wizytyDzis }} - 3 na 5 (230zł)</td>
+    <td>{{ rekord.wizytyWczoraj }} (342zł)</td>
+    <td>
+      <div container="body" ngbDropdown></div>
+    </td>
+  </tr>
+  <tr *ngFor="let k of [].constructor(7)">
+    <td *ngFor="let k of [].constructor(naglowek.cells.length)"></td>
+  </tr>
+</table>
+<!--
+<app-table-pagination
+  #paggination
+  (pageChange)="tabelaPrzerw_.getData()"
+  [(page)]="tabelaPrzerw_.page"
+  [(pageSize)]="tabelaPrzerw_.pageSize"
+  [collectionSize]="tabelaPrzerw_.daneSize"
+  [disabled]="tabelaPrzerw_.pobieranieDanych"
+  [pageSizeArray]="[2, 5, 7, 10, 20, 50, 100]"></app-table-pagination>
+-->

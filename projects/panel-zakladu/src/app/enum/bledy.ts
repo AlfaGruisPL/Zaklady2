@@ -4,4 +4,5 @@ export enum Bledy {
   przerwaNieZostalaDodana = 'Przerwa nie została dodana',
   dzienWolnyNieUtworzony = 'Dzien wolny nie został utworzony',
   bladUsuwania = 'Usuwanie nie udało się',
+  aktualizacjaNieUdana = 'Aktualizacja plików nie udała się',
 }

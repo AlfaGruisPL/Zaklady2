@@ -47,12 +47,10 @@ export class TablePaginationComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
     this.calcEmptyCell();
   }
 
   calcEmptyCell() {
-    console.log(this.pageSize, this.collectionSize);
     let k = this.pageSize - this.collectionSize;
     if (k < 1) {
       this.kback = 0;
@@ -67,5 +65,11 @@ export class TablePaginationComponent implements OnChanges {
 
   emptyRowArray() {
     return [].constructor(this.kback);
+  }
+
+  saveReloadData() {
+    setTimeout(() => {
+      this.changeData.emit();
+    }, 1);
   }
 }

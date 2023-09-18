@@ -1,25 +1,21 @@
-import {Component, Input, SimpleChanges} from '@angular/core';
-import {Router} from '@angular/router';
-import {CommonModule} from "@angular/common";
+import { Component, Input, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-strzalka',
   templateUrl: './strzalka.component.html',
   styleUrls: ['./strzalka.component.scss'],
-  imports: [
-    CommonModule
-  ],
-  standalone: true
+  imports: [CommonModule],
+  standalone: true,
 })
 export class StrzalkaComponent {
   @Input() ScrollTop = 0;
   wyswietlStrzalke = false;
   strzalkaKreciSie = false;
-
-  constructor(private router: Router) {
-  }
-
   private poprzedniaWysokosc = 0;
+
+  constructor(private router: Router) {}
 
   ngOnChanges(changes: SimpleChanges) {
     let scrollY = 0;
@@ -42,13 +38,6 @@ export class StrzalkaComponent {
       this.strzalkaKreciSie = false;
     }, 800);
     const scrollDiv: any = document.getElementById('trescPaneluAdministratoraID');
-    const scrollStep = -scrollDiv.scrollTop / 10; // Skok przewijania w każdej iteracji
-    let scrollInterval = setInterval(function () {
-      if (scrollDiv.scrollTop !== 0) {
-        scrollDiv.scrollTop += scrollStep;
-      } else {
-        clearInterval(scrollInterval); // Zatrzymanie animacji po osiągnięciu góry
-      }
-    }, 7); // Częstotliwość iteracji (szybkość animacji)
+    scrollDiv.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
