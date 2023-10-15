@@ -1,4 +1,4 @@
-import passwordValidator from "password-validator";
+import passwordValidator from 'password-validator';
 import * as EmailValidator from 'email-validator';
 
 export class RejestracjaZakladu {
@@ -7,25 +7,25 @@ export class RejestracjaZakladu {
   public wies: string = '';
   public miasto: string = '';
   public wojewodztwo: string = '';
-  public ulica: string = "k";
-  public nrDomu: string = "k";
-  public nrLokalu: string = "";
+  public ulica: string = 'k';
+  public nrDomu: string = 'k';
+  public nrLokalu: string = '';
   public kodPocztowy1?: number = 1;
   public kodPocztowy2?: number = 1;
-  public imie: string = "k";
-  public nazwisko: string = "k";
-  public email: string = "alfagruis@gmail.com";
-  public numerTelefonu: string = "530322870";
-  public prefiksTelefonu: string = "+48";
-  public haslo1: string = "Kawa0808)aaaa";
-  public haslo2: string = "Kawa0808)aaaa";
+  public imie: string = 'k';
+  public nazwisko: string = 'k';
+  public email: string = 'alfagruis@gmail.com';
+  public numerTelefonu: string = '530322870';
+  public prefiksTelefonu: string = '+48';
+  public haslo1: string = 'Kawa0808)aaaa';
+  public haslo2: string = 'Kawa0808)aaaa';
   public rodo: boolean = false;
   public regulamin: boolean = false;
   public czyHaslaTakieSame_ = true;
-
+  public identyfikator = '';
   public przyciskAktywny = true;
 
-  public czyMiasto = 1
+  public czyMiasto = 1;
 
   public powiatPoprawne: boolean = true;
   public wiesPoprawne: boolean = true;
@@ -47,6 +47,7 @@ export class RejestracjaZakladu {
   public haslo1poprawne: boolean = true;
   public haslo2poprawne: boolean = true;
   public czyWszystkoPoprawne: boolean = true;
+  public identyfikatorPoprawne: boolean = true;
 
   public czyHaslaTakieSame(): boolean {
     this.czyHaslaTakieSame_ = true;
@@ -67,16 +68,15 @@ export class RejestracjaZakladu {
   public nazwiskoPoprawneWalidacja = true;
   public numerTelefonuPoprawneWalidacja = true;
 
-
   public czyDanePoprawne(): boolean {
     const czyOkej = true;
     this.adresEmailPoprawneWalidacja = EmailValidator.validate(this.email);
     const regex = /^[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$/gi;
-    this.imiePoprawneWalidacja = regex.test(this.imie)
+    this.imiePoprawneWalidacja = regex.test(this.imie);
     const regex2 = /^[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$/gi;
-    this.nazwiskoPoprawneWalidacja = regex2.test(this.nazwisko)
+    this.nazwiskoPoprawneWalidacja = regex2.test(this.nazwisko);
     const regex3 = /^[0-9]+$/gi;
-    this.numerTelefonuPoprawneWalidacja = regex3.test(this.numerTelefonu)
+    this.numerTelefonuPoprawneWalidacja = regex3.test(this.numerTelefonu);
     if (this.numerTelefonu.length != 9) {
       this.numerTelefonuPoprawneWalidacja = false;
     }
@@ -87,7 +87,7 @@ export class RejestracjaZakladu {
     const regex_liczby = /^[0-9]+$/i;
     this.miastoPoprawne = true;
     this.wiesPoprawne = true;
-    this.powiatPoprawne = true
+    this.powiatPoprawne = true;
 
     this.czyWszystkoPoprawne = true;
     if (this.nazwaZakladu.length > 0) {
@@ -96,7 +96,12 @@ export class RejestracjaZakladu {
       this.nazwaZakladuPoprawne = false;
       this.czyWszystkoPoprawne = false;
     }
-
+    if (this.identyfikator.length > 0) {
+      this.identyfikatorPoprawne = true;
+    } else {
+      this.identyfikatorPoprawne = false;
+      this.czyWszystkoPoprawne = false;
+    }
     if (this.wojewodztwo.length > 0) {
       this.wojewodztwoPoprawne = true;
     } else {
@@ -138,13 +143,21 @@ export class RejestracjaZakladu {
       this.nrDomuPoprawny = false;
       this.czyWszystkoPoprawne = false;
     }
-    if (this.kodPocztowy1 != undefined && this.kodPocztowy1.toString().length > 0 && regex_liczby.test(this.kodPocztowy1.toString())) {
+    if (
+      this.kodPocztowy1 != undefined &&
+      this.kodPocztowy1.toString().length > 0 &&
+      regex_liczby.test(this.kodPocztowy1.toString())
+    ) {
       this.kodPocztowy1Poprawny = true;
     } else {
       this.kodPocztowy1Poprawny = false;
       this.czyWszystkoPoprawne = false;
     }
-    if (this.kodPocztowy2 != undefined && this.kodPocztowy2.toString().length > 0 && regex_liczby.test(this.kodPocztowy2.toString())) {
+    if (
+      this.kodPocztowy2 != undefined &&
+      this.kodPocztowy2.toString().length > 0 &&
+      regex_liczby.test(this.kodPocztowy2.toString())
+    ) {
       this.kodPocztowy2Poprawny = true;
     } else {
       this.kodPocztowy2Poprawny = false;
@@ -202,7 +215,6 @@ export class RejestracjaZakladu {
       this.czyWszystkoPoprawne = false;
     }
 
-
     return this.czyWszystkoPoprawne;
   }
 
@@ -211,19 +223,26 @@ export class RejestracjaZakladu {
   public nmumerTelefonuWykorzystany = false;
   public rejestracjaUdana = true;
 
-
   public walidacjaHasla(): boolean {
-    this.hasloSpelniaWymagania = true
+    this.hasloSpelniaWymagania = true;
     var schema = new passwordValidator();
     schema
-      .is().min(8)
-      .is().max(100)
-      .has().uppercase()
-      .has().lowercase()
-      .has().digits(1)
-      .has().not().spaces()
-      .has().symbols(1)
-    this.hasloSpelniaWymagania = <boolean>schema.validate(this.haslo1)
+      .is()
+      .min(8)
+      .is()
+      .max(100)
+      .has()
+      .uppercase()
+      .has()
+      .lowercase()
+      .has()
+      .digits(1)
+      .has()
+      .not()
+      .spaces()
+      .has()
+      .symbols(1);
+    this.hasloSpelniaWymagania = <boolean>schema.validate(this.haslo1);
 
     return this.hasloSpelniaWymagania;
   }
@@ -235,15 +254,15 @@ export class RejestracjaZakladuDTO {
   public powiat: string = '';
   public wies: string = '';
   public wojewodztwo: string = '';
-  public ulica: string = "";
-  public nrDomu: string = "";
-  public nrLokalu: string = "";
+  public ulica: string = '';
+  public nrDomu: string = '';
+  public nrLokalu: string = '';
   public kodPocztowy: string;
-  public imie: string = "";
-  public nazwisko: string = "";
-  public email: string = "";
-  public numerTelefonu: string = "";
-  public haslo: string = "";
+  public imie: string = '';
+  public nazwisko: string = '';
+  public email: string = '';
+  public numerTelefonu: string = '';
+  public haslo: string = '';
 
   constructor(dane: RejestracjaZakladu) {
     this.nazwaZakladu = dane.nazwaZakladu;
@@ -258,8 +277,7 @@ export class RejestracjaZakladuDTO {
     this.imie = dane.imie;
     this.nazwisko = dane.nazwisko;
     this.email = dane.email;
-    this.numerTelefonu = dane.prefiksTelefonu + "-" + dane.numerTelefonu;
+    this.numerTelefonu = dane.prefiksTelefonu + '-' + dane.numerTelefonu;
     this.haslo = dane.haslo1;
   }
-
 }

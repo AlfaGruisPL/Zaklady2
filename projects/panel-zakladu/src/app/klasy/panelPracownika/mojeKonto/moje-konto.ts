@@ -1,9 +1,10 @@
 export class MojeKonto {
-  public imie: string = "";
-  public nazwisko: string = "";
-  public prefiks: string = "";
-  public numerTelefonu: string = "";
-  public email: string = "";
+  public id = 0;
+  public imie: string = '';
+  public nazwisko: string = '';
+  public prefiks: string = '';
+  public numer_telefonu: string = '';
+  public email: string = '';
   public adres: {
     wojewodztwo?: string;
     miasto?: string;
@@ -12,9 +13,9 @@ export class MojeKonto {
     numerLokalu?: string;
     kodPocztowy1?: string;
     kodPocztowy2?: string;
-}
-  public wpiszNoweHaslo: string = "";
-  public powtorzNoweHaslo : string = "";
+  };
+  public wpiszNoweHaslo: string = '';
+  public powtorzNoweHaslo: string = '';
 
   public czyHasloWpisane1: boolean = true;
   public czyHasloWpisane2: boolean = true;
@@ -23,34 +24,33 @@ export class MojeKonto {
 
   public opcjaZmianyHasla: boolean = false;
 
+  constructor() {
+    this.adres = {};
+  }
 
-  public czyHaslaWpisaneFunkcja(){
+  public czyHaslaWpisaneFunkcja() {
     this.czyHaslaTakieSame = true;
     this.czyHasloWpisane1 = true;
     this.czyHasloWpisane2 = true;
     this.czyHaslaWpisane = true;
-    if(this.wpiszNoweHaslo.length <= 0){
+    if (this.wpiszNoweHaslo.length <= 0) {
       this.czyHasloWpisane1 = false;
       this.czyHaslaWpisane = false;
     }
-    if(this.powtorzNoweHaslo.length <= 0){
+    if (this.powtorzNoweHaslo.length <= 0) {
       this.czyHasloWpisane2 = false;
       this.czyHaslaWpisane = false;
     }
     return this.czyHaslaWpisane;
-
   }
-  public czyHaslaTakieSameFunkcja(){
+
+  public czyHaslaTakieSameFunkcja() {
     this.czyHaslaTakieSame = true;
-    if(this.wpiszNoweHaslo == this.powtorzNoweHaslo){
+    if (this.wpiszNoweHaslo == this.powtorzNoweHaslo) {
       this.czyHaslaTakieSame = true;
-    }
-    else {
+    } else {
       this.czyHaslaTakieSame = false;
     }
     return this.czyHaslaTakieSame;
   }
-constructor() {
-  this.adres = {}
-}
 }

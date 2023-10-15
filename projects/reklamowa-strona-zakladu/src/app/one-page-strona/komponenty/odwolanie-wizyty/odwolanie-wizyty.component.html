@@ -1,38 +1,40 @@
 <div class="parallax1"></div>
 <section>
-    <header>
-        <h1>Odwołanie wizyty</h1>
-    </header>
-    <div class="tresc">
-        <div [ngComponentOutlet]="wybranyKomponent" *ngIf="wybranyKomponent != null"></div>
+  <header>
+    <h1>Odwołanie wizyty</h1>
+  </header>
+  <div class="tresc">
+    <div *ngIf="wybranyKomponent != null" [ngComponentOutlet]="wybranyKomponent"></div>
 
-        <table *ngIf="wybranyKomponent == null">
-            <tr>
-                <th>Imię nazwisko</th>
-                <td>{{wizyta.imie + ' ' + wizyta.nazwisko}}</td>
-            </tr>
-            <tr>
-                <th>Data</th>
-                <td>{{wizyta.poczatek | date: 'dd.MM.YYYY'}}</td>
-            </tr>
-            <tr>
-                <th>Godzina</th>
-                <td>{{wizyta.poczatek | date: 'HH:mm'}}</td>
-            </tr>
-            <tr>
-                <th>Usługi</th>
-                <td>
-                    <ul>
-                        <li *ngFor="let usluga of wizyta.uslugiTab">{{usluga.nazwa}}</li>
-                    </ul>
-                </td>
-            </tr>
-
-        </table>
-    </div>
-    <footer *ngIf="wybranyKomponent == null">
-        <button (click)="anuluj()" [disabled]="przyciskDisabled">Anuluj</button>
-        <button (click)="potwierdz()" [disabled]="przyciskDisabled">Odwołaj</button>
-    </footer>
+    <table *ngIf="wybranyKomponent == null">
+      <tr>
+        <th>Imię nazwisko</th>
+        <td>{{ wizyta.customer.firstName + ' ' + wizyta.customer.lastName }}</td>
+      </tr>
+      <tr>
+        <th>Data</th>
+        <td>{{ wizyta.poczatek | date : 'dd.MM.YYYY' }}</td>
+      </tr>
+      <tr>
+        <th>Godzina</th>
+        <td>{{ wizyta.poczatek | date : 'HH:mm' }}</td>
+      </tr>
+      <tr>
+        <th>Usługi</th>
+        <td *ngIf="wizyta.uslugi?.opis?.length == 0">
+          <ul>
+            <li *ngFor="let usluga of wizyta.uslugi?.uslugi">{{ usluga.nazwa }}</li>
+          </ul>
+        </td>
+        <td *ngIf="wizyta.uslugi?.opis?.length != 0">
+          {{ wizyta.uslugi?.opis }}
+        </td>
+      </tr>
+    </table>
+  </div>
+  <footer *ngIf="wybranyKomponent == null">
+    <button (click)="anuluj()" [disabled]="przyciskDisabled" class="domyslnyButton3">Anuluj</button>
+    <button (click)="potwierdz()" [disabled]="przyciskDisabled" class="domyslnyButton2">Odwołaj</button>
+  </footer>
 </section>
 <div class="parallax"></div>

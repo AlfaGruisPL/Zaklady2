@@ -54,7 +54,7 @@ export class PodsumowanieWykresComponent {
         },
         title: {
           display: true,
-          text: 'Wizyty zakładu/pracowników',
+          text: 'Wizyty pracowników',
           font: {
             size: 20,
             family: 'math',
@@ -84,6 +84,8 @@ export class PodsumowanieWykresComponent {
               this.labels.push(k.data);
             }
           });
+          this.labels[0] = 'Dziś';
+          this.labels[1] = 'Wczoraj';
           kIndex++;
           let color = this.generateRandomColor(pracownik.pracownik.id);
           const obiekt = {
@@ -104,6 +106,10 @@ export class PodsumowanieWykresComponent {
 
           this.datasets.push(obiekt);
         });
+        this.config.options.plugins.title.text += ` (${this.labels.length} dni)`;
+        if (this.chart) {
+          this.chart.destroy();
+        }
         Chart.register(chartTrendline);
         this.chart = new Chart('MyChart', this.config);
         this.chart.update();

@@ -4,4 +4,5 @@ export class Usluga {
   public cena: number = 0;
   public czas: number = 0;
   public pracownicy: Array<number> = [];
+  zaznaczone = false;
 }

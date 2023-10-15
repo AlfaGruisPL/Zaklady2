@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="startPaneluZakladu" type="js.build_tools.npm" nameIsGenerated="true">
+  <configuration default="false" name="startPaneluZakladu" type="js.build_tools.npm" focusToolWindowBeforeRun="true" nameIsGenerated="true">
     <package-json value="$PROJECT_DIR$/package.json" />
     <command value="run" />
     <scripts>
@@ -7,6 +7,16 @@
     </scripts>
     <node-interpreter value="project" />
     <envs />
-    <method v="2" />
+    <method v="2">
+      <option name="NpmBeforeRunTask" enabled="true">
+        <package-json value="$PROJECT_DIR$/package.json" />
+        <command value="run" />
+        <scripts>
+          <script value="npmInstall" />
+        </scripts>
+        <node-interpreter value="project" />
+        <envs />
+      </option>
+    </method>
   </configuration>
 </component>

@@ -4,6 +4,7 @@
   "data_wydania": "26.07.2023",
   "scripts": {
     "postinstall": "npm i https://github.com/AlfaGruisPL/zakladLib.git --force",
+    "npmInstall": "npm install --force",
     "ng": "ng",
     "start": "ng serve",
     "startPaneluZakladu": " ng serve PanelZakladu --port 8005  --host=0.0.0.0 --disable-host-check --hmr=true",

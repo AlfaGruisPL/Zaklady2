@@ -11,15 +11,14 @@ import { environment } from '../../environments/environment';
 })
 export class OnePageStronaComponent implements OnInit {
   env = environment;
+  odwolanieWIzyty = false;
+  kodOdwolania = '';
 
   constructor(
     public zarejestrujSie: ZarejestrujSieService,
     public danePodstawowe: DanePodstawoweService,
     private route: ActivatedRoute
   ) {}
-
-  odwolanieWIzyty = false;
-  kodOdwolania = '';
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {

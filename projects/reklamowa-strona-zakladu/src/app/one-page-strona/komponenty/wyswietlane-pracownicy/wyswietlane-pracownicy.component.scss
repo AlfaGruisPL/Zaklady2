@@ -47,6 +47,7 @@
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
+    gap: 35px;
     @media (max-width: 1200px) {
       gap: 35px;
     }
@@ -57,8 +58,6 @@
       align-items: center;
       flex-direction: column;
       width: 320px !important;
-      margin-left: 30px;
-      margin-right: 10px;
       background: #fafafa1c;
       transition: scale 500ms;
       border-radius: 10px;
@@ -91,9 +90,28 @@
 
       .zdjecie {
         width: 100%;
+        display: flex;
+        justify-content: center;
+        background: whitesmoke;
+        position: relative;
+        overflow: hidden;
 
-        img {
+        .backGroundBlur {
+          position: absolute;
+          left: 0;
+          top: 0;
           width: 100%;
+          height: 100%;
+          z-index: 90;
+          filter: blur(18px);
+        }
+
+        .zdjeciePracownika {
+          z-index: 91;
+          position: relative;
+          height: 330px;
+          // width: auto;
+          ///    max-width: 100%;
         }
       }
 

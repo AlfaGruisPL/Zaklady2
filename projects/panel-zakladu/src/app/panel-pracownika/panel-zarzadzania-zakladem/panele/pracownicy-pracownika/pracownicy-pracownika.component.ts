@@ -10,6 +10,7 @@ import { BledyNumery } from '../../../../enum/bledy-numery';
 import { CzyNaprawdeUsunacComponent } from './okienka/czy-naprawde-usunac/czy-naprawde-usunac.component';
 import { PodreczneDaneService } from '../../../../serwisy/podreczne-dane.service';
 import { environment } from '../../../../../environments/environment';
+import { KomunikatUniwersalnyService } from '../../../../komponets/komunikat-uniwersalny/komunikat-uniwersalny.service';
 
 @Component({
   selector: 'app-pracownicy-pracownika',
@@ -29,7 +30,8 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
     private listonosz: ListonoszService,
     private komunikaty: KomunikatyService,
     private podreczneDane: PodreczneDaneService,
-    private okienka: NgbModal
+    private okienka: NgbModal,
+    private UniwersalnyKomunikat_: KomunikatUniwersalnyService
   ) {}
 
   ngOnInit() {
@@ -104,14 +106,27 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
   }
 
   public zarchiwizujUzytkownika(id: number) {
-    this.listonosz
-      .aktualizuj(Drzwi.zwolnionyPrzywroconyPracownikMojZaklad + '/' + id, { status: 'zarchiwizuj' })
-      .then(udane => {
-        this.komunikaty.pracownikZarchiwizowany();
-        this.pobierzListePracownikow();
+    const okno = this.UniwersalnyKomunikat_.open(
+      'Czy na pewno chcesz zarchiwizować?',
+      'Operacja ta powoduje zwolnienie miejsca w ograniczonej ilości pracowników'
+    );
+    okno.addButton('Nie', {
+      defaultNo: true,
+    });
+    okno
+      .addButton('Tak', {
+        defaultYes: true,
       })
-      .catch(nieudane => {
-        this.komunikaty.pracownikNieZarchiwizowany();
+      .subscribe(k => {
+        this.listonosz
+          .aktualizuj(Drzwi.zwolnionyPrzywroconyPracownikMojZaklad + '/' + id, { status: 'zarchiwizuj' })
+          .then(udane => {
+            this.komunikaty.pracownikZarchiwizowany();
+            this.pobierzListePracownikow();
+          })
+          .catch(nieudane => {
+            this.komunikaty.pracownikNieZarchiwizowany();
+          });
       });
   }
 

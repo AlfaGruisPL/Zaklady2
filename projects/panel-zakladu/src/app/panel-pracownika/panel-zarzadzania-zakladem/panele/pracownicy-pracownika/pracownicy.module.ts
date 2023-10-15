@@ -9,17 +9,14 @@ import {
   DodawanieIModyfikacjaPracownikaComponent
 } from "./okienka/dodawanie-imodyfikacja-pracownika/dodawanie-imodyfikacja-pracownika.component";
 import {RureczkiModule} from "../../../../rureczki/rureczki.module";
+import {
+  MojeKontoZdjecieProfiloweComponent
+} from "../moje-konto-pracownika/moje-konto-zdjecie-profilowe/moje-konto-zdjecie-profilowe.component";
 
 
 @NgModule({
-  declarations: [PracownicyPracownikaComponent, CzyNaprawdeUsunacComponent, DodawanieIModyfikacjaPracownikaComponent,
-  ],
-  imports: [
-    FormsModule, RureczkiModule,
-    CommonModule, TippyDirective, NgbModule
-
-  ],
-  providers: []
+  declarations: [PracownicyPracownikaComponent, CzyNaprawdeUsunacComponent, DodawanieIModyfikacjaPracownikaComponent],
+  imports: [FormsModule, RureczkiModule, CommonModule, TippyDirective, NgbModule, MojeKontoZdjecieProfiloweComponent],
+  providers: [],
 })
-export class PracownicyModule {
-}
+export class PracownicyModule {}

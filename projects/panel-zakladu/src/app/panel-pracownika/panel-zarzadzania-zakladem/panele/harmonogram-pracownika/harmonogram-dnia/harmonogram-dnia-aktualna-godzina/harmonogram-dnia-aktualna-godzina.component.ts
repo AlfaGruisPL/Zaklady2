@@ -5,41 +5,29 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
   templateUrl: './harmonogram-dnia-aktualna-godzina.component.html',
   styleUrls: ['./harmonogram-dnia-aktualna-godzina.component.scss'],
 })
-export class HarmonogramDniaAktualnaGodzinaComponent
-  implements OnInit, OnDestroy
-{
-  @Input() wysokosc = 1;
+export class HarmonogramDniaAktualnaGodzinaComponent implements OnInit, OnDestroy {
+  @Input() szerokosc = 1;
   @Input() lewo = 1;
   @Input() sumaCzasu = 0;
   @Input() godzinaZakonczenia = 0;
   @Input() godzinaRozpoczecia = 0;
-
-  private timer: any;
   widocznosc = false;
+  private timer: any;
 
   ngOnInit() {
     this.ustawKreske();
     this.timer = setInterval(() => {
       this.ustawKreske();
-    }, 400);
-
-    // this.top = 0
-    // this.wysokosc = 21 * 27
+    }, 1000);
   }
 
   ustawKreske() {
     const data = new Date();
-    const minuty =
-      data.getHours() * 60 + data.getMinutes() - this.godzinaRozpoczecia * 60;
-    this.lewo = minuty * (this.wysokosc / (this.godzinaZakonczenia * 60)) - 10;
+    const minuty = data.getHours() * 60 + data.getMinutes() - this.godzinaRozpoczecia * 60;
+    this.lewo = minuty * (this.szerokosc / (this.godzinaZakonczenia * 60)) - 10;
 
     const rozpoczecie = new Date().setHours(this.godzinaRozpoczecia);
-    const zakonczenie = new Date().setHours(
-      this.godzinaZakonczenia + this.godzinaRozpoczecia,
-      0,
-      0,
-      0
-    );
+    const zakonczenie = new Date().setHours(this.godzinaZakonczenia + this.godzinaRozpoczecia, 0, 0, 0);
 
     if (data.getTime() < rozpoczecie || data.getTime() > zakonczenie) {
       this.widocznosc = false;

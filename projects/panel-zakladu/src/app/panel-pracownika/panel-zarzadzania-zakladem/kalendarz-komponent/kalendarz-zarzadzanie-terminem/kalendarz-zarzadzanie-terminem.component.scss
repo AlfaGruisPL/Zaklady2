@@ -5,9 +5,19 @@ table {
 }
 
 h4 {
-  font-size: 15px;
+  font-size: 20px;
 }
 
 table {
   font-size: 13px;
+}
+
+.h4canceled {
+  margin: 0px;
+  color: red;
+}
+
+p.h4canceled {
+  line-height: 14px;
+  padding-bottom: 10px;
 }

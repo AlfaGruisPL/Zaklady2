@@ -11,6 +11,8 @@ import { usluga } from '../../../../../klasy/dane-podstawowe';
 export class WyborUslugComponent implements OnInit {
   @Output() wyslijKrok = new EventEmitter<number>();
   public niewybranaUsluga: boolean = false;
+  strona: number = 0;
+  max = 14;
 
   constructor(public danePodstawowe: DanePodstawoweService, public zarejestrujSie_: ZarejestrujSieService) {}
 
@@ -48,5 +50,15 @@ export class WyborUslugComponent implements OnInit {
         return id == this.zarejestrujSie_.DaneKlientaClass.wybranyPracownik;
       }) != undefined
     );
+  }
+
+  ilePustych() {
+    const wynik = this.uslugi().slice((this.strona - 1) * this.max, this.strona * this.max).length;
+
+    if (wynik < 14) {
+      return this.max - wynik;
+    } else {
+      return 0;
+    }
   }
 }

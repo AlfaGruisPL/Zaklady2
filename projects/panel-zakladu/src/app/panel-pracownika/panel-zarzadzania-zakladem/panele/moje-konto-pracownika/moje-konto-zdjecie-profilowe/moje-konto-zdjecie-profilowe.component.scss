@@ -1,0 +1,32 @@
+img {
+  width: 100%;
+  border: 1px solid bisque;
+  border-radius: 8px;
+}
+
+div {
+  h4 {
+    font-size: 19px;
+  }
+
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+
+  p {
+    margin-bottom: 4px;
+    padding-top: 4px;
+    width: initial;
+    overflow: hidden;
+  }
+
+  .file {
+    margin-top: 10px;
+    overflow: hidden;
+
+    input, span {
+      width: initial;
+    }
+  }
+}

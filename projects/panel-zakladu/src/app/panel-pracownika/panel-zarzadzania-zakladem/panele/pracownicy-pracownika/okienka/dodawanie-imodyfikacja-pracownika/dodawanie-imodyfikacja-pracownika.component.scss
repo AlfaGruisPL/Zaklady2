@@ -1,7 +1,16 @@
 .modal-body {
-
   display: flex;
   justify-content: space-between;
+  @media (max-width: 1202px) {
+    flex-wrap: wrap;
+  }
+
+  table {
+    max-width: 500px;
+    height: min-content;
+    border-collapse: separate;
+    border-spacing: 4px;
+  }
 }
 
 .buttonZapiszZmodyfikuj {
@@ -11,21 +20,21 @@
 }
 
 .naglowki1form {
-
+  font-size: 16px;
 }
 
 .naglowki2form {
-
-}
-
-.modal-footer {
-
-  position: relative;
-  height: 100px;
+  font-size: 16px;
 }
 
 .wyswietlanieDanych {
   padding-left: 20px;
   padding-right: 30px;
-  min-width: 300px;
+}
+
+.pracownikZdjecie {
+  max-height: 250px;
+  max-width: 190px;
+  height: min-content;
+  width: max-content;
 }

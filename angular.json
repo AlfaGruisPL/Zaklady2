@@ -129,8 +129,10 @@
               "projects/panel-zakladu/src/manifest.webmanifest"
             ],
             "styles": [
-              "projects/panel-zakladu/src/assets/style/zakladPracownik/pracownik.scss",
+              "projects/panel-zakladu/src/assets/style/pracownik.scss",
               "projects/panel-zakladu/src/assets/style/styles.scss",
+              "projects/panel-zakladu/src/assets/style/styleAdaptive.scss",
+              "projects/panel-zakladu/src/assets/style/wtf-forms.css",
               "./node_modules/ngx-ui-switch/ui-switch.component.css"
             ],
             "scripts": [],

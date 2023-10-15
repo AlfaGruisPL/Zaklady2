@@ -1,19 +1,21 @@
-<select (change)="dotyczyChange.emit(dotyczy)" (click)="odblokuj()" [(ngModel)]="dotyczy" id="pracownikSelect">
-  <option *ngIf="wyswietlanieOpcjiZakladu" [value]="0">Zakład</option>
-  <ng-container *ngIf="danePodreczne.wlasciciel; else uzytkownik">
-    <option *ngFor="let pracownik of danePodreczne.danePodreczneObiekt.pracownicy" [value]="pracownik.id">
-      <span
-        *ngIf="pracownik.id != danePodreczne.danePodreczneObiekt.zalogowanyUzytkownik?.id; else zalogowanyUzytkownik">
-        {{ pracownik.imie + ' ' + pracownik.nazwisko }}
-      </span>
-      <ng-template #zalogowanyUzytkownik>
-        <span> Zalogowany użytkownik</span>
-      </ng-template>
-    </option>
-  </ng-container>
-  <ng-template #uzytkownik>
-    <option [value]="danePodreczne.danePodreczneObiekt.zalogowanyUzytkownik?.id">
-      <span> Zalogowany użytkownik</span>
-    </option>
-  </ng-template>
-</select>
+<div *ngIf="danePodreczne.danePodreczneObiekt.pracownicy.length != 0" class="select">
+  <select (change)="dotyczyChange.emit(dotyczy)" (click)="odblokuj()" [(ngModel)]="dotyczy" id="pracownikSelect">
+    <option *ngIf="wyswietlanieOpcjiZakladu" [value]="0">Zakład</option>
+    <ng-container *ngIf="danePodreczne.wlasciciel; else uzytkownik">
+      <option *ngFor="let pracownik of danePodreczne.danePodreczneObiekt.pracownicy" [value]="pracownik.id">
+        <span
+          *ngIf="pracownik.id != danePodreczne.danePodreczneObiekt.zalogowanyUzytkownik?.id; else zalogowanyUzytkownik">
+          {{ pracownik.imie + ' ' + pracownik.nazwisko }}&nbsp;&nbsp;&nbsp;
+        </span>
+        <ng-template #zalogowanyUzytkownik>
+          <span> Zalogowany użytkownik&nbsp;&nbsp;&nbsp;</span>
+        </ng-template>
+      </option>
+    </ng-container>
+    <ng-template #uzytkownik>
+      <option [value]="danePodreczne.danePodreczneObiekt.zalogowanyUzytkownik?.id">
+        <span> Zalogowany użytkownik&nbsp;&nbsp;&nbsp;</span>
+      </option>
+    </ng-template>
+  </select>
+</div>

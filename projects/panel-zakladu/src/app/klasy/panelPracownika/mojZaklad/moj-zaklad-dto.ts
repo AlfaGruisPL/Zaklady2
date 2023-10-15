@@ -6,7 +6,6 @@ export class MojZakladDTO {
   public nazwaUlicy: string = '';
   public numerDomu: string = '';
   public numerLokalu: string = '';
-  public opisZakladu: string = '';
   public dataZalozenia?: Date = new Date();
   public kodPocztowy: string = '';
   public wojewodztwo: string = '';
@@ -25,7 +24,6 @@ export class MojZakladDTO {
   public regonCzyWyswietlic = false;
   public emailCzyWyswietlic = false;
   public telefonCzyWyswietlic = false;
-  public opisCzyWyswietlic = false;
   public uslugiCzyWyswietlic = false;
   public dataZalozeniayCzyWyswietlic = false;
   public mapaCzyWyswietlic = false;
@@ -42,6 +40,15 @@ export class MojZakladDTO {
   public numerTelefonu: string = '';
 
   public identyfikator = '';
+
+  mozliwoscPlatnosciKarta = false;
+  platnosci = {
+    blik: false,
+    Visa: false,
+    Apple_Pay: false,
+    MasterCard: false,
+    Google_Pay: false,
+  };
 
   constructor(mojZakladKlasa: MojZaklad) {
     this.nazwa = mojZakladKlasa.nazwa;
@@ -83,6 +90,8 @@ export class MojZakladDTO {
     this.naszKontaktCzyWyswietlic = mojZakladKlasa.naszKontaktCzyWyswietlic;
 
     this.identyfikator = mojZakladKlasa.identyfikator;
+    this.mozliwoscPlatnosciKarta = mojZakladKlasa.mozliwoscPlatnosciKarta;
+    this.platnosci = mojZakladKlasa.platnosci;
   }
 }
 

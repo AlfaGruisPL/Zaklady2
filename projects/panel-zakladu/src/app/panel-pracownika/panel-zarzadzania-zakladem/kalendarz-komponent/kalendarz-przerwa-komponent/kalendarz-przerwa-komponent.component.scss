@@ -1,7 +1,7 @@
 .przerwa {
   width: 50%;
   height: 50px;
-  background: rgba(56, 56, 56, 0.47);
+  background: rgba(105, 105, 105, 0.3);
   position: absolute;
   z-index: 10;
   left: -1px;
@@ -12,6 +12,13 @@
     margin: 0;
     padding: 0;
     font-size: 13px;
+
+    @media (max-width: 1000px) {
+      font-size: 11px;
+    }
+    @media (max-width: 800px) {
+      font-size: 9px;
+    }
     @media (max-width: 600px) {
       display: none;
     }
@@ -33,10 +40,16 @@
 }
 
 .zaklad {
-  background: rgba(213, 186, 1, 0.4);
+  background: rgba(231, 202, 0, 0.31);
   left: 50%;
 }
 
 .regularne {
-  border-bottom: 3px dashed #000000;
+  border-bottom: 3px dashed #5e5e5e;
+}
+
+.tablicaInformacji {
+  th {
+    padding-right: 10px
+  }
 }

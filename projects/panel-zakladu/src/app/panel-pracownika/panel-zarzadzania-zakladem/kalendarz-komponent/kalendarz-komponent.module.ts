@@ -23,6 +23,7 @@ import {
 } from "./kalendarz-przerwa/kalendarz-przerwa-dzien-wolny/kalendarz-przerwa-dzien-wolny.component";
 import { CommonModule } from "@angular/common";
 import { SelectDotyczyComponent } from "../../../komponets/select-dotyczy/select-dotyczy.component";
+import { NgSelectModule } from "@ng-select/ng-select";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { SelectDotyczyComponent } from "../../../komponets/select-dotyczy/select
     Termin_komponentComponent,
     KalendarzKomponentComponent,
     KalendarzPrzerwaPrzerwaComponent,
-    KalendarzPrzerwaDzienWolnyComponent
+    KalendarzPrzerwaDzienWolnyComponent,
   ],
   imports: [
     CommonModule,
@@ -47,9 +48,9 @@ import { SelectDotyczyComponent } from "../../../komponets/select-dotyczy/select
     NgbDropdownMenu,
     NgbDropdownItem,
     NgbPopover,
-    SelectDotyczyComponent
+    SelectDotyczyComponent,
+    NgSelectModule,
   ],
-  exports: [KalendarzKomponentComponent]
+  exports: [KalendarzKomponentComponent],
 })
-export class KalendarzKomponentModule {
-}
+export class KalendarzKomponentModule {}

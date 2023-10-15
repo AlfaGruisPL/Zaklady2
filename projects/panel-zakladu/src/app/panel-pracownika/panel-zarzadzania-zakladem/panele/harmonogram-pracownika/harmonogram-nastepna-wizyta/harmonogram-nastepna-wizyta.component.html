@@ -1,33 +1,29 @@
 <div class="aktualna">
   <h2 class="naglowki1form">Następna wizyta:</h2>
   <div class="block2">
-    <table *ngIf="nastepnaWizyta != undefined else brak">
+    <table *ngIf="nastepnaWizyta != undefined; else brak">
       <tr>
         <td class="naglowki2form">Klient:</td>
         <td class="naglowek2">
-          {{nastepnaWizyta.imie + " " + nastepnaWizyta.nazwisko}}
+          {{ nastepnaWizyta?.customer?.firstName + ' ' + nastepnaWizyta?.customer?.lastName }}
         </td>
       </tr>
       <tr>
         <td class="naglowek">Pozostało:</td>
-        <td class="naglowek2">{{czasDoWizyty()}}</td>
+        <td class="naglowek2">{{ czasDoWizyty() }}</td>
       </tr>
       <tr>
         <td class="naglowek">Początek:</td>
-        <td class="naglowek2">{{nastepnaWizyta.poczatek|date:"HH:mm"}}</td>
+        <td class="naglowek2">{{ nastepnaWizyta?.poczatek | date : 'HH:mm' }}</td>
       </tr>
       <tr>
-        <td class="naglowek">
-          Koniec:
-        </td>
+        <td class="naglowek">Koniec:</td>
         <td class="naglowek2">
-          {{nastepnaWizyta.koniec|date:"HH:mm"}}
+          {{ nastepnaWizyta?.koniec | date : 'HH:mm' }}
         </td>
       </tr>
       <tr>
-        <td class="naglowek">
-          Usługi:
-        </td>
+        <td class="naglowek">Usługi:</td>
         <td>
           <ul class="naglowek2">
             <li>Lorem ipsum dolor.</li>
@@ -40,8 +36,5 @@
       </tr>
     </table>
   </div>
-
 </div>
-<ng-template #brak>
-  Nie ma więcej wizyt tego dnia
-</ng-template>
+<ng-template #brak> Nie ma więcej wizyt tego dnia</ng-template>

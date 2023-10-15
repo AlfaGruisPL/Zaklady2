@@ -20,6 +20,25 @@ export class DanePodstawowe {
   public szerokosc = 0;
   public opisZakladuWStopce = '';
   public wyswietlaneDane: wyswietlaneDane = new wyswietlaneDane();
+  public listaPracownikow: any[] = [];
+  public mozliwoscPlatnosciKarta = false;
+  public platnosci = {
+    blik: false,
+    Visa: false,
+    Apple_Pay: false,
+    MasterCard: false,
+    Google_Pay: false,
+  };
+
+  czyJakasPlatnosc() {
+    for (const argumentsKey in this.platnosci) {
+      // @ts-ignore
+      if (this.platnosci[argumentsKey] == true) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
 
 export class dzien {

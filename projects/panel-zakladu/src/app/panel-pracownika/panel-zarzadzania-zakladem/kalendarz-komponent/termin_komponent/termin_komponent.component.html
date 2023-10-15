@@ -2,7 +2,8 @@
   #wizytaDiv
   (click)="zarzadzaj()"
   [animation]="true"
-  [ngClass]="{ symulacja: symulator }"
+  [disablePopover]="disablePopover()"
+  [ngClass]="{ symulacja: symulator, odwolane: wizyta.dataOdwolania }"
   [ngStyle]="{ top: top, height: wysokosc }"
   [ngbPopover]="popContent"
   [popoverTitle]="popTitle"
@@ -15,7 +16,7 @@
     {{ wizyta.poczatek | date : 'HH:mm' }} {{ wizyta.koniec | date : 'HH:mm' }}
   </h3>
 
-  <div *ngIf="wizytaDiv.clientHeight >= 65" class="zarzadzaj">Zarządzaj</div>
+  <div *ngIf="wizytaDiv.clientHeight >= 65 && !wizyta.cancled()" class="zarzadzaj">Zarządzaj</div>
 </div>
 <ng-template #popTitle>
   Wizyta <b>{{ wizyta.poczatek | date : 'HH:mm' }} {{ wizyta.koniec | date : 'HH:mm' }} </b></ng-template
@@ -25,20 +26,24 @@
     <tr>
       <td>Klient:</td>
       <td>
-        {{ wizyta.imie + ' ' + wizyta.nazwisko }}
+        {{ wizyta.customer.firstName + ' ' + wizyta.customer.lastName }}
       </td>
     </tr>
     <tr>
       <td>Email:</td>
       <td>
-        {{ wizyta.email }}
+        {{ wizyta.customer.email }}
       </td>
     </tr>
     <tr>
       <td>Telefon:</td>
       <td>
-        {{ wizyta.numerTelefonu }}
+        {{ wizyta.customer.phone }}
       </td>
+    </tr>
+    <tr *ngIf="wizyta.dataOdwolania" class="odwolanie">
+      <td>Data&nbsp;odwołania</td>
+      <td>{{ wizyta.dataOdwolania | date : 'dd.MM.yyyy  HH:mm' }}</td>
     </tr>
   </table>
 </ng-template>

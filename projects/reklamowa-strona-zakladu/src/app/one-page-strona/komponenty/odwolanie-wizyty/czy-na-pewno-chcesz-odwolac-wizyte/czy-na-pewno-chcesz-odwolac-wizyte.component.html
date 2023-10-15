@@ -1,11 +1,9 @@
 <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Odwołanie wizyty:</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  <h4 class="modal-title" id="modal-basic-title">Odwołanie wizyty:</h4>
+  <button (click)="modal.dismiss('Cross click')" aria-label="Close" class="btn-close" type="button"></button>
 </div>
-<div class="modal-body">
-    Czy na pewno chcesz odwołać wizytę ?
-</div>
+<div class="modal-body">Czy na pewno chcesz odwołać wizytę ?</div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('nie')">Anuluj</button>
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('tak')">Potwierdź</button>
+  <button (click)="modal.dismiss('nie')" class="domyslnyButton3" type="button">Anuluj</button>
+  <button (click)="modal.close('tak')" class="domyslnyButton2" type="button">Potwierdź</button>
 </div>

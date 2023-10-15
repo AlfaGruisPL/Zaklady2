@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FontAwesomeService } from '../../../serwisy/font-awesome.service';
 import { PodreczneDaneService } from '../../../serwisy/podreczne-dane.service';
+import { Funkcje } from '../../../funkcje';
 
 @Component({
   selector: 'app-panel-logowania-pracownikow',
@@ -11,7 +12,7 @@ import { PodreczneDaneService } from '../../../serwisy/podreczne-dane.service';
   styleUrls: ['./panel-logowania-pracownikow.component.scss'],
 })
 export class PanelLogowaniaPracownikowComponent implements OnInit {
-  public email: string = 'korneliamushak@gmail.com';
+  public email: string = Funkcje.doPracy() ? 'korneliamushak@gmail.com' : '';
   public haslo: string = '';
   public czyPrawidloweDane: boolean = true;
 
@@ -25,6 +26,15 @@ export class PanelLogowaniaPracownikowComponent implements OnInit {
 
   public Podglad: boolean = false;
   trwaLogowanie = false;
+
+  constructor(
+    private listonosz: ListonoszService,
+    private Router: Router,
+    private route: ActivatedRoute,
+    private toasts: ToastrService,
+    public podreczne_: PodreczneDaneService,
+    public fontAwesome: FontAwesomeService
+  ) {}
 
   ngOnInit() {}
 
@@ -52,15 +62,6 @@ export class PanelLogowaniaPracownikowComponent implements OnInit {
     }
     return this.czyWszystkieDaneWpisane;
   }
-
-  constructor(
-    private listonosz: ListonoszService,
-    private Router: Router,
-    private route: ActivatedRoute,
-    private toasts: ToastrService,
-    public podreczne_: PodreczneDaneService,
-    public fontAwesome: FontAwesomeService
-  ) {}
 
   public logowanie() {
     this.czyPrawidloweDane = true;

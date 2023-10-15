@@ -1,0 +1,52 @@
+<table class="tablica noSpaceToWall">
+  <tr class="wyszukiwarka">
+    <td class="title" colspan="5">
+      <h3>Wizyty w zakładzie:</h3>
+    </td>
+  </tr>
+  <tr>
+    <th>Nr.</th>
+    <th>Data</th>
+    <th>Kwota</th>
+    <th>Wykonawca</th>
+    <th>Zarządzanie</th>
+  </tr>
+  <ng-container
+    *ngFor="
+      let wizyta of klient.wizytWZakladzie | slice : (pagg.page - 1) * pagg.pageSize : pagg.page * pagg.pageSize;
+      let index = index
+    ">
+    <tr>
+      <td>{{ klient.wizytWZakladzie.length - index - pagg.pageSize * pagg.page + pagg.pageSize }}</td>
+      <td>{{ wizyta.poczatek | date : 'dd.MM.yyyy      hh:mm/' }}{{ wizyta.koniec | date : 'hh:mm' }}</td>
+      <td>{{ wizyta.cena }}zł</td>
+
+      <td>{{ wizyta.pracownik.imie + '  ' + wizyta.pracownik.nazwisko }}</td>
+      <td>
+        <button (click)="wyswietlDaneDodatkowe(wizyta)" class="domyslnyButton3">Usługi</button>
+        <button class="domyslnyButtonUsun">Usuń</button>
+      </td>
+    </tr>
+    <tr *ngIf="wizyta.uslugiTabela">
+      <td colspan="4">
+        <ng-container *ngIf="wizyta.czySaUslugi; else opis">
+          <div *ngFor="let usluga of wizyta.uslugi?.uslugi" class="uslugaWWizycie">
+            {{ usluga.nazwa }} - {{ usluga.cena }}zł
+          </div>
+        </ng-container>
+        <ng-template #opis>
+          {{ wizyta.uslugi?.opis }}
+        </ng-template>
+      </td>
+    </tr>
+  </ng-container>
+</table>
+<div class="paggination">
+  <app-table-pagination
+    #pagg
+    [(page)]="page"
+    [collectionSize]="klient.wizytWZakladzie.length"
+    [pageSizeArray]="[4, 8, 15]"
+    [pageSize]="4">
+  </app-table-pagination>
+</div>

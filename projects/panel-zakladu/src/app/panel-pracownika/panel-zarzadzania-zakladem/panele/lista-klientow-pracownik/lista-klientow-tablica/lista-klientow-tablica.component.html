@@ -1,45 +1,43 @@
-<table [ngClass]="{ tablicaLoading: lista_.ladowanieDanych }" class="tablica">
-  <tr>
+<app-table
+  (changeData)="lista_.pobierzDane()"
+  [collectionSize]="lista_.iloscKlientow"
+  [data]="lista_.listaKlientow"
+  [loading]="lista_.ladowanieDanych"
+  [search]="true"
+  [title]="'Lista klientów:'">
+  <ng-template TemplateId="thead">
     <th>Nr</th>
     <th>Imię</th>
     <th>Nazwisko</th>
+    <th>Ostatnia wizyta</th>
     <th class="NotInMobile">Adres e-mail</th>
     <th class="NotInMobile">Numer telefonu</th>
     <th>Wizyty</th>
-    <th style="width: 125px">Zarządzanie</th>
-  </tr>
-  <tr *ngFor="let klient of lista_.listaKlientow; let index = index">
-    <td>{{ paggination.indexCount(index) }}</td>
-    <td>{{ klient.imie }}</td>
-    <td>{{ klient.nazwisko }}</td>
-    <td class="NotInMobile">{{ klient.email }}</td>
-    <td class="NotInMobile">{{ klient.numerTelefonu }}</td>
-    <td>{{ klient.wizyty.length }}</td>
+    <th class="menageButton">Zarządzanie</th>
+  </ng-template>
+
+  <ng-template TemplateId="tbody" let-index="index" let-obj>
+    <td>{{ index }}</td>
+    <td>{{ obj.firstName }}</td>
+    <td>{{ obj.lastName }}</td>
+    <td>{{ obj.dataOstatniejWizyty() | date : 'dd.MM.yyyy' }}</td>
+    <td class="NotInMobile">{{ obj.email }}</td>
+    <td class="NotInMobile">{{ obj.phone }}</td>
     <td>
+      <span class="wizytyKlientaWZakladzie"> {{ obj.wizyty.length }}</span>
+      <span *ngIf="obj.wizyty.length != obj.wizytWZakladzie.length" class="sumaWizytKlientaWZakladzie"
+        >(suma {{ obj.wizytWZakladzie.length }})</span
+      >
+    </td>
+    <td class="small">
       <div container="body" ngbDropdown>
         <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle type="button">Wybierz:</button>
 
         <div ngbDropdownMenu>
-          <button (click)="wyswietlInformacje(klient)" ngbDropdownItem>Wyświetl wizyty</button>
+          <button (click)="wyswietlInformacje(obj)" ngbDropdownItem>Wyświetl wizyty</button>
           <button ngbDropdownItem>Usuń</button>
         </div>
       </div>
     </td>
-  </tr>
-  <tr *ngFor="let k of [].constructor(Math.abs(lista_.pageSize - lista_.listaKlientow.length))">
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-</table>
-<app-table-pagination
-  #paggination
-  (pageChange)="lista_.pobierzDane()"
-  [(page)]="lista_.page"
-  [collectionSize]="lista_.iloscKlientow"
-  [disabled]="lista_.ladowanieDanych"
-  [pageSize]="lista_.pageSize"></app-table-pagination>
+  </ng-template>
+</app-table>

@@ -2,14 +2,21 @@
   <h4 class="modal-title">
     Informacje o wizycie: {{ wizyta.poczatek | date : 'HH:mm' }} - {{ wizyta.koniec | date : 'HH:mm' }}
   </h4>
-  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close('Nie')"></button>
+  <button (click)="activeModal.close('Nie')" aria-label="Close" class="btn-close" type="button"></button>
 </div>
 <div class="modal-body">
+  <ng-container *ngIf="wizyta.cancled()">
+    <h4 class="h4canceled">Wizyta została odwołana</h4>
+    <p class="h4canceled">
+      Powód: {{ wizyta.returnCanceledDetail()?.additionalDetail?.reason }}<br />
+      Anulujący: {{ podreczne_.returnWorkerFromIf(wizyta.returnCanceledDetail()?.additionalDetail?.workerId) }}
+    </p>
+  </ng-container>
   <table>
     <tr>
       <th>Klient:</th>
       <td>
-        {{ wizyta.imie + ' ' + wizyta.nazwisko }}
+        {{ wizyta.customer.firstName + ' ' + wizyta.customer.lastName }}
       </td>
     </tr>
     <tr>
@@ -31,16 +38,12 @@
     <tr>
       <th>Telefon:</th>
       <td>
-        {{ wizyta.numerTelefonu }}
+        {{ wizyta.customer.phone }}
       </td>
     </tr>
     <tr>
       <th>Email:</th>
-      <td>{{ wizyta.email }}</td>
-    </tr>
-    <tr>
-      <th>Poprzednie wizyty</th>
-      <td>3</td>
+      <td>{{ wizyta.customer.email }}</td>
     </tr>
     <tr>
       <th>Sposób utworzenia</th>
@@ -50,22 +53,34 @@
     <tr>
       <th>Usluga:</th>
       <td *ngIf="['manual'].indexOf(wizyta.tryb) != -1">
-        {{ wizyta.uslugi }}
+        {{ wizyta.uslugi?.opis }}
       </td>
       <td *ngIf="['auto', 'reklamowa'].indexOf(wizyta.tryb) != -1">
         <ul>
-          <li *ngFor="let usluga of wizyta.uslugiTab">{{ usluga.nazwa }}</li>
+          <li *ngFor="let usluga of wizyta.uslugi?.uslugi">{{ usluga?.nazwa }} - {{ usluga?.cena + 'zł' }}</li>
         </ul>
       </td>
     </tr>
     <tr>
       <td colspan="2">
-        <button>Odwołaj</button>
-        <button>Historia wizyt</button>
+        <button
+          (click)="cancelTheVisit()"
+          [disabled]="buttonBlock || wizyta.poTerminie() || wizyta.cancled()"
+          [title]="wizyta.poTerminie() ? 'Wizyta już się odbyła' : ''"
+          class="domyslnyButton3">
+          Odwołaj
+        </button>
+        <button (click)="clientLastVisits()" [disabled]="buttonBlock" class="domyslnyButton2">Historia wizyt</button>
+        <button
+          (click)="modifyVisit()"
+          [disabled]="buttonBlock || wizyta.poTerminie() || wizyta.cancled()"
+          class="domyslnyButton4">
+          Edytuj wizytę
+        </button>
       </td>
     </tr>
   </table>
 </div>
 <div class="modal-footer">
-  <button (click)="activeModal.close('anuluj')">Anuluj</button>
+  <button (click)="activeModal.close('anuluj')" [disabled]="buttonBlock" class="domyslnyButtonAnuluj">Anuluj</button>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ListonoszService } from '../../../../../../serwisy/listonosz.service';
 import { Drzwi } from '../../../../../../enum/drzwi';
 import Chart from 'chart.js/auto';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-wykres-stanu-konta',
@@ -29,11 +30,6 @@ export class WykresStanuKontaComponent implements OnInit {
         fill: {
           target: 'origin',
           above: 'rgba(0,30,231,0.55)', // Area will be red above the origin
-        },
-        trendlineLinear: {
-          style: 'rgb(255,0,19)',
-          lineStyle: 'solid',
-          width: 4,
         },
       },
     ],
@@ -102,13 +98,13 @@ export class WykresStanuKontaComponent implements OnInit {
   ngOnInit() {
     this.listonosz.pobierz(Drzwi.wykresStanuKonta).then((k: [{ data: Date; wartosc: number }]) => {
       k.forEach(dane => {
-        this.labels.push(dane.data);
+        const data = new DatePipe('en-US').transform(dane.data, 'yyyy-dd-MM');
+        // @ts-ignore
+        this.labels.push(data);
+
         this.datasets.push(dane.wartosc / 100);
       });
       this.labels[0] = 'Dziś';
-      if (this.chart) {
-        this.chart.destroy();
-      }
       if (this.chart) {
         this.chart.destroy();
       }

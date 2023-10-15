@@ -62,6 +62,7 @@ export class ZarejestrowaneWizytyTabelaComponent implements OnInit, OnDestroy {
           this.wizyty.push(new Wizyta(wizyta));
         }
         this.iloscWizytOgolna = dane.size;
+        console.log(dane);
       })
       .finally(() => {
         this.pobieranieDanych = false;

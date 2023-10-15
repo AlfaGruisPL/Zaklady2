@@ -36,24 +36,29 @@ export class FormularzZarejestrujSieComponent implements OnInit {
   }
 
   public wyslijDane() {
+    this.zarejestrujSieService.butonDisabled_wyslijDane = true;
     this.zarejestrujSieService.DaneKlientaClass.daneNieWyslane = false;
-    const daneDTO = new DaneKlientaDTO(
-      this.zarejestrujSieService.DaneKlientaClass
-    );
+    const daneDTO = new DaneKlientaDTO(this.zarejestrujSieService.DaneKlientaClass);
     this.listonosz
       .wyslij(Drzwi.daneKlientaRejestracja, daneDTO)
       .then(identyfikatorWizyty => {
-        this.zarejestrujSieService.DaneKlientaClass.identyfikator =
-          identyfikatorWizyty;
+        this.zarejestrujSieService.DaneKlientaClass.identyfikator = identyfikatorWizyty;
         this.krok = 5;
       })
-      .catch(nieudane => {
+      .catch((nieudane: any) => {
+        if (nieudane.error.reasonCode == 301) {
+          this.krok = -1;
+        }
         this.zarejestrujSieService.DaneKlientaClass.daneNieWyslane = true;
+      })
+      .finally(() => {
+        this.zarejestrujSieService.butonDisabled_wyslijDane = false;
       });
   }
 
   public wyslijKod() {
     this.zarejestrujSieService.DaneKlientaClass.niepoprawnyKod = false;
+    this.zarejestrujSieService.butonDisabled_weryfikacjaKodu = true;
     const kodDTO = {
       kod: this.zarejestrujSieService.DaneKlientaClass.kodWeryfikacja,
       identyfikator: this.zarejestrujSieService.DaneKlientaClass.identyfikator,
@@ -64,7 +69,13 @@ export class FormularzZarejestrujSieComponent implements OnInit {
         this.krok = 6;
       })
       .catch(nieudane => {
+        if (nieudane.error.reasonCode == 301) {
+          this.krok = -1;
+        }
         this.zarejestrujSieService.DaneKlientaClass.niepoprawnyKod = true;
+      })
+      .finally(() => {
+        this.zarejestrujSieService.butonDisabled_weryfikacjaKodu = false;
       });
   }
 }

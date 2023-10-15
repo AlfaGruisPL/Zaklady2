@@ -20,9 +20,9 @@
   Przerwa <b>{{ Przerwa.poczatek | date : 'hh:mm' }}-{{ Przerwa.koniec | date : 'hh:mm' }}</b></ng-template
 >
 <ng-template #popContent>
-  <table>
+  <table class="tablicaInformacji">
     <tr>
-      <td>Dotyczy:</td>
+      <th>Dotyczy:</th>
       <td *ngIf="Przerwa.pracownikId != 0; else zaklad">
         {{ pracownik()?.imie + ' ' + pracownik()?.nazwisko }}
       </td>
@@ -31,10 +31,15 @@
       </ng-template>
     </tr>
     <tr>
-      <td>Data:</td>
+      <th>Data:</th>
       <td>
         {{ Przerwa.data | date : 'dd.MM.YYYY' }}
       </td>
     </tr>
+    <ng-container *ngIf="Przerwa.opis.length > 0">
+      <tr>
+        <td colspan="2"><b style="padding-right: 30px">Opis: </b>{{ Przerwa.opis }}</td>
+      </tr>
+    </ng-container>
   </table>
 </ng-template>

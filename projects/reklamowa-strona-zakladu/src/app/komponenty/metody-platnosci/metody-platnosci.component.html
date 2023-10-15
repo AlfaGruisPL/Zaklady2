@@ -1,0 +1,12 @@
+<div
+  class="metodyPlatnosciDiv"
+  *ngIf="dane_.danePodstawowe.mozliwoscPlatnosciKarta && this.dane_.danePodstawowe.czyJakasPlatnosc()">
+  <div *ngIf="dane_.danePodstawowe.platnosci.blik">
+    <img src="assets/platnosci/blik.png" />
+  </div>
+
+  <div *ngIf="dane_.danePodstawowe.platnosci.MasterCard"><img src="assets/platnosci/masterCard.png" /></div>
+  <div *ngIf="dane_.danePodstawowe.platnosci.Visa"><img src="assets/platnosci/visa.png" /></div>
+  <div *ngIf="dane_.danePodstawowe.platnosci.Google_Pay"><img src="assets/platnosci/googlePay.png" /></div>
+  <div *ngIf="dane_.danePodstawowe.platnosci.Apple_Pay"><img src="assets/platnosci/applePay.png" /></div>
+</div>

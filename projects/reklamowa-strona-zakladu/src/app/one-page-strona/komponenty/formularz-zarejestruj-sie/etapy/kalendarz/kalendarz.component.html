@@ -28,7 +28,7 @@
       <span [innerHtml]="dzien.samaDatBR()" class="wyswietlaneDniSpan krotkie"></span>
     </th>
   </tr>
-  <tr *ngFor="let k of [].constructor(godzinaZakonczenia * 2); let index = index" class="godzina">
+  <tr *ngFor="let k of [].constructor(Math.ceil(godzinaZakonczenia)); let index = index" class="godzina">
     <td style="position: relative">
       <span class="wyswietlaneGodzinySpan"> {{ godzina(index) }}</span>
     </td>
@@ -42,8 +42,7 @@
 </table>
 <div class="divNaPrzycisk">
   <span *ngIf="nieMoznaDalejKomunikat" class="czerwone">Wybierz termin, aby przejść dalej</span>
-  <br />
-
+ 
   <button (click)="przejdzDalej()" [disabled]="ZarejestrujSie.niepobranyKalendarz" class="buttonDalej">Dalej</button>
   <button (click)="cofnij()" class="buttonCofnij">Cofnij</button>
 </div>

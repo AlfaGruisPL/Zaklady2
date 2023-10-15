@@ -1,0 +1,29 @@
+.domyslnyButtonAnuluj {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.domyslnyButtonZapisz {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.defaultNo,
+.defaultYes {
+  border-radius: 5px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  padding: 4px 6px 4px 6px;
+
+  &:hover {
+    &.defaultNo {
+      background: black;
+    }
+  }
+}
+
+.modal-title {
+  font-size: 26px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

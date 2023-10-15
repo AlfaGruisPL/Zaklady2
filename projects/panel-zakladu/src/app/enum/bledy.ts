@@ -1,8 +1,15 @@
 export enum Bledy {
   IdentyfikatorJestJuzUzywany = 'Identyfikator jest już zajęty',
-  zaCzestaZmianaIdentyfiaktora = 'Nie można zmieniać identyfikatora częściej niż raz na 5 minut',
+  zaCzestaZmianaIdentyfiaktora = 'Nie można zmieniać identyfikatora częściej niż raz na minutę',
   przerwaNieZostalaDodana = 'Przerwa nie została dodana',
   dzienWolnyNieUtworzony = 'Dzien wolny nie został utworzony',
   bladUsuwania = 'Usuwanie nie udało się',
   aktualizacjaNieUdana = 'Aktualizacja plików nie udała się',
+  niedozwolonaNazwaIdentyfikatora = 'Podany identyfikator jest nie dozwolony, spróbuj inną nazwę',
+  wizytaNieZostalaOdowlana = 'Błąd odwołania wizyty',
+  klientNieZnaleziony = 'Dane o kliencie nie zostały odnalezione',
+  wizytaJuzSieoDbyla = 'Nie można odwołać wizyty która już się zakończyła',
+  bladOgolny = 'Błąd komunikacji z serwerem.',
+  bladUtworzeniaPlatnosci = 'błąd utworzenia zlecenia płatności',
+  bladUtworzeniaPlatnosci_BrakNumeruTelefonu = 'Brak ustawionego numeru telefonu dla zalogowanego użytkownika',
 }

@@ -8,10 +8,27 @@
   }
 }
 
+.input1 {
+  width: 600px;
+}
+
+.input2 {
+  width: 110px;
+}
+
+.input3 {
+  width: 130px;
+}
+
 .uslugiDiv {
   width: 100%;
   height: min-content;
   display: flex;
+  @media (max-width: 1200px) {
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+  }
 
   .disabled {
     .buttonPlus {
@@ -27,6 +44,10 @@
     margin-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
+    @media (max-width: 1200px) {
+      order: 1;
+      margin-top: 0px;
+    }
 
     .buttonPlus {
       background: transparent;
@@ -45,6 +66,12 @@
     width: 1040px;
     display: flex;
     justify-content: center;
+    @media (max-width: 1200px) {
+      order: 3;
+      table {
+        margin-top: 5px;
+      }
+    }
 
     table {
       margin-top: 15px;
@@ -73,6 +100,11 @@
     margin-top: 40px;
 
     padding-left: 20px;
+
+    @media (max-width: 1200px) {
+      order: 2;
+      margin-top: 0px;
+    }
 
     .buttonZapisz {
       background: #338003;
@@ -137,11 +169,74 @@
 
 .pracownicyTd {
   text-align: center;
+  position: relative;
 
   .iloscPracownikow {
     padding-left: 5px;
     padding-right: 5px;
     font-size: 17px;
     position: relative;
+  }
+
+  .counter {
+    position: absolute;
+
+    border: 1px solid #797979;
+    border-radius: 50%;
+    font-size: 10px;
+    width: 12px;
+    height: 12px;
+    line-height: 9.5px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .iconkaUser {
+    font-size: 16px;
+  }
+  table tr th {
+    font-size: 12px;
+  }
+  .input1 {
+    width: 400px;
+  }
+  .input2 {
+    width: 80px;
+  }
+  .input3 {
+    width: 80px;
+  }
+}
+
+.input1 {
+  @media (max-width: 750px) {
+    width: 320px;
+  }
+  @media (max-width: 700px) {
+    width: 250px;
+  }
+  @media (max-width: 650px) {
+    width: 200px;
+  }
+  @media (max-width: 550px) {
+    width: 150px;
+  }
+}
+
+@media (max-width: 450px) {
+  table tr th {
+    font-size: 9px;
+  }
+  .input2 {
+    width: 60px;
+  }
+  .input3 {
+    width: 60px;
+  }
+  .buttonMinus {
+    font-size: 12px;
+  }
+  .zlotyID {
+    font-size: 12px;
   }
 }

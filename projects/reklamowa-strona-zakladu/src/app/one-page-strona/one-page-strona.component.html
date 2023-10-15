@@ -1,31 +1,24 @@
 <span id="poczatek" style="height: 0; width: 0"></span>
 <app-banner></app-banner>
+<app-metody-platnosci></app-metody-platnosci>
 <app-zdjecie-zakladu></app-zdjecie-zakladu>
 <app-odwolanie-wizyty
   *ngIf="odwolanieWIzyty"
   (anulujEmiter)="odwolanieWIzyty = false"
   [kodOdwolania]="kodOdwolania"></app-odwolanie-wizyty>
 <app-zarejestruj-sie #komponentZarejestrujSie></app-zarejestruj-sie>
-<div class="parallax" id="rejestracjaFormularz"></div>
+<div class="parallax"></div>
 <app-formularz-zarejestruj-sie
   #komponentZarejestrujSieFormularz
   *ngIf="zarejestrujSie.wyswietlanieFormualrza"></app-formularz-zarejestruj-sie>
 <div class="parallax3" *ngIf="zarejestrujSie.wyswietlanieFormualrza"></div>
 <app-informacja-onas></app-informacja-onas>
-<app-wyswietlane-pracownicy
-  #komponentWyswietlanrPracownicy></app-wyswietlane-pracownicy>
+<app-wyswietlane-pracownicy #komponentWyswietlanrPracownicy></app-wyswietlane-pracownicy>
 <app-informacja-ojednym-pracowniku
   *ngIf="komponentWyswietlanrPracownicy.czyPracownikKlikniety"
-  [daneOPracowniku]="
-    komponentWyswietlanrPracownicy.daneKliknietegoPracownika
-  "></app-informacja-ojednym-pracowniku>
-<div
-  class="parallax2"
-  *ngIf="komponentWyswietlanrPracownicy.czyPracownikKlikniety"></div>
-<app-napisz-nam
-  [listaPracownikow]="
-    komponentWyswietlanrPracownicy.listaPracownikow
-  "></app-napisz-nam>
+  [daneOPracowniku]="komponentWyswietlanrPracownicy.daneKliknietegoPracownika"></app-informacja-ojednym-pracowniku>
+<div class="parallax2" *ngIf="komponentWyswietlanrPracownicy.czyPracownikKlikniety"></div>
+<app-napisz-nam [listaPracownikow]="komponentWyswietlanrPracownicy.listaPracownikow"></app-napisz-nam>
 
 <app-stopka></app-stopka>
 

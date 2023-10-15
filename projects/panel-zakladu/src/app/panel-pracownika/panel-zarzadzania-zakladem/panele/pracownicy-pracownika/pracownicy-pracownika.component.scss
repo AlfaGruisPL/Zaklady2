@@ -17,6 +17,22 @@
 
     .tablica {
       margin-top: 0;
+
+      .alert {
+        color: red;
+        font-weight: bold;
+        cursor: help;
+      }
+
+      /*
+            .tdWithNgbDropdown {
+              width: auto !important;
+            }
+
+            td {
+              width: 1%;
+              white-space: nowrap;
+            }*/
     }
   }
 

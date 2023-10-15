@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ListonoszService } from '../../../serwisy/listonosz.service';
-import { Drzwi } from '../../../enum/drzwi';
-import { Pracownik } from '../../../klasy/pracownik';
+import { Component, OnInit } from "@angular/core";
+import { ListonoszService } from "../../../serwisy/listonosz.service";
+import { Drzwi } from "../../../enum/drzwi";
+import { Pracownik } from "../../../klasy/pracownik";
+import { environment } from "../../../../environments/environment";
 
 // @ts-ignore
 @Component({
@@ -11,13 +12,12 @@ import { Pracownik } from '../../../klasy/pracownik';
 })
 export class WyswietlanePracownicyComponent implements OnInit {
   public listaPracownikow: Array<Pracownik> = [];
-
-  constructor(public listonosz: ListonoszService) {}
-
-  private slider: any;
-
   public czyPracownikKlikniety = false;
   public daneKliknietegoPracownika: Pracownik = new Pracownik();
+  protected readonly environment = environment;
+  private slider: any;
+
+  constructor(public listonosz: ListonoszService) {}
 
   generowanieKaruzeli() {
     // @ts-ignore
@@ -41,7 +41,7 @@ export class WyswietlanePracownicyComponent implements OnInit {
     this.listonosz
       .pobierz(Drzwi.listaPracownikow)
       .then((pobrane: Array<Pracownik>) => {
-        pobrane.forEach((pracownik) => {
+        pobrane.forEach(pracownik => {
           const pracownikObj = new Pracownik();
           Object.assign(pracownikObj, pracownik);
           this.listaPracownikow.push(pracownikObj);
@@ -52,6 +52,6 @@ export class WyswietlanePracownicyComponent implements OnInit {
           });
         }
       })
-      .catch((niepobrane) => {});
+      .catch(niepobrane => {});
   }
 }

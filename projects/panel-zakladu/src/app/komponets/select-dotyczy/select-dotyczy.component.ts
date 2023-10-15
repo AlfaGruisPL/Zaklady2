@@ -25,6 +25,7 @@ export class SelectDotyczyComponent implements OnInit, OnDestroy {
   @Input()
   wyswietlanieOpcjiZakladu = false;
   zablokowanyChangeDetection = true;
+  reload = true;
   private sub1: Subscription | undefined;
 
   constructor(public danePodreczne: PodreczneDaneService) {}
@@ -34,7 +35,6 @@ export class SelectDotyczyComponent implements OnInit, OnDestroy {
   }
 
   odblokuj() {
-    console.log('odblokowanie');
     this.zablokowanyChangeDetection = false;
   }
 
@@ -62,7 +62,7 @@ export class SelectDotyczyComponent implements OnInit, OnDestroy {
           this.dotyczy = (value as DanePodreczneClass).zalogowanyUzytkownik.id;
           this.dotyczyChange.emit(this.dotyczy);
         } else {
-          console.warn('selectDotyczy- przy pobieraniu danych podstawowych, brakuje danych o zalgowanym uzytkowniku');
+          console.warn('selectDotyczy- przy pobieraniu danych podstawowych, brakuje danych o zalpgowanym użytkowniku');
         }
       });
   }

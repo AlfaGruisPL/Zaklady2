@@ -1,10 +1,11 @@
 export class Pracownik {
   public id: number = 0;
-  public imie: string = "";
-  public nazwisko: string = "";
-  public adresEmail: string = "";
-  public numerTelefonu: string = "";
-  public prefiksTelefonu: string = "";
+  public imie: string = '';
+  public nazwisko: string = '';
+  public adresEmail: string = '';
+  public numerTelefonu: string = '';
+  public prefiksTelefonu: string = '';
+  public potwierdzony = false;
   public adres: {
     miasto: string;
     ulica: string;
@@ -13,11 +14,10 @@ export class Pracownik {
     wojewodztwo: string;
     kodPocztowy1: string;
     kodPocztowy2: string;
-  }
+  };
   public ilosKlientow: number = 0;
 
-
-  public status = "";
+  public status = '';
   public urlop: boolean = false;
 
   public imiePuste: boolean = false;
@@ -33,6 +33,17 @@ export class Pracownik {
   public kodPocztowy2Puste: boolean = false;
   public czyWszystkoWpisane: boolean = true;
 
+  constructor() {
+    this.adres = {
+      miasto: '',
+      ulica: '',
+      nrLokalu: '',
+      nrDomu: '',
+      wojewodztwo: '',
+      kodPocztowy1: '',
+      kodPocztowy2: '',
+    };
+  }
 
   public czyWszystkoWpisaneFunkcja() {
     this.imiePuste = false;
@@ -92,17 +103,5 @@ export class Pracownik {
       this.czyWszystkoWpisane = false;
     }
     return this.czyWszystkoWpisane;
-  }
-
-  constructor() {
-    this.adres = {
-      miasto: "",
-      ulica: "",
-      nrLokalu: "",
-      nrDomu: "",
-      wojewodztwo: "",
-      kodPocztowy1: "",
-      kodPocztowy2: ""
-    }
   }
 }

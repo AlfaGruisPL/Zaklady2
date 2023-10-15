@@ -12,9 +12,7 @@ import { TokenService } from './token.service';
 })
 export class PodreczneDaneService {
   public danePodreczneObiekt = new DanePodreczneClass();
-  public danePodreczneObserveble = new BehaviorSubject<
-    DanePodreczneClass | undefined
-  >(undefined);
+  public danePodreczneObserveble = new BehaviorSubject<DanePodreczneClass | undefined>(undefined);
   public losowaLiczba = Math.round(Math.random() * 100000000);
   public wlasciciel = false;
   public nazwaZakladu_domenowe = '';
@@ -22,18 +20,23 @@ export class PodreczneDaneService {
   public subDomainID = false;
   public wartoscAutomatycznegoIdentyfikatora = '_';
 
-  wygenerujNowaLiczbeLosowaDlaZdjec() {
-    this.losowaLiczba += 1;
-  }
-
   constructor(
     private listonosz: ListonoszService,
     private komunikaty: KomunikatyService,
     public token_: TokenService
   ) {}
 
+  wygenerujNowaLiczbeLosowaDlaZdjec() {
+    this.losowaLiczba += 1;
+  }
+
   public linkDoStronyReklamowej(): string {
     return 'http://www.smtp.localhost:8008';
+  }
+
+  returnWorkerFromIf(workerId: number | undefined) {
+    const find = this.danePodreczneObiekt.pracownicy.find(worker => worker.id == workerId);
+    return find?.imie + ' ' + find?.nazwisko;
   }
 
   public async identyfikacjaZakladu() {
@@ -47,13 +50,6 @@ export class PodreczneDaneService {
         this.zakladZnaleziony_domenowe = false;
         this.ponowneSprawdzanieZakladu();
       });
-  }
-
-  private ponowneSprawdzanieZakladu() {
-    setTimeout(async () => {
-      await this.identyfikacjaZakladu();
-      console.log(1);
-    }, 2000);
   }
 
   public ustawZmienneTypuUzytkownika() {
@@ -70,9 +66,14 @@ export class PodreczneDaneService {
         this.danePodreczneObserveble.next(this.danePodreczneObiekt);
       })
       .catch(nieudane => {
-        this.komunikaty.wyswietlenieBladNumer(
-          BledyNumery.BladWyswietlaniaDanychPodrecznych
-        );
+        this.komunikaty.wyswietlenieBladNumer(BledyNumery.BladWyswietlaniaDanychPodrecznych);
       });
+  }
+
+  private ponowneSprawdzanieZakladu() {
+    setTimeout(async () => {
+      await this.identyfikacjaZakladu();
+      console.log(1);
+    }, 2000);
   }
 }

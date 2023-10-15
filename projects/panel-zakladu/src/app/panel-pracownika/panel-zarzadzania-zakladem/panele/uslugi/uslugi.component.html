@@ -1,3 +1,4 @@
+<link href="uslugi.component.scss" rel="stylesheet" />
 <form>
   <div class="uslugi">
     <div class="naglowekZolty">
@@ -26,28 +27,22 @@
             </td>
             <td class="zlotyID">{{ index + 1 }}.</td>
             <td>
-              <input
-                [(ngModel)]="usluga.nazwa"
-                [ngModelOptions]="{ standalone: true }"
-                class="logInputZaklad"
-                style="width: 600px" />
+              <input [(ngModel)]="usluga.nazwa" [ngModelOptions]="{ standalone: true }" class="logInputZaklad input1" />
             </td>
             <td>
               <input
                 [(ngModel)]="usluga.cena"
                 [ngModelOptions]="{ standalone: true }"
-                class="logInputZaklad"
+                class="logInputZaklad input2"
                 min="0.00"
                 step="0.01"
-                style="width: 110px"
                 type="number" />
             </td>
             <td>
               <input
                 [(ngModel)]="usluga.czas"
                 [ngModelOptions]="{ standalone: true }"
-                class="logInputZaklad"
-                style="width: 130px"
+                class="logInputZaklad input3"
                 type="number" />
             </td>
             <td class="pracownicyTd">
@@ -55,6 +50,7 @@
                 (click)="modyfikacjaPracownikow(usluga)"
                 [icon]="fontAwesome.czlowieczek"
                 class="iconkaUser"></fa-icon>
+              <span class="counter">{{ usluga.pracownicy.length }}</span>
             </td>
           </tr>
         </table>

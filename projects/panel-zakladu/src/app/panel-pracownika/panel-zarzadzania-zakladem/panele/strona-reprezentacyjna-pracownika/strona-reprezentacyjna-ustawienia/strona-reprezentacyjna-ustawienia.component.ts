@@ -12,6 +12,8 @@ import { NgxSuneditorComponent } from 'ngx-suneditor';
 import { Bledy } from '../../../../../enum/bledy';
 import { Udane } from '../../../../../enum/udane';
 
+import { PodreczneDaneService } from '../../../../../serwisy/podreczne-dane.service';
+
 @Component({
   selector: 'app-strona-reprezentacyjna-ustawienia',
   templateUrl: './strona-reprezentacyjna-ustawienia.component.html',
@@ -28,7 +30,12 @@ export class StronaReprezentacyjnaUstawieniaComponent implements AfterViewInit {
   protected readonly environment = environment;
   protected readonly String = String;
 
-  constructor(private listonosz: ListonoszService, private komunikaty: KomunikatyService, private fb: FormBuilder) {
+  constructor(
+    private listonosz: ListonoszService,
+    public danePodreczne_: PodreczneDaneService,
+    private komunikaty: KomunikatyService,
+    private fb: FormBuilder
+  ) {
     this.formualrz = this.fb.group({
       //  opisZakladuWStopce: ['', [Validators.required]],
     });

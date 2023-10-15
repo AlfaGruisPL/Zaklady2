@@ -1,0 +1,29 @@
+<div [ngStyle]="{ width: width + 'px' }">
+  <h4>Zdjęcie profilowe:</h4>
+  <img
+    *ngIf="!usunZdjecieProfiloweDTo && !safeImageUrl && idUzytkownika != 0"
+    [src]="environment.linkDoZdjeciaProfilowego + idUzytkownika + '?jakosc=30' | zdjecie : false"
+    class="pracownikZdjecie" />
+  <img *ngIf="safeImageUrl" [src]="safeImageUrl" class="pracownikZdjecie" />
+  <label *ngIf="modyfikacja" class="file">
+    <input #inputTypeFile (change)="wybierzPlik($event)" aria-label="Zdjecie profilowe" type="file" />
+    <span class="file-custom"></span>
+  </label>
+  <p *ngIf="fileName.length">{{ fileName | maxDlugosc : 30 }}</p>
+
+  <input
+    (click)="clearImageSelect()"
+    *ngIf="modyfikacja && fileName.length"
+    class="domyslnyButtonAnuluj"
+    type="button"
+    value="Wyczyść" />
+  <input
+    (click)="usunZdjecieProfilowe()"
+    *ngIf="modyfikacja"
+    class="domyslnyButtonUsun small"
+    style="margin-top: 10px"
+    type="button"
+    value="Usuń zdjęcie profilowe" />
+
+  <ng-content></ng-content>
+</div>

@@ -73,7 +73,7 @@ export class KalendarzComponent implements OnInit {
     //this.godzinaRozpoczecia--;
 
     data.setHours(this.godzinaRozpoczecia, 0, 0, 0);
-    const k = new Date(data.getTime() + index * 60000 * 30);
+    const k = new Date(data.getTime() + index * 60000 * 60);
     const godzina = k.getHours() < 10 ? '0' + k.getHours() : k.getHours();
     const minuta = k.getMinutes() < 10 ? '0' + k.getMinutes() : k.getMinutes();
     return godzina + ':' + minuta;
@@ -173,4 +173,6 @@ export class KalendarzComponent implements OnInit {
   private CzyAktualne(data: Date) {
     return !(data.setHours(0, 0, 0, 0) < new Date().setHours(0, 0, 0, 0));
   }
+
+  protected readonly Math = Math;
 }

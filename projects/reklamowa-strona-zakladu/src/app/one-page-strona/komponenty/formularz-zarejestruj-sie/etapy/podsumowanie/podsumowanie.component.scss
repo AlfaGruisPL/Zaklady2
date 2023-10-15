@@ -53,6 +53,10 @@ table {
   @media (max-width: 300px) {
     font-size: 11px;
   }
+
+  ul {
+    margin-bottom: 28px;
+  }
 }
 
 .naglowek3 {
@@ -175,4 +179,14 @@ table {
     margin-left: 50px;
     margin-right: 35px;
   }
+}
+
+.emailInformation {
+  position: relative;
+  z-index: 20;
+  font-size: 18px;
+  width: 140%;
+  padding-top: 37px;
+  font-weight: bold;
+  color: #470088;
 }

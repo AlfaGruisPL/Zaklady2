@@ -1,92 +1,102 @@
 <div class="modal-header">
-  <h4 class="modal-title">Rejestracja wizyty:</h4>
-  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close('Nie')"></button>
+  <h4 *ngIf="!edit" class="modal-title">Rejestracja wizyty:</h4>
+  <h4 *ngIf="edit" class="modal-title">Modyfikacja wizyty:</h4>
+  <button (click)="activeModal.close('Nie')" aria-label="Close" class="btn-close" type="button"></button>
 </div>
-<form [formGroup]="formualrzRejestracjiWizyty" (ngSubmit)="wyslij()">
-
+<form (ngSubmit)="wyslij()" [formGroup]="formualrzRejestracjiWizyty">
   <div class="modal-body">
     <table>
       <tr>
+        <td>Klient*:</td>
         <td>
-          Klient*:
-        </td>
-        <td>
-          <input placeholder="imie" formControlName="imie">
-          <input placeholder="nazwisko" formControlName='nazwisko'>
+          <input formControlName="imie" placeholder="imię" />
+          <input formControlName="nazwisko" placeholder="nazwisko" />
         </td>
       </tr>
       <tr>
+        <td>Termin*:</td>
         <td>
-          Termin*:
-        </td>
-        <td>
-          <input type="date" formControlName='termin'>
+          <input formControlName="termin" type="date" />
         </td>
       </tr>
       <tr>
+        <td>Godziny*:</td>
         <td>
-          Godziny*:
-        </td>
-        <td>
-          <input type="time" value="12:12" formControlName='poczatek'> <input type="time" formControlName='koniec'>
+          <input formControlName="poczatek" type="time" value="12:12" /> <input formControlName="koniec" type="time" />
         </td>
       </tr>
       <tr>
+        <td>Telefon*:</td>
         <td>
-          Telefon*:
+          <div class="select">
+            <select formControlName="prefix" type="text">
+              <option>+48</option>
+              <option>+380&nbsp;&nbsp;&nbsp;</option>
+            </select>
+          </div>
+          <input formControlName="telefon" type="tel" />
         </td>
-        <td>
-          <select type="text" formControlName='prefix'>
-            <option>+48</option>
-            <option>+380</option>
-          </select><input type="tel" formControlName='telefon'>
-        </td>
-
       </tr>
       <tr>
         <td>Email:</td>
-        <td><input type="email" formControlName='email'></td>
+        <td><input formControlName="email" type="email" /></td>
       </tr>
       <tr>
         <th>Konifguracja</th>
-        <td>Ręczna: <input type="radio" name="type" value="manual" (click)="zmianaOkna($event)" [(ngModel)]="tryb"
-                           [ngModelOptions]="{standalone: true}">
+        <td>
+          Ręczna:
+          <input
+            (click)="zmianaOkna($event)"
+            [(ngModel)]="tryb"
+            [ngModelOptions]="{ standalone: true }"
+            name="type"
+            type="radio"
+            value="manual" />
           &nbsp; &nbsp;Automatyczna:
-          <input type="radio" (click)="zmianaOkna($event)" [(ngModel)]="tryb" [ngModelOptions]="{standalone: true}"
-                 name="type"
-                 value="auto"></td>
-
+          <input
+            (click)="zmianaOkna($event)"
+            [(ngModel)]="tryb"
+            [ngModelOptions]="{ standalone: true }"
+            name="type"
+            type="radio"
+            value="auto" />
+        </td>
       </tr>
       <tr *ngIf="token_.czyWlasciciel()">
         <th>Przypisanie:</th>
         <td>
-          <select formControlName='wykonawca'>
-
-            <option [defaultSelected]="true" [value]="kalendarz_.wlasciciel.id"
-            >{{kalendarz_.wlasciciel.imie + " " + kalendarz_.wlasciciel.imie}}
-            </option>
-            <option [value]="pracownik.id"
-                    *ngFor="let pracownik of kalendarz_.pracownicy">{{pracownik.imie + " " + pracownik.nazwisko}}
-            </option>
-          </select>
+          <div class="select">
+            <select formControlName="wykonawca">
+              <option [defaultSelected]="true" [value]="kalendarz_.wlasciciel.id">
+                {{ kalendarz_.wlasciciel.imie + ' ' + kalendarz_.wlasciciel.imie }}
+              </option>
+              <option *ngFor="let pracownik of kalendarz_.pracownicy" [value]="pracownik.id">
+                {{ pracownik.imie + ' ' + pracownik.nazwisko }}&nbsp;&nbsp;&nbsp;
+              </option>
+            </select>
+          </div>
         </td>
       </tr>
       <tr>
         <th>Cena</th>
-        <td><input type="number" formControlName="cena" style="width: 100px">zł</td>
+        <td><input formControlName="cena" style="width: 100px" type="number" />zł</td>
       </tr>
     </table>
-    <div class="auto" *ngIf="tryb =='auto'"><h4>Usługi ({{obliczCene()}}zł)</h4>
+    <div *ngIf="tryb == 'auto'" class="auto">
+      <h4>Usługi ({{ obliczCene() }}zł)</h4>
       <div class="listaUslug">
-
         <ul>
           <li *ngFor="let usluga of uslugi_.listaUslug">
-            <input type="checkbox" (click)="klikniecie($event,usluga)">&nbsp;{{usluga.nazwa}}</li>
+            <input (click)="klikniecie($event, usluga)" [checked]="usluga.zaznaczone" type="checkbox" />&nbsp;{{
+              usluga.nazwa
+            }}
+          </li>
         </ul>
       </div>
     </div>
 
-    <div class="manual" *ngIf="tryb =='manual'"><h4>Usługi</h4>
+    <div *ngIf="tryb == 'manual'" class="manual">
+      <h4>Usługi</h4>
       <table>
         <tr>
           <th>Opis usługi</th>
@@ -94,8 +104,6 @@
         </tr>
       </table>
     </div>
-
-
   </div>
   <div class="modal-footer">
     <p class="info">
@@ -103,12 +111,13 @@
     </p>
 
     <div>
-
-      <button type="button" (click)="activeModal.close('anuluj')">
-        Anuluj
-      </button>&nbsp;
-      <button type="submit" [disabled]="formualrzRejestracjiWizyty.invalid">Zarejestruj</button>
+      <button (click)="activeModal.close('anuluj')" class="domyslnyButtonAnuluj" type="button">Anuluj</button>&nbsp;
+      <button *ngIf="!edit" [disabled]="formualrzRejestracjiWizyty.invalid" class="domyslnyButtonZapisz" type="submit">
+        Zarejestruj
+      </button>
+      <button *ngIf="edit" [disabled]="formualrzRejestracjiWizyty.invalid" class="domyslnyButton4" type="submit">
+        Zmodyfikuj
+      </button>
     </div>
-
   </div>
 </form>

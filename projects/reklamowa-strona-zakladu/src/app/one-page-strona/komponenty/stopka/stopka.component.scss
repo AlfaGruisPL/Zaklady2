@@ -101,6 +101,26 @@
       height: 250px;
       width: 90%;
     }
+    @media (max-width: 700px) {
+      width: 100%;
+
+    }
     float: left;
+  }
+}
+
+.createNote {
+  background: #282828;
+  color: #c4c4c4;
+  display: flex;
+  justify-content: space-between;
+  float: left;
+  height: min-content;
+  width: 100%;
+  padding: 0 12px 0 12px;
+
+  @media (max-width: 700px) {
+    font-size: 15px;
+    padding: 0 5px 0 5px;
   }
 }

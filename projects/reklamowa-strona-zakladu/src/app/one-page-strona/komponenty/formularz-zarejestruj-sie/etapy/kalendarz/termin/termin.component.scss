@@ -1,9 +1,9 @@
 .termin {
   width: 100%;
   height: 50px;
-  background: rgba(192, 226, 255, 0.51);
+  background: rgba(20, 0, 255, 0.16);
   position: absolute;
-  border: 1px solid #2d2d2d;
+  border-top: 2px solid #fff;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -13,7 +13,7 @@
   h3 {
     text-align: center;
     width: 100%;
-    font-size: 18px;
+    font-size: 100%;
     color: #0101c7;
     margin: 0;
     text-shadow: 0px 0px 1px #646464;
@@ -33,7 +33,7 @@
 
   &:hover {
     cursor: pointer;
-    background: #f6f5f5;
+    background: #bb57ff;
     scale: 1.051;
   }
 
@@ -45,7 +45,7 @@
     align-items: center;
     font-weight: bold;
     font-size: 20px;
-
+    height: 30px;
     font-family: math;
     border: none;
     text-shadow: 0px 0px 1px #6a6a6a;
@@ -68,18 +68,20 @@
 }
 
 .wybranyTermin {
-  background: rgba(4, 29, 190, 0.89) !important;
+  background: rgba(25, 49, 199, 0.71) !important;
   scale: 1.11 !important;
+
   z-index: 101;
   @media (max-width: 700px) {
     scale: 1.31 !important;
   }
   @media (max-width: 500px) {
-    scale: 1.51 !important;
+    scale: 1.31 !important;
   }
 
   h3 {
     color: white !important;
     text-shadow: 0px 0px 1px #030303 !important;
+    font-size: 15px;
   }
 }

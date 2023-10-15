@@ -31,7 +31,6 @@ import { UslugaSmsPracownikaModule } from './panel-pracownika/panel-zarzadzania-
 import { UslugiPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/uslugi.component';
 import { UslugiPrzypisaniPracownicyComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/uslugi-przypisani-pracownicy/uslugi-przypisani-pracownicy.component';
 import { RejestracjaUdanaComponent } from './panel-pracownika/poczatkowy-panel-pracownika/rejestracja-zakladu/rejestracja-udana/rejestracja-udana.component';
-import { InformacjeOKliencieComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/informacje-okliencie/informacje-okliencie.component';
 import { PracownicyModule } from './panel-pracownika/panel-zarzadzania-zakladem/panele/pracownicy-pracownika/pracownicy.module';
 import { RureczkiModule } from './rureczki/rureczki.module';
 import { StronaReprezentacyjnaModule } from './panel-pracownika/panel-zarzadzania-zakladem/panele/strona-reprezentacyjna-pracownika/strona-reprezentacyjna.module';
@@ -43,6 +42,12 @@ import { StrzalkaComponent } from './panel-pracownika/panel-zarzadzania-zakladem
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { UstawieniaPowiadomienComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moje-konto-pracownika/ustawienia-powiadomien/ustawienia-powiadomien.component';
 import { CiasteczkaKomunikatComponent } from '../../../reklamowa-strona-zakladu/src/app/komponenty/ciasteczka-komunikat/ciasteczka-komunikat.component';
+import { MojeKontoZdjecieProfiloweComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moje-konto-pracownika/moje-konto-zdjecie-profilowe/moje-konto-zdjecie-profilowe.component';
+import { InformacjeOKliencieTabelaPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/informacje-okliencie/informacje-okliencie-tabela-pracownika/informacje-okliencie-tabela-pracownika.component';
+import localePl from '@angular/common/locales/pl';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localePl, 'pl-PL');
 
 @NgModule({
   declarations: [
@@ -66,13 +71,13 @@ import { CiasteczkaKomunikatComponent } from '../../../reklamowa-strona-zakladu/
     UslugiPracownikaComponent,
     UslugiPrzypisaniPracownicyComponent,
     RejestracjaUdanaComponent,
-    InformacjeOKliencieComponent,
   ],
   imports: [
     BrowserModule,
     SharedModule,
     AppRoutingModule,
     FormsModule,
+
     KalendarzKomponentModule,
     ListaKlientowModule,
     HttpClientModule,
@@ -105,6 +110,8 @@ import { CiasteczkaKomunikatComponent } from '../../../reklamowa-strona-zakladu/
     }),
     UstawieniaPowiadomienComponent,
     CiasteczkaKomunikatComponent,
+    MojeKontoZdjecieProfiloweComponent,
+    InformacjeOKliencieTabelaPracownikaComponent,
   ],
   providers: [
     NgbDropdown,

@@ -18,7 +18,8 @@
           <span> {{ pracownik.imie }} {{ pracownik.nazwisko }} </span>
         </div>
         <div class="zdjecie">
-          <img [src]="'http://fenek.tech:3000/pliki/wyswietlZdjecieProfilowe/' + pracownik.id | zdjecie" />
+          <img [src]="environment.linkDoZdjeciaProfilowego + pracownik.id | zdjecie" class="backGroundBlur" />
+          <img [src]="environment.linkDoZdjeciaProfilowego + pracownik.id | zdjecie" class="zdjeciePracownika" />
         </div>
         <div class="popatrz">
           <button class="zobacz"><span>Zobacz</span></button>
@@ -38,7 +39,7 @@
           <span> {{ pracownik.imie }} {{ pracownik.nazwisko }} </span>
         </div>
         <div class="zdjecie">
-          <img [src]="'http://fenek.tech:3000/pliki/wyswietlZdjecieProfilowe/' + pracownik.id | zdjecie" />
+          <img [src]="environment.linkDoZdjeciaProfilowego + pracownik.id | zdjecie" />
         </div>
         <div class="popatrz">
           <button class="zobacz"><span>Zobacz</span></button>

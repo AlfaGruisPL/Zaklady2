@@ -51,9 +51,11 @@ export class TabelaPrzerwService {
     public Kalendarz_: KalendarzKomponentService
   ) {}
 
+  //tudo tu dodać chaange detection, liczyć ile jest th i potem tak ustawiać
   serviceStart() {
     const combined = combineLatest([this.Kalendarz_.wybranyPracownik, this.filter, this.filterRegularnosci]);
     combined.subscribe(dane => {
+      this.page = 1;
       this.getData();
     });
     this.sub1 = this.Kalendarz_.pobieranieDanychObservable.subscribe(() => {

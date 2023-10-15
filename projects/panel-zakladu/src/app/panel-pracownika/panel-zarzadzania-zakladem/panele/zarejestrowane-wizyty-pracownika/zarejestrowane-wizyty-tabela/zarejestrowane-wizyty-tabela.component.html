@@ -36,7 +36,7 @@
     <th>Początek</th>
     <th>Koniec</th>
     <th>Imię</th>
-    <th>Nazwisko</th>
+    <th class="NotInMobile">Nazwisko</th>
     <th class="NotInMobile">Telefon</th>
     <th class="NotInMobile">Email</th>
     <th class="NotInMobile">Usługi</th>
@@ -48,13 +48,19 @@
     <td *ngIf="napis(wizyta.poczatek) == undefined">{{ wizyta.poczatek | date : 'dd.MM.YYYY' }}</td>
     <td>{{ wizyta.poczatek | date : 'hh:mm' }}</td>
     <td>{{ wizyta.koniec | date : 'hh:mm' }}</td>
-    <td>{{ wizyta.imie }}</td>
-    <td class="NotInMobile">{{ wizyta.nazwisko }}</td>
-    <td class="NotInMobile">{{ wizyta.numerTelefonu }}</td>
-    <td class="NotInMobile">{{ wizyta.email }}</td>
-    <td>{{ wizyta.uslugiTab.length }}</td>
+    <td>{{ wizyta.customer.firstName }}</td>
+    <td class="NotInMobile">{{ wizyta.customer.lastName }}</td>
+    <td class="NotInMobile">{{ wizyta.customer.phone }}</td>
+    <td class="NotInMobile">{{ wizyta.customer.email }}</td>
+
+    <td *ngIf="wizyta.czySaUslugi(); else opis" class="NotInMobile">
+      {{ wizyta.uslugi?.uslugi?.length }}
+    </td>
+    <ng-template #opis>
+      <td class="NotInMobile">Opis</td>
+    </ng-template>
     <td>
-      <div container="body" ngbDropdown>
+      <div class="ngbDropdownMobile" container="body" ngbDropdown>
         <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle type="button">Wybierz:</button>
 
         <div ngbDropdownMenu>

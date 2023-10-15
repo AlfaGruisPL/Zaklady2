@@ -164,7 +164,7 @@
           <td><label class="naglowki2form" for="numerTelefonu">Numer telefonu*</label></td>
           <td>
             <input
-              [(ngModel)]="mojeKontoObj.numerTelefonu"
+              [(ngModel)]="mojeKontoObj.numer_telefonu"
               [disabled]="!wlaczPrzyciskZapisz"
               [ngModelOptions]="{ standalone: true }"
               class="logInputZaklad"
@@ -174,6 +174,11 @@
         </tr>
       </table>
     </form>
+    <app-moje-konto-zdjecie-profilowe
+      #zdjecie
+      [idUzytkownika]="mojeKontoObj.id"
+      [modyfikacja]="wlaczPrzyciskZapisz"
+      class="test"></app-moje-konto-zdjecie-profilowe>
   </div>
   <div class="zmianaHasla">
     <table class="zmianaHaslaTable">
@@ -243,7 +248,9 @@
   <app-ustawienia-powiadomien></app-ustawienia-powiadomien>
 
   <div class="naPrzycisk">
-    <button (click)="wlaczPrzyciskZapisz = true" class="zmodyfikujZapiszButton">Zmodyfikuj</button>
+    <button (click)="wlaczPrzyciskZapisz = true" [disabled]="zdjecie.blokadaPrzycisku" class="zmodyfikujZapiszButton">
+      Zmodyfikuj
+    </button>
     <button (click)="zapisz()" *ngIf="wlaczPrzyciskZapisz == true" class="zmodyfikujZapiszButton">Zapisz</button>
   </div>
 </div>
@@ -253,7 +260,7 @@
     Takie wymagania powinno spełniać hasło:
   </h6>
   <ul style="font-size: 18px; color: #07579b">
-    <li>Musi zawierać minimum 8 znaków;</li>
+    <li>Musi zawierać minim1um 8 znaków;</li>
     <li>Może zawierać maksymalnie 100 znaków;</li>
     <li>Musi zawierać przynajmniej jedną dużą i jedną małą literę;</li>
     <li>Musi zawierać przynajmniej jedną cyfrę;</li>

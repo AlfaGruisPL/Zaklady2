@@ -1,6 +1,6 @@
 .zarejestujSie {
   width: 100%;
-  height: 300px;
+  height: 230px;
   float: left;
   background: #efefef;
   box-shadow: 0px 1px 0px 1px #cac5c5;
@@ -10,19 +10,19 @@
   justify-content: space-around;
   align-items: center;
   @media (max-width: 900px) {
-    height: 250px;
+    height: 210px;
   }
   @media (max-width: 700px) {
-    height: 220px;
+    height: 200px;
   }
   @media (max-width: 600px) {
-    height: 190px;
+    height: 140px;
   }
   @media (max-width: 500px) {
-    height: 160px;
+    height: 140px;
   }
   @media (max-width: 400px) {
-    height: 130px;
+    height: 100px;
   }
 
   .zdj {
@@ -33,10 +33,8 @@
     align-items: center;
     float: left;
     position: relative;
-    @media (max-width: 1100px) {
-      scale: 0.9;
-      width: 300px;
-    }
+    scale: 0.8;
+
     @media (max-width: 900px) {
       scale: 0.7;
       width: calc(300px * 0.9);
@@ -46,12 +44,12 @@
       width: calc(300px * 0.7);
     }
     @media (max-width: 500px) {
-      scale: 0.3;
-      width: calc(300px * 0.5);
+      scale: 0.4;
+      width: calc(300px * 0.7);
     }
     @media (max-width: 400px) {
-      scale: 0.2;
-      width: calc(300px * 0.4);
+      scale: 0.29;
+      width: calc(300px * 0.55);
     }
 
     img {
@@ -72,14 +70,14 @@
 }
 
 .spanZapiszSie {
-  font-size: 40px;
+  //font-size: 40px;
   font-weight: bold;
   letter-spacing: 1px;
   color: brown;
 
   text-shadow: 1px 1px 1px brown;
   font-family: math;
-  font-size: clamp(13px, 0.6rem + 2vw, 40px);
+  font-size: clamp(9px, 0.3rem + 2vw, 40px);
 
   @media (max-width: 1100px) {
     //  font-size: 35px;
@@ -118,6 +116,7 @@
     width: 200px;
     height: 35px;
     font-size: 18px;
+    margin-top: 10px;
   }
   @media (max-width: 500px) {
     width: 180px;

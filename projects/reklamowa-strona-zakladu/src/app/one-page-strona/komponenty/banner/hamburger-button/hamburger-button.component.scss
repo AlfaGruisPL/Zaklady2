@@ -11,6 +11,7 @@
   flex-direction: column;
   padding-top: 10px;
   gap: 10px;
+
   box-shadow: 0px 0px 2px 2px #858181;
   @media (max-width: 1200px) {
     display: flex;
@@ -34,8 +35,12 @@
   }
 }
 
+
 .hamburgerMenuDiv.open {
   top: 65px !important;
+  @media (max-width: 500px) {
+    top: 50px !important;
+  }
 }
 
 .napiszDoNasButton {
@@ -65,11 +70,11 @@
 }
 
 #nav-icon2 {
-  scale: 0.5;
+  scale: 0.45;
   width: 60px;
   height: 45px;
   position: relative;
-  top: 8px;
+  top: 3px;
   right: 8px;
   display: none;
   @media (max-width: 1200px) {

@@ -1,0 +1,39 @@
+.metodyPlatnosciDiv {
+  width: 60px;
+  min-height: 100px;
+  background: linear-gradient(to bottom, rgba(247, 247, 247, 0.51) 0%, rgba(254, 254, 254, 0.51) 82%, rgba(255, 255, 255, 0) 100%);
+  position: fixed;
+  left: 0;
+  top: 130px;
+  z-index: 103;
+  border-top-right-radius: 10px;
+  display: flex;
+
+  flex-direction: column;
+  padding-bottom: 20px;
+  @media (max-width: 800px) {
+    width: 35px;
+    min-height: 50px;
+  }
+  @media (max-width: 500px) {
+    top: 60px;
+  }
+
+  div {
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 4px;
+    padding-right: 4px;
+
+    @media (max-width: 800px) {
+
+      min-height: 22px;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}

@@ -28,31 +28,31 @@ export class UslugaSmsHistoriaComponent implements OnInit, OnDestroy {
         pointStyle: 'circle',
         pointRadius: 10,
         pointHoverRadius: 15,
-        tension: 0.1,
+        tension: 0.3,
         fill: {
           target: 'origin',
           above: 'rgba(0,33,255,0.15)', // Area will be red above the origin
         },
         order: 1,
       },
-      {
-        display: false,
-        label: 'Darmowe SMS',
-        data: this.datasetsFree,
-        backgroundColor: 'green',
-        borderColor: 'green',
-        font: {
-          size: 30,
-        },
-        pointRadius: 0,
-        pointHoverRadius: 0,
-        tension: 0.3,
-        fill: {
-          target: 'origin',
-          above: 'rgba(0,255,70,0.51)', // Area will be red above the origin
-        },
-        order: 2,
-      },
+      /*  {
+          display: false,
+          label: 'Darmowe SMS',
+          data: this.datasetsFree,
+          backgroundColor: 'green',
+          borderColor: 'green',
+          font: {
+            size: 20,
+          },
+          pointRadius: 0,
+          pointHoverRadius: 0,
+          tension: 0.3,
+          fill: {
+            target: 'origin',
+            above: 'rgba(0,255,70,0.51)', // Area will be red above the origin
+          },
+          order: 2,
+        },*/
     ],
   };
   subk: any;
@@ -67,7 +67,7 @@ export class UslugaSmsHistoriaComponent implements OnInit, OnDestroy {
     const cenaSMS = this.datasetsCena[tooltipItems[0].dataIndex];
     const smsIlosc = tooltipItems[0].formattedValue ? tooltipItems[0].formattedValue : 0;
     const kwota = Math.round(smsIlosc * cenaSMS * 100) / 100;
-    return 'Opłata:  ' + kwota + 'zł';
+    return 'Opłata:  ' + kwota / 100 + 'zł';
   };
 
   public label = (tooltipItems: TooltipItem<any>) => {
@@ -101,21 +101,22 @@ export class UslugaSmsHistoriaComponent implements OnInit, OnDestroy {
           },
           caretSize: 8,
           footerFont: {
-            size: 20,
+            size: 17,
           },
           bodyFont: {
-            size: 20,
+            size: 17,
           },
           titleFont: {
-            size: 20,
+            size: 17,
           },
         },
 
         legend: {
+          display: false,
           position: 'left',
           labels: {
             font: {
-              size: 20,
+              size: 17,
             },
             color: 'black',
             padding: 30,
@@ -127,7 +128,7 @@ export class UslugaSmsHistoriaComponent implements OnInit, OnDestroy {
           display: true,
           text: 'Ilość wysłanych sms w poszczególnych dniach',
           font: {
-            size: 30,
+            size: 20,
             family: 'math',
           },
           color: '#0400b4',
@@ -147,7 +148,7 @@ export class UslugaSmsHistoriaComponent implements OnInit, OnDestroy {
 
         this.service.dane.historia.forEach(k => {
           this.labels.push(k.termin.toString());
-          this.datasetsFree.push(k.darmoweSMS);
+          //  this.datasetsFree.push(k.darmoweSMS);
           this.datasets.push(k.wyslaneSMS);
           this.datasetsCena.push(k.kosztSMS);
         });

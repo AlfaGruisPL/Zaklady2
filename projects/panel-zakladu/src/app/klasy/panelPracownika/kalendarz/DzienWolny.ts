@@ -3,6 +3,7 @@ export class DzienWolny {
   pracownikId = 0;
   regularne = true;
   id = 0;
+  opis = '';
 
   constructor(Dane: Partial<DzienWolny>) {
     Object.assign(this, Dane);

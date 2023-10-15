@@ -1,5 +1,5 @@
 <div class="rejestracja">
-  <div class="naglowek">
+  <div class="naglowek" id="rejestracjaFormularz">
     <span>Rejestracja na wizytę</span>
   </div>
   <div class="kroki">
@@ -20,8 +20,9 @@
       <app-wybor-uslug (wyslijKrok)="ustawKrok($event)" *ngSwitchCase="2"></app-wybor-uslug>
       <app-kalendarz (wyslijKrok)="ustawKrok($event)" *ngSwitchCase="3"></app-kalendarz>
       <app-wpisanie-danych (wyslijKrok)="ustawKrok($event)" *ngSwitchCase="4"></app-wpisanie-danych>
-      <app-weryfikacja (wyslijKrok)="ustawKrok($event)" *ngSwitchCase="5"> </app-weryfikacja>
+      <app-weryfikacja (wyslijKrok)="ustawKrok($event)" *ngSwitchCase="5"></app-weryfikacja>
       <app-podsumowanie (wyslijKrok)="ustawKrok($event)" *ngSwitchCase="6"></app-podsumowanie>
+      <app-termin-nie-dostepny (wyslijKrok)="ustawKrok($event)" *ngSwitchCase="-1"></app-termin-nie-dostepny>
     </ng-container>
   </div>
 </div>

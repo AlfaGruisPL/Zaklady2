@@ -1,0 +1,44 @@
+<div class="wyszukiwarka">
+  <div class="title">
+    <h3>{{ title }}</h3>
+  </div>
+  <div *ngIf="search" class="wyszukiwarkaTD">
+    <fa-icon icon="magnifying-glass"></fa-icon>
+    <input (keyup)="onSearchChange($event)" placeholder="Wyszukiwarka (wartość wartość2 itd.)" />
+  </div>
+</div>
+<table #tablica [ngClass]="{ tablicaLoading: loading }" class="tablica">
+  <thead>
+    <ng-container *ngTemplateOutlet="thead"></ng-container>
+  </thead>
+
+  <tbody>
+    <tr #header *ngFor="let obj of data | slice : 0 : pageSize; let index = index">
+      <ng-container *ngTemplateOutlet="tbody; context: { $implicit: obj, index: indexCount(index) }"></ng-container>
+    </tr>
+    <tr *ngFor="let k of [].constructor(emptyRowCalc())">
+      <td *ngFor="let k2 of [].constructor(tablica.rows[0].cells.length)"></td>
+    </tr>
+  </tbody>
+
+  <tfoot>
+    <ng-container *ngTemplateOutlet="tfoot"></ng-container>
+  </tfoot>
+</table>
+<div #pag class="paggination">
+  <div class="group1">
+    <ngb-pagination
+      (pageChange)="saveChange()"
+      [(page)]="page"
+      [boundaryLinks]="true"
+      [collectionSize]="collectionSize"
+      [maxSize]="pag.clientWidth > 600 ? 8 : 3"
+      [pageSize]="pageSize"
+      [rotate]="true"
+      [size]="pag.clientWidth > 2000 ? 'auto' : 'sm'"></ngb-pagination>
+    <select (change)="saveChange()" [(ngModel)]="pageSize">
+      <option *ngFor="let k of [5, 10, 15, 20]">{{ k }}</option>
+    </select>
+  </div>
+  <span class="tekst">Wyświetlono {{ page }} z {{ pageCount() }} stron. </span>
+</div>

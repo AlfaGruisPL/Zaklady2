@@ -1,45 +1,93 @@
 import { Pracownik } from './pracownicy/pracownik';
 
+export interface wizytaUslugi {
+  uslugi: [
+    {
+      nazwa: string;
+      cena: number;
+    }
+  ];
+  opis: string;
+}
+
+export class Customer {
+  id = 0;
+
+  firstName = '';
+  phone = '';
+  lastName = '';
+  email = '';
+}
+
+export interface VisitsDetails {
+  date: Date;
+  additionalDetail: {
+    reason: string;
+    workerId: number;
+  };
+  detail: number;
+}
+
 export class Wizyta {
   dataPotwierdzenia = null;
-  email = '';
   id = 0;
-  imie = '';
   kodWeryfikacyjny = '';
-  nazwisko = '';
-  numerTelefonu = '';
   potwierdzone = true;
   dataUtworzenia = new Date();
   koniec = new Date();
   poczatek = new Date();
   cena: number | undefined;
-  uslugi: string | undefined;
-  uslugiTab: UslugiMini[] = [];
+  uslugi: wizytaUslugi | undefined;
   pracownik: Pracownik = new Pracownik();
-  dataOdwolania: Date = new Date();
+  dataOdwolania: Date | undefined = undefined;
   kodOdwolania: string = '';
   tryb: string = '';
+  uslugiTabela = false;
+  customer: Customer;
+  VisitsDetails: VisitsDetails[] = [];
 
   constructor(k: Partial<Wizyta>) {
-    Object.assign(this, k);
+    this.customer = new Customer();
+    const { customer, dataOdwolania, ...reszta } = k;
+    Object.assign(this.customer, customer);
+    Object.assign(this, reszta);
+    if (dataOdwolania) {
+      this.dataOdwolania = new Date(dataOdwolania);
+    }
     this.poczatek = new Date(this.poczatek);
     this.koniec = new Date(this.koniec);
-    if (k.uslugi != undefined) {
-      this.uslugi = k.uslugi;
-      const stringUslugiTab = k.uslugi.split('/%nest%/');
-      stringUslugiTab.forEach(usluga => {
-        const k2 = new UslugiMini();
-        k2.cena = Number(usluga.split('/%nestCena%/')[1]);
-        k2.nazwa = usluga.split('/%nestCena%/')[0];
-        if (k2.nazwa.length > 0) {
-          this.uslugiTab.push(k2);
-        }
-      });
+    if (reszta.cena != undefined) {
+      this.cena = reszta.cena;
+    }
+  }
+
+  obliczCeneWizyty() {
+    if (!this.uslugi) return -1;
+    return this.uslugi?.uslugi.reduce((suma, usluga) => suma + usluga.cena, 0);
+  }
+
+  czySaUslugi() {
+    if (!this.uslugi?.uslugi) return false;
+    if (this.uslugi?.uslugi.length > 0) {
+      return true;
+    }
+    return false;
+  }
+
+  cancled() {
+    return this.dataOdwolania != undefined;
+  }
+
+  poTerminie() {
+    if (this.koniec.getTime() < new Date().getTime()) {
+      return true;
     }
 
-    if (k.cena != undefined) {
-      this.cena = k.cena;
-    }
+    return false;
+  }
+
+  returnCanceledDetail() {
+    return this.VisitsDetails.find(k => k.detail == 0);
   }
 }
 

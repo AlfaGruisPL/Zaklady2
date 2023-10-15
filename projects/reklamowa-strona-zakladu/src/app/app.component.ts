@@ -1,11 +1,10 @@
 import { Component, Inject, InjectionToken, OnInit, Optional, PLATFORM_ID } from '@angular/core';
 import { environment } from '../environments/environment';
 import packageInfo from '../../../../package.json';
-import { DanePodstawoweService } from './serwisy/dane-podstawowe.service';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { HOST_ID } from './host';
-import { StraznicyService } from './straznicy/straznicy.service';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
+import { ActivatedRoute, Router } from '@angular/router';
 
 declare let gtag: Function;
 
@@ -18,27 +17,24 @@ export class AppComponent implements OnInit {
   environment = environment;
   wersja: string = packageInfo.version;
   data_wydania: string = packageInfo.data_wydania;
-  k = ['1', '2', '3'];
-  title = 'reklamowaStronaZakladu';
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    public danePodreczne: DanePodstawoweService,
+    private route: ActivatedRoute,
+    private router: Router,
     private googleService_: GoogleAnalyticsService,
-    private straznicy: StraznicyService,
     @Optional() @Inject(HOST_ID) private host: InjectionToken<string>
   ) {}
 
-  ngOnInit(): void {
+  routeFragment: string | null = '';
+
+  test() {
+    console.log(this.routeFragment, 123);
+  }
+
+  ngOnInit() {
     this.googleService_.event('enter_name', 'user_register_form', 'Name');
-    setInterval(() => {}, 1000);
-    /*  setInterval(() => {
-          this.straznicy.sprawdzenieCzySerwerAktywny()
-          this.straznicy.sprawdzenieCzyStronaWlaczona()
-      }, 10000)
-      this.straznicy.sprawdzenieCzySerwerAktywny()
-      this.straznicy.sprawdzenieCzyStronaWlaczona()
-*/
+
     if (isPlatformBrowser(this.platformId)) {
       // Kod zostanie wykonany, jeśli strona jest renderowana po stronie klienta
       //    console.log('Rendered on the client side.');

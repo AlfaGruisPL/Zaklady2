@@ -2,6 +2,10 @@
   pointer-events: none;
 }
 
+.tekst {
+  font-size: 15px;
+}
+
 .paggination {
   @media (max-width: 600px) {
     display: flex;

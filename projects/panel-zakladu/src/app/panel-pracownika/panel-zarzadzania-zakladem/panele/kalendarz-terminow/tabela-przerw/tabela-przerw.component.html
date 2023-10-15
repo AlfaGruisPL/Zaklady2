@@ -1,30 +1,30 @@
 <app-tabela-przerw-filter></app-tabela-przerw-filter>
-<table [ngClass]="{ tablicaLoading: tabelaPrzerw_.pobieranieDanych }" class="tablica">
-  <tr class="wyszukiwarka">
-    <td class="title" colspan="5">
-      <h3>Sracz:</h3>
-    </td>
-    <td class="wyszukiwarkaTD" colspan="5">
-      <fa-icon icon="magnifying-glass"></fa-icon>
-      <input (keyup)="onSearchChange($event)" placeholder="wyszukiwarka (wartość wartość2 itd.)" />
-    </td>
-  </tr>
-  <tr #naglowek>
-    <th>Lp</th>
+
+<app-table
+  (changeData)="tabelaPrzerw_.getData()"
+  (changePage)="tabelaPrzerw_.page = $event"
+  (changeRowsOnPage)="tabelaPrzerw_.pageSize = $event"
+  [collectionSize]="tabelaPrzerw_.daneSize"
+  [data]="tabelaPrzerw_.dane"
+  [loading]="tabelaPrzerw_.pobieranieDanych"
+  [title]="'Lista przerw/dni wolnych'">
+  <ng-template TemplateId="thead">
+    <th>Nr</th>
     <th *ngIf="czyWolnyDzien()">Data</th>
     <th *ngIf="czyPrzerwa()">Poczatek</th>
     <th *ngIf="czyPrzerwa()">Koniec</th>
     <th>Opis</th>
     <th>Powtarzalność</th>
     <th>Typ</th>
-    <th>Zarządzanie</th>
-  </tr>
-  <tr *ngFor="let element of tabelaPrzerw_.dane; let index = index">
-    <td>{{ paggination.indexCount(index) }}</td>
-    <td *ngIf="czyWolnyDzien()">{{ element.data }}</td>
-    <td *ngIf="czyPrzerwa()">{{ element.poczatek }}</td>
-    <td *ngIf="czyPrzerwa()">{{ element.koniec }}</td>
-    <td>{{ element.opis }}</td>
+    <th class="menageButton">Zarządzanie</th>
+  </ng-template>
+
+  <ng-template TemplateId="tbody" let-index="index" let-obj>
+    <td>{{ index }}</td>
+    <td *ngIf="czyWolnyDzien()">{{ obj.data }}</td>
+    <td *ngIf="czyPrzerwa()">{{ obj.poczatek }}</td>
+    <td *ngIf="czyPrzerwa()">{{ obj.koniec }}</td>
+    <td [title]="obj.opis" style="cursor: help">{{ obj.opis | maxDlugosc : 40 }}</td>
     <td *ngIf="tabelaPrzerw_.filterRegularnosci.value == 'jednorazowe'">Jednorazowe</td>
     <td *ngIf="!(tabelaPrzerw_.filterRegularnosci.value == 'jednorazowe')">Regularne</td>
     <td *ngIf="tabelaPrzerw_.filter.value == 'dniwolne'">Dni wolne</td>
@@ -32,23 +32,10 @@
     <td>
       <div container="body" ngbDropdown>
         <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle type="button">Wybierz:</button>
-
         <div ngbDropdownMenu>
-          <button (click)="usun(element)" ngbDropdownItem>Usuń</button>
+          <button (click)="usun(obj)" ngbDropdownItem>Usuń</button>
         </div>
       </div>
     </td>
-  </tr>
-  <tr *ngFor="let k of [].constructor(Math.abs(tabelaPrzerw_.pageSize - tabelaPrzerw_.dane.length))">
-    <td *ngFor="let k of [].constructor(naglowek.cells.length)"></td>
-  </tr>
-</table>
-<app-table-pagination
-  #paggination
-  (pageChange)="tabelaPrzerw_.getData()"
-  [(page)]="tabelaPrzerw_.page"
-  [(pageSize)]="tabelaPrzerw_.pageSize"
-  [collectionSize]="tabelaPrzerw_.daneSize"
-  [disabled]="tabelaPrzerw_.pobieranieDanych"
-  [pageSizeArray]="[2, 5, 7, 10, 20, 50, 100]"></app-table-pagination>
-<!-- (changeData)="getDataFormPaggination($event)"-->
+  </ng-template>
+</app-table>

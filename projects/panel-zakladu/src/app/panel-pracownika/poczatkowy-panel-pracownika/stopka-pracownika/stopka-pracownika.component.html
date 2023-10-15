@@ -1,30 +1,32 @@
 <div class="stopka">
   <div class="panel">
-  <table>
-    <tr>
-      <td>Kontakt:</td>
-    </tr>
-    <tr>
-      <td>E-mail: korneliamushak@gmail.com</td>
-    </tr>
-    <tr>
-      <td>Tel: +48 788 830 720</td>
-    </tr>
-  </table>
+    <table>
+      <tr>
+        <td>Kontakt:</td>
+      </tr>
+      <tr>
+        <td>E-mail: informacja@mojzaklad.pl</td>
+      </tr>
+      <tr>
+        <td>Tel: +48 788 830 720</td>
+      </tr>
+    </table>
   </div>
   <div class="panel">
-System:<br>
-    <b>Cennik</b><br>
-    <b>Sprawność systemu</b><br>
-    <b>www.sracz.pl</b>
-  </div>  <div class="panel">
-Co nowego? <b>Historia zmian</b><br>
-  Zgłoś brakującą funkcję: <b>Zgłoś</b>
-</div>
+    Strona firmowa:<br />
+    <!-- <b>Cennik</b><br />
+     <b>Sprawność systemu</b><br />-->
+    <b><a [href]="env.linkDoStronyFirmowej" target="_blank">www.mojzaklad.pl</a></b>
+  </div>
   <div class="panel">
-Informacje:<br>
-    <b>  RODO<br>
-    Regulamin
+    Co nowego? <b>Historia zmian</b><br />
+    Zgłoś brakującą funkcję: <b>Zgłoś</b>
+  </div>
+  <div class="panel">
+    Informacje:<br />
+    <b>
+      <a [href]="env.linkDoRodo" target="_blank">RODO</a><br />
+      <a [href]="env.linkDoRegulaminu" target="_blank">Regulamin</a>
     </b>
   </div>
 </div>

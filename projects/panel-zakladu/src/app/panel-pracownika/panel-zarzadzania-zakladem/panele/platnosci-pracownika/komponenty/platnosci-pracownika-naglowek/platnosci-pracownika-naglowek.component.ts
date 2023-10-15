@@ -6,9 +6,9 @@ import { InformacjeDoPaneluPlatnosci } from '../../../../../../klasy/panelPracow
 import { Drzwi } from '../../../../../../enum/drzwi';
 import { KomunikatyService } from '../../../../../../serwisy/komunikaty.service';
 import { PlatnosciPracownikaPotwierdzenieAkcjiComponent } from '../../komunikaty/platnosci-pracownika-potwierdzenie-akcji/platnosci-pracownika-potwierdzenie-akcji.component';
-import { PlatnosciSMSOknoComponent } from '../okna/platnosci-smsokno/platnosci-smsokno.component';
 import { StartStopUslugaComponent } from '../okna/start-stop-usluga/start-stop-usluga.component';
 import { PodreczneDaneService } from '../../../../../../serwisy/podreczne-dane.service';
+import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-platnosci-pracownika-naglowek',
@@ -17,8 +17,9 @@ import { PodreczneDaneService } from '../../../../../../serwisy/podreczne-dane.s
 })
 export class PlatnosciPracownikaNaglowekComponent {
   @Output() pobierzDane = new EventEmitter<void>();
-  @Input() dane: InformacjeDoPaneluPlatnosci =
-    new InformacjeDoPaneluPlatnosci();
+  @Input() dane: InformacjeDoPaneluPlatnosci = new InformacjeDoPaneluPlatnosci();
+  protected readonly faPlus = faPlus;
+  protected readonly faMinus = faMinus;
 
   constructor(
     private modalService: NgbModal,
@@ -27,23 +28,16 @@ export class PlatnosciPracownikaNaglowekComponent {
     private komunikaty: KomunikatyService
   ) {}
 
-  otworzSMS() {
-    this.modalService.open(PlatnosciSMSOknoComponent, {
-      size: 'xl',
-      backdrop: 'static',
-    });
-  }
-
   nowaPlatnosc() {
     const okienko = this.modalService.open(OknoPlatnosciComponent, {
       backdrop: 'static',
-      size: 'lg',
+      // size: 'lg',
     });
   }
 
   aktywacjaKonta() {
     const okno = this.modalService.open(StartStopUslugaComponent, {
-      size: 'lg',
+      //   size: 'lg',
     });
     okno.componentInstance.tryb = 'wlacz';
     okno.result
@@ -57,7 +51,7 @@ export class PlatnosciPracownikaNaglowekComponent {
 
   wstrzymajKonto() {
     const okno = this.modalService.open(StartStopUslugaComponent, {
-      size: 'lg',
+      // size: 'lg',
     });
     okno.componentInstance.tryb = 'wylacz';
     okno.result
@@ -68,9 +62,7 @@ export class PlatnosciPracownikaNaglowekComponent {
   }
 
   DodajPracownika() {
-    const okienko = this.modalService.open(
-      PlatnosciPracownikaPotwierdzenieAkcjiComponent
-    );
+    const okienko = this.modalService.open(PlatnosciPracownikaPotwierdzenieAkcjiComponent);
     okienko.componentInstance.tresc =
       'Zmodyfikowanie ilości pracowników może wiązać się z pobraniem dodatkowej opłaty zgodnej z cennikiem.';
     okienko.result.then(
@@ -96,9 +88,7 @@ export class PlatnosciPracownikaNaglowekComponent {
   }
 
   OdejmijPracownika() {
-    const okienko = this.modalService.open(
-      PlatnosciPracownikaPotwierdzenieAkcjiComponent
-    );
+    const okienko = this.modalService.open(PlatnosciPracownikaPotwierdzenieAkcjiComponent);
     okienko.componentInstance.tresc =
       'Zmniejszenie liczby pracowników może wiązać się z zmianami na stronie reprezentacyjnej';
     okienko.result.then(

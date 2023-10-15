@@ -4,6 +4,7 @@ import { Drzwi } from '../../../../enum/drzwi';
 import { PodreczneDaneService } from '../../../../serwisy/podreczne-dane.service';
 import { ListonoszService } from '../../../../serwisy/listonosz.service';
 import { HttpParams } from '@angular/common/http';
+import { BehaviorSubject, debounceTime, skip } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +16,13 @@ export class ListaKlientowService {
   public pageSize = 12;
   public iloscKlientow = 12;
   public ladowanieDanych = false;
+  wyszukiwarkaSub = new BehaviorSubject('');
 
-  constructor(public podreczne_: PodreczneDaneService, private listonosz: ListonoszService) {}
+  constructor(public podreczne_: PodreczneDaneService, private listonosz: ListonoszService) {
+    this.wyszukiwarkaSub.pipe(skip(1), debounceTime(300)).subscribe(term => {
+      this.pobierzDane();
+    });
+  }
 
   ustawFilter(event: any) {
     this.filter = event.target.value;
@@ -38,6 +44,8 @@ export class ListaKlientowService {
 
     let params = new HttpParams();
     params = params.append('page', this.page);
+    params = params.append('finder', this.wyszukiwarkaSub.value);
+
     this.ladowanieDanych = true;
     this.listonosz
       .pobierz(drzwi, params)
@@ -52,5 +60,12 @@ export class ListaKlientowService {
       .finally(() => {
         this.ladowanieDanych = false;
       });
+  }
+
+  onSearchChange(event: KeyboardEvent) {
+    if (event.target) {
+      // @ts-ignore
+      this.wyszukiwarkaSub.next(event.target['value']);
+    }
   }
 }

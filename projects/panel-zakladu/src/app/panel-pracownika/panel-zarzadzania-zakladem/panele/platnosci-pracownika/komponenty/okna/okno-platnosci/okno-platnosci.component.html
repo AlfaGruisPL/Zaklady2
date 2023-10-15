@@ -1,17 +1,22 @@
 <div class="modal-header">
-  <h4 class="modal-title">Zakup </h4>
-  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+  <h4 class="modal-title">Wpłata środków na wirtualne konto:</h4>
+  <button (click)="activeModal.dismiss('Cross click')" aria-label="Close" class="btn-close" type="button"></button>
 </div>
 <div class="modal-body">
+  <h5>Wybierz kwotę jaką chcesz wpłacić na swoje wirtualne konto zakładu.</h5>
   <table>
     <tr>
       <td><label>Kwota</label></td>
-      <td><input type="number" step="1" [(ngModel)]="kwota">zł</td>
+      <td><input [(ngModel)]="kwota" [min]="30" step="1" type="number" />zł</td>
     </tr>
-
+    <tr>
+      <td colspan="2">
+        <input [(ngModel)]="regulamin" type="checkbox" /> Akceptacja regulaminu
+        <a [href]="environment.linkDoRegulaminu">(link do regulaminu)</a>
+      </td>
+    </tr>
   </table>
 </div>
 <div class="modal-footer">
-  <button [disabled]="ZaplacNieAktywne" (click)="zaplac()" class="buttonZapiszZmodyfikuj zapisz"> Zapłać</button>
+  <button (click)="zaplac()" [disabled]="!regulamin" class="domyslnyButtonZapisz">Wpłać</button>
 </div>
-

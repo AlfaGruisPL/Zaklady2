@@ -9,7 +9,9 @@
         </tr>
         <tr>
           <th>Dochód dziś</th>
-          <td>{{ dane.dochodDzis }}zł</td>
+          <td>
+            <span class="kwota">{{ dane.dochodDzis | kwota }}zł</span>
+          </td>
         </tr>
         <tr>
           <th>Wizyty w tym tygodniu</th>
@@ -17,7 +19,9 @@
         </tr>
         <tr>
           <th>Dochód w tym tygodniu</th>
-          <td>{{ dane.dochodWTygodniu }}zł</td>
+          <td>
+            <span class="kwota">{{ dane.dochodWTygodniu | kwota }}zł</span>
+          </td>
         </tr>
       </table>
       <table>
@@ -27,15 +31,43 @@
         </tr>
         <tr>
           <th>Dochód wczoraj</th>
-          <td>{{ dane.dochodWczoraj }}zł</td>
+          <td>
+            <span class="kwota">{{ dane.dochodWczoraj | kwota }}zł</span>
+          </td>
         </tr>
         <tr>
           <th>Wizyty w tygodniu poprzednim</th>
-          <td>{{ dane.wizytyWTygodniuPoprzednim }}</td>
+          <td>
+            {{ dane.wizytyWTygodniuPoprzednim }}
+          </td>
         </tr>
         <tr>
           <th>Dochód w tygodniu poprzednim</th>
-          <td>{{ dane.dochodWTygodniuPoprzednim }}zł</td>
+          <td>
+            <span class="kwota">{{ dane.dochodWTygodniuPoprzednim | kwota }}zł</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="dane2">
+      <table>
+        <tr>
+          <th>Wizyty w tym miesiącu</th>
+          <td>
+            {{ sumaWMiesiacu() }} <span class="kwota">({{ sumaWMiesiacuKwota() | kwota }}zł)</span>
+          </td>
+        </tr>
+        <tr>
+          <th>Wizyty w poprzednim miesiącu</th>
+          <td>
+            {{ sumaWMiesiacuPoprzednim() }} <span class="kwota">({{ sumaWMiesiacuPoprzednimKwota() | kwota }}zł)</span>
+          </td>
+        </tr>
+        <tr>
+          <th>Suma wizyt</th>
+          <td>
+            {{ dane.sumaWizyt }} <span class="kwota">({{ dane.sumaWizytKwota | kwota }}zł)</span>
+          </td>
         </tr>
       </table>
     </div>

@@ -7,4 +7,6 @@ export enum Udane {
   usuwanieDniaWolnego = 'Dzień wolny został usunięty',
   logoZakladuZaktualizowane = 'Logo zakładu zostało zaktualizowane',
   bannerStronyZaktualizowany = 'Banner zakładu został zaktualizowany',
+  wizytaZostalaOdwolana = 'Wizyta została odwołana',
+  wizytaZostalaZarejestrowana = 'Wizyta została zarejestrowana',
 }

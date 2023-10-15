@@ -50,6 +50,9 @@ import { HtmlSanitizerPipe } from './rurki/html-sanitizer.pipe';
 import { HamburgerButtonComponent } from './one-page-strona/komponenty/banner/hamburger-button/hamburger-button.component';
 import { CiasteczkaKomunikatComponent } from './komponenty/ciasteczka-komunikat/ciasteczka-komunikat.component';
 import { CookieModule } from 'ngx-cookie';
+import { MetodyPlatnosciComponent } from './komponenty/metody-platnosci/metody-platnosci.component';
+import { MaxDlugoscPipe } from './rurki/max-dlugosc.pipe';
+import { TerminNieDostepnyComponent } from './one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/termin-nie-dostepny/termin-nie-dostepny.component';
 
 @NgModule({
   declarations: [
@@ -106,7 +109,11 @@ import { CookieModule } from 'ngx-cookie';
     OdwolanieWizytyModule,
     HamburgerButtonComponent,
     CiasteczkaKomunikatComponent,
+    MetodyPlatnosciComponent,
+    MaxDlugoscPipe,
+    TerminNieDostepnyComponent,
   ],
   bootstrap: [AppComponent],
+  exports: [HtmlSanitizerPipe],
 })
 export class AppModule {}

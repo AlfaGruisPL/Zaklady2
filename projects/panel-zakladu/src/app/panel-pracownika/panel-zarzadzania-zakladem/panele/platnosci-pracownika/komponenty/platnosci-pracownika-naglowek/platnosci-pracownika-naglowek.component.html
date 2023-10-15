@@ -4,24 +4,28 @@
       <tr>
         <th colspan="3">Dodatki:</th>
       </tr>
-      <tr>
+      <tr class="dodawanieOdejmowaniePracownikow">
         <td>Miejsca na pracowników</td>
         <td>
-          <button (click)="DodajPracownika()">Dodaj</button>
+          <button (click)="DodajPracownika()">
+            <fa-icon [icon]="faPlus"></fa-icon>
+          </button>
           zajęte {{ podreczne_.danePodreczneObiekt.pracownicy.length - 1 }} z
           {{ dane.iloscPracownikow }}
-          <button (click)="OdejmijPracownika()">Usuń</button>
+          <button (click)="OdejmijPracownika()">
+            <fa-icon [icon]="faMinus"></fa-icon>
+          </button>
         </td>
       </tr>
-
-      <tr>
-        <td style="font-weight: bolder">Usługa email</td>
-        <td style="color: #0e7908; font-weight: bolder">Włączona</td>
-      </tr>
-      <tr>
-        <td>Darmowe:</td>
-        <td>wykorzystano 54 z <i>nielimitowane</i></td>
-      </tr>
+      <!--
+            <tr>
+              <td style="font-weight: bolder">Usługa email</td>
+              <td style="color: #0e7908; font-weight: bolder">Włączona</td>
+            </tr>
+            <tr>
+              <td>Darmowe:</td>
+              <td>wykorzystano 54 z <i>nielimitowane</i></td>
+            </tr>-->
     </table>
   </div>
   <div class="czesc">
@@ -35,9 +39,7 @@
         </td>
         <td>
           <span class="status">
-            <span *ngIf="dane.status == -1" style="color: #00b0ff"
-              >Testowe</span
-            >
+            <span *ngIf="dane.status == -1" style="color: #00b0ff">Testowe</span>
             <span *ngIf="dane.status == 1" style="color: green">Aktywne</span>
             <span *ngIf="dane.status == 0" style="color: red">Nieaktywne</span>
           </span>
@@ -62,20 +64,10 @@
         </td>
       </tr>
     </table>
-    <button class="przyciskPlatnosci" (click)="nowaPlatnosc()">
-      Wpłać pieniądze na konto
-    </button>
-    <button
-      class="przyciskPlatnosci"
-      (click)="aktywacjaKonta()"
-      *ngIf="dane.status == -1 || dane.status == 0">
+    <button (click)="nowaPlatnosc()" class="domyslnyButtonZapisz">Wpłać pieniądze na konto</button>
+    <button (click)="aktywacjaKonta()" *ngIf="dane.status == -1 || dane.status == 0" class="domyslnyButton2">
       Aktywuj konto
     </button>
-    <button
-      class="przyciskPlatnosci"
-      (click)="wstrzymajKonto()"
-      *ngIf="dane.status == 1">
-      Wstrzymaj
-    </button>
+    <button (click)="wstrzymajKonto()" *ngIf="dane.status == 1" class="domyslnyButtonUsun">Wstrzymaj</button>
   </div>
 </div>

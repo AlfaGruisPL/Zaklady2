@@ -1,5 +1,5 @@
 <router-outlet></router-outlet>
-<div *ngIf="environment.production == false" class="dev">
+<div *ngIf="!environment.production" class="dev">
   Dev: <span class="wersja">{{ wersja }}</span> <span class="data">{{ data_wydania }}</span>
 </div>
 <app-ciasteczka-komunikat></app-ciasteczka-komunikat>

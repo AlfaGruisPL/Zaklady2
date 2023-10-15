@@ -1,95 +1,96 @@
 <form>
   <div class="modal-header">
-    <h4 class="modal-title" *ngIf="tryb == 'dodawanie'">Dodawanie pracownika</h4>
-    <h4 class="modal-title" *ngIf="tryb == 'modyfikacja'">Modyfikacja danych</h4>
-    <h4 class="modal-title" *ngIf="tryb == 'wyswietlenie'">Informacje o pracowniku</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+    <h4 *ngIf="tryb == 'dodawanie'" class="modal-title">Dodawanie pracownika</h4>
+    <h4 *ngIf="tryb == 'modyfikacja'" class="modal-title">Modyfikacja danych</h4>
+    <h4 *ngIf="tryb == 'wyswietlenie'" class="modal-title">Informacje o pracowniku</h4>
+    <button (click)="activeModal.dismiss('Cross click')" aria-label="Close" class="btn-close" type="button"></button>
   </div>
   <div class="modal-body">
-
     <table>
       <tr>
         <td class="naglowki1form" colspan="2">Dane pracownika</td>
       </tr>
       <tr>
-        <td><label for="imie" class="naglowki2form">Imię:</label></td>
-        <td *ngIf="tryb != 'wyswietlenie'"><input id="imie" type="text" class="logInputZaklad"
-                                                  [(ngModel)]="pracownikObj.imie"
-                                                  (keydown)="iloscKlikniec = 0"
-                                                  [ngModelOptions]="{standalone: true}">
+        <td><label class="naglowki2form" for="imie">Imię:</label></td>
+        <td *ngIf="tryb != 'wyswietlenie'">
+          <input
+            (keydown)="iloscKlikniec = 0"
+            [(ngModel)]="pracownikObj.imie"
+            [ngModelOptions]="{ standalone: true }"
+            class="logInputZaklad"
+            id="imie"
+            type="text" />
         </td>
-        <td class="wyswietlanieDanych" *ngIf="tryb == 'wyswietlenie'"> {{pracownikObj.imie}}</td>
+        <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.imie }}</td>
       </tr>
       <tr>
-        <td><label for="nazwisko" class="naglowki2form">Nazwisko:</label></td>
-        <td *ngIf="tryb != 'wyswietlenie'"><input id="nazwisko" type="text" class="logInputZaklad"
-                                                  [(ngModel)]="pracownikObj.nazwisko"
-                                                  (keydown)="iloscKlikniec = 0"
-                                                  [ngModelOptions]="{standalone: true}"></td>
-        <td class="wyswietlanieDanych" *ngIf="tryb == 'wyswietlenie'"> {{pracownikObj.nazwisko}}</td>
+        <td><label class="naglowki2form" for="nazwisko">Nazwisko:</label></td>
+        <td *ngIf="tryb != 'wyswietlenie'">
+          <input
+            (keydown)="iloscKlikniec = 0"
+            [(ngModel)]="pracownikObj.nazwisko"
+            [ngModelOptions]="{ standalone: true }"
+            class="logInputZaklad"
+            id="nazwisko"
+            type="text" />
+        </td>
+        <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.nazwisko }}</td>
       </tr>
       <tr>
-        <td><label for="adresEmail" class="naglowki2form">Adres e-mail:</label></td>
-        <td *ngIf="tryb != 'wyswietlenie'"><input id="adresEmail" type="text" class="logInputZaklad"
-                                                  [(ngModel)]="pracownikObj.adresEmail"
-                                                  (keydown)="iloscKlikniec = 0"
-                                                  [ngModelOptions]="{standalone: true}"></td>
-        <td class="wyswietlanieDanych" *ngIf="tryb == 'wyswietlenie'"> {{pracownikObj.adresEmail}}</td>
+        <td><label class="naglowki2form" for="adresEmail">Adres e-mail:</label></td>
+        <td *ngIf="tryb != 'wyswietlenie'">
+          <input
+            (keydown)="iloscKlikniec = 0"
+            [(ngModel)]="pracownikObj.adresEmail"
+            [ngModelOptions]="{ standalone: true }"
+            class="logInputZaklad"
+            id="adresEmail"
+            type="text" />
+        </td>
+        <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.adresEmail }}</td>
       </tr>
       <tr>
         <td>
-          <label for="nrTelefonu" class="naglowki2form">Numer telefonu:</label></td>
+          <label class="naglowki2form" for="nrTelefonu">Numer telefonu:</label>
+        </td>
         <td *ngIf="tryb != 'wyswietlenie'">
-          <select class="logInputZaklad"
-                  style="width: 80px; height: 32px; background: #e3e2e2;position: relative;bottom: -1px"
-                  (click)="iloscKlikniec = 0"
-                  [(ngModel)]="pracownikObj.prefiksTelefonu"
-                  [ngModelOptions]="{standalone: true}">
+          <select
+            (click)="iloscKlikniec = 0"
+            [(ngModel)]="pracownikObj.prefiksTelefonu"
+            [ngModelOptions]="{ standalone: true }"
+            class="logInputZaklad"
+            style="width: 80px; height: 32px; background: #e3e2e2; position: relative; bottom: -1px">
             <option>+48</option>
             <option>+380</option>
           </select>
-          <input style="width: 170px; margin: 2px" id="nrTelefonu" type="text" maxlength="9" class="logInputZaklad"
-                 [(ngModel)]="pracownikObj.numerTelefonu"
-                 [ngModelOptions]="{standalone: true}">
+          <input
+            [(ngModel)]="pracownikObj.numerTelefonu"
+            [ngModelOptions]="{ standalone: true }"
+            class="logInputZaklad"
+            id="nrTelefonu"
+            maxlength="9"
+            style="width: 170px; margin: 2px"
+            type="text" />
         </td>
-        <td class="wyswietlanieDanych" *ngIf="tryb == 'wyswietlenie'">
-          {{pracownikObj.prefiksTelefonu}}
-          {{pracownikObj.numerTelefonu}}
-        </td>
-      </tr>
-      <tr *ngIf="tryb != 'wyswietlenie'">
-        <td>
-          <label class="naglowki2form"> Zdjęcie profilowe:</label>
-        </td>
-        <td><input type="file" (change)="wybierzPlik($event)" #inputTypeFile>
-          <input type="button" value="Wyczyść" (click)="formData = undefined;inputTypeFile.value = ''">
+        <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">
+          {{ pracownikObj.prefiksTelefonu }}
+          {{ pracownikObj.numerTelefonu }}
         </td>
       </tr>
-      <tr *ngIf="tryb == 'modyfikacja'">
-        <td>
-          <label class="naglowki2form">Usuń zdjęcie profilowe:</label>
-        </td>
-        <td>
-          <input type="button" value="Usuń zdjęcie profilowe" (click)="usunZdjecieProfilowe()">
-        </td>
-      </tr>
-
-
     </table>
     <table>
       <tr>
-        <td colspan="2" class="naglowki1form">Adres zamieszkania</td>
+        <td class="naglowki1form" colspan="2">Adres zamieszkania</td>
       </tr>
       <tr>
-        <td><label for="wojewodztwo" class="naglowki2form">
-          Województwo:
-        </label>
-
-        </td>
+        <td><label class="naglowki2form" for="wojewodztwo"> Województwo: </label></td>
         <td *ngIf="tryb != 'wyswietlenie'">
-          <select class="logInputZaklad" id="wojewodztwo" [(ngModel)]="pracownikObj.adres.wojewodztwo"
-                  (click)="iloscKlikniec = 0"
-                  [ngModelOptions]="{standalone: true}">
+          <select
+            (click)="iloscKlikniec = 0"
+            [(ngModel)]="pracownikObj.adres.wojewodztwo"
+            [ngModelOptions]="{ standalone: true }"
+            class="logInputZaklad"
+            id="wojewodztwo">
             <option value="dolnoslaskie">Dolnośląskie</option>
             <option value="kujawsko-pomorskie">Kujawsko-pomorskie</option>
             <option value="lubelskie">Lubelskie</option>
@@ -108,80 +109,124 @@
             <option value="zachodniopomorskie">Zachodniopomorskie</option>
           </select>
         </td>
-        <td class="wyswietlanieDanych" *ngIf="tryb == 'wyswietlenie'">{{pracownikObj.adres.wojewodztwo}}</td>
+        <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.adres.wojewodztwo }}</td>
       </tr>
       <tr>
-        <td><label for="miasto" class="naglowki2form">Miasto:</label></td>
-        <td *ngIf="tryb != 'wyswietlenie'"><input id="miasto" type="text" class="logInputZaklad"
-                                                  [(ngModel)]="pracownikObj.adres.miasto"
-                                                  (keydown)="iloscKlikniec = 0"
-                                                  [ngModelOptions]="{standalone: true}"></td>
-        <td class="wyswietlanieDanych" *ngIf="tryb == 'wyswietlenie'"> {{pracownikObj.adres.miasto}}</td>
+        <td><label class="naglowki2form" for="miasto">Miasto:</label></td>
+        <td *ngIf="tryb != 'wyswietlenie'">
+          <input
+            (keydown)="iloscKlikniec = 0"
+            [(ngModel)]="pracownikObj.adres.miasto"
+            [ngModelOptions]="{ standalone: true }"
+            class="logInputZaklad"
+            id="miasto"
+            type="text" />
+        </td>
+        <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.adres.miasto }}</td>
       </tr>
       <tr>
-        <td><label for="ulica" class="naglowki2form">Ulica:</label></td>
-        <td *ngIf="tryb != 'wyswietlenie'"><input id="ulica" type="text" class="logInputZaklad"
-                                                  [(ngModel)]="pracownikObj.adres.ulica"
-                                                  (keydown)="iloscKlikniec = 0"
-                                                  [ngModelOptions]="{standalone: true}"></td>
-        <td class="wyswietlanieDanych" *ngIf="tryb == 'wyswietlenie'"> {{pracownikObj.adres.ulica}}</td>
+        <td><label class="naglowki2form" for="ulica">Ulica:</label></td>
+        <td *ngIf="tryb != 'wyswietlenie'">
+          <input
+            (keydown)="iloscKlikniec = 0"
+            [(ngModel)]="pracownikObj.adres.ulica"
+            [ngModelOptions]="{ standalone: true }"
+            class="logInputZaklad"
+            id="ulica"
+            type="text" />
+        </td>
+        <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.adres.ulica }}</td>
       </tr>
       <tr>
         <td><label class="naglowki2form">Numer domu/lokalu:</label></td>
-        <td *ngIf="tryb != 'wyswietlenie'"><input type="text" class="logInputZaklad" style="width: 100px"
-                                                  [(ngModel)]="pracownikObj.adres.nrDomu"
-                                                  (keydown)="iloscKlikniec = 0"
-                                                  [ngModelOptions]="{standalone: true}">
+        <td *ngIf="tryb != 'wyswietlenie'">
+          <input
+            (keydown)="iloscKlikniec = 0"
+            [(ngModel)]="pracownikObj.adres.nrDomu"
+            [ngModelOptions]="{ standalone: true }"
+            class="logInputZaklad"
+            style="width: 100px"
+            type="text" />
 
-          <span
-            style="font-size: 25px;">&nbsp;/&nbsp;</span>
-          <input type="text" class="logInputZaklad" style="width: 100px" [(ngModel)]="pracownikObj.adres.nrLokalu"
-                 (keydown)="iloscKlikniec = 0"
-                 [ngModelOptions]="{standalone: true}"></td>
-        <td class="wyswietlanieDanych" *ngIf="tryb == 'wyswietlenie'"> {{pracownikObj.adres.nrDomu}}
-          <span
-            style="font-size: 25px;">&nbsp;/&nbsp;</span>  {{pracownikObj.adres.nrLokalu}}  </td>
+          <span style="font-size: 25px">&nbsp;/&nbsp;</span>
+          <input
+            (keydown)="iloscKlikniec = 0"
+            [(ngModel)]="pracownikObj.adres.nrLokalu"
+            [ngModelOptions]="{ standalone: true }"
+            class="logInputZaklad"
+            style="width: 100px"
+            type="text" />
+        </td>
+        <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">
+          {{ pracownikObj.adres.nrDomu }}
+          <span *ngIf="pracownikObj.adres.nrLokalu.toString().length > 0" style="font-size: 25px">&nbsp;/&nbsp;</span>
+          {{ pracownikObj.adres.nrLokalu }}
+        </td>
       </tr>
       <tr>
         <td><label class="naglowki2form">Kod pocztowy:</label></td>
-        <td *ngIf="tryb != 'wyswietlenie'"><input type="text" class="logInputZaklad" style="width: 80px" maxlength="2"
-                                                  (keydown)="iloscKlikniec = 0"
-                                                  [(ngModel)]="pracownikObj.adres.kodPocztowy1"
-                                                  [ngModelOptions]="{standalone: true}">
-          <span
-            style="font-size: 25px;">&nbsp;-&nbsp;</span>
-          <input type="text" class="logInputZaklad" style="width: 100px" maxlength="3" (keydown)="iloscKlikniec = 0"
-                 [(ngModel)]="pracownikObj.adres.kodPocztowy2"
-                 [ngModelOptions]="{standalone: true}">
+        <td *ngIf="tryb != 'wyswietlenie'">
+          <input
+            (keydown)="iloscKlikniec = 0"
+            [(ngModel)]="pracownikObj.adres.kodPocztowy1"
+            [ngModelOptions]="{ standalone: true }"
+            class="logInputZaklad"
+            maxlength="2"
+            style="width: 80px"
+            type="text" />
+          <span style="font-size: 25px">&nbsp;-&nbsp;</span>
+          <input
+            (keydown)="iloscKlikniec = 0"
+            [(ngModel)]="pracownikObj.adres.kodPocztowy2"
+            [ngModelOptions]="{ standalone: true }"
+            class="logInputZaklad"
+            maxlength="3"
+            style="width: 100px"
+            type="text" />
         </td>
-        <td class="wyswietlanieDanych" *ngIf="tryb == 'wyswietlenie'">
-          {{pracownikObj.adres.kodPocztowy1}}
-          <span
-            style="font-size: 25px;">&nbsp;-&nbsp;</span>
-          {{pracownikObj.adres.kodPocztowy2}}
+        <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">
+          {{ pracownikObj.adres.kodPocztowy1 }}
+          <span style="font-size: 25px">&nbsp;-&nbsp;</span>
+          {{ pracownikObj.adres.kodPocztowy2 }}
         </td>
       </tr>
     </table>
-    <img style="max-height: 250px;max-width: 150px" *ngIf="usunZdjecieProfiloweDTo == false && !safeImageUrl"
-         [src]="'http://fenek.tech:3000/pliki/wyswietlZdjecieProfilowe/'+idUzytkownika+'?jakosc=30' |zdjecie:false"
-    />
-    <img style="max-height: 250px;max-width: 150px" [src]="safeImageUrl" *ngIf="safeImageUrl">
 
+    <app-moje-konto-zdjecie-profilowe
+      [idUzytkownika]="idUzytkownika"
+      [modyfikacja]="tryb != 'wyswietlenie'"
+      [width]="200"
+      [wlasne]="false">
+    </app-moje-konto-zdjecie-profilowe>
   </div>
-  <div class="modal-footer">
-    <span style="padding-right: 180px " *ngIf="!pracownikObj.czyWszystkoWpisane && iloscKlikniec == 1"
-          class="czerwoneKomunikatyZaklad">Nie uzupełnione wszystkie pola! Czy na pewno chcesz zapisać dane? </span>
-    <span style="padding-right: 180px " *ngIf="iloscKlikniec == 1 && tryb == 'modyfikacja'"
-          class="czerwoneKomunikatyZaklad">Czy na pewno chcesz zmodyfikować dane? </span>
-    <button *ngIf="tryb == 'dodawanie'" type="submit" class="zmodyfikujZapiszButton" (click)="zapisz()"
-            [disabled]="blokowaniePrzycisku">Zapisz
+  <div *ngIf="tryb != 'wyswietlenie'" class="modal-footer">
+    <span
+      *ngIf="!pracownikObj.czyWszystkoWpisane && iloscKlikniec == 1"
+      class="czerwoneKomunikatyZaklad"
+      style="padding-right: 180px"
+      >Nie uzupełnione wszystkie pola! Czy na pewno chcesz zapisać dane?
+    </span>
+    <span
+      *ngIf="iloscKlikniec == 1 && tryb == 'modyfikacja'"
+      class="czerwoneKomunikatyZaklad"
+      style="padding-right: 180px"
+      >Czy na pewno chcesz zmodyfikować dane?
+    </span>
+    <button
+      (click)="zapisz()"
+      *ngIf="tryb == 'dodawanie'"
+      [disabled]="blokowaniePrzycisku"
+      class="zmodyfikujZapiszButton"
+      type="submit">
+      Zapisz
     </button>
-    <button *ngIf="tryb == 'modyfikacja'" type="submit" class="zmodyfikujZapiszButton" (click)="zmodyfikuj()"
-            [disabled]="blokowaniePrzycisku">
+    <button
+      (click)="zmodyfikuj()"
+      *ngIf="tryb == 'modyfikacja'"
+      [disabled]="blokowaniePrzycisku"
+      class="zmodyfikujZapiszButton"
+      type="submit">
       Zmodyfikuj
     </button>
   </div>
-
 </form>
-
-

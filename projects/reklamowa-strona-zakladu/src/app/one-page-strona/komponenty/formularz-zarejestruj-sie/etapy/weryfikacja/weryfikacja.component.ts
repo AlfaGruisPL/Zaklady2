@@ -4,14 +4,12 @@ import { ZarejestrujSieService } from '../../zarejestrujSie.service';
 @Component({
   selector: 'app-weryfikacja',
   templateUrl: './weryfikacja.component.html',
-  styleUrls: [
-    './weryfikacja.component.scss',
-    '../../formularz-zarejestruj-sie.component.scss',
-  ],
+  styleUrls: ['./weryfikacja.component.scss', '../../formularz-zarejestruj-sie.component.scss'],
 })
 export class WeryfikacjaComponent {
   @Output() wyslijKrok = new EventEmitter<number>();
   public kodNieWpisany: boolean = false;
+  protected readonly EventEmitter = EventEmitter;
 
   constructor(public ZarejestrujSieService: ZarejestrujSieService) {}
 

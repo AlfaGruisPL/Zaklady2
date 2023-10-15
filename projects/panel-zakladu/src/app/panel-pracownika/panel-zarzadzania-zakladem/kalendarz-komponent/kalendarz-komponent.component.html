@@ -1,5 +1,5 @@
 <app-kalendarz-panel-sterowania></app-kalendarz-panel-sterowania>
-<table [ngClass]="{ ladowanieDanych: Kalendarz_.loadingData }" style="width: 100%">
+<table [ngClass]="{ ladowanieDanych: Kalendarz_.loadingData }" id="kalendarz" style="width: 100%">
   <tr>
     <th class="wyswietlaneGodzinySpan" style="font-size: 18px"></th>
     <th *ngFor="let dzien of Kalendarz_.dni" class="naglowkiTabeli">

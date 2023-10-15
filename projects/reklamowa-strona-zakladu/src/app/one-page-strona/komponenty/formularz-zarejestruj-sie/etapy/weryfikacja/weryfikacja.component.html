@@ -1,7 +1,7 @@
 <div class="naglowek">
   <p>
-    <span>Dokonaj weryfikację aby się zapisać na wizytę </span> <br/>
-    <span> Na twój adres e-mail został wysłany kod, wpisz go poniżej:</span>
+    <span>Dokonaj weryfikację aby się zapisać na wizytę </span> <br />
+    <span> Na podany numer telefonu został wysłany kod weryfikacyjny, wpisz go poniżej aby zakończyć rejestrację:</span>
   </p>
 </div>
 <form>
@@ -9,22 +9,28 @@
     <tr>
       <td>
         <input
+          [(ngModel)]="ZarejestrujSieService.DaneKlientaClass.kodWeryfikacja"
           [ngClass]="{
             czerwonyInput:
               ZarejestrujSieService.DaneKlientaClass.niepoprawnyKod ||
               ZarejestrujSieService.DaneKlientaClass.kodWeryfikacjaPusty
           }"
-          class="logInput"
-          placeholder="Kod"
-          [(ngModel)]="ZarejestrujSieService.DaneKlientaClass.kodWeryfikacja"
           [ngModelOptions]="{ standalone: true }"
-        />
+          class="logInput"
+          placeholder="Kod" />
       </td>
     </tr>
   </table>
   <div class="divNaPrzycisk">
-    <span class="czerwone" *ngIf="kodNieWpisany == true">Wpisz kod, aby przejść dalej</span>
-    <span class="czerwone" *ngIf="ZarejestrujSieService.DaneKlientaClass.niepoprawnyKod == true">Wpisany kod niepoprawny, spróbuj jeszcze raz</span>
-    <button class="buttonDalej" (click)="przejdzDalej()">Dalej</button>
+    <span *ngIf="kodNieWpisany == true" class="czerwone">Wpisz kod, aby przejść dalej</span>
+    <span *ngIf="ZarejestrujSieService.DaneKlientaClass.niepoprawnyKod == true" class="czerwone"
+      >Wpisany kod niepoprawny, spróbuj jeszcze raz</span
+    >
+    <button
+      (click)="przejdzDalej()"
+      [disabled]="ZarejestrujSieService.butonDisabled_weryfikacjaKodu"
+      class="buttonDalej">
+      Dalej
+    </button>
   </div>
 </form>

@@ -511,7 +511,7 @@
           </tr>
           <tr>
             <td class="naglowki2form">
-              <label for="numerTelefonu"> Numer telefonu </label>
+              <label for="numerTelefonu">Numer telefonu </label>
             </td>
             <td>
               <select
@@ -592,10 +592,10 @@
         <app-pracownicy-moj-zaklad [czyWidoczne]="zapiszButton"></app-pracownicy-moj-zaklad>
       </div>
       <div class="tabela6">
-        <table>
+        <table class="border">
           <tr>
             <td class="naglowki2form">
-              <label for="opis"> Cennik usług</label>
+              <label> Cennik usług</label>
             </td>
             <td></td>
             <td>
@@ -604,25 +604,76 @@
                 [disabled]="!zapiszButton"
                 [ngModelOptions]="{ standalone: true }"
                 checkedLabel="Publiczne"
-                class="unchecked"
                 class="przelacznikPublicznePrywatne"
                 uncheckedLabel="Prywatne"></ui-switch>
             </td>
           </tr>
           <tr>
-            <th>Możliwość płątności kartą</th>
+            <th>Możliwość płatności kartą</th>
             <td></td>
             <td>
               <ui-switch
+                [(ngModel)]="mojZakladKlasa.mozliwoscPlatnosciKarta"
                 [disabled]="!zapiszButton"
+                [ngModelOptions]="{ standalone: true }"
                 checkedLabel="tak"
-                class="unchecked"
                 class="przelacznikPublicznePrywatne"
                 uncheckedLabel="nie"></ui-switch>
             </td>
           </tr>
+          <tr *ngIf="mojZakladKlasa.mozliwoscPlatnosciKarta">
+            <td colspan="2">
+              <table class="payMethod">
+                <tr>
+                  <th>Blik</th>
+                  <td>
+                    <ui-switch
+                      [(ngModel)]="mojZakladKlasa.platnosci.blik"
+                      [disabled]="!zapiszButton"
+                      [ngModelOptions]="{ standalone: true }"></ui-switch>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Google Pay</th>
+                  <td>
+                    <ui-switch
+                      [(ngModel)]="mojZakladKlasa.platnosci.Google_Pay"
+                      [disabled]="!zapiszButton"
+                      [ngModelOptions]="{ standalone: true }"></ui-switch>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Apple Pay</th>
+                  <td>
+                    <ui-switch
+                      [(ngModel)]="mojZakladKlasa.platnosci.Apple_Pay"
+                      [disabled]="!zapiszButton"
+                      [ngModelOptions]="{ standalone: true }"></ui-switch>
+                  </td>
+                </tr>
+                <tr>
+                  <th>Visa</th>
+                  <td>
+                    <ui-switch
+                      [(ngModel)]="mojZakladKlasa.platnosci.Visa"
+                      [disabled]="!zapiszButton"
+                      [ngModelOptions]="{ standalone: true }"></ui-switch>
+                  </td>
+                </tr>
+                <tr>
+                  <th>MasterCard</th>
+                  <td>
+                    <ui-switch
+                      [(ngModel)]="mojZakladKlasa.platnosci.MasterCard"
+                      [disabled]="!zapiszButton"
+                      [ngModelOptions]="{ standalone: true }"></ui-switch>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
           <tr>
-            <td>Identyfikator</td>
+            <th>Identyfikator</th>
             <td>
               <input
                 [(ngModel)]="mojZakladKlasa.identyfikator"
@@ -635,6 +686,7 @@
               <button
                 (click)="zmienIdentyfikatorFun()"
                 [disabled]="!(!zmienIdentyfikator && zapiszButton)"
+                class="domyslnyButtonZapisz small"
                 type="button">
                 Odblokuj
               </button>

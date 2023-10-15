@@ -70,7 +70,9 @@
     <span *ngIf="!ZarejestrujSieService.DaneKlientaClass.czyWszystkoUzupelnione" class="czerwone"
       >Wprowadź wszystkie dane!</span
     >
-    <button (click)="przejdzDalej()" class="buttonDalej">Dalej</button>
+    <button (click)="przejdzDalej()" [disabled]="ZarejestrujSieService.butonDisabled_wyslijDane" class="buttonDalej">
+      Dalej
+    </button>
     <button (click)="cofnij()" class="buttonCofnij">Cofnij</button>
   </div>
 </form>

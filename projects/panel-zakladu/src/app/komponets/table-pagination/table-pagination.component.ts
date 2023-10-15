@@ -32,6 +32,10 @@ export class TablePaginationComponent implements OnChanges {
 
   @Output()
   changeData = new EventEmitter();
+
+  @Output()
+  change = new EventEmitter();
+
   kback = 0;
   @Input()
   disabled = false;
@@ -67,9 +71,17 @@ export class TablePaginationComponent implements OnChanges {
     return [].constructor(this.kback);
   }
 
+  test() {
+    setTimeout(() => {
+      console.log('pageChange', this.page);
+      this.pageChange.emit(this.page);
+    }, 1);
+  }
+
   saveReloadData() {
     setTimeout(() => {
       this.changeData.emit();
-    }, 1);
+      this.change.emit();
+    }, 2);
   }
 }

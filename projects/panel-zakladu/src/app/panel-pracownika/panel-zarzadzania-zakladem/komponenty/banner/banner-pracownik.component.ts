@@ -106,7 +106,7 @@ export class BannerPracownikComponent implements OnInit, OnDestroy {
         this.komunikaty.wylogowanieNieUdane();
       })
       .finally(() => {
-        this.Router.navigate(['']);
+        this.Router.navigate(['./']);
       });
   }
 

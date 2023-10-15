@@ -3,16 +3,17 @@ import { ToastrService } from 'ngx-toastr';
 import { BledyNumery } from '../enum/bledy-numery';
 import { Bledy } from '../enum/bledy';
 import { Udane } from '../enum/udane';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root',
 })
 export class KomunikatyService {
-  constructor(private komunikaty: ToastrService) {}
+  constructor(private komunikaty: ToastrService, private sanitizer: DomSanitizer) {}
 
   public zmianaIdentyfikatoraPrzekierowanie() {
     return this.komunikaty.warning(
-      "Zmiana identyfikatora wymusza przekierowanie na nowy adres panelu administratora.  <br><span class='powiadomienieCiemnyText'>Zmianie uległ również adres do reklamowej strony zakładu<br>Automatyczne przekierowanie nastąpi po zniknięciu tego komunikatu.</span>",
+      "Zmiana identyfikatora wymusza przekierowanie na nowy adres panelu administratora.  <br><span class='powiadomienieCiemnyText'>Zmianie ulegnie również adres do reklamowej strony zakładu<br>Automatyczne przekierowanie nastąpi po zapisaniu zmian.</span>",
       'Zmiana identyfikatora',
       {
         positionClass: 'toast-top-full-width',
@@ -40,19 +41,28 @@ export class KomunikatyService {
     this.komunikaty.success(udane, 'Udane');
   }
 
-  public komunikatBledu(Blad: Bledy) {
-    this.komunikaty.error(Blad, 'Błąd');
-  }
-
-  public ZmianaIdentyfikatora() {
-    this.komunikaty.info('Zmiana identyfiaktora możliwa jest co 5 minut', 'UWAGA', { timeOut: 10000 });
-    this.komunikaty.warning(
-      'Zmiana identyfikatora zmienia adres logowania do panelu administratora oraz do strony reklamowej.',
-      'UWAGA',
-      {
-        timeOut: 20000,
-      }
-    );
+  public komunikatBledu(Blad: Bledy, errorCode: number | undefined = undefined) {
+    if (errorCode) {
+      const kod = Blad + `<br>Kod błędu: ${errorCode}`;
+      const safe = this.sanitizer.bypassSecurityTrustHtml(kod);
+      this.komunikaty.error(
+        // @ts-ignore
+        kod,
+        'Błąd',
+        {
+          enableHtml: true,
+          // @ts-ignore -> This is importnat to TS compiler
+          buttons: [
+            {
+              id: 1,
+              title: 'view jobs 1',
+            },
+          ],
+        }
+      );
+    } else {
+      this.komunikaty.error(Blad, 'Błąd');
+    }
   }
 
   public uslugaSmsWlaczona() {
@@ -169,5 +179,17 @@ export class KomunikatyService {
 
   nieMaszUprawnienDoDodaniaWizyty() {
     this.komunikaty.info('Nie możesz dodać wizyty innemu użytkownikowi', 'Brak uprawnień');
+  }
+
+  zdjecieProfiloweUsuniete() {
+    this.komunikaty.success('Zdjęcie profilowe zostało usunięte', 'Udane');
+  }
+
+  zdjecieProfiloweNieUsuniete() {
+    this.komunikaty.error('Zdjęcie profilowe nie zostało usunięte', 'Błąd');
+  }
+
+  minimalnaKwotaWplaty() {
+    this.komunikaty.info('Minimalna kwota doładowania konta wynosi 30zł', 'Informacja');
   }
 }

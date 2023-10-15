@@ -1,64 +1,64 @@
 <div class="kartka">
-  <img src="assets/kartkaPapieru.png"/>
+  <img src="assets/kartkaPapieru.png" />
 </div>
 <div class="textDiv">
   <span class="naglowek">Podsumowanie</span>
   <table class="dane">
-
     <tr>
       <td class="naglowek2">Imię i Nazwisko:</td>
-      <td class="naglowek3">Korneliia Mushak</td>
+      <td class="naglowek3">{{ rejestracja.DaneKlientaClass.imie + ' ' + rejestracja.DaneKlientaClass.nazwisko }}</td>
     </tr>
     <tr>
       <td class="naglowek2">Termin wizyty:</td>
-      <td class="naglowek3">08.08.2023</td>
+      <td class="naglowek3">{{ rejestracja.DaneKlientaClass.wybranyTermin?.poczatek | date : 'dd.MM.YYYY' }}</td>
     </tr>
     <tr>
       <td class="naglowek2">Godzina:</td>
-      <td class="naglowek3">08:40</td>
+      <td class="naglowek3">
+        {{ rejestracja.DaneKlientaClass.wybranyTermin?.poczatek | date : 'HH:mm' }} -{{
+          rejestracja.DaneKlientaClass.wybranyTermin?.koniec | date : 'HH:mm'
+        }}
+      </td>
     </tr>
     <tr>
       <td class="naglowek2">Adres:</td>
       <td class="naglowek3">
-        woj.Podkarpackie, pow.Jarosław,<br/>
-        miasto Jarosław, ul.Czarnieckiego, <br/>
-        miasto Jarosław, ul.Czarnieckiego, <br/>
-        miasto Jarosław, ul.Czarnieckiego, <br/>
-        miasto Jarosław, ul.Czarnieckiego, <br/>
-        nr domu 16, nr lokalu 5
+        {{ danePodstawowe.danePodstawowe.adres.kodPocztowy }} {{ miastoWies() }}
+        <br />
+        {{ danePodstawowe.danePodstawowe.adres.wojewodztwo }}<br />
+        Nr/lokal:
+        {{ danePodstawowe.danePodstawowe.adres.numerDomu }}/ {{ danePodstawowe.danePodstawowe.adres.numerLokalu }}
       </td>
     </tr>
 
     <tr>
       <td class="naglowek2">Imię i nazwisko pracownika:</td>
-      <td class="naglowek3">Mateusz Osikowski</td>
+      <td class="naglowek3">{{ wybranyPracownik().pracownik }}</td>
     </tr>
     <tr>
       <td class="naglowek2">Wybrane usługi:</td>
-      <td class="naglowek3">Strzyżenie embro</td>
+      <td class="naglowek3">
+        <ul>
+          <li *ngFor="let usluga of wybraneUslugi()">{{ usluga.nazwa | maxDlugosc : 35 }}</li>
+        </ul>
+      </td>
     </tr>
-    <tr>
+    <tr *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.uslugiCzyWyswietlic">
       <td class="naglowek2">Prognozowana cena za usługi:</td>
-      <td class="naglowek3">400 złotych</td>
+      <td class="naglowek3">{{ cenaZaUslugi() }} złotych</td>
     </tr>
     <tr>
       <td class="naglowek2">Kontakt do zapisanego pracownika:</td>
-      <td class="naglowek3">788830720</td>
+      <td class="naglowek3">{{ wybranyPracownik().telefon }}</td>
     </tr>
     <tr>
       <td class="naglowek2">Kontakt do zakładu:</td>
-      <td class="naglowek3">788830720</td>
+      <td class="naglowek3">{{ danePodstawowe.danePodstawowe.numerTelefonuOgolny }}</td>
     </tr>
   </table>
-  <!-- <div class="karteczki">
-     <div class="karteczka1"></div>
-     <div class="karteczka2"></div>
-   </div>
-   -->
-  <a class="pdf"> Kliknij, jeśli chcesz wygenerować podsumowanie w plik PDF </a>
-
-  <button class="buttonZarejestrujPonownie" (click)="przejdzDalej()">
-    Zarejestruj ponownie
-  </button>
-
+  <div class="emailInformation">Na twoją skrzynkę pocztową zostały wysłane szczegółowe informacje na temat wizyty.</div>
+  <ng-container *ngIf="!environment.production">
+    <a class="pdf" style="outline: 2px dashed red"> Kliknij, jeśli chcesz wygenerować podsumowanie w plik PDF </a>
+  </ng-container>
+  <button (click)="przejdzDalej()" class="buttonZarejestrujPonownie">Zarejestruj ponownie</button>
 </div>

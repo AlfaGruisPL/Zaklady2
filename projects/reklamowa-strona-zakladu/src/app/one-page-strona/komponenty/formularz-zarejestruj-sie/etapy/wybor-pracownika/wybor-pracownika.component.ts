@@ -24,6 +24,7 @@ export class WyborPracownikaComponent implements OnInit {
     this.danePodstawowe.danePodstawowe.uslugi.forEach(usluga => (usluga.wybrane = false));
     this.listonosz.pobierz(Drzwi.listaPracownikowRejestracja).then(listaPracownikow => {
       this.pracownicy = listaPracownikow;
+      this.danePodstawowe.danePodstawowe.listaPracownikow = listaPracownikow;
     });
   }
 

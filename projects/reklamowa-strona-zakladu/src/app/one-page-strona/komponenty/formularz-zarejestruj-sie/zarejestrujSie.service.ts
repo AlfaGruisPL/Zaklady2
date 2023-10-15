@@ -12,15 +12,15 @@ export class ZarejestrujSieService {
   env = environment;
   DaneKlientaClass: DaneKlienta = new DaneKlienta();
   wyswietlanieFormualrza = !this.env.production;
+  butonDisabled_weryfikacjaKodu = false;
+  butonDisabled_wyslijDane = false;
   public niepobranyKalendarz: boolean = this.env.production;
 
   constructor(private listonosz: ListonoszService) {}
 
   pobierzTerminyWizyt() {
     this.niepobranyKalendarz = false;
-    const pracownikUslugiDTO_obj = new pracownikUslugiDTO(
-      this.DaneKlientaClass
-    );
+    const pracownikUslugiDTO_obj = new pracownikUslugiDTO(this.DaneKlientaClass);
 
     this.listonosz
       .wyslij(Drzwi.pobierzTerminy, pracownikUslugiDTO_obj)

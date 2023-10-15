@@ -31,6 +31,15 @@ export class MojZaklad {
   public daneZakladuCzyWyswietlic = false;
   public naszKontaktCzyWyswietlic = false;
 
+  mozliwoscPlatnosciKarta = false;
+  platnosci = {
+    blik: false,
+    Visa: false,
+    Apple_Pay: false,
+    MasterCard: false,
+    Google_Pay: false,
+  };
+
   public wysokosc: string = '';
   public szerokosc: string = '';
   public nip: string = '';

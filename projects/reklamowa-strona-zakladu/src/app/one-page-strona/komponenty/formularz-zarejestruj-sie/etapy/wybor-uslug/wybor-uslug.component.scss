@@ -14,6 +14,14 @@
 }
 
 .uslugi {
+  table {
+    font-size: 14px;
+
+    tr td {
+      height: 25.2px;
+    }
+  }
+
   @media (max-width: 500px) {
     padding-left: 8px;
     padding-right: 6px;
@@ -30,7 +38,7 @@
 }
 
 .chekboxUsluga {
-  scale: 1.55555;
+  scale: 1.45555;
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -90,4 +98,10 @@ input {
       min-width: 0px;
     }
   }
+}
+
+.pagginationWyborZakladu {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }

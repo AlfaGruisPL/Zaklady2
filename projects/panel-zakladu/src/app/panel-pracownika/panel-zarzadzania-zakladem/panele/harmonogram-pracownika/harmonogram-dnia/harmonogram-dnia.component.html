@@ -1,21 +1,11 @@
-<table class="tabelka">
-  <tr>
-    <td
-      class="godzina"
-      *ngFor="
-        let k of [].constructor(this.godzinaZakonczenia * 2);
-        let index = index
-      ">
+<table #table class="tabelka">
+  <tr #k>
+    <td *ngFor="let k of [].constructor(this.godzinaZakonczenia * 2); let index = index" class="godzina">
       {{ zwrocGodzine(index) }}
     </td>
   </tr>
   <tr #tr>
-    <td
-      class="podzial"
-      *ngFor="
-        let k of [].constructor(this.godzinaZakonczenia * 2);
-        let index = index
-      ">
+    <td *ngFor="let k of [].constructor(this.godzinaZakonczenia * 2); let index = index" class="podzial">
       <ng-container *ngIf="index == 0">
         <app-harmonogram-dnia-termin
           *ngFor="let termin of harmonogram_.wizytyDzis"
@@ -23,12 +13,11 @@
           [godzinaZakonczenia]="godzinaZakonczenia"
           [wizyta]="termin"></app-harmonogram-dnia-termin>
         <app-harmonogram-dnia-aktualna-godzina
-          [wysokosc]="tr.clientWidth"
           [godzinaRozpoczecia]="godzinaRozpoczecia"
-          [godzinaZakonczenia]="
-            godzinaZakonczenia
-          "></app-harmonogram-dnia-aktualna-godzina>
+          [godzinaZakonczenia]="godzinaZakonczenia"
+          [szerokosc]="table.clientWidth"></app-harmonogram-dnia-aktualna-godzina>
       </ng-container>
     </td>
   </tr>
 </table>
+

@@ -12,6 +12,9 @@ import { CommonModule } from '@angular/common';
 import { PodreczneDaneService } from '../../../../../serwisy/podreczne-dane.service';
 import { TablePaginationComponent } from '../../../../../komponets/table-pagination/table-pagination.component';
 import { TabelaPrzerwService } from './tabela-przerw.service';
+import { RureczkiModule } from '../../../../../rureczki/rureczki.module';
+import { TableComponent } from '../../../../../komponets/table/table.component';
+import { TemplateIdDirective } from '../../../../../komponets/table/template-id.directive';
 
 @Component({
   selector: 'app-tabela-przerw',
@@ -28,6 +31,9 @@ import { TabelaPrzerwService } from './tabela-przerw.service';
     NgbDropdown,
     NgbDropdownToggle,
     NgbDropdownItem,
+    RureczkiModule,
+    TableComponent,
+    TemplateIdDirective,
   ],
 })
 export class TabelaPrzerwComponent implements OnInit, OnDestroy, AfterViewInit {
@@ -44,6 +50,10 @@ export class TabelaPrzerwComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit() {
     this.tabelaPrzerw_.serviceStart();
+  }
+
+  test(eneny: any) {
+    console.log('juz w tabeli', eneny);
   }
 
   ngAfterViewInit() {}

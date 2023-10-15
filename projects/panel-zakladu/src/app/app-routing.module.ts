@@ -15,13 +15,16 @@ import { ListaKlientowPracownikComponent } from './panel-pracownika/panel-zarzad
 import { UslugaSmsPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/usluga-sms-pracownika/usluga-sms-pracownika.component';
 import { UslugiPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/uslugi.component';
 import { ZalogowanyGuard } from './straznicy/zalogowany.guard';
+import { reverseLoginGuard } from './straznicy/reverse-login.guard';
 
 const zakladDzieci: Routes = [
   {
+    canActivate: [reverseLoginGuard],
     path: 'logowanie',
     component: PanelLogowaniaPracownikowComponent,
   },
   {
+    canActivate: [reverseLoginGuard],
     path: 'reset',
     component: ResetHaslaPracownikowComponent,
   },

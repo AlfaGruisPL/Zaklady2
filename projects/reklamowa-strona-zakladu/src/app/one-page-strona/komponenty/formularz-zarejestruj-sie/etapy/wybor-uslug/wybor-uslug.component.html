@@ -3,17 +3,21 @@
 </div>
 
 <div class="uslugi">
-  <table>
+  <table #tablica>
     <tr class="spanTytul">
       <th>Nr</th>
       <th>Usługa</th>
-      <th>Cena</th>
+      <th *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.uslugiCzyWyswietlic">Cena</th>
       <th>Wybierz</th>
     </tr>
-    <tr *ngFor="let usluga of uslugi(); let index = index" [ngClass]="{ niedostepnaUsluga: !czyWykonuje(usluga) }">
-      <td class="uslugiSpan" class="td1" style="">{{ index + 1 }}.</td>
-      <td class="uslugiSpan" class="td2" style="">{{ usluga.nazwa }}</td>
-      <td class="uslugiSpan" class="td3" style="">{{ usluga.cena }} złotych</td>
+    <tr
+      *ngFor="let usluga of uslugi() | slice : (strona - 1) * max : strona * max; let index = index"
+      [ngClass]="{ niedostepnaUsluga: !czyWykonuje(usluga) }">
+      <td class="td1">{{ index + (strona - 1) * max + 1 }}.</td>
+      <td class="td2">{{ usluga.nazwa }}</td>
+      <td class="td3" *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.uslugiCzyWyswietlic">
+        {{ usluga.cena }} złotych
+      </td>
 
       <td class="td4">
         <input *ngIf="czyWykonuje(usluga)" [(ngModel)]="usluga.wybrane" class="chekboxUsluga" type="checkbox" />
@@ -25,7 +29,22 @@
         >
       </td>
     </tr>
+    <tr style="opacity: 0" *ngFor="let k of [].constructor(ilePustych())">
+      <td>null</td>
+      <td></td>
+      <td></td>
+      <td><input class="chekboxUsluga" type="checkbox" /></td>
+    </tr>
   </table>
+  <div class="pagginationWyborZakladu">
+    <ngb-pagination
+      [(page)]="strona"
+      [boundaryLinks]="true"
+      [collectionSize]="danePodstawowe.danePodstawowe.uslugi.length"
+      [maxSize]="5"
+      [pageSize]="max"
+      [rotate]="true"></ngb-pagination>
+  </div>
   <span *ngIf="niewybranaUsluga" class="czerwone"><br />Wybierz usługę,aby przejść dalej</span>
 </div>
 <div class="divNaPrzycisk">

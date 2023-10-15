@@ -16,9 +16,7 @@ import { environment } from '../../../../../environments/environment';
   styleUrls: ['./moj-zaklad-pracownika.component.scss'],
 })
 export class MojZakladPracownikaComponent implements OnInit {
-  @ViewChild(PracownicyMojZakladComponent) komponentPracownikow:
-    | PracownicyMojZakladComponent
-    | undefined;
+  @ViewChild(PracownicyMojZakladComponent) komponentPracownikow: PracownicyMojZakladComponent | undefined;
   czyMiasto = false;
   public mojZakladKlasa = new MojZaklad();
   public zapiszButton: boolean = false;
@@ -37,34 +35,34 @@ export class MojZakladPracownikaComponent implements OnInit {
   }
 
   pobieranieDanych() {
-    this.listonosz
-      .pobierz(Drzwi.daneMojZakladPracownik)
-      .then((dane: MojZaklad) => {
-        Object.assign(this.mojZakladKlasa.poniedzialek, dane.poniedzialek);
-        Object.assign(this.mojZakladKlasa.wtorek, dane.wtorek);
-        Object.assign(this.mojZakladKlasa.sroda, dane.sroda);
-        Object.assign(this.mojZakladKlasa.czwartek, dane.czwartek);
-        Object.assign(this.mojZakladKlasa.piatek, dane.piatek);
-        Object.assign(this.mojZakladKlasa.sobota, dane.sobota);
-        Object.assign(this.mojZakladKlasa.niedziela, dane.niedziela);
-        const {
-          niedziela,
-          poniedzialek,
-          wtorek,
-          sroda,
-          czwartek,
-          piatek,
-          sobota,
-          ...reszta
-        } = dane;
-        Object.assign(this.mojZakladKlasa, reszta);
+    this.listonosz.pobierz(Drzwi.daneMojZakladPracownik).then((dane: MojZaklad) => {
+      Object.assign(this.mojZakladKlasa.poniedzialek, dane.poniedzialek);
+      Object.assign(this.mojZakladKlasa.wtorek, dane.wtorek);
+      Object.assign(this.mojZakladKlasa.sroda, dane.sroda);
+      Object.assign(this.mojZakladKlasa.czwartek, dane.czwartek);
+      Object.assign(this.mojZakladKlasa.piatek, dane.piatek);
+      Object.assign(this.mojZakladKlasa.sobota, dane.sobota);
+      Object.assign(this.mojZakladKlasa.niedziela, dane.niedziela);
+      const { niedziela, poniedzialek, wtorek, sroda, czwartek, piatek, sobota, platnosci, ...reszta } = dane;
+      Object.assign(this.mojZakladKlasa, reszta);
+      if (platnosci != undefined) {
+        this.mojZakladKlasa.platnosci = platnosci;
+      } else {
+        this.mojZakladKlasa.platnosci = {
+          Apple_Pay: false,
+          Google_Pay: false,
+          blik: false,
+          Visa: false,
+          MasterCard: false,
+        };
+      }
 
-        if (this.mojZakladKlasa.miasto.length > 0) {
-          this.czyMiasto = true;
-        } else {
-          this.czyMiasto = false;
-        }
-      });
+      if (this.mojZakladKlasa.miasto.length > 0) {
+        this.czyMiasto = true;
+      } else {
+        this.czyMiasto = false;
+      }
+    });
   }
 
   public zapisz() {
@@ -78,18 +76,16 @@ export class MojZakladPracownikaComponent implements OnInit {
       .then(udane => {
         if (typeof udane == 'string') {
           if (udane.split('_')[0] == 'reload') {
-            const okno = this.komunikaty.zmianaIdentyfikatoraPrzekierowanie();
-            okno.onHidden.subscribe(k => {
-              var adr = `http://${dane.identyfikator}.panel.fenek.tech`;
-              if (!environment.production) {
-                adr = `http://${dane.identyfikator}.panel.localhost:8005`;
-              }
-              window.location.replace(adr);
-            });
+            //okno.onHidden.subscribe(k => {
+            var adr = `http://${dane.identyfikator}.panel.fenek.tech`;
+            if (!environment.production) {
+              adr = `http://${dane.identyfikator}.panel.localhost:8005`;
+            }
+            window.location.replace(adr);
+            //});
           }
         }
         this.komunikaty.modyfikacjaUdana();
-        console.log(udane);
       })
       .catch((blad: HttpError) => {
         switch (blad.error?.reasonCode) {
@@ -99,6 +95,9 @@ export class MojZakladPracownikaComponent implements OnInit {
           case 2:
             this.komunikaty.komunikatBledu(Bledy.zaCzestaZmianaIdentyfiaktora);
             break;
+          case 10:
+            this.komunikaty.komunikatBledu(Bledy.niedozwolonaNazwaIdentyfikatora);
+            break;
           default:
             this.komunikaty.modyfikacjaNieUdana();
         }
@@ -107,12 +106,20 @@ export class MojZakladPracownikaComponent implements OnInit {
         this.PodreczneDane.pobierajaca();
         this.pobieranieDanych();
         this.zablokowanyPrzycisk = false;
+        this.zmienIdentyfikator = false;
       });
   }
 
   public zmienIdentyfikatorFun() {
     this.zmienIdentyfikator = true;
-    this.komunikaty.ZmianaIdentyfikatora();
+    // this.komunikaty.ZmianaIdentyfikatora();
+    /*
+      public ZmianaIdentyfikatora() {
+    this.komunikaty.info('Zmiana identyfiaktora możliwa jest co minute', 'UWAGA', { timeOut: 10000 });
+  }
+
+     */
+    this.komunikaty.zmianaIdentyfikatoraPrzekierowanie();
   }
 
   public zmodyfikujFunkcja() {

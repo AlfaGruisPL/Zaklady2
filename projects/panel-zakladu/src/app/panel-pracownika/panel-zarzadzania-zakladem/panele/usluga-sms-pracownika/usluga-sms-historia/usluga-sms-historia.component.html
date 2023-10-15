@@ -1,5 +1,7 @@
+<!--
 <h3 class="historiaTransakcjiH3">Historia opłat za usługę:</h3>
-<div class="chart-container" style="max-height: 300px; width: 90%">
+-->
+<div class="chart-container" style="max-height: 300px; width: 90%; margin-left: auto; margin-right: auto">
   <canvas id="MyChart" style="max-height: 300px; width: 90%"> {{ chart }}</canvas>
 </div>
 
@@ -12,7 +14,10 @@
     <th>Status</th>
   </tr>
   <ng-container
-    *ngFor="let sms of service.dane.historia | slice : (page - 1) * paggination.pageSize : page * paggination.pageSize; let index = index">
+    *ngFor="
+      let sms of service.dane.historia | slice : (page - 1) * paggination.pageSize : page * paggination.pageSize;
+      let index = index
+    ">
     <tr>
       <td>{{ service.dane.historia.length - index }}</td>
       <td>{{ sms.termin }}</td>
@@ -25,15 +30,17 @@
   <tr
     *ngFor="
       let k of [].constructor(
-        paggination.pageSize - (service.dane.historia | slice : (page - 1) * paggination.pageSize : page * paggination.pageSize).length
+        paggination.pageSize -
+          (service.dane.historia | slice : (page - 1) * paggination.pageSize : page * paggination.pageSize).length
       )
     ">
     <td *ngFor="let k of [].constructor(naglowek.cells.length)"></td>
   </tr>
 </table>
 
-<app-table-pagination [(page)]="page"
-                      [collectionSize]="service.dane.historia.length"
-                      [pageSizeArray]="[5,7,10,20,50,100]"
-                      #paggination
-                      [pageSize]="pageSize"></app-table-pagination>
+<app-table-pagination
+  #paggination
+  [(page)]="page"
+  [collectionSize]="service.dane.historia.length"
+  [pageSizeArray]="[5, 7, 10, 20, 50, 100]"
+  [pageSize]="pageSize"></app-table-pagination>

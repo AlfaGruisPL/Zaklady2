@@ -121,11 +121,15 @@
   .tabela6 {
     padding-left: 30px;
 
-    table {
+    table.border {
       border-top: 2px solid #afb0b4;
       border-left: 2px solid #afb0b4;
       padding: 20px;
       display: block;
+    }
+
+    .payMethod {
+      margin-left: 19px;
     }
   }
 }

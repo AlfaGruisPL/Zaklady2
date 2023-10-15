@@ -1,11 +1,7 @@
 <table [ngClass]="{ tablicaLoading: false }" class="tablica">
   <tr class="wyszukiwarka">
-    <td class="title" colspan="5">
+    <td class="title" [attr.colspan]="naglowek.cells.length">
       <h3>Podsumowanie pracy pracowników:</h3>
-    </td>
-    <td class="wyszukiwarkaTD" colspan="5">
-      <fa-icon icon="magnifying-glass"></fa-icon>
-      <input placeholder="wyszukiwarka (wartość wartość2 itd.)" />
     </td>
   </tr>
   <tr #naglowek>
@@ -13,18 +9,22 @@
     <th>Pracownik</th>
     <th>Wizyty dziś</th>
     <th>Wizyty wczoraj</th>
-    <th></th>
+    <th>Tydzień</th>
+    <th>Poprzedni tydzień</th>
+    <th>Miesiąc</th>
+    <th>Poprzedni miesiąc</th>
   </tr>
   <tr *ngFor="let rekord of dane; let index = index">
-    <td>{{ index - 1 }}</td>
+    <td>{{ index + 1 }}</td>
     <td>{{ rekord.pracownik.imie + ' ' + rekord.pracownik.nazwisko }}</td>
-    <td>{{ rekord.wizytyDzis }} - 3 na 5 (230zł)</td>
-    <td>{{ rekord.wizytyWczoraj }} (342zł)</td>
-    <td>
-      <div container="body" ngbDropdown></div>
-    </td>
+    <td>{{ rekord.wizytyDzis.odbyte }} na {{ rekord.wizytyDzis.suma }} ({{ rekord.wizytyDzis.kwota | kwota }}zł)</td>
+    <td>{{ rekord.wizytyWczoraj.suma }} ({{ rekord.wizytyWczoraj.kwota | kwota }}zł)</td>
+    <td>{{ rekord.wizytyOStatniTydzien.suma }} ({{ rekord.wizytyOStatniTydzien.kwota | kwota }}zł)</td>
+    <td>{{ rekord.wizytyPoprzedniTydzien.suma }} ({{ rekord.wizytyPoprzedniTydzien.kwota | kwota }}zł)</td>
+    <td>{{ rekord.wizytyOstatniMiesiac.suma }} ({{ rekord.wizytyOstatniMiesiac.kwota | kwota }}zł)</td>
+    <td>{{ rekord.wizytyPoprzedniMiesiac.suma }} ({{ rekord.wizytyPoprzedniMiesiac.kwota | kwota }}zł)</td>
   </tr>
-  <tr *ngFor="let k of [].constructor(7)">
+  <tr *ngFor="let k of [].constructor(1)">
     <td *ngFor="let k of [].constructor(naglowek.cells.length)"></td>
   </tr>
 </table>

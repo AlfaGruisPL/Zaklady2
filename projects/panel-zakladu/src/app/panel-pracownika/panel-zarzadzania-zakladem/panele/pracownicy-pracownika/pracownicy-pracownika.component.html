@@ -25,26 +25,36 @@
     <span class="iloscPracownikow"
       >Pracownicy <b>{{ ListaPracownikow.length }}</b> na <b>{{ limitPracownikow }}</b></span
     >
-    <table class="tablica">
+    <table class="tablica noSpaceToWall">
       <tr>
         <th>Nr</th>
-
         <th>Imię</th>
         <th>Nazwisko</th>
         <th>Adres e-mail</th>
         <th>Numer telefonu</th>
-        <th style="width: 125px">Zarządzanie</th>
+        <th class="smallButtonCenter">Zarządzanie</th>
         <th style="width: 80px">Zdjęcie</th>
       </tr>
       <tr *ngFor="let pracownik of filtrowaniePracownikow(); let index = index">
-        <td>{{ index + 1 }}</td>
+        <td class="noWrapIndex">
+          {{ index + 1 }}
+          <ng-container *ngIf="!pracownik.potwierdzony">
+            <ng-template #alertContent
+              >Użytkownik nie potwierdził konta<br />
+              Nie będzie wyświetlany na stronie reklamowej
+            </ng-template>
+            <span [ngbPopover]="alertContent" class="alert" popoverTitle="Uwaga" triggers="mouseenter:mouseleave"
+              >!&nbsp;uwaga</span
+            ></ng-container
+          >
+        </td>
 
         <td>{{ pracownik.imie }}</td>
         <td>{{ pracownik.nazwisko }}</td>
         <td>{{ pracownik.adresEmail }}</td>
         <td>{{ pracownik.prefiksTelefonu }}{{ pracownik.numerTelefonu }}</td>
-        <td style="text-align: right; padding-right: 5px">
-          <div container="body" ngbDropdown>
+        <td class="tdWithNgbDropdown smallButtonCenter">
+          <div class="" container="body" ngbDropdown>
             <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle type="button">Wybierz:</button>
             <div ngbDropdownMenu>
               <button (click)="wyswietlUzytkownika(pracownik.id)" ngbDropdownItem>Wyświetl</button>
@@ -55,7 +65,7 @@
                   (click)="urlop(pracownik.id)"
                   *ngIf="pracownik.urlop == false; else przywrocUrlop"
                   ngbDropdownItem>
-                  Urlop
+                  Wyślij na urlop
                 </button>
                 <button
                   (click)="zarchiwizujUzytkownika(pracownik.id)"
@@ -68,12 +78,12 @@
                   <button (click)="przywrocUzytkownika(pracownik.id)" ngbDropdownItem>Przywróć</button>
                 </ng-template>
                 <ng-template #przywrocUrlop>
-                  <button (click)="przywrocUzytkownikaZUrlopu(pracownik.id)" ngbDropdownItem>DO pracy wio</button>
+                  <button (click)="przywrocUzytkownikaZUrlopu(pracownik.id)" ngbDropdownItem>Przywróć do pracy</button>
                 </ng-template>
               </ng-container>
               <ng-template #przyciskiDoArchiwizuj>
-                <button (click)="urlop(pracownik.id)" ngbDropdownItem>Urlop</button>
-                <button (click)="przywrocUzytkownika(pracownik.id)" ngbDropdownItem>Dostepny</button>
+                <button (click)="urlop(pracownik.id)" ngbDropdownItem>Wyślij na urlop</button>
+                <button (click)="przywrocUzytkownika(pracownik.id)" ngbDropdownItem>Ustaw jak dostępny</button>
               </ng-template>
 
               <div class="dropdown-divider"></div>

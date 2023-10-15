@@ -1,14 +1,14 @@
 <div #pag [ngClass]="{ disabled: disabled }" class="paggination">
   <div class="group1">
     <ngb-pagination
-      (pageChange)="pageChange.emit($event); saveReloadData()"
+      (pageChange)="pageChange.emit(page); saveReloadData()"
+      [(page)]="page"
       [boundaryLinks]="true"
       [collectionSize]="collectionSize"
       [maxSize]="pag.clientWidth > 600 ? 8 : 3"
       [pageSize]="pageSize"
-      [page]="page"
       [rotate]="true"
-      [size]="pag.clientWidth > 600 ? 'auto' : 'sm'"></ngb-pagination>
+      [size]="pag.clientWidth > 2000 ? 'auto' : 'sm'"></ngb-pagination>
     <select (change)="pageSizeChange.emit(pageSize); ngAfterViewInit(); saveReloadData()" [(ngModel)]="pageSize">
       <option *ngFor="let k of pageSizeArray">{{ k }}</option>
     </select>

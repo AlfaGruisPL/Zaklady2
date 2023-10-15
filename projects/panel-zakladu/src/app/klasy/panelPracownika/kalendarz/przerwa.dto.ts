@@ -6,6 +6,8 @@ export class Przerwa {
   pracownikId = 0;
   regularne = false;
 
+  opis = '';
+
   constructor(dane: Partial<Przerwa>) {
     // @ts-ignore
     this.data = new Date(dane.data);
@@ -23,6 +25,7 @@ export class Przerwa {
     }
     if (dane.pracownikId) this.pracownikId = dane.pracownikId;
     if (dane.regularne) this.regularne = dane.regularne;
+    if (dane.opis) this.opis = dane.opis;
   }
 }
 

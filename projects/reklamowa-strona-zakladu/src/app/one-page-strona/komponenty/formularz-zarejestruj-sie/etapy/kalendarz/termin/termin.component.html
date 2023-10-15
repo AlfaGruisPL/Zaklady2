@@ -4,11 +4,13 @@
   [ngClass]="{ wybranyTermin: wybrany() }"
   [ngStyle]="{ top: top, height: sprawdzWysokosc() + 'px' }"
   class="termin">
-  <h3 *ngIf="element.clientHeight > 25 || wybrany()">
-    <span>{{ termin.poczatek | date : 'hh:mm' }}</span> <span class="kreska">-</span>
-    <span>{{ termin.koniec | date : 'hh:mm' }}</span>
+  <h3
+    *ngIf="wybrany() || (element.clientHeight > 10 && element.clientWidth > 120)"
+    [ngStyle]="{ 'font-size': setFontSize(element) }">
+    <span>{{ termin.poczatek | date : 'HH:mm' }}</span> <span class="kreska">-</span>
+    <span>{{ termin.koniec | date : 'HH:mm' }}</span>
   </h3>
 
   <!--<div *ngIf="!wybrany()" class="wybierz">Wybierz</div>-->
-  <div *ngIf="wybrany()" class="anuluj">Anuluj</div>
+  <div *ngIf="wybrany() && element.clientHeight > 53" class="anuluj">Anuluj</div>
 </div>

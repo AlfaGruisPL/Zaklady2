@@ -1,0 +1,17 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ title }}</h4>
+  <button (click)="activeModal.dismiss('x')" aria-label="Close" class="btn-close" type="button"></button>
+</div>
+<div [innerHTML]="content | safeHtml" class="modal-body">
+  <span>Czy na pewno chcesz usunąć dane o pracowniku? </span>
+  <br />
+  <span>Usunięcie danych, spowoduje utratę historii wizyt, statystyk itd.... </span>
+</div>
+<div class="modal-footer">
+  <button
+    (click)="closed(button.response)"
+    *ngFor="let button of buttonList"
+    [class]="{ domyslnyButtonZapisz: button.option.defaultYes, domyslnyButtonAnuluj: button.option.defaultNo }">
+    {{ button.text }}
+  </button>
+</div>

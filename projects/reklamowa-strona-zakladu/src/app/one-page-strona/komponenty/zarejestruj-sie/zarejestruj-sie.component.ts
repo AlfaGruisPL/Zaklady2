@@ -15,7 +15,7 @@ export class ZarejestrujSieComponent {
 
   public pokazFormularzRejestracji() {
     //  this.googleService_.event('klikniecie', 'user_register', 'przyciskZarejestrujSie');
-    this.nawigacja.przeniesDoPanelu(this.nawigacja.nav.rejestracjaFormularz);
     this.rejestracja.wyswietlanieFormualrza = true;
+    this.nawigacja.przeniesDoPanelu(this.nawigacja.nav.rejestracjaFormularz);
   }
 }

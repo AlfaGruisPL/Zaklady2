@@ -1,5 +1,6 @@
 .glownyDiv {
   width: 100%;
+
   @media (max-width: 900px) {
     display: flex;
     flex-direction: column;
@@ -7,6 +8,7 @@
   }
 
   .czesc {
+    padding: 10px;
     height: 200px;
     float: left;
     $czesc1Szerokowcs: 400px;
@@ -33,18 +35,18 @@
       }
 
       .statusTytul {
-        font-size: 29px;
+        font-size: 18px;
         padding-right: 10px;
         font-weight: bolder;
       }
 
       .status {
-        font-size: 28px;
+        font-size: 16px;
         padding-right: 10px;
       }
 
       .opis {
-        font-size: 22px;
+        font-size: 14px;
       }
     }
   }
@@ -55,4 +57,20 @@
 
 .tabelaUslug {
   font-size: 17px;
+}
+
+.dodawanieOdejmowaniePracownikow {
+  button {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+
+    &:nth-child(1):hover {
+      color: green
+    }
+
+    &:nth-child(2):hover {
+      color: red
+    }
+  }
 }

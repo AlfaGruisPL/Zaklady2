@@ -4,10 +4,56 @@
 }
 
 .top {
-  padding-left: 10px;
+  padding-left: 3px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
 
   h6 {
-    padding-top: 5px;
+    width: 100%;
+    padding: 5px;
     font-weight: bold;
   }
+}
+
+.informacjeOKliencie {
+  tr {
+    th {
+      padding-right: 10px;
+      padding-left: 20px;
+    }
+
+    td,
+    th {
+      height: 1%;
+    }
+  }
+}
+
+.uslugaWWizycie {
+  width: 100%;
+  padding-left: 10px;
+  counter-increment: div;
+  padding-top: 1px;
+  color: #002793;
+
+  &:before {
+    padding-left: 10px;
+
+    content: '#' counter(div);
+    padding-right: 10px;
+  }
+}
+
+.domyslnyButtonAnuluj,
+.domyslnyButton3,
+.domyslnyButton2,
+.domyslnyButtonZapisz,
+.domyslnyButtonUsun {
+  letter-spacing: 1px;
+  font-size: 10px;
+}
+
+.paggination {
+  margin-top: 5px;
 }

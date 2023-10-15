@@ -1,4 +1,84 @@
 <h3 class="historiaTransakcjiH3">Historia transakcji:</h3>
+<!-- (changeData)="lista_.pobierzDane()"
+  [loading]="lista_.ladowanieDanych"
+
+-->
+<app-table [collectionSize]="listaPlatnosci.length" [data]="listaPlatnosci" [title]="'Historia transakcji:'">
+  <ng-template TemplateId="thead">
+    <th>Nr.</th>
+    <th>Nazwa</th>
+    <th>Data</th>
+    <th>Kwota</th>
+    <th class="menageButton" colspan="2">Status</th>
+  </ng-template>
+
+  <ng-template TemplateId="tbody" let-index="index" let-obj>
+    <td>{{ index }}</td>
+    <td>{{ obj.opis }}</td>
+    <td>{{ obj.dataUtworzenia | date : 'dd.MM.yyyy  HH:mm' }}</td>
+    <td>{{ liczba(obj.kwota) / 100 }}zł</td>
+    <ng-container [ngSwitch]="obj.probyPlatnosci[obj.probyPlatnosci.length - 1].status">
+      <td *ngSwitchCase="'NEW'" class="statusyPlatnosci" style="color: #005200">Nowa</td>
+      <td *ngSwitchCase="'CONFIRMED'" class="statusyPlatnosci" style="color: green">Zatwierdzona</td>
+      <td *ngSwitchCase="'PENDING'" class="statusyPlatnosci" style="color: #d3b500">Oczekująca</td>
+      <td *ngSwitchCase="'ERROR'" class="statusyPlatnosci" style="color: #ff0000">Błąd</td>
+      <td *ngSwitchCase="'EXPIRED'" class="statusyPlatnosci" style="color: #4b4b4b">Przeterminowana</td>
+      <td *ngSwitchCase="'ABANDONED'" class="statusyPlatnosci" style="color: #0010c5">Opuszczona</td>
+      <td *ngSwitchCase="'REJECTED'" class="statusyPlatnosci" style="color: #000000">Odrzucona</td>
+    </ng-container>
+
+    <td>
+      <button (click)="zamknijWszystkie()" *ngIf="obj.czyRozwiniete" class="przyciskRozwijania">Zwiń</button>
+      <button
+        (click)="zamknijWszystkie(); obj.czyRozwiniete = true"
+        *ngIf="!obj.czyRozwiniete"
+        class="przyciskRozwijania">
+        Rozwiń
+      </button>
+      <button
+        (click)="otworzPlatnosc(obj.linkDoPlatnosci)"
+        *ngIf="obj.probyPlatnosci[obj.probyPlatnosci.length - 1].status == 'NEW' && obj.linkDoPlatnosci != undefined">
+        Opłać ponownie
+      </button>
+    </td>
+    <ng-container *ngIf="obj.czyRozwiniete">
+      <tr>
+        <td [attr.colspan]="naglowek.cells.length + 1">
+          <table class="podTabela">
+            <tr class="PodTabelaNaglowek" style="">
+              <th colspan="2"></th>
+              <th>Nr.</th>
+              <th>Identyfikator</th>
+              <th>Data</th>
+              <th>Status</th>
+            </tr>
+            <ng-container>
+              <tr
+                *ngFor="let k3 of obj.probyPlatnosci; let index = index"
+                [ngClass]="{ ostatni: index == obj.probyPlatnosci.length - 1 }"
+                class="PodTabelaTr">
+                <td colspan="2"></td>
+                <td>{{ index + 1 }}</td>
+                <td>{{ k3.identyfikatorPayNow }}</td>
+                <td>{{ k3.data | date : 'dd.MM.yyyy  HH:MM' }}</td>
+                <ng-container [ngSwitch]="k3.status">
+                  <td *ngSwitchCase="'NEW'" class="statusyPlatnosci" style="color: #005200">Nowa</td>
+                  <td *ngSwitchCase="'CONFIRMED'" class="statusyPlatnosci" style="color: green">Zatwierdzona</td>
+                  <td *ngSwitchCase="'PENDING'" class="statusyPlatnosci" style="color: #d3b500">Oczekująca</td>
+                  <td *ngSwitchCase="'ERROR'" class="statusyPlatnosci" style="color: #ff0000">Błąd</td>
+                  <td *ngSwitchCase="'EXPIRED'" class="statusyPlatnosci" style="color: #4b4b4b">Przeterminowana</td>
+                  <td *ngSwitchCase="'ABANDONED'" class="statusyPlatnosci" style="color: #0010c5">Opuszczona</td>
+                  <td *ngSwitchCase="'REJECTED'" class="statusyPlatnosci" style="color: #000000">Odrzucona</td>
+                </ng-container>
+              </tr>
+            </ng-container>
+          </table>
+        </td>
+      </tr>
+    </ng-container>
+  </ng-template>
+</app-table>
+
 <table class="historiaTransakcji tablica">
   <tr #naglowek>
     <th>Nr.</th>

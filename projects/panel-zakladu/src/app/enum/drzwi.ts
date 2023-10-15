@@ -39,6 +39,7 @@ export enum Drzwi {
   //wizyty
   wizytyDzis = '/wizyty/wizytyDzis',
   wizytyZakladu = '/wizyty/wizytyZakladu',
+  odwolanieWizyty = '/wizyty/odwolanie/',
 
   kalendarzTerminowPrzerwa = 'kalendarzTerminow/przerwa',
   kalendarzRejestracjaWizytyZPanelu = '/kalendarzTerminow/rejestracjaWizyty',
@@ -60,6 +61,7 @@ export enum Drzwi {
   listaKlientowCalosc = '/klienci/listaCalosc',
   listaKlientowZalogowanegoUzytkownika = '/klienci/lista',
   listaKlientowUzytkownika = '/klienci/lista',
+  customerInformation = '/klienci/customerInformation/',
   //harmonogram dnia
   harmonogramDniaInformacjeDlaAdministratora = '/panelPracownika/harmonogram/daneDlaAdministratora',
 

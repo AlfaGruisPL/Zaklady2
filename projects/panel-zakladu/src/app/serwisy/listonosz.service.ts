@@ -6,12 +6,18 @@ import { TokenService } from './token.service';
 import { LogowanieZwracajaceDaneItoken } from '../klasy/logowanie-zwracajace-dane-itoken';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { HttpError } from '../../../../klasy/httpError';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ListonoszService {
-  constructor(private listy: ListyService, private token_: TokenService, private token: TokenService) {}
+  constructor(
+    private listy: ListyService,
+    private token_: TokenService,
+    private token: TokenService,
+    private router: Router
+  ) {}
 
   public wyloguj() {
     let opcjeWPudelku = {};
@@ -117,6 +123,7 @@ export class ListonoszService {
           resolve(next.value);
         },
         (error: HttpError) => {
+          this.checkError(error);
           reject(error);
         }
       );
@@ -142,5 +149,15 @@ export class ListonoszService {
         }
       );
     });
+  }
+
+  private checkError(error: HttpError) {
+    if (error.status == 401) {
+      this.token.tokenWartosc = undefined;
+      this.token.tokenTerminWaznosci = new Date();
+      this.token.usunCiasteczka();
+      console.error(`checkError 401 - ${error.error?.reasonCode}`);
+      this.router.navigate(['./']);
+    }
   }
 }

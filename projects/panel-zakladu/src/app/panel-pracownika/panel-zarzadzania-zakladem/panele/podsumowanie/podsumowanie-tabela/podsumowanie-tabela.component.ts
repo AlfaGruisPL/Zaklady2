@@ -8,6 +8,8 @@ import { ListonoszService } from '../../../../../serwisy/listonosz.service';
 import { Drzwi } from '../../../../../enum/drzwi';
 
 import { PodsumowanieZakladuTabelaPracownikDto } from 'zakladlib';
+import { PodreczneDaneService } from '../../../../../serwisy/podreczne-dane.service';
+import { KwotaPipe } from '../../../../../rureczki/kwota.pipe';
 
 @Component({
   selector: 'app-podsumowanie-tabela',
@@ -21,6 +23,7 @@ import { PodsumowanieZakladuTabelaPracownikDto } from 'zakladlib';
     NgbDropdownToggle,
     TabelaPrzerwFilterComponent,
     TablePaginationComponent,
+    KwotaPipe,
   ],
   templateUrl: './podsumowanie-tabela.component.html',
   styleUrls: ['./podsumowanie-tabela.component.scss'],
@@ -28,9 +31,12 @@ import { PodsumowanieZakladuTabelaPracownikDto } from 'zakladlib';
 export class PodsumowanieTabelaComponent implements OnInit {
   dane: PodsumowanieZakladuTabelaPracownikDto[] = [];
 
-  constructor(private listonosz: ListonoszService) {}
+  constructor(private listonosz: ListonoszService, public danePodreczne_: PodreczneDaneService) {}
 
   ngOnInit() {
+    const k = 1;
+    let k2 = 3;
+    k2 = 4;
     this.listonosz
       .pobierz(Drzwi.podsumowanieTabela)
       .then((dane: PodsumowanieZakladuTabelaPracownikDto[]) => {
