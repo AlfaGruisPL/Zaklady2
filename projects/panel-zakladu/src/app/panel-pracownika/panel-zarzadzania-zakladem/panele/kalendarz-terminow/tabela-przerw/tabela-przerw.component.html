@@ -2,8 +2,8 @@
 
 <app-table
   (changeData)="tabelaPrzerw_.getData()"
-  (changePage)="tabelaPrzerw_.page = $event"
   (changeRowsOnPage)="tabelaPrzerw_.pageSize = $event"
+  (pageChange)="tabelaPrzerw_.page = $event"
   [collectionSize]="tabelaPrzerw_.daneSize"
   [data]="tabelaPrzerw_.dane"
   [loading]="tabelaPrzerw_.pobieranieDanych"

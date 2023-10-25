@@ -1,9 +1,14 @@
 <div
   #wizytaDiv
-  (click)="zarzadzaj()"
+  (click)="zarzadzaj($event)"
   [animation]="true"
   [disablePopover]="disablePopover()"
-  [ngClass]="{ symulacja: symulator, odwolane: wizyta.dataOdwolania }"
+  [ngClass]="{
+    symulacja: symulator,
+    odwolane: wizyta.cancled(),
+    missedVisit: wizyta.completed == false,
+    odd: idIndex % 2 == 1
+  }"
   [ngStyle]="{ top: top, height: wysokosc }"
   [ngbPopover]="popContent"
   [popoverTitle]="popTitle"
@@ -12,11 +17,28 @@
   placement="top"
   popoverTitle="Popover on top"
   triggers="mouseenter:mouseleave">
-  <h3 *ngIf="wizytaDiv.clientHeight > 30">
+  <h3 *ngIf="wizytaDiv.clientHeight > 30 && wizyta.completed != false">
     {{ wizyta.poczatek | date : 'HH:mm' }} {{ wizyta.koniec | date : 'HH:mm' }}
   </h3>
-
-  <div *ngIf="wizytaDiv.clientHeight >= 65 && !wizyta.cancled()" class="zarzadzaj">Zarządzaj</div>
+  <div *ngIf="!wizyta.cancled() && wizyta.afterEndPlusBuforTime()" class="confirmDisconfirmDiv">
+    <button
+      (click)="visit_.confirmVisit(wizyta)"
+      *ngIf="wizyta.completed == undefined || wizyta.completed == true"
+      [disabled]="wizyta.completed != undefined"
+      class="visitCheck">
+      <fa-icon icon="check"></fa-icon>
+    </button>
+    <button
+      (click)="visit_.disConfirmVisit(wizyta)"
+      [disabled]="wizyta.completed != undefined"
+      [ngStyle]="{ display: wizyta.completed == undefined ? 'block' : 'none' }"
+      class="visitDisConfirm">
+      <fa-icon icon="x"></fa-icon>
+    </button>
+  </div>
+  <div *ngIf="wizytaDiv.clientHeight >= 65 && !wizyta.cancled() && wizyta.completed != false" class="zarzadzaj">
+    Zarządzaj
+  </div>
 </div>
 <ng-template #popTitle>
   Wizyta <b>{{ wizyta.poczatek | date : 'HH:mm' }} {{ wizyta.koniec | date : 'HH:mm' }} </b></ng-template
@@ -40,6 +62,9 @@
       <td>
         {{ wizyta.customer.phone }}
       </td>
+    </tr>
+    <tr *ngIf="wizyta.completed == false" class="niewWykonana">
+      <td colspan="2">Wizyta oznaczona jako nie wykonana</td>
     </tr>
     <tr *ngIf="wizyta.dataOdwolania" class="odwolanie">
       <td>Data&nbsp;odwołania</td>

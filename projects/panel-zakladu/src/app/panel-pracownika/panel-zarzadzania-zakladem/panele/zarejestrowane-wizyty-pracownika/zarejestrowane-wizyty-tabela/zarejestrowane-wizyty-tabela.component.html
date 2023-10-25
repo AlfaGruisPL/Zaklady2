@@ -20,41 +20,44 @@
     </button>
   </div>
 </div>
-<table #tablica [ngClass]="{ tablicaLoading: pobieranieDanych }" class="tablica">
-  <tr class="wyszukiwarka">
-    <td class="title" colspan="5">
-      <h3>Wizyty:</h3>
-    </td>
-    <td class="wyszukiwarkaTD" colspan="5">
-      <fa-icon icon="magnifying-glass"></fa-icon>
-      <input (keyup)="onSearchChange($event)" placeholder="wyszukiwarka (wartość wartość2 itd.)" />
-    </td>
-  </tr>
-  <tr>
+{{ pobieranieDanych }}
+<app-table
+  (changeData)="pobierzDane()"
+  [(page)]="strona"
+  [collectionSize]="iloscWizytOgolna"
+  [data]="zwrocDane()"
+  [loading]="pobieranieDanych">
+  <ng-template TemplateId="thead">
     <th class="NotInMobile">Lp.</th>
     <th>Data</th>
     <th>Początek</th>
     <th>Koniec</th>
     <th>Imię</th>
     <th class="NotInMobile">Nazwisko</th>
+    <th class="NotInMobile">Oznaczenie</th>
     <th class="NotInMobile">Telefon</th>
     <th class="NotInMobile">Email</th>
     <th class="NotInMobile">Usługi</th>
     <th>Zarządzanie</th>
-  </tr>
-  <tr *ngFor="let wizyta of zwrocDane(); let index = index">
-    <td class="NotInMobile">{{ index + strona * 10 - 10 + 1 }}</td>
-    <td *ngIf="napis(wizyta.poczatek) != undefined">{{ napis(wizyta.poczatek) }}</td>
-    <td *ngIf="napis(wizyta.poczatek) == undefined">{{ wizyta.poczatek | date : 'dd.MM.YYYY' }}</td>
-    <td>{{ wizyta.poczatek | date : 'hh:mm' }}</td>
-    <td>{{ wizyta.koniec | date : 'hh:mm' }}</td>
-    <td>{{ wizyta.customer.firstName }}</td>
-    <td class="NotInMobile">{{ wizyta.customer.lastName }}</td>
-    <td class="NotInMobile">{{ wizyta.customer.phone }}</td>
-    <td class="NotInMobile">{{ wizyta.customer.email }}</td>
+  </ng-template>
+  <ng-template TemplateId="tbody" let-index="index" let-obj>
+    <td class="NotInMobile">{{ index }}</td>
+    <td *ngIf="napis(obj.poczatek) != undefined">{{ napis(obj.poczatek) }}</td>
+    <td *ngIf="napis(obj.poczatek) == undefined">{{ obj.poczatek | date : 'dd.MM.YYYY' }}</td>
+    <td>{{ obj.poczatek | date : 'HH:mm' }}</td>
+    <td>{{ obj.koniec | date : 'HH:mm' }}</td>
+    <td>{{ obj.customer.firstName }}</td>
+    <td class="NotInMobile">{{ obj.customer.lastName }}</td>
+    <td class="NotInMobile">
+      <span *ngIf="obj.completed == undefined" class="color1"> Nieoznaczone </span>
+      <span *ngIf="obj.completed == true" class="color2"> Wykonane </span>
+      <span *ngIf="obj.completed == false" class="color3"> Niewykonane </span>
+    </td>
+    <td class="NotInMobile">{{ obj.customer.phone }}</td>
+    <td class="NotInMobile">{{ obj.customer.email }}</td>
 
-    <td *ngIf="wizyta.czySaUslugi(); else opis" class="NotInMobile">
-      {{ wizyta.uslugi?.uslugi?.length }}
+    <td *ngIf="obj.czySaUslugi(); else opis" class="NotInMobile">
+      {{ obj.uslugi?.uslugi?.length }}
     </td>
     <ng-template #opis>
       <td class="NotInMobile">Opis</td>
@@ -64,34 +67,11 @@
         <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle type="button">Wybierz:</button>
 
         <div ngbDropdownMenu>
-          <button (click)="wyswietl(wizyta)" ngbDropdownItem>Wyświetl</button>
-          <button ngbDropdownItem>Odwołaj</button>
+          <button (click)="wyswietl(obj)" ngbDropdownItem>Wyświetl</button>
+          <button (click)="cancleVisit(obj)" *ngIf="filter == 'przyszle'" ngbDropdownItem>Odwołaj</button>
+          <button (click)="updateVisit(obj)" *ngIf="filter == 'przyszle'" ngbDropdownItem>Zmodyfikuj</button>
         </div>
       </div>
     </td>
-  </tr>
-  <tr *ngFor="let k of [].constructor(Math.abs(paggination.savePageSize - wizyty.length))">
-    <td *ngFor="let k2 of [].constructor(tablica.childNodes[1].childNodes.length)"></td>
-  </tr>
-</table>
-<div class="paggination">
-  <app-table-pagination
-    #paggination
-    (changeData)="pobierzDane()"
-    [(page)]="strona"
-    [(pageSize)]="pageSize"
-    [collectionSize]="iloscWizytOgolna"
-    [disabled]="pobieranieDanych"></app-table-pagination>
-
-  <!--<ngb-pagination
-    [(page)]="strona"
-    [pageSize]="pageSize"
-    [collectionSize]="iloscWizytOgolna"
-    [maxSize]="7"
-    [rotate]="true"
-    [boundaryLinks]="true"
-    (pageChange)="pobierzDane()"></ngb-pagination>
-  <select [(ngModel)]="pageSize" (change)="pobierzDane()">
-    <option *ngFor="let k of [10, 20, 50, 100]">{{ k }}</option>
-  </select>-->
-</div>
+  </ng-template>
+</app-table>

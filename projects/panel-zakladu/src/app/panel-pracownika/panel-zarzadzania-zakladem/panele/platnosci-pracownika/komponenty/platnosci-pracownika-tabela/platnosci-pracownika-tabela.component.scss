@@ -54,6 +54,15 @@
   text-decoration: none;
   text-shadow: 0px 1px 0px #000000;
   transition: 100ms;
+  box-shadow: 0px 0px 4px 1px inset rgba(0, 0, 0, 0.69);
+
+  &.zwin {
+    background-color: #24832c;
+
+    &:hover {
+      background-color: #1a6c20;
+    }
+  }
 
   &:hover {
     background-color: #45d351;

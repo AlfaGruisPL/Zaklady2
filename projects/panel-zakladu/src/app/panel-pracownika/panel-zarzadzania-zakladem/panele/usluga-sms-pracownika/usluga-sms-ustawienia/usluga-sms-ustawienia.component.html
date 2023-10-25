@@ -1,93 +1,83 @@
 <div class="ustawienia">
   <table>
     <tr>
-      <th colspan="2" class="naglowek1">
-        Powiadomienia SMS:
-      </th>
+      <th class="naglowek1" colspan="2">Powiadomienia SMS:</th>
     </tr>
     <tr>
-      <td class="naglowek2">Usługa SMS</td>
+      <td class="naglowek2">Dodatkowa usługa SMS</td>
       <td>
         <ui-switch
-          class="uiSwitch120px"
-          checkedLabel="Włączone"
-          [(ngModel)]="service.dane.status"
-          uncheckedLabel="Wyłączone"
           (change)="service.zmianaUslugSms($event)"
-        >
+          [(ngModel)]="service.dane.status"
+          checkedLabel="Włączone"
+          class="uiSwitch120px"
+          uncheckedLabel="Wyłączone">
         </ui-switch>
-
       </td>
     </tr>
     <tr>
-      <td class="naglowek2">Potwierdzenie wizyty <span class="naglowekNawiasy">(w czasie rejestracji)</span>
-      </td>
+      <td class="naglowek2">Potwierdzenie wizyty <span class="naglowekNawiasy">(w czasie rejestracji)</span></td>
       <td>
         <ui-switch
-          class="uiSwitch120px"
-          checkedLabel="Włączone"
-          uncheckedLabel="Wyłączone"
           [(ngModel)]="service.dane.smsPowiadomienia.potwierdzenieRejestracji"
-        ></ui-switch>
+          [disabled]="!service.dane.status"
+          checkedLabel="Włączone"
+          class="uiSwitch120px"
+          uncheckedLabel="Wyłączone"></ui-switch>
         <span class="naglowekZalecane"> (zalecane)</span>
       </td>
     </tr>
     <tr>
-      <td class="naglowek2">Przypomnienie o wizycie <span class="naglowekNawiasy">(trzy dni przed)</span>
-      </td>
+      <td class="naglowek2">Przypomnienie o wizycie <span class="naglowekNawiasy">(trzy dni przed)</span></td>
       <td>
         <ui-switch
-          class="uiSwitch120px"
-          checkedLabel="Włączone"
-          uncheckedLabel="Wyłączone"
           [(ngModel)]="service.dane.smsPowiadomienia.trzyDniPrzed"
-        ></ui-switch>
+          [disabled]="!service.dane.status"
+          checkedLabel="Włączone"
+          class="uiSwitch120px"
+          uncheckedLabel="Wyłączone"></ui-switch>
       </td>
     </tr>
     <tr>
       <td class="naglowek2">Przypomnienie o wizycie <span class="naglowekNawiasy">(dzień przed)</span></td>
       <td>
         <ui-switch
-          class="uiSwitch120px"
-          checkedLabel="Włączone"
-          uncheckedLabel="Wyłączone"
           [(ngModel)]="service.dane.smsPowiadomienia.dzienPrzed"
-        ></ui-switch>
+          [disabled]="!service.dane.status"
+          checkedLabel="Włączone"
+          class="uiSwitch120px"
+          uncheckedLabel="Wyłączone"></ui-switch>
         <span class="naglowekZalecane"> (zalecane)</span>
       </td>
     </tr>
     <tr>
-      <td class="naglowek2">Przypomnienie o wizycie <span class="naglowekNawiasy">(trzy godziny przed)</span>
-      </td>
+      <td class="naglowek2">Przypomnienie o wizycie <span class="naglowekNawiasy">(trzy godziny przed)</span></td>
       <td>
         <ui-switch
-          class="uiSwitch120px"
-          checkedLabel="Włączone"
-          uncheckedLabel="Wyłączone"
           [(ngModel)]="service.dane.smsPowiadomienia.trzyGodzinyPrzed"
-        ></ui-switch>
+          [disabled]="!service.dane.status"
+          checkedLabel="Włączone"
+          class="uiSwitch120px"
+          uncheckedLabel="Wyłączone"></ui-switch>
       </td>
     </tr>
 
     <tr>
-      <td class="naglowek2"> Przypomnienie o wizycie <span class="naglowekNawiasy">(godzina przed)</span>
-      </td>
+      <td class="naglowek2">Przypomnienie o wizycie <span class="naglowekNawiasy">(godzina przed)</span></td>
       <td>
         <ui-switch
-          class="uiSwitch120px"
-          checkedLabel="Włączone"
-          uncheckedLabel="Wyłączone"
           [(ngModel)]="service.dane.smsPowiadomienia.godzinaPrzed"
-        ></ui-switch>
+          [disabled]="!service.dane.status"
+          checkedLabel="Włączone"
+          class="uiSwitch120px"
+          uncheckedLabel="Wyłączone"></ui-switch>
         <span class="naglowekZalecane"> (zalecane)</span>
       </td>
     </tr>
-
 
     <tr>
       <td class="sumaSpan">Przewidywana opłata na jednego klienta <sup>1*</sup>:</td>
       <td class="sumaSpan" style="font-size: 21px">{{ przewidywanaOplata() }} groszy</td>
     </tr>
   </table>
-
 </div>

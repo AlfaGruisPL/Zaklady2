@@ -7,6 +7,7 @@ import {
   Output,
   QueryList,
   TemplateRef,
+  ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TemplateIdDirective } from './template-id.directive';
@@ -21,25 +22,57 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [CommonModule, FontAwesomeModule, TablePaginationComponent, NgbPagination, ReactiveFormsModule, FormsModule],
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
+
+/**
+ * Uniwersalna tabela oparta na templete zawierająca pagginacje i możliwość operowania na danych synchronicznych i asynchronicznych
+
+ * **TemplateId-zmienna na nazwę template**
+ * @templates  **thead** - Nagłówek tabeli
+ * @templates  **tbody** - Zawartość tabeli
+ * @templates  **tfoot** - Stopka tabeli
+ * @templates  **tsubTableHead** - nagłówek sub tabeli
+ * @templates  **tsubTableBody** - zawartość sub tabeli
+ * @Inputs **title** - tytuł tabeli
+ * @Outputs **changeData** - EventEmiter oznaczający wymóg pobrania nowych danych
+ * @Outputs **changePage**  - EventEmiter oznaczający zmianę strony
+ * @Outputs  **changeRowsOnPage** -EventEmiter - wysyłający ilość stron jakie mają zostać pobrane z bazy danych
+ * @Inputs **collectionSize**  - suma wszystkich elementów jakie są lub mogą być dostępne
+ * @Inputs **pageSize** - ilość elementów na pojedyńczej stronie
+ * @Inputs **loading**  -
+ * @Inputs **paggiantion**  - czy ma być włączona opcja przewiajnia (domyślnie true)
+ * @Inputs **data** - dane
+ * @Inputs **title** - tytuł tabeli
+ * @Inputs **search** -- włącznik wyszukiwarki
+ * @Inputs **async** - włącznik asynchroniczność (zmienia działanie paggination)
+ * @Inputs **subTableOpenVariable** - zmienna określająca
+ */
 export class TableComponent implements AfterContentInit {
   thead: TemplateRef<any> | any;
   tbody: TemplateRef<any> | any;
   tfoot: TemplateRef<any> | any;
+  subTableHead: TemplateRef<any> | any;
+  subTableBody: TemplateRef<any> | any;
+
   @ContentChildren(TemplateIdDirective)
   templates: QueryList<TemplateIdDirective> | undefined;
   @Output() changeData = new EventEmitter();
   @Input() collectionSize = 0;
   @Input() pageSize = 5;
   @Input() loading = false;
-  @Input({ required: true }) data: Array<object> = [];
+  @Input({ required: true }) data: Array<any> = [];
   @Input() title = '';
   @Input() search = false;
+  @Input() paggiantion = true;
 
-  @Output() changePage = new EventEmitter();
+  @Input() async = true;
+  //test
+  @Input() subTableOpenVariable = 'open';
+
+  @Input() page = 1;
+  @Output() pageChange = new EventEmitter();
   @Output() changeRowsOnPage = new EventEmitter();
-
-  page = 1;
 
   protected readonly Math = Math;
 
@@ -47,7 +80,6 @@ export class TableComponent implements AfterContentInit {
 
   ngAfterContentInit() {
     this.templates?.forEach((child: TemplateIdDirective) => {
-      console.log(child.id);
       switch (child.id) {
         case 'thead':
           this.thead = child.template;
@@ -58,12 +90,19 @@ export class TableComponent implements AfterContentInit {
         case 'tfoot':
           this.tfoot = child.template;
           break;
+        case 'subTableHead':
+          this.subTableHead = child.template;
+          break;
+        case 'subTableBody':
+          this.subTableBody = child.template;
+          break;
       }
     });
   }
 
   emptyRowCalc() {
     let method1 = this.pageSize - this.data.slice(0, this.pageSize).length;
+
     if (method1 > 0) {
       return method1;
       //  return this.data.slice(0, this.pageSize).length - this.pageSize;
@@ -83,11 +122,20 @@ export class TableComponent implements AfterContentInit {
     setTimeout(() => {
       this.changeRowsOnPage.emit(this.pageSize);
       setTimeout(() => {
-        this.changePage.emit(this.page);
+        this.pageChange.emit(this.page);
         setTimeout(() => {
           this.changeData.emit();
         }, 1);
       }, 1);
     }, 1);
+  }
+
+  emptyRowCalcNoAsync() {
+    let method1 = this.pageSize - this.data.slice((this.page - 1) * this.pageSize, this.page * this.pageSize).length;
+    if (method1 > 0) {
+      return method1;
+      //  return this.data.slice(0, this.pageSize).length - this.pageSize;
+    }
+    return 0;
   }
 }

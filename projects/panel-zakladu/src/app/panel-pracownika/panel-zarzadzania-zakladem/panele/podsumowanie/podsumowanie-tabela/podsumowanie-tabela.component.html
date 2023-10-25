@@ -1,10 +1,5 @@
-<table [ngClass]="{ tablicaLoading: false }" class="tablica">
-  <tr class="wyszukiwarka">
-    <td class="title" [attr.colspan]="naglowek.cells.length">
-      <h3>Podsumowanie pracy pracowników:</h3>
-    </td>
-  </tr>
-  <tr #naglowek>
+<app-table [async]="false" [data]="dane" [paggiantion]="false" [title]="'Podsumowanie pracy pracowników:'">
+  <ng-template TemplateId="thead">
     <th>Lp</th>
     <th>Pracownik</th>
     <th>Wizyty dziś</th>
@@ -13,28 +8,16 @@
     <th>Poprzedni tydzień</th>
     <th>Miesiąc</th>
     <th>Poprzedni miesiąc</th>
-  </tr>
-  <tr *ngFor="let rekord of dane; let index = index">
-    <td>{{ index + 1 }}</td>
-    <td>{{ rekord.pracownik.imie + ' ' + rekord.pracownik.nazwisko }}</td>
-    <td>{{ rekord.wizytyDzis.odbyte }} na {{ rekord.wizytyDzis.suma }} ({{ rekord.wizytyDzis.kwota | kwota }}zł)</td>
-    <td>{{ rekord.wizytyWczoraj.suma }} ({{ rekord.wizytyWczoraj.kwota | kwota }}zł)</td>
-    <td>{{ rekord.wizytyOStatniTydzien.suma }} ({{ rekord.wizytyOStatniTydzien.kwota | kwota }}zł)</td>
-    <td>{{ rekord.wizytyPoprzedniTydzien.suma }} ({{ rekord.wizytyPoprzedniTydzien.kwota | kwota }}zł)</td>
-    <td>{{ rekord.wizytyOstatniMiesiac.suma }} ({{ rekord.wizytyOstatniMiesiac.kwota | kwota }}zł)</td>
-    <td>{{ rekord.wizytyPoprzedniMiesiac.suma }} ({{ rekord.wizytyPoprzedniMiesiac.kwota | kwota }}zł)</td>
-  </tr>
-  <tr *ngFor="let k of [].constructor(1)">
-    <td *ngFor="let k of [].constructor(naglowek.cells.length)"></td>
-  </tr>
-</table>
-<!--
-<app-table-pagination
-  #paggination
-  (pageChange)="tabelaPrzerw_.getData()"
-  [(page)]="tabelaPrzerw_.page"
-  [(pageSize)]="tabelaPrzerw_.pageSize"
-  [collectionSize]="tabelaPrzerw_.daneSize"
-  [disabled]="tabelaPrzerw_.pobieranieDanych"
-  [pageSizeArray]="[2, 5, 7, 10, 20, 50, 100]"></app-table-pagination>
--->
+    <th>Zarządzanie</th>
+  </ng-template>
+  <ng-template TemplateId="tbody" let-index="index" let-obj>
+    <td>{{ index }}</td>
+    <td>{{ obj.pracownik.imie + ' ' + obj.pracownik.nazwisko }}</td>
+    <td>{{ obj.wizytyDzis.odbyte }} na {{ obj.wizytyDzis.suma }} ({{ obj.wizytyDzis.kwota | kwota }}zł)</td>
+    <td>{{ obj.wizytyWczoraj.suma }} ({{ obj.wizytyWczoraj.kwota | kwota }}zł)</td>
+    <td>{{ obj.wizytyOStatniTydzien.suma }} ({{ obj.wizytyOStatniTydzien.kwota | kwota }}zł)</td>
+    <td>{{ obj.wizytyPoprzedniTydzien.suma }} ({{ obj.wizytyPoprzedniTydzien.kwota | kwota }}zł)</td>
+    <td>{{ obj.wizytyOstatniMiesiac.suma }} ({{ obj.wizytyOstatniMiesiac.kwota | kwota }}zł)</td>
+    <td>{{ obj.wizytyPoprzedniMiesiac.suma }} ({{ obj.wizytyPoprzedniMiesiac.kwota | kwota }}zł)</td>
+  </ng-template>
+</app-table>

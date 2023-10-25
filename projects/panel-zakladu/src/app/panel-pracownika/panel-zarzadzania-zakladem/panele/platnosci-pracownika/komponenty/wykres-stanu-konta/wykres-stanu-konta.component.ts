@@ -98,7 +98,7 @@ export class WykresStanuKontaComponent implements OnInit {
   ngOnInit() {
     this.listonosz.pobierz(Drzwi.wykresStanuKonta).then((k: [{ data: Date; wartosc: number }]) => {
       k.forEach(dane => {
-        const data = new DatePipe('en-US').transform(dane.data, 'yyyy-dd-MM');
+        const data = new DatePipe('pl-PL').transform(dane.data, 'yyyy-MM-dd');
         // @ts-ignore
         this.labels.push(data);
 

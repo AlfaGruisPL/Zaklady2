@@ -4,6 +4,9 @@
     <files>
       <node color="3" path="$PROJECT_DIR$/projects/klasy" />
       <node color="6" path="$PROJECT_DIR$/projects/panel-zakladu" />
+      <node color="2" path="$PROJECT_DIR$/projects/panel-zakladu/src/app/komponets" />
+      <node color="4" path="$PROJECT_DIR$/projects/panel-zakladu/src/app/panel-pracownika/panel-zarzadzania-zakladem/kalendarz-komponent" />
+      <node color="5" path="$PROJECT_DIR$/projects/panel-zakladu/src/app/panel-pracownika/panel-zarzadzania-zakladem/panele" />
       <node color="8" path="$PROJECT_DIR$/projects/panel-zarzadzania-zakladami" />
       <node color="7" path="$PROJECT_DIR$/projects/reklamowa-strona-zakladu" />
       <node color="5" path="$PROJECT_DIR$/projects/strona-reklamowa" />

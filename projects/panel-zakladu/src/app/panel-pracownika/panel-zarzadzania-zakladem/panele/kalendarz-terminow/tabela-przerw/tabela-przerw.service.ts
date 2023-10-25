@@ -56,9 +56,11 @@ export class TabelaPrzerwService {
     const combined = combineLatest([this.Kalendarz_.wybranyPracownik, this.filter, this.filterRegularnosci]);
     combined.subscribe(dane => {
       this.page = 1;
+
       this.getData();
     });
     this.sub1 = this.Kalendarz_.pobieranieDanychObservable.subscribe(() => {
+      this.page = 1;
       this.getData();
     });
   }

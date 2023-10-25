@@ -11,6 +11,8 @@ import { TokenService } from '../../../../serwisy/token.service';
 import { ErrorAnalyzerService } from '../../../../serwisy/error-analyzer.service';
 import { KomunikatyService } from '../../../../serwisy/komunikaty.service';
 import { Udane } from '../../../../enum/udane';
+import { environment } from '../../../../../environments/environment';
+import { Funkcje } from '../../../../funkcje';
 
 @Component({
   selector: 'app-kalendarz-modyfikacja-terminu',
@@ -19,10 +21,13 @@ import { Udane } from '../../../../enum/udane';
 })
 export class KalendarzModyfikacjaTerminuComponent implements OnInit {
   @Input() formualrzRejestracjiWizyty: FormGroup = this.fb.group({});
+  @Input() parentNgbActiveModal: NgbActiveModal | undefined;
   public tryb = 'manual';
   public edit = false;
   public wizyta = new Wizyta({});
   kliknieteUslugi: Usluga[] = [];
+  buttonBlock = false;
+  env = environment;
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -34,19 +39,39 @@ export class KalendarzModyfikacjaTerminuComponent implements OnInit {
     private errorAnalyzer_: ErrorAnalyzerService,
     private komunikaty_: KomunikatyService
   ) {
-    this.formualrzRejestracjiWizyty = this.fb.group({
-      imie: ['', [Validators.required]],
-      nazwisko: ['', [Validators.required]],
-      termin: ['', [Validators.required]],
-      poczatek: ['12:00', [Validators.required]],
-      prefix: ['+48', [Validators.required]],
-      koniec: ['12:00', [Validators.required]],
-      telefon: ['', [Validators.required]],
-      wykonawca: [this.kalendarz_.wybranyPracownik.value, [Validators.required]],
-      opis: ['', []],
-      cena: [0, [Validators.required]],
-      email: ['', []],
-    });
+    if (Funkcje.doPracy()) {
+      this.formualrzRejestracjiWizyty = this.fb.group({
+        imie: ['Korneliia', [Validators.required]],
+        nazwisko: ['Mushak', [Validators.required]],
+        termin: ['', [Validators.required]],
+        poczatek: ['12:00', [Validators.required]],
+        prefix: ['+48', [Validators.required]],
+        confirmed: [''],
+
+        koniec: ['12:00', [Validators.required]],
+        telefon: ['530322879', [Validators.required]],
+        wykonawca: [this.kalendarz_.wybranyPracownik.value, [Validators.required]],
+        opis: ['', []],
+        cena: [8, [Validators.required]],
+        email: ['alfagruis@gmail.com', []],
+      });
+    } else {
+      this.formualrzRejestracjiWizyty = this.fb.group({
+        imie: ['', [Validators.required]],
+        nazwisko: ['', [Validators.required]],
+        termin: ['', [Validators.required]],
+        poczatek: ['12:00', [Validators.required]],
+        prefix: ['+48', [Validators.required]],
+        confirmed: [''],
+
+        koniec: ['12:00', [Validators.required]],
+        telefon: ['', [Validators.required]],
+        wykonawca: [this.kalendarz_.wybranyPracownik.value, [Validators.required]],
+        opis: ['', []],
+        cena: [0, [Validators.required]],
+        email: ['', []],
+      });
+    }
   }
 
   klikniecie(event: any, usluga: Usluga) {
@@ -70,7 +95,8 @@ export class KalendarzModyfikacjaTerminuComponent implements OnInit {
     this.uslugi_.pobieranieDanych();
   }
 
-  wyslij() {
+  sendHandler() {
+    this.buttonBlock = true;
     const data = this.formualrzRejestracjiWizyty.value;
     const uslugiId: number[] = [];
     if (this.tryb == 'auto') {
@@ -79,11 +105,24 @@ export class KalendarzModyfikacjaTerminuComponent implements OnInit {
       });
       data['uslugiId'] = uslugiId;
     }
-    data['tryb'] = this.tryb;
-    if (!this.token_.czyWlasciciel()) {
-      data['wykonawca'] = -1;
+    if (!this.edit) {
+      this.send(data);
+    } else {
+      this.update(data);
     }
+  }
 
+  zmianaOkna(event: any) {
+    this.tryb = event.target.value;
+  }
+
+  private send(data: object) {
+    //todo tu trzeba się zastanowić bo nw o co i jak i gdzie i po co
+    //if (!this.token_.czyWlasciciel()) {
+    // data['wykonawca'] = -1;
+    //}=
+    // @ts-ignore
+    delete data.confirmed;
     this.listonosz
       .wyslij(Drzwi.kalendarzRejestracjaWizytyZPanelu, data)
       .then(k => {
@@ -93,10 +132,27 @@ export class KalendarzModyfikacjaTerminuComponent implements OnInit {
       .catch(error => {
         this.errorAnalyzer_.analyze(error);
         console.log(error);
+      })
+      .finally(() => {
+        this.buttonBlock = false;
       });
   }
 
-  zmianaOkna(event: any) {
-    this.tryb = event.target.value;
+  private update(data: Object) {
+    this.listonosz
+      .aktualizuj(Drzwi.wizytaAktualizacja + this.wizyta.id, data)
+      .then(k => {
+        this.activeModal.close();
+        this.komunikaty_.komunikatUdane(Udane.wizytaZostalaZmodyfikowana);
+        this.kalendarz_.pobierzDane();
+        this.parentNgbActiveModal?.close();
+      })
+      .catch(error => {
+        this.errorAnalyzer_.analyze(error);
+        console.log(error);
+      })
+      .finally(() => {
+        this.buttonBlock = false;
+      });
   }
 }

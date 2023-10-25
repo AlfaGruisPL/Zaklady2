@@ -3,19 +3,35 @@
   height: 50px;
   background: rgba(20, 0, 255, 0.16);
   position: absolute;
-  border: 1px solid rgba(45, 45, 45, 0.62);
+  border: 1px solid rgba(45, 45, 45, 0.32);
+  // border: 1px solid rgba(45, 45, 45, 0.62);
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   z-index: 100;
   transition: scale 0.1s, color 1200ms ease-in-out;
-  border-top: 3px dashed rgba(0, 0, 0, 0.7);
+  //border-top: 3px dashed rgba(0, 0, 0, 0.7);
+
+  &.odd {
+    background: rgba(0, 157, 255, 0.16);
+  }
 
   &.odwolane {
     border-top: 3px dashed rgba(73, 73, 73, 0.8);
     background-color: rgba(213, 255, 196, 0.42);
-    width: 20%;
+    width: 10%;
     right: 0px;
+
+    h3 {
+      display: none;
+    }
+  }
+
+  &.missedVisit {
+    border-top: 3px dashed rgba(0, 10, 245, 0.8);
+    background-color: rgba(255, 196, 196, 0.42);
+    width: 10%;
+    right: 10%;
 
     h3 {
       display: none;
@@ -30,6 +46,66 @@
     text-align: center;
     font-weight: bold;
     border-top: 2px solid black;
+  }
+
+  .confirmDisconfirmDiv {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 20;
+    display: flex;
+    column-gap: 2px;
+    $checkColor: green;
+    $rejectColor: red;
+
+    button {
+      background: rgba(255, 255, 255, 0.53);
+      border: none;
+      font-size: 10px;
+    }
+
+    button.visitCheck {
+      color: $checkColor;
+      border: 0.2px solid $checkColor;
+
+      &:hover {
+        cursor: pointer;
+        color: white;
+        background: $checkColor;
+        box-shadow: 0 0 2px 2px inset rgba(34, 255, 0, 0.38);
+        border: 0.2px solid green;
+      }
+
+      &:disabled {
+        color: white;
+        pointer-events: none;
+        background: $checkColor;
+        box-shadow: 0 0 2px 2px inset rgba(34, 255, 0, 0.38);
+        border: 0.2px solid green;
+      }
+    }
+
+    button.visitDisConfirm {
+      color: $rejectColor;
+      //  border: 1px solid red;
+      border: 0.2px solid $rejectColor;
+
+      &:hover {
+        cursor: pointer;
+        background: $rejectColor;
+        color: white;
+        box-shadow: 0 0 2px 2px inset rgba(255, 79, 79, 0.38);
+        border: 0.2px solid $rejectColor;
+      }
+
+      &:disabled {
+        color: white;
+        pointer-events: none;
+        background: $rejectColor;
+        box-shadow: 0 0 2px 2px inset rgba(255, 63, 63, 0.38);
+        border: 0.2px solid $rejectColor;
+      }
+    }
   }
 
   h3 {
@@ -54,7 +130,7 @@
   }
 
   &:hover {
-    cursor: pointer;
+    cursor: help;
     // background: #f6f5f5;
     // scale: 1.051;
     .zarzadzaj {
@@ -75,6 +151,8 @@
     font-family: math;
     border: none;
     text-shadow: 0px 0px 1px #6a6a6a;
+    position: relative;
+    z-index: 19;
   }
 
   .anuluj {
@@ -106,5 +184,10 @@ table {
 
 .odwolanie {
   color: red;
+  font-weight: bold;
+}
+
+.niewWykonana {
+  color: #6e0000;
   font-weight: bold;
 }

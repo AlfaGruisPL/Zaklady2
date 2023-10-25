@@ -7,6 +7,7 @@ import { BehaviorSubject, debounceTime, skip, Subscription } from 'rxjs';
 import { KalendarzZarzadzanieTerminemComponent } from '../../../kalendarz-komponent/kalendarz-zarzadzanie-terminem/kalendarz-zarzadzanie-terminem.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { KalendarzKomponentService } from '../../../kalendarz-komponent/kalendarz-komponent.service';
+import { ZarzadzanieTerminemService } from '../../../kalendarz-komponent/kalendarz-zarzadzanie-terminem/zarzadzanie-terminem.service';
 
 @Component({
   selector: 'app-zarejestrowane-wizyty-tabela',
@@ -27,7 +28,8 @@ export class ZarejestrowaneWizytyTabelaComponent implements OnInit, OnDestroy {
   constructor(
     private listonosz: ListonoszService,
     private modal: NgbModal,
-    public Kalendarz_: KalendarzKomponentService
+    public Kalendarz_: KalendarzKomponentService,
+    public zarzadzanieTerminem_: ZarzadzanieTerminemService
   ) {
     this.wyszukiwarkaSub.pipe(skip(1), debounceTime(300)).subscribe(term => {
       this.pobierzDane();
@@ -42,12 +44,15 @@ export class ZarejestrowaneWizytyTabelaComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sub = this.Kalendarz_.wybranyPracownik.pipe(skip(1), debounceTime(200)).subscribe(id => {
+      this.strona = 1;
+      this.pobierzDane();
+    });
+    this.Kalendarz_.pobieranieDanychObservable.pipe(skip(1)).subscribe(k => {
       this.pobierzDane();
     });
   }
 
   public pobierzDane() {
-    console.log(this.strona);
     this.pobieranieDanych = true;
     let params = new HttpParams();
     params = params.append('filter', this.filter);
@@ -62,7 +67,6 @@ export class ZarejestrowaneWizytyTabelaComponent implements OnInit, OnDestroy {
           this.wizyty.push(new Wizyta(wizyta));
         }
         this.iloscWizytOgolna = dane.size;
-        console.log(dane);
       })
       .finally(() => {
         this.pobieranieDanych = false;
@@ -98,5 +102,16 @@ export class ZarejestrowaneWizytyTabelaComponent implements OnInit, OnDestroy {
   wyswietl(wizyta: Wizyta) {
     const okno = this.modal.open(KalendarzZarzadzanieTerminemComponent);
     okno.componentInstance.wizyta = wizyta;
+  }
+
+  cancleVisit(wizyta: Wizyta) {
+    this.zarzadzanieTerminem_.cancelTheVisit(wizyta).then(data => {
+      this.pobierzDane();
+      this.Kalendarz_.pobierzDane(true);
+    });
+  }
+
+  updateVisit(wizyta: Wizyta) {
+    this.zarzadzanieTerminem_.modifyVisit(wizyta);
   }
 }

@@ -158,6 +158,7 @@ export class ListonoszService {
       this.token.usunCiasteczka();
       console.error(`checkError 401 - ${error.error?.reasonCode}`);
       this.router.navigate(['./']);
+      window.location.reload();
     }
   }
 }

@@ -9,4 +9,7 @@ export enum Udane {
   bannerStronyZaktualizowany = 'Banner zakładu został zaktualizowany',
   wizytaZostalaOdwolana = 'Wizyta została odwołana',
   wizytaZostalaZarejestrowana = 'Wizyta została zarejestrowana',
+  wizytaOznaczonaJakoWykonana = 'Wizyta została oznaczona jako wykonana',
+  wizytaOznaczonaJakoNieWykonana = 'Wizyta została oznaczona jako nie wykonana',
+  wizytaZostalaZmodyfikowana = 'Wizyta została zmodyfikowana',
 }

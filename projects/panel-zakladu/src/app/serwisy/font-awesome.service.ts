@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {
   faArrowRightFromBracket,
+  faCheck,
   faCircleCheck,
   faCircleLeft,
   faCircleMinus,
@@ -70,5 +71,7 @@ export class FontAwesomeService {
     library.addIcons(faX);
     library.addIcons(faGear);
     library.addIcons(faMagnifyingGlass);
+    library.addIcons(faCheck);
+    library.addIcons(faX);
   }
 }

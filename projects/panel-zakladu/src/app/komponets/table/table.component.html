@@ -7,25 +7,64 @@
     <input (keyup)="onSearchChange($event)" placeholder="Wyszukiwarka (wartość wartość2 itd.)" />
   </div>
 </div>
-<table #tablica [ngClass]="{ tablicaLoading: loading }" class="tablica">
+<table #tablica [ngClass]="{ tablicaLoading: loading }" class="tablicaBetter">
   <thead>
-    <ng-container *ngTemplateOutlet="thead"></ng-container>
+    <tr>
+      <ng-container *ngTemplateOutlet="thead"></ng-container>
+    </tr>
   </thead>
 
   <tbody>
-    <tr #header *ngFor="let obj of data | slice : 0 : pageSize; let index = index">
-      <ng-container *ngTemplateOutlet="tbody; context: { $implicit: obj, index: indexCount(index) }"></ng-container>
-    </tr>
-    <tr *ngFor="let k of [].constructor(emptyRowCalc())">
-      <td *ngFor="let k2 of [].constructor(tablica.rows[0].cells.length)"></td>
-    </tr>
+    <ng-container *ngIf="async; else asyncFalse">
+      <tr #header *ngFor="let obj of data | slice : 0 : pageSize; let index = index">
+        <ng-container *ngTemplateOutlet="tbody; context: { $implicit: obj, index: indexCount(index) }"></ng-container>
+      </tr>
+      <tr *ngFor="let k of [].constructor(emptyRowCalc())">
+        <td *ngFor="let k2 of [].constructor(tablica.rows[1].cells.length)">&nbsp;</td>
+      </tr>
+    </ng-container>
+    <ng-template #asyncFalse>
+      <!-- brak asynchronicznosci  -->
+
+      <ng-container *ngFor="let obj of data | slice : (page - 1) * pageSize : page * pageSize; let index = index">
+        <tr #header>
+          <ng-container *ngTemplateOutlet="tbody; context: { $implicit: obj, index: index + 1 }"></ng-container>
+        </tr>
+        <ng-container *ngIf="obj[subTableOpenVariable]">
+          <tr>
+            <td [attr.colspan]="tablica.rows[0].cells.length + 1">
+              <table class="subTable">
+                <thead>
+                  <tr class="PodTabelaNaglowek">
+                    <ng-container *ngTemplateOutlet="subTableHead"></ng-container>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let subObj of obj.probyPlatnosci; let Subindex = index" class="PodTabelaTr">
+                    <ng-container
+                      *ngTemplateOutlet="
+                        subTableBody;
+                        context: { $implicit: subObj, index: indexCount(Subindex) }
+                      "></ng-container>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </ng-container>
+      </ng-container>
+
+      <tr *ngFor="let k of [].constructor(emptyRowCalcNoAsync())">
+        <td *ngFor="let k2 of [].constructor(tablica.rows[0].cells.length)"></td>
+      </tr>
+    </ng-template>
   </tbody>
 
   <tfoot>
     <ng-container *ngTemplateOutlet="tfoot"></ng-container>
   </tfoot>
 </table>
-<div #pag class="paggination">
+<div #pag *ngIf="paggiantion" class="paggination">
   <div class="group1">
     <ngb-pagination
       (pageChange)="saveChange()"

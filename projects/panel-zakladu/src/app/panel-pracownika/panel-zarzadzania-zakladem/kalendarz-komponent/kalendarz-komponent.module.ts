@@ -24,6 +24,7 @@ import {
 import { CommonModule } from "@angular/common";
 import { SelectDotyczyComponent } from "../../../komponets/select-dotyczy/select-dotyczy.component";
 import { NgSelectModule } from "@ng-select/ng-select";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { NgSelectModule } from "@ng-select/ng-select";
     NgbPopover,
     SelectDotyczyComponent,
     NgSelectModule,
+    FontAwesomeModule,
   ],
   exports: [KalendarzKomponentComponent],
 })

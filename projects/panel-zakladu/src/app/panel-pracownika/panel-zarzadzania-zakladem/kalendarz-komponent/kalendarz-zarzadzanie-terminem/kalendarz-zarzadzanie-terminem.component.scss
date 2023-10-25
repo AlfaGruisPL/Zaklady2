@@ -21,3 +21,18 @@ p.h4canceled {
   line-height: 14px;
   padding-bottom: 10px;
 }
+
+.visitNotCompleted {
+  color: red;
+  font-weight: bold;
+}
+
+.visitCompleted {
+  color: #0b7006;
+  font-weight: bold;
+}
+
+.visitCompletedUndefined {
+  color: saddlebrown;
+  font-weight: bold;
+}

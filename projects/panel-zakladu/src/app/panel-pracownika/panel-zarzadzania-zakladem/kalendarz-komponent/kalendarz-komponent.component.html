@@ -39,8 +39,16 @@
   </tr>
   <tr>
     <td></td>
-    <td *ngFor="let dzien of Kalendarz_.dni" style="position: relative; height: 0px">
-      <ng-container *ngFor="let wizyta of terminyNaDzien(dzien)">
+    <td *ngFor="let dzien of Kalendarz_.dni; let index1 = index" style="position: relative; height: 0px">
+      <ng-container *ngFor="let wizyta of terminyNaDzien_clear(dzien); let index2 = index">
+        <app-termin-komponent
+          [godzinaRozpoczecia]="Kalendarz_.godzinaRozpoczecia"
+          [idIndex]="index1 * 1000 + index2"
+          [wizyta]="wizyta"
+          style="width: 150px"></app-termin-komponent>
+      </ng-container>
+
+      <ng-container *ngFor="let wizyta of terminyNaDzien_dirty(dzien)">
         <app-termin-komponent
           [godzinaRozpoczecia]="Kalendarz_.godzinaRozpoczecia"
           [wizyta]="wizyta"

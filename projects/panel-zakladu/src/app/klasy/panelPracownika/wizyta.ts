@@ -45,11 +45,13 @@ export class Wizyta {
   uslugiTabela = false;
   customer: Customer;
   VisitsDetails: VisitsDetails[] = [];
+  completed: boolean | undefined = undefined;
 
   constructor(k: Partial<Wizyta>) {
     this.customer = new Customer();
-    const { customer, dataOdwolania, ...reszta } = k;
+    const { customer, dataOdwolania, pracownik, ...reszta } = k;
     Object.assign(this.customer, customer);
+    Object.assign(this.pracownik, pracownik);
     Object.assign(this, reszta);
     if (dataOdwolania) {
       this.dataOdwolania = new Date(dataOdwolania);
@@ -72,6 +74,10 @@ export class Wizyta {
       return true;
     }
     return false;
+  }
+
+  afterEndPlusBuforTime() {
+    return this.koniec.getTime() < new Date().getTime() + 3600000 * 5; // + 3h
   }
 
   cancled() {

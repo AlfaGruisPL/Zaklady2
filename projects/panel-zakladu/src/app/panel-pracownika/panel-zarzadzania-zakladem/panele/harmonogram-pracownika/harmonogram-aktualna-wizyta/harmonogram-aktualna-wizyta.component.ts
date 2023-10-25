@@ -1,41 +1,40 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Wizyta} from "../../../../../klasy/panelPracownika/wizyta";
-import {HarmonogramService} from "../harmonogram.service";
-import {Subscription} from "rxjs";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Wizyta } from '../../../../../klasy/panelPracownika/wizyta';
+import { HarmonogramService } from '../harmonogram.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-harmonogram-aktualna-wizyta',
   templateUrl: './harmonogram-aktualna-wizyta.component.html',
-  styleUrls: ['./harmonogram-aktualna-wizyta.component.scss']
+  styleUrls: ['./harmonogram-aktualna-wizyta.component.scss'],
 })
 export class HarmonogramAktualnaWizytaComponent implements OnInit, OnDestroy {
-  public aktualnaWizyta: Wizyta | undefined;
+  public aktualnaWizyta: Wizyta | undefined = undefined;
+  protected readonly undefined = undefined;
+
   private sub1: Subscription | undefined;
 
-  constructor(private harmonogram_: HarmonogramService) {
-  }
+  constructor(private harmonogram_: HarmonogramService) {}
 
   ngOnInit() {
     this.sub1 = this.harmonogram_.wizytaDzisObserveble.subscribe(wizyty => {
       const aktualnyCzas = new Date().getTime();
       this.aktualnaWizyta = wizyty.find(wizyta => {
         return wizyta.poczatek.getTime() <= aktualnyCzas && wizyta.koniec.getTime() >= aktualnyCzas;
-      })
-
-    })
-
+      });
+    });
   }
 
   czasDoKoncaWizyty(): string {
-    const czas = new Date()
+    const czas = new Date();
     if (this.aktualnaWizyta == undefined) {
-      return ""
+      return '';
     }
-    var wynik = Math.round((this.aktualnaWizyta.koniec.getTime() - czas.getTime()) / 60000)
-    return wynik + 'min'
+    var wynik = Math.round((this.aktualnaWizyta.koniec.getTime() - czas.getTime()) / 60000);
+    return wynik + 'min';
   }
 
   ngOnDestroy() {
-    this.sub1?.unsubscribe()
+    this.sub1?.unsubscribe();
   }
 }

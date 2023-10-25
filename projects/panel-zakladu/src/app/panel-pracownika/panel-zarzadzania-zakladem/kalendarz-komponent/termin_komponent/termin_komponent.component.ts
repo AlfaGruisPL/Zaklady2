@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { Wizyta } from '../../../../klasy/panelPracownika/wizyta';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { KalendarzZarzadzanieTerminemComponent } from '../kalendarz-zarzadzanie-terminem/kalendarz-zarzadzanie-terminem.component';
+import { VisitService } from './visit.service';
 
 @Component({
   selector: 'app-termin-komponent',
@@ -12,11 +13,13 @@ export class Termin_komponentComponent implements OnInit {
   @Input() godzinaRozpoczecia = 0;
   @Input() wizyta: Wizyta = new Wizyta({});
   @Input() symulator = false;
+  @Input() idIndex = 0;
+
   top = '70px';
   wysokosc = '100px';
   id = Math.random() * 10000000 + 'k' + Math.random();
 
-  constructor(private modal: NgbModal, private cdr: ChangeDetectorRef) {}
+  constructor(private modal: NgbModal, private cdr: ChangeDetectorRef, public visit_: VisitService) {}
 
   ngOnInit() {
     const poczatekGodzian = this.wizyta.poczatek.getHours();
@@ -28,9 +31,13 @@ export class Termin_komponentComponent implements OnInit {
     this.wysokosc = (koniecGodzian + koniecMinuta / 60 - (poczatekGodzian + poczatekMinuta / 60)) * 2 * 27 + 'px';
   }
 
-  zarzadzaj() {
+  zarzadzaj(event: MouseEvent) {
+    // @ts-ignore
+    const findConfirmDisconfirmDIv = event.target?.closest('.confirmDisconfirmDiv');
+    if (findConfirmDisconfirmDIv) return;
     const okno = this.modal.open(KalendarzZarzadzanieTerminemComponent);
     okno.componentInstance.wizyta = this.wizyta;
+    console.log(this.wizyta);
   }
 
   disablePopover2() {

@@ -157,18 +157,12 @@ export class KalendarzKomponentComponent implements OnInit, OnDestroy {
     });
   }
 
-  public terminyNaDzien(data: DzienTygodnia): Array<Wizyta> {
-    const tablica = this.Kalendarz_.wizyty.filter(usluga => {
-      if (usluga.poczatek.getDate() == data.data.getDate()) {
-        if (usluga.poczatek.getFullYear() == data.data.getFullYear()) {
-          if (usluga.poczatek.getMonth() == data.data.getMonth()) {
-            return true;
-          }
-        }
-      }
-      return false;
-    });
-    return tablica;
+  public terminyNaDzien_clear(data: DzienTygodnia): Array<Wizyta> {
+    return this.terminyNaDzien(data).filter(wizyta => this.cleanDirtyVisitFun(wizyta));
+  }
+
+  public terminyNaDzien_dirty(data: DzienTygodnia): Array<Wizyta> {
+    return this.terminyNaDzien(data).filter(wizyta => !this.cleanDirtyVisitFun(wizyta));
   }
 
   public SymulatorWolneterminyNaDzien(data: DzienTygodnia): Array<Wizyta> {
@@ -194,6 +188,26 @@ export class KalendarzKomponentComponent implements OnInit, OnDestroy {
       }
     }
     return false;
+  }
+
+  private terminyNaDzien(data: DzienTygodnia): Array<Wizyta> {
+    const tablica = this.Kalendarz_.wizyty.filter(usluga => {
+      if (usluga.poczatek.getDate() == data.data.getDate()) {
+        if (usluga.poczatek.getFullYear() == data.data.getFullYear()) {
+          if (usluga.poczatek.getMonth() == data.data.getMonth()) {
+            return true;
+          }
+        }
+      }
+      return false;
+    });
+    return tablica.sort((x, y) => {
+      return x.poczatek.getTime() > y.poczatek.getTime() ? 1 : -1;
+    });
+  }
+
+  private cleanDirtyVisitFun(wizyta: Wizyta) {
+    return !wizyta.cancled() && (wizyta.completed == undefined || wizyta.completed == true);
   }
 
   private CzyAktualne(data: Date) {

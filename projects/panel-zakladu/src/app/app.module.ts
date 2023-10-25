@@ -46,6 +46,7 @@ import { MojeKontoZdjecieProfiloweComponent } from './panel-pracownika/panel-zar
 import { InformacjeOKliencieTabelaPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/informacje-okliencie/informacje-okliencie-tabela-pracownika/informacje-okliencie-tabela-pracownika.component';
 import localePl from '@angular/common/locales/pl';
 import { registerLocaleData } from '@angular/common';
+import { HelpComponent } from "./komponets/help/help.component";
 
 registerLocaleData(localePl, 'pl-PL');
 
@@ -112,6 +113,7 @@ registerLocaleData(localePl, 'pl-PL');
     CiasteczkaKomunikatComponent,
     MojeKontoZdjecieProfiloweComponent,
     InformacjeOKliencieTabelaPracownikaComponent,
+    HelpComponent,
   ],
   providers: [
     NgbDropdown,

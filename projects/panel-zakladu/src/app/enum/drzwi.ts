@@ -84,4 +84,6 @@ export enum Drzwi {
   podsumowanieDaneDoWykresu = '/wizyty/daneDoWykresuPodsumowanie',
   podsumowanieTabela = '/podsumowanieZakladu/tabela',
   podsumowanieInformacje = '/podsumowanieZakladu/informacje',
+  wizytaAktualizacja = '/wizyty/',
+  changeCompleteStatus = '/wizyty/completed/',
 }

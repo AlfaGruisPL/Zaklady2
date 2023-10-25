@@ -3,30 +3,30 @@
   <h4 *ngIf="edit" class="modal-title">Modyfikacja wizyty:</h4>
   <button (click)="activeModal.close('Nie')" aria-label="Close" class="btn-close" type="button"></button>
 </div>
-<form (ngSubmit)="wyslij()" [formGroup]="formualrzRejestracjiWizyty">
+<form (ngSubmit)="sendHandler()" [formGroup]="formualrzRejestracjiWizyty">
   <div class="modal-body">
     <table>
       <tr>
-        <td>Klient*:</td>
+        <th>Klient*:</th>
         <td>
           <input formControlName="imie" placeholder="imię" />
           <input formControlName="nazwisko" placeholder="nazwisko" />
         </td>
       </tr>
       <tr>
-        <td>Termin*:</td>
+        <th>Termin*:</th>
         <td>
           <input formControlName="termin" type="date" />
         </td>
       </tr>
       <tr>
-        <td>Godziny*:</td>
+        <th>Godziny*:</th>
         <td>
           <input formControlName="poczatek" type="time" value="12:12" /> <input formControlName="koniec" type="time" />
         </td>
       </tr>
       <tr>
-        <td>Telefon*:</td>
+        <th>Telefon*:</th>
         <td>
           <div class="select">
             <select formControlName="prefix" type="text">
@@ -38,8 +38,18 @@
         </td>
       </tr>
       <tr>
-        <td>Email:</td>
+        <th>Email:</th>
         <td><input formControlName="email" type="email" /></td>
+      </tr>
+
+      <tr *ngIf="edit">
+        <th>Wykonanie:</th>
+        <td>
+          Nieokreślone
+          <input [value]="" checked="checked" formControlName="confirmed" name="confirmed" type="radio" /><br />
+          Wykonane <input formControlName="confirmed" name="confirmed" type="radio" value="true" /> <br />Niewykonane
+          <input formControlName="confirmed" name="confirmed" type="radio" value="false" />
+        </td>
       </tr>
       <tr>
         <th>Konifguracja</th>
@@ -67,9 +77,6 @@
         <td>
           <div class="select">
             <select formControlName="wykonawca">
-              <option [defaultSelected]="true" [value]="kalendarz_.wlasciciel.id">
-                {{ kalendarz_.wlasciciel.imie + ' ' + kalendarz_.wlasciciel.imie }}
-              </option>
               <option *ngFor="let pracownik of kalendarz_.pracownicy" [value]="pracownik.id">
                 {{ pracownik.imie + ' ' + pracownik.nazwisko }}&nbsp;&nbsp;&nbsp;
               </option>
@@ -106,16 +113,29 @@
     </div>
   </div>
   <div class="modal-footer">
-    <p class="info">
-      Utworzenie wizyty jest jednoznaczne z powiadomieniem użytkownika w formie email oraz sms(jeżeli usługa włączona).
+    <p *ngIf="!edit" class="info">
+      Utworzenie wizyty jest jednoznaczne z powiadomieniem użytkownika w formie email oraz sms.
+    </p>
+    <p *ngIf="edit" class="info">
+      Zmodyfikowanie wizyty jest jednoznaczne z powiadomieniem użytkownika w formie email oraz sms.
     </p>
 
     <div>
-      <button (click)="activeModal.close('anuluj')" class="domyslnyButtonAnuluj" type="button">Anuluj</button>&nbsp;
-      <button *ngIf="!edit" [disabled]="formualrzRejestracjiWizyty.invalid" class="domyslnyButtonZapisz" type="submit">
+      <button (click)="activeModal.close('anuluj')" [disabled]="buttonBlock" class="domyslnyButtonAnuluj" type="button">
+        Anuluj</button
+      >&nbsp;
+      <button
+        *ngIf="!edit"
+        [disabled]="formualrzRejestracjiWizyty.invalid || buttonBlock"
+        class="domyslnyButtonZapisz"
+        type="submit">
         Zarejestruj
       </button>
-      <button *ngIf="edit" [disabled]="formualrzRejestracjiWizyty.invalid" class="domyslnyButton4" type="submit">
+      <button
+        *ngIf="edit"
+        [disabled]="formualrzRejestracjiWizyty.invalid || buttonBlock"
+        class="domyslnyButton4"
+        type="submit">
         Zmodyfikuj
       </button>
     </div>

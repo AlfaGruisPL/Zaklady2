@@ -10,6 +10,8 @@ import { Drzwi } from '../../../../../enum/drzwi';
 import { PodsumowanieZakladuTabelaPracownikDto } from 'zakladlib';
 import { PodreczneDaneService } from '../../../../../serwisy/podreczne-dane.service';
 import { KwotaPipe } from '../../../../../rureczki/kwota.pipe';
+import { TableComponent } from '../../../../../komponets/table/table.component';
+import { TemplateIdDirective } from '../../../../../komponets/table/template-id.directive';
 
 @Component({
   selector: 'app-podsumowanie-tabela',
@@ -24,6 +26,8 @@ import { KwotaPipe } from '../../../../../rureczki/kwota.pipe';
     TabelaPrzerwFilterComponent,
     TablePaginationComponent,
     KwotaPipe,
+    TableComponent,
+    TemplateIdDirective,
   ],
   templateUrl: './podsumowanie-tabela.component.html',
   styleUrls: ['./podsumowanie-tabela.component.scss'],

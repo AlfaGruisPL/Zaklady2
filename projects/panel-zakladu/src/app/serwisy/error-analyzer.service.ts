@@ -28,6 +28,7 @@ export class ErrorAnalyzerService {
 
         break;
       default:
+        console.log(error.status);
         this.komunikaty_.komunikatBledu(Bledy.bladOgolny);
     }
   }
