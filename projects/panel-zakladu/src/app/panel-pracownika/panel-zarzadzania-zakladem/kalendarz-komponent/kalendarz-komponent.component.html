@@ -37,7 +37,7 @@
       </div>
     </th>
   </tr>
-  <tr>
+  <tr (mousemove)="trigger($event)">
     <td></td>
     <td *ngFor="let dzien of Kalendarz_.dni; let index1 = index" style="position: relative; height: 0px">
       <ng-container *ngFor="let wizyta of terminyNaDzien_clear(dzien); let index2 = index">
@@ -88,7 +88,9 @@
       [ngClass]="{ poleKlikalne: true }"
       [ngStyle]="kolorTla(dzien, index)"
       style="position: relative; height: 25px">
-      <span *ngIf="!czyPracuje(dzien.dzien)" style="width: 100%; text-align: center; display: block; color: #343434"
+      <span
+        *ngIf="!czyPracuje(dzien.dzien)"
+        style="width: 100%; text-align: center; display: block; color: #343434; height: 20px"
         >---------</span
       >
       <div *ngIf="czyToDzis(dzien.data) && index == 0">

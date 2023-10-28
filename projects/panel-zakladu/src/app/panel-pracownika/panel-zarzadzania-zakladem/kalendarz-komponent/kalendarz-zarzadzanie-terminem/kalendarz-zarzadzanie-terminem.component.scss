@@ -36,3 +36,13 @@ p.h4canceled {
   color: saddlebrown;
   font-weight: bold;
 }
+
+::ng-deep .confirmDisconfirmDiv {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.blur {
+  filter: blur(4px);
+}

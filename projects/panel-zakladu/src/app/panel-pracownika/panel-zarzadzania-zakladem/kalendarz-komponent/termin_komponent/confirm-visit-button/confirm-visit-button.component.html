@@ -1,0 +1,16 @@
+<div *ngIf="!visit.cancled() && visit.afterEndPlusBuforTime()" class="confirmDisconfirmDiv">
+  <button
+    (click)="confirmVisit()"
+    *ngIf="visit.completed == undefined || visit.completed == true"
+    [disabled]="visit.completed != undefined"
+    class="visitCheck">
+    <fa-icon icon="check"></fa-icon>
+  </button>
+  <button
+    (click)="disConfirmVisit()"
+    [disabled]="visit.completed != undefined"
+    [ngStyle]="{ display: visit.completed == undefined ? 'block' : 'none' }"
+    class="visitDisConfirm">
+    <fa-icon icon="x"></fa-icon>
+  </button>
+</div>

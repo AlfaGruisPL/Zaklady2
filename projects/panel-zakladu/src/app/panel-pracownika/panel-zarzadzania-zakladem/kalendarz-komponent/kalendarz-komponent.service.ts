@@ -60,6 +60,10 @@ export class KalendarzKomponentService {
     private komunikaty_: KomunikatyService
   ) {}
 
+  getVisitFromID(id: number) {
+    return this.wizyty.find(k => k.id == id);
+  }
+
   public pobierzPodstawoweDane() {
     this.listonosz
       .pobierz(Drzwi.zarejestrowaneWizytyTerminy)

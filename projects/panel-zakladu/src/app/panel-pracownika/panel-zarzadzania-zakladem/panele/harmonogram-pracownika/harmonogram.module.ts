@@ -11,6 +11,9 @@ import { TippyDirective } from '@ngneat/helipopper';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HarmonogramPodsumowanieAdministratoraComponent } from './harmonogram-podsumowanie-administratora/harmonogram-podsumowanie-administratora.component';
 import { HarmonogramRoutingModule } from './harmonogram-router.module';
+import {
+  ConfirmVisitButtonComponent
+} from "../../kalendarz-komponent/termin_komponent/confirm-visit-button/confirm-visit-button.component";
 
 @NgModule({
   declarations: [
@@ -28,6 +31,7 @@ import { HarmonogramRoutingModule } from './harmonogram-router.module';
     TippyDirective,
     NgbModule,
     HarmonogramRoutingModule,
+    ConfirmVisitButtonComponent,
   ],
 })
 export class HarmonogramModule {}

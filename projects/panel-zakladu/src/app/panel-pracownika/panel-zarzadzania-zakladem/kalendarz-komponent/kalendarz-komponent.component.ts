@@ -5,6 +5,7 @@ import { KalendarzKomponentService } from './kalendarz-komponent.service';
 import { environment } from '../../../../environments/environment';
 import { DzienWolny } from '../../../klasy/panelPracownika/kalendarz/DzienWolny';
 import { DzienTygodnia } from './dzien-tygodnia';
+import { VisitService } from './termin_komponent/visit.service';
 
 @Component({
   selector: 'app-kalendarz-komponent',
@@ -20,9 +21,14 @@ export class KalendarzKomponentComponent implements OnInit, OnDestroy {
   symulator = false;
   public godzinaRozpoczecia = 6;
   public wyswieitlanieSymulatora = false;
+
   protected readonly environment = environment;
 
-  constructor(private listonosz: ListonoszService, public Kalendarz_: KalendarzKomponentService) {}
+  constructor(
+    private listonosz: ListonoszService,
+    public Kalendarz_: KalendarzKomponentService,
+    private visit_: VisitService
+  ) {}
 
   ngOnDestroy() {
     this.Kalendarz_.resetdanych();
@@ -188,6 +194,17 @@ export class KalendarzKomponentComponent implements OnInit, OnDestroy {
       }
     }
     return false;
+  }
+
+  //* łapanie zdażeń najechanią  kursorem na wizyte
+  trigger(event: any) {
+    this.visit_.actualTrigeredElements = [];
+    document.elementsFromPoint(event.clientX, event.clientY).forEach(element => {
+      if (element.classList.contains('termin')) {
+        // @ts-ignore
+        this.visit_.actualTrigeredElements.push(element.dataset.visit);
+      }
+    });
   }
 
   private terminyNaDzien(data: DzienTygodnia): Array<Wizyta> {

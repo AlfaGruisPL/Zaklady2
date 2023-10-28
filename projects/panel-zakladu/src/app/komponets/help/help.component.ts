@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { HelpOffCanvasComponent } from './help-off-canvas/help-off-canvas.component';
@@ -11,10 +11,12 @@ import { take } from 'rxjs';
   templateUrl: './help.component.html',
   styleUrls: ['./help.component.scss'],
 })
-export class HelpComponent {
+export class HelpComponent implements OnInit {
   display = false;
 
   constructor(private offcanvasService: NgbOffcanvas) {}
+
+  ngOnInit() {}
 
   openHelp() {
     this.display = true;
@@ -25,6 +27,8 @@ export class HelpComponent {
   }
 
   private displayButton() {
-    this.display = false;
+    setTimeout(() => {
+      this.display = false;
+    }, 1000);
   }
 }

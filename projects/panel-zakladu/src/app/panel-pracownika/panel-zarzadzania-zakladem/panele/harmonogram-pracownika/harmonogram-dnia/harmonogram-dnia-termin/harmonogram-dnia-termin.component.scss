@@ -1,7 +1,7 @@
 .termin {
   height: 148px;
   top: 0px;
-  background: rgba(167, 232, 167, 0.63);
+  background: rgba(187, 255, 187, 0.63);
   position: absolute;
   z-index: 100;
   box-shadow: 0px 0px 1px 1px #92ad92;
@@ -10,6 +10,10 @@
   border-right: 3px solid rgba(78, 78, 78, 0.75);
   //border-bottom: 2px solid #8edaff;
   //border-top: 2px solid #8edaff;
+  &.even {
+    background: rgba(187, 255, 219, 0.63);
+  }
+
   b {
     position: absolute;
     display: block;

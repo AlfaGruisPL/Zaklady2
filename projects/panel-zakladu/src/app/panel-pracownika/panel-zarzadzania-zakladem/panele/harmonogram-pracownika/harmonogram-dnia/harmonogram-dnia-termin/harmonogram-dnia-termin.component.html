@@ -1,6 +1,7 @@
 <div
   #termin
   [animation]="true"
+  [ngClass]="{ even: id % 2 == 1 }"
   [ngStyle]="{ left: przesuniecieWPrawo + 'px', width: szerokosc + 'px' }"
   [ngbPopover]="popContent"
   [popoverTitle]="popTitle"
@@ -16,6 +17,10 @@
     <span> {{ wizyta.koniec | date : 'HH' }} <b>:</b></span> <br />
     <span> {{ wizyta.koniec | date : 'mm' }} </span>
   </ng-container>
+  <app-confirm-visit-button
+    (updateComplete)="harmonogram_.pobierzWizytyDzis()"
+    *ngIf="termin.clientWidth > 39"
+    [visit]="wizyta"></app-confirm-visit-button>
 </div>
 
 <ng-template #popTitle>

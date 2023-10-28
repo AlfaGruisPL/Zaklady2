@@ -2,6 +2,7 @@
   #wizytaDiv
   (click)="zarzadzaj($event)"
   [animation]="true"
+  [attr.data-visit]="wizyta.id"
   [disablePopover]="disablePopover()"
   [ngClass]="{
     symulacja: symulator,
@@ -20,55 +21,55 @@
   <h3 *ngIf="wizytaDiv.clientHeight > 30 && wizyta.completed != false">
     {{ wizyta.poczatek | date : 'HH:mm' }} {{ wizyta.koniec | date : 'HH:mm' }}
   </h3>
-  <div *ngIf="!wizyta.cancled() && wizyta.afterEndPlusBuforTime()" class="confirmDisconfirmDiv">
-    <button
-      (click)="visit_.confirmVisit(wizyta)"
-      *ngIf="wizyta.completed == undefined || wizyta.completed == true"
-      [disabled]="wizyta.completed != undefined"
-      class="visitCheck">
-      <fa-icon icon="check"></fa-icon>
-    </button>
-    <button
-      (click)="visit_.disConfirmVisit(wizyta)"
-      [disabled]="wizyta.completed != undefined"
-      [ngStyle]="{ display: wizyta.completed == undefined ? 'block' : 'none' }"
-      class="visitDisConfirm">
-      <fa-icon icon="x"></fa-icon>
-    </button>
-  </div>
+
+  <app-confirm-visit-button [visit]="wizyta"></app-confirm-visit-button>
+
   <div *ngIf="wizytaDiv.clientHeight >= 65 && !wizyta.cancled() && wizyta.completed != false" class="zarzadzaj">
     Zarządzaj
   </div>
 </div>
 <ng-template #popTitle>
-  Wizyta <b>{{ wizyta.poczatek | date : 'HH:mm' }} {{ wizyta.koniec | date : 'HH:mm' }} </b></ng-template
->
+  <div style="display: flex">
+    <div
+      *ngFor="let visit of visit_.actualTrigeredElements"
+      [style]="{ width: 100 / visit_.actualTrigeredElements.length + '%' }">
+      Wizyta
+      <b
+        >{{ getVisitFromID(visit)?.poczatek | date : 'HH:mm' }} {{ getVisitFromID(visit)?.koniec | date : 'HH:mm' }}
+      </b>
+    </div>
+  </div>
+</ng-template>
 <ng-template #popContent>
-  <table>
-    <tr>
-      <td>Klient:</td>
-      <td>
-        {{ wizyta.customer.firstName + ' ' + wizyta.customer.lastName }}
-      </td>
-    </tr>
-    <tr>
-      <td>Email:</td>
-      <td>
-        {{ wizyta.customer.email }}
-      </td>
-    </tr>
-    <tr>
-      <td>Telefon:</td>
-      <td>
-        {{ wizyta.customer.phone }}
-      </td>
-    </tr>
-    <tr *ngIf="wizyta.completed == false" class="niewWykonana">
-      <td colspan="2">Wizyta oznaczona jako nie wykonana</td>
-    </tr>
-    <tr *ngIf="wizyta.dataOdwolania" class="odwolanie">
-      <td>Data&nbsp;odwołania</td>
-      <td>{{ wizyta.dataOdwolania | date : 'dd.MM.yyyy  HH:mm' }}</td>
-    </tr>
-  </table>
+  <div class="visitContainer">
+    <div *ngFor="let visit of visit_.actualTrigeredElements" class="tableContainer">
+      <table>
+        <tr>
+          <td>Klient:</td>
+          <td>
+            {{ getVisitFromID(visit)?.customer?.firstName + ' ' + getVisitFromID(visit)?.customer?.lastName }}
+          </td>
+        </tr>
+        <tr>
+          <td>Email:</td>
+          <td>
+            {{ getVisitFromID(visit)?.customer?.email }}
+          </td>
+        </tr>
+        <tr>
+          <td>Telefon:</td>
+          <td>
+            {{ getVisitFromID(visit)?.customer?.phone }}
+          </td>
+        </tr>
+        <tr *ngIf="getVisitFromID(visit)?.completed == false" class="niewWykonana">
+          <td colspan="2">Wizyta oznaczona jako nie wykonana</td>
+        </tr>
+        <tr *ngIf="getVisitFromID(visit)?.dataOdwolania" class="odwolanie">
+          <td>Data&nbsp;odwołania</td>
+          <td>{{ getVisitFromID(visit)?.dataOdwolania | date : 'dd.MM.yyyy  HH:mm' }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </ng-template>

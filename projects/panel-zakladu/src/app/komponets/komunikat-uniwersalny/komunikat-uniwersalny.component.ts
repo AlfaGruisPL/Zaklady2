@@ -7,6 +7,8 @@ import { RureczkiModule } from '../../rureczki/rureczki.module';
 export class UniwersalMessageOption {
   defaultYes = false;
   defaultNo = false;
+  returnValueInObservable = undefined;
+  class: string | undefined = undefined;
 }
 
 @Component({
@@ -21,6 +23,7 @@ export class KomunikatUniwersalnyComponent implements OnInit {
   @Input({ required: true }) content: string = 'tresc';
   buttonList: { text: string; response: string; option: Partial<UniwersalMessageOption> }[] = [];
   close: Subject<any> = new Subject<any>();
+  dismiss: Subject<any> = new Subject<any>();
 
   constructor(public activeModal: NgbActiveModal) {}
 
@@ -34,6 +37,12 @@ export class KomunikatUniwersalnyComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  dismissed(text: string) {
+    this.dismiss.next(text);
+    this.activeModal.close();
+    return this.dismiss;
+  }
 
   closed(event: any): Observable<any> {
     this.close.next(event);

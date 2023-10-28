@@ -1,93 +1,96 @@
-<div class="modal-header">
-  <h4 class="modal-title">
-    Informacje o wizycie: {{ wizyta.poczatek | date : 'HH:mm' }} - {{ wizyta.koniec | date : 'HH:mm' }}
-  </h4>
-  <button (click)="activeModal.close('Nie')" aria-label="Close" class="btn-close" type="button"></button>
-</div>
-<div class="modal-body">
-  <ng-container *ngIf="wizyta.cancled()">
-    <h4 class="h4canceled">Wizyta została odwołana</h4>
-    <p class="h4canceled">
-      Powód: {{ wizyta.returnCanceledDetail()?.additionalDetail?.reason }}<br />
-      Anulujący: {{ podreczne_.returnWorkerFromIf(wizyta.returnCanceledDetail()?.additionalDetail?.workerId) }}
-    </p>
-  </ng-container>
-  <table>
-    <tr>
-      <th>Klient:</th>
-      <td>
-        {{ wizyta.customer.firstName + ' ' + wizyta.customer.lastName }}
-      </td>
-    </tr>
-    <tr>
-      <th>Termin:</th>
-      <td>
-        {{ wizyta.poczatek | date : 'dd.LL.YYYY' }}
-      </td>
-    </tr>
-    <tr>
-      <th>Godziny:</th>
-      <td>{{ wizyta.poczatek | date : 'HH:mm' }} - {{ wizyta.koniec | date : 'HH:mm' }}</td>
-    </tr>
-    <tr>
-      <th>Data rejestracji</th>
-      <td>
-        {{ wizyta.dataUtworzenia | date : 'dd.LL.YYYY  HH:mm' }}
-      </td>
-    </tr>
-    <tr>
-      <th>Telefon:</th>
-      <td>
-        {{ wizyta.customer.phone }}
-      </td>
-    </tr>
-    <tr>
-      <th>Email:</th>
-      <td>{{ wizyta.customer.email }}</td>
-    </tr>
-    <tr>
-      <th>Sposób utworzenia</th>
-      <td *ngIf="['manual', 'auto'].indexOf(wizyta.tryb) != -1">Ręcznie w panelu zarządzania</td>
-      <td *ngIf="wizyta.tryb == 'reklamowa'">Automatycznie za pośrednictwem strony reklamowej</td>
-    </tr>
-    <tr>
-      <th>Wykonanie:</th>
-      <td *ngIf="wizyta.completed == true" class="visitCompleted">Wykonana</td>
-      <td *ngIf="wizyta.completed == undefined" class="visitCompletedUndefined">Nieoznaczona</td>
-      <td *ngIf="wizyta.completed == false" class="visitNotCompleted">Niewykonana</td>
-    </tr>
+<div [ngClass]="{ blur: blur }">
+  <div class="modal-header">
+    <h4 class="modal-title">
+      Informacje o wizycie: {{ wizyta.poczatek | date : 'HH:mm' }} - {{ wizyta.koniec | date : 'HH:mm' }}
+    </h4>
+    <button (click)="activeModal.close('Nie')" aria-label="Close" class="btn-close" type="button"></button>
+  </div>
+  <div class="modal-body">
+    <ng-container *ngIf="wizyta.cancled()">
+      <h4 class="h4canceled">Wizyta została odwołana</h4>
+      <p class="h4canceled">
+        Powód: {{ wizyta.returnCanceledDetail()?.additionalDetail?.reason }}<br />
+        Anulujący: {{ podreczne_.returnWorkerFromIf(wizyta.returnCanceledDetail()?.additionalDetail?.workerId) }}
+      </p>
+    </ng-container>
+    <table>
+      <tr>
+        <th>Klient:</th>
+        <td>
+          {{ wizyta.customer.firstName + ' ' + wizyta.customer.lastName }}
+        </td>
+      </tr>
+      <tr>
+        <th>Termin:</th>
+        <td>
+          {{ wizyta.poczatek | date : 'dd.LL.YYYY' }}
+        </td>
+      </tr>
+      <tr>
+        <th>Godziny:</th>
+        <td>{{ wizyta.poczatek | date : 'HH:mm' }} - {{ wizyta.koniec | date : 'HH:mm' }}</td>
+      </tr>
+      <tr>
+        <th>Data rejestracji</th>
+        <td>
+          {{ wizyta.dataUtworzenia | date : 'dd.LL.YYYY  HH:mm' }}
+        </td>
+      </tr>
+      <tr>
+        <th>Telefon:</th>
+        <td>
+          {{ wizyta.customer.phone }}
+        </td>
+      </tr>
+      <tr>
+        <th>Email:</th>
+        <td>{{ wizyta.customer.email }}</td>
+      </tr>
+      <tr>
+        <th>Sposób utworzenia</th>
+        <td *ngIf="['manual', 'auto'].indexOf(wizyta.tryb) != -1">Ręcznie w panelu zarządzania</td>
+        <td *ngIf="wizyta.tryb == 'reklamowa'">Automatycznie za pośrednictwem strony reklamowej</td>
+      </tr>
+      <tr>
+        <th>Wykonanie:</th>
+        <td *ngIf="wizyta.completed == true" class="visitCompleted">Wykonana</td>
+        <td *ngIf="wizyta.completed == undefined" class="visitCompletedUndefined">Nieoznaczona</td>
+        <td *ngIf="wizyta.completed == false" class="visitNotCompleted">Niewykonana</td>
+      </tr>
 
-    <tr>
-      <th>Usluga:</th>
-      <td *ngIf="['manual'].indexOf(wizyta.tryb) != -1">
-        {{ wizyta.uslugi?.opis }}
-      </td>
-      <td *ngIf="['auto', 'reklamowa'].indexOf(wizyta.tryb) != -1">
-        <ul>
-          <li *ngFor="let usluga of wizyta.uslugi?.uslugi">{{ usluga?.nazwa }} - {{ usluga?.cena + 'zł' }}</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <button
-          (click)="cancleVisit()"
-          [disabled]="buttonBlock || wizyta.poTerminie() || wizyta.cancled()"
-          [title]="wizyta.poTerminie() ? 'Wizyta już się odbyła' : ''"
-          class="domyslnyButton3">
-          Odwołaj
-        </button>
-        <button (click)="clientLastVisits()" [disabled]="buttonBlock" class="domyslnyButton2">Historia wizyt</button>
-        <button
-          (click)="zarzadzanieTerminem_.modifyVisit(wizyta, activeModal)"
-          [disabled]="buttonBlock || wizyta.cancled()"
-          class="domyslnyButton4">
-          Edytuj wizytę
-        </button>
-      </td>
-    </tr>
-  </table>
-</div>
-<div class="modal-footer">
-  <button (click)="activeModal.close('anuluj')" [disabled]="buttonBlock" class="domyslnyButtonAnuluj">Anuluj</button>
+      <tr>
+        <th>Usluga:</th>
+        <td *ngIf="['manual'].indexOf(wizyta.tryb) != -1">
+          {{ wizyta.uslugi?.opis }}
+        </td>
+        <td *ngIf="['auto', 'reklamowa'].indexOf(wizyta.tryb) != -1">
+          <ul>
+            <li *ngFor="let usluga of wizyta.uslugi?.uslugi">{{ usluga?.nazwa }} - {{ usluga?.cena + 'zł' }}</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button
+            (click)="cancleVisit()"
+            [disabled]="buttonBlock || wizyta.poTerminie() || wizyta.cancled()"
+            [title]="wizyta.poTerminie() ? 'Wizyta już się odbyła' : ''"
+            class="domyslnyButton3">
+            Odwołaj
+          </button>
+          <button (click)="clientLastVisits()" [disabled]="buttonBlock" class="domyslnyButton2">Historia wizyt</button>
+          <button
+            (click)="zarzadzanieTerminem_.modifyVisit(wizyta, activeModal)"
+            [disabled]="buttonBlock || wizyta.cancled()"
+            class="domyslnyButton4">
+            Edytuj wizytę
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <app-confirm-visit-button [visit]="wizyta"></app-confirm-visit-button>
+    <button (click)="activeModal.close('anuluj')" [disabled]="buttonBlock" class="domyslnyButtonAnuluj">Anuluj</button>
+  </div>
 </div>

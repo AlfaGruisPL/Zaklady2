@@ -10,31 +10,20 @@ import { PodreczneDaneService } from '../../../../../serwisy/podreczne-dane.serv
 export class HarmonogramDniaComponent implements OnInit {
   godzinaRozpoczecia = 99;
   godzinaZakonczenia = 0;
+  protected readonly console = console;
 
   constructor(public harmonogram_: HarmonogramService, private podreczneDane_: PodreczneDaneService) {}
 
   ngOnInit() {
+    this.getDate();
+  }
+
+  getDate() {
     this.podreczneDane_.danePodreczneObserveble.subscribe(dane => {
       if (dane != undefined) {
         this.generujDzien();
       }
     });
-  }
-
-  private generujDzien() {
-    const tmp = this.podreczneDane_.danePodreczneObiekt.godzinyOtwarcia;
-    [tmp.poniedzialek, tmp.wtorek, tmp.sroda, tmp.czwartek, tmp.piatek, tmp.sobota, tmp.niedziela].forEach(dzien => {
-      if (dzien.czynnyDzien) {
-        const rozpoczenie = Number(dzien.otwarcie.split(':')[0]);
-        const zakonczenie = Number(dzien.zamkniecie.split(':')[0]);
-        this.godzinaRozpoczecia = rozpoczenie < this.godzinaRozpoczecia ? rozpoczenie : this.godzinaRozpoczecia;
-        this.godzinaZakonczenia = zakonczenie > this.godzinaZakonczenia ? zakonczenie : this.godzinaZakonczenia;
-      }
-    });
-
-    //this.godzinaRozpoczecia -= 1;
-    this.godzinaZakonczenia -= this.godzinaRozpoczecia;
-    this.godzinaZakonczenia += 0.5;
   }
 
   public zwrocGodzine(index: number) {
@@ -58,5 +47,27 @@ export class HarmonogramDniaComponent implements OnInit {
     return godzina + ':' + minuta;
   }
 
-  protected readonly console = console;
+  visitCompleted() {
+    return this.harmonogram_.wizytyDzis.filter(visit => visit.completed != false);
+  }
+
+  visitNoCompleted() {
+    return this.harmonogram_.wizytyDzis.filter(visit => visit.completed == false);
+  }
+
+  private generujDzien() {
+    const tmp = this.podreczneDane_.danePodreczneObiekt.godzinyOtwarcia;
+    [tmp.poniedzialek, tmp.wtorek, tmp.sroda, tmp.czwartek, tmp.piatek, tmp.sobota, tmp.niedziela].forEach(dzien => {
+      if (dzien.czynnyDzien) {
+        const rozpoczenie = Number(dzien.otwarcie.split(':')[0]);
+        const zakonczenie = Number(dzien.zamkniecie.split(':')[0]);
+        this.godzinaRozpoczecia = rozpoczenie < this.godzinaRozpoczecia ? rozpoczenie : this.godzinaRozpoczecia;
+        this.godzinaZakonczenia = zakonczenie > this.godzinaZakonczenia ? zakonczenie : this.godzinaZakonczenia;
+      }
+    });
+
+    //this.godzinaRozpoczecia -= 1;
+    this.godzinaZakonczenia -= this.godzinaRozpoczecia;
+    this.godzinaZakonczenia += 0.5;
+  }
 }

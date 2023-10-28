@@ -8,10 +8,12 @@
     <td *ngFor="let k of [].constructor(this.godzinaZakonczenia * 2); let index = index" class="podzial">
       <ng-container *ngIf="index == 0">
         <app-harmonogram-dnia-termin
-          *ngFor="let termin of harmonogram_.wizytyDzis"
+          *ngFor="let termin of visitCompleted(); let index2 = index"
           [godzinaRozpoczecia]="godzinaRozpoczecia"
           [godzinaZakonczenia]="godzinaZakonczenia"
+          [id]="index2"
           [wizyta]="termin"></app-harmonogram-dnia-termin>
+
         <app-harmonogram-dnia-aktualna-godzina
           [godzinaRozpoczecia]="godzinaRozpoczecia"
           [godzinaZakonczenia]="godzinaZakonczenia"
@@ -20,4 +22,3 @@
     </td>
   </tr>
 </table>
-

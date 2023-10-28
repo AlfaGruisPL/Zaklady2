@@ -39,7 +39,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
  * @Outputs **changePage**  - EventEmiter oznaczający zmianę strony
  * @Outputs  **changeRowsOnPage** -EventEmiter - wysyłający ilość stron jakie mają zostać pobrane z bazy danych
  * @Inputs **collectionSize**  - suma wszystkich elementów jakie są lub mogą być dostępne
- * @Inputs **pageSize** - ilość elementów na pojedyńczej stronie
+ * @Inputs **pageSize** - ilość elementów na pojedyńczej stronie (domyślnie 5)
  * @Inputs **loading**  -
  * @Inputs **paggiantion**  - czy ma być włączona opcja przewiajnia (domyślnie true)
  * @Inputs **data** - dane

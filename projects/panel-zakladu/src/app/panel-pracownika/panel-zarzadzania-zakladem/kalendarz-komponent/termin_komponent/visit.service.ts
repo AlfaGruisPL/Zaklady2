@@ -11,6 +11,8 @@ import { KalendarzKomponentService } from '../kalendarz-komponent.service';
   providedIn: 'root',
 })
 export class VisitService {
+  actualTrigeredElements: any[] = [];
+
   constructor(
     public http: ListonoszService,
     private error_: ErrorAnalyzerService,
@@ -18,29 +20,35 @@ export class VisitService {
     private kalendarz_: KalendarzKomponentService
   ) {}
 
-  confirmVisit(visit: Wizyta) {
-    this.http
+  async confirmVisit(visit: Wizyta, updateCalendarService = true) {
+    await this.http
       .aktualizuj(Drzwi.changeCompleteStatus + visit.id, { completed: true })
       .then(dane => {
         this.komunikaty_.komunikatUdane(Udane.wizytaOznaczonaJakoWykonana);
         visit.completed = true;
-        this.kalendarz_.pobierzDane();
+        if (updateCalendarService) {
+          this.kalendarz_.pobierzDane();
+        }
       })
       .catch(error => {
         this.error_.analyze(error);
       });
+    return true;
   }
 
-  disConfirmVisit(visit: Wizyta) {
-    this.http
+  async disConfirmVisit(visit: Wizyta, updateCalendarService = true) {
+    await this.http
       .aktualizuj(Drzwi.changeCompleteStatus + visit.id, { completed: false })
       .then(dane => {
         this.komunikaty_.komunikatUdane(Udane.wizytaOznaczonaJakoNieWykonana);
-        this.kalendarz_.pobierzDane();
+        if (updateCalendarService) {
+          this.kalendarz_.pobierzDane();
+        }
         visit.completed = false;
       })
       .catch(error => {
         this.error_.analyze(error);
       });
+    return true;
   }
 }

@@ -226,3 +226,9 @@ table.ladowanieDanych {
     z-index: 102;
   }
 }
+
+::ng-deep.confirmDisconfirmDiv {
+  @media (max-width: 700px) {
+    display: none !important;
+  }
+}

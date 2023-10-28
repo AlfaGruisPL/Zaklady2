@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Wizyta } from '../../../../klasy/panelPracownika/wizyta';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Funkcje } from '../../../../funkcje';
@@ -12,16 +12,19 @@ import { ErrorAnalyzerService } from '../../../../serwisy/error-analyzer.service
 import { HttpError } from '../../../../../../../klasy/httpError';
 import { PodreczneDaneService } from '../../../../serwisy/podreczne-dane.service';
 import { ZarzadzanieTerminemService } from './zarzadzanie-terminem.service';
+import { VisitService } from '../termin_komponent/visit.service';
+import { KomunikatUniwersalnyService } from '../../../../komponets/komunikat-uniwersalny/komunikat-uniwersalny.service';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-kalendarz-zarzadzanie-terminem',
   templateUrl: './kalendarz-zarzadzanie-terminem.component.html',
   styleUrls: ['./kalendarz-zarzadzanie-terminem.component.scss'],
 })
-export class KalendarzZarzadzanieTerminemComponent {
+export class KalendarzZarzadzanieTerminemComponent implements OnInit {
   @Input() wizyta: Wizyta = new Wizyta({});
   buttonBlock = false;
-
+  blur = false;
   protected readonly Function = Function;
   protected readonly Funkcje = Funkcje;
   protected readonly blockquote = blockquote;
@@ -32,13 +35,57 @@ export class KalendarzZarzadzanieTerminemComponent {
     public ngbModal: NgbModal,
     private http: ListonoszService,
     private kalendarz_: KalendarzKomponentService,
+    public visit_: VisitService,
     public podreczne_: PodreczneDaneService,
     public zarzadzanieTerminem_: ZarzadzanieTerminemService,
+    private universalMessage_: KomunikatUniwersalnyService,
     private errorAnalizer_: ErrorAnalyzerService
   ) {}
 
-  test() {
-    console.log(1);
+  ngOnInit() {
+    if (this.visit_.actualTrigeredElements.length > 1) {
+      this.blur = true;
+      let index = 1;
+      let text = '<table class="tableChoiseVisit">';
+      this.visit_.actualTrigeredElements.forEach(visit => {
+        const visitObj = this.kalendarz_.getVisitFromID(visit);
+        text += `
+<tr>
+<th>${index}.</th>
+<td>${visitObj?.poczatek.toLocaleString().split(' ')[1]}</td>
+<td>${visitObj?.koniec.toLocaleString().split(' ')[1]}</td>
+<td>${visitObj?.customer.firstName}</td>
+<td>${visitObj?.customer.lastName}</td>
+</tr>
+`;
+        index++;
+      });
+      text += '</table>';
+      index = 1;
+
+      const window = this.universalMessage_.open('Wybierz termin:', text);
+      this.visit_.actualTrigeredElements.forEach(visit => {
+        const visitObj = this.kalendarz_.getVisitFromID(visit);
+        window
+          .addButton(' ' + index.toString(), { class: 'domyslnyButton' + ((index % 3) + 2) }, visitObj!.id.toString()!)
+          .pipe(take(1))
+          .subscribe(visit => {
+            this.wizyta = this.kalendarz_.getVisitFromID(visit)!;
+            this.blur = false;
+          });
+        index++;
+      });
+
+      window
+        .addButton('Anuluj', { defaultNo: true })
+        .pipe(take(1))
+        .subscribe(k => {
+          this.activeModal.dismiss();
+        });
+      window.dismiss.pipe(take(1)).subscribe(k => {
+        this.activeModal.dismiss();
+      });
+    }
   }
 
   clientLastVisits() {

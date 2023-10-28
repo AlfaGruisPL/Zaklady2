@@ -5,8 +5,18 @@
 @import '../../../../../node_modules/tippy.js/animations/scale.css';
 @import 'https://cdn.jsdelivr.net/npm/suneditor@latest/dist/css/suneditor.min.css';
 
+.offcanvas {
+  z-index: 3000;
+}
+
 html {
   height: 100dvh;
+}
+
+.tableChoiseVisit {
+  tr td {
+    padding-left: 10px;
+  }
 }
 
 .NoMax1200 {
