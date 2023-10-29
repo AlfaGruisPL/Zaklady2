@@ -114,6 +114,6 @@ import { TerminNieDostepnyComponent } from './one-page-strona/komponenty/formula
     TerminNieDostepnyComponent,
   ],
   bootstrap: [AppComponent],
-  exports: [HtmlSanitizerPipe],
+  exports: [HtmlSanitizerPipe, FormularzZarejestrujSieComponent],
 })
 export class AppModule {}

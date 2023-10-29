@@ -13,6 +13,7 @@ import { KomunikatyService } from '../../../../serwisy/komunikaty.service';
 import { Udane } from '../../../../enum/udane';
 import { environment } from '../../../../../environments/environment';
 import { Funkcje } from '../../../../funkcje';
+import * as EmailValidator from 'email-validator';
 
 @Component({
   selector: 'app-kalendarz-modyfikacja-terminu',
@@ -22,7 +23,7 @@ import { Funkcje } from '../../../../funkcje';
 export class KalendarzModyfikacjaTerminuComponent implements OnInit {
   @Input() formualrzRejestracjiWizyty: FormGroup = this.fb.group({});
   @Input() parentNgbActiveModal: NgbActiveModal | undefined;
-  public tryb = 'manual';
+  public auto = true;
   public edit = false;
   public wizyta = new Wizyta({});
   kliknieteUslugi: Usluga[] = [];
@@ -96,10 +97,19 @@ export class KalendarzModyfikacjaTerminuComponent implements OnInit {
   }
 
   sendHandler() {
+    ///walidacja Email jeśli nie pusty
+    const emailValue = this.formualrzRejestracjiWizyty.controls['email'].value;
+    if (emailValue.length > 0) {
+      if (!EmailValidator.validate(emailValue)) {
+        this.formualrzRejestracjiWizyty.controls['email'].setErrors({ email: false });
+        this.komunikaty_.komunikatInfo('');
+        return;
+      }
+    }
     this.buttonBlock = true;
     const data = this.formualrzRejestracjiWizyty.value;
     const uslugiId: number[] = [];
-    if (this.tryb == 'auto') {
+    if (this.auto) {
       this.kliknieteUslugi.forEach(k => {
         uslugiId.push(k.id);
       });
@@ -113,7 +123,12 @@ export class KalendarzModyfikacjaTerminuComponent implements OnInit {
   }
 
   zmianaOkna(event: any) {
-    this.tryb = event.target.value;
+    this.auto = !event;
+  }
+
+  size() {
+    if (document.body.clientWidth < 700) return 'small';
+    return 'medium';
   }
 
   private send(data: object) {

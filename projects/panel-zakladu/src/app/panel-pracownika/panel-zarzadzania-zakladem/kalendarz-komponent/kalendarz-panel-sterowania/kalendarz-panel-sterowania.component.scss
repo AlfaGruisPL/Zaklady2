@@ -26,6 +26,9 @@
   justify-content: center;
   padding-bottom: 10px;
   position: relative;
+  @media (max-width: 600px) {
+    padding-bottom: 3px;
+  }
 
   .teraz {
     position: absolute;

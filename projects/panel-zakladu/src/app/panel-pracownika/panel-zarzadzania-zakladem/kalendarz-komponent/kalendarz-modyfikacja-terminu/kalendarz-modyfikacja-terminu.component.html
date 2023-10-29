@@ -1,16 +1,16 @@
 <div class="modal-header">
   <h4 *ngIf="!edit" class="modal-title">Rejestracja wizyty:</h4>
   <h4 *ngIf="edit" class="modal-title">Modyfikacja wizyty:</h4>
-  <button (click)="activeModal.close('Nie')" aria-label="Close" class="btn-close" type="button"></button>
+  <button (click)="activeModal.dismiss('Nie')" aria-label="Close" class="btn-close" type="button"></button>
 </div>
 <form (ngSubmit)="sendHandler()" [formGroup]="formualrzRejestracjiWizyty">
   <div class="modal-body">
-    <table>
+    <table class="dataTable">
       <tr>
         <th>Klient*:</th>
         <td>
-          <input formControlName="imie" placeholder="imię" />
-          <input formControlName="nazwisko" placeholder="nazwisko" />
+          <input class="nameInput" formControlName="imie" placeholder="imię" />
+          <input class="nameInput" formControlName="nazwisko" placeholder="nazwisko" />
         </td>
       </tr>
       <tr>
@@ -22,24 +22,29 @@
       <tr>
         <th>Godziny*:</th>
         <td>
-          <input formControlName="poczatek" type="time" value="12:12" /> <input formControlName="koniec" type="time" />
+          <label class="timeLabel">Od:</label><input formControlName="poczatek" type="time" value="12:12" />
+          <label class="timeLabel">Do:</label><input formControlName="koniec" type="time" />
         </td>
       </tr>
       <tr>
         <th>Telefon*:</th>
         <td>
-          <div class="select">
-            <select formControlName="prefix" type="text">
-              <option>+48</option>
-              <option>+380&nbsp;&nbsp;&nbsp;</option>
-            </select>
-          </div>
-          <input formControlName="telefon" type="tel" />
+          <select formControlName="prefix" type="text">
+            <option>+48</option>
+            <option>+380&nbsp;&nbsp;&nbsp;</option>
+          </select>
+          <input class="phoneNumber" formControlName="telefon" type="tel" />
         </td>
       </tr>
       <tr>
         <th>Email:</th>
-        <td><input formControlName="email" type="email" /></td>
+        <td>
+          <input
+            [ngClass]="{ inputInvalid: formualrzRejestracjiWizyty.controls['email'].invalid }"
+            class="longInput"
+            formControlName="email"
+            type="email" />
+        </td>
       </tr>
 
       <tr *ngIf="edit">
@@ -51,58 +56,51 @@
           <input formControlName="confirmed" name="confirmed" type="radio" value="false" />
         </td>
       </tr>
-      <tr>
-        <th>Konifguracja</th>
-        <td>
-          Ręczna:
-          <input
-            (click)="zmianaOkna($event)"
-            [(ngModel)]="tryb"
-            [ngModelOptions]="{ standalone: true }"
-            name="type"
-            type="radio"
-            value="manual" />
-          &nbsp; &nbsp;Automatyczna:
-          <input
-            (click)="zmianaOkna($event)"
-            [(ngModel)]="tryb"
-            [ngModelOptions]="{ standalone: true }"
-            name="type"
-            type="radio"
-            value="auto" />
-        </td>
-      </tr>
+
       <tr *ngIf="token_.czyWlasciciel()">
         <th>Przypisanie:</th>
         <td>
-          <div class="select">
-            <select formControlName="wykonawca">
-              <option *ngFor="let pracownik of kalendarz_.pracownicy" [value]="pracownik.id">
-                {{ pracownik.imie + ' ' + pracownik.nazwisko }}&nbsp;&nbsp;&nbsp;
-              </option>
-            </select>
-          </div>
+          <select class="longInput" formControlName="wykonawca">
+            <option *ngFor="let pracownik of kalendarz_.pracownicy" [value]="pracownik.id">
+              {{ pracownik.imie + ' ' + pracownik.nazwisko }}&nbsp;&nbsp;&nbsp;
+            </option>
+          </select>
         </td>
       </tr>
       <tr>
         <th>Cena</th>
-        <td><input formControlName="cena" style="width: 100px" type="number" />zł</td>
+        <td><input formControlName="cena" style="width: 100px" type="number" /> zł</td>
+      </tr>
+      <tr>
+        <th>Konifguracja</th>
+        <td>
+          <ui-switch
+            (change)="zmianaOkna($event)"
+            [size]="size()"
+            checkedLabel="Manualna"
+            class="uiSwitch150px"
+            uncheckedLabel="Automatyczna"></ui-switch>
+        </td>
       </tr>
     </table>
-    <div *ngIf="tryb == 'auto'" class="auto">
+
+    <div *ngIf="auto" class="auto">
       <h4>Usługi ({{ obliczCene() }}zł)</h4>
       <div class="listaUslug">
         <ul>
           <li *ngFor="let usluga of uslugi_.listaUslug">
-            <input (click)="klikniecie($event, usluga)" [checked]="usluga.zaznaczone" type="checkbox" />&nbsp;{{
-              usluga.nazwa
-            }}
+            <input
+              (click)="klikniecie($event, usluga)"
+              [checked]="usluga.zaznaczone"
+              class="checkboxRegisterVisit"
+              type="checkbox" />&nbsp; <span style="display: inline-block; min-width: 35px">{{ usluga.cena }}zł</span> -
+            {{ usluga.nazwa }}
           </li>
         </ul>
       </div>
     </div>
 
-    <div *ngIf="tryb == 'manual'" class="manual">
+    <div *ngIf="!auto" class="manual">
       <h4>Usługi</h4>
       <table>
         <tr>
@@ -113,6 +111,9 @@
     </div>
   </div>
   <div class="modal-footer">
+    <p *ngIf="formualrzRejestracjiWizyty.controls['email'].value.length == 0" class="infoNoEmailAdress">
+      Brak adresu email uniemożliwi powiadomienie klienta za pośrednictwem poczty elektronicznej
+    </p>
     <p *ngIf="!edit" class="info">
       Utworzenie wizyty jest jednoznaczne z powiadomieniem użytkownika w formie email oraz sms.
     </p>

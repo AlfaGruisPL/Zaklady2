@@ -39,7 +39,7 @@ export class PlatnosciPracownikaNaglowekComponent {
     const okno = this.modalService.open(StartStopUslugaComponent, {
       //   size: 'lg',
     });
-    okno.componentInstance.tryb = 'wlacz';
+    okno.componentInstance.auto = 'wlacz';
     okno.result
       .then(k => {
         this.aktywacjaKontaZapytanie();
@@ -53,7 +53,7 @@ export class PlatnosciPracownikaNaglowekComponent {
     const okno = this.modalService.open(StartStopUslugaComponent, {
       // size: 'lg',
     });
-    okno.componentInstance.tryb = 'wylacz';
+    okno.componentInstance.auto = 'wylacz';
     okno.result
       .then(k => {
         this.wstrzymajKontoZapytanie();

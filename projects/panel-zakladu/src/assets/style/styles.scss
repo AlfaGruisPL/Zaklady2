@@ -525,100 +525,6 @@ body {
   }
 }
 
-.switch.switch-small > .switch-pane > span {
-  font-size: 15px !important;
-  font-weight: 500 !important;
-}
-
-.przelacznikPublicznePrywatne {
-  button {
-    width: 105px !important;
-  }
-
-  @media (max-width: 700px) {
-    .switch.switch-small > .switch-pane > span {
-      font-size: 12px !important;
-    }
-    button {
-      width: 80px !important;
-    }
-  }
-}
-
-.przelacznikCzynneNieczynne {
-  .switch {
-    width: 104px !important;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-
-  @media (max-width: 700px) {
-    .switch.switch-small > .switch-pane > span {
-      font-size: 12px !important;
-    }
-    .switch {
-      width: 84px !important;
-    }
-  }
-
-  .switch:not(.checked) {
-    background: #868686 !important;
-
-    label {
-      span {
-        color: white !important;
-      }
-    }
-  }
-
-  .switch.checked {
-    background: rgb(163 199 231) !important;
-
-    label {
-      span {
-        color: black !important;
-      }
-    }
-  }
-}
-
-.przelacznikWidocznyNiewidoczny {
-  .switch {
-    width: 115px !important;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
-
-  @media (max-width: 700px) {
-    .switch.switch-small > .switch-pane > span {
-      font-size: 12px !important;
-    }
-    .switch {
-      width: 99px !important;
-    }
-  }
-
-  .switch:not(.checked) {
-    background: #868686 !important;
-
-    label {
-      span {
-        color: white !important;
-      }
-    }
-  }
-
-  .switch.checked {
-    background: rgb(163 199 231) !important;
-
-    label {
-      span {
-        color: black !important;
-      }
-    }
-  }
-}
-
 .switchButtonDiv {
   button,
   select {
@@ -707,10 +613,6 @@ body {
     font-size: 15px;
     line-height: -24px;
   }
-}
-
-.uiSwitch120px button label {
-  width: 120px;
 }
 
 //obracanie
@@ -802,6 +704,12 @@ body {
   transition: box-shadow 0.05s;
   letter-spacing: 3px;
   box-shadow: 0px 0px 2px 1px inset rgba(0, 0, 0, 0.4);
+  @media (max-width: 700px) {
+    font-size: 12px;
+    padding: 2px 4px 2px 4px;
+    letter-spacing: 2px;
+    border-radius: 5px;
+  }
 
   &.small {
     font-size: 10px;

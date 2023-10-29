@@ -3,9 +3,9 @@
   <tr>
     <th class="wyswietlaneGodzinySpan" style="font-size: 18px"></th>
     <th *ngFor="let dzien of Kalendarz_.dni" class="naglowkiTabeli">
-      <span [ngClass]="{ dzisiejszaData: czyToDzis(dzien.data) }">
-        <span class="wyswietlaneDniSpan"> {{ dzien.nazwa }}</span> <br />
-        <span class="wyswietlaneDniSpan data">{{ dzien.samaData() }}</span>
+      <span [ngClass]="{ dzisiejszaData: czyToDzis(dzien.data) }" class="dataThClass">
+        <span class="wyswietlaneDniSpan"> {{ dzien.nazwa }}</span>
+        <span [innerHTML]="responsivTime(dzien.samaData())" class="wyswietlaneDniSpan data"></span>
       </span>
       <div *ngIf="zarzadzanie" class="zarzadzanie" ngbDropdown>
         <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle type="button">

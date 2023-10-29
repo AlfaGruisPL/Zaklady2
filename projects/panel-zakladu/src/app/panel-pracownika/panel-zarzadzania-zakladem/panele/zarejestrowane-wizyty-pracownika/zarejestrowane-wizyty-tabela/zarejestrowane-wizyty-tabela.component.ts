@@ -16,7 +16,7 @@ import { ZarzadzanieTerminemService } from '../../../kalendarz-komponent/kalenda
 })
 export class ZarejestrowaneWizytyTabelaComponent implements OnInit, OnDestroy {
   filter = 'przyszle';
-  pageSize = 10;
+  pageSize = 15;
   wizyty: Array<Wizyta> = [];
   iloscWizytOgolna = 0;
   strona = 1;

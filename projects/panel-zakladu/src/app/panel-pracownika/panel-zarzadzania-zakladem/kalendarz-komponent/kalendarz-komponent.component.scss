@@ -5,15 +5,21 @@ $kolor: #c4c4c4;
 
   line-height: 21px;
 
+  .dataThClass {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   span {
     font-size: 18px;
-    @media (max-width: 600px) {
+    @media (max-width: 720px) {
       font-size: 12px;
     }
     position: relative;
 
     span:first-child {
-      @media (max-width: 600px) {
+      @media (max-width: 720px) {
         text-overflow: ellipsis;
         overflow: hidden;
         width: 22px;
@@ -24,13 +30,16 @@ $kolor: #c4c4c4;
     }
 
     span:last-child {
-      width: 0px;
-      height: 65px;
-      @media (max-width: 600px) {
-        position: relative;
-        top: -30px;
-        display: block;
-        transform: rotate(74deg);
+      //width: 0px;
+      //  height: 65px;
+      @media (max-width: 720px) {
+        display: flex;
+        flex-direction: column;
+
+        /* position: relative;
+         top: -30px;
+         display: block;
+         transform: rotate(74deg);*/
       }
     }
   }
@@ -43,7 +52,7 @@ $kolor: #c4c4c4;
   font-size: 15px;
   color: #404040;
   text-shadow: 0px 0px 1px black;
-  @media (max-width: 600px) {
+  @media (max-width: 720px) {
     font-size: 10px;
   }
 }
@@ -55,14 +64,15 @@ $kolor: #c4c4c4;
   color: #404040;
   text-shadow: 0px 0px 1px black;
   padding-bottom: 10px;
-  @media (max-width: 600px) {
+  @media (max-width: 720px) {
     font-size: 13px;
+    line-height: 13px;
   }
 }
 
 .wyswietlaneDniSpan.data {
   font-size: 15px;
-  @media (max-width: 600px) {
+  @media (max-width: 720px) {
     font-size: 12px;
   }
 }

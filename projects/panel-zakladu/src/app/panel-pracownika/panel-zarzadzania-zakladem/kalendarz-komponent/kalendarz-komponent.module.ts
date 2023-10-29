@@ -22,6 +22,7 @@ import { SelectDotyczyComponent } from '../../../komponets/select-dotyczy/select
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ConfirmVisitButtonComponent } from './termin_komponent/confirm-visit-button/confirm-visit-button.component';
+import { UiSwitchModule } from 'ngx-ui-switch';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { ConfirmVisitButtonComponent } from './termin_komponent/confirm-visit-bu
     NgSelectModule,
     FontAwesomeModule,
     ConfirmVisitButtonComponent,
+    UiSwitchModule,
   ],
   exports: [KalendarzKomponentComponent],
 })

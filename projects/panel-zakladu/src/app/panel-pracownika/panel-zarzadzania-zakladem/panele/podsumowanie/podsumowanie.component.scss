@@ -5,14 +5,23 @@ img {
 .panel1 {
   width: 100%;
   display: flex;
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
 }
 
 app-podsumowanie-informacje {
   width: 50%;
+  @media (max-width: 700px) {
+    width: 100%;
+  }
 }
 
 app-podsumowanie-wykres {
   width: 50%;
+  @media (max-width: 700px) {
+    width: 100%;
+  }
 }
 
 .panel2 {

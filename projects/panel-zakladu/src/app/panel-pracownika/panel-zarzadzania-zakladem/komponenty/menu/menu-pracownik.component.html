@@ -3,18 +3,20 @@
     <fa-icon [icon]="ikonki.flaga"></fa-icon>
     <span> Harmonogram na dziś </span>
   </a>
+  <a [routerLink]="['zarejestrowaneWizyty']" routerLinkActive="aktywneMenu">
+    <fa-icon [icon]="ikonki.karta"></fa-icon>
+    <span> Kalendarz</span>
+  </a>
   <a [routerLink]="['podsumowanie']" routerLinkActive="aktywneMenu">
     <fa-icon [icon]="ikonki.flaga"></fa-icon>
     <span>Podsumowanie </span>
   </a>
+
   <a [routerLink]="['listaKlientow']" routerLinkActive="aktywneMenu">
     <fa-icon [icon]="ikonki.klienci"></fa-icon>
     <span> Lista klientów </span>
   </a>
-  <a [routerLink]="['mojeKonto']" routerLinkActive="aktywneMenu">
-    <fa-icon [icon]="ikonki.czlowieczek"></fa-icon>
-    <span> Moje konto </span>
-  </a>
+
   <a *ngIf="token_.czyWlasciciel()" [routerLink]="['mojZaklad']" routerLinkActive="aktywneMenu">
     <fa-icon [icon]="ikonki.wiezowiec"></fa-icon>
     <span> Mój zakład </span>
@@ -23,19 +25,17 @@
     <fa-icon [icon]="ikonki.tag"></fa-icon>
     <span> Usługi </span>
   </a>
-  <a [routerLink]="['zarejestrowaneWizyty']" routerLinkActive="aktywneMenu">
-    <fa-icon [icon]="ikonki.karta"></fa-icon>
-    <span> Zarejestrowane wizyty </span>
-  </a>
+
   <a *ngIf="token_.czyWlasciciel()" [routerLink]="['zarzadzaniePracownikami']" routerLinkActive="aktywneMenu">
     <fa-icon [icon]="ikonki.czlowieczki"></fa-icon>
     <span> Pracownicy </span>
   </a>
+  <!--
   <a [routerLink]="['kalendarzTerminow']" routerLinkActive="aktywneMenu">
     <fa-icon [icon]="ikonki.kalendarz"></fa-icon>
     <span> Kalendarz terminów </span>
   </a>
-
+-->
   <a *ngIf="token_.czyWlasciciel()" [routerLink]="['platnosci']" routerLinkActive="aktywneMenu">
     <fa-icon [icon]="ikonki.kartaPlatnicza"></fa-icon>
     <span> Płatności </span>
@@ -52,9 +52,12 @@
     <fa-icon [icon]="ikonki.flaga"></fa-icon>
     <span>Raporty </span>
   </a>
-
   <a *ngIf="!token_.czyWlasciciel()" [href]="podreczne_.linkDoStronyReklamowej()" target="_blank">
     <fa-icon [icon]="ikonki.zdjecie"></fa-icon>
     <span> Strona reprezentacyjna </span>
+  </a>
+  <a [routerLink]="['mojeKonto']" routerLinkActive="aktywneMenu">
+    <fa-icon [icon]="ikonki.czlowieczek"></fa-icon>
+    <span> Moje konto </span>
   </a>
 </nav>

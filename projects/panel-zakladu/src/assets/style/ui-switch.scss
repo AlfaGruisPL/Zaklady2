@@ -1,0 +1,101 @@
+.uiSwitch120px button label {
+  width: 120px;
+}
+
+.uiSwitch150px button label {
+  width: 150px;
+}
+
+.switch.switch-small > .switch-pane > span {
+  font-size: 15px !important;
+  font-weight: 500 !important;
+}
+
+.przelacznikPublicznePrywatne {
+  button {
+    width: 105px !important;
+  }
+
+  @media (max-width: 700px) {
+    .switch.switch-small > .switch-pane > span {
+      font-size: 12px !important;
+    }
+    button {
+      width: 80px !important;
+    }
+  }
+}
+
+.przelacznikCzynneNieczynne {
+  .switch {
+    width: 104px !important;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  @media (max-width: 700px) {
+    .switch.switch-small > .switch-pane > span {
+      font-size: 12px !important;
+    }
+    .switch {
+      width: 84px !important;
+    }
+  }
+
+  .switch:not(.checked) {
+    background: #868686 !important;
+
+    label {
+      span {
+        color: white !important;
+      }
+    }
+  }
+
+  .switch.checked {
+    background: rgb(163 199 231) !important;
+
+    label {
+      span {
+        color: black !important;
+      }
+    }
+  }
+}
+
+.przelacznikWidocznyNiewidoczny {
+  .switch {
+    width: 115px !important;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  @media (max-width: 700px) {
+    .switch.switch-small > .switch-pane > span {
+      font-size: 12px !important;
+    }
+    .switch {
+      width: 99px !important;
+    }
+  }
+
+  .switch:not(.checked) {
+    background: #868686 !important;
+
+    label {
+      span {
+        color: white !important;
+      }
+    }
+  }
+
+  .switch.checked {
+    background: rgb(163 199 231) !important;
+
+    label {
+      span {
+        color: black !important;
+      }
+    }
+  }
+}

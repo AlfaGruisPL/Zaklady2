@@ -53,7 +53,7 @@ export class ZarzadzanieTerminemService {
     okno.componentInstance.parentNgbActiveModal = parentActiveModal;
 
     if (wizyta.czySaUslugi()) {
-      okno.componentInstance.tryb = 'auto';
+      okno.componentInstance.auto = 'auto';
     }
   }
 

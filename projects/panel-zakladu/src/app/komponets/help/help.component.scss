@@ -1,10 +1,10 @@
 .helpButton {
-  width: 40px;
-  height: 40px;
+  width: 22px;
+  height: 22px;
   background: rgba(105, 105, 105, 0.55);
   position: fixed;
   right: 15px;
-  bottom: 95px;
+  bottom: 79px;
   border-radius: 50%;
   border: 2px solid rgba(45, 45, 45, 0.55);
   z-index: 2000;
@@ -19,11 +19,11 @@
   }
 
   span {
-    font-size: 30px;
+    font-size: 16px;
     font-weight: bold;
 
     position: relative;
-    top: -2px;
+    top: -3px;
     color: whitesmoke;
   }
 

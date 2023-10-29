@@ -1,0 +1,18 @@
+li::before {
+  content: '\00BB';
+  position: relative;
+  left: -15px;
+  top: -2px;
+  font-weight: bold;
+}
+
+li {
+  text-indent: 10px;
+  list-style-type: none;
+  padding-bottom: 10px;
+}
+
+ul {
+  margin: 0 0 0 10px;
+  padding: 0;
+}

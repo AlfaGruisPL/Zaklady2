@@ -8,12 +8,24 @@
     */
   thead {
     tr {
+      th {
+        @media (max-width: 700px) {
+          font-size: 8px;
+        }
+      }
+
       th:first-of-type {
         padding-left: 10px;
+        @media (max-width: 700px) {
+          padding-left: 3px;
+        }
       }
 
       th:last-of-type {
         padding-right: 10px;
+        @media (max-width: 700px) {
+          padding-right: 3px;
+        }
       }
     }
   }
@@ -32,6 +44,10 @@
 
       td {
         width: max-content;
+
+        @media (max-width: 700px) {
+          font-size: 8px;
+        }
       }
 
       &:nth-of-type(even) {
@@ -196,5 +212,14 @@ $color1: rgb(236, 236, 236);
     border-radius: 40px;
     bottom: 2px;
     background-color: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.title {
+  h3 {
+    padding-top: 5px;
+    @media (max-width: 700px) {
+      font-size: 15px;
+    }
   }
 }

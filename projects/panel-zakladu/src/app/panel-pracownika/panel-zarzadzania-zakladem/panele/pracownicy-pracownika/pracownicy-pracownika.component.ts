@@ -95,7 +95,7 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
       backdrop: 'static',
       size: 'xl',
     });
-    okienko.componentInstance.tryb = 'dodawanie';
+    okienko.componentInstance.auto = 'dodawanie';
 
     this.sub1 = okienko.closed.subscribe(zamkniete => {
       if (zamkniete == 'Zapisanie udane') {
@@ -177,7 +177,7 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
       backdrop: 'static',
       size: 'xl',
     });
-    okienko.componentInstance.tryb = 'modyfikacja';
+    okienko.componentInstance.auto = 'modyfikacja';
     okienko.componentInstance.idUzytkownika = id;
     okienko.componentInstance.pobierzPracownika();
     this.sub2 = okienko.closed.subscribe(zamkniete => {
@@ -191,7 +191,7 @@ export class PracownicyPracownikaComponent implements OnInit, OnDestroy {
 
   public wyswietlUzytkownika(id: number) {
     const okienko = this.modalService.open(DodawanieIModyfikacjaPracownikaComponent, { size: 'xl' });
-    okienko.componentInstance.tryb = 'wyswietlenie';
+    okienko.componentInstance.auto = 'wyswietlenie';
     okienko.componentInstance.idUzytkownika = id;
     okienko.componentInstance.pobierzPracownika();
   }

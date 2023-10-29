@@ -1,8 +1,9 @@
 .modal-body {
-  display: flex;
+  padding-bottom: 10px !important;
   @media (max-width: 1200px) {
     flex-wrap: wrap;
-    .auto, .manual {
+    .auto,
+    .manual {
       border-top: 1px solid #575757;
       border-left: 0px;
       margin-top: 10px;
@@ -14,10 +15,17 @@
 }
 
 .auto {
-  height: 270px;
-  width: 400px;
+  width: 100%;
+  @media (min-width: 700px) {
+    height: 270px;
+  }
   border-left: 1px solid black;
   padding-left: 8px;
+
+  .checkboxRegisterVisit {
+    scale: 1.4;
+    margin-right: 2px;
+  }
 
   .listaUslug {
     overflow-y: auto;
@@ -34,14 +42,14 @@
       padding-left: 0px;
       padding-bottom: 0px;
     }
-
   }
 }
 
-
 .manual {
   padding-left: 8px;
-  height: 270px;
+  @media (min-width: 700px) {
+    height: 270px;
+  }
   max-width: 400px;
   width: 100%;
   border-left: 1px solid black;
@@ -75,13 +83,29 @@
 .modal-body {
   display: flex;
   padding-bottom: 0;
-
 }
 
 .info {
-  width: 70%;
+  width: 60%;
   font-size: 14px;
   font-weight: bold;
+  @media (max-width: 700px) {
+    width: 100%;
+    font-size: 12px;
+    font-weight: normal;
+  }
+}
+
+.infoNoEmailAdress {
+  color: #5e0000;
+  width: 60%;
+  font-size: 14px;
+  font-weight: bold;
+  @media (max-width: 700px) {
+    width: 100%;
+    font-size: 12px;
+    font-weight: normal;
+  }
 }
 
 .modal-footer {
@@ -97,3 +121,58 @@
   }
 }
 
+.dataTable {
+  width: 100%;
+
+  .timeLabel {
+    font-weight: bold;
+    padding-right: 5px;
+
+    &:last-of-type {
+      padding-left: 20px;
+    }
+  }
+
+  .phoneNumber {
+    width: 154px;
+    @media (max-width: 700px) {
+      width: 165px;
+    }
+  }
+
+  .longInput {
+    width: 230px;
+  }
+
+  input {
+    height: 32px;
+    font-size: 18px;
+    border: 2px inset #dbdbdb;
+    border-radius: 3px;
+    padding-left: 9px;
+    padding-right: 8px;
+    margin: 2px 2px 3px 0;
+    @media (max-width: 700px) {
+      height: 29px;
+      font-size: 18px;
+      border: 1px inset #ababab;
+      border-radius: 3px;
+      padding-left: 5px;
+      padding-right: 5px;
+      margin: 1px 1px 1px 0;
+    }
+    @media (max-width: 700px) {
+      font-size: 12px;
+    }
+
+    &.inputInvalid {
+      border-color: red;
+    }
+  }
+
+  .nameInput {
+    @media (max-width: 400px) {
+      width: 230px;
+    }
+  }
+}

@@ -64,6 +64,7 @@ export class PodsumowanieWykresComponent {
       },
     },
   };
+  resize = false;
 
   constructor(private listonosz: ListonoszService) {}
 
@@ -110,14 +111,26 @@ export class PodsumowanieWykresComponent {
         if (this.chart) {
           this.chart.destroy();
         }
+        ///naprawienie responsywności
+        if (document.body.clientWidth < 800) {
+          // @ts-ignore
+          document.getElementById('chartPodsumowania').style.height = '50vh';
+          // @ts-ignore
+          document.getElementById('chartPodsumowania').style.width = '100vw';
+        }
+
         Chart.register(chartTrendline);
-        this.chart = new Chart('MyChart', this.config);
+        this.chart = new Chart('chartPodsumowania', this.config);
         this.chart.update();
-        this.chart.canvas.parentNode.style.width = '628px';
-        this.chart.canvas.parentNode.style.height = '340px';
+
+        ///naprawienie responsywności
+        if (document.body.clientWidth > 800) {
+          this.chart.canvas.parentNode.style.width = '628px';
+          this.chart.canvas.parentNode.style.height = '340px';
+        }
       }
     );
-  }
+  } //style="height: 40vh; width: 80vw"
 
   generateRandomColor(id: number = new Date().getTime()): string {
     const combinedText = `id${this.generateHash(id.toString())}`;

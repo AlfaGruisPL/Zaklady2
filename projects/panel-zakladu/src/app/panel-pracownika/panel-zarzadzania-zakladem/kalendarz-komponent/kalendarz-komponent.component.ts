@@ -6,6 +6,8 @@ import { environment } from '../../../../environments/environment';
 import { DzienWolny } from '../../../klasy/panelPracownika/kalendarz/DzienWolny';
 import { DzienTygodnia } from './dzien-tygodnia';
 import { VisitService } from './termin_komponent/visit.service';
+import { KomunikatUniwersalnyService } from '../../../komponets/komunikat-uniwersalny/komunikat-uniwersalny.service';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-kalendarz-komponent',
@@ -27,6 +29,7 @@ export class KalendarzKomponentComponent implements OnInit, OnDestroy {
   constructor(
     private listonosz: ListonoszService,
     public Kalendarz_: KalendarzKomponentService,
+    private uniwersalMessage_: KomunikatUniwersalnyService,
     private visit_: VisitService
   ) {}
 
@@ -86,11 +89,27 @@ export class KalendarzKomponentComponent implements OnInit, OnDestroy {
   }
 
   public kliknietoPole(dzien: DzienTygodnia, index: number) {
-    if (this.zarzadzanie) {
+    ///tu było zarządzanie
+    /*if (this.zarzadzanie) {
       this.Kalendarz_.nowaPrzerwa(dzien, index);
     } else {
       this.Kalendarz_.nowaWizyta(dzien, index);
-    }
+    }*/
+    ///nowa metoda
+    const window = this.uniwersalMessage_.open('Wybierz działanie', '');
+    window
+      .addButton('Dodaj wizytę', { class: 'domyslnyButton2' })
+      .pipe(take(1))
+      .subscribe(k => {
+        this.Kalendarz_.nowaWizyta(dzien, index);
+      });
+    window
+      .addButton('Dodaj przerwę', { class: 'domyslnyButton3' })
+      .pipe(take(1))
+      .subscribe(k => {
+        this.Kalendarz_.nowaPrzerwa(dzien, index);
+      });
+    window.addButton('Anuluj', { defaultNo: true });
   }
 
   public kolorTlaInformacje(dzien: DzienTygodnia): string {
@@ -196,7 +215,7 @@ export class KalendarzKomponentComponent implements OnInit, OnDestroy {
     return false;
   }
 
-  //* łapanie zdażeń najechanią  kursorem na wizyte
+  /// łapanie zdażeń najechaniniem kursora na wizyte
   trigger(event: any) {
     this.visit_.actualTrigeredElements = [];
     document.elementsFromPoint(event.clientX, event.clientY).forEach(element => {
@@ -205,6 +224,13 @@ export class KalendarzKomponentComponent implements OnInit, OnDestroy {
         this.visit_.actualTrigeredElements.push(element.dataset.visit);
       }
     });
+  }
+
+  responsivTime(time: string) {
+    if (document.body.clientWidth > 720) {
+      return time;
+    }
+    return '<span>' + time.replaceAll('.', '</span><span>') + '</span>';
   }
 
   private terminyNaDzien(data: DzienTygodnia): Array<Wizyta> {
