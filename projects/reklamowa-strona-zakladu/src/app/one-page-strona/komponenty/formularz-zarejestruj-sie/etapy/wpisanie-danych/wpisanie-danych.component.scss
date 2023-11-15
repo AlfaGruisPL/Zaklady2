@@ -1,3 +1,12 @@
+re-captcha {
+  position: absolute;
+  display: block;
+  @media (max-width: 650px) {
+    position: relative;
+    margin-bottom: 20px;
+  }
+}
+
 .inputyFormularz {
   width: 280px;
   height: 29px;
@@ -9,15 +18,12 @@
   margin: 4px 4px 4px 0;
   @media (max-width: 700px) {
     width: 45vw;
-
   }
 }
 
 .inputyFormularz.poSelect {
   @media (max-width: 700px) {
-
     width: calc(45vw - 80px) !important;
-
   }
 }
 

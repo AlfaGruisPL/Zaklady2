@@ -12,7 +12,9 @@ export class InformacjeOKliencieComponent {
   public page = 0;
   public pageSize = 5;
 
-  constructor(public activeModal: NgbActiveModal) {}
+  constructor(public activeModal: NgbActiveModal) {
+    console.log(this.klient);
+  }
 
   sumaOplat() {
     const wynik = this.klient.wizytWZakladzie.reduce((suma, klient) => {
@@ -23,14 +25,14 @@ export class InformacjeOKliencieComponent {
   }
 
   pierwszaWizyta() {
-    const dane = this.klient.wizytWZakladzie.sort((x, y) => (x.poczatek < y.poczatek ? -1 : 1));
-
+    const suma = this.klient.wizytWZakladzie.concat(this.klient.wizyty);
+    const dane = suma.sort((x, y) => (x.poczatek < y.poczatek ? -1 : 1));
     return dane[0].poczatek;
   }
 
   ostatniaWizyta() {
-    const dane = this.klient.wizytWZakladzie.sort((x, y) => (x.poczatek > y.poczatek ? -1 : 1));
-
+    const suma = this.klient.wizytWZakladzie.concat(this.klient.wizyty);
+    const dane = suma.sort((x, y) => (x.poczatek > y.poczatek ? -1 : 1));
     return dane[0].poczatek;
   }
 }

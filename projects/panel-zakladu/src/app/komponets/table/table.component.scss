@@ -1,3 +1,9 @@
+.btn {
+  --bs-btn-padding-y: 0px;
+  --bs-btn-padding-x: 0.4rem;
+  --bs-btn-font-size: 0.775rem;
+}
+
 .tablicaBetter {
   margin: 0;
   width: 100%;
@@ -43,11 +49,17 @@
       }
 
       td {
-        width: max-content;
+        white-space: nowrap;
 
         @media (max-width: 700px) {
           font-size: 8px;
         }
+      }
+
+      td:first-child,
+      td:last-child {
+        width: 1px;
+        white-space: nowrap;
       }
 
       &:nth-of-type(even) {
@@ -178,6 +190,12 @@ $color1: rgb(236, 236, 236);
     align-content: center;
   }
 
+  .tekst {
+    @media (max-width: 600px) {
+      font-size: 10px;
+    }
+  }
+
   .group1 {
     display: flex;
     justify-content: center;
@@ -218,8 +236,18 @@ $color1: rgb(236, 236, 236);
 .title {
   h3 {
     padding-top: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: end;
     @media (max-width: 700px) {
       font-size: 15px;
+    }
+
+    .recordsSum {
+      font-weight: 400;
+      padding-left: 30px;
+      font-size: 12px;
     }
   }
 }

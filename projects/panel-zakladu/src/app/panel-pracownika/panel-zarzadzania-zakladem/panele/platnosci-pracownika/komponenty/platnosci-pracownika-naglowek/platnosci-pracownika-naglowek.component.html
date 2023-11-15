@@ -10,7 +10,7 @@
           <button (click)="DodajPracownika()">
             <fa-icon [icon]="faPlus"></fa-icon>
           </button>
-          zajęte {{ podreczne_.danePodreczneObiekt.pracownicy.length - 1 }} z
+          zajęte {{ podreczne_.danePodreczneObiekt.returnActiveWorkers() }} z
           {{ dane.iloscPracownikow }}
           <button (click)="OdejmijPracownika()">
             <fa-icon [icon]="faMinus"></fa-icon>

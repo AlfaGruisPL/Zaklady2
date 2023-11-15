@@ -24,6 +24,7 @@ export class KomunikatUniwersalnyComponent implements OnInit {
   buttonList: { text: string; response: string; option: Partial<UniwersalMessageOption> }[] = [];
   close: Subject<any> = new Subject<any>();
   dismiss: Subject<any> = new Subject<any>();
+  result!: Promise<any>;
 
   constructor(public activeModal: NgbActiveModal) {}
 

@@ -28,6 +28,7 @@ export class ListonoszService {
           resolve(next['value']);
         },
         error => {
+          //todo dać zabezpieczniee że jeżeli nie ma kontaktu z serwerem to wtedy bubu
           reject(error);
         }
       );

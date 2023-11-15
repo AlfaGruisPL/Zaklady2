@@ -26,8 +26,10 @@
   [(page)]="strona"
   [collectionSize]="iloscWizytOgolna"
   [data]="zwrocDane()"
+  [displaySum]="true"
   [loading]="pobieranieDanych"
-  [pageSize]="15">
+  [pageSize]="15"
+  [title]="'Wizyty:'">
   <ng-template TemplateId="thead">
     <th class="NotInMobile">Lp.</th>
     <th>Data</th>

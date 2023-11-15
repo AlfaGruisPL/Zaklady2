@@ -15,6 +15,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TablePaginationComponent } from '../table-pagination/table-pagination.component';
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BehaviorSubject, debounceTime, skip } from 'rxjs';
 
 @Component({
   selector: 'app-table',
@@ -38,6 +39,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
  * @Outputs **changeData** - EventEmiter oznaczający wymóg pobrania nowych danych
  * @Outputs **changePage**  - EventEmiter oznaczający zmianę strony
  * @Outputs  **changeRowsOnPage** -EventEmiter - wysyłający ilość stron jakie mają zostać pobrane z bazy danych
+ * @Outputs  **serachChange** -EventEmiter - wywoływany przez wpsianie treści do wyszukiwarki, zabezpieczony przed zbyt wieloma zmianami w czasie
  * @Inputs **collectionSize**  - suma wszystkich elementów jakie są lub mogą być dostępne
  * @Inputs **pageSize** - ilość elementów na pojedyńczej stronie (domyślnie 5)
  * @Inputs **loading**  -
@@ -54,7 +56,7 @@ export class TableComponent implements AfterContentInit {
   tfoot: TemplateRef<any> | any;
   subTableHead: TemplateRef<any> | any;
   subTableBody: TemplateRef<any> | any;
-
+  searchValue = new BehaviorSubject('');
   @ContentChildren(TemplateIdDirective)
   templates: QueryList<TemplateIdDirective> | undefined;
   @Output() changeData = new EventEmitter();
@@ -65,18 +67,28 @@ export class TableComponent implements AfterContentInit {
   @Input() title = '';
   @Input() search = false;
   @Input() paggiantion = true;
+  @Input() displaySum = false;
 
   @Input() async = true;
   //test
   @Input() subTableOpenVariable = 'open';
-
+  @Input() subTableVariable = 'probyPlatnosci';
   @Input() page = 1;
   @Output() pageChange = new EventEmitter();
   @Output() changeRowsOnPage = new EventEmitter();
-
+  @Output() searchChange = new EventEmitter();
   protected readonly Math = Math;
 
-  onSearchChange(event: any) {}
+  constructor() {
+    this.searchValue.pipe(skip(1), debounceTime(300)).subscribe(term => {
+      this.searchChange.emit(this.searchValue.value);
+    });
+  }
+
+  onSearchChange(event: any) {
+    if (this.searchValue.value.trim() == event.target.value.trim()) return;
+    this.searchValue.next(event.target.value.trim());
+  }
 
   ngAfterContentInit() {
     this.templates?.forEach((child: TemplateIdDirective) => {
@@ -137,5 +149,13 @@ export class TableComponent implements AfterContentInit {
       //  return this.data.slice(0, this.pageSize).length - this.pageSize;
     }
     return 0;
+  }
+
+  calcEmptyCells(cells: HTMLCollectionOf<HTMLTableCellElement>) {
+    const array = Array.from(cells).filter(cell => {
+      return !cell.classList.contains('NotInMobile');
+    });
+
+    return array.length;
   }
 }

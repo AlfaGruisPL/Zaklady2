@@ -3,18 +3,9 @@ h3 {
   width: 100%;
 }
 
-.kontenerNaTabele {
+.blockContainer {
   width: 100%;
   display: flex;
-  justify-content: center;
-  padding: 20px 0 20px 0;
-
-  .podsumowanieTable {
-    border-left: 1px solid #8d8d8d;
-    border-bottom: 1px solid #8d8d8d;
-    padding: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 28px;
-  }
+  padding-top: 20px;
+  justify-content: space-around;
 }

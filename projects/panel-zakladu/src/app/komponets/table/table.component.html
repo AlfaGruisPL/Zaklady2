@@ -1,7 +1,14 @@
 <div class="wyszukiwarka">
   <div class="title">
-    <h3>{{ title }}</h3>
+    <h3>
+      {{ title }}
+      <div *ngIf="displaySum" class="recordsSum">
+        (Rekordy:
+        {{ collectionSize }})
+      </div>
+    </h3>
   </div>
+
   <div *ngIf="search" class="wyszukiwarkaTD">
     <fa-icon icon="magnifying-glass"></fa-icon>
     <input (keyup)="onSearchChange($event)" placeholder="Wyszukiwarka (wartość wartość2 itd.)" />
@@ -15,17 +22,17 @@
   </thead>
 
   <tbody>
+    <!-- asynchroniczny -->
     <ng-container *ngIf="async; else asyncFalse">
       <tr #header *ngFor="let obj of data | slice : 0 : pageSize; let index = index">
         <ng-container *ngTemplateOutlet="tbody; context: { $implicit: obj, index: indexCount(index) }"></ng-container>
       </tr>
       <tr *ngFor="let k of [].constructor(emptyRowCalc())">
-        <td *ngFor="let k2 of [].constructor(tablica.rows[1].cells.length)">&nbsp;</td>
+        <td *ngFor="let k2 of [].constructor(calcEmptyCells(tablica.rows[1].cells))">&nbsp;</td>
       </tr>
     </ng-container>
+    <!-- brak asynchronicznosci  -->
     <ng-template #asyncFalse>
-      <!-- brak asynchronicznosci  -->
-
       <ng-container *ngFor="let obj of data | slice : (page - 1) * pageSize : page * pageSize; let index = index">
         <tr #header>
           <ng-container *ngTemplateOutlet="tbody; context: { $implicit: obj, index: index + 1 }"></ng-container>
@@ -40,7 +47,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let subObj of obj.probyPlatnosci; let Subindex = index" class="PodTabelaTr">
+                  <tr *ngFor="let subObj of obj[subTableVariable]; let Subindex = index" class="PodTabelaTr">
                     <ng-container
                       *ngTemplateOutlet="
                         subTableBody;
@@ -55,7 +62,7 @@
       </ng-container>
 
       <tr *ngFor="let k of [].constructor(emptyRowCalcNoAsync())">
-        <td *ngFor="let k2 of [].constructor(tablica.rows[0].cells.length)"></td>
+        <td *ngFor="let k2 of [].constructor(calcEmptyCells(tablica.rows[1].cells))">&nbsp;</td>
       </tr>
     </ng-template>
   </tbody>

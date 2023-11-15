@@ -1,9 +1,17 @@
 <div class="zarejestujSie" id="rejestracja">
-  <div class="zdj">
+  <div
+    [attr.data-aos-duration]="animation_.animationTimeRegisterAndClock"
+    class="zdj"
+    data-aos="zoom-in-right"
+    data-aos-once="true">
     <img src="assets/kalendarz-bez-wskazuwek.png" />
     <app-zegar style="position: absolute"></app-zegar>
   </div>
-  <div class="tytulIButton">
+  <div
+    [attr.data-aos-duration]="animation_.animationTimeRegisterAndClock"
+    class="tytulIButton"
+    data-aos="zoom-in-left"
+    data-aos-once="true">
     <span class="spanZapiszSie"> Zapisz się na podchodzący dla Ciebie termin </span>
     <button (click)="pokazFormularzRejestracji()" class="rejestracjaButton">Rejestracja</button>
   </div>

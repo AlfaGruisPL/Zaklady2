@@ -26,7 +26,7 @@ export class StronaReprezentacyjnaPracownikaComponent implements OnInit {
 
   pobierz() {
     this.linkDoPodlgadu =
-      'http://' +
+      'https://' +
       this.danePodreczne_.danePodreczneObiekt.identyfikatorZakladu +
       '.mojzaklad.pl/?dummyVar=' +
       this.randomIframeNumber;

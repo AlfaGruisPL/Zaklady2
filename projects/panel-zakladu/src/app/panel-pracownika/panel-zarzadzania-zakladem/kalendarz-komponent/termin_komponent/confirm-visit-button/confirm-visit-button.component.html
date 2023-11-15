@@ -3,14 +3,21 @@
     (click)="confirmVisit()"
     *ngIf="visit.completed == undefined || visit.completed == true"
     [disabled]="visit.completed != undefined"
-    class="visitCheck">
+    class="visitCheck"
+    title="Oznacz wizytę jako wykonaną">
     <fa-icon icon="check"></fa-icon>
   </button>
   <button
     (click)="disConfirmVisit()"
     [disabled]="visit.completed != undefined"
     [ngStyle]="{ display: visit.completed == undefined ? 'block' : 'none' }"
-    class="visitDisConfirm">
+    class="visitDisConfirm"
+    title="Oznacz wizytę jako niewykonaną">
     <fa-icon icon="x"></fa-icon>
+  </button>
+</div>
+<div *ngIf="!visit.afterEndPlusBuforTime() && visit.completed == true" class="confirmDisconfirmDiv">
+  <button [disabled]="true" class="visitCheck" title="Oznacz wizytę jako wykonaną">
+    <fa-icon icon="check"></fa-icon>
   </button>
 </div>

@@ -1,0 +1,33 @@
+<div class="" container="body" ngbDropdown>
+  <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle type="button">Wybierz:</button>
+  <div ngbDropdownMenu>
+    <button (click)="workersTable_.wyswietlUzytkownika(worker.id)" ngbDropdownItem>Wyświetl</button>
+    <button (click)="workersTable_.zmodyfikujUzytkownika(worker.id)" ngbDropdownItem>Zmodyfikuj</button>
+
+    <ng-container *ngIf="workersTable_.filter != 'zarchiwizuj'; else przyciskiDoArchiwizuj">
+      <button (click)="workersTable_.urlop(worker.id)" *ngIf="!worker.urlop; else przywrocUrlop" ngbDropdownItem>
+        Wyślij na urlop
+      </button>
+      <button
+        (click)="workersTable_.zarchiwizujUzytkownika(worker.id)"
+        *ngIf="worker.archived == false; else przywrocArchiwum"
+        ngbDropdownItem>
+        Zarchiwizuj
+      </button>
+
+      <ng-template #przywrocArchiwum>
+        <button (click)="workersTable_.przywrocUzytkownika(worker.id)" ngbDropdownItem>Przywróć</button>
+      </ng-template>
+      <ng-template #przywrocUrlop>
+        <button (click)="workersTable_.przywrocUzytkownikaZUrlopu(worker.id)" ngbDropdownItem>Przywróć do pracy</button>
+      </ng-template>
+    </ng-container>
+    <ng-template #przyciskiDoArchiwizuj>
+      <button (click)="workersTable_.urlop(worker.id)" ngbDropdownItem>Wyślij na urlop</button>
+      <button (click)="workersTable_.przywrocUzytkownika(worker.id)" ngbDropdownItem>Ustaw jak dostępny</button>
+    </ng-template>
+
+    <div class="dropdown-divider"></div>
+    <button (click)="workersTable_.usunPracownika(worker.id)" ngbDropdownItem>Usuń</button>
+  </div>
+</div>

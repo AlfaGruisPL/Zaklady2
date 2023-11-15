@@ -353,7 +353,9 @@
             ],
             "styles": [
               "projects/reklamowa-strona-zakladu/src/styles.scss",
-              "./node_modules/leaflet/dist/leaflet.css"
+              "./node_modules/leaflet/dist/leaflet.css",
+              "projects/reklamowa-strona-zakladu/src/animation.scss",
+              "node_modules/aos/dist/aos.css"
             ],
             "scripts": [
             ]
@@ -374,8 +376,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "4kb",
+                  "maximumError": "7kb"
                 }
               ],
               "outputHashing": "all"

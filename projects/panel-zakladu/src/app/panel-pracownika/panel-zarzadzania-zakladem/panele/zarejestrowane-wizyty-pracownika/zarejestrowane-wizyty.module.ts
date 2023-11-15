@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
 import { TablePaginationComponent } from '../../../../komponets/table-pagination/table-pagination.component';
 import { TableComponent } from '../../../../komponets/table/table.component';
 import { TemplateIdDirective } from '../../../../komponets/table/template-id.directive';
-import { TabelaPrzerwComponent } from '../kalendarz-terminow/tabela-przerw/tabela-przerw.component';
+import { TabelaPrzerwComponent } from './tabela-przerw/tabela-przerw.component';
 
 @NgModule({
   declarations: [ZarejestrowaneWizytyPracownikaComponent, ZarejestrowaneWizytyTabelaComponent],

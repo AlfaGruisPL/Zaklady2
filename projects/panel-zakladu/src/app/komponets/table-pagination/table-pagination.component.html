@@ -1,7 +1,7 @@
 <div #pag [ngClass]="{ disabled: disabled }" class="paggination">
   <div class="group1">
     <ngb-pagination
-      (pageChange)="pageChange.emit(page); saveReloadData()"
+      (pageChange)="pageChange.emit($event); saveReloadData()"
       [(page)]="page"
       [boundaryLinks]="true"
       [collectionSize]="collectionSize"

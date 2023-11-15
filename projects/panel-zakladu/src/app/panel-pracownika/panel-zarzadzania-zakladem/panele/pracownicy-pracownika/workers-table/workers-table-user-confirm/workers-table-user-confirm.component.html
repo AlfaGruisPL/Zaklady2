@@ -1,0 +1,9 @@
+<ng-container *ngIf="!worker.potwierdzony">
+  <ng-template #alertContent
+    >Użytkownik nie potwierdził konta<br />
+    Nie będzie wyświetlany na stronie reklamowej
+  </ng-template>
+  <span [ngbPopover]="alertContent" class="alert" popoverTitle="Uwaga" triggers="mouseenter:mouseleave"
+    >!</span
+  ></ng-container
+>

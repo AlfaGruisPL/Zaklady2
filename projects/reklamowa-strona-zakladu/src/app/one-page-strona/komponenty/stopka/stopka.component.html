@@ -6,7 +6,7 @@
     <div (leafletMapReady)="onMapReady($event)" [leafletOptions]="options" class="mapa" leaflet></div>
   </div>
 
-  <div [innerHTML]="danePodstawowe.danePodstawowe.opisZakladuWStopce | htmlSanitizer" class="tekst">
+  <div [innerHTML]="reformat(danePodstawowe.danePodstawowe.opisZakladuWStopce) | htmlSanitizer" class="tekst">
     <h3 class="tytul">Lorem ipsum dolor sit amet.</h3>
     <p style="text-indent: 50px">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab adipisci aperiam, eaque esse expedita explicabo

@@ -5,6 +5,14 @@
 @import '../../../../../node_modules/tippy.js/animations/scale.css';
 @import 'https://cdn.jsdelivr.net/npm/suneditor@latest/dist/css/suneditor.min.css';
 
+.btn-sm,
+.btn-group-sm > .btn {
+  --bs-btn-padding-y: 0.15rem;
+  --bs-btn-padding-x: 0.4rem;
+  --bs-btn-font-size: 0.875rem;
+  --bs-btn-border-radius: var(--bs-border-radius-sm);
+}
+
 .offcanvas {
   z-index: 3000;
 }

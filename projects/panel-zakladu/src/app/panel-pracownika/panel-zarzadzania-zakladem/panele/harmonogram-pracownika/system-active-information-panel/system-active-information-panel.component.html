@@ -1,0 +1,10 @@
+<span *ngIf="status == 1" class="systemActive block"
+  >System aktywny <app-system-active-page-active [active]="active"
+/></span>
+<span *ngIf="status == 0" class="systemNoActive block"
+  >System nie aktywny <app-system-active-page-active [active]="active" [status]="[-1, 1].indexOf(status) != -1"
+/></span>
+<span *ngIf="status == -1" class="systemInTest block"
+  >Wersja testowa <app-system-active-page-active [active]="active"
+/></span>
+<span *ngIf="status == -2" class="systemLoading block">Load</span>

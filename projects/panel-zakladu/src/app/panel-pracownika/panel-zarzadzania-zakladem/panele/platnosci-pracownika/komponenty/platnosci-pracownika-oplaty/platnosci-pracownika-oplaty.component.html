@@ -1,42 +1,25 @@
-<h3 class="historiaTransakcjiH3">Historia opłat:</h3>
-<table class="historiaTransakcji tablica">
-  <tr #naglowek>
+<app-table
+  [async]="false"
+  [collectionSize]="listaPlatnosci.length"
+  [data]="listaPlatnosci"
+  [subTableOpenVariable]="'czyRozwiniete'"
+  [title]="'Historia opłat:'">
+  <ng-template TemplateId="thead">
     <th>Nr.</th>
     <th>Nazwa</th>
     <th>Data utworzenia</th>
     <th>Data końca aktywności</th>
     <th>Kwota</th>
     <th>Status</th>
-  </tr>
-  <ng-container
-    *ngFor="let k of listaPlatnosci | slice : (page - 1) * paggination.pageSize : page * paggination.pageSize; let index = index">
-    <tr>
-      <td>{{paggination.indexCount(index)}}</td>
-      <td>{{ k.opis }}</td>
-      <td>{{ k.dataUtworzenia | date : 'dd.MM.yyyy  HH:mm' }}</td>
-      <td>{{ k.dataKonca | date : 'dd.MM.yyyy  HH:mm' }}</td>
-      <td>{{ k.kwota / 100 }}zł</td>
-      <td *ngIf="k.status == 0" style="font-weight: bolder; color: darkred">Nieudane</td>
-      <td *ngIf="k.status == 1" style="font-weight: bolder; color: #0e7908">Udane</td>
-    </tr>
-  </ng-container>
-  <tr
-    *ngFor="
-      let k of [].constructor(paggination.savePageSize - (listaPlatnosci | slice : (page - 1) * paggination.savePageSize : page * paggination.savePageSize).length)
-    ">
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-</table>
-<app-table-pagination [(page)]="page"
-                      [collectionSize]="listaPlatnosci.length"
-                      [pageSizeArray]="[5,7,10,20,50,100]"
-                      #paggination
-                      [pageSize]="pageSize"></app-table-pagination>
+  </ng-template>
 
-
+  <ng-template TemplateId="tbody" let-index="index" let-obj>
+    <td>{{ index }}</td>
+    <td>{{ obj.opis }}</td>
+    <td>{{ obj.dataUtworzenia | date : 'dd.MM.yyyy  HH:mm' }}</td>
+    <td>{{ obj.dataKonca | date : 'dd.MM.yyyy  HH:mm' }}</td>
+    <td>{{ obj.kwota / 100 }}zł</td>
+    <td *ngIf="obj.status == 0" style="font-weight: bolder; color: darkred">Nieudane</td>
+    <td *ngIf="obj.status == 1" style="font-weight: bolder; color: #0e7908">Udane</td>
+  </ng-template>
+</app-table>

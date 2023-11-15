@@ -9,7 +9,7 @@
 
   .czesc {
     padding: 10px;
-    height: 200px;
+    
     float: left;
     $czesc1Szerokowcs: 400px;
     $czesc3Szerokowcs: 450px;
@@ -66,11 +66,11 @@
     font-size: 20px;
 
     &:nth-child(1):hover {
-      color: green
+      color: green;
     }
 
     &:nth-child(2):hover {
-      color: red
+      color: red;
     }
   }
 }

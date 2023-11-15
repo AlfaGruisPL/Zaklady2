@@ -55,7 +55,7 @@ export class TerminComponent implements OnInit {
   }
 
   setFontSize(element: HTMLDivElement) {
-    const czcionka = element.clientHeight * 0.7;
+    const czcionka = element.clientWidth * 0.3;
     if (czcionka > 21) {
       return 21 + 'px';
     }

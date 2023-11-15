@@ -1,8 +1,10 @@
 <app-table
   (changeData)="lista_.pobierzDane()"
+  (searchChange)="lista_.searchValue = $event; lista_.pobierzDane()"
   [collectionSize]="lista_.iloscKlientow"
   [data]="lista_.listaKlientow"
   [loading]="lista_.ladowanieDanych"
+  [pageSize]="15"
   [search]="true"
   [title]="'Lista klientów:'">
   <ng-template TemplateId="thead">
@@ -26,7 +28,7 @@
     <td>
       <span class="wizytyKlientaWZakladzie"> {{ obj.wizyty.length }}</span>
       <span *ngIf="obj.wizyty.length != obj.wizytWZakladzie.length" class="sumaWizytKlientaWZakladzie"
-        >(suma {{ obj.wizytWZakladzie.length }})</span
+        >(suma {{ obj.wizytWZakladzie.length + obj.wizyty.length }})</span
       >
     </td>
     <td class="small">

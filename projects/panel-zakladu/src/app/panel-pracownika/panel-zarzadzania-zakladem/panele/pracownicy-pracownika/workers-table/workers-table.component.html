@@ -1,0 +1,34 @@
+<app-table
+  [async]="false"
+  [collectionSize]="workersTable_.filtrowaniePracownikow().length"
+  [data]="workersTable_.filtrowaniePracownikow()"
+  [search]="false"
+  [title]="'Pracownicy zakładu:'">
+  <ng-template TemplateId="thead">
+    <th>Nr</th>
+    <th>Imię</th>
+    <th>Nazwisko</th>
+    <th>Adres e-mail</th>
+    <th>Numer telefonu</th>
+    <th>Zarządzanie</th>
+    <th style="width: 80px">Zdjęcie</th>
+  </ng-template>
+  <ng-template TemplateId="tbody" let-index="index" let-obj>
+    <td>
+      {{ index }}
+      <app-workers-table-user-confirm [worker]="obj"></app-workers-table-user-confirm>
+    </td>
+    <td>{{ obj.imie }}</td>
+    <td>{{ obj.nazwisko }}</td>
+    <td>{{ obj.adresEmail }}</td>
+    <td>{{ obj.prefiksTelefonu }}{{ obj.numerTelefonu }}</td>
+    <td class="tdWithNgbDropdown smallButtonCenter">
+      <app-worker-table-buttons [worker]="obj"></app-worker-table-buttons>
+    </td>
+    <td style="text-align: center">
+      <img
+        [src]="environment.linkDoZdjeciaProfilowego + obj.id + '?jakosc=30' | zdjecie : false"
+        style="max-height: 28px; max-width: 70px" />
+    </td>
+  </ng-template>
+</app-table>

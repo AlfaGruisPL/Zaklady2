@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ListyService {
-  public LinkDoApi: string = 'http://195.136.14.31:3000';
+  env = environment;
+  public LinkDoApi: string = this.env.api;
 
   constructor(private http: HttpClient) {}
 
@@ -18,11 +20,7 @@ export class ListyService {
     return this.http.get(this.LinkDoApi + drzwi, opcje);
   }
 
-  public aktualizuj(
-    drzwi: string,
-    zawartosc: any,
-    opcje: any
-  ): Observable<any> {
+  public aktualizuj(drzwi: string, zawartosc: any, opcje: any): Observable<any> {
     return this.http.patch(this.LinkDoApi + drzwi, zawartosc, opcje);
   }
 

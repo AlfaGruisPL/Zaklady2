@@ -18,6 +18,7 @@ export class KalendarzPrzerwaDzienWolnyComponent {
   regularne = false;
   coIle = 'false';
   opis = '';
+  buttonDisabled = false;
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -27,6 +28,7 @@ export class KalendarzPrzerwaDzienWolnyComponent {
   ) {}
 
   dodaj() {
+    this.buttonDisabled = true;
     const dane: any = {};
     dane.regularne = this.regularne;
     dane.coIle = this.coIle;
@@ -41,6 +43,9 @@ export class KalendarzPrzerwaDzienWolnyComponent {
       })
       .catch(() => {
         this.komunikat_.komunikatBledu(Bledy.dzienWolnyNieUtworzony);
+      })
+      .finally(() => {
+        this.buttonDisabled = false;
       });
   }
 }

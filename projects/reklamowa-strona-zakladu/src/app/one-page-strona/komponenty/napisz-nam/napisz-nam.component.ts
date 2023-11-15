@@ -1,17 +1,17 @@
-import {Component, Input} from '@angular/core';
-import {NapiszNam, NapiszNamDto} from './klasa/napisz-nam';
-import {ListonoszService} from '../../../serwisy/listonosz.service';
-import {Drzwi} from '../../../enum/drzwi';
-import {Pracownik} from '../../../klasy/pracownik';
-import {NapiszNamService} from './napisz-nam.service';
-import {FaIconsService} from "../../../serwisy/fa-icons.service";
+import { Component, Input, OnInit } from '@angular/core';
+import { NapiszNam, NapiszNamDto } from './klasa/napisz-nam';
+import { ListonoszService } from '../../../serwisy/listonosz.service';
+import { Drzwi } from '../../../enum/drzwi';
+import { Pracownik } from '../../../klasy/pracownik';
+import { NapiszNamService } from './napisz-nam.service';
+import { FaIconsService } from '../../../serwisy/fa-icons.service';
 
 @Component({
   selector: 'app-napisz-nam',
   templateUrl: './napisz-nam.component.html',
   styleUrls: ['./napisz-nam.component.scss'],
 })
-export class NapiszNamComponent {
+export class NapiszNamComponent implements OnInit {
   @Input() listaPracownikow: Pracownik[] = [];
 
   public wiadomoscWyslana: boolean = false;
@@ -19,12 +19,9 @@ export class NapiszNamComponent {
   public aktywnyPrzycisk: boolean = false;
   public emailPrawidlowy: boolean = true;
 
-  constructor(
-    public listonosz: ListonoszService,
-    public napiszNam: NapiszNamService,
-    public faIcons: FaIconsService
-  ) {
-  }
+  constructor(public listonosz: ListonoszService, public napiszNam: NapiszNamService, public faIcons: FaIconsService) {}
+
+  ngOnInit() {}
 
   public wyslij() {
     this.emailPrawidlowy = true;
@@ -35,25 +32,23 @@ export class NapiszNamComponent {
     this.aktywnyPrzycisk = true;
     this.listonosz
       .wyslij(Drzwi.napiszNam, napiszNamDTO)
-      .then((udane) => {
+      .then(udane => {
         this.napiszNam.napiszNamObj = new NapiszNam();
         this.wiadomoscWyslana = true;
       })
-      .catch((nieudane) => {
+      .catch(nieudane => {
         if (nieudane['error']['reasonCode'] == 1 && this.napiszNam.napiszNamObj.czyWszystkoUzupelnione == true) {
           this.emailPrawidlowy = false;
         } else {
           this.wiadomoscNieWyslana = true;
         }
-
-      }).finally(() => {
-      this.aktywnyPrzycisk = false;
-    });
+      })
+      .finally(() => {
+        this.aktywnyPrzycisk = false;
+      });
   }
 
-  public czyEmailPrawidlowy_() {
-
-  }
+  public czyEmailPrawidlowy_() {}
 
   public reset() {
     this.wiadomoscNieWyslana = false;

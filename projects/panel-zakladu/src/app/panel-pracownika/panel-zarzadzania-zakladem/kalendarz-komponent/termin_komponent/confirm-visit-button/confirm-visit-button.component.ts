@@ -5,11 +5,12 @@ import { Wizyta } from '../../../../../klasy/panelPracownika/wizyta';
 import { VisitService } from '../visit.service';
 import { KomunikatUniwersalnyService } from '../../../../../komponets/komunikat-uniwersalny/komunikat-uniwersalny.service';
 import { take } from 'rxjs';
+import { NgbTooltip } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-confirm-visit-button',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule, NgbTooltip],
   templateUrl: './confirm-visit-button.component.html',
   styleUrls: ['./confirm-visit-button.component.scss'],
 })

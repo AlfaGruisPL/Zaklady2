@@ -59,11 +59,17 @@ export class StopkaComponent implements OnInit {
       this.markersLayer.addLayer(this.sMarkersLayer);
     }, 200);
   }
+
+  reformat(opisZakladuWStopce: string) {
+    const index = opisZakladuWStopce.lastIndexOf('<p>​<br></p>');
+    opisZakladuWStopce = opisZakladuWStopce.slice(0, index);
+    return opisZakladuWStopce;
+  }
 }
 
 export const getLayers = (): Leaflet.Layer[] => {
   return [
-    new Leaflet.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    new Leaflet.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors',
     } as Leaflet.TileLayerOptions),
   ] as Leaflet.Layer[];

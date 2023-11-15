@@ -1,0 +1,147 @@
+<button
+  #ngbPopoverUzytkownika="ngbPopover"
+  (click)="otworzZakladu(ngbPopoverUzytkownika, pracownikLewy)"
+  (document:click)="zamkniecie($event, ngbPopoverUzytkownika, 'powiadomieniaUzytkownika_Button')"
+  [animation]="true"
+  [autoClose]="false"
+  [ngClass]="{
+    powiadomienieAnimacja: powiadomienia_.nieOdczytanePowiadomieniaUzytkownika().length > 0
+  }"
+  [ngbPopover]="powiadomieniaUzytkonikaTresc"
+  [popoverTitle]="powiadomieniaUzytkonikaTytul"
+  class="powiadomieniaButton"
+  id="powiadomieniaUzytkownika_Button"
+  placement="bottom-right"
+  triggers="manual">
+  <div class="iloscPowiadomien">
+    {{ powiadomienia_.nieOdczytanePowiadomieniaUzytkownika().length | numberLimit : 99 }}
+  </div>
+  <span><fa-icon icon="envelope"></fa-icon></span>
+</button>
+
+<button
+  #ngbPopover="ngbPopover"
+  (click)="otworz(ngbPopover, zakladLewy)"
+  (document:click)="zamkniecie($event, ngbPopover, 'powiadomienieZakladu_button')"
+  *ngIf="token_.czyWlasciciel()"
+  [animation]="true"
+  [autoClose]="false"
+  [ngClass]="{
+    powiadomienieAnimacja: powiadomienia_.nieOdczytanePowiadomieniaZakladu().length > 0
+  }"
+  [ngbPopover]="powiadomieniaZakladuTresc"
+  [popoverTitle]="PowiadomieniaZakladuTytul"
+  class="powiadomieniaAdminButton"
+  id="powiadomienieZakladu_button"
+  triggers="manual">
+  <div class="iloscPowiadomien">
+    {{ powiadomienia_.nieOdczytanePowiadomieniaZakladu().length | numberLimit : 99 }}
+  </div>
+  <span><fa-icon icon="envelope"></fa-icon> <fa-icon class="rotating" icon="gear"></fa-icon></span>
+</button>
+<button class="wstronaStartowaButton">
+  <fa-icon (click)="doHarmonogramu()" [icon]="fontAwesome.dom"></fa-icon>
+</button>
+<button (click)="wyloguj()" class="wylogujButton">
+  <fa-icon [icon]="fontAwesome.wylogowanieIconka"></fa-icon>
+</button>
+<ng-template #PowiadomieniaZakladuTytul id="powiadomienieZakladu_tytul">
+  <span class="powiadomieniaTytul"
+    ><span class="popOverTitle">Powiadomienia systemowe:</span>
+    <button (click)="PrzeczytajWszystko()" [disabled]="powiadomienia_.nieOdczytanePowiadomieniaZakladu().length == 0">
+      Przeczytaj wszystko
+    </button>
+    <button (click)="UsunWszystko()" [disabled]="powiadomienia_.nieUsunietePowiadomieniaZakladu().length == 0">
+      Usuń wszystko
+    </button>
+  </span>
+</ng-template>
+<ng-template #powiadomieniaZakladuTresc id="powiadomienieZakladu_tresc">
+  <div class="powiadomienieTresc BrakBialejRamkiPopOver">
+    <div
+      *ngFor="let powiadomienie of powiadomienia_.powiadomieniaZakladu"
+      [ngClass]="{ usuniete: powiadomienie.usuniete }"
+      class="powiadomienie">
+      <fa-icon (click)="powiadomienia_.usunPowiadomienieZakladu(powiadomienie)" class="usuniecie" icon="x"></fa-icon>
+      <fa-icon
+        (click)="powiadomienia_.odczytajPowiadomienieZakladu(powiadomienie)"
+        [ngClass]="{ odczytane: powiadomienie.odczytane }"
+        class="icon"
+        icon="flag"></fa-icon>
+      <h3>{{ powiadomienie.tytul }}</h3>
+      <span class="data">{{ powiadomienie.data | date : 'dd.MM.yyyy   hh:mm' }}</span>
+      <p [innerHTML]="powiadomienie.tresc"></p>
+      <!--<p class="podpis">Sracz.pl</p>-->
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #powiadomieniaUzytkonikaTytul>
+  <span class="powiadomieniaTytul">
+    <span class="popOverTitle">Powiadomienia:</span>
+    <button
+      (click)="PrzeczytajWszystkoUzytkownika()"
+      [disabled]="powiadomienia_.nieOdczytanePowiadomieniaUzytkownika().length == 0">
+      Przeczytaj wszystko
+    </button>
+    <button
+      (click)="UsunWszystkoUzytkownika()"
+      [disabled]="powiadomienia_.nieUsunietePowiadomieniaUzytkownika().length == 0">
+      Usuń wszystko
+    </button>
+  </span>
+</ng-template>
+<ng-template #powiadomieniaUzytkonikaTresc>
+  <div class="powiadomienieTresc BrakBialejRamkiPopOver">
+    <div
+      *ngFor="let powiadomienie of powiadomienia_.powiadomieniaUzytkownika"
+      [ngClass]="{ usuniete: powiadomienie.usuniete }"
+      class="powiadomienie">
+      <fa-icon
+        (click)="powiadomienia_.usunPowiadomienieUzytkownika(powiadomienie)"
+        class="usuniecie"
+        icon="x"></fa-icon>
+      <fa-icon
+        (click)="powiadomienia_.odczytajPowiadomienieUzytkownika(powiadomienie)"
+        [ngClass]="{ odczytane: powiadomienie.odczytane }"
+        class="icon"
+        icon="flag"></fa-icon>
+      <h3>{{ powiadomienie.tytul }}</h3>
+      <span class="data">{{ powiadomienie.data | date : 'dd.MM.yyyy   hh:mm' }}</span>
+      <p [innerHTML]="powiadomienie.tresc"></p>
+      <!--<p class="podpis">Sracz.pl</p>-->
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #zakladLewy let-offcanvasZaklad>
+  <div class="offcanvas-header">
+    <h4 class="offcanvas-title">Powiadomienia systemowe</h4>
+    <button
+      (click)="offcanvasZaklad.dismiss('Cross click')"
+      aria-label="Close"
+      class="btn-close"
+      type="button"></button>
+  </div>
+  <div class="offcanvas-body" style="padding: 0">
+    <ng-container *ngTemplateOutlet="PowiadomieniaZakladuTytul"></ng-container>
+    <br />
+    <ng-container *ngTemplateOutlet="powiadomieniaZakladuTresc"></ng-container>
+  </div>
+</ng-template>
+<ng-template #pracownikLewy let-offcanvasPracownik>
+  <div class="offcanvas-header">
+    <h4 class="offcanvas-title">Powiadomienia pracownika</h4>
+    <button
+      (click)="offcanvasPracownik.dismiss('Cross click')"
+      aria-label="Close"
+      class="btn-close"
+      type="button"></button>
+  </div>
+
+  <div class="offcanvas-body" style="padding: 0">
+    <ng-container *ngTemplateOutlet="powiadomieniaUzytkonikaTytul"></ng-container>
+    <br />
+    <ng-container *ngTemplateOutlet="powiadomieniaUzytkonikaTresc"></ng-container>
+  </div>
+</ng-template>

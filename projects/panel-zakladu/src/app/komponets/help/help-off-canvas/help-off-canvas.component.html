@@ -4,8 +4,12 @@
     <button (click)="offcanvas.dismiss('Cross click')" aria-label="Close" class="btn-close" type="button"></button>
   </div>
   <div class="offcanvas-body">
-    <ng-container *ngIf="iSPage('zarejestrowaneWizyty')">
-      <app-register-help-visit></app-register-help-visit>
+    <ng-container *ngIf="!pageFound">
+      <h3>Brak informacji na temat panelu</h3>
     </ng-container>
+
+    <app-register-help-visit *ngIf="iSPage('zarejestrowaneWizyty')"></app-register-help-visit>
+    <app-payment-help *ngIf="iSPage('platnosci')"></app-payment-help>
+    <app-customers-list-help *ngIf="iSPage('listaKlientow')"></app-customers-list-help>
   </div>
 </div>

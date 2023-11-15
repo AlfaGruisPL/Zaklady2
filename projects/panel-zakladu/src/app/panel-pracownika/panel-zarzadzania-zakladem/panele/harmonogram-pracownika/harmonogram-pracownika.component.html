@@ -1,24 +1,19 @@
 <div class="naglowekZolty">
-    <span class="naglowek1Wzoltym"
-    >Harmonogram na dziś
-    </span>
+  <!-- <span class="naglowek1Wzoltym">Harmonogram na dziś </span>-->
+  <app-system-active-information-panel style="width: 100%"></app-system-active-information-panel>
 </div>
 <h2>
-  Witaj {{podreczneDane_.danePodreczneObiekt.zalogowanyUzytkownik?.imie }} {{podreczneDane_.danePodreczneObiekt.zalogowanyUzytkownik?.nazwisko }}
+  Witaj {{ podreczneDane_.danePodreczneObiekt.zalogowanyUzytkownik?.imie }}
+  {{ podreczneDane_.danePodreczneObiekt.zalogowanyUzytkownik?.nazwisko }}
 </h2>
-<hr style="color: rgb(128,128,128)">
+
 <app-harmonogram-podsumowanie-administratora
   *ngIf="token_.czyWlasciciel()"></app-harmonogram-podsumowanie-administratora>
 <div class="harmonogram">
   <app-harmonogram-dnia></app-harmonogram-dnia>
 </div>
-<hr style="color: rgb(128,128,128)">
-<hr style="color: rgb(128,128,128)">
 
 <div class="wizyta">
   <app-harmonogram-aktualna-wizyta></app-harmonogram-aktualna-wizyta>
   <app-harmonogram-nastepna-wizyta></app-harmonogram-nastepna-wizyta>
-
 </div>
-<hr style="color: rgb(128,128,128)">
-<hr style="color: rgb(128,128,128)">

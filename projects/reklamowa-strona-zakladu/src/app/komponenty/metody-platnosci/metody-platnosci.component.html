@@ -1,6 +1,9 @@
 <div
+  *ngIf="dane_.danePodstawowe.mozliwoscPlatnosciKarta && this.dane_.danePodstawowe.czyJakasPlatnosc()"
+  [attr.data-aos-duration]="animation_.animationTimePayMethod"
   class="metodyPlatnosciDiv"
-  *ngIf="dane_.danePodstawowe.mozliwoscPlatnosciKarta && this.dane_.danePodstawowe.czyJakasPlatnosc()">
+  data-aos="fade-right"
+  data-aos-delay="1900">
   <div *ngIf="dane_.danePodstawowe.platnosci.blik">
     <img src="assets/platnosci/blik.png" />
   </div>

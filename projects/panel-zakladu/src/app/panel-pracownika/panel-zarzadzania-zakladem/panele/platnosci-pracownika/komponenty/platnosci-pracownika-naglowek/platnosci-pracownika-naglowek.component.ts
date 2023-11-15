@@ -9,6 +9,7 @@ import { PlatnosciPracownikaPotwierdzenieAkcjiComponent } from '../../komunikaty
 import { StartStopUslugaComponent } from '../okna/start-stop-usluga/start-stop-usluga.component';
 import { PodreczneDaneService } from '../../../../../../serwisy/podreczne-dane.service';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { Info } from '../../../../../../enum/info';
 
 @Component({
   selector: 'app-platnosci-pracownika-naglowek',
@@ -88,6 +89,11 @@ export class PlatnosciPracownikaNaglowekComponent {
   }
 
   OdejmijPracownika() {
+    //* Zabezpieczenie przed odjęciem pracownika kiedy miejsce zajete
+    if (this.podreczne_.danePodreczneObiekt.returnActiveWorkers() == this.dane.iloscPracownikow) {
+      this.komunikaty.komunikatInfo(Info.zakazOdjeciaMiejsc);
+      return;
+    }
     const okienko = this.modalService.open(PlatnosciPracownikaPotwierdzenieAkcjiComponent);
     okienko.componentInstance.tresc =
       'Zmniejszenie liczby pracowników może wiązać się z zmianami na stronie reprezentacyjnej';

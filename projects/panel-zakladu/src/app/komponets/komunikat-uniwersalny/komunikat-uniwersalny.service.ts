@@ -12,6 +12,7 @@ export class KomunikatUniwersalnyService {
     let component = this.modal.open(KomunikatUniwersalnyComponent);
     component.componentInstance.title = title;
     component.componentInstance.content = content;
+    component.componentInstance.result = component.result;
     return component.componentInstance;
   }
 }

@@ -59,13 +59,6 @@ const panelePracownika: Routes = [
     component: PracownicyPracownikaComponent,
   },
   {
-    path: 'kalendarzTerminow',
-    loadChildren: () =>
-      import('./panel-pracownika/panel-zarzadzania-zakladem/panele/kalendarz-terminow/kalendarz-terminow-routing').then(
-        k => k.routes
-      ),
-  },
-  {
     path: 'podsumowanie',
     loadChildren: () =>
       import('./panel-pracownika/panel-zarzadzania-zakladem/panele/podsumowanie/podsumowanie-router.module').then(

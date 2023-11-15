@@ -53,6 +53,7 @@ import { CookieModule } from 'ngx-cookie';
 import { MetodyPlatnosciComponent } from './komponenty/metody-platnosci/metody-platnosci.component';
 import { MaxDlugoscPipe } from './rurki/max-dlugosc.pipe';
 import { TerminNieDostepnyComponent } from './one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/termin-nie-dostepny/termin-nie-dostepny.component';
+import { RecaptchaModule } from 'ng-recaptcha';
 
 @NgModule({
   declarations: [
@@ -102,6 +103,7 @@ import { TerminNieDostepnyComponent } from './one-page-strona/komponenty/formula
     CarouselModule,
     NgSelectModule,
     NgbPaginationModule,
+    RecaptchaModule,
     NgbModule,
     FontAwesomeModule,
     CookieModule.withOptions(),
@@ -114,6 +116,6 @@ import { TerminNieDostepnyComponent } from './one-page-strona/komponenty/formula
     TerminNieDostepnyComponent,
   ],
   bootstrap: [AppComponent],
-  exports: [HtmlSanitizerPipe, FormularzZarejestrujSieComponent],
+  exports: [HtmlSanitizerPipe, FormularzZarejestrujSieComponent, ZdjeciePipe],
 })
 export class AppModule {}

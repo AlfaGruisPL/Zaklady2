@@ -9,6 +9,16 @@ export class DanePodreczneClass {
   public pracownicy: Pracownik[] = [];
   identyfikatorAutomatyczny = '';
 
+  /**
+   * Domyślnie liczba aktywnych użytkowników -1 (ponieważ 1 to administartor, który nie może być zarchiwizowany)*/
+  returnActiveWorkers() {
+    return (
+      this.pracownicy.filter(worker => {
+        return worker.archived == false;
+      }).length - 1
+    );
+  }
+
   returnZalogowanyPracownik() {
     if (this.zalogowanyUzytkownik) {
       return this.zalogowanyUzytkownik;

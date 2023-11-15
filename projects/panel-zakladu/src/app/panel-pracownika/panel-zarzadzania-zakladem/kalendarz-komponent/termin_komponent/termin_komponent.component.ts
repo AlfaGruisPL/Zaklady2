@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, Input, OnInit } from '@angular/core';
 import { Wizyta } from '../../../../klasy/panelPracownika/wizyta';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { KalendarzZarzadzanieTerminemComponent } from '../kalendarz-zarzadzanie-terminem/kalendarz-zarzadzanie-terminem.component';
@@ -15,7 +15,7 @@ export class Termin_komponentComponent implements OnInit {
   @Input() wizyta: Wizyta = new Wizyta({});
   @Input() symulator = false;
   @Input() idIndex = 0;
-
+  anotherVisitOnTheSamePosition = false;
   top = '70px';
   wysokosc = '100px';
   id = Math.random() * 10000000 + 'k' + Math.random();
@@ -24,8 +24,35 @@ export class Termin_komponentComponent implements OnInit {
     private modal: NgbModal,
     private cdr: ChangeDetectorRef,
     public visit_: VisitService,
+    private elementRef: ElementRef,
     private calendar_: KalendarzKomponentService
   ) {}
+
+  // todo do przemyślenia czy wgl ma to sens
+  /**
+   Służy do określenia czy przuciski zmiany statusu mają być wyświetlane
+
+   */
+  checkElementsBelow(): void {
+    const element = this.elementRef.nativeElement as HTMLElement;
+
+    const boundingRect = element.getBoundingClientRect();
+    for (let index = 14; index < 15; index++) {
+      const heightPoint = (Number(this.wysokosc.split('px')[0]) / 15) * index;
+
+      let elementsBelow = document.elementsFromPoint(
+        boundingRect.left + boundingRect.width / 2,
+        boundingRect.top + Number(this.top.split('px')[0]) + heightPoint
+      );
+      console.log(elementsBelow);
+      elementsBelow = elementsBelow.filter(k => {
+        return k.tagName == 'DIV' && k.classList.contains('termin');
+      });
+      if (elementsBelow.length > 1) {
+        this.anotherVisitOnTheSamePosition = true;
+      }
+    }
+  }
 
   ngOnInit() {
     const poczatekGodzian = this.wizyta.poczatek.getHours();
@@ -35,6 +62,9 @@ export class Termin_komponentComponent implements OnInit {
     const roznica = poczatekGodzian + poczatekMinuta / 60 - this.godzinaRozpoczecia;
     this.top = roznica * 25 * 2 + 'px';
     this.wysokosc = (koniecGodzian + koniecMinuta / 60 - (poczatekGodzian + poczatekMinuta / 60)) * 2 * 25 + 'px';
+    setTimeout(() => {
+      this.checkElementsBelow();
+    }, 1);
   }
 
   getVisitFromID(id: number) {
@@ -47,7 +77,6 @@ export class Termin_komponentComponent implements OnInit {
     if (findConfirmDisconfirmDIv) return;
     const okno = this.modal.open(KalendarzZarzadzanieTerminemComponent);
     okno.componentInstance.wizyta = this.wizyta;
-    console.log(this.wizyta);
   }
 
   disablePopover2() {

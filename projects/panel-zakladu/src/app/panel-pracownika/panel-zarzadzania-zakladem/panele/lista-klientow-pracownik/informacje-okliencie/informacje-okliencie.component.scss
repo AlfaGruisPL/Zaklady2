@@ -33,15 +33,15 @@
 .uslugaWWizycie {
   width: 100%;
   padding-left: 10px;
-  counter-increment: div;
+
   padding-top: 1px;
   color: #002793;
 
-  &:before {
+  .hash {
     padding-left: 10px;
-
-    content: '#' counter(div);
     padding-right: 10px;
+    pointer-events: none;
+    user-select: none;
   }
 }
 

@@ -11,8 +11,13 @@
   line-height: 17px;
 
   .sesja {
-    word-spacing: 1px;
+    word-spacing: 2px;
     float: right;
 
+    .page {
+      font-weight: bolder;
+      color: green;
+      letter-spacing: 1px;
+    }
   }
 }

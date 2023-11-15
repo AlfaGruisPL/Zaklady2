@@ -1,31 +1,48 @@
 <div class="informacjaOnas" id="ONas">
   <div class="containerONas">
-
     <div class="dane">
-      <div *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.naszKontaktCzyWyswietlic">
-
+      <div
+        [attr.data-aos-duration]="animation_.animationTimeBannerPanels"
+        data-aos="fade-left"
+        data-aos-delay="50"
+        data-aos-once="true">
         <app-onas-kontakt></app-onas-kontakt>
       </div>
-      <div *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.godzinyCzyWyswietlic">
-
+      <div
+        *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.godzinyCzyWyswietlic"
+        [attr.data-aos-duration]="animation_.animationTimeBannerPanels"
+        data-aos="fade-left"
+        data-aos-once="true">
         <app-onas-godziny-otwarcia></app-onas-godziny-otwarcia>
       </div>
-      <div>
-
+      <div
+        [attr.data-aos-duration]="animation_.animationTimeBannerPanels"
+        data-aos="fade-left"
+        data-aos-delay="50"
+        data-aos-once="true">
         <app-onas-adres></app-onas-adres>
       </div>
     </div>
 
     <div class="panel">
-      <span *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.uslugiCzyWyswietlic" class="uslugi">
+      <span
+        *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.uslugiCzyWyswietlic"
+        [attr.data-aos-duration]="animation_.animationTimeBannerPanels"
+        class="uslugi"
+        data-aos="fade-right"
+        data-aos-delay="50"
+        data-aos-once="true">
         <app-onas-uslugi></app-onas-uslugi>
       </span>
-      <div *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.daneZakladuCzyWyswietlic" class="podstawoweInformacje">
+      <div
+        *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.daneZakladuCzyWyswietlic"
+        [attr.data-aos-duration]="animation_.animationTimeBannerPanels"
+        class="podstawoweInformacje"
+        data-aos="fade-right"
+        data-aos-delay="50"
+        data-aos-once="true">
         <app-onas-dane-podstawowe></app-onas-dane-podstawowe>
       </div>
-
     </div>
-
-
   </div>
 </div>

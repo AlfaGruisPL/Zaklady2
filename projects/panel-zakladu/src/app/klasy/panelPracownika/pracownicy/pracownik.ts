@@ -17,7 +17,7 @@ export class Pracownik {
   };
   public ilosKlientow: number = 0;
 
-  public status = '';
+  public archived = true;
   public urlop: boolean = false;
 
   public imiePuste: boolean = false;

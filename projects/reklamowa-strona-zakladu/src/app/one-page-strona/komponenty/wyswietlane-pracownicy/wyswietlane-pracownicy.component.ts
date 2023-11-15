@@ -3,6 +3,7 @@ import { ListonoszService } from "../../../serwisy/listonosz.service";
 import { Drzwi } from "../../../enum/drzwi";
 import { Pracownik } from "../../../klasy/pracownik";
 import { environment } from "../../../../environments/environment";
+import { AnimationService } from "../../../serwisy/animation.service";
 
 // @ts-ignore
 @Component({
@@ -17,7 +18,7 @@ export class WyswietlanePracownicyComponent implements OnInit {
   protected readonly environment = environment;
   private slider: any;
 
-  constructor(public listonosz: ListonoszService) {}
+  constructor(public listonosz: ListonoszService, public animation_: AnimationService) {}
 
   generowanieKaruzeli() {
     // @ts-ignore

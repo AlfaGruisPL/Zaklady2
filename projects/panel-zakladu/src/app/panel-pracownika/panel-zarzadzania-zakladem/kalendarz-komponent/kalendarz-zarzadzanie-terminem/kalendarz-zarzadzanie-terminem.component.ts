@@ -25,6 +25,7 @@ export class KalendarzZarzadzanieTerminemComponent implements OnInit {
   @Input() wizyta: Wizyta = new Wizyta({});
   buttonBlock = false;
   blur = false;
+  simple = false;
   protected readonly Function = Function;
   protected readonly Funkcje = Funkcje;
   protected readonly blockquote = blockquote;
@@ -43,6 +44,11 @@ export class KalendarzZarzadzanieTerminemComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    //włączenie lub wyłączenie otwierania wielu terminow
+    if (this.simple) {
+      return;
+    }
+    //! jeżeli jest więcej niż jeden termin w tym samym czasie
     if (this.visit_.actualTrigeredElements.length > 1) {
       this.blur = true;
       let index = 1;
@@ -75,14 +81,19 @@ export class KalendarzZarzadzanieTerminemComponent implements OnInit {
           });
         index++;
       });
-
+      //* kiedy kliknięto przycisk anuluj
       window
         .addButton('Anuluj', { defaultNo: true })
         .pipe(take(1))
         .subscribe(k => {
           this.activeModal.dismiss();
         });
+      //* kiedy kliknięto przycisk X
       window.dismiss.pipe(take(1)).subscribe(k => {
+        this.activeModal.dismiss();
+      });
+      //* kiedy kliknięto poza oknem
+      window.result.catch(k => {
         this.activeModal.dismiss();
       });
     }

@@ -2,6 +2,7 @@
   min-height: calc(100vh - 70px - 100px);
   background: #f3f3f3;
   overflow-y: auto;
+  box-shadow: 0 0 7px 1px inset black;
   @media (max-width: 700px) {
     min-height: auto;
   }

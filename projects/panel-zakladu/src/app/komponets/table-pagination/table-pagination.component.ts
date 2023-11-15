@@ -73,7 +73,6 @@ export class TablePaginationComponent implements OnChanges {
 
   test() {
     setTimeout(() => {
-      console.log('pageChange', this.page);
       this.pageChange.emit(this.page);
     }, 1);
   }

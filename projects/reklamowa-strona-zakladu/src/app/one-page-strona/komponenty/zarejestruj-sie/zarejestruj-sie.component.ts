@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NawigacjaService } from '../../../serwisy/nawigacja.service';
 import { ZarejestrujSieService } from '../formularz-zarejestruj-sie/zarejestrujSie.service';
+import { AnimationService } from '../../../serwisy/animation.service';
 
 @Component({
   selector: 'app-zarejestruj-sie',
@@ -10,6 +11,7 @@ import { ZarejestrujSieService } from '../formularz-zarejestruj-sie/zarejestrujS
 export class ZarejestrujSieComponent {
   constructor(
     public nawigacja: NawigacjaService,
+    public animation_: AnimationService,
     private rejestracja: ZarejestrujSieService // private googleService_: GoogleAnalyticsService
   ) {}
 

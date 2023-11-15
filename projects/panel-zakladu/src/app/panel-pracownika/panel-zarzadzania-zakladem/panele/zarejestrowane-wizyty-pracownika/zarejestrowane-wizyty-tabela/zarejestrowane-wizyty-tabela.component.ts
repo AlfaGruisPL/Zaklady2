@@ -101,6 +101,7 @@ export class ZarejestrowaneWizytyTabelaComponent implements OnInit, OnDestroy {
 
   wyswietl(wizyta: Wizyta) {
     const okno = this.modal.open(KalendarzZarzadzanieTerminemComponent);
+    okno.componentInstance.simple = true;
     okno.componentInstance.wizyta = wizyta;
   }
 

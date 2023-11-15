@@ -1,0 +1,22 @@
+<div class="filtry">
+  <div class="switchButtonDiv">
+    <button
+      (click)="workersTable.filter = 'dostepni'"
+      [ngClass]="{ switchButtonAktywny: workersTable.filter == 'dostepni' }"
+      class="switchButton">
+      Dostępni
+    </button>
+    <button
+      (click)="workersTable.filter = 'urlop'"
+      [ngClass]="{ switchButtonAktywny: workersTable.filter == 'urlop' }"
+      class="switchButton">
+      Urlop
+    </button>
+    <button
+      (click)="workersTable.filter = 'zarchiwizuj'"
+      [ngClass]="{ switchButtonAktywny: workersTable.filter == 'zarchiwizuj' }"
+      class="switchButton">
+      Archiwum
+    </button>
+  </div>
+</div>

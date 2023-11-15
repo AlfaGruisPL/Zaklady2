@@ -7,13 +7,16 @@
   [ngClass]="{
     symulacja: symulator,
     odwolane: wizyta.cancled(),
+    completed: wizyta.completed,
     missedVisit: wizyta.completed == false,
-    odd: idIndex % 2 == 1
+    odd: idIndex % 2 == 1,
+    anotherVisitOnTheSamePosition: anotherVisitOnTheSamePosition
   }"
   [ngStyle]="{ top: top, height: wysokosc }"
   [ngbPopover]="popContent"
   [popoverTitle]="popTitle"
   class="termin"
+  container="body"
   ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
   placement="top"
   popoverTitle="Popover on top"
@@ -22,8 +25,7 @@
     {{ wizyta.poczatek | date : 'HH:mm' }} {{ wizyta.koniec | date : 'HH:mm' }}
   </h3>
 
-  <app-confirm-visit-button [visit]="wizyta"></app-confirm-visit-button>
-
+  <app-confirm-visit-button *ngIf="!anotherVisitOnTheSamePosition" [visit]="wizyta"></app-confirm-visit-button>
   <div *ngIf="wizytaDiv.clientHeight >= 65 && !wizyta.cancled() && wizyta.completed != false" class="zarzadzaj">
     Zarządzaj
   </div>
@@ -64,6 +66,9 @@
         </tr>
         <tr *ngIf="getVisitFromID(visit)?.completed == false" class="niewWykonana">
           <td colspan="2">Wizyta oznaczona jako nie wykonana</td>
+        </tr>
+        <tr *ngIf="getVisitFromID(visit)?.completed == undefined" class="nieOznaczona">
+          <td colspan="2">Wizyta nie oznaczona</td>
         </tr>
         <tr *ngIf="getVisitFromID(visit)?.dataOdwolania" class="odwolanie">
           <td>Data&nbsp;odwołania</td>

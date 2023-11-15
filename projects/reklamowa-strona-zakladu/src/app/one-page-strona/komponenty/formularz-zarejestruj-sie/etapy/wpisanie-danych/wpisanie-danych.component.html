@@ -67,10 +67,14 @@
     </table>
   </div>
   <div class="divNaPrzycisk">
+    <re-captcha (resolved)="resolved($event)" [siteKey]="env.googleCaptchaKey"></re-captcha>
     <span *ngIf="!ZarejestrujSieService.DaneKlientaClass.czyWszystkoUzupelnione" class="czerwone"
       >Wprowadź wszystkie dane!</span
     >
-    <button (click)="przejdzDalej()" [disabled]="ZarejestrujSieService.butonDisabled_wyslijDane" class="buttonDalej">
+    <button
+      (click)="przejdzDalej()"
+      [disabled]="ZarejestrujSieService.butonDisabled_wyslijDane || !captchaSolve"
+      class="buttonDalej">
       Dalej
     </button>
     <button (click)="cofnij()" class="buttonCofnij">Cofnij</button>

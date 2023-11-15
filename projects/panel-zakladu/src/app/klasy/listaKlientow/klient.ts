@@ -17,10 +17,12 @@ export class Klient {
     klientTmp.wizytWZakladzie?.forEach(wizyta => {
       this.wizytWZakladzie.push(new Wizyta(wizyta));
     });
+    this.wizytWZakladzie.sort((k1, k2) => (k1.poczatek.getTime() > k2.poczatek.getTime() ? -1 : 1));
     Object.assign(this, resztaPol);
   }
 
   dataOstatniejWizyty() {
+    if (this.wizyty.length == 0) return new Date();
     this.wizyty.sort((k, k2) => {
       return k.poczatek > k2.poczatek ? 1 : -1;
     });

@@ -1,3 +1,7 @@
+.test {
+  outline: 2px solid red;
+}
+
 .termin {
   width: 80%;
   height: 50px;
@@ -11,9 +15,16 @@
   z-index: 100;
   transition: scale 0.1s, color 1200ms ease-in-out;
   //border-top: 3px dashed rgba(0, 0, 0, 0.7);
-
   &.odd {
     background: rgba(0, 157, 255, 0.16);
+  }
+
+  &.completed {
+    background: rgba(133, 255, 0, 0.5);
+
+    &.odd {
+      background: rgba(12, 181, 0, 0.5);
+    }
   }
 
   &.odwolane {

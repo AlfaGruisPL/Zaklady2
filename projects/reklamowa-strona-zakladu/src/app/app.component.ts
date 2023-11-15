@@ -5,6 +5,7 @@ import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { HOST_ID } from './host';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as AOS from 'aos';
 
 declare let gtag: Function;
 
@@ -17,6 +18,7 @@ export class AppComponent implements OnInit {
   environment = environment;
   wersja: string = packageInfo.version;
   data_wydania: string = packageInfo.data_wydania;
+  routeFragment: string | null = '';
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -26,13 +28,14 @@ export class AppComponent implements OnInit {
     @Optional() @Inject(HOST_ID) private host: InjectionToken<string>
   ) {}
 
-  routeFragment: string | null = '';
-
   test() {
     console.log(this.routeFragment, 123);
   }
 
   ngOnInit() {
+    setTimeout(() => {
+      AOS.init();
+    }, 20);
     this.googleService_.event('enter_name', 'user_register_form', 'Name');
 
     if (isPlatformBrowser(this.platformId)) {

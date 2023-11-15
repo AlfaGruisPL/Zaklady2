@@ -1,4 +1,7 @@
 $borderSelect: 2px inset #4096e3;
+body {
+  overflow-x: hidden;
+}
 
 @import '~@ng-select/ng-select/themes/default.theme.css';
 .__se__solid {
@@ -12,6 +15,7 @@ html {
 
 .tekst p {
   width: 100%;
+  margin-bottom: 0rem !important;
 }
 
 body {

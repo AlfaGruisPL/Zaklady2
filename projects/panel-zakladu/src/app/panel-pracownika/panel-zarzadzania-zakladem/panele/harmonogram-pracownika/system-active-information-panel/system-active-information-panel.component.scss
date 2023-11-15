@@ -1,0 +1,49 @@
+.systemActive {
+  background: #00c400;
+  color: whitesmoke;
+  text-shadow: 1px 1px 2px black;
+}
+
+.systemNoActive {
+  background: #980000;
+  color: whitesmoke;
+  text-shadow: 1px 1px 2px black;
+}
+
+.systemInTest {
+  background: #bdc500;
+  color: whitesmoke;
+  text-shadow: 1px 1px 2px black;
+}
+
+.systemLoading {
+  color: transparent;
+}
+
+.block {
+  letter-spacing: 4px;
+  width: 100%;
+  text-align: center;
+  display: block;
+  position: relative;
+  font-size: 20px;
+  font-weight: bolder;
+  animation: animation 0.5s ease 1 normal forwards;
+}
+
+@keyframes animation {
+  0% {
+    position: relative;
+    opacity: 0;
+    top: -40px;
+  }
+  40% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    box-shadow: 0px 2px 4px 0px #999;
+  }
+}

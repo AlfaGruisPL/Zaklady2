@@ -12,7 +12,7 @@
   }
 
   .containerMojZaklad {
-    margin-top: 40px;
+    //  margin-top: 40px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto auto auto;
@@ -27,7 +27,7 @@
       justify-content: center;
       flex-direction: column;
       align-content: center;
-      margin-top: 11px;
+      //   margin-top: 11px;
     }
   }
 
@@ -35,7 +35,7 @@
     grid-area: tabela1;
     display: flex;
     justify-content: center;
-    padding: 20px;
+    padding: 10px;
 
     table {
       border-top: 2px solid #afb0b4;
@@ -50,26 +50,26 @@
     margin-left: 40px;
     display: flex;
     justify-content: center;
-    padding: 20px;
+    padding: 10px;
 
     table {
       border-top: 2px solid #afb0b4;
       border-right: 2px solid #afb0b4;
       display: block;
-      padding: 20px;
+      padding: 10px;
 
       tr:not(:first-of-type) {
         td {
           &:not(:first-of-type) {
             input {
-              margin-left: 20px;
+              margin-left: 10px;
               @media (max-width: 700px) {
                 margin: 0;
               }
             }
 
             ui-switch {
-              margin-left: 30px;
+              margin-left: 20px;
               @media (max-width: 700px) {
                 margin: 0;
               }
@@ -85,13 +85,13 @@
     grid-area: tabela3;
     display: flex;
     justify-content: center;
-    padding: 20px;
+    padding: 10px;
 
     table {
       border-bottom: 2px solid #afb0b4;
       border-left: 2px solid #afb0b4;
       display: block;
-      padding: 20px;
+      padding: 10px;
     }
   }
 
@@ -101,13 +101,13 @@
     grid-area: tabela4;
     display: flex;
     justify-content: center;
-    padding: 20px;
+    padding: 10px;
 
     table {
       border-bottom: 2px solid #afb0b4;
       border-right: 2px solid #afb0b4;
       display: block;
-      padding: 20px;
+      padding: 10px;
       @media (max-width: 700px) {
         width: 100%;
       }
@@ -115,21 +115,21 @@
   }
 
   .tabela5 {
-    padding-right: 20px;
+    padding-right: 10px;
   }
 
   .tabela6 {
-    padding-left: 30px;
+    padding-left: 20px;
 
-    table.border {
+    table.tableBorder {
       border-top: 2px solid #afb0b4;
       border-left: 2px solid #afb0b4;
-      padding: 20px;
+      padding: 10px;
       display: block;
     }
 
     .payMethod {
-      margin-left: 19px;
+      margin-left: 9px;
     }
   }
 }

@@ -1,52 +1,49 @@
-<table class="tablica noSpaceToWall">
-  <tr class="wyszukiwarka">
-    <td class="title" colspan="5">
-      <h3>Wizyty u pracownika:</h3>
-    </td>
-  </tr>
-  <tr>
+<app-table
+  [async]="false"
+  [collectionSize]="klient.wizyty.length"
+  [data]="klient.wizyty"
+  [displaySum]="true"
+  [search]="false"
+  [subTableOpenVariable]="'uslugiTabela'"
+  [subTableVariable]="'uslugiArray'"
+  [title]="'Wizyty u pracownika:'">
+  <ng-template TemplateId="thead">
     <th>Nr.</th>
     <th>Data</th>
+    <th>Utworzenie</th>
+    <th>Wykonanie</th>
     <th>Kwota</th>
     <th>Wykonawca</th>
     <th>Zarządzanie</th>
-  </tr>
-  <ng-container
-    *ngFor="
-      let wizyta of klient.wizyty | slice : (pagg.page - 1) * pagg.pageSize : pagg.page * pagg.pageSize;
-      let index = index
-    ">
-    <tr>
-      <td>{{ klient.wizyty.length - index - pagg.pageSize * pagg.page + pagg.pageSize }}</td>
-      <td>{{ wizyta.poczatek | date : 'dd.MM.yyyy      hh:mm/' }}{{ wizyta.koniec | date : 'hh:mm' }}</td>
-      <td>{{ wizyta.cena }}zł</td>
+  </ng-template>
 
-      <td>{{ wizyta.pracownik.imie + '  ' + wizyta.pracownik.nazwisko }}</td>
-      <td>
-        <button (click)="wyswietlDaneDodatkowe(wizyta)" class="domyslnyButton3">Usługi</button>
-        <button class="domyslnyButtonUsun">Usuń</button>
-      </td>
-    </tr>
-    <tr *ngIf="wizyta.uslugiTabela">
-      <td colspan="4">
-        <ng-container *ngIf="wizyta.czySaUslugi; else opis">
-          <div *ngFor="let usluga of wizyta.uslugi?.uslugi" class="uslugaWWizycie">
-            {{ usluga.nazwa }} - {{ usluga.cena }}zł
-          </div>
-        </ng-container>
-        <ng-template #opis>
-          {{ wizyta.uslugi?.opis }}
-        </ng-template>
-      </td>
-    </tr>
-  </ng-container>
-</table>
-<div class="paggination">
-  <app-table-pagination
-    #pagg
-    [(page)]="page"
-    [collectionSize]="klient.wizyty.length"
-    [pageSizeArray]="[4, 8, 15]"
-    [pageSize]="4">
-  </app-table-pagination>
-</div>
+  <ng-template TemplateId="tbody" let-index="index" let-obj>
+    <td>{{ index }}</td>
+    <td>{{ obj.poczatek | date : 'dd.MM.yyyy      hh:mm/' }}{{ obj.koniec | date : 'hh:mm' }}</td>
+
+    <td>
+      <ng-container *ngIf="obj.tryb == 'reklamowa'">Strona reklamowa</ng-container>
+      <ng-container *ngIf="obj.tryb != 'reklamowa'">Ręczne</ng-container>
+    </td>
+    <td>
+      <app-completed-visit-status [visit]="obj"></app-completed-visit-status>
+    </td>
+    <td>{{ obj.cena }}zł</td>
+    <td>{{ obj.pracownik.imie + '  ' + obj.pracownik.nazwisko }}</td>
+    <td>
+      <button (click)="wyswietlDaneDodatkowe(obj)" *ngIf="obj.tryb !== 'manual'" class="domyslnyButton3">Usługi</button>
+      <button (click)="wyswietlDaneDodatkowe(obj)" *ngIf="obj.tryb == 'manual'" class="domyslnyButton3">Opis</button>
+
+      <button class="domyslnyButtonUsun">Usuń</button>
+    </td>
+  </ng-template>
+  <ng-template TemplateId="subTableBody" let-index="index" let-obj>
+    <td colspan="4">
+      <div *ngIf="obj.nazwa; else opis" class="uslugaWWizycie">
+        <span class="hash">#{{ index }}</span
+        >{{ obj.nazwa }} - {{ obj.cena }}zł
+      </div>
+      <ng-template #opis><b>Opis usługi:</b> {{ obj }}</ng-template>
+    </td>
+  </ng-template>
+</app-table>

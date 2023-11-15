@@ -89,13 +89,6 @@ export class KalendarzKomponentComponent implements OnInit, OnDestroy {
   }
 
   public kliknietoPole(dzien: DzienTygodnia, index: number) {
-    ///tu było zarządzanie
-    /*if (this.zarzadzanie) {
-      this.Kalendarz_.nowaPrzerwa(dzien, index);
-    } else {
-      this.Kalendarz_.nowaWizyta(dzien, index);
-    }*/
-    ///nowa metoda
     const window = this.uniwersalMessage_.open('Wybierz działanie', '');
     window
       .addButton('Dodaj wizytę', { class: 'domyslnyButton2' })

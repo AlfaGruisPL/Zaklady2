@@ -37,6 +37,5 @@
 </div>
 <div class="modal-footer">
   <button (click)="activeModal.dismiss('anuluj')" class="domyslnyButtonAnuluj">Anuluj</button>
-  <button (click)="dodaj()" class="domyslnyButtonZapisz">Dodaj</button>
+  <button (click)="dodaj()" [disabled]="buttonDisabled" class="domyslnyButtonZapisz">Dodaj</button>
 </div>
-

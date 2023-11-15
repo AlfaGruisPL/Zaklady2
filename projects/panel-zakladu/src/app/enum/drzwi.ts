@@ -1,6 +1,7 @@
 export enum Drzwi {
   nazwaZakladu = '/zaklady/nazwaZakladu',
 
+  systemActive = '/panelPracownika/systemActive',
   logowanie = '/auth/login',
   wylogowanie = '/auth/logout',
   resetHasla = '/auth/resetHasla',

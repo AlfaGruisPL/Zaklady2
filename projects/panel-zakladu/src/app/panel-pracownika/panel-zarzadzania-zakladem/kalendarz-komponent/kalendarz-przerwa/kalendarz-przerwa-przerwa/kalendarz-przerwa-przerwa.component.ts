@@ -18,6 +18,7 @@ export class KalendarzPrzerwaPrzerwaComponent {
   @Input() godzinaRozpoczecia: any;
   @Input() godzinaZakonczenia: any;
   @Input() data: string | null = '';
+  buttonDisabled = false;
   dataPoczatek: undefined | string = undefined;
   dataKoniec: undefined | string = undefined;
   wybranyPracownik = 0;
@@ -47,6 +48,7 @@ export class KalendarzPrzerwaPrzerwaComponent {
   ngOnInit() {}
 
   dodaj() {
+    this.buttonDisabled = true;
     const dto = new PrzerwaDto();
     dto.godzinaRozpoczecia = this.godzinaRozpoczecia;
     dto.godzinaZakonczenia = this.godzinaZakonczenia;
@@ -64,6 +66,9 @@ export class KalendarzPrzerwaPrzerwaComponent {
       .catch(k => {
         this.komunikaty_.komunikatBledu(Bledy.przerwaNieZostalaDodana);
         console.log(k);
+      })
+      .finally(() => {
+        this.buttonDisabled = false;
       });
   }
 }

@@ -2,104 +2,16 @@
   <div class="naglowekZolty">
     <h1 class="naglowek1Wzoltym">Panel zarządzania pracownikami</h1>
   </div>
-  <div class="filtry">
-    <div class="switchButtonDiv">
-      <button
-        (click)="filter = 'dostepni'"
-        [ngClass]="{ switchButtonAktywny: filter == 'dostepni' }"
-        class="switchButton">
-        Dostępni
-      </button>
-      <button (click)="filter = 'urlop'" [ngClass]="{ switchButtonAktywny: filter == 'urlop' }" class="switchButton">
-        Urlop
-      </button>
-      <button
-        (click)="filter = 'zarchiwizuj'"
-        [ngClass]="{ switchButtonAktywny: filter == 'zarchiwizuj' }"
-        class="switchButton">
-        Archiwum
-      </button>
-    </div>
-  </div>
+
+  <app-workers-table-filter></app-workers-table-filter>
+
   <div class="Divtabelka">
     <span class="iloscPracownikow"
-      >Pracownicy <b>{{ ListaPracownikow.length }}</b> na <b>{{ limitPracownikow }}</b></span
+      >Pracownicy <b>{{ activeWorker() }}</b> na <b>{{ workersTable_.limitPracownikow }}</b></span
     >
-    <table class="tablica noSpaceToWall">
-      <tr>
-        <th>Nr</th>
-        <th>Imię</th>
-        <th>Nazwisko</th>
-        <th>Adres e-mail</th>
-        <th>Numer telefonu</th>
-        <th class="smallButtonCenter">Zarządzanie</th>
-        <th style="width: 80px">Zdjęcie</th>
-      </tr>
-      <tr *ngFor="let pracownik of filtrowaniePracownikow(); let index = index">
-        <td class="noWrapIndex">
-          {{ index + 1 }}
-          <ng-container *ngIf="!pracownik.potwierdzony">
-            <ng-template #alertContent
-              >Użytkownik nie potwierdził konta<br />
-              Nie będzie wyświetlany na stronie reklamowej
-            </ng-template>
-            <span [ngbPopover]="alertContent" class="alert" popoverTitle="Uwaga" triggers="mouseenter:mouseleave"
-              >!&nbsp;uwaga</span
-            ></ng-container
-          >
-        </td>
-
-        <td>{{ pracownik.imie }}</td>
-        <td>{{ pracownik.nazwisko }}</td>
-        <td>{{ pracownik.adresEmail }}</td>
-        <td>{{ pracownik.prefiksTelefonu }}{{ pracownik.numerTelefonu }}</td>
-        <td class="tdWithNgbDropdown smallButtonCenter">
-          <div class="" container="body" ngbDropdown>
-            <button class="btn btn-outline-primary btn-sm" ngbDropdownToggle type="button">Wybierz:</button>
-            <div ngbDropdownMenu>
-              <button (click)="wyswietlUzytkownika(pracownik.id)" ngbDropdownItem>Wyświetl</button>
-              <button (click)="zmodyfikujUzytkownika(pracownik.id)" ngbDropdownItem>Zmodyfikuj</button>
-
-              <ng-container *ngIf="filter != 'zarchiwizuj'; else przyciskiDoArchiwizuj">
-                <button
-                  (click)="urlop(pracownik.id)"
-                  *ngIf="pracownik.urlop == false; else przywrocUrlop"
-                  ngbDropdownItem>
-                  Wyślij na urlop
-                </button>
-                <button
-                  (click)="zarchiwizujUzytkownika(pracownik.id)"
-                  *ngIf="pracownik.status == 'dostepni'; else przywrocArchiwum"
-                  ngbDropdownItem>
-                  Zarchiwizuj
-                </button>
-
-                <ng-template #przywrocArchiwum>
-                  <button (click)="przywrocUzytkownika(pracownik.id)" ngbDropdownItem>Przywróć</button>
-                </ng-template>
-                <ng-template #przywrocUrlop>
-                  <button (click)="przywrocUzytkownikaZUrlopu(pracownik.id)" ngbDropdownItem>Przywróć do pracy</button>
-                </ng-template>
-              </ng-container>
-              <ng-template #przyciskiDoArchiwizuj>
-                <button (click)="urlop(pracownik.id)" ngbDropdownItem>Wyślij na urlop</button>
-                <button (click)="przywrocUzytkownika(pracownik.id)" ngbDropdownItem>Ustaw jak dostępny</button>
-              </ng-template>
-
-              <div class="dropdown-divider"></div>
-              <button (click)="usunPracownika(pracownik.id)" ngbDropdownItem>Usuń</button>
-            </div>
-          </div>
-        </td>
-        <td style="text-align: center">
-          <img
-            [src]="environment.linkDoZdjeciaProfilowego + pracownik.id + '?jakosc=30' | zdjecie : false"
-            style="max-height: 38px; max-width: 70px" />
-        </td>
-      </tr>
-    </table>
+    <app-workers-table></app-workers-table>
   </div>
   <div class="divNaPrzycisk">
-    <button (click)="dodajPracownika()" class="DodajPracownikaButton">Dodaj pracownika</button>
+    <button (click)="workersTable_.dodajPracownika()" class="DodajPracownikaButton">Dodaj pracownika</button>
   </div>
 </div>

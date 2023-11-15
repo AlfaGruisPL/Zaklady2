@@ -17,7 +17,7 @@
     color: #0101c7;
     margin: 0;
     text-shadow: 0px 0px 1px #646464;
-    @media (max-width: 700px) {
+    @media (max-width: 900px) {
       font-size: 15px;
       display: flex;
       align-items: center;
@@ -33,7 +33,7 @@
 
   &:hover {
     cursor: pointer;
-    background: #bb57ff;
+    background: rgba(187, 87, 255, 0.45);
     scale: 1.051;
   }
 
@@ -83,5 +83,8 @@
     color: white !important;
     text-shadow: 0px 0px 1px #030303 !important;
     font-size: 15px;
+    @media (max-width: 700px) {
+      font-size: 12px;
+    }
   }
 }

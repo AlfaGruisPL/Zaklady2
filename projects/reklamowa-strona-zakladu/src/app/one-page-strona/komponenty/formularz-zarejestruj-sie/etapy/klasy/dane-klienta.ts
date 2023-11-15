@@ -23,6 +23,7 @@ export class DaneKlienta {
   public niepoprawnyKod: boolean = false;
   public wybranyTermin: Termin | undefined;
   public wszystkieTerminy: Array<Termin> = [];
+  public capcha = '';
 
   constructor() {
     // informacje do rejestracji
@@ -107,14 +108,15 @@ export class DaneKlientaDTO {
   public koniec: Date = new Date();
   public uslugiId: number[] = [];
   public pracownikId: number | undefined = 0;
+  public capcha = '';
 
   constructor(daneKlienta: DaneKlienta) {
     this.imie = daneKlienta.imie;
     this.nazwisko = daneKlienta.nazwisko;
-    this.numerTelefonu =
-      daneKlienta.prefiksTelefonu + '-' + daneKlienta.numerTelefonu;
+    this.numerTelefonu = daneKlienta.prefiksTelefonu + '-' + daneKlienta.numerTelefonu;
     this.email = daneKlienta.email;
     this.pracownikId = daneKlienta.wybranyPracownik;
+    this.capcha = daneKlienta.capcha;
     const k = daneKlienta.wybranyTermin;
     if (k) {
       this.poczatek = k.poczatek;

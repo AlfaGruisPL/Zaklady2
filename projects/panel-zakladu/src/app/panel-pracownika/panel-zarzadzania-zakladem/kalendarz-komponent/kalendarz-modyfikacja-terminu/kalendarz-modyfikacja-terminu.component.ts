@@ -84,6 +84,16 @@ export class KalendarzModyfikacjaTerminuComponent implements OnInit {
       });
     }
     this.formualrzRejestracjiWizyty.patchValue({ cena: this.obliczCene() });
+    this.formualrzRejestracjiWizyty.patchValue({ koniec: this.obliczCzas() });
+  }
+
+  obliczCzas(): string {
+    let czas = 0;
+    this.kliknieteUslugi.forEach(usluga => (czas += Number(usluga.czas)));
+    const startVisit = this.formualrzRejestracjiWizyty.controls['poczatek'].value.split(':');
+    const dateStartVisit = new Date().setHours(startVisit[0], startVisit[1], 0, 0);
+    const newDate = new Date(dateStartVisit + czas * 1000 * 60).toLocaleTimeString();
+    return `${newDate.split(':')[0]}:${newDate.split(':')[1]}`;
   }
 
   obliczCene(): number {
@@ -131,13 +141,14 @@ export class KalendarzModyfikacjaTerminuComponent implements OnInit {
     return 'medium';
   }
 
-  private send(data: object) {
+  private send(data: any) {
     //todo tu trzeba się zastanowić bo nw o co i jak i gdzie i po co
     //if (!this.token_.czyWlasciciel()) {
     // data['wykonawca'] = -1;
     //}=
     // @ts-ignore
     delete data.confirmed;
+    data['tryb'] = this.auto ? 'auto' : 'manual';
     this.listonosz
       .wyslij(Drzwi.kalendarzRejestracjaWizytyZPanelu, data)
       .then(k => {

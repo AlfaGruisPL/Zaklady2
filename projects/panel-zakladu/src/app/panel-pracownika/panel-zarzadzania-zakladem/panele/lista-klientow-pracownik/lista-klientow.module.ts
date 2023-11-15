@@ -18,6 +18,9 @@ import { InformacjeOKliencieTabelaZakladuComponent } from './informacje-oklienci
 import { InformacjeOKliencieComponent } from './informacje-okliencie/informacje-okliencie.component';
 import { TableComponent } from '../../../../komponets/table/table.component';
 import { TemplateIdDirective } from '../../../../komponets/table/template-id.directive';
+import { SystemActivePageActiveComponent } from '../harmonogram-pracownika/system-active-information-panel/system-active-page-active.component';
+import { SystemActiveInformationPanelComponent } from '../harmonogram-pracownika/system-active-information-panel/system-active-information-panel.component';
+import { InformationDivForScheduleComponent } from '../harmonogram-pracownika/harmonogram-podsumowanie-administratora/information-div-for-schedule/information-div-for-schedule.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,9 @@ import { TemplateIdDirective } from '../../../../komponets/table/template-id.dir
     InformacjeOKliencieTabelaZakladuComponent,
     TableComponent,
     TemplateIdDirective,
+    SystemActivePageActiveComponent,
+    SystemActiveInformationPanelComponent,
+    InformationDivForScheduleComponent,
   ],
 })
 export class ListaKlientowModule {}

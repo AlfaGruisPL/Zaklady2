@@ -6,11 +6,12 @@
   (pageChange)="tabelaPrzerw_.page = $event"
   [collectionSize]="tabelaPrzerw_.daneSize"
   [data]="tabelaPrzerw_.dane"
+  [displaySum]="true"
   [loading]="tabelaPrzerw_.pobieranieDanych"
   [title]="'Lista przerw/dni wolnych'">
   <ng-template TemplateId="thead">
     <th>Nr</th>
-    <th *ngIf="czyWolnyDzien()">Data</th>
+    <th>Data</th>
     <th *ngIf="czyPrzerwa()">Poczatek</th>
     <th *ngIf="czyPrzerwa()">Koniec</th>
     <th>Opis</th>
@@ -21,7 +22,7 @@
 
   <ng-template TemplateId="tbody" let-index="index" let-obj>
     <td>{{ index }}</td>
-    <td *ngIf="czyWolnyDzien()">{{ obj.data }}</td>
+    <td>{{ obj.data ? obj.data : '----' }}</td>
     <td *ngIf="czyPrzerwa()">{{ obj.poczatek }}</td>
     <td *ngIf="czyPrzerwa()">{{ obj.koniec }}</td>
     <td [title]="obj.opis" style="cursor: help">{{ obj.opis | maxDlugosc : 40 }}</td>

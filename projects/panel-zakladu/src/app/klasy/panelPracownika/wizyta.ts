@@ -63,6 +63,16 @@ export class Wizyta {
     }
   }
 
+  get uslugiArray() {
+    if (this.uslugi?.uslugi && (this.tryb == 'auto' || this.tryb == 'reklamowa')) {
+      return this.uslugi.uslugi;
+    }
+    if (this.tryb != 'auto') {
+      return [this.uslugi?.opis];
+    }
+    return [];
+  }
+
   obliczCeneWizyty() {
     if (!this.uslugi) return -1;
     return this.uslugi?.uslugi.reduce((suma, usluga) => suma + usluga.cena, 0);
