@@ -27,7 +27,8 @@ export class MenuPracownikComponent {
   @HostListener('document:click', ['$event'])
   clickout(event: { target: any }) {
     if (!this.eRef.nativeElement.contains(event.target)) {
-      this.outside.emit();
+      const ifBurger = event.target.classList.contains('hamburgerMenuLine');
+      this.outside.emit(ifBurger);
     }
   }
 

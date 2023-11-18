@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuPracownikComponent } from '../../menu/menu-pracownik.component';
 
@@ -9,18 +9,22 @@ import { MenuPracownikComponent } from '../../menu/menu-pracownik.component';
   templateUrl: './admin-panel-banner-hamburger.component.html',
   styleUrls: ['./admin-panel-banner-hamburger.component.scss', './banner-pracownik-adaptive.component.scss'],
 })
-export class AdminPanelBannerHamburgerComponent {
+export class AdminPanelBannerHamburgerComponent implements OnInit {
   openHamburger = false;
 
-  open() {
-    setTimeout(() => {
-      this.openHamburger = !this.openHamburger;
-    });
+  ngOnInit() {
+    const nav = document.querySelector('.hamburgerMenuDiv');
+    const div = document.querySelector('body');
+    div!.append(nav!);
   }
 
-  close() {
-    if (this.openHamburger) {
-      this.openHamburger = false;
-    }
+  open() {
+    console.log(1);
+    this.openHamburger = !this.openHamburger;
+  }
+
+  close(isburger = true) {
+    if (isburger) return;
+    this.openHamburger = false;
   }
 }

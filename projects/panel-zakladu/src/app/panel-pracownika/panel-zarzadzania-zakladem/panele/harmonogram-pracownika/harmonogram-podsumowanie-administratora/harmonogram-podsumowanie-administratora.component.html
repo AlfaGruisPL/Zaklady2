@@ -6,7 +6,11 @@
     [value]="HarmonogramDaneDlaAdministratora.konto / 100 + 'zł'"></app-information-div-for-schedule>
   <app-information-div-for-schedule
     [icon]="faCalendar"
-    [smallText]="'Data pobrania opłaty'"
+    [smallText]="
+      'Data pobrania opłaty</br>Pozostało <span class=\'active\'> ' +
+      HarmonogramDaneDlaAdministratora.timeToEndSub() +
+      '</span> dni'
+    "
     [titile]="'Data ważności'"
     [value]="HarmonogramDaneDlaAdministratora.subskrypcjaDo | date : 'dd.MM.yyyy'">
   </app-information-div-for-schedule>

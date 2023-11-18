@@ -148,7 +148,7 @@ export class TableComponent implements AfterContentInit {
       return method1;
       //  return this.data.slice(0, this.pageSize).length - this.pageSize;
     }
-    return 0;
+    return this.pageSize;
   }
 
   calcEmptyCells(cells: HTMLCollectionOf<HTMLTableCellElement>) {

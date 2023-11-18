@@ -25,16 +25,10 @@
       <tr>
         <td class="naglowek">Usługi:</td>
         <td>
-          <ul class="naglowek2">
-            <li>Lorem ipsum dolor.</li>
-            <li>Lorem ipsum dolor.</li>
-            <li>Lorem ipsum dolor.</li>
-            <li>Lorem ipsum dolor.</li>
-            <li>Lorem ipsum dolor.</li>
-          </ul>
+          <app-schedule-visit-services [visit]="nastepnaWizyta" />
         </td>
       </tr>
     </table>
   </div>
 </div>
-<ng-template #brak> Nie ma więcej wizyt tego dnia</ng-template>
+<ng-template #brak> Brak kolejnych wizyt tego dnia</ng-template>

@@ -14,6 +14,7 @@ import { HarmonogramRoutingModule } from './harmonogram-router.module';
 import { ConfirmVisitButtonComponent } from '../../kalendarz-komponent/termin_komponent/confirm-visit-button/confirm-visit-button.component';
 import { InformationDivForScheduleComponent } from './harmonogram-podsumowanie-administratora/information-div-for-schedule/information-div-for-schedule.component';
 import { SystemActiveInformationPanelComponent } from './system-active-information-panel/system-active-information-panel.component';
+import { ScheduleVisitServicesComponent } from './components/schedule-visit-services/schedule-visit-services.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { SystemActiveInformationPanelComponent } from './system-active-informati
     ConfirmVisitButtonComponent,
     InformationDivForScheduleComponent,
     SystemActiveInformationPanelComponent,
+    ScheduleVisitServicesComponent,
   ],
 })
 export class HarmonogramModule {}

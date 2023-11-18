@@ -11,6 +11,9 @@ import { HttpParams } from '@angular/common/http';
 export class ListaKlientowService {
   public listaKlientow: Array<Klient> = [];
   filter: number | undefined = 0;
+  newCustomersInLast30Days = 0;
+  customerMostVisit: Klient | undefined = undefined;
+  visitsAvg = 0;
   public page = 1;
   public pageSize = 12;
   public iloscKlientow = 12;
@@ -43,14 +46,26 @@ export class ListaKlientowService {
     this.ladowanieDanych = true;
     this.listonosz
       .pobierz(drzwi, params)
-      .then((dane: { lista: Array<Klient>; size: number; limit: number }) => {
-        this.listaKlientow = [];
-        dane.lista.forEach(klient => {
-          this.listaKlientow.push(new Klient(klient));
-        });
-        this.iloscKlientow = dane.size;
-        this.pageSize = dane.limit;
-      })
+      .then(
+        (dane: {
+          lista: Array<Klient>;
+          size: number;
+          limit: number;
+          newCustomersInLast30Days: number;
+          customerMostVisit: any;
+          visitsAvg: number;
+        }) => {
+          this.listaKlientow = [];
+          dane.lista.forEach(klient => {
+            this.listaKlientow.push(new Klient(klient));
+          });
+          this.iloscKlientow = dane.size;
+          this.customerMostVisit = dane.customerMostVisit;
+          this.newCustomersInLast30Days = dane.newCustomersInLast30Days;
+          this.pageSize = dane.limit;
+          this.visitsAvg = dane.visitsAvg;
+        }
+      )
       .catch(error => {
         console.log(error);
       })

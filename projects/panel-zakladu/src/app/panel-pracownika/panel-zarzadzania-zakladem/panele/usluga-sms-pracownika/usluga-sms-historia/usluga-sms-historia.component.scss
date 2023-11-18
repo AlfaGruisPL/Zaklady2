@@ -1,4 +1,14 @@
 .chart-container {
   margin-top: 20px;
   margin-bottom: 20px;
+  visibility: visible;
+}
+
+.hide {
+  visibility: hidden;
+  height: 1px;
+  margin-top: 0;
+  margin-bottom: 0;
+  z-index: -1;
+  pointer-events: none;
 }

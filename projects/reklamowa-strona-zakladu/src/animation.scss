@@ -1,0 +1,26 @@
+@keyframes fromLeft {
+  0% {
+    transform: translate(-1300px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes fromLeftShort {
+  0% {
+    transform: translate(-400px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes fromRight {
+  0% {
+    transform: translate(1300px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}

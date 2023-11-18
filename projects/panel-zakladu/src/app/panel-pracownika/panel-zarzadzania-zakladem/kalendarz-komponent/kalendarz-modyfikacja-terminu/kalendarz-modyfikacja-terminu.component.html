@@ -51,9 +51,9 @@
         <th>Wykonanie:</th>
         <td>
           Nieokreślone
-          <input [value]="" checked="checked" formControlName="confirmed" name="confirmed" type="radio" /><br />
-          Wykonane <input formControlName="confirmed" name="confirmed" type="radio" value="true" /> <br />Niewykonane
-          <input formControlName="confirmed" name="confirmed" type="radio" value="false" />
+          <input [value]="null" checked="checked" formControlName="confirmed" name="confirmed" type="radio" /><br />
+          Wykonane <input [value]="true" formControlName="confirmed" name="confirmed" type="radio" /> <br />Niewykonane
+          <input [value]="false" formControlName="confirmed" name="confirmed" type="radio" />
         </td>
       </tr>
 

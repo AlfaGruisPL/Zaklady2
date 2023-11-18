@@ -1,0 +1,14 @@
+<ng-container *ngIf="visit?.uslugi != undefined">
+  <ng-container *ngIf="visit?.tryb!.toLowerCase()! === 'auto'">
+    <ul>
+      <li *ngFor="let service of visit!.uslugi?.uslugi">{{ service.nazwa }} - {{ service.cena }}zł</li>
+    </ul>
+  </ng-container>
+  <ng-container *ngIf="visit?.tryb!.toLowerCase()! === 'manual'">
+    <div *ngIf="visit!.uslugi?.opis?.length! > 0">
+      <p>
+        {{ visit!.uslugi?.opis }}
+      </p>
+    </div>
+  </ng-container>
+</ng-container>

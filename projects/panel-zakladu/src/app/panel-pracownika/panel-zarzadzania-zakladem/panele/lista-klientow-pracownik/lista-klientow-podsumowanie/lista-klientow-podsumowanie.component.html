@@ -38,5 +38,25 @@
 </div>
 -->
 <div class="blockContainer">
-  <app-information-div-for-schedule [last]="true" [value]="lista_.iloscKlientow" smallText="" titile="Ilość klientów" />
+  <app-information-div-for-schedule
+    [icon]="faPlusMinus"
+    [value]="lista_.iloscKlientow"
+    smallText=""
+    titile="Suma klientów" />
+  <app-information-div-for-schedule
+    [icon]="faUsersBetweenLines"
+    [value]="lista_.newCustomersInLast30Days"
+    smallText="Nowi klienci w ostatnich <span class='active'>30</span> dniach"
+    titile="Ostatnie  dni" />
+  <app-information-div-for-schedule
+    [icon]="faCalculator"
+    [value]="lista_.visitsAvg"
+    smallText="Średnia ilość wizyt"
+    titile="Śred. wizyt" />
+  <app-information-div-for-schedule
+    [icon]="faGreaterThanEqual"
+    [last]="true"
+    [value]="lista_.customerMostVisit?.visitCount! != undefined ? lista_.customerMostVisit?.visitCount! : 0"
+    smallText="Najwięcej wizyt klienta"
+    titile="Najw. wizyt" />
 </div>

@@ -18,8 +18,8 @@
     position: absolute;
     display: block;
     transform: rotate(90deg);
-    top: 12px;
-    left: 8px;
+    top: 8px;
+    left: 5px;
   }
 
   .slash {
@@ -31,8 +31,9 @@ span {
   margin-left: 1px;
   margin-right: 1px;
   font-family: math;
-  font-size: 17px;
-  line-height: 36px;
+  font-size: 14px;
+  line-height: 31px;
   text-shadow: 0px 0px 1px black;
   position: relative;
+  top: 0px;
 }

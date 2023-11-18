@@ -12,6 +12,7 @@
     <th>Imię</th>
     <th>Nazwisko</th>
     <th>Ostatnia wizyta</th>
+    <th class="NotInMobile">Data dołączenia</th>
     <th class="NotInMobile">Adres e-mail</th>
     <th class="NotInMobile">Numer telefonu</th>
     <th>Wizyty</th>
@@ -23,8 +24,10 @@
     <td>{{ obj.firstName }}</td>
     <td>{{ obj.lastName }}</td>
     <td>{{ obj.dataOstatniejWizyty() | date : 'dd.MM.yyyy' }}</td>
+    <td class="NotInMobile">{{ obj.cust_create_time | date : 'dd.MM.yyyy' }}</td>
     <td class="NotInMobile">{{ obj.email }}</td>
     <td class="NotInMobile">{{ obj.phone }}</td>
+
     <td>
       <span class="wizytyKlientaWZakladzie"> {{ obj.wizyty.length }}</span>
       <span *ngIf="obj.wizyty.length != obj.wizytWZakladzie.length" class="sumaWizytKlientaWZakladzie"

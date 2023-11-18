@@ -147,10 +147,10 @@ export class UslugaSmsHistoriaComponent implements OnInit, OnDestroy {
         while (this.datasetsCena.length > 0) this.datasetsCena.pop();
 
         this.service.dane.historia.forEach(k => {
-          this.labels.push(k.termin.toString());
+          this.labels.push(k.date.toString());
           //  this.datasetsFree.push(k.darmoweSMS);
-          this.datasets.push(k.wyslaneSMS);
-          this.datasetsCena.push(k.kosztSMS);
+          this.datasets.push(k.send);
+          this.datasetsCena.push(k.cost);
         });
 
         if (this.labels[0] != undefined) {

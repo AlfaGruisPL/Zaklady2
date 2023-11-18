@@ -8,6 +8,8 @@ export class Klient {
   email = '';
   wizyty: Wizyta[] = [];
   wizytWZakladzie: Wizyta[] = [];
+  cust_create_time: Date | undefined;
+  visitCount = 0;
 
   constructor(klientTmp: Partial<Klient>) {
     const { wizyty, wizytWZakladzie, ...resztaPol } = klientTmp;

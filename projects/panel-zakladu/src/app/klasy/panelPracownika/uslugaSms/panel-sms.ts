@@ -1,22 +1,21 @@
 export class HistoriaSms {
   id: number = 0;
-  termin: Date = new Date();
-  wyslaneSMS: number = 0;
+  date: Date = new Date();
+  send: number = 0;
   oplacone: boolean = false;
-  darmoweSMS: number = 0;
-  kosztSMS: number = 0;
+  free: number = 0;
+  cost: number = 0;
 
   kwota() {
-    return Math.round(this.wyslaneSMS * 0.09 * 100) / 100;
+    return Math.round(this.send * 0.09 * 100) / 100;
   }
 }
 
 export class smsPowiadomienia {
-  godzinaPrzed = false;
-  trzyGodzinyPrzed = false;
-  dzienPrzed = false;
-  trzyDniPrzed = false;
-  potwierdzenieRejestracji = false;
+  hourBefore = false;
+  threeHoursBefore = false;
+  dayBefore = false;
+  threeDaysBefore = false;
 }
 
 export class PanelSms {

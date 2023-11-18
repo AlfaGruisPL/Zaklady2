@@ -35,6 +35,7 @@
   .title {
     font-size: 22px;
     color: $textColor;
+    margin-bottom: 0px;
     @media (max-width: 700px) {
       font-size: 16px;
     }
@@ -44,6 +45,8 @@
 
     fa-icon {
       font-size: 14px;
+      position: relative;
+      bottom: 2px;
       @media (max-width: 700px) {
         font-size: 13px;
       }
@@ -54,8 +57,10 @@
   }
 
   .value {
-    font-size: 22px;
+    font-size: 23px;
     font-weight: bolder;
+    padding-top: 4px;
+    padding-bottom: 4px;
     @media (max-width: 700px) {
       font-size: 18px;
     }
@@ -65,12 +70,19 @@
   }
 
   .smallText {
-    font-size: 11px;
+    font-size: 10px;
+    font-weight: bold;
+
+    ::ng-deep .active {
+      color: #0ccb00;
+      font-weight: bolder;
+    }
+
     @media (max-width: 700px) {
-      font-size: 98px;
+      font-size: 7px;
     }
     @media (max-width: 500px) {
-      font-size: 8px;
+      font-size: 6px;
     }
   }
 }
