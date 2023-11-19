@@ -17,7 +17,7 @@ declare let gtag: Function;
 export class AppComponent implements OnInit {
   environment = environment;
   wersja: string = packageInfo.version;
-  data_wydania: string = packageInfo.data_wydania;
+  data_wydania: string = packageInfo.relase_date;
   routeFragment: string | null = '';
 
   constructor(

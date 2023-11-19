@@ -17,6 +17,27 @@
     </scripts>
     <node-interpreter value="project" />
     <envs />
-    <method v="2" />
+    <method v="2">
+      <option name="GulpBeforeRunTask" enabled="true">
+        <node-interpreter>project</node-interpreter>
+        <node-options />
+        <gulpfile>$PROJECT_DIR$/gulpfile.js</gulpfile>
+        <tasks>
+          <task>increaseVersion</task>
+        </tasks>
+        <arguments />
+        <envs />
+      </option>
+      <option name="GulpBeforeRunTask" enabled="true">
+        <node-interpreter>project</node-interpreter>
+        <node-options />
+        <gulpfile>$PROJECT_DIR$/gulpfile.js</gulpfile>
+        <tasks>
+          <task>updateReleaseDate</task>
+        </tasks>
+        <arguments />
+        <envs />
+      </option>
+    </method>
   </configuration>
 </component>

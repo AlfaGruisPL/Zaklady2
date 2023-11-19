@@ -6,7 +6,7 @@ import { OknoPlatnosciComponent } from './komponenty/okna/okno-platnosci/okno-pl
 import { PlatnosciPracownikaOplatyComponent } from './komponenty/platnosci-pracownika-oplaty/platnosci-pracownika-oplaty.component';
 import { FormsModule } from '@angular/forms';
 import { PlatnosciPracownikaComponent } from './platnosci-pracownika.component';
-import { NgbDropdown, NgbPagination } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdown, NgbPagination, NgbPopover } from '@ng-bootstrap/ng-bootstrap';
 import { UiSwitchModule } from 'ngx-ui-switch';
 import { PlatnosciSMSOknoComponent } from './komponenty/okna/platnosci-smsokno/platnosci-smsokno.component';
 import { WykresStanuKontaComponent } from './komponenty/wykres-stanu-konta/wykres-stanu-konta.component';
@@ -17,6 +17,7 @@ import { TablePaginationComponent } from '../../../../komponets/table-pagination
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TableComponent } from '../../../../komponets/table/table.component';
 import { TemplateIdDirective } from '../../../../komponets/table/template-id.directive';
+import { RureczkiModule } from '../../../../rureczki/rureczki.module';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,8 @@ import { TemplateIdDirective } from '../../../../komponets/table/template-id.dir
     TableComponent,
     NgbDropdown,
     TemplateIdDirective,
+    RureczkiModule,
+    NgbPopover,
   ],
   providers: [],
   bootstrap: [],

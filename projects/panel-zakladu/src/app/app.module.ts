@@ -50,6 +50,9 @@ import { NumberLimitPipe } from './rureczki/number-limit.pipe';
 import { AdminPanelBannerButtonsComponent } from './panel-pracownika/panel-zarzadzania-zakladem/komponenty/banner/admin-panel-banner-buttons/admin-panel-banner-buttons.component';
 import { AdminPanelBannerHamburgerComponent } from './panel-pracownika/panel-zarzadzania-zakladem/komponenty/banner/admin-panel-banner-hamburger/admin-panel-banner-hamburger.component';
 import { MenuPracownikComponent } from './panel-pracownika/panel-zarzadzania-zakladem/komponenty/menu/menu-pracownik.component';
+import { HamburgerButtonComponent } from '../../../reklamowa-strona-zakladu/src/app/one-page-strona/komponenty/banner/hamburger-button/hamburger-button.component';
+import { HamburgerMenuComponent } from './panel-pracownika/panel-zarzadzania-zakladem/komponenty/hamburger-menu/hamburger-menu.component';
+import { FooterNavButtonsComponent } from './panel-pracownika/panel-zarzadzania-zakladem/komponenty/stopka/footer-nav-buttons/footer-nav-buttons.component';
 
 registerLocaleData(localePl, 'pl-PL');
 
@@ -64,7 +67,6 @@ registerLocaleData(localePl, 'pl-PL');
     BannerPracownikaComponent,
     StopkaPracownikaComponent,
     StronaStartowaPracownikaComponent,
-    MojeKontoPracownikaComponent,
     MojZakladPracownikaComponent,
     RejestracjaZakladuComponent,
     BannerPracownikComponent,
@@ -78,6 +80,7 @@ registerLocaleData(localePl, 'pl-PL');
   imports: [
     BrowserModule,
     SharedModule,
+    MojeKontoPracownikaComponent,
     AppRoutingModule,
     FormsModule,
 
@@ -120,6 +123,9 @@ registerLocaleData(localePl, 'pl-PL');
     AdminPanelBannerButtonsComponent,
     AdminPanelBannerHamburgerComponent,
     MenuPracownikComponent,
+    HamburgerButtonComponent,
+    HamburgerMenuComponent,
+    FooterNavButtonsComponent,
   ],
   providers: [
     NgbDropdown,

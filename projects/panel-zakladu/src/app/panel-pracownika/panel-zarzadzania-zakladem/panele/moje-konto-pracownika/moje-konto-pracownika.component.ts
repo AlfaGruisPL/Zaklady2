@@ -7,11 +7,25 @@ import { KomunikatyService } from '../../../../serwisy/komunikaty.service';
 import { BledyNumery } from '../../../../enum/bledy-numery';
 import { FontAwesomeService } from '../../../../serwisy/font-awesome.service';
 import { MojeKontoZdjecieProfiloweComponent } from './moje-konto-zdjecie-profilowe/moje-konto-zdjecie-profilowe.component';
+import { UiSwitchModule } from 'ngx-ui-switch';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TippyDirective } from '@ngneat/helipopper';
+import { CommonModule } from '@angular/common';
+import { UstawieniaPowiadomienComponent } from './ustawienia-powiadomien/ustawienia-powiadomien.component';
 
 @Component({
+  standalone: true,
   selector: 'app-moje-konto-pracownika',
   templateUrl: './moje-konto-pracownika.component.html',
   styleUrls: ['./moje-konto-pracownika.component.scss'],
+  imports: [
+    UiSwitchModule,
+    FontAwesomeModule,
+    TippyDirective,
+    CommonModule,
+    MojeKontoZdjecieProfiloweComponent,
+    UstawieniaPowiadomienComponent,
+  ],
 })
 export class MojeKontoPracownikaComponent implements OnInit {
   public mojeKontoObj = new MojeKonto();

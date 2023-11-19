@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { HelpOffCanvasComponent } from './help-off-canvas/help-off-canvas.component';
@@ -13,6 +13,7 @@ import { take } from 'rxjs';
 })
 export class HelpComponent implements OnInit {
   display = false;
+  @Input() simple = false;
 
   constructor(private offcanvasService: NgbOffcanvas) {}
 

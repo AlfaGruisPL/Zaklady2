@@ -14,7 +14,12 @@
 
   <ng-template TemplateId="tbody" let-index="index" let-obj>
     <td>{{ index }}</td>
-    <td>{{ obj.opis }}</td>
+    <td>
+      {{ obj.opis | maxDlugosc : isMobile() }}
+      <button [ngbPopover]="obj.opis" class="questionDescription" container="body" placement="top" popoverTitle="Opis:">
+        ?
+      </button>
+    </td>
     <td>{{ obj.dataUtworzenia | date : 'dd.MM.yyyy  HH:mm' }}</td>
     <td>{{ liczba(obj.kwota) / 100 }}zł</td>
     <ng-container [ngSwitch]="obj.probyPlatnosci[obj.probyPlatnosci.length - 1].status">

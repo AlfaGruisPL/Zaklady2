@@ -5,6 +5,9 @@
   .left {
     width: calc(100% - 250px);
     flex-shrink: 1;
+    @media (max-width: 1000px) {
+      width: 100%;
+    }
   }
 
   .right {
@@ -15,6 +18,9 @@
     flex-shrink: 10;
     text-align: center;
     height: 100%;
+    @media (max-width: 1000px) {
+      display: none;
+    }
 
     .iframe-container {
       position: relative;
@@ -51,8 +57,5 @@
         z-index: 1; /* Umieść bloker na wierzchu iframe */
       }
     }
-
-
   }
 }
-

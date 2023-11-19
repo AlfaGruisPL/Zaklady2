@@ -7,6 +7,5 @@ export const environment = {
   linkDoRegulaminu: 'https://api.mojzaklad.pl/pliki/publiczne/regulamin.pdf',
   linkDoRodo: 'https://api.mojzaklad.pl/pliki/publiczne/rodo.pdf',
   linkDoStronyFirmowej: 'http://mojzaklad.pl',
-
   api: 'https://api.mojzaklad.pl',
 };

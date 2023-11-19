@@ -3,7 +3,7 @@ import { Wizyta } from '../../../../../klasy/panelPracownika/wizyta';
 import { ListonoszService } from '../../../../../serwisy/listonosz.service';
 import { Drzwi } from '../../../../../enum/drzwi';
 import { HttpParams } from '@angular/common/http';
-import { BehaviorSubject, debounceTime, skip, Subscription } from 'rxjs';
+import { debounceTime, skip, Subscription } from 'rxjs';
 import { KalendarzZarzadzanieTerminemComponent } from '../../../kalendarz-komponent/kalendarz-zarzadzanie-terminem/kalendarz-zarzadzanie-terminem.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { KalendarzKomponentService } from '../../../kalendarz-komponent/kalendarz-komponent.service';
@@ -21,7 +21,7 @@ export class ZarejestrowaneWizytyTabelaComponent implements OnInit, OnDestroy {
   iloscWizytOgolna = 0;
   strona = 1;
   pobieranieDanych = false;
-  wyszukiwarkaSub = new BehaviorSubject<string>('');
+  wyszukiwarka = '';
   protected readonly Math = Math;
   private sub: undefined | Subscription;
 
@@ -30,16 +30,17 @@ export class ZarejestrowaneWizytyTabelaComponent implements OnInit, OnDestroy {
     private modal: NgbModal,
     public Kalendarz_: KalendarzKomponentService,
     public zarzadzanieTerminem_: ZarzadzanieTerminemService
-  ) {
-    this.wyszukiwarkaSub.pipe(skip(1), debounceTime(300)).subscribe(term => {
-      this.pobierzDane();
-    });
-  }
+  ) {}
 
   ngOnDestroy() {
     if (this.sub) {
       this.sub?.unsubscribe();
     }
+  }
+
+  serachChange(value: string) {
+    this.wyszukiwarka = value;
+    this.pobierzDane();
   }
 
   ngOnInit() {
@@ -58,7 +59,7 @@ export class ZarejestrowaneWizytyTabelaComponent implements OnInit, OnDestroy {
     params = params.append('filter', this.filter);
     params = params.append('page', this.strona);
     params = params.append('limit', this.pageSize);
-    params = params.append('finder', this.wyszukiwarkaSub.value);
+    params = params.append('finder', this.wyszukiwarka);
     this.listonosz
       .pobierz(Drzwi.wizytyZakladu + '/' + this.Kalendarz_.wybranyPracownik.value, params)
       .then((dane: { dane: Array<Wizyta>; size: number; limit: number }) => {
@@ -86,13 +87,6 @@ export class ZarejestrowaneWizytyTabelaComponent implements OnInit, OnDestroy {
       return 'Dziś';
     }
     return undefined;
-  }
-
-  onSearchChange(event: Event): void {
-    const searchTerm = (event.target as HTMLInputElement).value;
-    if (this.wyszukiwarkaSub.value.trim() != searchTerm.trim()) {
-      this.wyszukiwarkaSub.next(searchTerm);
-    }
   }
 
   zwrocDane(): Array<Wizyta> {

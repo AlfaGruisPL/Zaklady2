@@ -15,7 +15,7 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent implements OnInit {
   environment = environment;
   wersja: string = packageInfo.version;
-  data_wydania: string = packageInfo.data_wydania;
+  data_wydania: string = packageInfo.relase_date;
   readonly VAPID_PUBLIC_KEY = 'BOQCUSTUzqcQsshq4465Wq-X-Mq8WfEYydLNK2lvo5vjMp7Uo0Qpzcvs-3tfGGe53HnQVFI8XrVbBZQtUp1lJCk';
   public ticsForSecond = 0;
   title = 'PanelZakladu';

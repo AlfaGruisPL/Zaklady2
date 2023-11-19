@@ -1,6 +1,9 @@
 .menuTresc {
   width: 100%;
   height: calc(100dvh - 49px - 7px);
+  @media (max-width: 700px) {
+    height: calc(100dvh - 49px - 7px - 31px);
+  }
   float: left;
   border-bottom: 1px solid rgba(0, 0, 0, 0.55);
   //border-top: 1px solid #000;

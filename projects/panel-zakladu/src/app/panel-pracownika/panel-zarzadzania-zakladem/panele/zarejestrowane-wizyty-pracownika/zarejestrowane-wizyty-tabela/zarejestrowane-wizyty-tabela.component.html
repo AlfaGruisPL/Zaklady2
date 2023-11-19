@@ -23,12 +23,14 @@
 <app-table
   (changeData)="pobierzDane()"
   (changeRowsOnPage)="pageSize = $event"
+  (searchChange)="serachChange($event)"
   [(page)]="strona"
   [collectionSize]="iloscWizytOgolna"
   [data]="zwrocDane()"
   [displaySum]="true"
   [loading]="pobieranieDanych"
   [pageSize]="15"
+  [search]="true"
   [title]="'Wizyty:'">
   <ng-template TemplateId="thead">
     <th class="NotInMobile">Lp.</th>

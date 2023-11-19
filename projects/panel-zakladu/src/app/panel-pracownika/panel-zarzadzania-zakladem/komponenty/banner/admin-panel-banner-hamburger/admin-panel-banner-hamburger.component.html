@@ -1,12 +1,5 @@
-<div [ngClass]="{ open: openHamburger }" class="hamburgerMenuDiv">
-  <app-menu-pracownik (click)="openHamburger = false" (outside)="close($event)"></app-menu-pracownik>
+<div [ngClass]="{ open: button.openHamburger }" class="hamburgerMenuDiv">
+  <app-menu-pracownik (click)="button.openHamburger = false" (outside)="button.close($event)"></app-menu-pracownik>
 </div>
 
-<div (click)="open()" [ngClass]="{ open: openHamburger }" class="hamburgerMenu hamburgerMenuLine" id="nav-icon2">
-  <span class="hamburgerMenuLine"></span>
-  <span class="hamburgerMenuLine"></span>
-  <span class="hamburgerMenuLine"></span>
-  <span class="hamburgerMenuLine"></span>
-  <span class="hamburgerMenuLine"></span>
-  <span class="hamburgerMenuLine"></span>
-</div>
+<app-hamburger-menu-button #button></app-hamburger-menu-button>
