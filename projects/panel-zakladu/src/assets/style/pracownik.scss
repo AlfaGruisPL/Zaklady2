@@ -39,7 +39,7 @@
 .naglowekZolty {
   width: 100%;
   height: min-content;
-  min-height: 35px;
+  min-height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,7 +50,7 @@
   position: relative;
   z-index: 100;
   @media (max-width: 800px) {
-    // align-items: flex-start;
+    min-height: 22px;
   }
 
   .naglowek1Wzoltym,

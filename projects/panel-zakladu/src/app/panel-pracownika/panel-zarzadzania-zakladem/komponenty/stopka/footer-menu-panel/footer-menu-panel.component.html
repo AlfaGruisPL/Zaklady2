@@ -1,0 +1,18 @@
+<section [ngClass]="{ open }" class="footerBigMenuContainer">
+  <header><h1>www.mojzaklad.pl</h1></header>
+
+  <nav>
+    <a
+      (click)="close.emit()"
+      *ngFor="let element of menuArray"
+      [routerLink]="[element.router]"
+      routerLinkActive="aktywneMenu">
+      <fa-icon [icon]="element.icon"></fa-icon>
+      <span>{{ element.title }}</span>
+    </a>
+  </nav>
+
+  <footer>
+    <span class="wersja">wersja: {{ version }} - {{ relase_date }} </span>
+  </footer>
+</section>

@@ -1,0 +1,40 @@
+$height: 50px;
+nav {
+  height: $height;
+  color: #dedede;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 5px;
+  padding-right: 5px;
+  column-gap: 3px;
+  overflow-y: hidden;
+}
+
+a {
+  width: calc(100% / 6);
+  display: flex;
+  height: $height;
+  color: #b2b2b2;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+
+  fa-icon {
+    font-size: 20px;
+  }
+
+  text-decoration: none;
+
+  span {
+    position: relative;
+    top: -4px;
+    font-size: 8px;
+    text-align: center;
+  }
+
+  &.aktywneMenu {
+    box-shadow: 0px 0px 5px 4px inset rgba(164, 164, 164, 0.15);
+    background: #001331;
+    color: #56ff51 !important;
+  }
+}

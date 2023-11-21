@@ -21,6 +21,9 @@
       color: white;
       font-size: 20px;
       font-family: math;
+      @media (max-width: 700px) {
+        font-size: 18px;
+      }
     }
 
     color: white;

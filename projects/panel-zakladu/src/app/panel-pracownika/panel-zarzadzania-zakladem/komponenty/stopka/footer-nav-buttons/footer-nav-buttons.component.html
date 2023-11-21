@@ -1,0 +1,12 @@
+<nav>
+  <a
+    (click)="hamburger.close(false)"
+    *ngFor="let link of menuArray"
+    [routerLink]="[link.router]"
+    routerLinkActive="aktywneMenu">
+    <fa-icon [icon]="link.icon"></fa-icon>
+    <span>{{ link.title }}</span>
+  </a>
+  <app-hamburger-menu-button #hamburger />
+</nav>
+<app-footer-menu-panel (close)="hamburger.close(false)" [open]="hamburger.openHamburger"></app-footer-menu-panel>
