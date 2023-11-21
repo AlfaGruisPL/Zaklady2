@@ -1,0 +1,42 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Build all" type="js.build_tools.npm" folderName="Budowa">
+    <package-json value="$PROJECT_DIR$/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="buildStronyReklamowejZakladu" />
+    </scripts>
+    <node-interpreter value="project" />
+    <envs />
+    <method v="2">
+      <option name="GulpBeforeRunTask" enabled="true">
+        <node-interpreter>project</node-interpreter>
+        <node-options />
+        <gulpfile>$PROJECT_DIR$/gulpfile.js</gulpfile>
+        <tasks>
+          <task>increaseVersion</task>
+        </tasks>
+        <arguments />
+        <envs />
+      </option>
+      <option name="GulpBeforeRunTask" enabled="true">
+        <node-interpreter>project</node-interpreter>
+        <node-options />
+        <gulpfile>$PROJECT_DIR$/gulpfile.js</gulpfile>
+        <tasks>
+          <task>updateReleaseDate</task>
+        </tasks>
+        <arguments />
+        <envs />
+      </option>
+      <option name="NpmBeforeRunTask" enabled="true">
+        <package-json value="$PROJECT_DIR$/package.json" />
+        <command value="run" />
+        <scripts>
+          <script value="buildPanelZakladu" />
+        </scripts>
+        <node-interpreter value="project" />
+        <envs />
+      </option>
+    </method>
+  </configuration>
+</component>
