@@ -39,6 +39,7 @@ export class FormularzZarejestrujSieComponent implements OnInit {
     this.zarejestrujSieService.butonDisabled_wyslijDane = true;
     this.zarejestrujSieService.DaneKlientaClass.daneNieWyslane = false;
     const daneDTO = new DaneKlientaDTO(this.zarejestrujSieService.DaneKlientaClass);
+    console.log(daneDTO);
     this.listonosz
       .wyslij(Drzwi.daneKlientaRejestracja, daneDTO)
       .then(identyfikatorWizyty => {

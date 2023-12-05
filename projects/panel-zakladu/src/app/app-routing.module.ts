@@ -16,6 +16,7 @@ import { UslugaSmsPracownikaComponent } from './panel-pracownika/panel-zarzadzan
 import { UslugiPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/uslugi.component';
 import { ZalogowanyGuard } from './straznicy/zalogowany.guard';
 import { reverseLoginGuard } from './straznicy/reverse-login.guard';
+import { RegisterCompleteComponent } from './panel-pracownika/poczatkowy-panel-pracownika/rejestracja-zakladu/register-complete/register-complete.component';
 
 const zakladDzieci: Routes = [
   {
@@ -31,6 +32,10 @@ const zakladDzieci: Routes = [
   {
     path: 'rejestracja',
     component: RejestracjaZakladuComponent,
+  },
+  {
+    path: 'registerComplete',
+    component: RegisterCompleteComponent,
   },
   {
     path: '',

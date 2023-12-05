@@ -28,7 +28,7 @@ export class HarmonogramDniaComponent implements OnInit {
 
   public zwrocGodzine(index: number) {
     let data = new Date();
-    const godzina8wmilisekundach = data.setHours(this.godzinaRozpoczecia, 0, 0, 0);
+    const godzina8wmilisekundach = data.setHours(this.godzinaRozpoczecia - 0.5, 0, 0, 0);
     const nowaGodzina = godzina8wmilisekundach + 1800000 * index;
     data = new Date(nowaGodzina);
     let godzina: any;
@@ -55,12 +55,20 @@ export class HarmonogramDniaComponent implements OnInit {
     return this.harmonogram_.wizytyDzis.filter(visit => visit.completed == false);
   }
 
+  returnCalendarTimeTd() {
+    const k = this.godzinaZakonczenia * 2;
+    if (k <= 0) {
+      return 10;
+    }
+    return k;
+  }
+
   private generujDzien() {
     const tmp = this.podreczneDane_.danePodreczneObiekt.godzinyOtwarcia;
-    [tmp.poniedzialek, tmp.wtorek, tmp.sroda, tmp.czwartek, tmp.piatek, tmp.sobota, tmp.niedziela].forEach(dzien => {
-      if (dzien.czynnyDzien) {
-        const rozpoczenie = Number(dzien.otwarcie.split(':')[0]);
-        const zakonczenie = Number(dzien.zamkniecie.split(':')[0]);
+    [tmp.monday, tmp.tuesday, tmp.wednesday, tmp.thursday, tmp.friday, tmp.saturday, tmp.sunday].forEach(dzien => {
+      if (dzien.activeDay) {
+        const rozpoczenie = Number(dzien.opening.split(':')[0]);
+        const zakonczenie = Number(dzien.closing.split(':')[0]);
         this.godzinaRozpoczecia = rozpoczenie < this.godzinaRozpoczecia ? rozpoczenie : this.godzinaRozpoczecia;
         this.godzinaZakonczenia = zakonczenie > this.godzinaZakonczenia ? zakonczenie : this.godzinaZakonczenia;
       }
@@ -68,6 +76,6 @@ export class HarmonogramDniaComponent implements OnInit {
 
     //this.godzinaRozpoczecia -= 1;
     this.godzinaZakonczenia -= this.godzinaRozpoczecia;
-    this.godzinaZakonczenia += 0.5;
+    this.godzinaZakonczenia += 1.5;
   }
 }

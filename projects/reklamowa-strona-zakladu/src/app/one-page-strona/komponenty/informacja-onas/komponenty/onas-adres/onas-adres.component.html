@@ -1,11 +1,10 @@
 <div class="tabelaDane tabelaRamka">
   <table>
     <tr>
-      <td class="informacjeOnasTytul">Gdzie nas znajdziesz
-        <fa-icon class="iconkaAdres"
-                 [icon]="faIcons.mapa"></fa-icon>
+      <td class="informacjeOnasTytul">
+        Gdzie nas znajdziesz
+        <fa-icon [icon]="faIcons.mapa" class="iconkaAdres"></fa-icon>
       </td>
-
     </tr>
     <!--
     <tr *ngIf="DanePodstawowe_.danePodstawowe.adres.miasto.length > 0">
@@ -37,59 +36,43 @@
     </tr>
     <ng-container *ngIf="DanePodstawowe_.danePodstawowe.adres.miasto.length > 0">
       <tr>
-        <td class="informacjaNaglowek1">
-          ul.{{ DanePodstawowe_.danePodstawowe.adres.numerUlicy }}
-        </td>
+        <td class="informacjaNaglowek1">ul.{{ DanePodstawowe_.danePodstawowe.adres.numerUlicy }}</td>
       </tr>
       <tr>
-        <td class="informacjaNaglowek1">
-          nr.domu &nbsp;{{ DanePodstawowe_.danePodstawowe.adres.numerDomu }}
-        </td>
+        <td class="informacjaNaglowek1">nr.domu &nbsp;{{ DanePodstawowe_.danePodstawowe.adres.numerDomu }}</td>
       </tr>
-      <tr *ngIf="DanePodstawowe_.danePodstawowe.adres.numerLokalu.length > 0">
-        <td class="informacjaNaglowek1">
-          nr.lokalu &nbsp;{{ DanePodstawowe_.danePodstawowe.adres.numerLokalu }}
-        </td>
+      <tr
+        *ngIf="
+          DanePodstawowe_.danePodstawowe.adres.numerLokalu &&
+          DanePodstawowe_.danePodstawowe.adres.numerLokalu.length > 0
+        ">
+        <td class="informacjaNaglowek1">nr.lokalu &nbsp;{{ DanePodstawowe_.danePodstawowe.adres.numerLokalu }}</td>
       </tr>
     </ng-container>
     <ng-container *ngIf="DanePodstawowe_.danePodstawowe.adres.wies.length > 0">
       <tr>
-        <td class="informacjaNaglowek1">
-          pow.{{ DanePodstawowe_.danePodstawowe.adres.powiat }}
-        </td>
+        <td class="informacjaNaglowek1">pow.{{ DanePodstawowe_.danePodstawowe.adres.powiat }}</td>
       </tr>
       <tr>
         <td class="informacjaNaglowek1">
           w.{{ DanePodstawowe_.danePodstawowe.adres.wies }}
-          <ng-container
-            *ngIf="DanePodstawowe_.danePodstawowe.adres.numerUlicy.length > 0"
-          >
+          <ng-container *ngIf="DanePodstawowe_.danePodstawowe.adres.numerUlicy.length > 0">
             ul.{{ DanePodstawowe_.danePodstawowe.adres.numerUlicy }}
           </ng-container>
         </td>
       </tr>
       <tr>
-        <td class="informacjaNaglowek1">
-          nr.domu &nbsp;{{ DanePodstawowe_.danePodstawowe.adres.numerDomu }}
-        </td>
+        <td class="informacjaNaglowek1">nr.domu &nbsp;{{ DanePodstawowe_.danePodstawowe.adres.numerDomu }}</td>
       </tr>
 
       <tr *ngIf="DanePodstawowe_.danePodstawowe.adres.numerLokalu.length > 0">
-        <td class="informacjaNaglowek1">
-          nr.lokalu &nbsp;{{ DanePodstawowe_.danePodstawowe.adres.numerLokalu }}
-        </td>
+        <td class="informacjaNaglowek1">nr.lokalu &nbsp;{{ DanePodstawowe_.danePodstawowe.adres.numerLokalu }}</td>
       </tr>
     </ng-container>
 
     <tr>
-      <td
-        class="zobaczMape"
-        (click)="nawigacja.przeniesDoPanelu(nawigacja.nav.stopka)"
-      >
-        Zobacz mapę
-      </td>
+      <td (click)="nawigacja.przeniesDoPanelu(nawigacja.nav.stopka)" class="zobaczMape">Zobacz mapę</td>
       <td></td>
     </tr>
   </table>
-
 </div>

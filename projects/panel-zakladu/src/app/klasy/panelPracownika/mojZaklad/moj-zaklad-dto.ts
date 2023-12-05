@@ -101,9 +101,8 @@ export class dzienDTO {
   public czynnyDzien: boolean = false;
 
   constructor(dzienKlasa: dzien) {
-    this.otwarcie = dzienKlasa.otwarcie;
-    this.zamkniecie = dzienKlasa.zamkniecie;
-    this.czynnyDzien = dzienKlasa.czynnyDzien;
-    console.log(this);
+    this.otwarcie = dzienKlasa.opening;
+    this.zamkniecie = dzienKlasa.closing;
+    this.czynnyDzien = dzienKlasa.activeDay;
   }
 }

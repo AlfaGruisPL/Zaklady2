@@ -7,7 +7,7 @@
     <fa-icon [icon]="ikonki.karta"></fa-icon>
     <span> Kalendarz</span>
   </a>
-  <a [routerLink]="['podsumowanie']" routerLinkActive="aktywneMenu">
+  <a *ngIf="token_.czyWlasciciel()" [routerLink]="['podsumowanie']" routerLinkActive="aktywneMenu">
     <fa-icon [icon]="ikonki.flaga"></fa-icon>
     <span>Podsumowanie </span>
   </a>

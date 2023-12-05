@@ -71,19 +71,19 @@ export class KalendarzKomponentComponent implements OnInit, OnDestroy {
   public czyPracuje(dzien: number) {
     switch (dzien) {
       case 0:
-        return this.Kalendarz_.godzinyOtwarcia.poniedzialek.czynnyDzien;
+        return this.Kalendarz_.godzinyOtwarcia.monday.activeDay;
       case 1:
-        return this.Kalendarz_.godzinyOtwarcia.wtorek.czynnyDzien;
+        return this.Kalendarz_.godzinyOtwarcia.tuesday.activeDay;
       case 2:
-        return this.Kalendarz_.godzinyOtwarcia.sroda.czynnyDzien;
+        return this.Kalendarz_.godzinyOtwarcia.wednesday.activeDay;
       case 3:
-        return this.Kalendarz_.godzinyOtwarcia.czwartek.czynnyDzien;
+        return this.Kalendarz_.godzinyOtwarcia.thursday.activeDay;
       case 4:
-        return this.Kalendarz_.godzinyOtwarcia.piatek.czynnyDzien;
+        return this.Kalendarz_.godzinyOtwarcia.friday.activeDay;
       case 5:
-        return this.Kalendarz_.godzinyOtwarcia.sobota.czynnyDzien;
+        return this.Kalendarz_.godzinyOtwarcia.saturday.activeDay;
       case 6:
-        return this.Kalendarz_.godzinyOtwarcia.niedziela.czynnyDzien;
+        return this.Kalendarz_.godzinyOtwarcia.sunday.activeDay;
     }
     return true;
   }
@@ -224,6 +224,14 @@ export class KalendarzKomponentComponent implements OnInit, OnDestroy {
       return time;
     }
     return '<span>' + time.replaceAll('.', '</span><span>') + '</span>';
+  }
+
+  returnCalendarTimeTr() {
+    const k = this.Kalendarz_.godzinaZakonczenia * 2;
+    if (k <= 0) {
+      return 10;
+    }
+    return k;
   }
 
   private terminyNaDzien(data: DzienTygodnia): Array<Wizyta> {

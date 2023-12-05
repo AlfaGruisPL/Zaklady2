@@ -4,7 +4,7 @@
   <nav>
     <a
       (click)="close.emit()"
-      *ngFor="let element of menuArray"
+      *ngFor="let element of returnMenuArray()"
       [routerLink]="[element.router]"
       routerLinkActive="aktywneMenu">
       <fa-icon [icon]="element.icon"></fa-icon>

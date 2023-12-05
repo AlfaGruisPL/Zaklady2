@@ -52,7 +52,7 @@ export class ListonoszService {
             // @ts-ignore
             next.value.token.endLifeTime
           );
-          this.token.tokenGrupy = next.value?.userData?.grupy.map(k => k.groupId);
+          this.token.tokenGrupy = next.value?.userData?.groups.map(k => k.groupId);
 
           this.token.stworzCookies();
           resolve(next);

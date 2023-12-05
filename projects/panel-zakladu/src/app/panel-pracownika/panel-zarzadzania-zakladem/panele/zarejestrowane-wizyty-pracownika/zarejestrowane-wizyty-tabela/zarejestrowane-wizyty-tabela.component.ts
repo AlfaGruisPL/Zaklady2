@@ -102,7 +102,7 @@ export class ZarejestrowaneWizytyTabelaComponent implements OnInit, OnDestroy {
   cancleVisit(wizyta: Wizyta) {
     this.zarzadzanieTerminem_.cancelTheVisit(wizyta).then(data => {
       this.pobierzDane();
-      this.Kalendarz_.pobierzDane(true);
+      this.Kalendarz_.pobierzDane({ silent: true });
     });
   }
 

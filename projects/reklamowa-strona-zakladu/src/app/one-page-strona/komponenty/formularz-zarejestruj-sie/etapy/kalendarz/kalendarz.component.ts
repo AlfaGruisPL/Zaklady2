@@ -30,25 +30,26 @@ export class KalendarzComponent implements OnInit {
     'Grudzień',
   ];
   dataKursor = new Date();
+  protected readonly Math = Math;
 
   constructor(public ZarejestrujSie: ZarejestrujSieService, public danePodstawowe: DanePodstawoweService) {}
 
   public czyPracuje(dzien: number) {
     switch (dzien) {
       case 0:
-        return this.danePodstawowe.danePodstawowe.poniedzialek.czynnyDzien;
+        return this.danePodstawowe.danePodstawowe.poniedzialek.activeDay;
       case 1:
-        return this.danePodstawowe.danePodstawowe.wtorek.czynnyDzien;
+        return this.danePodstawowe.danePodstawowe.wtorek.activeDay;
       case 2:
-        return this.danePodstawowe.danePodstawowe.sroda.czynnyDzien;
+        return this.danePodstawowe.danePodstawowe.sroda.activeDay;
       case 3:
-        return this.danePodstawowe.danePodstawowe.czwartek.czynnyDzien;
+        return this.danePodstawowe.danePodstawowe.czwartek.activeDay;
       case 4:
-        return this.danePodstawowe.danePodstawowe.piatek.czynnyDzien;
+        return this.danePodstawowe.danePodstawowe.piatek.activeDay;
       case 5:
-        return this.danePodstawowe.danePodstawowe.sobota.czynnyDzien;
+        return this.danePodstawowe.danePodstawowe.sobota.activeDay;
       case 6:
-        return this.danePodstawowe.danePodstawowe.niedziela.czynnyDzien;
+        return this.danePodstawowe.danePodstawowe.niedziela.activeDay;
     }
     return true;
   }
@@ -158,9 +159,10 @@ export class KalendarzComponent implements OnInit {
   private ObliczGodziny() {
     const tmp = this.danePodstawowe.danePodstawowe;
     [tmp.poniedzialek, tmp.wtorek, tmp.sroda, tmp.czwartek, tmp.piatek, tmp.sobota, tmp.niedziela].forEach(dzien => {
-      if (dzien.czynnyDzien) {
-        const rozpoczenie = Number(dzien.otwarcie.split(':')[0]);
-        const zakonczenie = Number(dzien.zamkniecie.split(':')[0]);
+      if (dzien.activeDay) {
+        const rozpoczenie = Number(dzien.opening.split(':')[0]);
+        const zakonczenie = Number(dzien.closing.split(':')[0]);
+        console.log(dzien);
         this.godzinaRozpoczecia = rozpoczenie < this.godzinaRozpoczecia ? rozpoczenie : this.godzinaRozpoczecia;
         this.godzinaZakonczenia = zakonczenie > this.godzinaZakonczenia ? zakonczenie : this.godzinaZakonczenia;
       }
@@ -173,6 +175,4 @@ export class KalendarzComponent implements OnInit {
   private CzyAktualne(data: Date) {
     return !(data.setHours(0, 0, 0, 0) < new Date().setHours(0, 0, 0, 0));
   }
-
-  protected readonly Math = Math;
 }

@@ -31,7 +31,7 @@ export class PodreczneDaneService {
   }
 
   public linkDoStronyReklamowej(): string {
-    return 'http://www.smtp.localhost:8008';
+    return `https://www.${this.danePodreczneObiekt.identyfikatorZakladu}.mojzaklad.pl`;
   }
 
   returnWorkerFromIf(workerId: number | undefined) {
@@ -73,7 +73,6 @@ export class PodreczneDaneService {
   private ponowneSprawdzanieZakladu() {
     setTimeout(async () => {
       await this.identyfikacjaZakladu();
-      console.log(1);
     }, 2000);
   }
 }

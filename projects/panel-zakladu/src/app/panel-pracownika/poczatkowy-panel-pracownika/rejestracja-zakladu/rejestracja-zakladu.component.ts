@@ -21,6 +21,7 @@ export class RejestracjaZakladuComponent implements OnInit {
   public rejestracjaUdana = false;
   env = environment;
   strzalka = false;
+  protected readonly eval = eval;
 
   constructor(
     public fontAwesome: FontAwesomeService,
@@ -41,7 +42,7 @@ export class RejestracjaZakladuComponent implements OnInit {
     this.daneRejestracji.hasloSpelniaWymagania = true;
     this.daneRejestracji.czyHaslaTakieSame_ = true;
     this.daneRejestracji.czyWszystkoPoprawne = true;
-
+    this.daneRejestracji.identyfikatorWykorzystany = false;
     this.daneRejestracji.emailWykorzystany = false;
     this.daneRejestracji.nmumerTelefonuWykorzystany = false;
     this.daneRejestracji.rejestracjaUdana = true;
@@ -68,9 +69,11 @@ export class RejestracjaZakladuComponent implements OnInit {
             case 2:
               this.daneRejestracji.emailWykorzystany = true;
               break;
-
             case 3:
               this.daneRejestracji.nmumerTelefonuWykorzystany = true;
+              break;
+            case 4:
+              this.daneRejestracji.identyfikatorWykorzystany = true;
               break;
 
             default:
@@ -87,6 +90,4 @@ export class RejestracjaZakladuComponent implements OnInit {
   public powrotOJedenKrok() {
     this.location.back();
   }
-
-  protected readonly eval = eval;
 }

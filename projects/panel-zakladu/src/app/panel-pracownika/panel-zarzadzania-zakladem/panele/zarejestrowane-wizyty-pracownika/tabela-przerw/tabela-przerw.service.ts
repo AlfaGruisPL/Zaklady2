@@ -3,7 +3,7 @@ import { ListonoszService } from '../../../../../serwisy/listonosz.service';
 import { Drzwi } from '../../../../../enum/drzwi';
 import { Przerwa } from '../../../../../klasy/panelPracownika/kalendarz/przerwa.dto';
 import { PodreczneDaneService } from '../../../../../serwisy/podreczne-dane.service';
-import { BehaviorSubject, combineLatest, Subscription } from 'rxjs';
+import { BehaviorSubject, combineLatest, skip, Subscription } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
 import { PrzerwyDniWolne } from '../../../../../klasy/panelPracownika/PrzerwyDniWolne';
 import { KalendarzKomponentService } from '../../../kalendarz-komponent/kalendarz-komponent.service';
@@ -54,13 +54,14 @@ export class TabelaPrzerwService {
   //tudo tu dodać chaange detection, liczyć ile jest th i potem tak ustawiać
   serviceStart() {
     const combined = combineLatest([this.Kalendarz_.wybranyPracownik, this.filter, this.filterRegularnosci]);
-    combined.subscribe(dane => {
+    //todo naprawić skip
+    combined.pipe(skip(3)).subscribe(dane => {
       this.page = 1;
 
       this.getData();
     });
     this.sub1 = this.Kalendarz_.pobieranieDanychObservable.subscribe(() => {
-      this.page = 1;
+      this.page = 2;
       this.getData();
     });
   }
@@ -77,6 +78,7 @@ export class TabelaPrzerwService {
     params = params.append('filter', '');
     const regularne = this.filterRegularnosci.value == 'regularne';
     const przerwy = this.filter.value == 'przerwy';
+    console.log(1);
     this.listonosz
       .pobierz(Drzwi.tabelaPrzerwDane + `/${regularne}/${przerwy}/${this.Kalendarz_.wybranyPracownik.value}`, params)
       .then((dane: any) => {
@@ -124,7 +126,7 @@ export class TabelaPrzerwService {
       })
       .finally(() => {
         this.getData();
-        this.Kalendarz_.pobierzDane(true);
+        this.Kalendarz_.pobierzDane({ silent: true });
       });
   }
 }

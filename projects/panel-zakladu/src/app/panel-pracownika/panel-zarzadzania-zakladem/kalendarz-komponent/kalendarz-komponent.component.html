@@ -78,7 +78,7 @@
       </ng-container>
     </td>
   </tr>
-  <tr *ngFor="let k of [].constructor(Kalendarz_.godzinaZakonczenia * 2); let index = index" class="godzina">
+  <tr *ngFor="let k of [].constructor(returnCalendarTimeTr()); let index = index" class="godzina">
     <td style="position: relative">
       <span class="wyswietlaneGodzinySpan"> {{ Kalendarz_.godzina(index) }}</span>
     </td>

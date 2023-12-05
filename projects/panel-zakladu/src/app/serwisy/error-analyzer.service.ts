@@ -9,7 +9,7 @@ import { Bledy } from '../enum/bledy';
 export class ErrorAnalyzerService {
   constructor(private komunikaty_: KomunikatyService) {}
 
-  analyze(error: HttpError) {
+  analyze(error: HttpError, defaultErrorHandler: undefined | Function = undefined) {
     switch (error.error?.reasonCode) {
       case 120: //błąd, kiedy przy pobieraniu szczegółowych danych o kliencie na podstawie wizyty nie zostanie odnaleziony customer, prawdopodobnie brak relacji
         this.komunikaty_.komunikatBledu(Bledy.klientNieZnaleziony, 120);
@@ -25,11 +25,20 @@ export class ErrorAnalyzerService {
         break;
       case 201:
         this.komunikaty_.komunikatBledu(Bledy.bladUtworzeniaPlatnosci_BrakNumeruTelefonu);
-
+        break;
+      case 331:
+        this.komunikaty_.komunikatBledu(Bledy.emailJestJuzWykorzystany);
+        break;
+      case 501:
+        this.komunikaty_.komunikatBledu(Bledy.emailJestNiePoprawny);
         break;
       default:
         console.log(error.status);
-        this.komunikaty_.komunikatBledu(Bledy.bladOgolny);
+        if (defaultErrorHandler) {
+          defaultErrorHandler();
+        } else {
+          this.komunikaty_.komunikatBledu(Bledy.bladOgolny);
+        }
     }
   }
 

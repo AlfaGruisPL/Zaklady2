@@ -33,7 +33,7 @@ export class PlatnosciPracownikaTabelaComponent implements OnInit, OnDestroy {
 
   pobieranieDanych() {
     const rozwiniete = this.listaPlatnosci.find(k => {
-      return k.czyRozwiniete == true;
+      return k.czyRozwiniete;
     });
     this.listonosz.pobierz(Drzwi.listaPlatnosci).then((k: Array<Platnosc>) => {
       Object.assign(this.listaPlatnosci, k);
@@ -59,9 +59,5 @@ export class PlatnosciPracownikaTabelaComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     clearInterval(this.autoPobieranieDanych);
-  }
-
-  pageCount(): number {
-    return Math.ceil(this.listaPlatnosci.length / this.pageSize);
   }
 }

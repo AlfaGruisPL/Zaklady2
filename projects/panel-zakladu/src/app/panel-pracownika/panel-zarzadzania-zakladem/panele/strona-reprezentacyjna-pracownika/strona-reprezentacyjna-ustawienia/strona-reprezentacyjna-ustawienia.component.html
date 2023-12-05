@@ -25,7 +25,12 @@
       <tr>
         <th>Zdjęcie banneru</th>
         <td>
-          <div class="file"><input (change)="wybierzPlik($event)" type="file" /> <span class="file-custom"></span></div>
+          <!--
+          <div class="file">
+            <span class="file-custom"></span>
+          </div>
+ -->
+          <input (change)="wybierzPlik($event)" type="file" />
           <img
             *ngIf="zdjecieBanerRefresh"
             [src]="environment.linkDoBaneruStronyReklamowej + zdjecieBanerRefresh"
@@ -35,10 +40,12 @@
       <tr>
         <th>Logo zakładu:</th>
         <td>
+          <!--
           <div class="file">
-            <input (change)="wybierzPlikLogo($event)" type="file" />
             <span class="file-custom"></span>
           </div>
+ -->
+          <input (change)="wybierzPlikLogo($event)" (click)="test()" type="file" />
           <img
             *ngIf="zdjecieBanerRefresh"
             [src]="environment.linkDoLogaStronyReklamowej + zdjecieBanerRefresh"

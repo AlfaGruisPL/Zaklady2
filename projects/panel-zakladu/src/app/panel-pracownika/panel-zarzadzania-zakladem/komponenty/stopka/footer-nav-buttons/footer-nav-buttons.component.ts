@@ -27,10 +27,17 @@ export class FooterNavButtonsComponent {
   public menuArray = [
     { title: 'Harmonogram na dziś', icon: faFlag, router: 'harmonogram', admin: false },
     { title: 'Kalendarz', icon: faIdCard, router: 'zarejestrowaneWizyty', admin: false },
-    { title: 'Podsumowanie', icon: faFontAwesomeFlag, router: 'podsumowanie', admin: false },
+    { title: 'Podsumowanie', icon: faFontAwesomeFlag, router: 'podsumowanie', admin: true },
     { title: ' Lista klientów', icon: faIdBadge, router: 'listaKlientow', admin: false },
-    { title: 'Płatności', icon: faCreditCard, router: 'platnosci', admin: false },
+    { title: 'Płatności', icon: faCreditCard, router: 'platnosci', admin: true },
   ];
 
   constructor(public token_: TokenService, public ikonki: FontAwesomeService) {}
+
+  returnMenuArray() {
+    if (this.token_.czyWlasciciel()) {
+      return this.menuArray;
+    }
+    return this.menuArray.filter(k => !k.admin);
+  }
 }

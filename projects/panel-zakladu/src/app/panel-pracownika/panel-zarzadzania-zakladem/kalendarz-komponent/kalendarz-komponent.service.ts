@@ -93,9 +93,11 @@ export class KalendarzKomponentService {
       );
   }
 
-  public pobierzDane(silent = false) {
-    if (!silent) this.pobieranieDanychObservable.next(null);
-    this.loadingData = true;
+  public pobierzDane(
+    option: Partial<{ silent: boolean; silentReload: boolean }> = { silent: false, silentReload: false }
+  ) {
+    if (!option.silent) this.pobieranieDanychObservable.next(null);
+    if (!option.silentReload) this.loadingData = true;
     let params = new HttpParams();
     params = params.append('kursor', this.kursor.getTime());
     params = params.append('dotyczy', this.wybranyPracownik.value);
@@ -223,8 +225,6 @@ export class KalendarzKomponentService {
     }
     const okno = this.modal.open(KalendarzModyfikacjaTerminuComponent, {
       size: 'lg',
-      //todo: tu naprawić static, chodzi o to że jak jest static i kliknie się poza to on się nie zmniejsza i blokuje klikanie na całej stronie,i chyba hcodzi o browser aniamtion module
-      //  backdrop: 'static',
     });
     const k = dzien.data;
     const miesiac = k.getMonth() + 1 < 10 ? '0' + (k.getMonth() + 1) : k.getMonth() + 1;
@@ -237,7 +237,7 @@ export class KalendarzKomponentService {
       koniec: this.godzina(index + 2),
     });
     okno.closed.subscribe(k => {
-      this.pobierzDane();
+      //   this.pobierzDane();
     });
   }
 
@@ -252,10 +252,10 @@ export class KalendarzKomponentService {
 
   private ObliczGodziny() {
     const tmp = this.godzinyOtwarcia;
-    [tmp.poniedzialek, tmp.wtorek, tmp.sroda, tmp.czwartek, tmp.piatek, tmp.sobota, tmp.niedziela].forEach(dzien => {
-      if (dzien.czynnyDzien) {
-        const rozpoczenie = Number(dzien.otwarcie.split(':')[0]);
-        const zakonczenie = Number(dzien.zamkniecie.split(':')[0]);
+    [tmp.monday, tmp.tuesday, tmp.wednesday, tmp.thursday, tmp.friday, tmp.saturday, tmp.sunday].forEach(dzien => {
+      if (dzien.activeDay) {
+        const rozpoczenie = Number(dzien.opening.split(':')[0]);
+        const zakonczenie = Number(dzien.closing.split(':')[0]);
         this.godzinaRozpoczecia = rozpoczenie < this.godzinaRozpoczecia ? rozpoczenie : this.godzinaRozpoczecia;
         this.godzinaZakonczenia = zakonczenie > this.godzinaZakonczenia ? zakonczenie : this.godzinaZakonczenia;
       }

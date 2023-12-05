@@ -1,11 +1,11 @@
 <table #table class="tabelka">
   <tr #k>
-    <td *ngFor="let k of [].constructor(this.godzinaZakonczenia * 2); let index = index" class="godzina">
+    <td *ngFor="let k of [].constructor(returnCalendarTimeTd()); let index = index" class="godzina">
       {{ zwrocGodzine(index) }}
     </td>
   </tr>
   <tr #tr>
-    <td *ngFor="let k of [].constructor(this.godzinaZakonczenia * 2); let index = index" class="podzial">
+    <td *ngFor="let k of [].constructor(returnCalendarTimeTd()); let index = index" class="podzial">
       <ng-container *ngIf="index == 0">
         <app-harmonogram-dnia-termin
           *ngFor="let termin of visitCompleted(); let index2 = index"

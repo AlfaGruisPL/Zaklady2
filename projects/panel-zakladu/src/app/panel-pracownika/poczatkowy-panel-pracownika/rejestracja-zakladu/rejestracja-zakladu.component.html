@@ -3,10 +3,10 @@
     <h1 class="h1dlaTytuluPaneluZaklad">
       Zarejestruj swój zakład
       <fa-icon
-        class="iconWroc"
+        (click)="powrotOJedenKrok()"
         *ngIf="strzalka"
         [icon]="fontAwesome.powrotIconka"
-        (click)="powrotOJedenKrok()"></fa-icon>
+        class="iconWroc"></fa-icon>
     </h1>
   </div>
 </div>
@@ -14,7 +14,7 @@
 <div class="formularzRejestracji">
   <app-rejestracja-udana *ngIf="rejestracjaUdana"></app-rejestracja-udana>
 
-  <div class="formularz" *ngIf="!rejestracjaUdana">
+  <div *ngIf="!rejestracjaUdana" class="formularz">
     <form class="tablica1">
       <table>
         <tr>
@@ -28,12 +28,12 @@
           </td>
           <td>
             <input
-              id="nazwaZakladu"
-              type="text"
-              [ngModelOptions]="{ standalone: true }"
               [(ngModel)]="daneRejestracji.nazwaZakladu"
               [ngClass]="{ wpiszDane: !daneRejestracji.nazwaZakladuPoprawne }"
-              class="logInput" />
+              [ngModelOptions]="{ standalone: true }"
+              class="logInput"
+              id="nazwaZakladu"
+              type="text" />
           </td>
         </tr>
         <tr>
@@ -42,12 +42,12 @@
           </td>
           <td>
             <input
-              id="identyfikatorZakladu"
-              type="text"
-              [ngModelOptions]="{ standalone: true }"
               [(ngModel)]="daneRejestracji.identyfikator"
               [ngClass]="{ wpiszDane: !daneRejestracji.identyfikatorPoprawne }"
-              class="logInput" />
+              [ngModelOptions]="{ standalone: true }"
+              class="logInput"
+              id="identyfikatorZakladu"
+              type="text" />
           </td>
         </tr>
         <tr style="font-size: 14px">
@@ -70,16 +70,16 @@
         </tr>
         <tr>
           <td>
-            <label for="wojewodztwo" class="naglowekDwaWformularzu">Województwo*</label>
+            <label class="naglowekDwaWformularzu" for="wojewodztwo">Województwo*</label>
           </td>
           <td>
             <select
-              style="height: 35px; background: white"
-              id="wojewodztwo"
-              [ngModelOptions]="{ standalone: true }"
               [(ngModel)]="daneRejestracji.wojewodztwo"
               [ngClass]="{ wpiszDane: !daneRejestracji.wojewodztwoPoprawne }"
-              class="logInput">
+              [ngModelOptions]="{ standalone: true }"
+              class="logInput"
+              id="wojewodztwo"
+              style="height: 35px; background: white">
               <option value="dolnoslaskie">Dolnośląskie</option>
               <option value="kujawsko-pomorskie">Kujawsko-pomorskie</option>
               <option value="lubelskie">Lubelskie</option>
@@ -101,97 +101,97 @@
         </tr>
         <tr>
           <td>
-            <label for="ulica" class="naglowekDwaWformularzu">Ulica*</label>
+            <label class="naglowekDwaWformularzu" for="ulica">Ulica*</label>
           </td>
           <td>
             <input
-              id="ulica"
-              type="text"
-              [ngModelOptions]="{ standalone: true }"
               [(ngModel)]="daneRejestracji.ulica"
               [ngClass]="{ wpiszDane: !daneRejestracji.ulicaPoprawna }"
-              class="logInput" />
+              [ngModelOptions]="{ standalone: true }"
+              class="logInput"
+              id="ulica"
+              type="text" />
           </td>
         </tr>
         <tr>
           <td>
-            <label for="nrDomu" class="naglowekDwaWformularzu">Nr domu*<span class="znaczek">/</span>lokalu</label>
+            <label class="naglowekDwaWformularzu" for="nrDomu">Nr domu*<span class="znaczek">/</span>lokalu</label>
           </td>
           <td>
             <input
-              id="nrDomu"
-              size="4"
-              [ngModelOptions]="{ standalone: true }"
               [(ngModel)]="daneRejestracji.nrDomu"
               [ngClass]="{ wpiszDane: !daneRejestracji.nrDomuPoprawny }"
+              [ngModelOptions]="{ standalone: true }"
               class="logInput logInput80px"
+              id="nrDomu"
+              size="4"
               style="margin-left: 10px; margin-right: 15px" />
             <span class="znaczek1">/</span>
             <input
-              size="4"
-              [ngModelOptions]="{ standalone: true }"
               [(ngModel)]="daneRejestracji.nrLokalu"
+              [ngModelOptions]="{ standalone: true }"
               class="logInput logInput80px"
+              size="4"
               style="margin-left: 17px" />
           </td>
         </tr>
         <tr>
           <td>
-            <label for="kodPocztowy" class="naglowekDwaWformularzu">Kod pocztowy*</label>
+            <label class="naglowekDwaWformularzu" for="kodPocztowy">Kod pocztowy*</label>
           </td>
           <td>
             <input
-              id="kodPocztowy"
-              size="2"
-              maxlength="2"
-              [ngModelOptions]="{ standalone: true }"
               [(ngModel)]="daneRejestracji.kodPocztowy1"
               [ngClass]="{ wpiszDane: !daneRejestracji.kodPocztowy1Poprawny }"
+              [ngModelOptions]="{ standalone: true }"
               class="logInput logInput80px"
+              id="kodPocztowy"
+              maxlength="2"
+              size="2"
               style="margin-right: 15px" /><span class="znaczek2">-</span>
             <input
-              size="5"
-              maxlength="3"
-              [ngModelOptions]="{ standalone: true }"
               [(ngModel)]="daneRejestracji.kodPocztowy2"
               [ngClass]="{ wpiszDane: !daneRejestracji.kodPocztowy2Poprawny }"
+              [ngModelOptions]="{ standalone: true }"
               class="logInput logInput80px"
+              maxlength="3"
+              size="5"
               style="margin-left: 15px; margin-right: 0" />
           </td>
         </tr>
         <tr>
-          <td colspan="2" class="miastoCzyWies">
+          <td class="miastoCzyWies" colspan="2">
             Miasto
             <button
-              class="buttonWybierz"
+              (click)="daneRejestracji.czyMiasto = 1"
               *ngIf="daneRejestracji.czyMiasto != 1"
-              (click)="daneRejestracji.czyMiasto = 1">
+              class="buttonWybierz">
               Wybierz
             </button>
           </td>
         </tr>
         <tr>
           <td>
-            <label for="miasto" class="naglowekDwaWformularzu"> Miasto</label>
+            <label class="naglowekDwaWformularzu" for="miasto"> Miasto</label>
           </td>
           <td>
             <input
-              [disabled]="daneRejestracji.czyMiasto == 2 || daneRejestracji.czyMiasto == 0"
-              id="miasto"
-              type="text"
-              [ngModelOptions]="{ standalone: true }"
-              [ngClass]="{ wpiszDane: !daneRejestracji.miastoPoprawne }"
               [(ngModel)]="daneRejestracji.miasto"
-              class="logInput" />
+              [disabled]="daneRejestracji.czyMiasto == 2 || daneRejestracji.czyMiasto == 0"
+              [ngClass]="{ wpiszDane: !daneRejestracji.miastoPoprawne }"
+              [ngModelOptions]="{ standalone: true }"
+              class="logInput"
+              id="miasto"
+              type="text" />
           </td>
         </tr>
         <tr>
-          <td colspan="2" class="miastoCzyWies">
+          <td class="miastoCzyWies" colspan="2">
             Wieś
             <button
-              class="buttonWybierz"
+              (click)="daneRejestracji.czyMiasto = 2"
               *ngIf="daneRejestracji.czyMiasto != 2"
-              (click)="daneRejestracji.czyMiasto = 2">
+              class="buttonWybierz">
               Wybierz
             </button>
           </td>
@@ -203,13 +203,13 @@
           </td>
           <td>
             <input
-              class="logInput"
-              id="powiat"
-              type="text"
               [(ngModel)]="daneRejestracji.powiat"
               [disabled]="daneRejestracji.czyMiasto == 1 || daneRejestracji.czyMiasto == 0"
               [ngClass]="{ wpiszDane: !daneRejestracji.powiatPoprawne }"
-              [ngModelOptions]="{ standalone: true }" />
+              [ngModelOptions]="{ standalone: true }"
+              class="logInput"
+              id="powiat"
+              type="text" />
           </td>
         </tr>
         <tr>
@@ -218,13 +218,13 @@
           </td>
           <td>
             <input
-              class="logInput"
-              id="wies"
-              type="text"
               [(ngModel)]="daneRejestracji.wies"
               [disabled]="daneRejestracji.czyMiasto == 1 || daneRejestracji.czyMiasto == 0"
               [ngClass]="{ wpiszDane: !daneRejestracji.wiesPoprawne }"
-              [ngModelOptions]="{ standalone: true }" />
+              [ngModelOptions]="{ standalone: true }"
+              class="logInput"
+              id="wies"
+              type="text" />
           </td>
         </tr>
       </table>
@@ -239,67 +239,67 @@
         </tr>
         <tr>
           <td>
-            <label for="imie" class="naglowekDwaWformularzu">Imię*</label>
+            <label class="naglowekDwaWformularzu" for="imie">Imię*</label>
           </td>
           <td>
             <input
-              id="imie"
-              type="text"
-              [ngModelOptions]="{ standalone: true }"
               [(ngModel)]="daneRejestracji.imie"
               [ngClass]="{ wpiszDane: !daneRejestracji.imiePoprawne }"
-              class="logInput" />
+              [ngModelOptions]="{ standalone: true }"
+              class="logInput"
+              id="imie"
+              type="text" />
           </td>
         </tr>
         <tr>
           <td>
-            <label for="nazwisko" class="naglowekDwaWformularzu">Nazwisko*</label>
+            <label class="naglowekDwaWformularzu" for="nazwisko">Nazwisko*</label>
           </td>
           <td>
             <input
-              id="nazwisko"
-              type="text"
-              [ngModelOptions]="{ standalone: true }"
               [(ngModel)]="daneRejestracji.nazwisko"
               [ngClass]="{ wpiszDane: !daneRejestracji.nazwiskoPoprawne }"
-              class="logInput" />
+              [ngModelOptions]="{ standalone: true }"
+              class="logInput"
+              id="nazwisko"
+              type="text" />
           </td>
         </tr>
         <tr>
           <td>
-            <label for="e-mail" class="naglowekDwaWformularzu">E-mail*</label>
+            <label class="naglowekDwaWformularzu" for="e-mail">E-mail*</label>
           </td>
           <td>
             <input
-              id="e-mail"
-              type="text"
-              [ngModelOptions]="{ standalone: true }"
               [(ngModel)]="daneRejestracji.email"
               [ngClass]="{ wpiszDane: !daneRejestracji.emailPoprawny }"
-              class="logInput" />
+              [ngModelOptions]="{ standalone: true }"
+              class="logInput"
+              id="e-mail"
+              type="text" />
           </td>
         </tr>
         <tr>
           <td>
-            <label for="numerTelefonu" class="naglowekDwaWformularzu">Numer telefonu*</label>
+            <label class="naglowekDwaWformularzu" for="numerTelefonu">Numer telefonu*</label>
           </td>
           <td>
             <select
-              class="logInput"
-              style="width: 75px"
               [(ngModel)]="daneRejestracji.prefiksTelefonu"
-              [ngModelOptions]="{ standalone: true }">
+              [ngModelOptions]="{ standalone: true }"
+              class="logInput"
+              style="width: 75px">
               <option>+48</option>
               <option>+380</option>
             </select>
             <input
-              id="numerTelefonu"
-              type="text"
-              [ngModelOptions]="{ standalone: true }"
               [(ngModel)]="daneRejestracji.numerTelefonu"
               [ngClass]="{ wpiszDane: !daneRejestracji.numerTelefonuPoprawny }"
+              [ngModelOptions]="{ standalone: true }"
               class="logInput phoneNumber"
-              style="margin-left: -9px" />
+              id="numerTelefonu"
+              style="margin-left: -9px"
+              type="text" />
           </td>
         </tr>
         <tr>
@@ -307,82 +307,82 @@
             <h2 class="naglowekWformularzu" style="position: relative">
               Utwórz hasło
               <fa-icon
-                style="position: absolute; top: 2px"
-                [tp]="wymaganiaHasla"
-                tpVariation="popper"
-                class="zapytajnik"
-                [tpTrigger]="'mouseenter'"
+                [icon]="fontAwesome.znakZapytajnika"
                 [tpClassName]="'wymaganiaHasla'"
-                [icon]="fontAwesome.znakZapytajnika"></fa-icon>
+                [tpTrigger]="'mouseenter'"
+                [tp]="wymaganiaHasla"
+                class="zapytajnik"
+                style="position: absolute; top: 2px"
+                tpVariation="popper"></fa-icon>
             </h2>
           </td>
         </tr>
         <tr>
           <td>
-            <label for="haslo1" class="naglowekDwaWformularzu">Hasło*</label>
+            <label class="naglowekDwaWformularzu" for="haslo1">Hasło*</label>
           </td>
           <td>
             <input
-              id="haslo1"
-              [type]="!this.podgladWlaczJeden ? 'password' : 'text'"
-              [ngModelOptions]="{ standalone: true }"
               [(ngModel)]="daneRejestracji.haslo1"
               [ngClass]="{
                 wpiszDane: !daneRejestracji.czyHaslaTakieSame_ || !daneRejestracji.haslo1poprawne
               }"
-              class="logInput haslo" />
+              [ngModelOptions]="{ standalone: true }"
+              [type]="!this.podgladWlaczJeden ? 'password' : 'text'"
+              class="logInput haslo"
+              id="haslo1" />
             <fa-icon
-              [icon]="this.podgladWlaczJeden ? fontAwesome.oczkoZamkniete : fontAwesome.oczko"
               (click)="this.podgladWlaczJeden = !this.podgladWlaczJeden"
+              [icon]="this.podgladWlaczJeden ? fontAwesome.oczkoZamkniete : fontAwesome.oczko"
               class="Podglad"></fa-icon>
           </td>
         </tr>
         <tr>
           <td>
-            <label for="haslo2" class="naglowekDwaWformularzu">Powtórz hasło*</label>
+            <label class="naglowekDwaWformularzu" for="haslo2">Powtórz hasło*</label>
           </td>
           <td>
             <input
-              id="haslo2"
-              [type]="!this.podgladWlaczDwa ? 'password' : 'text'"
-              [ngModelOptions]="{ standalone: true }"
               [(ngModel)]="daneRejestracji.haslo2"
               [ngClass]="{
                 wpiszDane: !daneRejestracji.czyHaslaTakieSame_ || !daneRejestracji.haslo2poprawne
               }"
-              class="logInput haslo" />
+              [ngModelOptions]="{ standalone: true }"
+              [type]="!this.podgladWlaczDwa ? 'password' : 'text'"
+              class="logInput haslo"
+              id="haslo2" />
             <fa-icon
-              [icon]="this.podgladWlaczDwa ? fontAwesome.oczkoZamkniete : fontAwesome.oczko"
               (click)="this.podgladWlaczDwa = !this.podgladWlaczDwa"
+              [icon]="this.podgladWlaczDwa ? fontAwesome.oczkoZamkniete : fontAwesome.oczko"
               class="Podglad"></fa-icon>
           </td>
         </tr>
 
         <tr>
-          <td style="position: relative" colspan="2">
+          <td colspan="2" style="position: relative">
             <input
-              type="checkbox"
-              [ngModelOptions]="{ standalone: true }"
               [(ngModel)]="daneRejestracji.rodo"
-              [ngClass]="{ rodoIregulamin: !daneRejestracji.rodoPoprawne }" />
+              [ngClass]="{ rodoIregulamin: !daneRejestracji.rodoPoprawne }"
+              [ngModelOptions]="{ standalone: true }"
+              type="checkbox" />
             <label class="naglowekRodoIRegulamin"
-              >&nbsp;-&nbsp; <a target="_blank" [href]="env.linkDoRodo">RODO</a></label
+              >&nbsp;-&nbsp; <a [href]="env.linkDoRodo" target="_blank">RODO</a></label
             >
             <br />
 
             <input
-              type="checkbox"
-              [ngModelOptions]="{ standalone: true }"
               [(ngModel)]="daneRejestracji.regulamin"
-              [ngClass]="{ rodoIregulamin: !daneRejestracji.regulaminPoprawny }" />
+              [ngClass]="{ rodoIregulamin: !daneRejestracji.regulaminPoprawny }"
+              [ngModelOptions]="{ standalone: true }"
+              type="checkbox" />
             <label class="naglowekRodoIRegulamin">
-              &nbsp;-&nbsp; <a target="_blank" [href]="env.linkDoRegulaminu">Regulamin</a>
+              &nbsp;-&nbsp; <a [href]="env.linkDoRegulaminu" target="_blank">Regulamin</a>
             </label>
             <button
-              style="position: absolute; right: 1px; top: 20px"
               (click)="zarejestruj()"
+              [disabled]="!daneRejestracji.przyciskAktywny"
               class="ButtonZarejestrujIzaloguj"
-              [disabled]="!daneRejestracji.przyciskAktywny">
+              style="position: absolute; right: 1px; top: 20px">
               Zarejestruj
             </button>
           </td>
@@ -404,6 +404,11 @@
                 <b>Numer telefonu jest już zarejestrowany</b>
                 <br />
               </span>
+              <span *ngIf="daneRejestracji.identyfikatorWykorzystany" class="czerwoneKomunikaty">
+                <b>Identyfikator jest już wykorzystany</b>
+                <br />
+              </span>
+
               <span *ngIf="!daneRejestracji.rejestracjaUdana" class="czerwoneKomunikaty">
                 <b
                   >Rejestracja nieudana, <br />
@@ -420,7 +425,7 @@
       </table>
     </form>
     <div class="linkRejestracjaDiv">
-      <a class="linkRejestracja chceszSieZalogowacLubZarejestrowac" [routerLink]="['../logowanie']">
+      <a [routerLink]="['../logowanie']" class="linkRejestracja chceszSieZalogowacLubZarejestrowac">
         Logowanie do zarejestrowanego konta</a
       >
       <p class="naglowekTlumaczenie">

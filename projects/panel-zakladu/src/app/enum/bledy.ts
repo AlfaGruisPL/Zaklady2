@@ -12,4 +12,6 @@ export enum Bledy {
   bladOgolny = 'Błąd komunikacji z serwerem.',
   bladUtworzeniaPlatnosci = 'błąd utworzenia zlecenia płatności',
   bladUtworzeniaPlatnosci_BrakNumeruTelefonu = 'Brak ustawionego numeru telefonu dla zalogowanego użytkownika',
+  emailJestJuzWykorzystany = 'Nie można utworzyć konta pracownika, ponieważ email jest już zarejestrowany w systemie',
+  emailJestNiePoprawny = 'Podany adres email jest nie poprawny',
 }

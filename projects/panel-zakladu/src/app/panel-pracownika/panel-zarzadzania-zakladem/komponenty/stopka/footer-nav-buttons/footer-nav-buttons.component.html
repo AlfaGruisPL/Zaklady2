@@ -1,7 +1,7 @@
 <nav>
   <a
     (click)="hamburger.close(false)"
-    *ngFor="let link of menuArray"
+    *ngFor="let link of returnMenuArray()"
     [routerLink]="[link.router]"
     routerLinkActive="aktywneMenu">
     <fa-icon [icon]="link.icon"></fa-icon>

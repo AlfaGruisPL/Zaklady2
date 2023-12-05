@@ -5,6 +5,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faBacon, faPerson, faSms, faTags } from '@fortawesome/free-solid-svg-icons';
 import { faBuilding, faIdBadge, faImage } from '@fortawesome/free-regular-svg-icons';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { TokenService } from '../../../../../serwisy/token.service';
 
 @Component({
   selector: 'app-footer-menu-panel',
@@ -27,4 +28,13 @@ export class FooterMenuPanelComponent {
     { title: 'Mój zakład', icon: faBuilding, router: 'mojZaklad', admin: true },
   ];
   protected readonly faBacon = faBacon;
+
+  constructor(public token_: TokenService) {}
+
+  returnMenuArray() {
+    if (this.token_.czyWlasciciel()) {
+      return this.menuArray;
+    }
+    return this.menuArray.filter(k => !k.admin);
+  }
 }

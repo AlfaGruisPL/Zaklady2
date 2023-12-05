@@ -51,25 +51,25 @@ export class MojZaklad {
 }
 
 export class dzien {
-  public otwarcie: string = '';
-  public zamkniecie: string = '';
-  public czynnyDzien: boolean = true;
+  public opening: string = '';
+  public closing: string = '';
+  public activeDay: boolean = true;
 
   public nieczynne() {
-    this.czynnyDzien = false;
+    this.activeDay = false;
   }
 
   public czynne() {
-    this.czynnyDzien = true;
+    this.activeDay = true;
   }
 }
 
 export class GodzinyOtwarcia {
-  public niedziela: dzien = new dzien();
-  public poniedzialek: dzien = new dzien();
-  public wtorek: dzien = new dzien();
-  public sroda: dzien = new dzien();
-  public czwartek: dzien = new dzien();
-  public piatek: dzien = new dzien();
-  public sobota: dzien = new dzien();
+  public sunday: dzien = new dzien();
+  public monday: dzien = new dzien();
+  public tuesday: dzien = new dzien();
+  public wednesday: dzien = new dzien();
+  public thursday: dzien = new dzien();
+  public friday: dzien = new dzien();
+  public saturday: dzien = new dzien();
 }

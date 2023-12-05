@@ -10,6 +10,7 @@ import { RureczkiModule } from '../../../../rureczki/rureczki.module';
 import { MojeKontoZdjecieProfiloweComponent } from '../moje-konto-pracownika/moje-konto-zdjecie-profilowe/moje-konto-zdjecie-profilowe.component';
 import { WorkersTableComponent } from './workers-table/workers-table.component';
 import { WorkersTableFilterComponent } from './workers-table/workers-table-filter/workers-table-filter.component';
+import { ErrorAnalyzerService } from '../../../../serwisy/error-analyzer.service';
 
 @NgModule({
   declarations: [PracownicyPracownikaComponent, CzyNaprawdeUsunacComponent, DodawanieIModyfikacjaPracownikaComponent],
@@ -23,6 +24,6 @@ import { WorkersTableFilterComponent } from './workers-table/workers-table-filte
     WorkersTableComponent,
     WorkersTableFilterComponent,
   ],
-  providers: [],
+  providers: [ErrorAnalyzerService],
 })
 export class PracownicyModule {}

@@ -42,9 +42,9 @@ export class DanePodstawowe {
 }
 
 export class dzien {
-  public otwarcie: string = '';
-  public zamkniecie: string = '';
-  public czynnyDzien: boolean = true;
+  public opening: string = '';
+  public closing: string = '';
+  public activeDay: boolean = true;
 }
 
 export class wyswietlaneDane {

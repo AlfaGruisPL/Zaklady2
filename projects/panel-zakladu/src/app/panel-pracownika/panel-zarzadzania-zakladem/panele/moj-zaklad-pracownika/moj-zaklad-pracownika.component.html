@@ -280,8 +280,8 @@
             <td class="naglowki2form"><label>Niedziela</label></td>
             <td>
               <input
-                [(ngModel)]="mojZakladKlasa.niedziela.otwarcie"
-                [disabled]="!mojZakladKlasa.niedziela.czynnyDzien || !zapiszButton"
+                [(ngModel)]="mojZakladKlasa.niedziela.opening"
+                [disabled]="!mojZakladKlasa.niedziela.activeDay || !zapiszButton"
                 [ngModelOptions]="{ standalone: true }"
                 class="logInputZaklad logInputZaklad_czas"
                 placeholder="Otwarcie"
@@ -289,14 +289,14 @@
             </td>
             <td>
               <input
-                [(ngModel)]="mojZakladKlasa.niedziela.zamkniecie"
-                [disabled]="!mojZakladKlasa.niedziela.czynnyDzien || !zapiszButton"
+                [(ngModel)]="mojZakladKlasa.niedziela.closing"
+                [disabled]="!mojZakladKlasa.niedziela.activeDay || !zapiszButton"
                 [ngModelOptions]="{ standalone: true }"
                 class="logInputZaklad logInputZaklad_czas"
                 placeholder="Zamknięcie"
                 type="time" />
               <ui-switch
-                [(ngModel)]="mojZakladKlasa.niedziela.czynnyDzien"
+                [(ngModel)]="mojZakladKlasa.niedziela.activeDay"
                 [disabled]="!zapiszButton"
                 [ngModelOptions]="{ standalone: true }"
                 checkedLabel="Czynne"
@@ -308,8 +308,8 @@
             <td class="naglowki2form"><label>Poniedziałek</label></td>
             <td>
               <input
-                [(ngModel)]="mojZakladKlasa.poniedzialek.otwarcie"
-                [disabled]="!mojZakladKlasa.poniedzialek.czynnyDzien || !zapiszButton"
+                [(ngModel)]="mojZakladKlasa.poniedzialek.opening"
+                [disabled]="!mojZakladKlasa.poniedzialek.activeDay || !zapiszButton"
                 [ngModelOptions]="{ standalone: true }"
                 class="logInputZaklad logInputZaklad_czas"
                 placeholder="Otwarcie"
@@ -317,14 +317,14 @@
             </td>
             <td>
               <input
-                [(ngModel)]="mojZakladKlasa.poniedzialek.zamkniecie"
-                [disabled]="!mojZakladKlasa.poniedzialek.czynnyDzien || !zapiszButton"
+                [(ngModel)]="mojZakladKlasa.poniedzialek.closing"
+                [disabled]="!mojZakladKlasa.poniedzialek.activeDay || !zapiszButton"
                 [ngModelOptions]="{ standalone: true }"
                 class="logInputZaklad logInputZaklad_czas"
                 placeholder="Zamknięcie"
                 type="time" />
               <ui-switch
-                [(ngModel)]="mojZakladKlasa.poniedzialek.czynnyDzien"
+                [(ngModel)]="mojZakladKlasa.poniedzialek.activeDay"
                 [disabled]="!zapiszButton"
                 [ngModelOptions]="{ standalone: true }"
                 checkedLabel="Czynne"
@@ -336,8 +336,8 @@
             <td class="naglowki2form"><label>Wtorek</label></td>
             <td>
               <input
-                [(ngModel)]="mojZakladKlasa.wtorek.otwarcie"
-                [disabled]="!mojZakladKlasa.wtorek.czynnyDzien || !zapiszButton"
+                [(ngModel)]="mojZakladKlasa.wtorek.opening"
+                [disabled]="!mojZakladKlasa.wtorek.activeDay || !zapiszButton"
                 [ngModelOptions]="{ standalone: true }"
                 class="logInputZaklad logInputZaklad_czas"
                 placeholder="Otwarcie"
@@ -345,14 +345,14 @@
             </td>
             <td>
               <input
-                [(ngModel)]="mojZakladKlasa.wtorek.zamkniecie"
-                [disabled]="!mojZakladKlasa.wtorek.czynnyDzien || !zapiszButton"
+                [(ngModel)]="mojZakladKlasa.wtorek.closing"
+                [disabled]="!mojZakladKlasa.wtorek.activeDay || !zapiszButton"
                 [ngModelOptions]="{ standalone: true }"
                 class="logInputZaklad logInputZaklad_czas"
                 placeholder="Zamknięcie"
                 type="time" />
               <ui-switch
-                [(ngModel)]="mojZakladKlasa.wtorek.czynnyDzien"
+                [(ngModel)]="mojZakladKlasa.wtorek.activeDay"
                 [disabled]="!zapiszButton"
                 [ngModelOptions]="{ standalone: true }"
                 checkedLabel="Czynne"
@@ -364,8 +364,8 @@
             <td class="naglowki2form"><label>Środa</label></td>
             <td>
               <input
-                [(ngModel)]="mojZakladKlasa.sroda.otwarcie"
-                [disabled]="!mojZakladKlasa.sroda.czynnyDzien || !zapiszButton"
+                [(ngModel)]="mojZakladKlasa.sroda.opening"
+                [disabled]="!mojZakladKlasa.sroda.activeDay || !zapiszButton"
                 [ngModelOptions]="{ standalone: true }"
                 class="logInputZaklad logInputZaklad_czas"
                 placeholder="Otwarcie"
@@ -373,14 +373,14 @@
             </td>
             <td>
               <input
-                [(ngModel)]="mojZakladKlasa.sroda.zamkniecie"
-                [disabled]="!mojZakladKlasa.sroda.czynnyDzien || !zapiszButton"
+                [(ngModel)]="mojZakladKlasa.sroda.closing"
+                [disabled]="!mojZakladKlasa.sroda.activeDay || !zapiszButton"
                 [ngModelOptions]="{ standalone: true }"
                 class="logInputZaklad logInputZaklad_czas"
                 placeholder="Zamknięcie"
                 type="time" />
               <ui-switch
-                [(ngModel)]="mojZakladKlasa.sroda.czynnyDzien"
+                [(ngModel)]="mojZakladKlasa.sroda.activeDay"
                 [disabled]="!zapiszButton"
                 [ngModelOptions]="{ standalone: true }"
                 checkedLabel="Czynne"
@@ -392,8 +392,8 @@
             <td class="naglowki2form"><label>Czwartek</label></td>
             <td>
               <input
-                [(ngModel)]="mojZakladKlasa.czwartek.otwarcie"
-                [disabled]="!mojZakladKlasa.czwartek.czynnyDzien || !zapiszButton"
+                [(ngModel)]="mojZakladKlasa.czwartek.opening"
+                [disabled]="!mojZakladKlasa.czwartek.activeDay || !zapiszButton"
                 [ngModelOptions]="{ standalone: true }"
                 class="logInputZaklad logInputZaklad_czas"
                 placeholder="Otwarcie"
@@ -401,14 +401,14 @@
             </td>
             <td>
               <input
-                [(ngModel)]="mojZakladKlasa.czwartek.zamkniecie"
-                [disabled]="!mojZakladKlasa.czwartek.czynnyDzien || !zapiszButton"
+                [(ngModel)]="mojZakladKlasa.czwartek.closing"
+                [disabled]="!mojZakladKlasa.czwartek.activeDay || !zapiszButton"
                 [ngModelOptions]="{ standalone: true }"
                 class="logInputZaklad logInputZaklad_czas"
                 placeholder="Zamknięcie"
                 type="time" />
               <ui-switch
-                [(ngModel)]="mojZakladKlasa.czwartek.czynnyDzien"
+                [(ngModel)]="mojZakladKlasa.czwartek.activeDay"
                 [disabled]="!zapiszButton"
                 [ngModelOptions]="{ standalone: true }"
                 checkedLabel="Czynne"
@@ -420,8 +420,8 @@
             <td class="naglowki2form"><label>Piątek</label></td>
             <td>
               <input
-                [(ngModel)]="mojZakladKlasa.piatek.otwarcie"
-                [disabled]="!mojZakladKlasa.piatek.czynnyDzien || !zapiszButton"
+                [(ngModel)]="mojZakladKlasa.piatek.opening"
+                [disabled]="!mojZakladKlasa.piatek.activeDay || !zapiszButton"
                 [ngModelOptions]="{ standalone: true }"
                 class="logInputZaklad logInputZaklad_czas"
                 placeholder="Otwarcie"
@@ -429,14 +429,14 @@
             </td>
             <td>
               <input
-                [(ngModel)]="mojZakladKlasa.piatek.zamkniecie"
-                [disabled]="!mojZakladKlasa.piatek.czynnyDzien || !zapiszButton"
+                [(ngModel)]="mojZakladKlasa.piatek.closing"
+                [disabled]="!mojZakladKlasa.piatek.activeDay || !zapiszButton"
                 [ngModelOptions]="{ standalone: true }"
                 class="logInputZaklad logInputZaklad_czas"
                 placeholder="Zamknięcie"
                 type="time" />
               <ui-switch
-                [(ngModel)]="mojZakladKlasa.piatek.czynnyDzien"
+                [(ngModel)]="mojZakladKlasa.piatek.activeDay"
                 [disabled]="!zapiszButton"
                 [ngModelOptions]="{ standalone: true }"
                 checkedLabel="Czynne"
@@ -448,8 +448,8 @@
             <td class="naglowki2form"><label>Sobota</label></td>
             <td>
               <input
-                [(ngModel)]="mojZakladKlasa.sobota.otwarcie"
-                [disabled]="!mojZakladKlasa.sobota.czynnyDzien || !zapiszButton"
+                [(ngModel)]="mojZakladKlasa.sobota.opening"
+                [disabled]="!mojZakladKlasa.sobota.activeDay || !zapiszButton"
                 [ngModelOptions]="{ standalone: true }"
                 class="logInputZaklad logInputZaklad_czas"
                 placeholder="Otwarcie"
@@ -457,14 +457,14 @@
             </td>
             <td>
               <input
-                [(ngModel)]="mojZakladKlasa.sobota.zamkniecie"
-                [disabled]="!mojZakladKlasa.sobota.czynnyDzien || !zapiszButton"
+                [(ngModel)]="mojZakladKlasa.sobota.closing"
+                [disabled]="!mojZakladKlasa.sobota.activeDay || !zapiszButton"
                 [ngModelOptions]="{ standalone: true }"
                 class="logInputZaklad logInputZaklad_czas"
                 placeholder="Zamknięcie"
                 type="time" />
               <ui-switch
-                [(ngModel)]="mojZakladKlasa.sobota.czynnyDzien"
+                [(ngModel)]="mojZakladKlasa.sobota.activeDay"
                 [disabled]="!zapiszButton"
                 [ngModelOptions]="{ standalone: true }"
                 checkedLabel="Czynne"

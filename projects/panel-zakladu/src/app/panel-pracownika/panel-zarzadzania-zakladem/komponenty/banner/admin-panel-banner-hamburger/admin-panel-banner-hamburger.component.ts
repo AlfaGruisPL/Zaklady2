@@ -12,8 +12,8 @@ import { HamburgerMenuComponent } from '../../hamburger-menu/hamburger-menu.comp
 })
 export class AdminPanelBannerHamburgerComponent implements OnInit {
   ngOnInit() {
-    const nav = document.querySelector('.hamburgerMenuDiv');
-    const div = document.querySelector('body');
-    div!.append(nav!);
+    /*  const nav = document.querySelector('.hamburgerMenuDiv');
+      const div = document.querySelector('body');
+      div!.append(nav!);*/
   }
 }

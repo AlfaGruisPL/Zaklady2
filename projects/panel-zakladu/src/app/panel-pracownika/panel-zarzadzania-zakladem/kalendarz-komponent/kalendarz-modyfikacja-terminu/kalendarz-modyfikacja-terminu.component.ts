@@ -14,6 +14,7 @@ import { Udane } from '../../../../enum/udane';
 import { environment } from '../../../../../environments/environment';
 import { Funkcje } from '../../../../funkcje';
 import * as EmailValidator from 'email-validator';
+import { Info } from '../../../../enum/info';
 
 @Component({
   selector: 'app-kalendarz-modyfikacja-terminu',
@@ -142,18 +143,17 @@ export class KalendarzModyfikacjaTerminuComponent implements OnInit {
   }
 
   private send(data: any) {
-    //todo tu trzeba się zastanowić bo nw o co i jak i gdzie i po co
-    //if (!this.token_.czyWlasciciel()) {
-    // data['wykonawca'] = -1;
-    //}=
-    // @ts-ignore
     delete data.confirmed;
     data['tryb'] = this.auto ? 'auto' : 'manual';
     this.listonosz
       .wyslij(Drzwi.kalendarzRejestracjaWizytyZPanelu, data)
       .then(k => {
+        if (k.code) {
+          this.komunikaty_.komunikatInfo(Info.wizytaSmsWyslanyJakoEmail);
+        }
         this.activeModal.close();
         this.komunikaty_.komunikatUdane(Udane.wizytaZostalaZarejestrowana);
+        this.kalendarz_.pobierzDane({ silentReload: true });
       })
       .catch(error => {
         this.errorAnalyzer_.analyze(error);
@@ -170,7 +170,7 @@ export class KalendarzModyfikacjaTerminuComponent implements OnInit {
       .then(k => {
         this.activeModal.close();
         this.komunikaty_.komunikatUdane(Udane.wizytaZostalaZmodyfikowana);
-        this.kalendarz_.pobierzDane();
+        this.kalendarz_.pobierzDane({ silentReload: true });
         this.parentNgbActiveModal?.close();
       })
       .catch(error => {

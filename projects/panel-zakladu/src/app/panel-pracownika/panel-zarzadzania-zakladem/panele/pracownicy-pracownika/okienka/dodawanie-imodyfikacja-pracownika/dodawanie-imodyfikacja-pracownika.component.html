@@ -11,7 +11,7 @@
         <td class="naglowki1form" colspan="2">Dane pracownika</td>
       </tr>
       <tr>
-        <td><label class="naglowki2form" for="imie">Imię:</label></td>
+        <td><label class="naglowki2form" for="imie">Imię:*</label></td>
         <td *ngIf="tryb != 'wyswietlenie'">
           <input
             (keydown)="iloscKlikniec = 0"
@@ -24,7 +24,7 @@
         <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.imie }}</td>
       </tr>
       <tr>
-        <td><label class="naglowki2form" for="nazwisko">Nazwisko:</label></td>
+        <td><label class="naglowki2form" for="nazwisko">Nazwisko:*</label></td>
         <td *ngIf="tryb != 'wyswietlenie'">
           <input
             (keydown)="iloscKlikniec = 0"
@@ -37,7 +37,7 @@
         <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.nazwisko }}</td>
       </tr>
       <tr>
-        <td><label class="naglowki2form" for="adresEmail">Adres e-mail:</label></td>
+        <td><label class="naglowki2form" for="adresEmail">Adres e-mail:*</label></td>
         <td *ngIf="tryb != 'wyswietlenie'">
           <input
             (keydown)="iloscKlikniec = 0"
@@ -204,13 +204,13 @@
       *ngIf="!pracownikObj.czyWszystkoWpisane && iloscKlikniec == 1"
       class="czerwoneKomunikatyZaklad"
       style="padding-right: 180px"
-      >Nie uzupełnione wszystkie pola! Czy na pewno chcesz zapisać dane?
+    >Nie uzupełnione wszystkie pola! Czy na pewno chcesz zapisać dane?
     </span>
     <span
       *ngIf="iloscKlikniec == 1 && tryb == 'modyfikacja'"
       class="czerwoneKomunikatyZaklad"
       style="padding-right: 180px"
-      >Czy na pewno chcesz zmodyfikować dane?
+    >Czy na pewno chcesz zmodyfikować dane?
     </span>
     <button
       (click)="zapisz()"

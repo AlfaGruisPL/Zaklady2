@@ -44,7 +44,6 @@ export class Termin_komponentComponent implements OnInit {
         boundingRect.left + boundingRect.width / 2,
         boundingRect.top + Number(this.top.split('px')[0]) + heightPoint
       );
-      console.log(elementsBelow);
       elementsBelow = elementsBelow.filter(k => {
         return k.tagName == 'DIV' && k.classList.contains('termin');
       });

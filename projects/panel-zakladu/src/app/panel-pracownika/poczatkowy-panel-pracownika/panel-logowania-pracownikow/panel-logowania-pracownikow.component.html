@@ -12,6 +12,9 @@
         Podany identyfikator zakładu nie został odnaleziony. Sprawdź adres URL wpisany w przeglądarkę, jeżeli adres jest
         poprawny skontaktuj się z właścicielem zakładu lub administratorem strony
       </p>
+      <a [queryParams]="{ strzalka: true }" [routerLink]="['../rejestracja']" class="chceszSieZalogowacLubZarejestrowac"
+        >Kliknij, aby zarejestrować nowy zakład</a
+      >
     </div>
 
     <form *ngIf="podreczne_.zakladZnaleziony_domenowe == true">
@@ -49,8 +52,9 @@
           <td>
             <select (change)="latweLogowanie($event)">
               <option default>Brak</option>
-              <option [value]="['korneliamushak@gmail.com', 'Kroliczek1234!@#$']">Właściciel</option>
-              <option [value]="['alfagruis@gmail.com', 'Kroliczek1234!@#$']">ja pracownik</option>
+              <option [value]="['korneliamushak@gmail.com', 'Kroliczek1234!@#$']">korneliamushak</option>
+              <option [value]="['alfagruis@gmail.com', 'Kawa0808)aaaa']">alfagruis</option>
+              <option [value]="['kixiyi3465@nasmis.com', 'fcf4d5f79aa55785c376 ']">k</option>
             </select>
           </td>
         </tr>

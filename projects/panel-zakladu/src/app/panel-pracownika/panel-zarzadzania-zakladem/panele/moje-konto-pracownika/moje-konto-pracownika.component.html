@@ -249,10 +249,16 @@
   <app-ustawienia-powiadomien></app-ustawienia-powiadomien>
 
   <div class="naPrzycisk">
-    <button (click)="wlaczPrzyciskZapisz = true" [disabled]="zdjecie.blokadaPrzycisku" class="zmodyfikujZapiszButton">
+    <button (click)="wlaczPrzyciskZapisz = true" *ngIf="!wlaczPrzyciskZapisz" class="zmodyfikujZapiszButton">
       Zmodyfikuj
     </button>
-    <button (click)="zapisz()" *ngIf="wlaczPrzyciskZapisz == true" class="zmodyfikujZapiszButton">Zapisz</button>
+    <button
+      (click)="zapisz()"
+      *ngIf="wlaczPrzyciskZapisz"
+      [disabled]="zdjecie.blokadaPrzycisku"
+      class="zmodyfikujZapiszButton">
+      Zapisz
+    </button>
   </div>
 </div>
 

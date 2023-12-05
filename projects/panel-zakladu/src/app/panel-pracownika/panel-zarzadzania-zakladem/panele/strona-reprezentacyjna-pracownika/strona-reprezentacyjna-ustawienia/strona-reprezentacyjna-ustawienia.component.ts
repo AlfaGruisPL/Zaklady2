@@ -98,6 +98,10 @@ export class StronaReprezentacyjnaUstawieniaComponent implements AfterViewInit {
     }
   }
 
+  test() {
+    console.log(1);
+  }
+
   private async wyslijZdjecie() {
     try {
       if (this.bannerZdjecie_formData != undefined) {

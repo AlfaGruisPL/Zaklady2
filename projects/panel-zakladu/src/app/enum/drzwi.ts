@@ -7,7 +7,7 @@ export enum Drzwi {
   resetHasla = '/auth/resetHasla',
   resetHaslaKrok2 = '/auth/resetHaslaKrok2',
   resetHaslaKrok3 = '/auth/resetHaslaKrok3',
-  dodajZaklad = '/zaklady/dodaj',
+  dodajZaklad = '/workspace/registration',
   rejestracjaKlienta = '/klient/auth/rejestracja',
   logowanieKlienta = '/klient/auth/login',
   daneMojZakladPracownik = '/zaklady/daneZakladu',

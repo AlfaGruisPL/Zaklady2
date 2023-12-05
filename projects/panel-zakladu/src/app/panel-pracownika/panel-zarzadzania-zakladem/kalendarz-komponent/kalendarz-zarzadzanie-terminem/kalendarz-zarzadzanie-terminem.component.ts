@@ -121,7 +121,7 @@ export class KalendarzZarzadzanieTerminemComponent implements OnInit {
       .cancelTheVisit(this.wizyta)
       .then(
         data => {
-          this.kalendarz_.pobierzDane(true);
+          this.kalendarz_.pobierzDane({ silent: true });
           this.activeModal.dismiss();
         },
         error => {}

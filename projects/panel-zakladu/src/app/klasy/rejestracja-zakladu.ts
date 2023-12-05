@@ -48,6 +48,15 @@ export class RejestracjaZakladu {
   public haslo2poprawne: boolean = true;
   public czyWszystkoPoprawne: boolean = true;
   public identyfikatorPoprawne: boolean = true;
+  public adresEmailPoprawneWalidacja = true;
+  public imiePoprawneWalidacja = true;
+  public nazwiskoPoprawneWalidacja = true;
+  public numerTelefonuPoprawneWalidacja = true;
+  public hasloSpelniaWymagania = true;
+  public emailWykorzystany = false;
+  public nmumerTelefonuWykorzystany = false;
+  public identyfikatorWykorzystany = false;
+  public rejestracjaUdana = true;
 
   public czyHaslaTakieSame(): boolean {
     this.czyHaslaTakieSame_ = true;
@@ -62,11 +71,6 @@ export class RejestracjaZakladu {
     }
     return this.czyHaslaTakieSame_;
   }
-
-  public adresEmailPoprawneWalidacja = true;
-  public imiePoprawneWalidacja = true;
-  public nazwiskoPoprawneWalidacja = true;
-  public numerTelefonuPoprawneWalidacja = true;
 
   public czyDanePoprawne(): boolean {
     const czyOkej = true;
@@ -218,11 +222,6 @@ export class RejestracjaZakladu {
     return this.czyWszystkoPoprawne;
   }
 
-  public hasloSpelniaWymagania = true;
-  public emailWykorzystany = false;
-  public nmumerTelefonuWykorzystany = false;
-  public rejestracjaUdana = true;
-
   public walidacjaHasla(): boolean {
     this.hasloSpelniaWymagania = true;
     var schema = new passwordValidator();
@@ -263,6 +262,8 @@ export class RejestracjaZakladuDTO {
   public email: string = '';
   public numerTelefonu: string = '';
   public haslo: string = '';
+  public identyfikator: string = '';
+  public timeZone: string = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
   constructor(dane: RejestracjaZakladu) {
     this.nazwaZakladu = dane.nazwaZakladu;
@@ -279,5 +280,6 @@ export class RejestracjaZakladuDTO {
     this.email = dane.email;
     this.numerTelefonu = dane.prefiksTelefonu + '-' + dane.numerTelefonu;
     this.haslo = dane.haslo1;
+    this.identyfikator = dane.identyfikator;
   }
 }

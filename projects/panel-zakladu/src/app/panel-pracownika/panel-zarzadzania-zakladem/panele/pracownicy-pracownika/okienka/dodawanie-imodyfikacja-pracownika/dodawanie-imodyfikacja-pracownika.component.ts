@@ -9,6 +9,7 @@ import { BledyNumery } from '../../../../../../enum/bledy-numery';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { environment } from '../../../../../../../environments/environment';
 import { MojeKontoZdjecieProfiloweComponent } from '../../../moje-konto-pracownika/moje-konto-zdjecie-profilowe/moje-konto-zdjecie-profilowe.component';
+import { ErrorAnalyzerService } from '../../../../../../serwisy/error-analyzer.service';
 
 @Component({
   selector: 'app-dodawanie-imodyfikacja-pracownika',
@@ -34,7 +35,8 @@ export class DodawanieIModyfikacjaPracownikaComponent {
     public activeModal: NgbActiveModal,
     public listonosz: ListonoszService,
     private sanitizer: DomSanitizer,
-    public komunikaty: KomunikatyService
+    public komunikaty: KomunikatyService,
+    private error_: ErrorAnalyzerService
   ) {}
 
   pobierzPracownika() {
@@ -49,6 +51,14 @@ export class DodawanieIModyfikacjaPracownikaComponent {
   }
 
   zapisz() {
+    if (
+      this.pracownikObj.imie.length == 0 ||
+      this.pracownikObj.nazwisko.length == 0 ||
+      this.pracownikObj.adresEmail.length == 0
+    ) {
+      this.komunikaty.komunikatInfo('Uzupełnij wymagane dane oznaczone *');
+      return;
+    }
     this.iloscKlikniec++;
     this.pracownikObj.czyWszystkoWpisaneFunkcja();
     if (this.iloscKlikniec >= 2) {
@@ -62,9 +72,9 @@ export class DodawanieIModyfikacjaPracownikaComponent {
           await this.ZdjecieProfilowe?.wyslijZdjecie(this.idUzytkownika);
           this.activeModal.close('Zapisanie udane');
         })
-        .catch(nieudano => {
+        .catch(error => {
           this.pracownikDodany = false;
-          this.komunikaty.dodaniePracownikaNieUdane();
+          this.error_.analyze(error, this.komunikaty.dodaniePracownikaNieUdane);
         })
         .finally(() => {
           this.blokowaniePrzycisku = false;
