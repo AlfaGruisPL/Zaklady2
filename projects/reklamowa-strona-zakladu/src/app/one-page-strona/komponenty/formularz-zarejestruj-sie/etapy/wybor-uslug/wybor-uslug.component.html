@@ -7,7 +7,7 @@
     <tr class="spanTytul">
       <th>Nr</th>
       <th>Usługa</th>
-      <th *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.uslugiCzyWyswietlic">Cena</th>
+      <th *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.services">Cena</th>
       <th>Wybierz</th>
     </tr>
     <tr
@@ -15,7 +15,7 @@
       [ngClass]="{ niedostepnaUsluga: !czyWykonuje(usluga) }">
       <td class="td1">{{ index + (strona - 1) * max + 1 }}.</td>
       <td class="td2">{{ usluga.nazwa }}</td>
-      <td *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.uslugiCzyWyswietlic" class="td3">
+      <td *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.services" class="td3">
         {{ usluga.cena }} złotych
       </td>
 
@@ -25,7 +25,7 @@
           *ngIf="!czyWykonuje(usluga)"
           class="spanNiedostepna"
           title="Ta usługa jest nieobsługiwana przez wybranego pracownika, wybierz innego pracownika"
-          >Niedostępne</span
+        >Niedostępne</span
         >
       </td>
     </tr>

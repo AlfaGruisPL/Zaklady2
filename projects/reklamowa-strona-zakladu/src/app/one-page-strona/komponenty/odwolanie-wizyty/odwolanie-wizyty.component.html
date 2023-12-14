@@ -21,7 +21,14 @@
       </tr>
       <tr>
         <th>Usługi</th>
+        <td *ngIf="wizyta.uslugi!.uslugi!.length">
+          <ul>
+            <li *ngFor="let usluga of wizyta.uslugi?.uslugi">{{ usluga.nazwa }}</li>
+          </ul>
+        </td>
+
         <td *ngIf="wizyta.uslugi?.opis?.length == 0">
+
           <ul>
             <li *ngFor="let usluga of wizyta.uslugi?.uslugi">{{ usluga.nazwa }}</li>
           </ul>

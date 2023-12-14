@@ -1,11 +1,11 @@
-import { Component, Input } from '@angular/core';
-import { Klient } from '../../../../../klasy/listaKlientow/klient';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Component, Input } from "@angular/core";
+import { Klient } from "../../../../../klasy/listaKlientow/klient";
+import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
-  selector: 'app-informacje-okliencie',
-  templateUrl: './informacje-okliencie.component.html',
-  styleUrls: ['./informacje-okliencie.component.scss'],
+  selector: "app-informacje-okliencie",
+  templateUrl: "./informacje-okliencie.component.html",
+  styleUrls: ["./informacje-okliencie.component.scss"]
 })
 export class InformacjeOKliencieComponent {
   @Input() klient: Klient = new Klient({});
@@ -17,7 +17,11 @@ export class InformacjeOKliencieComponent {
   }
 
   sumaOplat() {
-    const wynik = this.klient.wizytWZakladzie.reduce((suma, klient) => {
+    let wynik = this.klient.wizytWZakladzie.reduce((suma, klient) => {
+      if (klient.cena) return suma + Number(klient.cena);
+      else return suma;
+    }, 0);
+    wynik += this.klient.wizyty.reduce((suma, klient) => {
       if (klient.cena) return suma + Number(klient.cena);
       else return suma;
     }, 0);

@@ -1,4 +1,4 @@
 <div
-  [ngStyle]="{'top':top-9+'px'}" *ngIf="widocznosc">
+  *ngIf="widocznosc" [ngStyle]="{'top':top-7+'px'}">
 </div>
-<img src="assets/arrow-up.png" [ngStyle]="{'top':top-24+'px'}" class="kreska" *ngIf="widocznosc">
+<img *ngIf="widocznosc" [ngStyle]="{'top':top-24+'px'}" class="kreska" src="assets/arrow-up.png">

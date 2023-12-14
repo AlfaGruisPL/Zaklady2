@@ -1,9 +1,9 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-harmonogram-dnia-aktualna-godzina',
-  templateUrl: './harmonogram-dnia-aktualna-godzina.component.html',
-  styleUrls: ['./harmonogram-dnia-aktualna-godzina.component.scss'],
+  selector: "app-harmonogram-dnia-aktualna-godzina",
+  templateUrl: "./harmonogram-dnia-aktualna-godzina.component.html",
+  styleUrls: ["./harmonogram-dnia-aktualna-godzina.component.scss"]
 })
 export class HarmonogramDniaAktualnaGodzinaComponent implements OnInit, OnDestroy {
   @Input() szerokosc = 1;
@@ -23,8 +23,9 @@ export class HarmonogramDniaAktualnaGodzinaComponent implements OnInit, OnDestro
 
   ustawKreske() {
     const data = new Date();
-    const minuty = data.getHours() * 60 + data.getMinutes() - this.godzinaRozpoczecia * 60;
-    this.lewo = minuty * (this.szerokosc / (this.godzinaZakonczenia * 60)) - 10;
+    const minuty = (data.getHours() * 60 + data.getMinutes() - this.godzinaRozpoczecia * 60) - 5;
+    //  console.log(this.godzinaZakonczenia);
+    this.lewo = minuty * (this.szerokosc / (this.godzinaZakonczenia * 60));
 
     const rozpoczecie = new Date().setHours(this.godzinaRozpoczecia);
     const zakonczenie = new Date().setHours(this.godzinaZakonczenia + this.godzinaRozpoczecia, 0, 0, 0);

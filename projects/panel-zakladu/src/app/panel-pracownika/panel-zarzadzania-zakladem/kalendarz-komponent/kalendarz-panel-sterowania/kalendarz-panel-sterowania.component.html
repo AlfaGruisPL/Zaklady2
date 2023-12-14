@@ -1,19 +1,46 @@
 <div class="pracownikIFilter">
   <div class="pracownikSelectAndLabel">
-    <label>Filtrowanie danych:</label>
-    <app-select-dotyczy
-      (dotyczyChange)="Kalendarz_.wybranyPracownik.next($event)"
-      (ustawChange)="Kalendarz_.pobierzDane()"
-      [ustaw]="Kalendarz_.wybranyPracownik"
-      [wyswietlanieOpcjiZakladu]="true"></app-select-dotyczy>
+    <div class="left">
+
+      <label>Filtrowanie danych:</label>
+      <app-select-dotyczy
+        (dotyczyChange)="Kalendarz_.wybranyPracownik.next($event)"
+        (ustawChange)="Kalendarz_.pobierzDane()"
+        [ustaw]="Kalendarz_.wybranyPracownik"
+        [wyswietlanieOpcjiZakladu]="true"></app-select-dotyczy>
+    </div>
+    <div class="right">
+
+      <p>
+        Dane dla:
+        <span>
+        <ng-container *ngIf="Kalendarz_.wybranyPracownik.value == 0">
+          cały zakład
+        </ng-container>
+        <ng-container *ngIf="Kalendarz_.wybranyPracownik.value != 0">
+
+        {{danePodreczne.returnWorkerFromIf(Kalendarz_.wybranyPracownik.value)}}
+        </ng-container>
+
+      </span>
+      </p>
+    </div>
   </div>
-  <div class="sterowanie">
+  <div #control class="sterowanie">
     <button (click)="teraz()" *ngIf="Kalendarz_.licznikPrzyciskow != 0" class="jakiTydzienButton teraz">Teraz</button>
     &nbsp; &nbsp; &nbsp;
-    <button (click)="WLEWO()" class="jakiTydzienButton">Poprzedni tydzień</button>
+    <button (click)="WLEWO()" class="jakiTydzienButton">Poprzedni
+      <ng-container *ngIf="control.clientWidth> 1000">
+        tydzień
+      </ng-container>
+    </button>
     <div class="jakiMiesiacDiv">
-      <span> {{ Kalendarz_.miesiace[miesiac() - 1] }} - Tydzień: {{ tydzien() }}</span>
+      <span> {{ Kalendarz_.miesiace[miesiac() - 1] }} - Tydzień: {{ tydzien() }} </span>
     </div>
-    <button (click)="WPrawo()" class="jakiTydzienButton">Następny tydzień</button>
+    <button (click)="WPrawo()" class="jakiTydzienButton">Następny
+      <ng-container *ngIf="control.clientWidth> 1000">
+        tydzień
+      </ng-container>
+    </button>
   </div>
 </div>

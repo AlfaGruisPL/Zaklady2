@@ -15,10 +15,14 @@
 
   <ng-template TemplateId="tbody" let-index="index" let-obj>
     <td>{{ index }}</td>
-    <td>{{ obj.opis }}</td>
+    <td>{{ obj.opis|maxDlugosc:30 }}
+      <button [ngbPopover]="obj.opis" class="questionDescription" container="body" placement="top" popoverTitle="Opis:">
+        ?
+      </button>
+    </td>
     <td>{{ obj.dataUtworzenia | date : 'dd.MM.yyyy  HH:mm' }}</td>
     <td>{{ obj.dataKonca | date : 'dd.MM.yyyy  HH:mm' }}</td>
-    <td>{{ obj.kwota / 100 }}zł</td>
+    <td>{{ obj.amount / 100 }}zł</td>
     <td *ngIf="obj.status == 0" style="font-weight: bolder; color: darkred">Nieudane</td>
     <td *ngIf="obj.status == 1" style="font-weight: bolder; color: #0e7908">Udane</td>
   </ng-template>

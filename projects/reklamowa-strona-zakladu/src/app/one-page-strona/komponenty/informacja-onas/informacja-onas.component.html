@@ -9,7 +9,7 @@
         <app-onas-kontakt></app-onas-kontakt>
       </div>
       <div
-        *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.godzinyCzyWyswietlic"
+        *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.hours"
         [attr.data-aos-duration]="animation_.animationTimeBannerPanels"
         data-aos="fade-left"
         data-aos-once="true">
@@ -26,7 +26,7 @@
 
     <div class="panel">
       <span
-        *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.uslugiCzyWyswietlic"
+        *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.services"
         [attr.data-aos-duration]="animation_.animationTimeBannerPanels"
         class="uslugi"
         data-aos="fade-right"
@@ -35,7 +35,7 @@
         <app-onas-uslugi></app-onas-uslugi>
       </span>
       <div
-        *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.daneZakladuCzyWyswietlic"
+        *ngIf="danePodstawowe.danePodstawowe.wyswietlaneDane.companyData"
         [attr.data-aos-duration]="animation_.animationTimeBannerPanels"
         class="podstawoweInformacje"
         data-aos="fade-right"

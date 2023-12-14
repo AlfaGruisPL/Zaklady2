@@ -1,31 +1,31 @@
 <div class="uslugiTable">
   <table>
     <tr>
-      <td colspan="2" class="informacjeOnasTytul">
+      <td class="informacjeOnasTytul" colspan="2">
         Trochę informacji o naszym zakładzie
-        <fa-icon class="iconkaPodstawowe" [icon]="faIcons.info"></fa-icon>
+        <fa-icon [icon]="faIcons.info" class="iconkaPodstawowe"></fa-icon>
       </td>
 
     </tr>
-    <tr *ngIf="DanePodstawowe_.danePodstawowe.wyswietlaneDane.dataZalozeniayCzyWyswietlic">
+    <tr *ngIf="DanePodstawowe_.danePodstawowe.wyswietlaneDane.establishmentDate">
       <td class="informacjaNaglowek1">Data założenia:</td>
       <td class="informacjaNaglowek2">
         {{ DanePodstawowe_.danePodstawowe.dataZalozenia }}
       </td>
     </tr>
-    <tr *ngIf="DanePodstawowe_.danePodstawowe.wyswietlaneDane.iloscPracownikowCzyWyswietlic">
+    <tr *ngIf="DanePodstawowe_.danePodstawowe.wyswietlaneDane.numberOfEmployees">
       <td class="informacjaNaglowek1">Ilość pracowników:</td>
       <td class="informacjaNaglowek2">
         {{ DanePodstawowe_.danePodstawowe.iloscPracownikow }}
       </td>
     </tr>
-    <tr *ngIf="DanePodstawowe_.danePodstawowe.wyswietlaneDane.nipCzyWyswietlic">
+    <tr *ngIf="DanePodstawowe_.danePodstawowe.wyswietlaneDane.nip">
       <td class="informacjaNaglowek1">NIP:</td>
       <td class="informacjaNaglowek2">
         {{ DanePodstawowe_.danePodstawowe.NIP }}
       </td>
     </tr>
-    <tr *ngIf="DanePodstawowe_.danePodstawowe.wyswietlaneDane.regonCzyWyswietlic">
+    <tr *ngIf="DanePodstawowe_.danePodstawowe.wyswietlaneDane.regon">
       <td class="informacjaNaglowek1">REGON:</td>
       <td class="informacjaNaglowek2">
         {{ DanePodstawowe_.danePodstawowe.REGON }}

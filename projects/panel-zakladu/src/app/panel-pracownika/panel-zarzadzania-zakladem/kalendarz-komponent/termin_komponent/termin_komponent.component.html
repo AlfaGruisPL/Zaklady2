@@ -18,7 +18,7 @@
   class="termin"
   container="body"
   ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
-  placement="top"
+  placement="auto"
   popoverTitle="Popover on top"
   triggers="mouseenter:mouseleave">
   <h3 *ngIf="wizytaDiv.clientHeight > 30 && wizyta.completed != false">
@@ -37,7 +37,7 @@
       [style]="{ width: 100 / visit_.actualTrigeredElements.length + '%' }">
       Wizyta
       <b
-        >{{ getVisitFromID(visit)?.poczatek | date : 'HH:mm' }} {{ getVisitFromID(visit)?.koniec | date : 'HH:mm' }}
+      >{{ getVisitFromID(visit)?.poczatek | date : 'HH:mm' }} {{ getVisitFromID(visit)?.koniec | date : 'HH:mm' }}
       </b>
     </div>
   </div>

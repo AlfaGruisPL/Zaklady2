@@ -1,19 +1,19 @@
 <div class="tabelaDane tabelaRamka">
   <table>
     <tr>
-      <td colspan="2" class="informacjeOnasTytul">
+      <td class="informacjeOnasTytul" colspan="2">
         Nasz kontakt
-        <fa-icon class="iconkaKontakt"
-                 [icon]="faIcons.telefon"></fa-icon>
+        <fa-icon [icon]="faIcons.telefon"
+                 class="iconkaKontakt"></fa-icon>
       </td>
     </tr>
-    <tr *ngIf="danePodstawowe_.danePodstawowe.wyswietlaneDane.telefonCzyWyswietlic">
+    <tr *ngIf="danePodstawowe_.danePodstawowe.wyswietlaneDane.phone">
       <td class="informacjaNaglowek1" style="width: 200px">Numer telefonu:&nbsp;</td>
       <td class="informacjaNaglowek2">
         {{ danePodstawowe_.danePodstawowe.numerTelefonuOgolny }}
       </td>
     </tr>
-    <tr *ngIf="danePodstawowe_.danePodstawowe.wyswietlaneDane.emailCzyWyswietlic">
+    <tr *ngIf="danePodstawowe_.danePodstawowe.wyswietlaneDane.email">
       <td class="informacjaNaglowek1">E-mail:&nbsp;</td>
       <td class="informacjaNaglowek2">
         {{ danePodstawowe_.danePodstawowe.emailOgolny }}

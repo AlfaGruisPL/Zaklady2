@@ -9,8 +9,15 @@
     <ng-container *ngIf="wizyta.cancled()">
       <h4 class="h4canceled">Wizyta została odwołana</h4>
       <p class="h4canceled">
-        Powód: {{ wizyta.returnCanceledDetail()?.additionalDetail?.reason }}<br />
-        Anulujący: {{ podreczne_.returnWorkerFromIf(wizyta.returnCanceledDetail()?.additionalDetail?.workerId) }}
+        Powód: <span [innerHTML]="wizyta.returnCanceledDetail()?.additionalDetail?.reason "></span><br />
+        Anulujący:
+        <ng-container *ngIf="wizyta.returnCanceledDetail()?.additionalDetail?.workerId == null else worker">
+          Klient
+        </ng-container>
+        <ng-template #worker>
+
+          {{ podreczne_.returnWorkerFromIf(wizyta.returnCanceledDetail()?.additionalDetail?.workerId) }}
+        </ng-template>
       </p>
     </ng-container>
     <table>

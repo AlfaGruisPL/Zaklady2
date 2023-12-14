@@ -1,14 +1,18 @@
-import { Component } from '@angular/core';
-import { ListonoszService } from '../../../../serwisy/listonosz.service';
-import { KalendarzKomponentService } from '../kalendarz-komponent.service';
+import { Component } from "@angular/core";
+import { ListonoszService } from "../../../../serwisy/listonosz.service";
+import { KalendarzKomponentService } from "../kalendarz-komponent.service";
+import { PodreczneDaneService } from "../../../../serwisy/podreczne-dane.service";
 
 @Component({
-  selector: 'app-kalendarz-panel-sterowania',
-  templateUrl: './kalendarz-panel-sterowania.component.html',
-  styleUrls: ['./kalendarz-panel-sterowania.component.scss'],
+  selector: "app-kalendarz-panel-sterowania",
+  templateUrl: "./kalendarz-panel-sterowania.component.html",
+  styleUrls: ["./kalendarz-panel-sterowania.component.scss"]
 })
 export class KalendarzPanelSterowaniaComponent {
-  constructor(private listonosz: ListonoszService, public Kalendarz_: KalendarzKomponentService) {}
+  protected readonly PodreczneDaneService = PodreczneDaneService;
+
+  constructor(private listonosz: ListonoszService, public Kalendarz_: KalendarzKomponentService, public danePodreczne: PodreczneDaneService) {
+  }
 
   public WPrawo() {
     this.Kalendarz_.licznikPrzyciskow++;

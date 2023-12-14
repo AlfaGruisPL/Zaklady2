@@ -1,7 +1,7 @@
 {
   "name": "zaklady",
-  "version": "0.0.50",
-  "relase_date": "2023.12.03 20:13",
+  "version": "0.0.64",
+  "relase_date": "11.12.2023 19:00",
   "scripts": {
     "postinstall": "npm i https://github.com/AlfaGruisPL/zakladLib.git --force",
     "npmInstall": "npm install --force",
@@ -9,6 +9,7 @@
     "start": "ng serve",
     "startPaneluZakladu": " ng serve PanelZakladu --port 8005  --host=0.0.0.0 --disable-host-check --hmr=true",
     "startStronyReklamowejZakladu": "ng serve reklamowaStronaZakladu --port 8008  --host=0.0.0.0 --disable-host-check --hmr=false",
+    "startStronyReklamowej": "ng serve StronaReklamowa --port 8009  --host=0.0.0.0 --disable-host-check --hmr=false",
     "buildPanelZakladu": "ng build PanelZakladu --base-href ./",
     "buildStronyReklamowejZakladu": "ng build reklamowaStronaZakladu --base-href ./",
     "watch": "ng build --watch --configuration development",

@@ -91,14 +91,13 @@
       <span
         *ngIf="!czyPracuje(dzien.dzien)"
         style="width: 100%; text-align: center; display: block; color: #343434; height: 20px"
-        >---------</span
+      >---------</span
       >
       <div *ngIf="czyToDzis(dzien.data) && index == 0">
         <app-kalendarz-godzina-kreska-komponent
-          [koniec]="[Kalendarz_.godzinaZakonczenia + Kalendarz_.godzinaRozpoczecia, 0]"
-          [poczatek]="[Kalendarz_.godzinaRozpoczecia, 0]"
-          [sumaCzasu]="10 * 60"
-          [wysokosc]="Kalendarz_.godzinaZakonczenia * 2 * 25"></app-kalendarz-godzina-kreska-komponent>
+          [koniec]="Kalendarz_.godzinaZakonczenia + Kalendarz_.godzinaRozpoczecia"
+          [poczatek]="Kalendarz_.godzinaRozpoczecia"
+          [wysokosc]="Kalendarz_.godzinaZakonczenia * 2 * 25.1"></app-kalendarz-godzina-kreska-komponent>
       </div>
     </td>
   </tr>

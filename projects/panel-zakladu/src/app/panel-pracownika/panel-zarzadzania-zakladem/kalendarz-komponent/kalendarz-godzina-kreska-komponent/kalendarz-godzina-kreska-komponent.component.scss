@@ -1,11 +1,12 @@
 div {
   width: 100%;
-  height: 3px;
+  height: 2px;
   background: rgba(0, 196, 0, 0.64);
 
   z-index: 199;
   position: absolute;
   left: 0px;
+  pointer-events: none;
 }
 
 .kreska {
@@ -16,6 +17,7 @@ div {
   z-index: 200;*/
   z-index: 200;
   position: absolute;
+  pointer-events: none;
 
   height: 35px;
   left: -35px;

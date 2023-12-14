@@ -1,13 +1,13 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ListonoszService } from '../../../../../serwisy/listonosz.service';
-import { Drzwi } from '../../../../../enum/drzwi';
-import { ZarejestrujSieService } from '../../zarejestrujSie.service';
-import { DanePodstawoweService } from '../../../../../serwisy/dane-podstawowe.service';
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { ListonoszService } from "../../../../../serwisy/listonosz.service";
+import { Drzwi } from "../../../../../enum/drzwi";
+import { ZarejestrujSieService } from "../../zarejestrujSie.service";
+import { DanePodstawoweService } from "../../../../../serwisy/dane-podstawowe.service";
 
 @Component({
-  selector: 'app-wybor-pracownika',
-  templateUrl: './wybor-pracownika.component.html',
-  styleUrls: ['./wybor-pracownika.component.scss', '../../formularz-zarejestruj-sie.component.scss'],
+  selector: "app-wybor-pracownika",
+  templateUrl: "./wybor-pracownika.component.html",
+  styleUrls: ["./wybor-pracownika.component.scss", "../../formularz-zarejestruj-sie.component.scss"]
 })
 export class WyborPracownikaComponent implements OnInit {
   @Output() wyslijKrok = new EventEmitter<number>();
@@ -18,13 +18,20 @@ export class WyborPracownikaComponent implements OnInit {
     public listonosz: ListonoszService,
     private danePodstawowe: DanePodstawoweService,
     public ZarejestrujSieService: ZarejestrujSieService
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
+
     this.danePodstawowe.danePodstawowe.uslugi.forEach(usluga => (usluga.wybrane = false));
     this.listonosz.pobierz(Drzwi.listaPracownikowRejestracja).then(listaPracownikow => {
       this.pracownicy = listaPracownikow;
       this.danePodstawowe.danePodstawowe.listaPracownikow = listaPracownikow;
+
+      if (this.ZarejestrujSieService.DaneKlientaClass.wybranyPracownik == undefined) {
+        if (this.danePodstawowe.danePodstawowe.listaPracownikow.length > 0)
+          this.ZarejestrujSieService.DaneKlientaClass.wybranyPracownik = this.danePodstawowe.danePodstawowe.listaPracownikow[0].id;
+      }
     });
   }
 

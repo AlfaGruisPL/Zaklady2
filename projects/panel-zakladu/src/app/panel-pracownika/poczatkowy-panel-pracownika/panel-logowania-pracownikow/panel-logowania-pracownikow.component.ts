@@ -45,23 +45,27 @@ export class PanelLogowaniaPracownikowComponent implements OnInit {
     this.logowanie();
   }
 
-  public czyDaneWpisane() {
-    this.czyWszystkieDaneWpisane = true;
-    if (this.email.length > 0) {
-      this.czyEmailWpisany = true;
-    } else {
-      this.czyEmailWpisany = false;
-      this.czyWszystkieDaneWpisane = false;
-    }
-
-    if (this.haslo.length > 0) {
-      this.czyHasloWpisane = true;
-    } else {
-      this.czyHasloWpisane = false;
-      this.czyWszystkieDaneWpisane = false;
-    }
-    return this.czyWszystkieDaneWpisane;
+ /**
+ * Sprawdza, czy wszystkie dane zostały wpisane.
+ * Jeśli email i hasło są wpisane, zwraca true.
+ * W przeciwnym razie, zwraca false.
+ */
+public czyDaneWpisane() {
+  this.czyWszystkieDaneWpisane = true;
+  if (this.email.length > 0) {
+    this.czyEmailWpisany = true;
+  } else {
+    this.czyEmailWpisany = false;
+    this.czyWszystkieDaneWpisane = false;
   }
+  if (this.haslo.length > 0) {
+    this.czyHasloWpisane = true;
+  } else {
+    this.czyHasloWpisane = false;
+    this.czyWszystkieDaneWpisane = false;
+  }
+  return this.czyWszystkieDaneWpisane;
+}
 
   public logowanie() {
     this.czyPrawidloweDane = true;

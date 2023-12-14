@@ -1,12 +1,220 @@
-@import 'ngx-toastr/toastr';
 
-body {
-  margin: 0;
+.divNaTytulIIconke {
+  width: 100%;
+  height: 55px;
+
+  .tytul {
+    width: 100%;
+    height: 100%;
+    float: left;
+    margin-bottom: 20px;
+    margin-top: 10px;
+
+    h1 {
+      margin: 0;
+      position: relative;
+
+      .iconWroc {
+        position: absolute;
+        top: 40%;
+        right: 20px;
+        color: #0101bb;
+        font-size: 28px;
+        filter: drop-shadow(0px 1px 1px #0101a1);
+        @media (max-width: 800px) {
+          top: 34px
+
+        }
+
+        &:hover {
+          color: #0202c9;
+          cursor: pointer;
+        }
+      }
+    }
+
+
+  }
 }
 
 
-.toast-container .ngx-toastr {
-  width: 400px;
+.formularzRejestracji {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+
+
+}
+
+form {
+  max-width: 450px;
+  width: 100%;
+}
+
+
+.formularz {
+  width: 1100px;
+  min-height: 600px;
+  flex-wrap: wrap;
+  @media (max-width: 1140px) {
+    width: 95%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+  }
+
+  .buttonZarejestruj {
+    width: 100%;
+    text-align: right;
+    margin-right: 150px;
+
+    .ButtonZarejestrujIzaloguj {
+      height: 50px;
+      width: 150px;
+    }
+  }
+
+  .tablica1 {
+    margin: 0 0 0 0;
+
+    h2 {
+      margin: 5px 0 3px 0;
+    }
+
+    position: relative;
+
+    input[type=checkbox] {
+      position: relative;
+      bottom: 3px;
+      transform: scale(172%);
+      margin-right: 15px;
+      margin-bottom: 5px;
+    }
+  }
+
+  .tablica2 {
+    h2 {
+      margin: 5px 0 3px 0;
+    }
+
+    margin: 0 0 0 45px;
+    @media (max-width: 1140px) {
+      margin: 0 0 0 0px;
+    }
+  }
+}
+
+
+.logInput {
+  margin: 0 10px 0 10px;
+  height: 35px;
+  width: 250px;
+  @media (max-width: 700px) {
+    font-size: 15px;
+  }
+
+  &.logInput80px {
+    width: 80px;
+    @media (max-width: 700px) {
+      width: 50px;
+    }
+  }
+
+  &.phoneNumber {
+    width: 173px;
+    @media (max-width: 700px) {
+      width: 100px;
+      margin-left: -9px;
+      font-size: 14px;
+      position: relative;
+      top: -2px;
+    }
+
+  }
+
+  &.haslo {
+
+    @media (max-width: 700px) {
+      width: 120px;
+    }
+
+  }
+
+  @media (max-width: 700px) {
+    width: 176px;
+  }
+}
+
+input[type=checkbox] {
+  scale: 1.3;
+  margin-right: 5px;
+}
+
+.linkRejestracjaDiv {
+  margin-top: 65px;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  height: 40px;
+  position: relative;
+
+  .linkRejestracja {
+
+  }
+}
+
+.naglowekTlumaczenie {
+  font-size: 19px;
+  color: #000000;
+  font-family: math;
+  font-weight: bold;
+  margin: 0;
+  position: absolute;
+  left: 80px;
+  bottom: 60px;
+  text-align: left;
+  @media (max-width: 700px) {
+    font-size: 15px;
+  }
+}
+
+.znaczek1, .znaczek2 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.znaczek2 {
+  font-size: 24px;
+}
+
+.buttonWybierz {
+  //width: 40px;
+  text-transform: uppercase;
+  background: transparent;
+  border: 2px solid #0804be;
+  border-radius: 10px;
+  color: #0e359f;
+  font-family: math;
+  text-shadow: 0px 0px 1px black;
+  font-weight: bold;
+  transition: 500ms;
+  font-size: 11px;
+
+  &:hover {
+    cursor: pointer;
+    background: #0e359f;
+    color: #ffffff;
+  }
+}
+
+.miastoCzyWies {
+  font-size: 20px;
+  font-weight: bold;
+  font-family: math;
+  color: #000000;
+  text-shadow: 0px 0px 1px black;
 }
 
 .logInputZaklad {
@@ -44,6 +252,8 @@ body {
   }
 }
 
+/* Importing Bootstrap SCSS file. */
+@import '../../../../../node_modules/bootstrap/scss/bootstrap';
 
 .naglowekZolty {
   width: 100%;

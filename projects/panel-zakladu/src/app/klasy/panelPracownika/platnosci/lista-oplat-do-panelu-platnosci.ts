@@ -3,5 +3,5 @@ export class ListaOplatDoPaneluPlatnosci {
   dataUtworzenia: Date = new Date();
   dataKonca: Date = new Date();
   opis: string = "";
-  kwota: number = 0;
+  amount: number = 0;
 }
