@@ -1,5 +1,23 @@
 const gulp = require("gulp");
 const fs = require("fs");
+const ghpages = require("gh-pages");
+
+
+gulp.task("send production workspacePanel", async () => {
+  var ghpages = require("gh-pages");
+  await ghpages.publish("./dist/panel-zakladu", { branch: "production_workspacePanel_build" }, (error) => {
+    console.log(error);
+  });
+  return true;
+});
+gulp.task("send production registerPage", async () => {
+  var ghpages = require("gh-pages");
+  await ghpages.publish("./dist/reklamowaStronaZakladu", { branch: "production_registerPage_build" }, (error) => {
+    console.log(error);
+  });
+  return true;
+});
+
 
 gulp.task("increaseVersion", function(done) {
   const packageJSONPath = "./package.json";
