@@ -1,0 +1,48 @@
+.modal-header {
+  @media (max-width: 800px) {
+    padding: 5px 10px 5px 10px;
+  }
+}
+
+.modal-body,
+.modal-footer {
+  @media (max-width: 800px) {
+    padding: 5px;
+  }
+}
+
+input {
+  @media (max-width: 800px) {
+    font-size: 10px;
+  }
+}
+
+button {
+  @media (max-width: 800px) {
+    font-size: 12px;
+  }
+}
+
+select {
+  @media (max-width: 800px) {
+    height: 22px;
+  }
+}
+
+body {
+  @media (max-width: 800px) {
+    font-size: 0.7rem;
+  }
+}
+
+h4 {
+  @media (max-width: 800px) {
+    font-size: calc(0.875rem + 0.2vw);
+  }
+}
+
+@media (max-width: 800px) {
+  .wyswietlanieDanych {
+    font-size: 16px;
+  }
+}

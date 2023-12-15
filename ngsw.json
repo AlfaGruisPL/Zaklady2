@@ -1,0 +1,135 @@
+{
+  "configVersion": 1,
+  "timestamp": 1702314484863,
+  "index": "./index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "./18.d0ca85e91a83a075.js",
+        "./208.97d0886688e38d33.js",
+        "./39.c6bc3b1aff98a951.js",
+        "./545.7e13a62b4a2242be.js",
+        "./705.2725c8af38b2ae46.js",
+        "./favicon.ico",
+        "./index.html",
+        "./main.6ef8c9733091aa8f.js",
+        "./manifest.webmanifest",
+        "./polyfills.ff75a000dad96f9f.js",
+        "./runtime.5dcf82f05f76c722.js",
+        "./styles.3a054176d9dedb09.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "./Varta-Regular.e91dd53e11bc8e59.ttf",
+        "./assets/arrow-up.png",
+        "./assets/arrow-up.xcf",
+        "./assets/fonts/varta/OFL.txt",
+        "./assets/fonts/varta/README.txt",
+        "./assets/fonts/varta/Varta-VariableFont_wght.ttf",
+        "./assets/fonts/varta/static/Varta-Bold.ttf",
+        "./assets/fonts/varta/static/Varta-Light.ttf",
+        "./assets/fonts/varta/static/Varta-Medium.ttf",
+        "./assets/fonts/varta/static/Varta-Regular.ttf",
+        "./assets/fonts/varta/static/Varta-SemiBold.ttf",
+        "./assets/gear.jpg",
+        "./assets/gear.png",
+        "./assets/gear.xcf",
+        "./assets/icons/icon-128x128.png",
+        "./assets/icons/icon-144x144.png",
+        "./assets/icons/icon-152x152.png",
+        "./assets/icons/icon-192x192.png",
+        "./assets/icons/icon-384x384.png",
+        "./assets/icons/icon-512x512.png",
+        "./assets/icons/icon-72x72.png",
+        "./assets/icons/icon-96x96.png",
+        "./assets/style/pracownik.scss",
+        "./assets/style/styleAdaptive.scss",
+        "./assets/style/styles.scss",
+        "./assets/style/ui-switch.scss",
+        "./assets/style/wtf-forms.css",
+        "./assets/szkicRaporty.png",
+        "./assets/tlo1.xcf",
+        "./gear.e7766d79ebc8741f.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "./18.d0ca85e91a83a075.js": "2f31a1ce4f59f970eb532761ff3c7a5a7ec5e484",
+    "./208.97d0886688e38d33.js": "690a65599e5a797e648e3ad813e99cd4b64a9729",
+    "./39.c6bc3b1aff98a951.js": "936d94d4442c71fda477885e9ff3425e7794be5a",
+    "./545.7e13a62b4a2242be.js": "cff7d1641e08cc8fe1967eff85afbae8143b507c",
+    "./705.2725c8af38b2ae46.js": "c4173d869dd9813a1e313c415f89e8224f480cd1",
+    "./Varta-Regular.e91dd53e11bc8e59.ttf": "f97d9ff6c6c624209eea0f8bd9905fe2fee9fe3d",
+    "./assets/arrow-up.png": "4cd9ed105220e911004d286db0427682ac0d5292",
+    "./assets/arrow-up.xcf": "1305142e2d8303e7cd9cfddbca94110a68f881e6",
+    "./assets/fonts/varta/OFL.txt": "ae0811fbdf0cd838adb083f649a60f80fb0ff435",
+    "./assets/fonts/varta/README.txt": "fc9dc38c200ee62678971cdc6ad10dfd93db743c",
+    "./assets/fonts/varta/Varta-VariableFont_wght.ttf": "a8ff6532f9e9cf21fe494ee357653abf5dd4da73",
+    "./assets/fonts/varta/static/Varta-Bold.ttf": "39391036d8487cd539c94ec3c165f07b80cadd76",
+    "./assets/fonts/varta/static/Varta-Light.ttf": "9f7c5dab87bab687243296a9061966f1c6cd53d1",
+    "./assets/fonts/varta/static/Varta-Medium.ttf": "47e7f8ba0c0a8f7c78940c32d03f04d4626e48e3",
+    "./assets/fonts/varta/static/Varta-Regular.ttf": "f97d9ff6c6c624209eea0f8bd9905fe2fee9fe3d",
+    "./assets/fonts/varta/static/Varta-SemiBold.ttf": "6c66f37449385ec47d7f9b7a7a5f0da53cac9a82",
+    "./assets/gear.jpg": "2a542d1877cc1f27d598636c067dc77b616ca909",
+    "./assets/gear.png": "dd49ceaebd5773f20dd7bd87cbca7a36717a2af6",
+    "./assets/gear.xcf": "005b001d4e2563223aa2c02c86dbe3009e4a209d",
+    "./assets/icons/icon-128x128.png": "b1f06c7d714abb4a0cc4d1f7c954feb26826e4c4",
+    "./assets/icons/icon-144x144.png": "96a0d629765c1bc85d9263c6bc83094ca776d267",
+    "./assets/icons/icon-152x152.png": "b1fbbee3902eb96a7658e3bb006f31f78ca5a44c",
+    "./assets/icons/icon-192x192.png": "e4211163bf0911688fbfb80278d8ff4d2f77691d",
+    "./assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "./assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "./assets/icons/icon-72x72.png": "279825a1ac4377032ae996a1832c641e33ccf1b6",
+    "./assets/icons/icon-96x96.png": "592885efcbfee27e5e20be4fa3043589390d2740",
+    "./assets/style/pracownik.scss": "bf16b2e9de4ecd5dc0dc424c92b2b3537f465843",
+    "./assets/style/styleAdaptive.scss": "a4043bcf5f77d4465fec8b715209baaabd1c4c61",
+    "./assets/style/styles.scss": "30d3d796ce4d421fc3f65b2c9b90c94856ec1649",
+    "./assets/style/ui-switch.scss": "f80fe241246ce968fc18e7895b77f6adc4fad326",
+    "./assets/style/wtf-forms.css": "d958a378f3d6fc0180f43fad40af3be255086162",
+    "./assets/szkicRaporty.png": "84996957f6f1b94f730e7d9d384774e64507855e",
+    "./assets/tlo1.xcf": "2c0c21282f63f48e64d9b40d14e1c91a705f8f94",
+    "./favicon.ico": "98c75f52d583666276644afd8aa5a01d2fe1823d",
+    "./gear.e7766d79ebc8741f.png": "dd49ceaebd5773f20dd7bd87cbca7a36717a2af6",
+    "./index.html": "bd12a6839c5bfa751c88756232ee785dd9075ff8",
+    "./main.6ef8c9733091aa8f.js": "6280bd6049d90ca7331a201602cd23f2df8fd104",
+    "./manifest.webmanifest": "a9728eba9d97f96b689a5b5d6e954d8352e74535",
+    "./polyfills.ff75a000dad96f9f.js": "c43330abb73c2cc815e4109093c95595ae77b106",
+    "./runtime.5dcf82f05f76c722.js": "08798c650caec3f198d6cbedae42023ec786da9e",
+    "./styles.3a054176d9dedb09.css": "375e67d138f75fa22bff0166afd51ca2e04f80d7"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
