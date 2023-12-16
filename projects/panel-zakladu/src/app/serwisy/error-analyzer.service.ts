@@ -1,16 +1,20 @@
-import { Injectable } from '@angular/core';
-import { HttpError } from '../../../../klasy/httpError';
-import { KomunikatyService } from './komunikaty.service';
-import { Bledy } from '../enum/bledy';
+import { Injectable } from "@angular/core";
+import { HttpError } from "../../../../klasy/httpError";
+import { KomunikatyService } from "./komunikaty.service";
+import { Bledy } from "../enum/bledy";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root"
 })
 export class ErrorAnalyzerService {
-  constructor(private komunikaty_: KomunikatyService) {}
+  constructor(private komunikaty_: KomunikatyService) {
+  }
 
   analyze(error: HttpError, defaultErrorHandler: undefined | Function = undefined) {
     switch (error.error?.reasonCode) {
+      case 0: //demo
+        this.komunikaty_.komunikatInfo("System w wersji demo, modyfikacja nie możliwa");
+        break;
       case 120: //błąd, kiedy przy pobieraniu szczegółowych danych o kliencie na podstawie wizyty nie zostanie odnaleziony customer, prawdopodobnie brak relacji
         this.komunikaty_.komunikatBledu(Bledy.klientNieZnaleziony, 120);
         break;
@@ -42,5 +46,6 @@ export class ErrorAnalyzerService {
     }
   }
 
-  error120() {}
+  error120() {
+  }
 }

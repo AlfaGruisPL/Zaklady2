@@ -1,11 +1,11 @@
 export const environment = {
   production: false,
-  title: '1',
-  linkDoZdjeciaProfilowego: 'https://api.mojzaklad.pl/pliki/wyswietlZdjecieProfilowe/',
-  linkDoBaneruStronyReklamowej: 'https://api.mojzaklad.pl/pliki/banerStronyReklamowej',
-  linkDoLogaStronyReklamowej: 'https://api.mojzaklad.pl/pliki/logoStronyReklamowej',
-  linkDoRegulaminu: 'https://api.mojzaklad.pl/pliki/publiczne/regulamin.pdf',
-  linkDoRodo: 'https://api.mojzaklad.pl/pliki/publiczne/rodo.pdf',
-  linkDoStronyFirmowej: 'http://mojzaklad.pl',
-  api: 'http://195.136.14.31:3000',
+  title: "1",
+  linkDoZdjeciaProfilowego: "https://api.fenek.tech/pliki/wyswietlZdjecieProfilowe/",
+  linkDoBaneruStronyReklamowej: "https://api.fenek.tech/pliki/banerStronyReklamowej",
+  linkDoLogaStronyReklamowej: "https://api.fenek.tech/pliki/logoStronyReklamowej",
+  linkDoRegulaminu: "https://api.fenek.tech/pliki/publiczne/regulamin.pdf",
+  linkDoRodo: "https://api.fenek.tech/pliki/publiczne/rodo.pdf",
+  linkDoStronyFirmowej: "http://fenek.tech",
+  api: "https://api.fenek.tech"
 };
