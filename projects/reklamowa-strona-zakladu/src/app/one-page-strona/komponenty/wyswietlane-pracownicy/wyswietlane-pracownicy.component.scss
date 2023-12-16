@@ -12,7 +12,9 @@
   flex-wrap: wrap;
 
   background-image: url('../../../../assets/tlo3.png');
-
+  @media (max-width: 900px) {
+    min-height: auto;
+  }
   //width: 100%;
   float: left;
   background-position: center;
@@ -50,6 +52,9 @@
     gap: 35px;
     @media (max-width: 1200px) {
       gap: 35px;
+    }
+    @media (max-width: 900px) {
+      min-height: auto;
     }
 
     .pracownik {
