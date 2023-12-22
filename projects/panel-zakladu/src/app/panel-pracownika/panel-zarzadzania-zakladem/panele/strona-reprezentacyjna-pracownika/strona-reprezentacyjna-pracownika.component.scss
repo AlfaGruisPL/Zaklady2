@@ -1,3 +1,4 @@
+
 .panelZakladu {
   display: flex;
   height: calc(100% - 50px);
@@ -8,6 +9,28 @@
     @media (max-width: 1000px) {
       width: 100%;
     }
+
+    .registerPageMenu {
+      width: 100%;
+      display: flex;
+
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 10;
+        height: 50px;
+        background: #c5c5c5;
+        box-shadow: 0 0 5px 5px inset black;
+
+        &:hover {
+
+          background: darken(#c5c5c5, 30);
+          cursor: pointer;
+        }
+      }
+    }
+
   }
 
   .right {
@@ -21,6 +44,7 @@
     @media (max-width: 1000px) {
       display: none;
     }
+
 
     .iframe-container {
       position: relative;

@@ -2,12 +2,19 @@
   <div class="tabelka">
     <table>
       <tr>
+        <th>Szablon</th>
+        <td><select>
+          <option>Szablon 1</option>
+          <option>Szablon 2</option>
+        </select></td>
+      </tr>
+      <tr>
         <th>Adres strony reklamowej</th>
         <td>
           <a
             [href]="'http://' + danePodreczne_.danePodreczneObiekt.identyfikatorZakladu + '.mojzaklad.pl'"
             style="font-weight: bold"
-            >www.{{ danePodreczne_.danePodreczneObiekt.identyfikatorZakladu }}.mojzaklad.pl</a
+          >www.{{ danePodreczne_.danePodreczneObiekt.identyfikatorZakladu }}.mojzaklad.pl</a
           >
         </td>
       </tr>

@@ -1,8 +1,15 @@
 <div class="naglowekZolty">
-  <span class="naglowek1Wzoltym">Tu będą informacje o stronie prezentacyjnej</span>
+  <span class="naglowek1Wzoltym">Informacje o stronie prezentacyjnej</span>
 </div>
+
 <div class="panelZakladu">
   <div class="left">
+    <div class="registerPageMenu">
+      <a *ngFor="let x of ['Ustawienia ogólne',2,3,4,5,'Stopka']">
+        {{x}}
+      </a>
+    </div>
+    <router-outlet />
     <app-strona-reprezentacyjna-ustawienia (odswiez)="OdswiezPodglad()"></app-strona-reprezentacyjna-ustawienia>
   </div>
   <div class="right">
