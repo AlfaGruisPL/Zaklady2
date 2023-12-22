@@ -7,5 +7,6 @@ export const environment = {
   linkDoRegulaminu: "https://api.fenek.tech/pliki/publiczne/regulamin.pdf",
   linkDoRodo: "https://api.fenek.tech/pliki/publiczne/rodo.pdf",
   linkDoStronyFirmowej: "http://fenek.tech",
-  api: "https://api.fenek.tech"
+  api: "https://api.fenek.tech",
+  demo: false
 };

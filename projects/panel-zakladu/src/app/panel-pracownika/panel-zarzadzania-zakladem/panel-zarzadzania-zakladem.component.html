@@ -1,16 +1,16 @@
-<app-banner-pracownik></app-banner-pracownik>
 <div class="menuTresc">
   <div class="menu">
     <div class="menuDiv">
-      <app-menu-pracownik></app-menu-pracownik>
+      <app-menu-top />
+      <app-menu-pracownik />
     </div>
-    <p class="godzina">{{ godzina | date : 'dd.MM.YYYY  HH:mm:ss' }}</p>
-    <p *ngIf="!DanePodreczne.token_.czyWlasciciel()" class="tutulStrony">Panel pracownika</p>
-    <p *ngIf="DanePodreczne.token_.czyWlasciciel()" class="tutulStrony">Panel właściciela</p>
+    <app-menu-bottom />
   </div>
   <div class="tresc" id="trescPaneluAdministratoraID">
-    <router-outlet></router-outlet>
-    <app-strzalka [ScrollTop]="height"></app-strzalka>
+    <app-banner-pracownik />
+    <router-outlet />
+
+    <app-strzalka [ScrollTop]="height" />
   </div>
 </div>
-<app-stopka-pracownik></app-stopka-pracownik>
+<app-stopka-pracownik />

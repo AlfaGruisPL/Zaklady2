@@ -10,7 +10,9 @@ import { he } from "suneditor/src/lang";
   styleUrls: ["./panel-zarzadzania-zakladem.component.scss"]
 })
 export class PanelZarzadzaniaZaklademComponent implements OnInit, OnDestroy {
-  godzina = new Date();
+
+  public height = 0;
+  protected readonly he = he;
   private godzinaInterval: any;
 
   constructor(
@@ -23,7 +25,7 @@ export class PanelZarzadzaniaZaklademComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     this.godzinaInterval = setInterval(() => {
-      this.godzina = new Date();
+
       const element = document.getElementById("trescPaneluAdministratoraID");
       if (element) {
         this.height = element.scrollTop;
@@ -34,12 +36,7 @@ export class PanelZarzadzaniaZaklademComponent implements OnInit, OnDestroy {
 
   }
 
-
-  public height = 0;
-
   ngOnDestroy() {
     clearInterval(this.godzinaInterval);
   }
-
-  protected readonly he = he;
 }

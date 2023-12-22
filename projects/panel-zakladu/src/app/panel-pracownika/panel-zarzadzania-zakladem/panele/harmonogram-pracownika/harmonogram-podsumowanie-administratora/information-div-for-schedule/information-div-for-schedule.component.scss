@@ -33,22 +33,22 @@
   }
 
   .title {
-    font-size: 22px;
+    font-size: 18px;
     color: $textColor;
     margin-bottom: 0px;
     @media (max-width: 700px) {
-      font-size: 16px;
+      font-size: 15px;
     }
     @media (max-width: 500px) {
-      font-size: 13px;
+      font-size: 12px;
     }
 
     fa-icon {
-      font-size: 14px;
+      font-size: 13px;
       position: relative;
       bottom: 2px;
       @media (max-width: 700px) {
-        font-size: 13px;
+        font-size: 10px;
       }
       @media (max-width: 500px) {
         display: none;
@@ -57,20 +57,20 @@
   }
 
   .value {
-    font-size: 23px;
+    font-size: 19px;
     font-weight: bolder;
     padding-top: 4px;
     padding-bottom: 4px;
     @media (max-width: 700px) {
-      font-size: 18px;
+      font-size: 16px;
     }
     @media (max-width: 500px) {
-      font-size: 15px;
+      font-size: 13px;
     }
   }
 
   .smallText {
-    font-size: 10px;
+    font-size: 9px;
     font-weight: bold;
 
     ::ng-deep .active {

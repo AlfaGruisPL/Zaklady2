@@ -1,0 +1,12 @@
+<div class="textContainer">
+
+  <p class="godzina">{{ time | date : 'dd.MM.YYYY  HH:mm:ss' }}</p>
+  <p *ngIf="!DanePodreczne.token_.czyWlasciciel()" class="tutulStrony">Panel pracownika</p>
+  <p *ngIf="DanePodreczne.token_.czyWlasciciel()" class="tutulStrony">Panel właściciela</p>
+</div>
+<a [href]="DanePodreczne.linkDoStronyReklamowej()" target="_blank">
+
+  <button class="pageButton">Strona reklamowa
+    <fa-icon [icon]="faLink"></fa-icon>
+  </button>
+</a>
