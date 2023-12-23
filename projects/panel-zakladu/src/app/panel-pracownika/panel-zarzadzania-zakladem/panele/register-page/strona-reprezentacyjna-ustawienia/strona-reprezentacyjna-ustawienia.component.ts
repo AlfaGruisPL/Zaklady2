@@ -1,30 +1,42 @@
-import { AfterViewInit, Component, EventEmitter, Output, ViewChild } from '@angular/core';
-import { environment } from '../../../../../../environments/environment';
+import { AfterViewInit, Component, EventEmitter, Output, ViewChild } from "@angular/core";
+import { environment } from "../../../../../../environments/environment";
 import {
   UstawieniaStronyReklamowej,
-  UstawieniaStronyReklamowejDto,
-} from '../../../../../klasy/panelPracownika/stronaReklamowa/ustawienia-strony-reklamowej';
-import { ListonoszService } from '../../../../../serwisy/listonosz.service';
-import { KomunikatyService } from '../../../../../serwisy/komunikaty.service';
-import { Drzwi } from '../../../../../enum/drzwi';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { NgxSuneditorComponent } from 'ngx-suneditor';
-import { Bledy } from '../../../../../enum/bledy';
-import { Udane } from '../../../../../enum/udane';
+  UstawieniaStronyReklamowejDto
+} from "../../../../../klasy/panelPracownika/stronaReklamowa/ustawienia-strony-reklamowej";
+import { ListonoszService } from "../../../../../serwisy/listonosz.service";
+import { KomunikatyService } from "../../../../../serwisy/komunikaty.service";
+import { Drzwi } from "../../../../../enum/drzwi";
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { Bledy } from "../../../../../enum/bledy";
+import { Udane } from "../../../../../enum/udane";
+import { NgxSuneditorComponent, NgxSuneditorModule } from "ngx-suneditor";
+import { PodreczneDaneService } from "../../../../../serwisy/podreczne-dane.service";
+import { CommonModule } from "@angular/common";
+import { UiSwitchModule } from "ngx-ui-switch";
+import { RouterOutlet } from "@angular/router";
 
-import { PodreczneDaneService } from '../../../../../serwisy/podreczne-dane.service';
 
 @Component({
-  selector: 'app-strona-reprezentacyjna-ustawienia',
-  templateUrl: './strona-reprezentacyjna-ustawienia.component.html',
-  styleUrls: ['./strona-reprezentacyjna-ustawienia.component.scss'],
+  standalone: true,
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    UiSwitchModule,
+    RouterOutlet,
+    NgxSuneditorModule
+  ],
+  selector: "app-strona-reprezentacyjna-ustawienia",
+  templateUrl: "./strona-reprezentacyjna-ustawienia.component.html",
+  styleUrls: ["./strona-reprezentacyjna-ustawienia.component.scss"]
 })
 export class StronaReprezentacyjnaUstawieniaComponent implements AfterViewInit {
   @ViewChild(NgxSuneditorComponent) ngxSunEditor: NgxSuneditorComponent | undefined;
   @Output() odswiez = new EventEmitter();
   ustawienia = new UstawieniaStronyReklamowej();
   bannerZdjecie_formData: undefined | FormData = undefined;
-  zdjecieBanerRefresh = '?random=' + Math.round(Math.random() * 10000);
+  zdjecieBanerRefresh = "?random=" + Math.round(Math.random() * 10000);
   LogoZdjecie_formData: undefined | FormData = undefined;
   formualrz: FormGroup = this.fb.group({});
   protected readonly environment = environment;
@@ -43,18 +55,18 @@ export class StronaReprezentacyjnaUstawieniaComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     const buttonList = [
-      ['undo', 'redo'],
-      ['font', 'fontSize', 'formatBlock'],
-      ['paragraphStyle', 'blockquote'],
-      ['bold', 'underline', 'italic', 'strike', 'subscript', 'superscript'],
-      ['fontColor', 'hiliteColor'],
-      ['removeFormat'],
-      ['outdent', 'indent'],
-      ['align', 'horizontalRule', 'list', 'lineHeight'],
-      ['table', 'link'],
+      ["undo", "redo"],
+      ["font", "fontSize", "formatBlock"],
+      ["paragraphStyle", "blockquote"],
+      ["bold", "underline", "italic", "strike", "subscript", "superscript"],
+      ["fontColor", "hiliteColor"],
+      ["removeFormat"],
+      ["outdent", "indent"],
+      ["align", "horizontalRule", "list", "lineHeight"],
+      ["table", "link"]
     ];
     this.ngxSunEditor?.setToolbarButtons(buttonList);
-    this.ngxSunEditor?.setOptions({ height: '300px' });
+    this.ngxSunEditor?.setOptions({ height: "300px" });
     this.ngxSunEditor?.disabled();
   }
 
@@ -74,7 +86,7 @@ export class StronaReprezentacyjnaUstawieniaComponent implements AfterViewInit {
     const dane = new UstawieniaStronyReklamowejDto(this.ustawienia);
     dane.opisZakladuWStopce = this.ngxSunEditor?.getContents(true);
     this.listonosz.wyslij(Drzwi.UstawieniaStronyReklamowej, dane).then(dane => {
-      console.log('udane');
+      console.log("udane");
       this.odswiez.emit();
     });
 
@@ -85,7 +97,7 @@ export class StronaReprezentacyjnaUstawieniaComponent implements AfterViewInit {
     const file: File = event.target.files[0];
     if (file) {
       this.bannerZdjecie_formData = new FormData();
-      this.bannerZdjecie_formData.append('file', file);
+      this.bannerZdjecie_formData.append("file", file);
       //  this.bannerZdjecieUrl = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(this.formData.get('file')));
     }
   }
@@ -94,7 +106,7 @@ export class StronaReprezentacyjnaUstawieniaComponent implements AfterViewInit {
     const file: File = event.target.files[0];
     if (file) {
       this.LogoZdjecie_formData = new FormData();
-      this.LogoZdjecie_formData.append('file', file);
+      this.LogoZdjecie_formData.append("file", file);
     }
   }
 
@@ -108,13 +120,13 @@ export class StronaReprezentacyjnaUstawieniaComponent implements AfterViewInit {
         await this.listonosz.wyslij(Drzwi.banerStronyReklamowej, this.bannerZdjecie_formData);
         this.komunikaty.komunikatUdane(Udane.bannerStronyZaktualizowany);
       }
-      console.warn('wysylanie logo');
+      console.warn("wysylanie logo");
       if (this.LogoZdjecie_formData != undefined) {
-        console.warn('wysylanie logo');
+        console.warn("wysylanie logo");
         await this.listonosz.wyslij(Drzwi.logoStronyReklamowej, this.LogoZdjecie_formData);
         this.komunikaty.komunikatUdane(Udane.logoZakladuZaktualizowane);
       }
-      this.zdjecieBanerRefresh = '?random=' + Math.round(Math.random() * 10000);
+      this.zdjecieBanerRefresh = "?random=" + Math.round(Math.random() * 10000);
       this.odswiez.emit();
     } catch (error) {
       console.error(error);
