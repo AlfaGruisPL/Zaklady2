@@ -3,9 +3,9 @@
     <table>
       <tr>
         <th>Szablon</th>
-        <td><select>
-          <option>Szablon 1</option>
-          <option>Szablon 2</option>
+        <td><select [(ngModel)]="registerPage_.selectedTemplate" [ngModelOptions]="{ standalone: true }">
+          <option value="template1">Szablon 1</option>
+          <option value="template2">Szablon 2</option>
         </select></td>
       </tr>
       <tr>

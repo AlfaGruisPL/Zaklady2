@@ -1,16 +1,12 @@
 <div class="naglowekZolty">
   <span class="naglowek1Wzoltym">Ustawiania strony reprezentacyjnej</span>
 </div>
-
 <div class="panelZakladu">
   <div class="left">
-    <div class="registerPageMenu">
-      <a *ngFor="let x of ['Ustawienia ogólne',2,3,4,5,'Stopka']">
-        {{x}}
-      </a>
-    </div>
+    <app-register-page-menu />
     <router-outlet />
-    <app-strona-reprezentacyjna-ustawienia (odswiez)="OdswiezPodglad()"></app-strona-reprezentacyjna-ustawienia>
+    <!--   <app-strona-reprezentacyjna-ustawienia (odswiez)="OdswiezPodglad()"></app-strona-reprezentacyjna-ustawienia>
+     -->
   </div>
   <div class="right">
     <h3>Podgląd strony reklamowej:</h3>
@@ -19,3 +15,4 @@
     </div>
   </div>
 </div>
+

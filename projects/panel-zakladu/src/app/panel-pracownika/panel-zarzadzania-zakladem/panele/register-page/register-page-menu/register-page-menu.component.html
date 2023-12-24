@@ -1,0 +1,8 @@
+<div class="registerPageMenu">
+  <a [routerLink]="['/panelPracownika/registerPage']" class="registerPageMenuFirstLink">
+    Ustawienia ogólne
+  </a>
+
+  <div *ngIf="registerPage_.selectedTemplate=='template1'" app-first-template-menu></div>
+  <div *ngIf="registerPage_.selectedTemplate=='template2'" app-second-template-menu></div>
+</div>

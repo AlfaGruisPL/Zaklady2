@@ -15,6 +15,7 @@ import { PodreczneDaneService } from "../../../../../serwisy/podreczne-dane.serv
 import { CommonModule } from "@angular/common";
 import { UiSwitchModule } from "ngx-ui-switch";
 import { RouterOutlet } from "@angular/router";
+import { RegisterPageService } from "../register-page.service";
 
 
 @Component({
@@ -42,7 +43,9 @@ export class StronaReprezentacyjnaUstawieniaComponent implements AfterViewInit {
   protected readonly environment = environment;
   protected readonly String = String;
 
+
   constructor(
+    public registerPage_: RegisterPageService,
     private listonosz: ListonoszService,
     public danePodreczne_: PodreczneDaneService,
     private komunikaty: KomunikatyService,
