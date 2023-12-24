@@ -77,10 +77,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "StronaReklamowa:build:production"
+              "buildTarget": "StronaReklamowa:build:production"
             },
             "development": {
-              "browserTarget": "StronaReklamowa:build:development"
+              "buildTarget": "StronaReklamowa:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -88,7 +88,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "StronaReklamowa:build"
+            "buildTarget": "StronaReklamowa:build"
           }
         },
         "test": {
@@ -203,10 +203,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "PanelZakladu:build:production"
+              "buildTarget": "PanelZakladu:build:production"
             },
             "development": {
-              "browserTarget": "PanelZakladu:build:development"
+              "buildTarget": "PanelZakladu:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -214,7 +214,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "PanelZakladu:build"
+            "buildTarget": "PanelZakladu:build"
           }
         },
         "test": {
@@ -302,10 +302,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "PanelZarzadzaniaZakladami:build:production"
+              "buildTarget": "PanelZarzadzaniaZakladami:build:production"
             },
             "development": {
-              "browserTarget": "PanelZarzadzaniaZakladami:build:development"
+              "buildTarget": "PanelZarzadzaniaZakladami:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -313,7 +313,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "PanelZarzadzaniaZakladami:build"
+            "buildTarget": "PanelZarzadzaniaZakladami:build"
           }
         },
         "test": {
@@ -415,10 +415,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "reklamowaStronaZakladu:build:production"
+              "buildTarget": "reklamowaStronaZakladu:build:production"
             },
             "development": {
-              "browserTarget": "reklamowaStronaZakladu:build:development"
+              "buildTarget": "reklamowaStronaZakladu:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -426,7 +426,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "reklamowaStronaZakladu:build"
+            "buildTarget": "reklamowaStronaZakladu:build"
           }
         },
         "test": {
@@ -486,7 +486,7 @@
           "defaultConfiguration": "production"
         },
         "serve-ssr": {
-          "builder": "@nguniversal/builders:ssr-dev-server",
+          "builder": "@angular-devkit/build-angular:ssr-dev-server",
           "configurations": {
             "development": {
               "browserTarget": "reklamowaStronaZakladu:build:development",
@@ -500,7 +500,7 @@
           "defaultConfiguration": "development"
         },
         "prerender": {
-          "builder": "@nguniversal/builders:prerender",
+          "builder": "@angular-devkit/build-angular:prerender",
           "options": {
             "routes": [
               "/"
@@ -585,10 +585,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "panelZarzadzaniaZaklademMobile:build:production"
+              "buildTarget": "panelZarzadzaniaZaklademMobile:build:production"
             },
             "development": {
-              "browserTarget": "panelZarzadzaniaZaklademMobile:build:development"
+              "buildTarget": "panelZarzadzaniaZaklademMobile:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -596,7 +596,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "panelZarzadzaniaZaklademMobile:build"
+            "buildTarget": "panelZarzadzaniaZaklademMobile:build"
           }
         },
         "test": {
