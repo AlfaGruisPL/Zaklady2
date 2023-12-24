@@ -1,62 +1,13 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .panelZakladu {
   display: flex;
-  height: calc(100% - 50px);
+  flex-grow: 999;
+  flex-direction: column;
 
-  .left {
-    width: calc(100% - 250px);
-    flex-shrink: 1;
-    @media (max-width: 1000px) {
-      width: 100%;
-    }
-  }
-
-  .right {
-    z-index: 10;
-    background: #e5e5e5;
-    box-shadow: -2px 0 2px 2px #e5e5e5;
-    width: 250px;
-    flex-shrink: 10;
-    text-align: center;
-    height: 100%;
-    @media (max-width: 1000px) {
-      display: none;
-    }
-
-    .iframe-container {
-      position: relative;
-      margin: auto;
-      width: 250px;
-      background: whitesmoke;
-      height: 300px; /* Ustal wysokość iframe */
-      overflow: hidden;
-      //  border: 2px inset black;
-
-      iframe {
-        width: 2120px;
-        height: 3000px;
-        zoom: 0.35;
-        -moz-transform: scale(0.35);
-        -moz-transform-origin: 0 0;
-        -o-transform: scale(0.35);
-        -o-transform-origin: 0 0;
-        -webkit-transform: scale(0.35);
-        -webkit-transform-origin: 0 0;
-        scale: 0.35;
-        pointer-events: none;
-      }
-
-      .click-blocker {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: auto; /* Przywróć obsługę zdarzeń myszy dla blokera */
-        background-color: transparent; /* Domyślnie przezroczysty */
-        opacity: 0; /* Przezroczysty, ale widoczny */
-        z-index: 1; /* Umieść bloker na wierzchu iframe */
-      }
-    }
-  }
 }
 

@@ -16,6 +16,9 @@ import { CommonModule } from "@angular/common";
 import { UiSwitchModule } from "ngx-ui-switch";
 import { RouterOutlet } from "@angular/router";
 import { RegisterPageService } from "../register-page.service";
+import { RegisterPageIframeComponent } from "./register-page-iframe/register-page-iframe.component";
+import { KomunikatUniwersalnyService } from "../../../../../komponets/komunikat-uniwersalny/komunikat-uniwersalny.service";
+import { take } from "rxjs";
 
 
 @Component({
@@ -26,9 +29,10 @@ import { RegisterPageService } from "../register-page.service";
     CommonModule,
     UiSwitchModule,
     RouterOutlet,
-    NgxSuneditorModule
+    NgxSuneditorModule,
+    RegisterPageIframeComponent
   ],
-  selector: "app-strona-reprezentacyjna-ustawienia",
+  selector: "app-strona-reprezentacyjna-ustawienia [style]='color:red'",
   templateUrl: "./strona-reprezentacyjna-ustawienia.component.html",
   styleUrls: ["./strona-reprezentacyjna-ustawienia.component.scss"]
 })
@@ -48,6 +52,7 @@ export class StronaReprezentacyjnaUstawieniaComponent implements AfterViewInit {
     public registerPage_: RegisterPageService,
     private listonosz: ListonoszService,
     public danePodreczne_: PodreczneDaneService,
+    private universalPrompt: KomunikatUniwersalnyService,
     private komunikaty: KomunikatyService,
     private fb: FormBuilder
   ) {
@@ -115,6 +120,23 @@ export class StronaReprezentacyjnaUstawieniaComponent implements AfterViewInit {
 
   test() {
     console.log(1);
+  }
+
+  changeTemplate(target: EventTarget | null) {
+    const prompt = this.universalPrompt.open("Czy na pewno chcesz zmienić szablon?", "Zmiana szablonu powoduje utratę ustawień szablonu i jego danych.");
+    prompt.addButton("Nie", { defaultNo: true }).pipe(take(1)).subscribe(success => {
+      const last = this.registerPage_.selectedTemplate;
+      this.registerPage_.selectedTemplate = "";
+      setTimeout(() => {
+        this.registerPage_.selectedTemplate = last;
+      }, 0);
+    });
+    
+    prompt.addButton("Tak", { defaultYes: true }).pipe(take(1)).subscribe(success => {
+      this.registerPage_.selectedTemplate = (target as HTMLSelectElement).value;
+
+    });
+
   }
 
   private async wyslijZdjecie() {

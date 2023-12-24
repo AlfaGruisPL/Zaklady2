@@ -2,17 +2,10 @@
   <span class="naglowek1Wzoltym">Ustawiania strony reprezentacyjnej</span>
 </div>
 <div class="panelZakladu">
-  <div class="left">
-    <app-register-page-menu />
-    <router-outlet />
-    <!--   <app-strona-reprezentacyjna-ustawienia (odswiez)="OdswiezPodglad()"></app-strona-reprezentacyjna-ustawienia>
-     -->
-  </div>
-  <div class="right">
-    <h3>Podgląd strony reklamowej:</h3>
-    <div class="iframe-container">
-      <iframe *ngIf="linkDoPodlgadu.length > 6" [src]="bezpiecznyLink" frameborder="0"></iframe>
-    </div>
-  </div>
+  <app-register-page-menu />
+  <router-outlet />
+  <!--   <app-strona-reprezentacyjna-ustawienia (odswiez)="OdswiezPodglad()"></app-strona-reprezentacyjna-ustawienia>
+   -->
+
 </div>
 
