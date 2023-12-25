@@ -16,59 +16,59 @@
 </div>
 <table #tablica [ngClass]="{ tablicaLoading: loading }" class="tablicaBetter">
   <thead>
-    <tr>
-      <ng-container *ngTemplateOutlet="thead"></ng-container>
-    </tr>
+  <tr>
+    <ng-container *ngTemplateOutlet="thead"></ng-container>
+  </tr>
   </thead>
 
   <tbody>
-    <!-- asynchroniczny -->
-    <ng-container *ngIf="async; else asyncFalse">
-      <tr #header *ngFor="let obj of data | slice : 0 : pageSize; let index = index">
-        <ng-container *ngTemplateOutlet="tbody; context: { $implicit: obj, index: indexCount(index) }"></ng-container>
+  <!-- asynchroniczny -->
+  <ng-container *ngIf="async; else asyncFalse">
+    <tr #header *ngFor="let obj of data | slice : 0 : pageSize; let index = index">
+      <ng-container *ngTemplateOutlet="tbody; context: { $implicit: obj, index: indexCount(index) }"></ng-container>
+    </tr>
+    <tr *ngFor="let k of [].constructor(emptyRowCalc())">
+      <td *ngFor="let k2 of [].constructor(calcEmptyCells(tablica.rows[1].cells))">&nbsp;</td>
+    </tr>
+  </ng-container>
+  <!-- brak asynchronicznosci  -->
+  <ng-template #asyncFalse>
+    <ng-container *ngFor="let obj of data | slice : (page - 1) * pageSize : page * pageSize; let index = index">
+      <tr #header>
+        <ng-container *ngTemplateOutlet="tbody; context: { $implicit: obj, index: index + 1 }"></ng-container>
       </tr>
-      <tr *ngFor="let k of [].constructor(emptyRowCalc())">
-        <td *ngFor="let k2 of [].constructor(calcEmptyCells(tablica.rows[1].cells))">&nbsp;</td>
-      </tr>
-    </ng-container>
-    <!-- brak asynchronicznosci  -->
-    <ng-template #asyncFalse>
-      <ng-container *ngFor="let obj of data | slice : (page - 1) * pageSize : page * pageSize; let index = index">
-        <tr #header>
-          <ng-container *ngTemplateOutlet="tbody; context: { $implicit: obj, index: index + 1 }"></ng-container>
-        </tr>
-        <ng-container *ngIf="obj[subTableOpenVariable]">
-          <tr>
-            <td [attr.colspan]="tablica.rows[0].cells.length + 1">
-              <table class="subTable">
-                <thead>
-                  <tr class="PodTabelaNaglowek">
-                    <ng-container *ngTemplateOutlet="subTableHead"></ng-container>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let subObj of obj[subTableVariable]; let Subindex = index" class="PodTabelaTr">
-                    <ng-container
-                      *ngTemplateOutlet="
+      <ng-container *ngIf="obj[subTableOpenVariable]">
+        <tr>
+          <td [attr.colspan]="tablica.rows[0].cells.length + 1">
+            <table class="subTable">
+              <thead>
+              <tr class="PodTabelaNaglowek">
+                <ng-container *ngTemplateOutlet="subTableHead"></ng-container>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let subObj of obj[subTableVariable]; let Subindex = index" class="PodTabelaTr">
+                <ng-container
+                  *ngTemplateOutlet="
                         subTableBody;
                         context: { $implicit: subObj, index: indexCount(Subindex) }
                       "></ng-container>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-        </ng-container>
+              </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
       </ng-container>
+    </ng-container>
 
-      <tr *ngFor="let k of [].constructor(emptyRowCalcNoAsync())">
-        <td *ngFor="let k2 of [].constructor(calcEmptyCells(tablica.rows[0].cells))">&nbsp;</td>
-      </tr>
-    </ng-template>
+    <tr *ngFor="let k of [].constructor(emptyRowCalcNoAsync())">
+      <td *ngFor="let k2 of [].constructor(calcEmptyCells(tablica.rows[0].cells))">&nbsp;</td>
+    </tr>
+  </ng-template>
   </tbody>
 
   <tfoot>
-    <ng-container *ngTemplateOutlet="tfoot"></ng-container>
+  <ng-container *ngTemplateOutlet="tfoot"></ng-container>
   </tfoot>
 </table>
 <div #pag *ngIf="paggiantion" class="paggination">

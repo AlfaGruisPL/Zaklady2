@@ -1,0 +1,28 @@
+<div class="controlPanel">
+  <app-upload-file />
+</div>
+<app-table [async]="false" [collectionSize]="files_.filesData.length" [data]="files_.filesData"
+           [loading]="files_.filesDataLoading"
+           [pageSize]="15"
+           [paggiantion]="true"
+           [title]="'Lista plików zakładu:'">
+  <ng-template TemplateId="thead">
+    <th>Podgląd</th>
+    <th>Lp</th>
+    <th>Nazwa</th>
+    <th>Rozmiar</th>
+    <th>Data wysłania</th>
+    <th>Zarządzaj</th>
+  </ng-template>
+  <ng-template TemplateId="tbody" let-index="index" let-obj>
+    <td style="width: 60px;text-align: left"><img [src]="env.api+'/pliki/image/'+obj.id"
+                                                  style="max-width: 60px; max-height: 30px"></td>
+    <td>{{ index }}</td>
+    <td> {{ obj.nazwa }}</td>
+    <td> {{ obj.size }}</td>
+    <td> {{ obj.dataUtworzenia | date:'dd.MM.yyyy HH:mm'}} </td>
+    <td>
+      <button (click)="deleteImage(obj.id)" class="domyslnyButtonUsun">Usuń</button>
+
+  </ng-template>
+</app-table>

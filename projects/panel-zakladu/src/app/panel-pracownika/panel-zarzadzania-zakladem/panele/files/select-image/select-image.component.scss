@@ -1,0 +1,73 @@
+.imageContainer {
+  display: flex;
+  border: 1px solid #6b6b6b;
+  border-radius: 10px;
+  width: 190px;
+
+  h4 {
+    padding-left: 5px;
+  }
+
+  button {
+    width: 130px;
+    height: 40px;
+  }
+
+  .previewImageDiv {
+    display: flex;
+    justify-content: center;
+    flex-grow: 100;
+
+    .previewImage {
+      max-width: 40px;
+      max-height: 40px;
+      display: flex;
+      justify-content: center;
+      flex-grow: 100;
+    }
+  }
+}
+
+.dropDownDiv {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.selectImageBlockContainer {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 7px;
+}
+
+.selectImageBlock {
+  display: flex;
+  flex-direction: row;
+  row-gap: 7px;
+  padding-left: 5px;
+
+  .imageDiv {
+    max-width: 55px;
+    max-height: 55px;
+  }
+
+  span {
+    display: flex;
+    font-size: 19px;
+    align-items: center;
+    width: 240px;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background: whitesmoke;
+  }
+}
+
+.select {
+  width: 200px;
+}
+
+.miniImg {
+  max-width: 45px;
+  max-height: 45px;
+}

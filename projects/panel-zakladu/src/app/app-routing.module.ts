@@ -105,7 +105,11 @@ const panelePracownika: Routes = [
     loadChildren: () =>
       import("./panel-pracownika/panel-zarzadzania-zakladem/panele/raporty/raporty-router.module").then(k => k.routes)
   },
-
+  {
+    path: "files",
+    loadChildren: () =>
+      import("./panel-pracownika/panel-zarzadzania-zakladem/panele/files/files-router.module").then(k => k.routes)
+  },
   {
     path: "uslugi",
     component: UslugiPracownikaComponent
