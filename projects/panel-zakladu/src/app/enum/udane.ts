@@ -12,4 +12,5 @@ export enum Udane {
   wizytaOznaczonaJakoWykonana = 'Wizyta została oznaczona jako wykonana',
   wizytaOznaczonaJakoNieWykonana = 'Wizyta została oznaczona jako nie wykonana',
   wizytaZostalaZmodyfikowana = 'Wizyta została zmodyfikowana',
+  daneZostalyZapisane = 'Dane zostały zapisane',
 }

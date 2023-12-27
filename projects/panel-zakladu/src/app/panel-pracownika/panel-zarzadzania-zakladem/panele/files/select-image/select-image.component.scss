@@ -1,26 +1,37 @@
 .imageContainer {
   display: flex;
   border: 1px solid #6b6b6b;
-  border-radius: 10px;
-  width: 190px;
+  border-radius: 7px;
+  width: 210px;
+  position: relative;
 
   h4 {
     padding-left: 5px;
   }
 
-  button {
-    width: 130px;
-    height: 40px;
+  button.fileSelectButton {
+    width: 150px;
+    letter-spacing: 1px;
+    background: transparent;
+    border: none;
+    border-right: 1px solid #6b6b6b;
+    font-size: 1rem;
+    height: 100%;
+
+    &:hover {
+      background: rgba(30, 31, 34, 0.08);
+    }
   }
 
   .previewImageDiv {
     display: flex;
     justify-content: center;
     flex-grow: 100;
+    background: rgba(30, 31, 34, 0.08);
 
     .previewImage {
       max-width: 40px;
-      max-height: 40px;
+      max-height: 100%;
       display: flex;
       justify-content: center;
       flex-grow: 100;
@@ -31,6 +42,29 @@
 .dropDownDiv {
   padding-left: 3px;
   padding-right: 3px;
+  position: relative !important;
+
+  .deleteImage {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: transparent;
+    border: none;
+
+    &:not([disabled]):hover {
+      cursor: pointer;
+      scale: 1.08;
+    }
+  }
+}
+
+.finder {
+  width: 100%;
+  border-radius: 3px;
+  padding-left: 5px;
+  letter-spacing: 2px;
+
+  border: 2px solid #bdbdbd;
 }
 
 .selectImageBlockContainer {

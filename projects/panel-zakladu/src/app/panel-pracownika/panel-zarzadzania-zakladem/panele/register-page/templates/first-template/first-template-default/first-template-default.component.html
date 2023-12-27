@@ -1,1 +1,42 @@
-<p>first-template-default works!</p>
+<div class="formContainer">
+  <table>
+    <tr>
+      <th>Zdjęcie banneru</th>
+      <td>
+        <app-select-image
+          (changeImageId)="registerPage_.data.FirstTemplateData.banner = $event"
+          [height]="'30px'"
+          [lastImageId]="registerPage_.data.FirstTemplateData.banner" />
+      </td>
+      .
+    </tr>
+    <tr>
+      <th>Logo zakładu:</th>
+      <td>
+        <app-select-image
+          (changeImageId)="registerPage_.data.FirstTemplateData.logo = $event"
+          [height]="'30px'"
+          [lastImageId]="registerPage_.data.FirstTemplateData.logo" />
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Opis zakładu umiejscowiony<br />
+        w stopce strony reprezentacyjnej
+      </th>
+      <td>
+        <div class="NgxEditor__Wrapper">
+          <ngx-editor-menu [editor]="editor" [toolbar]="registerPage_.toolbar"></ngx-editor-menu>
+          <ngx-editor
+            (ngModelChange)="registerPage_.data.FirstTemplateData.opisZakladuWStopce = $event"
+            [editor]="editor"
+            [ngModel]="registerPage_.data.FirstTemplateData.opisZakladuWStopce"
+            [placeholder]="'Wpisz tu...'"></ngx-editor>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="saveContainer">
+  <input (click)="registerPage_.saveData()" class="domyslnyButtonZapisz" type="button" value="Zapisz" />
+</div>

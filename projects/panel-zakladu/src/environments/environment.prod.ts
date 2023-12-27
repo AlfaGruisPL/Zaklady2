@@ -8,4 +8,5 @@ export const environment = {
   linkDoRodo: 'https://api.mojzaklad.pl/pliki/publiczne/rodo.pdf',
   linkDoStronyFirmowej: 'http://mojzaklad.pl',
   api: 'https://api.mojzaklad.pl',
+  apiImage: 'https://api.mojzaklad.pl/pliki/image/',
 };

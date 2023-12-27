@@ -1,86 +1,44 @@
 <div class="leftRightContainer">
-  <div class="left">
-
-    <form [formGroup]="formualrz">
-      <div class="tabelka">
-        <table>
-          <tr>
-            <th>Szablon</th>
-            <td><select (change)="changeTemplate($event.target)"
-                        [value]="registerPage_.selectedTemplate">
+  <div class="left formContainer">
+    <div class="tabelka">
+      <table>
+        <tr>
+          <th>Szablon</th>
+          <td>
+            <select (change)="changeTemplate($event.target)" [value]="registerPage_.selectedTemplate">
               <option value="template1">Szablon 1</option>
-              <option value="template2">Szablon 2</option>
-            </select>{{registerPage_.selectedTemplate}}</td>
-          </tr>
-          <tr>
-            <th>Adres strony reklamowej</th>
-            <td>
-              <a
-                [href]="'http://' + danePodreczne_.danePodreczneObiekt.identyfikatorZakladu + '.mojzaklad.pl'"
-                style="font-weight: bold"
+              <option value="template2">Szablon 2</option></select
+            >{{ registerPage_.selectedTemplate }}
+          </td>
+        </tr>
+        <tr>
+          <th>Adres strony reklamowej</th>
+          <td>
+            <a
+              [href]="'http://' + danePodreczne_.danePodreczneObiekt.identyfikatorZakladu + '.mojzaklad.pl'"
+              style="font-weight: bold"
               >www.{{ danePodreczne_.danePodreczneObiekt.identyfikatorZakladu }}.mojzaklad.pl</a
-              >
-            </td>
-          </tr>
-          <tr>
-            <th>Status strony reprezentacyjnej</th>
-            <td>
-              <ui-switch
-                [(ngModel)]="ustawienia.stronaReklamowaPrzelacznik"
-                [ngModelOptions]="{ standalone: true }"
-                checkedLabel="Włączona"
-                class="przelacznikPublicznePrywatne"
-                uncheckedLabel="Wyłączona"></ui-switch>
-            </td>
-          </tr>
-          <tr>
-            <th>Zdjęcie banneru</th>
-            <td>
-              <!--
-              <div class="file">
-                <span class="file-custom"></span>
-              </div>
-     -->
-              <input (change)="wybierzPlik($event)" type="file" />
-              <img
-                *ngIf="zdjecieBanerRefresh"
-                [src]="environment.linkDoBaneruStronyReklamowej + zdjecieBanerRefresh"
-                class="bannerImg" />
-            </td>
-          </tr>
-          <tr>
-            <th>Logo zakładu:</th>
-            <td>
-              <!--
-              <div class="file">
-                <span class="file-custom"></span>
-              </div>
-     -->
-              <input (change)="wybierzPlikLogo($event)" (click)="test()" type="file" />
-              <img
-                *ngIf="zdjecieBanerRefresh"
-                [src]="environment.linkDoLogaStronyReklamowej + zdjecieBanerRefresh"
-                class="bannerImg" />
-            </td>
-          </tr>
-          <tr>
-            <th>
-              Opis zakładu umiejscowiony<br />
-              w stopce strony reprezentacyjnej
-            </th>
-            <td style="width: 600px; height: 300px">
-              <ngx-suneditor></ngx-suneditor>
-            </td>
-          </tr>
-        </table>
-      </div>
-      <div class="toRight">
-        <input (click)="zapisz()" class="domyslnyButtonZapisz" type="button" value="Zapisz" />
-      </div>
-    </form>
+            >
+          </td>
+        </tr>
+        <tr>
+          <th>Status strony reprezentacyjnej</th>
+          <td>
+            <ui-switch
+              [(ngModel)]="registerPage_.data.stronaReklamowaPrzelacznik"
+              [ngModelOptions]="{ standalone: true }"
+              checkedLabel="Włączona"
+              class="przelacznikPublicznePrywatne"
+              uncheckedLabel="Wyłączona"></ui-switch>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="saveContainer">
+      <input (click)="registerPage_.saveData()" class="domyslnyButtonZapisz" type="button" value="Zapisz" />
+    </div>
   </div>
   <div class="right">
     <app-register-page-iframe />
-
   </div>
 </div>

@@ -8,6 +8,20 @@
   display: flex;
   flex-grow: 999;
   flex-direction: column;
-
 }
 
+.saveContainer {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  padding-right: 20px;
+}
+
+.formContainer {
+  flex-grow: 1;
+  padding: 10px;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

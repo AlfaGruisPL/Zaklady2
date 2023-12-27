@@ -1,10 +1,14 @@
-<div class="imageContainer">
+<div
+  [ngStyle]="{
+    height: height
+  }"
+  class="imageContainer">
   <div #myDrop="ngbDropdown" class="FileSelect" container="body" ngbDropdown>
-    <button class="btn btn-outline-primary" id="dropdownForm1" ngbDropdownToggle type="button">Wybierz zdjęcie</button>
+    <button class="fileSelectButton" id="dropdownForm1" ngbDropdownToggle type="button">Wybierz zdjęcie</button>
     <div aria-labelledby="dropdownForm1" class="dropDownDiv" ngbDropdownMenu>
       <h4>Wybierz zdjęcie:</h4>
       <div class="dropdown-divider"></div>
-      <input [(ngModel)]="finder" placeholder="Wyszukiwarka" />
+      <input [(ngModel)]="finder" class="finder" placeholder="Wyszukiwarka" />
       <div class="dropdown-divider"></div>
       <div class="selectImageBlockContainer">
         <div
@@ -17,6 +21,14 @@
           </div>
         </div>
       </div>
+      <button
+        (click)="changeImage(0, myDrop)"
+        (mouseenter)="mouseInto()"
+        (mouseleave)="mouseOuto()"
+        [disabled]="lastImageId == 0"
+        class="deleteImage">
+        <fa-icon [icon]="faX" />
+      </button>
     </div>
   </div>
   <div class="previewImageDiv">

@@ -1,20 +1,29 @@
 export class UstawieniaStronyReklamowejDto {
   stronaReklamowaPrzelacznik: boolean | undefined = false;
-  opisZakladuWStopce: string | undefined = '';
+  data: FirstTemplate | {} = {};
 
   constructor(zrodlo: Partial<UstawieniaStronyReklamowej> = {}) {
+    switch (zrodlo.template) {
+      case 'template1':
+        Object.assign(this.data, zrodlo.FirstTemplateData);
+        break;
+    }
     this.stronaReklamowaPrzelacznik = zrodlo.stronaReklamowaPrzelacznik;
-    this.opisZakladuWStopce = zrodlo.opisZakladuWStopce;
   }
 }
 
-export class UstawieniaStronyReklamowej extends UstawieniaStronyReklamowejDto {
-  constructor() {
-    super();
-  }
+export class UstawieniaStronyReklamowej {
+  template = '';
+  stronaReklamowaPrzelacznik: boolean | undefined = false;
+  FirstTemplateData = new FirstTemplate();
 
   wstawDane(dane: Partial<UstawieniaStronyReklamowej> | any) {
     this.stronaReklamowaPrzelacznik = dane['wlaczona'];
-    this.opisZakladuWStopce = dane['opisZakladuWStopce'];
   }
+}
+
+export class FirstTemplate {
+  opisZakladuWStopce: string = '';
+  logo: string | number = '';
+  banner: string | number = '';
 }

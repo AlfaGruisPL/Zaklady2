@@ -1,16 +1,15 @@
-
 .iframe-container {
   position: relative;
   margin: auto;
-  width: 250px;
+  width: 350px;
   background: rgba(245, 245, 245, 0.69);
-  height: 300px; /* Ustal wysokość iframe */
+  height: 500px; /* Ustal wysokość iframe */
   overflow: hidden;
   //  border: 2px inset black;
 
   iframe {
-    width: 2120px;
-    height: 3000px;
+    width: 2820px;
+    height: 5000px;
     zoom: 0.35;
     -moz-transform: scale(0.35);
     -moz-transform-origin: 0 0;
