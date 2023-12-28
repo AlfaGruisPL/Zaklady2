@@ -18,8 +18,12 @@
           <span> {{ pracownik.imie }} {{ pracownik.nazwisko }} </span>
         </div>
         <div class="zdjecie">
-          <img [src]="environment.linkDoZdjeciaProfilowego + pracownik.id | zdjecie" class="backGroundBlur" />
-          <img [src]="environment.linkDoZdjeciaProfilowego + pracownik.id | zdjecie" class="zdjeciePracownika" />
+          <img
+            [src]="env.apiFiles + '/' + pracownik.zdjecieProfiloweId | zdjecie | identyfikator"
+            class="backGroundBlur" />
+          <img
+            [src]="env.apiFiles + '/' + pracownik.zdjecieProfiloweId | zdjecie | identyfikator"
+            class="zdjeciePracownika" />
         </div>
         <div class="popatrz">
           <button class="zobacz"><span>Zobacz</span></button>

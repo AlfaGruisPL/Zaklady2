@@ -1,7 +1,8 @@
-<div class="zdjIprzycisk" (click)="wybierz()">
+<div (click)="wybierz()" class="zdjIprzycisk">
   <div class="zdjecie">
     <img
-      [src]="'http://fenek.tech:3000/pliki/wyswietlZdjecieProfilowe/'+daneOPracowniku.id |zdjecie"
+      [src]="env.apiFiles + '/' + daneOPracowniku.zdjecieProfiloweId | zdjecie | identyfikator"
+
     />
   </div>
   <div class="przycisk">

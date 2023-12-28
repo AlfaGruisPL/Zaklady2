@@ -5,6 +5,7 @@ export class MojeKonto {
   public prefiks: string = '';
   public numer_telefonu: string = '';
   public email: string = '';
+  public zdjecieProfiloweId = 0;
   public adres: {
     wojewodztwo?: string;
     miasto?: string;

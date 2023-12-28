@@ -32,6 +32,7 @@ export class Pracownik {
   public kodPocztowy1Puste: boolean = false;
   public kodPocztowy2Puste: boolean = false;
   public czyWszystkoWpisane: boolean = true;
+  public zdjecieProfiloweId = 0;
 
   constructor() {
     this.adres = {

@@ -1,43 +1,96 @@
 :host {
-  display: block;
-  min-height: 130px;
+  //display: block;
+  //min-height: 130px;
 }
 
-.fileContainer {
+.mainContainerFile {
+  display: flex;
+  flex-direction: column;
 
+  .sendFileContainer {
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    border: 1px solid black;
+    width: 280px;
+    height: 30px;
+    position: relative;
+
+    .file-input {
+      visibility: hidden;
+      position: absolute;
+      z-index: -100;
+      pointer-events: none;
+    }
+
+    .uploadFile {
+      border: none;
+      background: rgba(0, 128, 0, 0.1);
+      letter-spacing: 2px;
+      flex-grow: 2;
+
+      &:hover {
+        cursor: pointer;
+        background: rgba(0, 128, 0, 0.2);
+      }
+    }
+
+    .sendFileButton {
+      box-shadow: none;
+      width: 230px;
+      letter-spacing: 2px;
+      border: none;
+      background: transparent;
+      border-right: 1px solid black;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.08);
+        cursor: pointer;
+      }
+    }
+
+    img {
+      width: 50px;
+      height: auto;
+      max-height: 30px;
+    }
+  }
+
+  .fileInfoContainer {
+    display: flex;
+  }
+
+  .fileContainer {
+  }
+
+  .pInfo {
+    .gear {
+      color: #00623e;
+      height: 20px;
+      width: 20px;
+    }
+
+    p {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      font-weight: bolder;
+      text-shadow: 0px 0px 1px #00000042;
+    }
+
+    .send {
+      color: #002c93;
+    }
+
+    .success {
+      color: #17a600;
+    }
+
+    .fail {
+      color: #af0000;
+    }
+
+    .wait {
+      color: #00a66c;
+    }
+  }
 }
-
-.pInfo {
-  .gear {
-    color: #00623e;
-    height: 20px;
-    width: 20px;
-
-  }
-
-  p {
-
-
-    margin-bottom: 0;
-    padding-bottom: 0;
-    font-weight: bolder;
-    text-shadow: 0px 0px 1px #00000042;
-  }
-
-  .send {
-    color: #002c93;
-  }
-
-  .success {
-    color: #17a600;
-  }
-
-  .fail {
-    color: #af0000;
-  }
-
-  .wait {
-    color: #00a66c;
-  }
-}
-

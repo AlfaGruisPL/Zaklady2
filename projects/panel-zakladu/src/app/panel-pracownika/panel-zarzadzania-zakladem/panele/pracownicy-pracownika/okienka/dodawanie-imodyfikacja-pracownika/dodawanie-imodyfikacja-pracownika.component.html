@@ -191,9 +191,9 @@
         </td>
       </tr>
     </table>
-
     <app-moje-konto-zdjecie-profilowe
       [idUzytkownika]="idUzytkownika"
+      [imageId]="pracownikObj.zdjecieProfiloweId"
       [modyfikacja]="tryb != 'wyswietlenie'"
       [width]="200"
       [wlasne]="false">
@@ -204,13 +204,13 @@
       *ngIf="!pracownikObj.czyWszystkoWpisane && iloscKlikniec == 1"
       class="czerwoneKomunikatyZaklad"
       style="padding-right: 180px"
-    >Nie uzupełnione wszystkie pola! Czy na pewno chcesz zapisać dane?
+      >Nie uzupełnione wszystkie pola! Czy na pewno chcesz zapisać dane?
     </span>
     <span
       *ngIf="iloscKlikniec == 1 && tryb == 'modyfikacja'"
       class="czerwoneKomunikatyZaklad"
       style="padding-right: 180px"
-    >Czy na pewno chcesz zmodyfikować dane?
+      >Czy na pewno chcesz zmodyfikować dane?
     </span>
     <button
       (click)="zapisz()"

@@ -3,7 +3,9 @@
 <div [attr.data-aos-duration]="animation_.animationTimeBanner" class="banner" data-aos="fade-down" data-aos-delay="">
   <div class="logoINazwaZakladu">
     <div class="logo">
-      <img [src]="env.linkDoLogaStronyReklamowej | zdjecie | identyfikator" alt="logo zakładu" />
+      <img
+        [src]="env.apiFiles + '/' + danePodstawowe.danePodstawowe.data.logo | zdjecie | identyfikator"
+        alt="logo zakładu" />
     </div>
     <div class="nazwa">
       <h1>{{ danePodstawowe.danePodstawowe.nazwa }}</h1>

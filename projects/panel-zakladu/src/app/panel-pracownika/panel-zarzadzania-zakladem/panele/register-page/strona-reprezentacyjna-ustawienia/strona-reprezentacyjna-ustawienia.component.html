@@ -7,8 +7,8 @@
           <td>
             <select (change)="changeTemplate($event.target)" [value]="registerPage_.selectedTemplate">
               <option value="template1">Szablon 1</option>
-              <option value="template2">Szablon 2</option></select
-            >{{ registerPage_.selectedTemplate }}
+              <option value="template2">Szablon 2</option>
+            </select>
           </td>
         </tr>
         <tr>
@@ -32,11 +32,17 @@
               uncheckedLabel="Wyłączona"></ui-switch>
           </td>
         </tr>
+        <tr>
+          <th>Słowa kluczowe</th>
+          <td><input /></td>
+        </tr>
+        <tr>
+          <th>Opis dla google</th>
+          <td><textarea></textarea></td>
+        </tr>
       </table>
     </div>
-    <div class="saveContainer">
-      <input (click)="registerPage_.saveData()" class="domyslnyButtonZapisz" type="button" value="Zapisz" />
-    </div>
+    <app-register-page-save-button />
   </div>
   <div class="right">
     <app-register-page-iframe />

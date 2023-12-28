@@ -11,8 +11,6 @@ import { SelectImageComponent } from './select-image/select-image.component';
   styleUrl: './files.component.scss',
 })
 export class FilesComponent implements OnInit {
-  k = 0;
-
   constructor(private files_: FilesService) {}
 
   ngOnInit() {

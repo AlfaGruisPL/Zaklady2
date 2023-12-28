@@ -2,7 +2,7 @@
   <h4>Zdjęcie profilowe:</h4>
   <img
     *ngIf="!usunZdjecieProfiloweDTo && !safeImageUrl && idUzytkownika != 0"
-    [src]="environment.linkDoZdjeciaProfilowego + idUzytkownika + '?jakosc=30' | zdjecie : false"
+    [src]="environment.apiImage + imageId + '?jakosc=30' | zdjecie : false"
     class="pracownikZdjecie" />
   <img *ngIf="safeImageUrl" [src]="safeImageUrl" class="pracownikZdjecie" />
   <label *ngIf="modyfikacja" class="file">

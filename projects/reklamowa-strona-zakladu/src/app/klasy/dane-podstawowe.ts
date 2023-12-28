@@ -1,12 +1,12 @@
 export class DanePodstawowe {
-  public nazwa: string = "";
+  public nazwa: string = '';
   public dataZalozenia: Date = new Date();
   public iloscPracownikow: number = 0;
-  public NIP: string = "";
-  public REGON: string = "";
-  public prefiksTelefonu: string = "";
-  public numerTelefonuOgolny: string = "";
-  public emailOgolny: string = "";
+  public NIP: string = '';
+  public REGON: string = '';
+  public prefiksTelefonu: string = '';
+  public numerTelefonuOgolny: string = '';
+  public emailOgolny: string = '';
   public niedziela: dzien = new dzien();
   public poniedzialek: dzien = new dzien();
   public wtorek: dzien = new dzien();
@@ -18,7 +18,7 @@ export class DanePodstawowe {
   public uslugi: Array<usluga> = [];
   public wysokosc = 0;
   public szerokosc = 0;
-  public opisZakladuWStopce = "";
+  public opisZakladuWStopce = '';
   public wyswietlaneDane: wyswietlaneDane = new wyswietlaneDane();
   public listaPracownikow: any[] = [];
   public mozliwoscPlatnosciKarta = false;
@@ -27,7 +27,11 @@ export class DanePodstawowe {
     Visa: false,
     Apple_Pay: false,
     MasterCard: false,
-    Google_Pay: false
+    Google_Pay: false,
+  };
+  data = {
+    banner: '',
+    logo: '',
   };
 
   czyJakasPlatnosc() {
@@ -42,8 +46,8 @@ export class DanePodstawowe {
 }
 
 export class dzien {
-  public opening: string = "";
-  public closing: string = "";
+  public opening: string = '';
+  public closing: string = '';
   public activeDay: boolean = true;
 }
 
@@ -64,20 +68,20 @@ export class wyswietlaneDane {
 }
 
 export class adres {
-  public wojewodztwo: string = "";
-  public miasto: string = "";
-  public numerUlicy: string = "";
-  public numerLokalu: string = "";
-  public numerDomu: string = "";
-  public powiat: string = "";
-  public wies: string = "";
-  public kodPocztowy: string = "";
+  public wojewodztwo: string = '';
+  public miasto: string = '';
+  public numerUlicy: string = '';
+  public numerLokalu: string = '';
+  public numerDomu: string = '';
+  public powiat: string = '';
+  public wies: string = '';
+  public kodPocztowy: string = '';
 }
 
 export class usluga {
   public id: number = 0;
-  public nazwa: string = "";
-  public cena: string = "";
+  public nazwa: string = '';
+  public cena: string = '';
   public pracownicy: Array<number> = [];
   public wybrane = false;
 }

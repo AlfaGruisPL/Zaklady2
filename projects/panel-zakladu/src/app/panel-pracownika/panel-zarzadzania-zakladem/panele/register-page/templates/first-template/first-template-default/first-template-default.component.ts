@@ -6,11 +6,19 @@ import { SelectImageComponent } from '../../../../files/select-image/select-imag
 import { UiSwitchModule } from 'ngx-ui-switch';
 import { RegisterPageService } from '../../../register-page.service';
 import { PodreczneDaneService } from '../../../../../../../serwisy/podreczne-dane.service';
+import { RegisterPageSaveButtonComponent } from '../../../register-page-save-button/register-page-save-button.component';
 
 @Component({
   selector: 'app-first-template-default',
   standalone: true,
-  imports: [CommonModule, NgxEditorModule, ReactiveFormsModule, SelectImageComponent, UiSwitchModule],
+  imports: [
+    CommonModule,
+    NgxEditorModule,
+    ReactiveFormsModule,
+    SelectImageComponent,
+    UiSwitchModule,
+    RegisterPageSaveButtonComponent,
+  ],
   templateUrl: './first-template-default.component.html',
   styleUrls: ['./first-template-default.component.scss', '../../../register-page.component.scss'],
 })

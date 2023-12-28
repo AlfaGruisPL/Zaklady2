@@ -174,9 +174,11 @@
         </tr>
       </table>
     </form>
+
     <app-moje-konto-zdjecie-profilowe
       #zdjecie
       [idUzytkownika]="mojeKontoObj.id"
+      [imageId]="mojeKontoObj.zdjecieProfiloweId"
       [modyfikacja]="wlaczPrzyciskZapisz"
       class="zdjecieProfilowe2"></app-moje-konto-zdjecie-profilowe>
   </div>

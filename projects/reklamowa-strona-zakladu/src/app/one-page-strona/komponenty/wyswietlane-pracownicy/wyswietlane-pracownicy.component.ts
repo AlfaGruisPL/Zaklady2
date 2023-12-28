@@ -4,6 +4,7 @@ import { Drzwi } from "../../../enum/drzwi";
 import { Pracownik } from "../../../klasy/pracownik";
 import { environment } from "../../../../environments/environment";
 import { AnimationService } from "../../../serwisy/animation.service";
+import { DanePodstawowe } from "../../../klasy/dane-podstawowe";
 
 // @ts-ignore
 @Component({
@@ -15,10 +16,15 @@ export class WyswietlanePracownicyComponent implements OnInit {
   public listaPracownikow: Array<Pracownik> = [];
   public czyPracownikKlikniety = false;
   public daneKliknietegoPracownika: Pracownik = new Pracownik();
+  env = environment;
   protected readonly environment = environment;
   private slider: any;
 
-  constructor(public listonosz: ListonoszService, public animation_: AnimationService) {}
+  constructor(
+    public listonosz: ListonoszService,
+    public danePodstawowe_: DanePodstawowe,
+    public animation_: AnimationService
+  ) {}
 
   generowanieKaruzeli() {
     // @ts-ignore

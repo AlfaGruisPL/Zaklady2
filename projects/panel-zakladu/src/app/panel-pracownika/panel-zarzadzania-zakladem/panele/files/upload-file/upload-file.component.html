@@ -1,17 +1,5 @@
-<h2>Wysyłanie pliku:</h2>
-<input #fileUpload (change)="onChange($event)" class="file-input" type="file" />
-
-<div *ngIf="file" class="">
-  <section class="file-info">
-    <!-- File details:
-  <ul>
- <li>Name: {{file.name |maxDlugosc:20}}</li>
-    </ul>
-    <li>Type: {{file.type}}</li>-->
-    <button (click)="onUpload(fileUpload)" [disabled]="status == 'uploading'">Upload the file</button>
-    Size: {{ Math.round(file.size * 0.000001) }}Mb
-  </section>
-
+<!--<h2>Wysyłanie pliku:</h2>-->
+<div class="mainContainerFile">
   <section [ngSwitch]="status" class="pInfo">
     <p *ngSwitchCase="'uploading'" class="send">
       ⏳Wysyłanie...
@@ -19,6 +7,18 @@
     </p>
     <p *ngSwitchCase="'success'" class="success">✅Udane!</p>
     <p *ngSwitchCase="'fail'" class="fail">❌Błąd!</p>
-    <p *ngSwitchDefault class="wait">Oczekiwanie na wysłanie...</p>
+    <p *ngSwitchDefault class="wait">&nbsp;</p>
   </section>
+  <div class="sendFileContainer">
+    <input #fileUpload (change)="onChange($event); readURL($event)" class="file-input" type="file" />
+    <button (click)="fileUpload.click()" class="sendFileButton">Wybierz plik</button>
+    <button (click)="onUpload(fileUpload)" *ngIf="file" [disabled]="status == 'uploading'" class="uploadFile">
+      Wyślij
+    </button>
+    <img [src]="imageSrc || 'http://placehold.it/30'" alt="your image" id="blah" />
+  </div>
+  <!--  <div *ngIf="file" class="fileInfoContainer">-->
+  <!--    <span>{{ file.name | maxDlugosc : 20 }}</span>-->
+  <!--    <section class="file-info">Size: {{ Math.round(file.size * 0.0001) / 100 }}Mb</section>-->
+  <!--  </div>-->
 </div>

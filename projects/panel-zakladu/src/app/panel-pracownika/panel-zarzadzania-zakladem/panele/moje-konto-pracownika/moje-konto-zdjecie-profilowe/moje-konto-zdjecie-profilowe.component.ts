@@ -18,6 +18,8 @@ import { KomunikatUniwersalnyService } from '../../../../../komponets/komunikat-
 export class MojeKontoZdjecieProfiloweComponent {
   @Input({ required: true }) modyfikacja = false;
   @Input({ required: true }) idUzytkownika = 0;
+  @Input() imageId = 0;
+
   @Input() width = 300;
   @Input() wlasne = true;
   public formData: FormData | undefined = undefined;
@@ -86,6 +88,7 @@ export class MojeKontoZdjecieProfiloweComponent {
           await this.listonosz.usun('/pliki/zdjecieProfilowe/' + this.idUzytkownika);
         }
         this.blokadaPrzycisku = false;
+        this.imageId = 0;
         this.komunikaty.zdjecieProfiloweUsuniete();
         this.clearImageSelect();
       } catch (error) {

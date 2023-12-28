@@ -4,4 +4,5 @@ export class Pracownik {
   public numerTelefonu: string = '';
   public email: string = '';
   public id: number = 0;
+  public zdjecieProfiloweId = 0;
 }
