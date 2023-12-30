@@ -33,6 +33,13 @@ export class Pracownik {
   public kodPocztowy2Puste: boolean = false;
   public czyWszystkoWpisane: boolean = true;
   public zdjecieProfiloweId = 0;
+  public description = '';
+  private socialMedia_ = {
+    telegram: '',
+    facebook: '',
+    instagram: '',
+    twitter: '',
+  };
 
   constructor() {
     this.adres = {
@@ -44,6 +51,22 @@ export class Pracownik {
       kodPocztowy1: '',
       kodPocztowy2: '',
     };
+  }
+
+  get socialMedia() {
+    if (this.socialMedia_ != null) {
+      return this.socialMedia_;
+    }
+    return {
+      telegram: '',
+      facebook: '',
+      instagram: '',
+      twitter: '',
+    };
+  }
+
+  set socialMedia(k) {
+    this.socialMedia_ = k;
   }
 
   public czyWszystkoWpisaneFunkcja() {

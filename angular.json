@@ -238,7 +238,8 @@
             "styles": [
               "projects/panel-zakladu/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "karmaConfig": "projects/panel-zakladu/karma.conf.js"
           }
         }
       }

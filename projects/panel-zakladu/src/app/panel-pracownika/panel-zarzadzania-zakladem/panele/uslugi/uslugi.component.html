@@ -19,40 +19,59 @@
             <th class="thClass">Usługa</th>
             <th class="thClass">Cena(zł)</th>
             <th class="thClass">Czas (minuty)</th>
+            <th class="thClass">Kategoria</th>
             <th class="thClass">Pracownicy</th>
           </tr>
-          <tr *ngFor="let usluga of listaUslug; let index = index">
-            <td>
-              <fa-icon (click)="usunWiersz(index)" [icon]="fontAwesome.minusWKolku" class="buttonMinus"></fa-icon>
-            </td>
-            <td class="zlotyID">{{ index + 1 }}.</td>
-            <td>
-              <input [(ngModel)]="usluga.nazwa" [ngModelOptions]="{ standalone: true }" class="logInputZaklad input1" />
-            </td>
-            <td>
-              <input
-                [(ngModel)]="usluga.cena"
-                [ngModelOptions]="{ standalone: true }"
-                class="logInputZaklad input2"
-                min="0.00"
-                step="0.01"
-                type="number" />
-            </td>
-            <td>
-              <input
-                [(ngModel)]="usluga.czas"
-                [ngModelOptions]="{ standalone: true }"
-                class="logInputZaklad input3"
-                type="number" />
-            </td>
-            <td class="pracownicyTd">
-              <fa-icon
-                (click)="modyfikacjaPracownikow(usluga)"
-                [icon]="fontAwesome.czlowieczek"
-                class="iconkaUser"></fa-icon>
-              <span class="counter">{{ usluga.pracownicy.length }}</span>
-            </td>
-          </tr>
+          <ng-container *ngFor="let usluga of listaUslug; let index = index">
+            <tr>
+              <td>
+                <fa-icon (click)="usunWiersz(index)" [icon]="fontAwesome.minusWKolku" class="buttonMinus"></fa-icon>
+              </td>
+              <td class="zlotyID">{{ index + 1 }}.</td>
+              <td>
+                <input
+                  [(ngModel)]="usluga.nazwa"
+                  [disabled]="true"
+                  [ngModelOptions]="{ standalone: true }"
+                  class="logInputZaklad input1" />
+              </td>
+              <td>
+                <input
+                  [(ngModel)]="usluga.cena"
+                  [disabled]="true"
+                  [ngModelOptions]="{ standalone: true }"
+                  class="logInputZaklad input2"
+                  min="0.00"
+                  step="0.01"
+                  type="number" />
+              </td>
+              <td>
+                <input
+                  [(ngModel)]="usluga.czas"
+                  [disabled]="true"
+                  [ngModelOptions]="{ standalone: true }"
+                  class="logInputZaklad input3"
+                  type="number" />
+              </td>
+              <td class="pracownicyTd">
+                <input
+                  [(ngModel)]="model"
+                  [disabled]="true"
+                  [ngModelOptions]="{ standalone: true }"
+                  [ngbTypeahead]="search"
+                  class="logInputZaklad categorieInput"
+                  id="typeahead-format"
+                  type="text" />
+              </td>
+              <td class="pracownicyTd">
+                <fa-icon
+                  (click)="modyfikacjaPracownikow(usluga)"
+                  [icon]="fontAwesome.czlowieczek"
+                  class="iconkaUser"></fa-icon>
+                <span class="counter">{{ usluga.pracownicy.length }}</span>
+              </td>
+            </tr>
+          </ng-container>
         </table>
       </div>
       <div class="divButton">
@@ -61,3 +80,29 @@
     </div>
   </div>
 </form>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br />
+<app-table
+  [async]="false"
+  [collectionSize]="listaUslug.length"
+  [data]="listaUslug"
+  [pageSize]="15"
+  [paggiantion]="true"
+  [title]="'Lista plików zakładu:'">
+  <ng-template TemplateId="thead">
+    <th>Nr.</th>
+    <th>Usługa</th>
+    <th>Cena(zł)</th>
+    <th>Czas (minuty)</th>
+    <th>Kategoria</th>
+    <th>Pracownicy</th>
+  </ng-template>
+  <ng-template TemplateId="tbody" let-index="index" let-obj>
+    <td>{{ index }}</td>
+    <td>{{ obj.nazwa }}</td>
+    <td>{{ obj.cena }}</td>
+    <td>{{ obj.czas }}</td>
+    <td>{{ obj.kategoria }}</td>
+    <td>{{ obj.pracownicy.length }}</td>
+  </ng-template>
+</app-table>

@@ -43,26 +43,23 @@ export class StronaReprezentacyjnaUstawieniaComponent {
   ) {}
 
   changeTemplate(target: EventTarget | null) {
+    const newValue = (target as HTMLSelectElement).value;
+    const last = this.registerPage_.selectedTemplate;
+    this.registerPage_.selectedTemplate = '';
+    setTimeout(() => {
+      this.registerPage_.selectedTemplate = last;
+    }, 10);
     const prompt = this.universalPrompt.open(
       'Czy na pewno chcesz zmienić szablon?',
       'Zmiana szablonu powoduje utratę ustawień szablonu i jego danych.'
     );
-    prompt
-      .addButton('Nie', { defaultNo: true })
-      .pipe(take(1))
-      .subscribe(success => {
-        const last = this.registerPage_.selectedTemplate;
-        this.registerPage_.selectedTemplate = '';
-        setTimeout(() => {
-          this.registerPage_.selectedTemplate = last;
-        }, 0);
-      });
+    prompt.addButton('Nie', { defaultNo: true });
 
     prompt
       .addButton('Tak', { defaultYes: true })
       .pipe(take(1))
       .subscribe(success => {
-        this.registerPage_.selectedTemplate = (target as HTMLSelectElement).value;
+        this.registerPage_.selectedTemplate = newValue;
       });
   }
 }

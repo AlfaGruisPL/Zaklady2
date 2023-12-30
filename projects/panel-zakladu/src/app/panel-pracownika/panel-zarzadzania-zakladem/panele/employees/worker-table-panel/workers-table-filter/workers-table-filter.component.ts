@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WorkersTableService } from '../workers-table.service';
+import { WorkersTableService } from '../workers-table/workers-table.service';
 
 @Component({
   selector: 'app-workers-table-filter',

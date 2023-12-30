@@ -172,6 +172,22 @@
               maxlength="9" />
           </td>
         </tr>
+        <tr>
+          <td><label class="naglowki2form" for="numerTelefonu">Facebook</label></td>
+          <td>
+            <input
+              [(ngModel)]="mojeKontoObj.socialMedia.facebook"
+              [disabled]="!wlaczPrzyciskZapisz"
+              [ngModelOptions]="{ standalone: true }"
+              class="logInputZaklad" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            Opis:<br />
+            <app-ngx-editor [(value)]="mojeKontoObj.description" />
+          </td>
+        </tr>
       </table>
     </form>
 

@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Pracownik } from '../../../../../../klasy/panelPracownika/pracownicy/pracownik';
-import { WorkersTableService } from '../workers-table.service';
+import { WorkersTableService } from '../workers-table/workers-table.service';
 import { NgbDropdown, NgbDropdownItem, NgbDropdownMenu, NgbDropdownToggle } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({

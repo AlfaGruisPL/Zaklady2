@@ -1,0 +1,64 @@
+<app-back-arrow />
+<form>
+  <div class="modal-header">
+    <h4 *ngIf="tryb == 'dodawanie'" class="modal-title">Dodawanie pracownika</h4>
+    <h4 *ngIf="tryb == 'modyfikacja'" class="modal-title">Modyfikacja danych</h4>
+    <h4 *ngIf="tryb == 'wyswietlenie'" class="modal-title">Informacje o pracowniku</h4>
+  </div>
+  <div class="leftRightContainer">
+    <div class="leftContainer">
+      <div class="tableDiv">
+        <app-worker-modify-table1 [(iloscKlikniec)]="iloscKlikniec" [(pracownikObj)]="pracownikObj" [tryb]="tryb" />
+      </div>
+      <table>
+        <tr>
+          <th>Opis pracownika:</th>
+          <td *ngIf="tryb == 'wyswietlenie'"><span [innerHTML]="pracownikObj.description | safeHtml"></span></td>
+          <td>
+            <app-ngx-editor *ngIf="tryb != 'wyswietlenie'" [(value)]="pracownikObj.description" />
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="rightContainer">
+      <app-moje-konto-zdjecie-profilowe
+        [idUzytkownika]="idUzytkownika"
+        [imageId]="pracownikObj.zdjecieProfiloweId"
+        [modyfikacja]="tryb != 'wyswietlenie'"
+        [width]="200"
+        [wlasne]="false">
+      </app-moje-konto-zdjecie-profilowe>
+    </div>
+  </div>
+
+  <div *ngIf="tryb != 'wyswietlenie'" class="modal-footer">
+    <span
+      *ngIf="!pracownikObj.czyWszystkoWpisane && iloscKlikniec == 1"
+      class="czerwoneKomunikatyZaklad"
+      style="padding-right: 180px"
+      >Nie uzupełnione wszystkie pola! Czy na pewno chcesz zapisać dane?
+    </span>
+    <span
+      *ngIf="iloscKlikniec == 1 && tryb == 'modyfikacja'"
+      class="czerwoneKomunikatyZaklad"
+      style="padding-right: 180px"
+      >Czy na pewno chcesz zmodyfikować dane?
+    </span>
+    <button
+      (click)="zapisz()"
+      *ngIf="tryb == 'dodawanie'"
+      [disabled]="blokowaniePrzycisku"
+      class="zmodyfikujZapiszButton"
+      type="submit">
+      Zapisz
+    </button>
+    <button
+      (click)="zmodyfikuj()"
+      *ngIf="tryb == 'modyfikacja'"
+      [disabled]="blokowaniePrzycisku"
+      class="zmodyfikujZapiszButton"
+      type="submit">
+      Zmodyfikuj
+    </button>
+  </div>
+</form>

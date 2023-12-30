@@ -24,6 +24,13 @@ export class MojeKonto {
   public czyHaslaTakieSame: boolean = true;
 
   public opcjaZmianyHasla: boolean = false;
+  public description = '';
+  socialMedia = {
+    telegram: '',
+    facebook: '',
+    instagram: '',
+    twitter: '',
+  };
 
   constructor() {
     this.adres = {};

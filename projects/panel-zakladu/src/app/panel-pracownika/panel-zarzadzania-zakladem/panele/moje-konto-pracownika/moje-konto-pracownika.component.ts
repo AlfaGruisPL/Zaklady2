@@ -12,6 +12,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TippyDirective } from '@ngneat/helipopper';
 import { CommonModule } from '@angular/common';
 import { UstawieniaPowiadomienComponent } from './ustawienia-powiadomien/ustawienia-powiadomien.component';
+import { NgxEditorComponent } from '../../komponenty/ngx-editor/ngx-editor.component';
 
 @Component({
   standalone: true,
@@ -25,6 +26,7 @@ import { UstawieniaPowiadomienComponent } from './ustawienia-powiadomien/ustawie
     CommonModule,
     MojeKontoZdjecieProfiloweComponent,
     UstawieniaPowiadomienComponent,
+    NgxEditorComponent,
   ],
 })
 export class MojeKontoPracownikaComponent implements OnInit {
@@ -45,7 +47,7 @@ export class MojeKontoPracownikaComponent implements OnInit {
     this.pobierz();
   }
 
-  public zapisz() {
+  public async zapisz() {
     const mojeKontoDTO = new MojeKontoDTO(this.mojeKontoObj);
     if (this.mojeKontoObj.opcjaZmianyHasla != false) {
       if (!this.mojeKontoObj.czyHaslaWpisaneFunkcja()) {
@@ -57,7 +59,7 @@ export class MojeKontoPracownikaComponent implements OnInit {
       }
       mojeKontoDTO.hasloNowe = this.mojeKontoObj.powtorzNoweHaslo;
     }
-    this.ZdjecieProfilowe?.wyslijZdjecie();
+    await this.ZdjecieProfilowe?.wyslijZdjecie();
     this.listonosz
       .aktualizuj(Drzwi.mojeKonto, mojeKontoDTO)
       .then(zapisane => {
@@ -66,6 +68,7 @@ export class MojeKontoPracownikaComponent implements OnInit {
         this.wlaczPrzyciskZapisz = false;
         this.mojeKontoObj.wpiszNoweHaslo = '';
         this.mojeKontoObj.powtorzNoweHaslo = '';
+        this.pobierz();
       })
       .catch(niezapisane => {
         this.komunikaty.modyfikacjaNieUdana();

@@ -1,0 +1,229 @@
+<table>
+  <tr>
+    <th class="naglowki1form" colspan="2">Dane pracownika</th>
+  </tr>
+  <tr>
+    <th><label class="naglowki2form" for="imie">Imię:*</label></th>
+    <td *ngIf="tryb != 'wyswietlenie'">
+      <input
+        (keydown)="iloscKlikniec = 0"
+        [(ngModel)]="pracownikObj.imie"
+        [ngModelOptions]="{ standalone: true }"
+        class="logInputZaklad"
+        id="imie"
+        type="text" />
+    </td>
+    <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.imie }}</td>
+  </tr>
+  <tr>
+    <th><label class="naglowki2form" for="nazwisko">Nazwisko:*</label></th>
+    <td *ngIf="tryb != 'wyswietlenie'">
+      <input
+        (keydown)="iloscKlikniec = 0"
+        [(ngModel)]="pracownikObj.nazwisko"
+        [ngModelOptions]="{ standalone: true }"
+        class="logInputZaklad"
+        id="nazwisko"
+        type="text" />
+    </td>
+    <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.nazwisko }}</td>
+  </tr>
+  <tr>
+    <th><label class="naglowki2form" for="adresEmail">Adres e-mail:*</label></th>
+    <td *ngIf="tryb != 'wyswietlenie'">
+      <input
+        (keydown)="iloscKlikniec = 0"
+        [(ngModel)]="pracownikObj.adresEmail"
+        [ngModelOptions]="{ standalone: true }"
+        class="logInputZaklad"
+        id="adresEmail"
+        type="text" />
+    </td>
+    <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.adresEmail }}</td>
+  </tr>
+  <tr>
+    <th>
+      <label class="naglowki2form" for="nrTelefonu">Numer telefonu:</label>
+    </th>
+    <td *ngIf="tryb != 'wyswietlenie'">
+      <select
+        (click)="iloscKlikniec = 0"
+        [(ngModel)]="pracownikObj.prefiksTelefonu"
+        [ngModelOptions]="{ standalone: true }"
+        class="logInputZaklad"
+        style="width: 80px; height: 32px; background: #e3e2e2; position: relative; bottom: -1px">
+        <option>+48</option>
+        <option>+380</option>
+      </select>
+      <input
+        [(ngModel)]="pracownikObj.numerTelefonu"
+        [ngModelOptions]="{ standalone: true }"
+        class="logInputZaklad"
+        id="nrTelefonu"
+        maxlength="9"
+        style="width: 170px; margin: 2px"
+        type="text" />
+    </td>
+    <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">
+      {{ pracownikObj.prefiksTelefonu }}
+      {{ pracownikObj.numerTelefonu }}
+    </td>
+  </tr>
+  <tr>
+    <th>Facebook</th>
+    <td *ngIf="tryb != 'wyswietlenie'">
+      <input
+        [(ngModel)]="pracownikObj.socialMedia.facebook"
+        [ngModelOptions]="{ standalone: true }"
+        class="logInputZaklad"
+        type="text" />
+    </td>
+    <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.socialMedia.facebook }}</td>
+  </tr>
+  <tr>
+    <th>Telegram</th>
+    <td *ngIf="tryb != 'wyswietlenie'">
+      <input
+        [(ngModel)]="pracownikObj.socialMedia.telegram"
+        [ngModelOptions]="{ standalone: true }"
+        class="logInputZaklad"
+        type="text" />
+    </td>
+    <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.socialMedia.telegram }}</td>
+  </tr>
+  <tr>
+    <th>Instagram</th>
+    <td *ngIf="tryb != 'wyswietlenie'">
+      <input
+        [(ngModel)]="pracownikObj.socialMedia.instagram"
+        [ngModelOptions]="{ standalone: true }"
+        class="logInputZaklad"
+        type="text" />
+    </td>
+    <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.socialMedia.instagram }}</td>
+  </tr>
+  <tr>
+    <th>Twitter</th>
+    <td *ngIf="tryb != 'wyswietlenie'">
+      <input
+        [(ngModel)]="pracownikObj.socialMedia.twitter"
+        [ngModelOptions]="{ standalone: true }"
+        class="logInputZaklad"
+        type="text" />
+    </td>
+    <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.socialMedia.twitter }}</td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <th class="naglowki1form" colspan="2">Adres zamieszkania</th>
+  </tr>
+  <tr>
+    <th><label class="naglowki2form" for="wojewodztwo"> Województwo: </label></th>
+    <td *ngIf="tryb != 'wyswietlenie'">
+      <select
+        (click)="iloscKlikniec = 0"
+        [(ngModel)]="pracownikObj.adres.wojewodztwo"
+        [ngModelOptions]="{ standalone: true }"
+        class="logInputZaklad"
+        id="wojewodztwo">
+        <option value="dolnoslaskie">Dolnośląskie</option>
+        <option value="kujawsko-pomorskie">Kujawsko-pomorskie</option>
+        <option value="lubelskie">Lubelskie</option>
+        <option value="lubuskie">Lubuskie</option>
+        <option value="lodzkie">Łódzkie</option>
+        <option value="malopolskie">Małopolskie</option>
+        <option value="mazowieckie">Mazowieckie</option>
+        <option value="opolskie">Opolskie</option>
+        <option value="podkarpackie">Podkarpackie</option>
+        <option value="podlaskie">Podlaskie</option>
+        <option value="pomorskie">Pomorskie</option>
+        <option value="slaskie">Śląskie</option>
+        <option value="swietokrzyskie">Świętokrzyskie</option>
+        <option value="warminsko-mazurskie">Warmińsko-mazurskie</option>
+        <option value="wielkopolskie">Wielkopolskie</option>
+        <option value="zachodniopomorskie">Zachodniopomorskie</option>
+      </select>
+    </td>
+    <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.adres.wojewodztwo }}</td>
+  </tr>
+  <tr>
+    <th><label class="naglowki2form" for="miasto">Miasto:</label></th>
+    <td *ngIf="tryb != 'wyswietlenie'">
+      <input
+        (keydown)="iloscKlikniec = 0"
+        [(ngModel)]="pracownikObj.adres.miasto"
+        [ngModelOptions]="{ standalone: true }"
+        class="logInputZaklad"
+        id="miasto"
+        type="text" />
+    </td>
+    <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.adres.miasto }}</td>
+  </tr>
+  <tr>
+    <th><label class="naglowki2form" for="ulica">Ulica:</label></th>
+    <td *ngIf="tryb != 'wyswietlenie'">
+      <input
+        (keydown)="iloscKlikniec = 0"
+        [(ngModel)]="pracownikObj.adres.ulica"
+        [ngModelOptions]="{ standalone: true }"
+        class="logInputZaklad"
+        id="ulica"
+        type="text" />
+    </td>
+    <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.adres.ulica }}</td>
+  </tr>
+  <tr>
+    <th><label class="naglowki2form">Numer domu/lokalu:</label></th>
+    <td *ngIf="tryb != 'wyswietlenie'">
+      <input
+        (keydown)="iloscKlikniec = 0"
+        [(ngModel)]="pracownikObj.adres.nrDomu"
+        [ngModelOptions]="{ standalone: true }"
+        class="logInputZaklad"
+        style="width: 100px"
+        type="text" />
+
+      <span style="font-size: 25px">&nbsp;/&nbsp;</span>
+      <input
+        (keydown)="iloscKlikniec = 0"
+        [(ngModel)]="pracownikObj.adres.nrLokalu"
+        [ngModelOptions]="{ standalone: true }"
+        class="logInputZaklad"
+        style="width: 100px"
+        type="text" />
+    </td>
+    <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">
+      {{ pracownikObj.adres.nrDomu }}
+      <span *ngIf="pracownikObj.adres.nrLokalu.toString().length > 0" style="font-size: 25px">&nbsp;/&nbsp;</span>
+      {{ pracownikObj.adres.nrLokalu }}
+    </td>
+  </tr>
+  <tr>
+    <th><label class="naglowki2form">Kod pocztowy:</label></th>
+    <td *ngIf="tryb != 'wyswietlenie'">
+      <input
+        (keydown)="iloscKlikniec = 0"
+        [(ngModel)]="pracownikObj.adres.kodPocztowy1"
+        [ngModelOptions]="{ standalone: true }"
+        class="logInputZaklad"
+        maxlength="2"
+        style="width: 80px"
+        type="text" />
+      <span style="font-size: 25px">&nbsp;-&nbsp;</span>
+      <input
+        (keydown)="iloscKlikniec = 0"
+        [(ngModel)]="pracownikObj.adres.kodPocztowy2"
+        [ngModelOptions]="{ standalone: true }"
+        class="logInputZaklad"
+        maxlength="3"
+        style="width: 100px"
+        type="text" />
+    </td>
+    <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">
+      {{ pracownikObj.adres.kodPocztowy1 }}
+      <span style="font-size: 25px">&nbsp;-&nbsp;</span>
+      {{ pracownikObj.adres.kodPocztowy2 }}
+    </td>
+  </tr>
+</table>

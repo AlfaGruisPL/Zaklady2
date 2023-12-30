@@ -624,7 +624,8 @@ body {
 }
 
 //obracanie
-@-webkit-keyframes rotating /* Safari and Chrome */ {
+@-webkit-keyframes rotating /* Safari and Chrome */
+{
   from {
     -webkit-transform: rotate(0deg);
     -o-transform: rotate(0deg);
@@ -696,6 +697,11 @@ body {
 
 .domyslnyButton4 {
   background: #be7c00;
+}
+
+body .noPaddingTopBottom {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .domyslnyButtonAnuluj,

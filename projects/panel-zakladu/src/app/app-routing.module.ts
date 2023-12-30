@@ -1,172 +1,149 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import {
-  ResetHaslaPracownikowComponent
-} from "./panel-pracownika/poczatkowy-panel-pracownika/reset-hasla-pracownikow/reset-hasla-pracownikow.component";
-import {
-  PoczatkowyPanelPracownikaComponent
-} from "./panel-pracownika/poczatkowy-panel-pracownika/poczatkowy-panel-pracownika.component";
-import {
-  PanelLogowaniaPracownikowComponent
-} from "./panel-pracownika/poczatkowy-panel-pracownika/panel-logowania-pracownikow/panel-logowania-pracownikow.component";
-import {
-  PanelZarzadzaniaZaklademComponent
-} from "./panel-pracownika/panel-zarzadzania-zakladem/panel-zarzadzania-zakladem.component";
-import {
-  StronaStartowaPracownikaComponent
-} from "./panel-pracownika/panel-zarzadzania-zakladem/panele/strona-startowa-pracownika/strona-startowa-pracownika.component";
-import {
-  MojeKontoPracownikaComponent
-} from "./panel-pracownika/panel-zarzadzania-zakladem/panele/moje-konto-pracownika/moje-konto-pracownika.component";
-import {
-  PracownicyPracownikaComponent
-} from "./panel-pracownika/panel-zarzadzania-zakladem/panele/pracownicy-pracownika/pracownicy-pracownika.component";
-import {
-  MojZakladPracownikaComponent
-} from "./panel-pracownika/panel-zarzadzania-zakladem/panele/moj-zaklad-pracownika/moj-zaklad-pracownika.component";
-import {
-  RejestracjaZakladuComponent
-} from "./panel-pracownika/poczatkowy-panel-pracownika/rejestracja-zakladu/rejestracja-zakladu.component";
-import {
-  ListaKlientowPracownikComponent
-} from "./panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/lista-klientow-pracownik.component";
-import {
-  UslugaSmsPracownikaComponent
-} from "./panel-pracownika/panel-zarzadzania-zakladem/panele/usluga-sms-pracownika/usluga-sms-pracownika.component";
-import { UslugiPracownikaComponent } from "./panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/uslugi.component";
-import { ZalogowanyGuard } from "./straznicy/zalogowany.guard";
-import { reverseLoginGuard } from "./straznicy/reverse-login.guard";
-import {
-  RegisterCompleteComponent
-} from "./panel-pracownika/poczatkowy-panel-pracownika/rejestracja-zakladu/register-complete/register-complete.component";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { ResetHaslaPracownikowComponent } from './panel-pracownika/poczatkowy-panel-pracownika/reset-hasla-pracownikow/reset-hasla-pracownikow.component';
+import { PoczatkowyPanelPracownikaComponent } from './panel-pracownika/poczatkowy-panel-pracownika/poczatkowy-panel-pracownika.component';
+import { PanelLogowaniaPracownikowComponent } from './panel-pracownika/poczatkowy-panel-pracownika/panel-logowania-pracownikow/panel-logowania-pracownikow.component';
+import { PanelZarzadzaniaZaklademComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panel-zarzadzania-zakladem.component';
+import { StronaStartowaPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/strona-startowa-pracownika/strona-startowa-pracownika.component';
+import { MojeKontoPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moje-konto-pracownika/moje-konto-pracownika.component';
+import { MojZakladPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moj-zaklad-pracownika/moj-zaklad-pracownika.component';
+import { RejestracjaZakladuComponent } from './panel-pracownika/poczatkowy-panel-pracownika/rejestracja-zakladu/rejestracja-zakladu.component';
+import { ListaKlientowPracownikComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/lista-klientow-pracownik.component';
+import { UslugaSmsPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/usluga-sms-pracownika/usluga-sms-pracownika.component';
+import { UslugiPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/uslugi.component';
+import { ZalogowanyGuard } from './straznicy/zalogowany.guard';
+import { reverseLoginGuard } from './straznicy/reverse-login.guard';
+import { RegisterCompleteComponent } from './panel-pracownika/poczatkowy-panel-pracownika/rejestracja-zakladu/register-complete/register-complete.component';
 
 const zakladDzieci: Routes = [
   {
     canActivate: [reverseLoginGuard],
-    path: "logowanie",
-    component: PanelLogowaniaPracownikowComponent
+    path: 'logowanie',
+    component: PanelLogowaniaPracownikowComponent,
   },
   {
     canActivate: [reverseLoginGuard],
-    path: "reset",
-    component: ResetHaslaPracownikowComponent
+    path: 'reset',
+    component: ResetHaslaPracownikowComponent,
   },
   {
-    path: "rejestracja",
-    component: RejestracjaZakladuComponent
+    path: 'rejestracja',
+    component: RejestracjaZakladuComponent,
   },
   {
-    path: "registerComplete",
-    component: RegisterCompleteComponent
+    path: 'registerComplete',
+    component: RegisterCompleteComponent,
   },
   {
-    path: "",
-    redirectTo: "logowanie",
-    pathMatch: "full"
-  }
+    path: '',
+    redirectTo: 'logowanie',
+    pathMatch: 'full',
+  },
 ];
 const panelePracownika: Routes = [
   {
-    path: "stronaStartowa",
-    component: StronaStartowaPracownikaComponent
+    path: 'stronaStartowa',
+    component: StronaStartowaPracownikaComponent,
   },
   {
-    path: "mojeKonto",
-    component: MojeKontoPracownikaComponent
+    path: 'mojeKonto',
+    component: MojeKontoPracownikaComponent,
   },
   {
-    path: "zarejestrowaneWizyty",
+    path: 'zarejestrowaneWizyty',
     loadChildren: () =>
       import(
-        "./panel-pracownika/panel-zarzadzania-zakladem/panele/zarejestrowane-wizyty-pracownika/zarejestrowane-wizyty.module"
-        ).then(k => k.ZarejestrowaneWizytyModule)
+        './panel-pracownika/panel-zarzadzania-zakladem/panele/zarejestrowane-wizyty-pracownika/zarejestrowane-wizyty.module'
+      ).then(k => k.ZarejestrowaneWizytyModule),
   },
   {
-    path: "registerPage",
+    path: 'registerPage',
     loadChildren: () =>
-      import(
-        "./panel-pracownika/panel-zarzadzania-zakladem/panele/register-page/registerPage-router.module"
-        ).then(k => k.RegisterPageRouterModule)
+      import('./panel-pracownika/panel-zarzadzania-zakladem/panele/register-page/registerPage-router.module').then(
+        k => k.RegisterPageRouterModule
+      ),
   },
   {
-    path: "zarzadzaniePracownikami",
-    component: PracownicyPracownikaComponent
-  },
-  {
-    path: "podsumowanie",
+    path: 'zarzadzaniePracownikami',
     loadChildren: () =>
-      import("./panel-pracownika/panel-zarzadzania-zakladem/panele/podsumowanie/podsumowanie-router.module").then(
+      import('./panel-pracownika/panel-zarzadzania-zakladem/panele/employees/employees-router.module').then(
         k => k.routes
-      )
+      ),
+  },
+  {
+    path: 'podsumowanie',
+    loadChildren: () =>
+      import('./panel-pracownika/panel-zarzadzania-zakladem/panele/podsumowanie/podsumowanie-router.module').then(
+        k => k.routes
+      ),
   },
 
   {
-    path: "raporty",
+    path: 'raporty',
     loadChildren: () =>
-      import("./panel-pracownika/panel-zarzadzania-zakladem/panele/raporty/raporty-router.module").then(k => k.routes)
+      import('./panel-pracownika/panel-zarzadzania-zakladem/panele/raporty/raporty-router.module').then(k => k.routes),
   },
   {
-    path: "files",
+    path: 'files',
     loadChildren: () =>
-      import("./panel-pracownika/panel-zarzadzania-zakladem/panele/files/files-router.module").then(k => k.routes)
+      import('./panel-pracownika/panel-zarzadzania-zakladem/panele/files/files-router.module').then(k => k.routes),
   },
   {
-    path: "uslugi",
-    component: UslugiPracownikaComponent
+    path: 'uslugi',
+    component: UslugiPracownikaComponent,
   },
   {
-    path: "mojZaklad",
-    component: MojZakladPracownikaComponent
+    path: 'mojZaklad',
+    component: MojZakladPracownikaComponent,
   },
   {
-    path: "platnosci",
+    path: 'platnosci',
     loadChildren: () =>
       import(
-        "./panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/platnosciPracownika.module"
-        ).then(k => k.PlatnosciPracownikaModule)
+        './panel-pracownika/panel-zarzadzania-zakladem/panele/platnosci-pracownika/platnosciPracownika.module'
+      ).then(k => k.PlatnosciPracownikaModule),
   },
   {
-    path: "sms",
-    component: UslugaSmsPracownikaComponent
+    path: 'sms',
+    component: UslugaSmsPracownikaComponent,
   },
   {
-    path: "harmonogram",
+    path: 'harmonogram',
     loadChildren: () =>
-      import("./panel-pracownika/panel-zarzadzania-zakladem/panele/harmonogram-pracownika/harmonogram.module").then(
+      import('./panel-pracownika/panel-zarzadzania-zakladem/panele/harmonogram-pracownika/harmonogram.module').then(
         k => k.HarmonogramModule
-      )
+      ),
   },
   {
-    path: "listaKlientow",
-    component: ListaKlientowPracownikComponent
+    path: 'listaKlientow',
+    component: ListaKlientowPracownikComponent,
   },
   {
-    path: "**",
-    redirectTo: "harmonogram",
-    pathMatch: "full"
-  }
+    path: '**',
+    redirectTo: 'harmonogram',
+    pathMatch: 'full',
+  },
 ];
 
 const routes: Routes = [
   {
-    path: "zaklad",
+    path: 'zaklad',
     component: PoczatkowyPanelPracownikaComponent,
-    children: zakladDzieci
+    children: zakladDzieci,
   },
   {
-    path: "panelPracownika",
+    path: 'panelPracownika',
     component: PanelZarzadzaniaZaklademComponent,
     children: panelePracownika,
-    canActivate: [ZalogowanyGuard]
+    canActivate: [ZalogowanyGuard],
   },
-  { path: "", redirectTo: "zaklad", pathMatch: "full" }
+  { path: '', redirectTo: 'zaklad', pathMatch: 'full' },
 
   // {path: '', redirectTo: 'zaklad', pathMatch: 'full', canActivate: [IdentyfikatorGuard]},
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { useHash: true })],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

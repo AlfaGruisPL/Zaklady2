@@ -1,0 +1,20 @@
+.strzalka {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  // border: 2px solid rgba(162, 0, 0, 0.67);
+  z-index: 99900;
+  opacity: 1;
+  font-size: 32px;
+  transition: 300ms;
+  color: rgba(0, 0, 0, 0.62);
+
+  &:hover {
+    cursor: pointer;
+    transform: perspective(15px) scale(1.1);
+  }
+
+  .strz {
+    transition: 0.5s ease-out;
+  }
+}

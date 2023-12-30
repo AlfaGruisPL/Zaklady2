@@ -30,7 +30,6 @@ import { UslugaSmsPracownikaModule } from './panel-pracownika/panel-zarzadzania-
 import { UslugiPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/uslugi.component';
 import { UslugiPrzypisaniPracownicyComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/uslugi-przypisani-pracownicy/uslugi-przypisani-pracownicy.component';
 import { RejestracjaUdanaComponent } from './panel-pracownika/poczatkowy-panel-pracownika/rejestracja-zakladu/rejestracja-udana/rejestracja-udana.component';
-import { PracownicyModule } from './panel-pracownika/panel-zarzadzania-zakladem/panele/pracownicy-pracownika/pracownicy.module';
 import { RureczkiModule } from './rureczki/rureczki.module';
 import { ListaKlientowModule } from './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/lista-klientow.module';
 import { SharedModule } from './shared.module';
@@ -52,6 +51,9 @@ import { MenuPracownikComponent } from './panel-pracownika/panel-zarzadzania-zak
 import { HamburgerButtonComponent } from '../../../reklamowa-strona-zakladu/src/app/one-page-strona/komponenty/banner/hamburger-button/hamburger-button.component';
 import { HamburgerMenuComponent } from './panel-pracownika/panel-zarzadzania-zakladem/komponenty/hamburger-menu/hamburger-menu.component';
 import { FooterNavButtonsComponent } from './panel-pracownika/panel-zarzadzania-zakladem/komponenty/stopka/footer-nav-buttons/footer-nav-buttons.component';
+import { FileSizePipe } from './rureczki/file-size.pipe';
+import { TableComponent } from './komponets/table/table.component';
+import { TemplateIdDirective } from './komponets/table/template-id.directive';
 
 registerLocaleData(localePl, 'pl-PL');
 
@@ -91,7 +93,6 @@ registerLocaleData(localePl, 'pl-PL');
     FontAwesomeModule,
     NgbDropdownModule,
     TippyDirective,
-    PracownicyModule,
     UiSwitchModule.forRoot({
       size: 'small',
       color: 'rgb(16 67 207)',
@@ -123,6 +124,9 @@ registerLocaleData(localePl, 'pl-PL');
     HamburgerButtonComponent,
     HamburgerMenuComponent,
     FooterNavButtonsComponent,
+    FileSizePipe,
+    TableComponent,
+    TemplateIdDirective,
   ],
   providers: [
     NgbDropdown,

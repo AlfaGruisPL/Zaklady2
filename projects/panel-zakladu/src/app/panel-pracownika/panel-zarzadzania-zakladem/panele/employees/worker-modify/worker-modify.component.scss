@@ -1,5 +1,35 @@
+:host {
+  position: relative;
+  display: block;
+}
+
+.leftRightContainer {
+  display: flex;
+  padding-left: 1vw;
+  padding-right: 1vw;
+
+  .leftContainer {
+    flex-grow: 10;
+
+    ::ng-deep table,
+    table {
+      tr {
+        th,
+        th label {
+          padding-right: 10px;
+        }
+      }
+    }
+  }
+
+  .rightContainer {
+    flex-grow: 1;
+  }
+}
+
 .modal-body {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   @media (max-width: 1202px) {
     flex-wrap: wrap;
@@ -37,4 +67,12 @@
   max-width: 190px;
   height: min-content;
   width: max-content;
+}
+
+.tableDiv {
+  display: flex;
+}
+
+.modal-footer {
+  margin-top: 20px;
 }

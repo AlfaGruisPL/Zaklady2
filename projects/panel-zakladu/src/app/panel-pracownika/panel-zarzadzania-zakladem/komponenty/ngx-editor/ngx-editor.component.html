@@ -1,0 +1,8 @@
+<div class="NgxEditor__Wrapper">
+  <ngx-editor-menu [editor]="editor" [toolbar]="registerPage_.toolbar"></ngx-editor-menu>
+  <ngx-editor
+    (ngModelChange)="valueChange.emit($event)"
+    [editor]="editor"
+    [ngModel]="value"
+    [placeholder]="'Wpisz tu...'"></ngx-editor>
+</div>

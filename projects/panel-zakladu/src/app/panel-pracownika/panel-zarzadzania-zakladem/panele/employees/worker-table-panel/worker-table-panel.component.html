@@ -1,0 +1,11 @@
+<app-workers-table-filter></app-workers-table-filter>
+
+<div class="Divtabelka">
+  <span class="iloscPracownikow"
+    >Pracownicy <b>{{ activeWorker() }}</b> na <b>{{ workersTable_.limitPracownikow }}</b></span
+  >
+  <app-workers-table></app-workers-table>
+</div>
+<div class="divNaPrzycisk">
+  <button (click)="workersTable_.dodajPracownika()" class="DodajPracownikaButton">Dodaj pracownika</button>
+</div>

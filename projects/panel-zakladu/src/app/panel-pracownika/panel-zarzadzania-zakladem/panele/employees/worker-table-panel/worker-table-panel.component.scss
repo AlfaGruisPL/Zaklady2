@@ -1,0 +1,31 @@
+.Divtabelka {
+  width: 100%;
+  height: min-content;
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  position: relative;
+  flex-direction: column;
+
+  .iloscPracownikow {
+    padding-left: 10px;
+    font-size: 19px;
+    color: #0012ff;
+  }
+
+  .tablica {
+    margin-top: 0;
+  }
+}
+
+.divNaPrzycisk {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .DodajPracownikaButton {
+    position: relative;
+    text-align: center;
+  }
+}

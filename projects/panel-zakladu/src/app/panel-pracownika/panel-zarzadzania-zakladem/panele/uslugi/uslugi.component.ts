@@ -7,6 +7,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UslugiPrzypisaniPracownicyComponent } from './uslugi-przypisani-pracownicy/uslugi-przypisani-pracownicy.component';
 import { Pracownik } from '../../../../klasy/panelPracownika/pracownicy/pracownik';
 import { KomunikatyService } from '../../../../serwisy/komunikaty.service';
+import { debounceTime, distinctUntilChanged, map, Observable, OperatorFunction } from 'rxjs';
 
 @Component({
   selector: 'app-uslugi',
@@ -17,6 +18,7 @@ export class UslugiPracownikaComponent implements OnInit {
   public listaUslug: Array<Usluga> = [new Usluga()];
   public pracownicy: Array<Pracownik> = [];
   public ladoowanieDanych = false;
+  model = '';
 
   constructor(
     public fontAwesome: FontAwesomeService,
@@ -81,13 +83,35 @@ export class UslugiPracownikaComponent implements OnInit {
     });
   }
 
+  search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) =>
+    text$.pipe(
+      debounceTime(50),
+      distinctUntilChanged(),
+      map(term => {
+        const tmp: Array<any> = [];
+        console.log(this.listaUslug);
+        this.listaUslug.forEach(service => {
+          if (service.category.length > 0) {
+            tmp.push(service.category);
+          }
+        });
+        console.log(123);
+        return term === '' ? [] : tmp.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10);
+      })
+    );
+
   private pobieranieDanych() {
     this.ladoowanieDanych = true;
     this.listonosz
       .pobierz(Drzwi.uslugiPanel)
       .then(dane => {
         this.listaUslug = [];
-        Object.assign(this.listaUslug, dane['uslugi']);
+        dane['uslugi'].forEach((k: any) => {
+          const k2 = new Usluga();
+          Object.assign(k2, k);
+          this.listaUslug.push(k);
+        });
+        // Object.assign(this.listaUslug, dane['uslugi']);
         this.pracownicy = [];
         Object.assign(this.pracownicy, dane['pracownicy']);
       })

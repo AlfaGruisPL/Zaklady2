@@ -8,9 +8,9 @@ import { interval, Subscription } from 'rxjs';
   styleUrls: ['./page-not-found.component.scss'],
 })
 export class PageNotFoundComponent implements OnInit, OnDestroy {
-  constructor(private router: Router) {}
-
   private IntervalCoSekunde: Subscription | null = null;
+
+  constructor(private router: Router) {}
 
   ngOnInit() {
     this.IntervalCoSekunde = interval(2000).subscribe(() => {

@@ -7,23 +7,23 @@ import {
   Output,
   QueryList,
   TemplateRef,
-  ViewEncapsulation
-} from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { TemplateIdDirective } from "./template-id.directive";
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { TablePaginationComponent } from "../table-pagination/table-pagination.component";
-import { NgbPagination } from "@ng-bootstrap/ng-bootstrap";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { BehaviorSubject, debounceTime, skip } from "rxjs";
+  ViewEncapsulation,
+} from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { TemplateIdDirective } from './template-id.directive';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TablePaginationComponent } from '../table-pagination/table-pagination.component';
+import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BehaviorSubject, debounceTime, skip } from 'rxjs';
 
 @Component({
-  selector: "app-table",
+  selector: 'app-table',
   standalone: true,
   imports: [CommonModule, FontAwesomeModule, TablePaginationComponent, NgbPagination, ReactiveFormsModule, FormsModule],
-  templateUrl: "./table.component.html",
-  styleUrls: ["./table.component.scss"],
-  encapsulation: ViewEncapsulation.None
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 
 /**
@@ -43,6 +43,8 @@ import { BehaviorSubject, debounceTime, skip } from "rxjs";
  * @Inputs **collectionSize**  - suma wszystkich elementów jakie są lub mogą być dostępne
  * @Inputs **pageSize** - ilość elementów na pojedyńczej stronie (domyślnie 5)
  * @Inputs **loading**  -
+ * @Inputs paggiantionMaxElementArray - Dostępne opcje do wyboru w formie tablicy dotyczące ilości wyświetlanych elementów na stronie.
+ *
  * @Inputs **paggiantion**  - czy ma być włączona opcja przewiajnia (domyślnie true)
  * @Inputs **data** - dane
  * @Inputs **title** - tytuł tabeli
@@ -56,7 +58,7 @@ export class TableComponent implements AfterContentInit {
   tfoot: TemplateRef<any> | any;
   subTableHead: TemplateRef<any> | any;
   subTableBody: TemplateRef<any> | any;
-  searchValue = new BehaviorSubject("");
+  searchValue = new BehaviorSubject('');
   @ContentChildren(TemplateIdDirective)
   templates: QueryList<TemplateIdDirective> | undefined;
   @Output() changeData = new EventEmitter();
@@ -64,15 +66,15 @@ export class TableComponent implements AfterContentInit {
   @Input() pageSize = 5;
   @Input() loading = false;
   @Input({ required: true }) data: Array<any> = [];
-  @Input() title = "";
+  @Input() title = '';
   @Input() search = false;
   @Input() paggiantion = true;
   @Input() displaySum = false;
-
+  @Input()  paggiantionMaxElementArray = [5, 10, 15, 20]
   @Input() async = true;
   //test
-  @Input() subTableOpenVariable = "open";
-  @Input() subTableVariable = "probyPlatnosci";
+  @Input() subTableOpenVariable = 'open';
+  @Input() subTableVariable = 'probyPlatnosci';
   @Input() page = 1;
   @Output() pageChange = new EventEmitter();
   @Output() changeRowsOnPage = new EventEmitter();
@@ -93,19 +95,19 @@ export class TableComponent implements AfterContentInit {
   ngAfterContentInit() {
     this.templates?.forEach((child: TemplateIdDirective) => {
       switch (child.id) {
-        case "thead":
+        case 'thead':
           this.thead = child.template;
           break;
-        case "tbody":
+        case 'tbody':
           this.tbody = child.template;
           break;
-        case "tfoot":
+        case 'tfoot':
           this.tfoot = child.template;
           break;
-        case "subTableHead":
+        case 'subTableHead':
           this.subTableHead = child.template;
           break;
-        case "subTableBody":
+        case 'subTableBody':
           this.subTableBody = child.template;
           break;
       }
@@ -144,7 +146,6 @@ export class TableComponent implements AfterContentInit {
 
   emptyRowCalcNoAsync() {
     let method1 = this.pageSize - this.data.slice((this.page - 1) * this.pageSize, this.page * this.pageSize).length;
-    console.log(method1);
     if (method1 >= 0) {
       return method1;
       //  return this.data.slice(0, this.pageSize).length - this.pageSize;
@@ -154,7 +155,7 @@ export class TableComponent implements AfterContentInit {
 
   calcEmptyCells(cells: HTMLCollectionOf<HTMLTableCellElement>) {
     const array = Array.from(cells).filter(cell => {
-      return !cell.classList.contains("NotInMobile");
+      return !cell.classList.contains('NotInMobile');
     });
 
     return array.length;

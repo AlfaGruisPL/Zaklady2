@@ -1,16 +1,16 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { Pracownik } from '../../../../../klasy/panelPracownika/pracownicy/pracownik';
-import { Drzwi } from '../../../../../enum/drzwi';
-import { BledyNumery } from '../../../../../enum/bledy-numery';
-import { ListonoszService } from '../../../../../serwisy/listonosz.service';
-import { KomunikatyService } from '../../../../../serwisy/komunikaty.service';
-import { DodawanieIModyfikacjaPracownikaComponent } from '../okienka/dodawanie-imodyfikacja-pracownika/dodawanie-imodyfikacja-pracownika.component';
-import { CzyNaprawdeUsunacComponent } from '../okienka/czy-naprawde-usunac/czy-naprawde-usunac.component';
+import { Pracownik } from '../../../../../../klasy/panelPracownika/pracownicy/pracownik';
+import { Drzwi } from '../../../../../../enum/drzwi';
+import { BledyNumery } from '../../../../../../enum/bledy-numery';
+import { ListonoszService } from '../../../../../../serwisy/listonosz.service';
+import { KomunikatyService } from '../../../../../../serwisy/komunikaty.service';
+import { CzyNaprawdeUsunacComponent } from '../../okienka/czy-naprawde-usunac/czy-naprawde-usunac.component';
 import { Subscription } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { KomunikatUniwersalnyService } from '../../../../../komponets/komunikat-uniwersalny/komunikat-uniwersalny.service';
-import { PodreczneDaneService } from '../../../../../serwisy/podreczne-dane.service';
-import { Info } from '../../../../../enum/info';
+import { KomunikatUniwersalnyService } from '../../../../../../komponets/komunikat-uniwersalny/komunikat-uniwersalny.service';
+import { PodreczneDaneService } from '../../../../../../serwisy/podreczne-dane.service';
+import { Info } from '../../../../../../enum/info';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -27,7 +27,8 @@ export class WorkersTableService implements OnDestroy {
     private UniwersalnyKomunikat_: KomunikatUniwersalnyService,
     private modalService: NgbModal,
     private komunikaty: KomunikatyService,
-    private podreczneDane: PodreczneDaneService
+    private podreczneDane: PodreczneDaneService,
+    private router: Router
   ) {}
 
   public pobierzListePracownikow() {
@@ -37,9 +38,7 @@ export class WorkersTableService implements OnDestroy {
         this.ListaPracownikow = [];
         pobrane.dane.forEach(pracownik => {
           const pracownikObj = new Pracownik();
-
           Object.assign(pracownikObj, pracownik);
-
           this.ListaPracownikow.push(pracownikObj);
         });
 
@@ -92,18 +91,7 @@ export class WorkersTableService implements OnDestroy {
       this.komunikaty.komunikatInfo(Info.maksymalnaIloscPracownikow);
       return;
     }
-    const okienko = this.modalService.open(DodawanieIModyfikacjaPracownikaComponent, {
-      backdrop: 'static',
-      size: 'xl',
-    });
-    okienko.componentInstance.tryb = 'dodawanie';
-
-    this.sub1 = okienko.closed.subscribe(zamkniete => {
-      if (zamkniete == 'Zapisanie udane') {
-        this.pobierzListePracownikow();
-      }
-      this.sub1?.unsubscribe();
-    });
+    this.router.navigate([`panelPracownika/zarzadzaniePracownikami/0/dodawanie`]);
   }
 
   public zarchiwizujUzytkownika(id: number) {
@@ -174,27 +162,11 @@ export class WorkersTableService implements OnDestroy {
   }
 
   public zmodyfikujUzytkownika(id: number) {
-    const okienko = this.modalService.open(DodawanieIModyfikacjaPracownikaComponent, {
-      backdrop: 'static',
-      size: 'xl',
-    });
-    okienko.componentInstance.tryb = 'modyfikacja';
-    okienko.componentInstance.idUzytkownika = id;
-    okienko.componentInstance.pobierzPracownika();
-    this.sub2 = okienko.closed.subscribe(zamkniete => {
-      if (zamkniete == 'Zmodyfikowanie udane') {
-        this.pobierzListePracownikow();
-        this.podreczneDane.wygenerujNowaLiczbeLosowaDlaZdjec();
-      }
-      this.sub2?.unsubscribe();
-    });
+    this.router.navigate([`panelPracownika/zarzadzaniePracownikami/${id}/modyfikacja`]);
   }
 
   public wyswietlUzytkownika(id: number) {
-    const okienko = this.modalService.open(DodawanieIModyfikacjaPracownikaComponent, { size: 'xl' });
-    okienko.componentInstance.tryb = 'wyswietlenie';
-    okienko.componentInstance.idUzytkownika = id;
-    okienko.componentInstance.pobierzPracownika();
+    this.router.navigate([`panelPracownika/zarzadzaniePracownikami/${id}/wyswietlenie`]);
   }
 
   public usunPracownika(pracownikId: number) {

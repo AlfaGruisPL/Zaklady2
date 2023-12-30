@@ -8,33 +8,27 @@ import { environment } from "../../../../../../environments/environment";
 import { UploadFileComponent } from "../upload-file/upload-file.component";
 import { ListonoszService } from "../../../../../serwisy/listonosz.service";
 import { Drzwi } from "../../../../../enum/drzwi";
+import { FileSizePipe } from "../../../../../rureczki/file-size.pipe";
 
 @Component({
-  selector: "app-files-table",
+  selector: 'app-files-table',
   standalone: true,
-  imports: [
-    TableComponent,
-    KwotaPipe,
-    TemplateIdDirective,
-    DatePipe,
-    UploadFileComponent
-  ],
-  templateUrl: "./files-table.component.html",
-  styleUrl: "./files-table.component.scss"
+  imports: [TableComponent, KwotaPipe, TemplateIdDirective, DatePipe, UploadFileComponent, FileSizePipe],
+  templateUrl: './files-table.component.html',
+  styleUrl: './files-table.component.scss',
 })
 export class FilesTableComponent {
   env = environment;
 
-  constructor(public files_: FilesService, public http_: ListonoszService) {
-  }
+  constructor(public files_: FilesService, public http_: ListonoszService) {}
 
   deleteImage(id: number) {
-    this.http_.usun(Drzwi.deleteImage + "/" + id).then(dane => {
-
-    }).catch(() => {
-
-    }).finally(() => {
-      this.files_.FetchDataFromDB();
-    });
+    this.http_
+      .usun(Drzwi.deleteImage + '/' + id)
+      .then(dane => {})
+      .catch(() => {})
+      .finally(() => {
+        this.files_.FetchDataFromDB();
+      });
   }
 }

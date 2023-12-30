@@ -1,25 +1,43 @@
-import { Component, Input, ViewChild } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Pracownik } from '../../../../../../klasy/panelPracownika/pracownicy/pracownik';
-import { ListonoszService } from '../../../../../../serwisy/listonosz.service';
-import { PracownikDTO } from '../../../../../../klasy/panelPracownika/pracownicy/pracownik-dto';
-import { Drzwi } from '../../../../../../enum/drzwi';
-import { KomunikatyService } from '../../../../../../serwisy/komunikaty.service';
-import { BledyNumery } from '../../../../../../enum/bledy-numery';
+import { Component, ViewChild } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MojeKontoZdjecieProfiloweComponent } from '../../moje-konto-pracownika/moje-konto-zdjecie-profilowe/moje-konto-zdjecie-profilowe.component';
+import { NgIf } from '@angular/common';
+import { UiSwitchModule } from 'ngx-ui-switch';
+import { Pracownik } from '../../../../../klasy/panelPracownika/pracownicy/pracownik';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { environment } from '../../../../../../../environments/environment';
-import { MojeKontoZdjecieProfiloweComponent } from '../../../moje-konto-pracownika/moje-konto-zdjecie-profilowe/moje-konto-zdjecie-profilowe.component';
-import { ErrorAnalyzerService } from '../../../../../../serwisy/error-analyzer.service';
+import { ListonoszService } from '../../../../../serwisy/listonosz.service';
+import { KomunikatyService } from '../../../../../serwisy/komunikaty.service';
+import { ErrorAnalyzerService } from '../../../../../serwisy/error-analyzer.service';
+import { Drzwi } from '../../../../../enum/drzwi';
+import { BledyNumery } from '../../../../../enum/bledy-numery';
+import { PracownikDTO } from '../../../../../klasy/panelPracownika/pracownicy/pracownik-dto';
+import { environment } from 'projects/panel-zakladu/src/environments/environment';
+import { ActivatedRoute } from '@angular/router';
+import { BackArrowComponent } from '../../../komponenty/back-arrow/back-arrow.component';
+import { NgxEditorComponent } from '../../../komponenty/ngx-editor/ngx-editor.component';
+import { WorkerModifyTable1Component } from './worker-modify-table1/worker-modify-table1.component';
+import { RureczkiModule } from '../../../../../rureczki/rureczki.module';
 
 @Component({
-  selector: 'app-dodawanie-imodyfikacja-pracownika',
-  templateUrl: './dodawanie-imodyfikacja-pracownika.component.html',
-  styleUrls: ['./dodawanie-imodyfikacja-pracownika.component.scss'],
+  selector: 'app-worker-modify',
+  standalone: true,
+  imports: [
+    FormsModule,
+    MojeKontoZdjecieProfiloweComponent,
+    NgIf,
+    UiSwitchModule,
+    BackArrowComponent,
+    NgxEditorComponent,
+    WorkerModifyTable1Component,
+    RureczkiModule,
+  ],
+  templateUrl: './worker-modify.component.html',
+  styleUrl: './worker-modify.component.scss',
 })
-export class DodawanieIModyfikacjaPracownikaComponent {
+export class WorkerModifyComponent {
   @ViewChild(MojeKontoZdjecieProfiloweComponent) ZdjecieProfilowe: MojeKontoZdjecieProfiloweComponent | undefined;
-  @Input() tryb: string = '';
-  @Input() idUzytkownika: number = 0;
+  tryb: string = '';
+  idUzytkownika: number = 0;
   public iloscKlikniec = 0;
   public pracownikObj = new Pracownik();
   public pracownikDodany: boolean = true;
@@ -32,12 +50,20 @@ export class DodawanieIModyfikacjaPracownikaComponent {
   protected readonly environment = environment;
 
   constructor(
-    public activeModal: NgbActiveModal,
     public listonosz: ListonoszService,
     private sanitizer: DomSanitizer,
     public komunikaty: KomunikatyService,
-    private error_: ErrorAnalyzerService
+    private error_: ErrorAnalyzerService,
+    private Router: ActivatedRoute
   ) {}
+
+  ngOnInit() {
+    this.Router.params.subscribe(k => {
+      this.idUzytkownika = k['id'];
+      this.tryb = k['mode'];
+      this.pobierzPracownika();
+    });
+  }
 
   pobierzPracownika() {
     this.listonosz
@@ -70,7 +96,6 @@ export class DodawanieIModyfikacjaPracownikaComponent {
           this.pracownikDodany = true;
           this.komunikaty.dodaniePracownikaUdane();
           await this.ZdjecieProfilowe?.wyslijZdjecie(this.idUzytkownika);
-          this.activeModal.close('Zapisanie udane');
         })
         .catch(error => {
           this.pracownikDodany = false;
@@ -90,11 +115,11 @@ export class DodawanieIModyfikacjaPracownikaComponent {
       this.blokowaniePrzycisku = true;
       this.listonosz
         .aktualizuj(Drzwi.pracownik + this.idUzytkownika, pracownikObjDTO)
-        .then(async dodano => {
+        .then(async userFromPost => {
           this.pracownikZmodyfikowany = true;
           this.komunikaty.modyfikowaniePracownikaUdane();
           await this.ZdjecieProfilowe?.wyslijZdjecie(this.idUzytkownika);
-          this.activeModal.close('Zmodyfikowanie udane');
+          Object.assign(this.pracownikObj, userFromPost);
         })
         .catch(nieudano => {
           this.pracownikZmodyfikowany = false;
