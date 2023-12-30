@@ -8,6 +8,7 @@ import { UslugiPrzypisaniPracownicyComponent } from './uslugi-przypisani-pracown
 import { Pracownik } from '../../../../klasy/panelPracownika/pracownicy/pracownik';
 import { KomunikatyService } from '../../../../serwisy/komunikaty.service';
 import { debounceTime, distinctUntilChanged, map, Observable, OperatorFunction } from 'rxjs';
+import { faBook, faNoteSticky } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-uslugi',
@@ -19,6 +20,8 @@ export class UslugiPracownikaComponent implements OnInit {
   public pracownicy: Array<Pracownik> = [];
   public ladoowanieDanych = false;
   model = '';
+  protected readonly faNoteSticky = faNoteSticky;
+  protected readonly faBook = faBook;
 
   constructor(
     public fontAwesome: FontAwesomeService,
@@ -60,14 +63,16 @@ export class UslugiPracownikaComponent implements OnInit {
     });
     this.listonosz
       .wyslij(Drzwi.uslugiPanel, this.listaUslug)
-      .then(k => {
+      .then(dane => {
+        this.listaUslug = [];
+        Object.assign(this.listaUslug, dane['uslugi']);
         this.komunikat.modyfikacjaUdana();
       })
       .catch(k => {
         this.komunikat.modyfikacjaNieUdana();
       })
       .finally(() => {
-        this.pobieranieDanych();
+        // this.pobieranieDanych();
       });
   }
 
@@ -91,7 +96,7 @@ export class UslugiPracownikaComponent implements OnInit {
         const tmp: Array<any> = [];
         console.log(this.listaUslug);
         this.listaUslug.forEach(service => {
-          if (service.category.length > 0) {
+          if (service.category !== undefined) {
             tmp.push(service.category);
           }
         });

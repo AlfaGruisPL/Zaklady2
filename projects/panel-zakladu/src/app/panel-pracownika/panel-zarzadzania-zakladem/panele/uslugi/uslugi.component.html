@@ -20,7 +20,7 @@
             <th class="thClass">Cena(zł)</th>
             <th class="thClass">Czas (minuty)</th>
             <th class="thClass">Kategoria</th>
-            <th class="thClass">Pracownicy</th>
+            <th class="thClass" colspan="2">Opcje</th>
           </tr>
           <ng-container *ngFor="let usluga of listaUslug; let index = index">
             <tr>
@@ -31,14 +31,12 @@
               <td>
                 <input
                   [(ngModel)]="usluga.nazwa"
-                  [disabled]="true"
                   [ngModelOptions]="{ standalone: true }"
                   class="logInputZaklad input1" />
               </td>
               <td>
                 <input
                   [(ngModel)]="usluga.cena"
-                  [disabled]="true"
                   [ngModelOptions]="{ standalone: true }"
                   class="logInputZaklad input2"
                   min="0.00"
@@ -48,15 +46,13 @@
               <td>
                 <input
                   [(ngModel)]="usluga.czas"
-                  [disabled]="true"
                   [ngModelOptions]="{ standalone: true }"
                   class="logInputZaklad input3"
                   type="number" />
               </td>
               <td class="pracownicyTd">
                 <input
-                  [(ngModel)]="model"
-                  [disabled]="true"
+                  [(ngModel)]="usluga.category"
                   [ngModelOptions]="{ standalone: true }"
                   [ngbTypeahead]="search"
                   class="logInputZaklad categorieInput"
@@ -70,6 +66,9 @@
                   class="iconkaUser"></fa-icon>
                 <span class="counter">{{ usluga.pracownicy.length }}</span>
               </td>
+              <td>
+                <fa-icon (click)="modyfikacjaPracownikow(usluga)" [icon]="faBook" class="descritpion"></fa-icon>
+              </td>
             </tr>
           </ng-container>
         </table>
@@ -80,29 +79,3 @@
     </div>
   </div>
 </form>
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-<br /><br /><br />
-<app-table
-  [async]="false"
-  [collectionSize]="listaUslug.length"
-  [data]="listaUslug"
-  [pageSize]="15"
-  [paggiantion]="true"
-  [title]="'Lista plików zakładu:'">
-  <ng-template TemplateId="thead">
-    <th>Nr.</th>
-    <th>Usługa</th>
-    <th>Cena(zł)</th>
-    <th>Czas (minuty)</th>
-    <th>Kategoria</th>
-    <th>Pracownicy</th>
-  </ng-template>
-  <ng-template TemplateId="tbody" let-index="index" let-obj>
-    <td>{{ index }}</td>
-    <td>{{ obj.nazwa }}</td>
-    <td>{{ obj.cena }}</td>
-    <td>{{ obj.czas }}</td>
-    <td>{{ obj.kategoria }}</td>
-    <td>{{ obj.pracownicy.length }}</td>
-  </ng-template>
-</app-table>

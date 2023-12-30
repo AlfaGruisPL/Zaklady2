@@ -8,6 +8,17 @@
   }
 }
 
+.descritpion {
+  font-size: 20px;
+  color: #0258b4;
+
+  margin-left: 14px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .input1 {
   width: 600px;
 }
