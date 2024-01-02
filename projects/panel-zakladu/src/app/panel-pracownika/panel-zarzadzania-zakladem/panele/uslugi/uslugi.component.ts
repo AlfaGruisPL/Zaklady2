@@ -7,8 +7,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UslugiPrzypisaniPracownicyComponent } from './uslugi-przypisani-pracownicy/uslugi-przypisani-pracownicy.component';
 import { Pracownik } from '../../../../klasy/panelPracownika/pracownicy/pracownik';
 import { KomunikatyService } from '../../../../serwisy/komunikaty.service';
-import { debounceTime, distinctUntilChanged, map, Observable, OperatorFunction } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map, Observable, OperatorFunction, take } from 'rxjs';
 import { faBook, faNoteSticky } from '@fortawesome/free-solid-svg-icons';
+import { ServicesDescriptionComponent } from './services-description/services-description.component';
+import { KomunikatUniwersalnyService } from '../../../../komponets/komunikat-uniwersalny/komunikat-uniwersalny.service';
 
 @Component({
   selector: 'app-uslugi',
@@ -27,6 +29,7 @@ export class UslugiPracownikaComponent implements OnInit {
     public fontAwesome: FontAwesomeService,
     private listonosz: ListonoszService,
     private modal: NgbModal,
+    private defaultPrompt: KomunikatUniwersalnyService,
     public komunikat: KomunikatyService
   ) {}
 
@@ -56,6 +59,13 @@ export class UslugiPracownikaComponent implements OnInit {
     okno.componentInstance.pracownicy = this.pracownicy;
   }
 
+  public modifyDescription(service: Usluga) {
+    const okno = this.modal.open(ServicesDescriptionComponent, {
+      size: 'lg',
+    });
+    okno.componentInstance.usluga = service;
+  }
+
   public zapisz() {
     //usunięcie pustych usług
     this.listaUslug = this.listaUslug.filter(usluga => {
@@ -64,8 +74,7 @@ export class UslugiPracownikaComponent implements OnInit {
     this.listonosz
       .wyslij(Drzwi.uslugiPanel, this.listaUslug)
       .then(dane => {
-        this.listaUslug = [];
-        Object.assign(this.listaUslug, dane['uslugi']);
+        this.saveFetchDataToVariable(dane);
         this.komunikat.modyfikacjaUdana();
       })
       .catch(k => {
@@ -77,15 +86,22 @@ export class UslugiPracownikaComponent implements OnInit {
   }
 
   public usunWiersz(index: number) {
-    let k = 0;
-    this.listaUslug = this.listaUslug.filter(usluga => {
-      if (k == index) {
-        k++;
-        return false;
-      }
-      k++;
-      return true;
-    });
+    const prompt = this.defaultPrompt.open('Czy na pewno chcesz usunąć usługę?', '');
+    prompt.addButton('Nie', { defaultNo: true });
+    prompt
+      .addButton('Tak', { defaultYes: true })
+      .pipe(take(1))
+      .subscribe(() => {
+        let k = 0;
+        this.listaUslug = this.listaUslug.filter(usluga => {
+          if (k == index) {
+            k++;
+            return false;
+          }
+          k++;
+          return true;
+        });
+      });
   }
 
   search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) =>
@@ -110,12 +126,7 @@ export class UslugiPracownikaComponent implements OnInit {
     this.listonosz
       .pobierz(Drzwi.uslugiPanel)
       .then(dane => {
-        this.listaUslug = [];
-        dane['uslugi'].forEach((k: any) => {
-          const k2 = new Usluga();
-          Object.assign(k2, k);
-          this.listaUslug.push(k);
-        });
+        this.saveFetchDataToVariable(dane);
         // Object.assign(this.listaUslug, dane['uslugi']);
         this.pracownicy = [];
         Object.assign(this.pracownicy, dane['pracownicy']);
@@ -123,5 +134,14 @@ export class UslugiPracownikaComponent implements OnInit {
       .finally(() => {
         this.ladoowanieDanych = false;
       });
+  }
+
+  private saveFetchDataToVariable(data: any) {
+    this.listaUslug = [];
+    data['uslugi'].forEach((k: any) => {
+      const k2 = new Usluga();
+      Object.assign(k2, k);
+      this.listaUslug.push(k);
+    });
   }
 }

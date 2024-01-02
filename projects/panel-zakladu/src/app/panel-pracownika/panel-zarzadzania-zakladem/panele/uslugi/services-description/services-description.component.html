@@ -1,0 +1,10 @@
+<div class="modal-header">
+  <h4 class="modal-title">Opis usługi:</h4>
+  <button (click)="activeModal.close('Nie')" aria-label="Close" class="btn-close" type="button"></button>
+</div>
+<div class="modal-body">
+  <app-ngx-editor [(value)]="usluga.description" />
+</div>
+<div class="modal-footer">
+  <button (click)="activeModal.close('Nie')" class="domyslnyButtonZapisz">Zamknij</button>
+</div>

@@ -4,7 +4,7 @@ import { Drzwi } from "../../../enum/drzwi";
 import { Pracownik } from "../../../klasy/pracownik";
 import { environment } from "../../../../environments/environment";
 import { AnimationService } from "../../../serwisy/animation.service";
-import { DanePodstawowe } from "../../../klasy/dane-podstawowe";
+import { DanePodstawoweService } from "../../../serwisy/dane-podstawowe.service";
 
 // @ts-ignore
 @Component({
@@ -22,7 +22,7 @@ export class WyswietlanePracownicyComponent implements OnInit {
 
   constructor(
     public listonosz: ListonoszService,
-    public danePodstawowe_: DanePodstawowe,
+    public danePodstawowe_: DanePodstawoweService,
     public animation_: AnimationService
   ) {}
 

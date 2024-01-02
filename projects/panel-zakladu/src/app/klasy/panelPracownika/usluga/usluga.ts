@@ -5,5 +5,6 @@ export class Usluga {
   public czas: number = 0;
   public category = '';
   public pracownicy: Array<number> = [];
-  zaznaczone = false;
+  public zaznaczone = false;
+  public description = '';
 }

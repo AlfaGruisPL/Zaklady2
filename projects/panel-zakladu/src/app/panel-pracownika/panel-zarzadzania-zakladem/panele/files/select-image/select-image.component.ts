@@ -31,6 +31,7 @@ export class SelectImageComponent implements OnInit {
   @Input() height: string = '30px';
 
   //option
+  @Input() outSideModify = false;
   @Input() lastImageId: number | string = 0;
   @Output() changeImageId: EventEmitter<number> = new EventEmitter();
   env = environment;

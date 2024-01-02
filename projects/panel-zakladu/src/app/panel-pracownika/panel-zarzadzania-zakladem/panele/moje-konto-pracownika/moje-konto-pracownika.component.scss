@@ -5,6 +5,11 @@
   }
 }
 
+.imageAndSetImage {
+  display: flex;
+  flex-direction: column;
+}
+
 .panelZakladu {
   min-height: 100%;
 

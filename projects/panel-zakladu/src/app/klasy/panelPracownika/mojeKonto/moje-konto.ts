@@ -25,7 +25,7 @@ export class MojeKonto {
 
   public opcjaZmianyHasla: boolean = false;
   public description = '';
-  socialMedia = {
+  socialMedia_ = {
     telegram: '',
     facebook: '',
     instagram: '',
@@ -34,6 +34,22 @@ export class MojeKonto {
 
   constructor() {
     this.adres = {};
+  }
+
+  get socialMedia() {
+    if (this.socialMedia_ != null) {
+      return this.socialMedia_;
+    }
+    return {
+      telegram: '',
+      facebook: '',
+      instagram: '',
+      twitter: '',
+    };
+  }
+
+  set socialMedia(k) {
+    this.socialMedia_ = k;
   }
 
   public czyHaslaWpisaneFunkcja() {

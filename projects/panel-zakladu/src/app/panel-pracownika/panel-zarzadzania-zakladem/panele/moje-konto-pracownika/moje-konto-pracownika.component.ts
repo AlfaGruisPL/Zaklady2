@@ -13,6 +13,7 @@ import { TippyDirective } from '@ngneat/helipopper';
 import { CommonModule } from '@angular/common';
 import { UstawieniaPowiadomienComponent } from './ustawienia-powiadomien/ustawienia-powiadomien.component';
 import { NgxEditorComponent } from '../../komponenty/ngx-editor/ngx-editor.component';
+import { SelectImageComponent } from "../files/select-image/select-image.component";
 
 @Component({
   standalone: true,
@@ -27,6 +28,7 @@ import { NgxEditorComponent } from '../../komponenty/ngx-editor/ngx-editor.compo
     MojeKontoZdjecieProfiloweComponent,
     UstawieniaPowiadomienComponent,
     NgxEditorComponent,
+    SelectImageComponent,
   ],
 })
 export class MojeKontoPracownikaComponent implements OnInit {
