@@ -12,5 +12,7 @@ import { TemplateIdDirective } from '../../../../../komponets/table/template-id.
   styleUrls: ['./sms-history-table.component.scss'],
 })
 export class SmsHistoryTableComponent {
+  protected readonly Math = Math;
+
   constructor(public lista_: UslugaSmsService) {}
 }

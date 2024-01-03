@@ -1,7 +1,8 @@
 <div class="NgxEditor__Wrapper">
-  <ngx-editor-menu [editor]="editor" [toolbar]="registerPage_.toolbar"></ngx-editor-menu>
+  <ngx-editor-menu *ngIf="!disabled" [editor]="editor" [toolbar]="registerPage_.toolbar"></ngx-editor-menu>
   <ngx-editor
     (ngModelChange)="valueChange.emit($event)"
+    [disabled]="disabled"
     [editor]="editor"
     [ngModel]="value"
     [placeholder]="'Wpisz tu...'"></ngx-editor>

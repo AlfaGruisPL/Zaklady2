@@ -66,15 +66,12 @@ export class UslugaSmsHistoriaComponent implements OnInit, OnDestroy {
   public footer = (tooltipItems: any[]) => {
     const cenaSMS = this.datasetsCena[tooltipItems[0].dataIndex];
     const smsIlosc = tooltipItems[0].formattedValue ? tooltipItems[0].formattedValue : 0;
-    const kwota = Math.round(smsIlosc * cenaSMS * 100) / 100;
-    return 'Opłata:  ' + kwota / 100 + 'zł';
+    return 'Opłata:  ' + Number(cenaSMS).toPrecision(2) + 'zł';
   };
 
   public label = (tooltipItems: TooltipItem<any>) => {
     // @ts-ignore
     if (tooltipItems.datasetIndex == 0) {
-      console.log(tooltipItems);
-
       // @ts-ignore
       return 'Wysłane SMS: ' + tooltipItems.formattedValue;
     }
@@ -147,7 +144,8 @@ export class UslugaSmsHistoriaComponent implements OnInit, OnDestroy {
         while (this.datasetsCena.length > 0) this.datasetsCena.pop();
 
         this.service.dane.historia.forEach(k => {
-          this.labels.push(k.date.toString());
+          console.log(k.date);
+          this.labels.push(k.date.toString().split('T')[0]);
           //  this.datasetsFree.push(k.darmoweSMS);
           this.datasets.push(k.send);
           this.datasetsCena.push(k.cost);

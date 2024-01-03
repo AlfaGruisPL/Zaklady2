@@ -13,7 +13,7 @@ import { TippyDirective } from '@ngneat/helipopper';
 import { CommonModule } from '@angular/common';
 import { UstawieniaPowiadomienComponent } from './ustawienia-powiadomien/ustawienia-powiadomien.component';
 import { NgxEditorComponent } from '../../komponenty/ngx-editor/ngx-editor.component';
-import { SelectImageComponent } from "../files/select-image/select-image.component";
+import { SelectImageComponent } from '../files/select-image/select-image.component';
 
 @Component({
   standalone: true,
@@ -36,7 +36,7 @@ export class MojeKontoPracownikaComponent implements OnInit {
   public wlaczPrzyciskZapisz: boolean = false;
   public podgladWlaczoneJeden: boolean = false;
   public podgladWlaczoneDwa: boolean = false;
-
+  k = 1;
   @ViewChild(MojeKontoZdjecieProfiloweComponent) ZdjecieProfilowe: MojeKontoZdjecieProfiloweComponent | undefined;
 
   constructor(

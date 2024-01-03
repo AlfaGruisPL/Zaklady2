@@ -185,7 +185,7 @@
         <tr>
           <td colspan="2">
             Opis:<br />
-            <app-ngx-editor [(value)]="mojeKontoObj.description" />
+            <app-ngx-editor [(value)]="mojeKontoObj.description" [disabled]="!wlaczPrzyciskZapisz" />
           </td>
         </tr>
       </table>

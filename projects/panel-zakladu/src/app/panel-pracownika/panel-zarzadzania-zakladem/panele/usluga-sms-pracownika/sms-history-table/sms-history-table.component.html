@@ -9,12 +9,14 @@
     <th>Nr.</th>
     <th>Data</th>
     <th>Sms</th>
+    <th>Średnia cena sms</th>
     <th>Kwota</th>
   </ng-template>
   <ng-template TemplateId="tbody" let-index="index" let-obj>
     <td>{{ index }}</td>
     <td>{{ obj.date | date : 'dd.MM.yyyy' }}</td>
     <td>{{ obj.send }}</td>
-    <td>{{ obj.kwota() }}zł</td>
+    <td>{{ Math.round(obj.avgCreditsCost * 100) / 100 }}zł</td>
+    <td>{{ Math.round(obj.cost * 100) / 100 }}zł</td>
   </ng-template>
 </app-table>

@@ -5,6 +5,7 @@ export class HistoriaSms {
   oplacone: boolean = false;
   free: number = 0;
   cost: number = 0;
+  avgCreditsCost = 0;
 
   kwota() {
     return Math.round(this.send * 0.09 * 100) / 100;

@@ -3,16 +3,18 @@ import { RegisterPageService } from '../../panele/register-page/register-page.se
 import { PodreczneDaneService } from '../../../../serwisy/podreczne-dane.service';
 import { Editor, NgxEditorModule, Toolbar } from 'ngx-editor';
 import { FormsModule } from '@angular/forms';
+import { NgClass, NgIf, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-ngx-editor',
   standalone: true,
-  imports: [NgxEditorModule, FormsModule],
+  imports: [NgxEditorModule, FormsModule, NgIf, NgClass, NgStyle],
   templateUrl: './ngx-editor.component.html',
   styleUrl: './ngx-editor.component.scss',
 })
 export class NgxEditorComponent {
   @Input({ required: true }) value!: string;
+  @Input() disabled = false;
   @Output() valueChange = new EventEmitter<string>();
 
   editor: any = undefined;
