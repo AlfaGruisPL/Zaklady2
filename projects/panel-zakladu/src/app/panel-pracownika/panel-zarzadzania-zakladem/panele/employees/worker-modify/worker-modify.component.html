@@ -10,7 +10,14 @@
       <div class="tableDiv">
         <app-worker-modify-table1 [(iloscKlikniec)]="iloscKlikniec" [(pracownikObj)]="pracownikObj" [tryb]="tryb" />
       </div>
+
       <table>
+        <tr>
+          <th>Dni pracy:</th>
+          <td>
+            <app-select-work-day [(WorkDay)]="pracownikObj.workDay" />
+          </td>
+        </tr>
         <tr>
           <th>Opis pracownika:</th>
           <td *ngIf="tryb == 'wyswietlenie'"><span [innerHTML]="pracownikObj.description | safeHtml"></span></td>

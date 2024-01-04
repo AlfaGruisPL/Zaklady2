@@ -1,7 +1,8 @@
 <div [ngStyle]="{ width: width + 'px' }">
   <h4>Zdjęcie profilowe:</h4>
+
   <img
-    *ngIf="!usunZdjecieProfiloweDTo && !safeImageUrl && idUzytkownika != 0"
+    *ngIf="!usunZdjecieProfiloweDTo && !safeImageUrl && imageId != 0"
     [src]="environment.apiImage + imageId + '?jakosc=30' | zdjecie : false"
     class="pracownikZdjecie" />
   <img *ngIf="safeImageUrl" [src]="safeImageUrl" class="pracownikZdjecie" />

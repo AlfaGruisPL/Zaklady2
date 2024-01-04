@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { UstawieniaPowiadomienComponent } from './ustawienia-powiadomien/ustawienia-powiadomien.component';
 import { NgxEditorComponent } from '../../komponenty/ngx-editor/ngx-editor.component';
 import { SelectImageComponent } from '../files/select-image/select-image.component';
+import { SelectWorkDayComponent } from './select-work-day/select-work-day.component';
 
 @Component({
   standalone: true,
@@ -29,6 +30,7 @@ import { SelectImageComponent } from '../files/select-image/select-image.compone
     UstawieniaPowiadomienComponent,
     NgxEditorComponent,
     SelectImageComponent,
+    SelectWorkDayComponent,
   ],
 })
 export class MojeKontoPracownikaComponent implements OnInit {

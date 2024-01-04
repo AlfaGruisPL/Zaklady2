@@ -15,12 +15,14 @@ export class MojeKontoDTO {
     kodPocztowy?: string;
   };
   public hasloNowe: string = '';
+  public workDay: any;
 
   constructor(mojeKonto: MojeKonto) {
     this.imie = mojeKonto.imie;
     this.nazwisko = mojeKonto.nazwisko;
     this.prefiks = mojeKonto.prefiks;
     this.numerTelefonu = mojeKonto.numer_telefonu;
+    this.workDay = mojeKonto.workDay;
     this.email = mojeKonto.email;
     this.adres = {
       wojewodztwo: mojeKonto.adres?.wojewodztwo,

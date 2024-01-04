@@ -2,10 +2,12 @@ export class DzienTygodnia {
   dzien: number = 0;
   nazwa: string = '-----';
   data: Date = new Date();
+  nazwaAng: string;
 
-  constructor(dzien: number, nazwa: string) {
+  constructor(dzien: number, nazwa: string, nazwaAng: string) {
     this.dzien = dzien;
     this.nazwa = nazwa;
+    this.nazwaAng = nazwaAng;
     this.ustawDate();
   }
 
@@ -25,11 +27,11 @@ export class DzienTygodnia {
 }
 
 export const dniTygodnia = [
-  new DzienTygodnia(0, 'Poniedziałek'),
-  new DzienTygodnia(1, 'Wtorek'),
-  new DzienTygodnia(2, 'Środa'),
-  new DzienTygodnia(3, 'Czwartek'),
-  new DzienTygodnia(4, 'Piątek'),
-  new DzienTygodnia(5, 'Sobota'),
-  new DzienTygodnia(6, 'Niedziela'),
+  new DzienTygodnia(0, 'Poniedziałek', 'Monday'),
+  new DzienTygodnia(1, 'Wtorek', 'Tuesday'),
+  new DzienTygodnia(2, 'Środa', 'Wednesday'),
+  new DzienTygodnia(3, 'Czwartek', 'Thursday'),
+  new DzienTygodnia(4, 'Piątek', 'Friday'),
+  new DzienTygodnia(5, 'Sobota', 'Saturday'),
+  new DzienTygodnia(6, 'Niedziela', 'Sunday'),
 ];

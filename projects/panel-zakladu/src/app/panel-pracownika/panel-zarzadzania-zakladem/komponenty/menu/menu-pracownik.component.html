@@ -1,5 +1,4 @@
 <nav>
-
   <h4>Moje konto:</h4>
   <a [routerLink]="['harmonogram']" routerLinkActive="aktywneMenu">
     <fa-icon [icon]="ikonki.flaga"></fa-icon>
@@ -10,7 +9,6 @@
     <span> Kalendarz</span>
   </a>
 
-
   <a *ngIf="token_.czyWlasciciel()" [routerLink]="['mojZaklad']" routerLinkActive="aktywneMenu">
     <fa-icon [icon]="ikonki.wiezowiec"></fa-icon>
     <span> Mój zakład </span>
@@ -20,7 +18,6 @@
     <span> Usługi </span>
   </a>
 
-
   <!--
   <a [routerLink]="['kalendarzTerminow']" routerLinkActive="aktywneMenu">
     <fa-icon [icon]="ikonki.kalendarz"></fa-icon>
@@ -28,19 +25,23 @@
   </a>
 -->
 
-
   <a [routerLink]="['raporty']" routerLinkActive="aktywneMenu">
     <fa-icon [icon]="ikonki.flaga"></fa-icon>
     <span>Raporty </span>
-  </a> <a [routerLink]="['listaKlientow']" routerLinkActive="aktywneMenu">
-  <fa-icon [icon]="ikonki.klienci"></fa-icon>
-  <span> Lista klientów </span>
-</a>
+  </a>
+  <a [routerLink]="['listaKlientow']" routerLinkActive="aktywneMenu">
+    <fa-icon [icon]="ikonki.klienci"></fa-icon>
+    <span> Lista klientów </span>
+  </a>
   <a *ngIf="token_.czyWlasciciel()" [routerLink]="['stronaReprezentacyjnaUstawienia']" routerLinkActive="aktywneMenu">
     <fa-icon [icon]="ikonki.zdjecie"></fa-icon>
     <span> Strona reprezentacyjna </span>
   </a>
   <h4>Zakład:</h4>
+  <a *ngIf="token_.czyWlasciciel()" [routerLink]="['zarzadzaniePracownikami']" routerLinkActive="aktywneMenu">
+    <fa-icon [icon]="ikonki.czlowieczki"></fa-icon>
+    <span> Pracownicy </span>
+  </a>
   <a *ngIf="token_.czyWlasciciel()" [routerLink]="['podsumowanie']" routerLinkActive="aktywneMenu">
     <fa-icon [icon]="ikonki.flaga"></fa-icon>
     <span>Podsumowanie </span>
@@ -70,10 +71,9 @@
     <fa-icon [icon]="ikonki.zdjecie"></fa-icon>
     <span> Strona reprezentacyjna </span>
   </a>
-<h4>Profil:</h4>
+  <h4>Profil:</h4>
   <a [routerLink]="['mojeKonto']" routerLinkActive="aktywneMenu">
     <fa-icon [icon]="ikonki.czlowieczek"></fa-icon>
     <span> Moje konto </span>
   </a>
-
 </nav>

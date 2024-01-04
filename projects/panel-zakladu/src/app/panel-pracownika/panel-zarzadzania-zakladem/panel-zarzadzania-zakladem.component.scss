@@ -1,6 +1,6 @@
-@import "./../../../assets/style/colors";
+@import './../../../assets/style/colors';
 
-$MenuWidth: 250px;
+$MenuWidth: 220px;
 
 .menuTresc {
   width: 100%;
@@ -32,8 +32,6 @@ $MenuWidth: 250px;
       height: calc(100% - 38px);
       overflow-y: auto;
     }
-
-
   }
 
   .tresc {
@@ -48,8 +46,6 @@ $MenuWidth: 250px;
       width: 100vw;
       height: calc(100vh - 50px);
     }
-
-
   }
 }
 
