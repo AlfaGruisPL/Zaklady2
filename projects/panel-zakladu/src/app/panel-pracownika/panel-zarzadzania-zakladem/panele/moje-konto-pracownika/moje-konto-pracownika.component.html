@@ -185,7 +185,7 @@
         <tr>
           <th>Dni pracy:</th>
           <td>
-            <app-select-work-day [(WorkDay)]="mojeKontoObj.workDay" />
+            <app-select-work-day [(WorkDay)]="mojeKontoObj.workDay" [disabled]="!wlaczPrzyciskZapisz" />
           </td>
         </tr>
         <tr>

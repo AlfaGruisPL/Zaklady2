@@ -15,7 +15,7 @@
         <tr>
           <th>Dni pracy:</th>
           <td>
-            <app-select-work-day [(WorkDay)]="pracownikObj.workDay" />
+            <app-select-work-day [(WorkDay)]="pracownikObj.workDay" [disabled]="tryb == 'wyswietlenie'" />
           </td>
         </tr>
         <tr>

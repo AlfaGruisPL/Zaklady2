@@ -1,9 +1,9 @@
 <div class="containerDiv">
-  <button (click)="change('monday')" [ngClass]="{ on: WorkDay.monday }">Poniedziałek</button>
-  <button (click)="change('tuesday')" [ngClass]="{ on: WorkDay.tuesday }">Wtorek</button>
-  <button (click)="change('wednesday')" [ngClass]="{ on: WorkDay.wednesday }">Środa</button>
-  <button (click)="change('thursday')" [ngClass]="{ on: WorkDay.thursday }">Czwartek</button>
-  <button (click)="change('friday')" [ngClass]="{ on: WorkDay.friday }">Piątek</button>
-  <button (click)="change('saturday')" [ngClass]="{ on: WorkDay.saturday }">Sobota</button>
-  <button (click)="change('sunday')" [ngClass]="{ on: WorkDay.sunday }">Niedziela</button>
+  <button (click)="change('monday')" [disabled]="disabled" [ngClass]="{ on: WorkDay.monday }">Poniedziałek</button>
+  <button (click)="change('tuesday')" [disabled]="disabled" [ngClass]="{ on: WorkDay.tuesday }">Wtorek</button>
+  <button (click)="change('wednesday')" [disabled]="disabled" [ngClass]="{ on: WorkDay.wednesday }">Środa</button>
+  <button (click)="change('thursday')" [disabled]="disabled" [ngClass]="{ on: WorkDay.thursday }">Czwartek</button>
+  <button (click)="change('friday')" [disabled]="disabled" [ngClass]="{ on: WorkDay.friday }">Piątek</button>
+  <button (click)="change('saturday')" [disabled]="disabled" [ngClass]="{ on: WorkDay.saturday }">Sobota</button>
+  <button (click)="change('sunday')" [disabled]="disabled" [ngClass]="{ on: WorkDay.sunday }">Niedziela</button>
 </div>

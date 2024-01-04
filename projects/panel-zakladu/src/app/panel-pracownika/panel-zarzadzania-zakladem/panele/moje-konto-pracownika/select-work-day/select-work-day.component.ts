@@ -19,6 +19,7 @@ export class SelectWorkDayComponent {
     sunday: boolean;
   };
   @Output() WorkDayChange = new EventEmitter();
+  @Input() disabled = false;
 
   change(day: string) {
     // @ts-ignore

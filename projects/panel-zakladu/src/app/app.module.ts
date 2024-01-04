@@ -28,7 +28,7 @@ import { UiSwitchModule } from 'ngx-ui-switch';
 import { PracownicyMojZakladComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moj-zaklad-pracownika/pracownicy-moj-zaklad/pracownicy-moj-zaklad.component';
 import { UslugaSmsPracownikaModule } from './panel-pracownika/panel-zarzadzania-zakladem/panele/usluga-sms-pracownika/usluga-sms-pracownika.module';
 import { UslugiPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/uslugi.component';
-import { UslugiPrzypisaniPracownicyComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/uslugi-przypisani-pracownicy/uslugi-przypisani-pracownicy.component';
+import { UslugiPrzypisaniPracownicyComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/service/uslugi-przypisani-pracownicy/uslugi-przypisani-pracownicy.component';
 import { RejestracjaUdanaComponent } from './panel-pracownika/poczatkowy-panel-pracownika/rejestracja-zakladu/rejestracja-udana/rejestracja-udana.component';
 import { RureczkiModule } from './rureczki/rureczki.module';
 import { ListaKlientowModule } from './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/lista-klientow.module';
@@ -54,6 +54,7 @@ import { FooterNavButtonsComponent } from './panel-pracownika/panel-zarzadzania-
 import { FileSizePipe } from './rureczki/file-size.pipe';
 import { TableComponent } from './komponets/table/table.component';
 import { TemplateIdDirective } from './komponets/table/template-id.directive';
+import { ServiceComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/service/service.component';
 
 registerLocaleData(localePl, 'pl-PL');
 
@@ -127,6 +128,7 @@ registerLocaleData(localePl, 'pl-PL');
     FileSizePipe,
     TableComponent,
     TemplateIdDirective,
+    ServiceComponent,
   ],
   providers: [
     NgbDropdown,
