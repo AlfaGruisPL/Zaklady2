@@ -183,6 +183,12 @@
           </td>
         </tr>
         <tr>
+          <th>Dni pracy:</th>
+          <td>
+            <app-select-work-day [(WorkDay)]="mojeKontoObj.workDay" />
+          </td>
+        </tr>
+        <tr>
           <td colspan="2">
             Opis:<br />
             <app-ngx-editor [(value)]="mojeKontoObj.description" [disabled]="!wlaczPrzyciskZapisz" />
@@ -203,7 +209,6 @@
         [lastImageId]="mojeKontoObj.zdjecieProfiloweId" />
     </div>
   </div>
-
   <div class="zmianaHasla">
     <table class="zmianaHaslaTable">
       <tr>

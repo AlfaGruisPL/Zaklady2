@@ -5,6 +5,7 @@ export class PracownikDTO {
   public nazwisko: string = '';
   public adresEmail: string = '';
   public numerTelefonu: string = '';
+  public workDay: any;
   public usunZdjecieProfilowe = false;
   public adres: {
     miasto?: string;
@@ -31,5 +32,6 @@ export class PracownikDTO {
     this.adres.nrDomu = pracownik.adres.nrDomu;
     this.socialMedia = pracownik.socialMedia;
     this.description = pracownik.description;
+    this.workDay = pracownik.workDay;
   }
 }

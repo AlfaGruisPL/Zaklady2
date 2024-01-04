@@ -18,7 +18,7 @@ import { KomunikatUniwersalnyService } from '../../../../../komponets/komunikat-
 export class MojeKontoZdjecieProfiloweComponent {
   @Input({ required: true }) modyfikacja = false;
   @Input({ required: true }) idUzytkownika = 0;
-  @Input() imageId = 0;
+  @Input() imageId!: number;
 
   @Input() width = 300;
   @Input() wlasne = true;

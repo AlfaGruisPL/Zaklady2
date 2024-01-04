@@ -5,6 +5,16 @@
 @import '../../../../../node_modules/tippy.js/animations/scale.css';
 @import 'https://cdn.jsdelivr.net/npm/suneditor@latest/dist/css/suneditor.min.css';
 
+@font-face {
+  font-family: ArchivoBlack;
+  src: url("../../assets/fonts/Archivo_Black/ArchivoBlack-Regular.ttf");
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 2s;
+}
+
 .btn-sm,
 .btn-group-sm > .btn {
   --bs-btn-padding-y: 0.15rem;
@@ -624,8 +634,7 @@ body {
 }
 
 //obracanie
-@-webkit-keyframes rotating /* Safari and Chrome */
-{
+@-webkit-keyframes rotating /* Safari and Chrome */ {
   from {
     -webkit-transform: rotate(0deg);
     -o-transform: rotate(0deg);

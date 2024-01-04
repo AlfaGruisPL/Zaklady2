@@ -17,7 +17,15 @@ export class MojeKonto {
   };
   public wpiszNoweHaslo: string = '';
   public powtorzNoweHaslo: string = '';
-
+  public workDay_ = {
+    monday: true,
+    tuesday: true,
+    wednesday: true,
+    thursday: true,
+    friday: true,
+    saturday: false,
+    sunday: false,
+  };
   public czyHasloWpisane1: boolean = true;
   public czyHasloWpisane2: boolean = true;
   public czyHaslaWpisane: boolean = true;
@@ -34,6 +42,25 @@ export class MojeKonto {
 
   constructor() {
     this.adres = {};
+  }
+
+  get workDay() {
+    if (this.workDay_ != null) {
+      return this.workDay_;
+    }
+    return {
+      monday: true,
+      tuesday: true,
+      wednesday: true,
+      thursday: true,
+      friday: true,
+      saturday: false,
+      sunday: false,
+    };
+  }
+
+  set workDay(k) {
+    this.workDay_ = k;
   }
 
   get socialMedia() {

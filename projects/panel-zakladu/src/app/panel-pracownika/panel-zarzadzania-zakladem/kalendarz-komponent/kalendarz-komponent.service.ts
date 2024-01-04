@@ -16,6 +16,7 @@ import { TokenService } from '../../../serwisy/token.service';
 import { HttpParams } from '@angular/common/http';
 import { dniTygodnia, DzienTygodnia } from './dzien-tygodnia';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { WorkDays } from '../../../klasy/panelPracownika/WorkDays';
 
 @Injectable({
   providedIn: 'root',
@@ -31,6 +32,7 @@ export class KalendarzKomponentService {
   wybranyPracownik = new BehaviorSubject<number>(-1);
   dniWolnePracownika: Array<DzienWolny> = [];
   przerwyPracownika: Array<Przerwa> = [];
+  workDay: Array<{ id: number; imie: string; nazwisko: string; workDay: WorkDays }> = [];
   dniWolneZakladu: Array<DzienWolny> = [];
   przerwyZakladu: Array<Przerwa> = [];
   kursor = new Date();
@@ -116,6 +118,9 @@ export class KalendarzKomponentService {
       this.dniWolnePracownika = [];
       this.przerwyZakladu = [];
       this.dniWolneZakladu = [];
+      this.workDay = [];
+      Object.assign(this.workDay, dane['workersWorkDays']);
+
       dane['przerwy'].forEach((przerwa: any) => {
         const obj = new Przerwa(przerwa);
         this.przerwyPracownika.push(obj);

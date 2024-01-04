@@ -23,7 +23,7 @@ export class KalendarzKomponentComponent implements OnInit, OnDestroy {
   symulator = false;
   public godzinaRozpoczecia = 6;
   public wyswieitlanieSymulatora = false;
-
+  ktest: any = null;
   protected readonly environment = environment;
 
   constructor(
@@ -107,7 +107,9 @@ export class KalendarzKomponentComponent implements OnInit, OnDestroy {
 
   public kolorTlaInformacje(dzien: DzienTygodnia): string {
     let wynik = '';
-
+    if (this.checkWorkDay()) {
+      wynik += 'Pracownik nie pracuje<br>';
+    }
     if (this.czyDzisWolnyDzien(dzien, this.Kalendarz_.dniWolnePracownika) != undefined) {
       wynik += 'Dzien wolny dla pracownika<br>';
     }
@@ -123,6 +125,13 @@ export class KalendarzKomponentComponent implements OnInit, OnDestroy {
 
   public kolorTla(dzien: DzienTygodnia, index: number) {
     //sprawdzenie czy nie dzien oznaczony jako wolny
+
+    if (this.checkWorkDay()) {
+      if (index % 2 == 0) {
+        return { 'background-color': 'rgba(177,0,196,0.14)' };
+      }
+      return { 'background-color': 'rgba(116,0,131,0.14)' };
+    }
     if (
       this.czyDzisWolnyDzien(dzien, this.Kalendarz_.dniWolneZakladu) != undefined &&
       this.czyDzisWolnyDzien(dzien, this.Kalendarz_.dniWolnePracownika) != undefined
@@ -232,6 +241,20 @@ export class KalendarzKomponentComponent implements OnInit, OnDestroy {
       return 10;
     }
     return k;
+  }
+
+  private checkWorkDay() {
+    const workerWorkDay = this.Kalendarz_.workDay.find(k => {
+      return k.id == this.Kalendarz_.wybranyPracownik.value;
+    });
+    if (workerWorkDay?.workDay) {
+      // @ts-ignore
+      const workDay = workerWorkDay.workDay[dzien.nazwaAng.toLowerCase()];
+      if (workDay == false) {
+        return true;
+      }
+    }
+    return false;
   }
 
   private terminyNaDzien(data: DzienTygodnia): Array<Wizyta> {

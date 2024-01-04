@@ -34,6 +34,15 @@ export class Pracownik {
   public czyWszystkoWpisane: boolean = true;
   public zdjecieProfiloweId = 0;
   public description = '';
+  public workDay = {
+    monday: true,
+    tuesday: true,
+    wednesday: true,
+    thursday: true,
+    friday: true,
+    saturday: false,
+    sunday: false,
+  };
   private socialMedia_ = {
     telegram: '',
     facebook: '',
