@@ -12,10 +12,10 @@ gulp.task("send production workspacePanel", async () => {
 });
 gulp.task("send production registerPage", async () => {
   var ghpages = require("gh-pages");
-  await ghpages.publish("./dist/reklamowaStronaZakladu/browser/", { branch: "production_registerPage_build" }, (error) => {
+  const k = await ghpages.publish("./dist/reklamowaStronaZakladu/browser/", { branch: "production_registerPage_build" }, (error) => {
     console.log(error);
   });
-  return true;
+  return k;
 });
 
 

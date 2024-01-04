@@ -48,7 +48,7 @@
               style="position: absolute; top: 34px"></fa-icon>
           </td>
         </tr>
-        <tr>
+        <tr *ngIf="environment.production.toString() == 'false'">
           <td>
             <select (change)="latweLogowanie($event)">
               <option default>Brak</option>
@@ -100,11 +100,14 @@
         <a [queryParams]="{ strzalka: true }" [routerLink]="['../reset']" class="niePamietaszHasla"
         >Nie pamiętasz hasła? Kliknij, aby zresetować</a
         >
-        <a
-          [queryParams]="{ strzalka: true }"
-          [routerLink]="['../rejestracja']"
-          class="chceszSieZalogowacLubZarejestrowac"
+        <a *ngIf="environment.demo.toString() != 'true'"
+
+           [queryParams]="{ strzalka: true }"
+           [routerLink]="['../rejestracja']"
+
+           class="chceszSieZalogowacLubZarejestrowac"
         >Kliknij, aby zarejestrować nowy zakład</a
+
         >
       </div>
     </form>

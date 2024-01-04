@@ -1,12 +1,18 @@
-import { isDevMode, NgModule } from '@angular/core';
+import { isDevMode, NgModule } from "@angular/core";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { PanelZarzadzaniaZaklademComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panel-zarzadzania-zakladem.component';
-import { PanelLogowaniaPracownikowComponent } from './panel-pracownika/poczatkowy-panel-pracownika/panel-logowania-pracownikow/panel-logowania-pracownikow.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ResetHaslaPracownikowComponent } from './panel-pracownika/poczatkowy-panel-pracownika/reset-hasla-pracownikow/reset-hasla-pracownikow.component';
-import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import {
+  PanelZarzadzaniaZaklademComponent
+} from "./panel-pracownika/panel-zarzadzania-zakladem/panel-zarzadzania-zakladem.component";
+import {
+  PanelLogowaniaPracownikowComponent
+} from "./panel-pracownika/poczatkowy-panel-pracownika/panel-logowania-pracownikow/panel-logowania-pracownikow.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import {
+  ResetHaslaPracownikowComponent
+} from "./panel-pracownika/poczatkowy-panel-pracownika/reset-hasla-pracownikow/reset-hasla-pracownikow.component";
+import { HttpClientModule } from "@angular/common/http";
 
 import { PanelPracownikaComponent } from './panel-pracownika/panel-pracownika.component';
 import { ToastrModule } from 'ngx-toastr';
@@ -54,8 +60,10 @@ import { FooterNavButtonsComponent } from './panel-pracownika/panel-zarzadzania-
 import { FileSizePipe } from './rureczki/file-size.pipe';
 import { TableComponent } from './komponets/table/table.component';
 import { TemplateIdDirective } from './komponets/table/template-id.directive';
+import { MenuTopComponent } from './panel-pracownika/panel-zarzadzania-zakladem/komponenty/menu/menu-top/menu-top.component';
+import { MenuBottomComponent } from './panel-pracownika/panel-zarzadzania-zakladem/komponenty/menu/menu-bottom/menu-bottom.component';
 
-registerLocaleData(localePl, 'pl-PL');
+registerLocaleData(localePl, "pl-PL");
 
 @NgModule({
   declarations: [
@@ -76,7 +84,7 @@ registerLocaleData(localePl, 'pl-PL');
     PracownicyMojZakladComponent,
     UslugiPracownikaComponent,
     UslugiPrzypisaniPracownicyComponent,
-    RejestracjaUdanaComponent,
+    RejestracjaUdanaComponent
   ],
   imports: [
     BrowserModule,
@@ -94,23 +102,23 @@ registerLocaleData(localePl, 'pl-PL');
     NgbDropdownModule,
     TippyDirective,
     UiSwitchModule.forRoot({
-      size: 'small',
-      color: 'rgb(16 67 207)',
-      switchColor: '#8faaf5',
-      defaultBgColor: 'rgb(229 236 255)',
-      defaultBoColor: 'rgb(75 67 223)',
-      checkedTextColor: 'rgb(255,255,255)',
-      uncheckedTextColor: 'rgb(0,0,0)',
+      size: "small",
+      color: "rgb(16 67 207)",
+      switchColor: "#8faaf5",
+      defaultBgColor: "rgb(229 236 255)",
+      defaultBoColor: "rgb(75 67 223)",
+      checkedTextColor: "rgb(255,255,255)",
+      uncheckedTextColor: "rgb(0,0,0)"
     }),
     NgbModule,
     UslugaSmsPracownikaModule,
     ReactiveFormsModule,
     StrzalkaComponent,
-    ServiceWorkerModule.register('ngsw-worker.js', {
+    ServiceWorkerModule.register("ngsw-worker.js", {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000',
+      registrationStrategy: "registerWhenStable:30000"
     }),
     UstawieniaPowiadomienComponent,
     CiasteczkaKomunikatComponent,
@@ -127,18 +135,21 @@ registerLocaleData(localePl, 'pl-PL');
     FileSizePipe,
     TableComponent,
     TemplateIdDirective,
+    MenuTopComponent,
+    MenuBottomComponent
   ],
   providers: [
     NgbDropdown,
     provideTippyConfig({
-      defaultVariation: 'tooltip',
+      defaultVariation: "tooltip",
       variations: {
         tooltip: tooltipVariation,
-        popper: popperVariation,
-      },
-    }),
+        popper: popperVariation
+      }
+    })
   ],
   bootstrap: [AppComponent],
-  exports: [BrowserAnimationsModule],
+  exports: [BrowserAnimationsModule]
 })
-export class AppModule {}
+export class AppModule {
+}

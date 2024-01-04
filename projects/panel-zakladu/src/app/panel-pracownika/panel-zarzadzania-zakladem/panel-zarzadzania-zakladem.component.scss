@@ -1,11 +1,16 @@
+@import "./../../../assets/style/colors";
+
+$MenuWidth: 250px;
+
 .menuTresc {
   width: 100%;
-  height: calc(100dvh - 49px - 7px);
+  height: 100vh;
+
   @media (max-width: 1500px) {
     height: calc(100dvh - 49px - 7px - 31px);
   }
   float: left;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.55);
+  // border-bottom: 1px solid rgba(0, 0, 0, 0.55);
   //border-top: 1px solid #000;
   display: flex;
   @media (max-width: 1500px) {
@@ -15,52 +20,36 @@
   }
 
   .menu {
-    width: 220px;
+    width: $MenuWidth;
     height: 100%;
     float: left;
-    background: #e3e3e3;
-    border-right: 1px solid rgba(0, 0, 0, 0.55);
+    background: $panelBackGround;
+    // border-right: 1px solid rgba(0, 0, 0, 0.55);
 
     position: relative;
 
     .menuDiv {
-      height: calc(100% - 95px);
+      height: calc(100% - 38px);
       overflow-y: auto;
     }
 
-    .godzina {
-      position: absolute;
-      left: 0px;
-      margin: 0;
-      bottom: 0px;
-      font-size: 21px;
-      width: 100%;
-      text-align: center;
-    }
 
-    .tutulStrony {
-      position: absolute;
-      left: 0px;
-      margin: 0;
-      bottom: 34px;
-      color: #0e61b4;
-      border-top: 1px solid rgba(72, 72, 72, 0.42);
-      font-size: 21px;
-      width: 100%;
-      text-align: center;
-      font-weight: bold;
-    }
   }
 
   .tresc {
-    width: calc(100vw - 220px);
-    height: calc(100% - 2px);
+    width: calc(100vw - $MenuWidth);
+    height: 100vh;
+    flex-direction: column;
+    display: flex;
     float: left;
     background: #fbfeff;
     overflow-y: auto;
     @media (max-width: 1500px) {
       width: 100vw;
+      height: calc(100vh - 50px);
     }
+
+
   }
 }
 

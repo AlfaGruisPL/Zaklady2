@@ -244,11 +244,12 @@ $color1: rgb(236, 236, 236);
 
 .title {
   h3 {
-    padding-top: 5px;
-    font-size: 20px;
-    font-weight: bold;
+    padding-top: 0px;
+    font-size: 17px;
+    letter-spacing: 2px;
     display: flex;
     align-items: end;
+    font-weight: 600;
     @media (max-width: 700px) {
       font-size: 15px;
     }
