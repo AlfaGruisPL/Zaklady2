@@ -3,3 +3,12 @@
   flex-direction: column;
   height: 100%;
 }
+
+.controlPanel {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-right: 10px;
+}

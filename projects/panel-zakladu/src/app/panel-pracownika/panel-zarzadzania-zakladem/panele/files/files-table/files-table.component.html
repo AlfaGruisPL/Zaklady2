@@ -1,6 +1,3 @@
-<div class="controlPanel">
-  <app-upload-file />
-</div>
 <app-table
   [async]="false"
   [collectionSize]="files_.filesData.length"
@@ -20,8 +17,17 @@
   </ng-template>
   <ng-template TemplateId="tbody" let-index="index" let-obj>
     <td style="width: 60px; text-align: left">
-      <img [src]="env.api + '/pliki/image/' + obj.id" style="max-width: 60px; max-height: 30px" />
+      <ng-template #bigImage
+        ><img [src]="env.api + '/pliki/image/' + obj.id" style="max-width: 400px; max-height: 400px"
+      /></ng-template>
+      <img
+        [ngbPopover]="bigImage"
+        [src]="env.api + '/pliki/image/' + obj.id"
+        popoverTitle="Zdęcie:"
+        style="max-width: 60px; max-height: 30px"
+        triggers="mouseenter:mouseleave" />
     </td>
+
     <td>{{ index }}</td>
     <td>{{ obj.nazwa }}</td>
     <td>{{ obj.size | fileSize }}</td>
