@@ -1,4 +1,5 @@
 <nav>
+  <h4>Moje konto:</h4>
   <a [routerLink]="['harmonogram']" routerLinkActive="aktywneMenu">
     <fa-icon [icon]="ikonki.flaga"></fa-icon>
     <span> Harmonogram na dziś </span>
@@ -7,7 +8,12 @@
     <fa-icon [icon]="ikonki.karta"></fa-icon>
     <span> Kalendarz</span>
   </a>
+  <a [routerLink]="['listaKlientow']" routerLinkActive="aktywneMenu">
+    <fa-icon [icon]="ikonki.klienci"></fa-icon>
+    <span> Lista klientów </span>
+  </a>
 
+  <h4>Zakład:</h4>
   <a *ngIf="token_.czyWlasciciel()" [routerLink]="['mojZaklad']" routerLinkActive="aktywneMenu">
     <fa-icon [icon]="ikonki.wiezowiec"></fa-icon>
     <span> Mój zakład </span>
@@ -28,10 +34,6 @@
     <fa-icon [icon]="ikonki.flaga"></fa-icon>
     <span>Raporty </span>
   </a>-->
-  <a [routerLink]="['listaKlientow']" routerLinkActive="aktywneMenu">
-    <fa-icon [icon]="ikonki.klienci"></fa-icon>
-    <span> Lista klientów </span>
-  </a>
 
   <a *ngIf="token_.czyWlasciciel()" [routerLink]="['zarzadzaniePracownikami']" routerLinkActive="aktywneMenu">
     <fa-icon [icon]="ikonki.czlowieczki"></fa-icon>
@@ -62,12 +64,13 @@
     <fa-icon [icon]="ikonki.zdjecie"></fa-icon>
     <span> Strona reprezentacyjna </span>
   </a>
-  <a [routerLink]="['mojeKonto']" routerLinkActive="aktywneMenu">
-    <fa-icon [icon]="ikonki.czlowieczek"></fa-icon>
-    <span> Moje konto </span>
-  </a>
   <a *ngIf="token_.czyWlasciciel()" [routerLink]="['registerPage']" routerLinkActive="aktywneMenu">
     <fa-icon [icon]="ikonki.zdjecie"></fa-icon>
     <span> Strona reprezentacyjna </span>
+  </a>
+  <h4>Profil:</h4>
+  <a [routerLink]="['mojeKonto']" routerLinkActive="aktywneMenu">
+    <fa-icon [icon]="ikonki.czlowieczek"></fa-icon>
+    <span> Moje konto </span>
   </a>
 </nav>
