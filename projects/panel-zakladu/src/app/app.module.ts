@@ -55,6 +55,8 @@ import { FileSizePipe } from './rureczki/file-size.pipe';
 import { TableComponent } from './komponets/table/table.component';
 import { TemplateIdDirective } from './komponets/table/template-id.directive';
 import { ServiceComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/service/service.component';
+import { MenuBottomComponent } from './panel-pracownika/panel-zarzadzania-zakladem/komponenty/menu/menu-bottom/menu-bottom.component';
+import { MenuTopComponent } from './panel-pracownika/panel-zarzadzania-zakladem/komponenty/menu/menu-top/menu-top.component';
 
 registerLocaleData(localePl, 'pl-PL');
 
@@ -129,6 +131,8 @@ registerLocaleData(localePl, 'pl-PL');
     TableComponent,
     TemplateIdDirective,
     ServiceComponent,
+    MenuBottomComponent,
+    MenuTopComponent,
   ],
   providers: [
     NgbDropdown,
