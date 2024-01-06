@@ -2,9 +2,10 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListonoszService } from '../../../../../serwisy/listonosz.service';
 import { Drzwi } from '../../../../../enum/drzwi';
-import { PodsumowanieZakladuInformacjedto } from 'zakladlib';
+
 import { PodsumowanieTabelaComponent } from '../podsumowanie-tabela/podsumowanie-tabela.component';
 import { KwotaPipe } from '../../../../../rureczki/kwota.pipe';
+import { PodsumowanieZakladuInformacjedto } from 'zakladLib';
 
 @Component({
   selector: 'app-podsumowanie-informacje',
