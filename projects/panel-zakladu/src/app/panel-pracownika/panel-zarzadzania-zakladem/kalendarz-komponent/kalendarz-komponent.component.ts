@@ -107,7 +107,7 @@ export class KalendarzKomponentComponent implements OnInit, OnDestroy {
 
   public kolorTlaInformacje(dzien: DzienTygodnia): string {
     let wynik = '';
-    if (this.checkWorkDay()) {
+    if (!this.checkWorkDay(dzien)) {
       wynik += 'Pracownik nie pracuje<br>';
     }
     if (this.czyDzisWolnyDzien(dzien, this.Kalendarz_.dniWolnePracownika) != undefined) {
@@ -126,7 +126,7 @@ export class KalendarzKomponentComponent implements OnInit, OnDestroy {
   public kolorTla(dzien: DzienTygodnia, index: number) {
     //sprawdzenie czy nie dzien oznaczony jako wolny
 
-    if (this.checkWorkDay()) {
+    if (!this.checkWorkDay(dzien)) {
       if (index % 2 == 0) {
         return { 'background-color': 'rgba(177,0,196,0.14)' };
       }
@@ -243,7 +243,7 @@ export class KalendarzKomponentComponent implements OnInit, OnDestroy {
     return k;
   }
 
-  private checkWorkDay() {
+  private checkWorkDay(dzien: DzienTygodnia) {
     const workerWorkDay = this.Kalendarz_.workDay.find(k => {
       return k.id == this.Kalendarz_.wybranyPracownik.value;
     });
@@ -251,10 +251,10 @@ export class KalendarzKomponentComponent implements OnInit, OnDestroy {
       // @ts-ignore
       const workDay = workerWorkDay.workDay[dzien.nazwaAng.toLowerCase()];
       if (workDay == false) {
-        return true;
+        return false;
       }
     }
-    return false;
+    return true;
   }
 
   private terminyNaDzien(data: DzienTygodnia): Array<Wizyta> {

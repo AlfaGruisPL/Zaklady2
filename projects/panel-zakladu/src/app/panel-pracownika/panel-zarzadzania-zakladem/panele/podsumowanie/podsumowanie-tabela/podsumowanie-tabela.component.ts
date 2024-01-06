@@ -7,7 +7,7 @@ import { TablePaginationComponent } from '../../../../../komponets/table-paginat
 import { ListonoszService } from '../../../../../serwisy/listonosz.service';
 import { Drzwi } from '../../../../../enum/drzwi';
 
-import { PodsumowanieZakladuTabelaPracownikDto } from 'zakladlib';
+import { PodsumowanieZakladuTabelaPracownikDto } from 'zakladLib';
 import { PodreczneDaneService } from '../../../../../serwisy/podreczne-dane.service';
 import { KwotaPipe } from '../../../../../rureczki/kwota.pipe';
 import { TableComponent } from '../../../../../komponets/table/table.component';

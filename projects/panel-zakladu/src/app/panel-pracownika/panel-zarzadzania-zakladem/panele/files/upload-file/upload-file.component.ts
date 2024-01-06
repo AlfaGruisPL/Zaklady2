@@ -7,6 +7,9 @@ import { FilesService } from '../files.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faGear } from '@fortawesome/free-solid-svg-icons';
 import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
+import { KomunikatyService } from '../../../../../serwisy/komunikaty.service';
+import { Info } from '../../../../../enum/info';
+import { ErrorAnalyzerService } from '../../../../../serwisy/error-analyzer.service';
 
 @Component({
   selector: 'app-upload-file',
@@ -22,7 +25,12 @@ export class UploadFileComponent {
   protected readonly Math = Math;
   protected readonly faGear = faGear;
 
-  constructor(private http_: ListonoszService, private files_: FilesService) {}
+  constructor(
+    private error_: ErrorAnalyzerService,
+    private http_: ListonoszService,
+    private files_: FilesService,
+    private toast_: KomunikatyService
+  ) {}
 
   onChange(event: any) {
     const file: File = event.target.files[0];
@@ -33,6 +41,10 @@ export class UploadFileComponent {
   }
 
   onUpload(element: HTMLInputElement) {
+    if (this.files_.filesData.length >= this.files_.fileLimit) {
+      this.toast_.komunikatInfo(Info.fileLimit);
+      return;
+    }
     if (this.file) {
       const formData = new FormData();
 
@@ -47,6 +59,7 @@ export class UploadFileComponent {
         })
         .catch(error => {
           this.status = 'fail';
+          this.error_.fileUploadAnalyze(error);
         })
         .finally(() => {
           this.files_.FetchDataFromDB();

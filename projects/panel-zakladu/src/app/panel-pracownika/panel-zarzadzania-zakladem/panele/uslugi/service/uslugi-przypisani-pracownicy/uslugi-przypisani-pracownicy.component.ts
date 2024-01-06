@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Usluga } from '../../../../../klasy/panelPracownika/usluga/usluga';
+import { Usluga } from '../../../../../../klasy/panelPracownika/usluga/usluga';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Pracownik } from '../../../../../klasy/panelPracownika/pracownicy/pracownik';
+import { Pracownik } from '../../../../../../klasy/panelPracownika/pracownicy/pracownik';
 
 @Component({
   selector: 'app-uslugi-przypisani-pracownicy',

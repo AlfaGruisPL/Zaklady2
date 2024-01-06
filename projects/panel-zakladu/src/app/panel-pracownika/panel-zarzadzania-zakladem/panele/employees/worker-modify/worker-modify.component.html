@@ -15,7 +15,7 @@
         <tr>
           <th>Dni pracy:</th>
           <td>
-            <app-select-work-day [(WorkDay)]="pracownikObj.workDay" />
+            <app-select-work-day [(WorkDay)]="pracownikObj.workDay" [disabled]="tryb == 'wyswietlenie'" />
           </td>
         </tr>
         <tr>
@@ -28,13 +28,13 @@
       </table>
     </div>
     <div class="rightContainer">
-      <app-moje-konto-zdjecie-profilowe
-        [idUzytkownika]="idUzytkownika"
-        [imageId]="pracownikObj.zdjecieProfiloweId"
-        [modyfikacja]="tryb != 'wyswietlenie'"
-        [width]="200"
-        [wlasne]="false">
-      </app-moje-konto-zdjecie-profilowe>
+      <h5>Zdjęcie profilowe:</h5>
+      <img [src]="environment.apiImage + pracownikObj.zdjecieProfiloweId | zdjecie : true" />
+      @if (tryb !== 'wyswietlenie') {
+      <app-select-image
+        (changeImageId)="pracownikObj.zdjecieProfiloweId = $event"
+        [lastImageId]="pracownikObj.zdjecieProfiloweId" />
+      }
     </div>
   </div>
 

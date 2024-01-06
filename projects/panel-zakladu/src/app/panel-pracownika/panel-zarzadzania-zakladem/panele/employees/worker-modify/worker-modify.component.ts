@@ -18,6 +18,7 @@ import { NgxEditorComponent } from '../../../komponenty/ngx-editor/ngx-editor.co
 import { WorkerModifyTable1Component } from './worker-modify-table1/worker-modify-table1.component';
 import { RureczkiModule } from '../../../../../rureczki/rureczki.module';
 import { SelectWorkDayComponent } from '../../moje-konto-pracownika/select-work-day/select-work-day.component';
+import { SelectImageComponent } from "../../files/select-image/select-image.component";
 
 @Component({
   selector: 'app-worker-modify',
@@ -32,6 +33,7 @@ import { SelectWorkDayComponent } from '../../moje-konto-pracownika/select-work-
     WorkerModifyTable1Component,
     RureczkiModule,
     SelectWorkDayComponent,
+    SelectImageComponent,
   ],
   templateUrl: './worker-modify.component.html',
   styleUrl: './worker-modify.component.scss',

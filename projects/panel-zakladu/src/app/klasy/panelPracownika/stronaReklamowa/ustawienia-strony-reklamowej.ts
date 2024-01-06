@@ -1,3 +1,5 @@
+import { SecondTemplate } from 'zakladLib';
+
 export class UstawieniaStronyReklamowejDto {
   stronaReklamowaPrzelacznik: boolean | undefined = false;
   data: FirstTemplate | {} = {};
@@ -32,10 +34,4 @@ export class FirstTemplate {
   opisZakladuWStopce: string = '';
   logo: string | number = '';
   banner: string | number = '';
-}
-
-export class SecondTemplate {
-  logo: string | number = '';
-  banner: string | number = '';
-  title = '';
 }

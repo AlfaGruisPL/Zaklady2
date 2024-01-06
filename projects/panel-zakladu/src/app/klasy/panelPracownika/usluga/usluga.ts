@@ -7,4 +7,5 @@ export class Usluga {
   public pracownicy: Array<number> = [];
   public zaznaczone = false;
   public description = '';
+  public imageId = 0;
 }
