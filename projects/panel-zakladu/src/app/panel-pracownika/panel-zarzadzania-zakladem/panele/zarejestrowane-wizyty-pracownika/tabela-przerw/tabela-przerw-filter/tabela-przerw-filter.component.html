@@ -71,7 +71,7 @@
           *ngIf="pracownik.id != podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id"
           [selected]="pracownik.id == Kalendarz_.wybranyPracownik.value"
           [value]="pracownik.id">
-          {{ pracownik.imie }} {{ pracownik.nazwisko }}
+          {{ pracownik.firstname }} {{ pracownik.lastname }}
         </option>
       </ng-container>
     </select>

@@ -1,10 +1,10 @@
 export class Pracownik {
   public id: number = 0;
-  public imie: string = '';
-  public nazwisko: string = '';
-  public adresEmail: string = '';
-  public numerTelefonu: string = '';
-  public prefiksTelefonu: string = '';
+  public firstname: string = '';
+  public lastname: string = '';
+  public email: string = '';
+  public phoneNumber: string = '';
+  public prefiksPhoneNumber: string = '';
   public potwierdzony = false;
   public adres: {
     miasto: string;
@@ -32,7 +32,7 @@ export class Pracownik {
   public kodPocztowy1Puste: boolean = false;
   public kodPocztowy2Puste: boolean = false;
   public czyWszystkoWpisane: boolean = true;
-  public zdjecieProfiloweId = 0;
+  public profilImageId = 0;
   public description = '';
   public workDay = {
     monday: true,
@@ -91,23 +91,23 @@ export class Pracownik {
     this.kodPocztowy1Puste = false;
     this.kodPocztowy2Puste = false;
     this.czyWszystkoWpisane = true;
-    if (this.imie.length <= 0) {
+    if (this.firstname.length <= 0) {
       this.imiePuste = true;
       this.czyWszystkoWpisane = false;
     }
-    if (this.nazwisko.length <= 0) {
+    if (this.lastname.length <= 0) {
       this.nazwiskoPuste = true;
       this.czyWszystkoWpisane = false;
     }
-    if (this.adresEmail.length <= 0) {
+    if (this.email.length <= 0) {
       this.adresEmailPuste = true;
       this.czyWszystkoWpisane = false;
     }
-    if (this.numerTelefonu.length <= 0) {
+    if (this.phoneNumber.length <= 0) {
       this.numerTelefonuPuste = true;
       this.czyWszystkoWpisane = false;
     }
-    if (this.prefiksTelefonu.length <= 0) {
+    if (this.prefiksPhoneNumber.length <= 0) {
       this.prefiksTelefonuPuste = true;
       this.czyWszystkoWpisane = false;
     }

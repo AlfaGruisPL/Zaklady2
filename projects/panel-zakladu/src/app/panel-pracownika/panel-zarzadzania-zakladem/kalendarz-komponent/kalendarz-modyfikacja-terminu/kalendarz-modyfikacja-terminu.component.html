@@ -62,7 +62,7 @@
         <td>
           <select class="longInput" formControlName="wykonawca">
             <option *ngFor="let pracownik of kalendarz_.pracownicy" [value]="pracownik.id">
-              {{ pracownik.imie + ' ' + pracownik.nazwisko }}&nbsp;&nbsp;&nbsp;
+              {{ pracownik.firstname + ' ' + pracownik.lastname }}&nbsp;&nbsp;&nbsp;
             </option>
           </select>
         </td>
@@ -93,8 +93,9 @@
               (click)="klikniecie($event, usluga)"
               [checked]="usluga.zaznaczone"
               class="checkboxRegisterVisit"
-              type="checkbox" />&nbsp; <span style="display: inline-block; min-width: 35px">{{ usluga.cena }}zł</span> -
-            {{ usluga.nazwa }}
+              type="checkbox" />&nbsp;
+            <span style="display: inline-block; min-width: 35px">{{ usluga.price }}zł</span> -
+            {{ usluga.title }}
           </li>
         </ul>
       </div>

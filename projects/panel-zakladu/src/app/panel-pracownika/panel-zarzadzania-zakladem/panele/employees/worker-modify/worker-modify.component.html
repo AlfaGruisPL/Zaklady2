@@ -22,18 +22,18 @@
           <th>Opis pracownika:</th>
           <td *ngIf="tryb == 'wyswietlenie'"><span [innerHTML]="pracownikObj.description | safeHtml"></span></td>
           <td>
-            <app-ngx-editor *ngIf="tryb != 'wyswietlenie'" [(value)]="pracownikObj.description" />
+            <app-ngx-editor *ngIf="tryb != 'wyswietlenie'" [(value)]="pracownikObj.description" [maxLength]="5000" />
           </td>
         </tr>
       </table>
     </div>
     <div class="rightContainer">
       <h5>Zdjęcie profilowe:</h5>
-      <img [src]="environment.apiImage + pracownikObj.zdjecieProfiloweId | zdjecie : true" />
+      <img [src]="environment.apiImage + pracownikObj.profilImageId | zdjecie : true" />
       @if (tryb !== 'wyswietlenie') {
       <app-select-image
-        (changeImageId)="pracownikObj.zdjecieProfiloweId = $event"
-        [lastImageId]="pracownikObj.zdjecieProfiloweId" />
+        (changeImageId)="pracownikObj.profilImageId = $event"
+        [lastImageId]="pracownikObj.profilImageId" />
       }
     </div>
   </div>

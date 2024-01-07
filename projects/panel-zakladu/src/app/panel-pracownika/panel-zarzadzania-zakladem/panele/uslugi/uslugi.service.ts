@@ -33,7 +33,7 @@ export class UslugiService {
   public zapisz() {
     //usunięcie pustych usług
     this.listaUslug = this.listaUslug.filter(usluga => {
-      return usluga.nazwa.length > 0;
+      return usluga.title.length > 0;
     });
     this.listonosz
       .wyslij(Drzwi.uslugiPanel, this.listaUslug)

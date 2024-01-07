@@ -1,9 +1,14 @@
 <div class="NgxEditor__Wrapper">
   <ngx-editor-menu *ngIf="!disabled" [editor]="editor" [toolbar]="registerPage_.toolbar"></ngx-editor-menu>
   <ngx-editor
-    (ngModelChange)="valueChange.emit($event)"
+    #editorRef
+    (input)="changeValue($event)"
+    (paste)="changeValue($event)"
     [disabled]="disabled"
     [editor]="editor"
     [ngModel]="value"
     [placeholder]="'Wpisz tu...'"></ngx-editor>
+  <span [ngClass]="{ max: value.length + 10 >= maxLength }" class="maxLength"
+    >{{ value.length < maxLength ? value.length : maxLength }} z {{ maxLength }}
+  </span>
 </div>

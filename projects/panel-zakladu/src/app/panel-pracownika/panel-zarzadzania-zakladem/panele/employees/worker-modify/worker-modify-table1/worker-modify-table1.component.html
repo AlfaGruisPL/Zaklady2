@@ -7,39 +7,39 @@
     <td *ngIf="tryb != 'wyswietlenie'">
       <input
         (keydown)="iloscKlikniec = 0"
-        [(ngModel)]="pracownikObj.imie"
+        [(ngModel)]="pracownikObj.firstname"
         [ngModelOptions]="{ standalone: true }"
         class="logInputZaklad"
         id="imie"
         type="text" />
     </td>
-    <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.imie }}</td>
+    <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.firstname }}</td>
   </tr>
   <tr>
     <th><label class="naglowki2form" for="nazwisko">Nazwisko:*</label></th>
     <td *ngIf="tryb != 'wyswietlenie'">
       <input
         (keydown)="iloscKlikniec = 0"
-        [(ngModel)]="pracownikObj.nazwisko"
+        [(ngModel)]="pracownikObj.lastname"
         [ngModelOptions]="{ standalone: true }"
         class="logInputZaklad"
         id="nazwisko"
         type="text" />
     </td>
-    <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.nazwisko }}</td>
+    <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.lastname }}</td>
   </tr>
   <tr>
     <th><label class="naglowki2form" for="adresEmail">Adres e-mail:*</label></th>
     <td *ngIf="tryb != 'wyswietlenie'">
       <input
         (keydown)="iloscKlikniec = 0"
-        [(ngModel)]="pracownikObj.adresEmail"
+        [(ngModel)]="pracownikObj.email"
         [ngModelOptions]="{ standalone: true }"
         class="logInputZaklad"
         id="adresEmail"
         type="text" />
     </td>
-    <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.adresEmail }}</td>
+    <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.email }}</td>
   </tr>
   <tr>
     <th>
@@ -48,7 +48,7 @@
     <td *ngIf="tryb != 'wyswietlenie'">
       <select
         (click)="iloscKlikniec = 0"
-        [(ngModel)]="pracownikObj.prefiksTelefonu"
+        [(ngModel)]="pracownikObj.prefiksPhoneNumber"
         [ngModelOptions]="{ standalone: true }"
         class="logInputZaklad"
         style="width: 80px; height: 32px; background: #e3e2e2; position: relative; bottom: -1px">
@@ -56,7 +56,7 @@
         <option>+380</option>
       </select>
       <input
-        [(ngModel)]="pracownikObj.numerTelefonu"
+        [(ngModel)]="pracownikObj.phoneNumber"
         [ngModelOptions]="{ standalone: true }"
         class="logInputZaklad"
         id="nrTelefonu"
@@ -65,8 +65,8 @@
         type="text" />
     </td>
     <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">
-      {{ pracownikObj.prefiksTelefonu }}
-      {{ pracownikObj.numerTelefonu }}
+      {{ pracownikObj.prefiksPhoneNumber }}
+      {{ pracownikObj.phoneNumber }}
     </td>
   </tr>
   <tr>

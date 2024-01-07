@@ -90,7 +90,7 @@ export class PodsumowanieWykresComponent {
           kIndex++;
           let color = this.generateRandomColor(pracownik.pracownik.id);
           const obiekt = {
-            label: pracownik.pracownik.imie + '  ' + pracownik.pracownik.nazwisko,
+            label: pracownik.pracownik.firstname + '  ' + pracownik.pracownik.lastname,
             data: tmp,
             // backgroundColor: color,
             // borderColor: color,

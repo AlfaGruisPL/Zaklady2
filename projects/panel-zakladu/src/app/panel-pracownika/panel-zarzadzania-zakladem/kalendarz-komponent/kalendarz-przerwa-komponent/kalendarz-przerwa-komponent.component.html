@@ -24,7 +24,7 @@
     <tr>
       <th>Dotyczy:</th>
       <td *ngIf="Przerwa.pracownikId != 0; else zaklad">
-        {{ pracownik()?.imie + ' ' + pracownik()?.nazwisko }}
+        {{ pracownik()?.firstname + ' ' + pracownik()?.lastname }}
       </td>
       <ng-template #zaklad>
         <td>Zakład</td>

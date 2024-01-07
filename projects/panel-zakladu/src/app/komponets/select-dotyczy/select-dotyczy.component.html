@@ -5,7 +5,7 @@
       <option *ngFor="let pracownik of danePodreczne.danePodreczneObiekt.pracownicy" [value]="pracownik.id">
         <span
           *ngIf="pracownik.id != danePodreczne.danePodreczneObiekt.zalogowanyUzytkownik?.id; else zalogowanyUzytkownik">
-          {{ pracownik.imie + ' ' + pracownik.nazwisko }}&nbsp;&nbsp;&nbsp;
+          {{ pracownik.firstname + ' ' + pracownik.lastname }}&nbsp;&nbsp;&nbsp;
         </span>
         <ng-template #zalogowanyUzytkownik>
           <span> Zalogowany użytkownik&nbsp;&nbsp;&nbsp;</span>

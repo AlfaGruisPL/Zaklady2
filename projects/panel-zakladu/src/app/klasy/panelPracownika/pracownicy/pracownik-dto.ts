@@ -1,11 +1,12 @@
 import { Pracownik } from './pracownik';
 
 export class PracownikDTO {
-  public imie: string = '';
-  public nazwisko: string = '';
-  public adresEmail: string = '';
-  public numerTelefonu: string = '';
+  public firstname: string = '';
+  public lastname: string = '';
+  public email: string = '';
+  public phoneNumber: string = '';
   public workDay: any;
+  profilImageId = 0;
   public usunZdjecieProfilowe = false;
   public adres: {
     miasto?: string;
@@ -19,10 +20,11 @@ export class PracownikDTO {
   description: string = '';
 
   constructor(pracownik: Pracownik) {
-    this.imie = pracownik.imie;
-    this.nazwisko = pracownik.nazwisko;
-    this.adresEmail = pracownik.adresEmail;
-    this.numerTelefonu = pracownik.prefiksTelefonu + '-' + pracownik.numerTelefonu;
+    this.profilImageId = pracownik.profilImageId;
+    this.firstname = pracownik.firstname;
+    this.lastname = pracownik.lastname;
+    this.email = pracownik.email;
+    this.phoneNumber = pracownik.prefiksPhoneNumber + '-' + pracownik.phoneNumber;
     this.adres = {};
     this.adres.miasto = pracownik.adres.miasto;
     this.adres.ulica = pracownik.adres.ulica;

@@ -3,4 +3,5 @@ export enum Info {
   zakazOdjeciaMiejsc = 'Posiadasz zajęte wszystkie miejsca, zwolnij miejsce aby móc zmniejszyć ilość wykupionych miejsc',
   wizytaSmsWyslanyJakoEmail = 'Posiadasz konto tymczasowe. Wszystkie SMS są wysyłane za pośrednictwem poczty Email',
   fileLimit = 'Został osiągnięty limit plików wgranych na serwer. Usuń nie potrzebne pliki aby wgrać nowe.',
+  limitTextEditor = 'Osiągnięto limit długości tekstu.',
 }
