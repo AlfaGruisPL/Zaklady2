@@ -22,7 +22,8 @@ export class ErrorAnalyzerService {
     }
   }
 
-  analyze(error: HttpError, defaultErrorHandler: undefined | Function = undefined) {
+  analyze(error: HttpError, defaultErrorMessage: Bledy | undefined = undefined) {
+    if (error && error.type) console.log((error.type = 'error'));
     switch (error.error?.reasonCode) {
       case 0: //demo
         this.komunikaty_.komunikatInfo('System w wersji demo, modyfikacja nie możliwa');
@@ -49,9 +50,12 @@ export class ErrorAnalyzerService {
         this.komunikaty_.komunikatBledu(Bledy.emailJestNiePoprawny);
         break;
       default:
-        console.log(error.status);
-        if (defaultErrorHandler) {
-          defaultErrorHandler();
+        if (error.status === 400) {
+          console.log(error);
+          if (error.error) this.komunikaty_.komunikatInfo(JSON.stringify(error.error.message));
+        }
+        if (defaultErrorMessage) {
+          this.komunikaty_.komunikatBledu(defaultErrorMessage);
         } else {
           this.komunikaty_.komunikatBledu(Bledy.bladOgolny);
         }

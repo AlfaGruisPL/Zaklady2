@@ -14,4 +14,6 @@ export enum Bledy {
   bladUtworzeniaPlatnosci_BrakNumeruTelefonu = 'Brak ustawionego numeru telefonu dla zalogowanego użytkownika',
   emailJestJuzWykorzystany = 'Nie można utworzyć konta pracownika, ponieważ email jest już zarejestrowany w systemie',
   emailJestNiePoprawny = 'Podany adres email jest nie poprawny',
+  employeeModifyFail = 'Dane o pracowniku nie zostały zmodyfikowane',
+  addEmployeeFail = 'Dodanie pracownika nie udane',
 }

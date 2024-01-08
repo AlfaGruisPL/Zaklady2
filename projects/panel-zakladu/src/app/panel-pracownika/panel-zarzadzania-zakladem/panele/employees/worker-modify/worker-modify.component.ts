@@ -19,6 +19,7 @@ import { WorkerModifyTable1Component } from './worker-modify-table1/worker-modif
 import { RureczkiModule } from '../../../../../rureczki/rureczki.module';
 import { SelectWorkDayComponent } from '../../moje-konto-pracownika/select-work-day/select-work-day.component';
 import { SelectImageComponent } from '../../files/select-image/select-image.component';
+import { Bledy } from '../../../../../enum/bledy';
 
 @Component({
   selector: 'app-worker-modify',
@@ -103,10 +104,11 @@ export class WorkerModifyComponent implements OnInit {
           this.pracownikDodany = true;
           this.komunikaty.dodaniePracownikaUdane();
           await this.ZdjecieProfilowe?.wyslijZdjecie(this.idUzytkownika);
+          this.back();
         })
         .catch(error => {
           this.pracownikDodany = false;
-          this.error_.analyze(error, this.komunikaty.dodaniePracownikaNieUdane);
+          this.error_.analyze(error, Bledy.addEmployeeFail);
         })
         .finally(() => {
           this.blokowaniePrzycisku = false;
@@ -127,14 +129,19 @@ export class WorkerModifyComponent implements OnInit {
           this.komunikaty.modyfikowaniePracownikaUdane();
           await this.ZdjecieProfilowe?.wyslijZdjecie(this.idUzytkownika);
           Object.assign(this.pracownikObj, userFromPost);
+          this.back();
         })
-        .catch(nieudano => {
+        .catch(error => {
           this.pracownikZmodyfikowany = false;
-          this.komunikaty.modyfikowaniePracownikaNieUdane();
+          this.error_.analyze(error, Bledy.employeeModifyFail);
         })
         .finally(() => {
           this.blokowaniePrzycisku = false;
         });
     }
+  }
+
+  private back() {
+    this.router_.navigate(['/panelPracownika/zarzadzaniePracownikam']);
   }
 }

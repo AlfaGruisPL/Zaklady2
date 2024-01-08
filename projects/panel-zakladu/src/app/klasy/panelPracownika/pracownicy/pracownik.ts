@@ -34,7 +34,7 @@ export class Pracownik {
   public czyWszystkoWpisane: boolean = true;
   public profilImageId = 0;
   public description = '';
-  public workDay = {
+  public workDay_ = {
     monday: true,
     tuesday: true,
     wednesday: true,
@@ -76,6 +76,25 @@ export class Pracownik {
 
   set socialMedia(k) {
     this.socialMedia_ = k;
+  }
+
+  get workDay() {
+    if (this.workDay_ != null) {
+      return this.workDay_;
+    }
+    return {
+      monday: true,
+      tuesday: true,
+      wednesday: true,
+      thursday: true,
+      friday: true,
+      saturday: false,
+      sunday: false,
+    };
+  }
+
+  set workDay(k) {
+    this.workDay_ = k;
   }
 
   public czyWszystkoWpisaneFunkcja() {
