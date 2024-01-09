@@ -13,4 +13,6 @@ export enum Udane {
   wizytaOznaczonaJakoNieWykonana = 'Wizyta została oznaczona jako nie wykonana',
   wizytaZostalaZmodyfikowana = 'Wizyta została zmodyfikowana',
   daneZostalyZapisane = 'Dane zostały zapisane',
+  startAutoRenew = 'Auto odnawianie aktywności zakładu zostało włączone',
+  stopAutoRenew = 'Auto odnawianie aktywności zakładu zostało wyłączone',
 }

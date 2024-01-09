@@ -64,10 +64,16 @@
         </td>
       </tr>
     </table>
-    <button (click)="nowaPlatnosc()" class="domyslnyButtonZapisz">Wpłać pieniądze na konto</button>
+    <button (click)="nowaPlatnosc()" class="domyslnyButton3">Wpłać pieniądze na konto</button>
     <button (click)="aktywacjaKonta()" *ngIf="dane.status == -1 || dane.status == 0" class="domyslnyButton2">
       Aktywuj konto
     </button>
-    <button (click)="wstrzymajKonto()" *ngIf="dane.status == 1" class="domyslnyButtonUsun">Wstrzymaj</button>
+    <br />
+    <button (click)="stopAutoRenew()" *ngIf="dane.autoRenew" class="domyslnyButtonUsun">
+      Wstrzymaj auto odnowienie
+    </button>
+    <button (click)="startAutoRenew()" *ngIf="!dane.autoRenew" class="domyslnyButtonZapisz">
+      Włącz auto odnowienie
+    </button>
   </div>
 </div>

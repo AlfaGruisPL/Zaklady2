@@ -10,6 +10,8 @@ import { StartStopUslugaComponent } from '../okna/start-stop-usluga/start-stop-u
 import { PodreczneDaneService } from '../../../../../../serwisy/podreczne-dane.service';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Info } from '../../../../../../enum/info';
+import { Udane } from '../../../../../../enum/udane';
+import { Bledy } from '../../../../../../enum/bledy';
 
 @Component({
   selector: 'app-platnosci-pracownika-naglowek',
@@ -48,18 +50,6 @@ export class PlatnosciPracownikaNaglowekComponent {
       .catch(k => {
         console.log(1, k);
       });
-  }
-
-  wstrzymajKonto() {
-    const okno = this.modalService.open(StartStopUslugaComponent, {
-      // size: 'lg',
-    });
-    okno.componentInstance.auto = 'wylacz';
-    okno.result
-      .then(k => {
-        this.wstrzymajKontoZapytanie();
-      })
-      .catch(k => {});
   }
 
   DodajPracownika() {
@@ -119,6 +109,34 @@ export class PlatnosciPracownikaNaglowekComponent {
       });
   }
 
+  stopAutoRenew() {
+    this.listonosz
+      .wyslij(Drzwi.autoRenew, { mode: false })
+      .then(k => {
+        this.komunikaty.komunikatUdane(Udane.stopAutoRenew);
+      })
+      .catch(k => {
+        this.komunikaty.komunikatBledu(Bledy.autoRenewFail);
+      })
+      .finally(() => {
+        this.pobierzDane.emit();
+      });
+  }
+
+  startAutoRenew() {
+    this.listonosz
+      .wyslij(Drzwi.autoRenew, { mode: true })
+      .then(k => {
+        this.komunikaty.komunikatUdane(Udane.startAutoRenew);
+      })
+      .catch(k => {
+        this.komunikaty.komunikatBledu(Bledy.autoRenewFail);
+      })
+      .finally(() => {
+        this.pobierzDane.emit();
+      });
+  }
+
   private aktywacjaKontaZapytanie() {
     this.listonosz
       .wyslij(Drzwi.aktywacjaKonta, { aktywnosc: true })
@@ -131,20 +149,6 @@ export class PlatnosciPracownikaNaglowekComponent {
         } else {
           this.komunikaty.kontoNieAktywowane();
         }
-      })
-      .finally(() => {
-        this.pobierzDane.emit();
-      });
-  }
-
-  private wstrzymajKontoZapytanie() {
-    this.listonosz
-      .wyslij(Drzwi.aktywacjaKonta, { aktywnosc: false })
-      .then(k => {
-        this.komunikaty.kontoWstrzymane();
-      })
-      .catch(k => {
-        this.komunikaty.kontoNieWstrzymane();
       })
       .finally(() => {
         this.pobierzDane.emit();

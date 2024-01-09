@@ -197,4 +197,19 @@ export class KomunikatyService {
   komunikatInfo(string: string | Info) {
     this.komunikaty.info(string, 'Informacja');
   }
+
+  waitingForPaying() {
+    return this.komunikaty.info(
+      'Twoja płatność została zakończona, trwa przetwarzanie płatności. Proces ten może zająć kilka minut',
+      'Przetwarzanie płatności',
+      {
+        positionClass: 'toast-top-full-width',
+        enableHtml: true,
+        extendedTimeOut: 15000,
+        progressBar: true,
+        timeOut: 10000,
+        tapToDismiss: false,
+      }
+    );
+  }
 }
