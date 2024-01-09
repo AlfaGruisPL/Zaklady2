@@ -24,8 +24,7 @@ export class PodreczneDaneService {
     private listonosz: ListonoszService,
     private komunikaty: KomunikatyService,
     public token_: TokenService
-  ) {
-  }
+  ) {}
 
   wygenerujNowaLiczbeLosowaDlaZdjec() {
     this.losowaLiczba += 1;
@@ -37,14 +36,14 @@ export class PodreczneDaneService {
 
   returnWorkerFromIf(workerId: number | undefined) {
     const find = this.danePodreczneObiekt.pracownicy.find(worker => worker.id == workerId);
-    return find?.imie + " " + find?.nazwisko;
+    return find?.firstname + ' ' + find?.lastname;
   }
 
   public async identyfikacjaZakladu() {
     await this.listonosz
       .pobierz(Drzwi.nazwaZakladu)
       .then(k => {
-        this.nazwaZakladu_domenowe = k.nazwa;
+        this.nazwaZakladu_domenowe = k.title;
         this.zakladZnaleziony_domenowe = true;
       })
       .catch(error => {

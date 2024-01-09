@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MojeKontoZdjecieProfiloweComponent } from '../../moje-konto-pracownika/moje-konto-zdjecie-profilowe/moje-konto-zdjecie-profilowe.component';
 import { NgIf } from '@angular/common';
@@ -12,13 +12,14 @@ import { Drzwi } from '../../../../../enum/drzwi';
 import { BledyNumery } from '../../../../../enum/bledy-numery';
 import { PracownikDTO } from '../../../../../klasy/panelPracownika/pracownicy/pracownik-dto';
 import { environment } from 'projects/panel-zakladu/src/environments/environment';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BackArrowComponent } from '../../../komponenty/back-arrow/back-arrow.component';
 import { NgxEditorComponent } from '../../../komponenty/ngx-editor/ngx-editor.component';
 import { WorkerModifyTable1Component } from './worker-modify-table1/worker-modify-table1.component';
 import { RureczkiModule } from '../../../../../rureczki/rureczki.module';
 import { SelectWorkDayComponent } from '../../moje-konto-pracownika/select-work-day/select-work-day.component';
-import { SelectImageComponent } from "../../files/select-image/select-image.component";
+import { SelectImageComponent } from '../../files/select-image/select-image.component';
+import { Bledy } from '../../../../../enum/bledy';
 
 @Component({
   selector: 'app-worker-modify',
@@ -38,7 +39,7 @@ import { SelectImageComponent } from "../../files/select-image/select-image.comp
   templateUrl: './worker-modify.component.html',
   styleUrl: './worker-modify.component.scss',
 })
-export class WorkerModifyComponent {
+export class WorkerModifyComponent implements OnInit {
   @ViewChild(MojeKontoZdjecieProfiloweComponent) ZdjecieProfilowe: MojeKontoZdjecieProfiloweComponent | undefined;
   tryb: string = '';
   idUzytkownika: number = 0;
@@ -58,14 +59,17 @@ export class WorkerModifyComponent {
     private sanitizer: DomSanitizer,
     public komunikaty: KomunikatyService,
     private error_: ErrorAnalyzerService,
-    private Router: ActivatedRoute
+    private Router: ActivatedRoute,
+    private router_: Router
   ) {}
 
   ngOnInit() {
     this.Router.params.subscribe(k => {
       this.idUzytkownika = k['id'];
       this.tryb = k['mode'];
-      this.pobierzPracownika();
+      if (this.idUzytkownika != 0) {
+        this.pobierzPracownika();
+      }
     });
   }
 
@@ -82,9 +86,9 @@ export class WorkerModifyComponent {
 
   zapisz() {
     if (
-      this.pracownikObj.imie.length == 0 ||
-      this.pracownikObj.nazwisko.length == 0 ||
-      this.pracownikObj.adresEmail.length == 0
+      this.pracownikObj.firstname.length == 0 ||
+      this.pracownikObj.lastname.length == 0 ||
+      this.pracownikObj.email.length == 0
     ) {
       this.komunikaty.komunikatInfo('Uzupełnij wymagane dane oznaczone *');
       return;
@@ -100,10 +104,11 @@ export class WorkerModifyComponent {
           this.pracownikDodany = true;
           this.komunikaty.dodaniePracownikaUdane();
           await this.ZdjecieProfilowe?.wyslijZdjecie(this.idUzytkownika);
+          this.back();
         })
         .catch(error => {
           this.pracownikDodany = false;
-          this.error_.analyze(error, this.komunikaty.dodaniePracownikaNieUdane);
+          this.error_.analyze(error, Bledy.addEmployeeFail);
         })
         .finally(() => {
           this.blokowaniePrzycisku = false;
@@ -124,14 +129,19 @@ export class WorkerModifyComponent {
           this.komunikaty.modyfikowaniePracownikaUdane();
           await this.ZdjecieProfilowe?.wyslijZdjecie(this.idUzytkownika);
           Object.assign(this.pracownikObj, userFromPost);
+          this.back();
         })
-        .catch(nieudano => {
+        .catch(error => {
           this.pracownikZmodyfikowany = false;
-          this.komunikaty.modyfikowaniePracownikaNieUdane();
+          this.error_.analyze(error, Bledy.employeeModifyFail);
         })
         .finally(() => {
           this.blokowaniePrzycisku = false;
         });
     }
+  }
+
+  private back() {
+    this.router_.navigate(['/panelPracownika/zarzadzaniePracownikam']);
   }
 }

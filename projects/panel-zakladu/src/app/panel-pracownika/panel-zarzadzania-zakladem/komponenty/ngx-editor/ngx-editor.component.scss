@@ -12,3 +12,20 @@
     }
   }
 }
+
+.maxLength {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  opacity: 0.3;
+
+  &.max {
+    opacity: 0.45;
+    color: red;
+    font-weight: bold;
+  }
+}
+
+.NgxEditor__Wrapper {
+  position: relative;
+}

@@ -16,7 +16,7 @@ export class UslugiPrzypisaniPracownicyComponent {
 
   czyZaznaczony(pracownik: any) {
     return (
-      this.usluga.pracownicy.find(k => {
+      this.usluga.workers.find(k => {
         return k == pracownik.id;
       }) != undefined
     );
@@ -25,9 +25,9 @@ export class UslugiPrzypisaniPracownicyComponent {
   ustaw(event: any, pracownik: Pracownik) {
     console.log(event);
     if (event.target.checked) {
-      this.usluga.pracownicy.push(pracownik.id);
+      this.usluga.workers.push(pracownik.id);
     } else {
-      this.usluga.pracownicy = this.usluga.pracownicy.filter(k => {
+      this.usluga.workers = this.usluga.workers.filter(k => {
         return k != pracownik.id;
       });
     }

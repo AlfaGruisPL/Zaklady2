@@ -3,11 +3,11 @@
 </td>
 <td class="zlotyID">{{ index + 1 }}.</td>
 <td>
-  <input [(ngModel)]="usluga.nazwa" [ngModelOptions]="{ standalone: true }" class="logInputZaklad input1" />
+  <input [(ngModel)]="usluga.title" [ngModelOptions]="{ standalone: true }" class="logInputZaklad input1" />
 </td>
 <td>
   <input
-    [(ngModel)]="usluga.cena"
+    [(ngModel)]="usluga.price"
     [ngModelOptions]="{ standalone: true }"
     class="logInputZaklad input2"
     min="0.00"
@@ -16,7 +16,7 @@
 </td>
 <td>
   <input
-    [(ngModel)]="usluga.czas"
+    [(ngModel)]="usluga.time"
     [ngModelOptions]="{ standalone: true }"
     class="logInputZaklad input3"
     type="number" />
@@ -32,7 +32,7 @@
 </td>
 <td class="pracownicyTd">
   <fa-icon (click)="modyfikacjaPracownikow(usluga)" [icon]="faPerson" class="iconkaUser"></fa-icon>
-  <span class="counter">{{ usluga.pracownicy.length }}</span>
+  <span class="counter">{{ usluga.workers.length }}</span>
 </td>
 <td>
   <fa-icon (click)="modifyDescription(usluga)" [icon]="faBook" class="descritpion"></fa-icon>

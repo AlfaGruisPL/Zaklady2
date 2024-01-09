@@ -25,7 +25,7 @@ export class UslugiPracownikaComponent implements OnInit {
   public dodajWiersz() {
     const usluga = new Usluga();
     this.service_.pracownicy.forEach(k => {
-      usluga.pracownicy.push(k.id);
+      usluga.workers.push(k.id);
     });
     this.service_.listaUslug.push(usluga);
   }

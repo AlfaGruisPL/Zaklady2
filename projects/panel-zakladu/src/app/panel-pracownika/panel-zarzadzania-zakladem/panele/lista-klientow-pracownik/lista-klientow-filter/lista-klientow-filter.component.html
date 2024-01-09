@@ -1,60 +1,39 @@
-<div class="filtry" *ngIf="token_.czyWlasciciel()">
+<div *ngIf="token_.czyWlasciciel()" class="filtry">
   <div class="switchButtonDiv">
     <button
       (click)="lista_.filter = 0; lista_.pobierzDane()"
-      class="switchButton"
-      [ngClass]="{ switchButtonAktywny: lista_.filter == 0 }">
+      [ngClass]="{ switchButtonAktywny: lista_.filter == 0 }"
+      class="switchButton">
       Zakładu
     </button>
     <button
-      (click)="
-        lista_.filter = podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id;
-        lista_.pobierzDane()
-      "
-      class="switchButton"
+      (click)="lista_.filter = podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id; lista_.pobierzDane()"
       [ngClass]="{
-        switchButtonAktywny:
-          lista_.filter ==
-          podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id
-      }">
+        switchButtonAktywny: lista_.filter == podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id
+      }"
+      class="switchButton">
       Zalogowanego użytkownika
     </button>
     <select
-      [ngStyle]="{
-        width:
-          [0, podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id].indexOf(
-            lista_.filter
-          ) != -1
-            ? '105px'
-            : ''
-      }"
       (change)="lista_.ustawFilter($event); lista_.pobierzDane()"
-      class="switchButton"
       [ngClass]="{
-        switchButtonAktywny:
-          [0, podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id].indexOf(
-            lista_.filter
-          ) == -1
-      }">
+        switchButtonAktywny: [0, podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id].indexOf(lista_.filter) == -1
+      }"
+      [ngStyle]="{
+        width: [0, podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id].indexOf(lista_.filter) != -1 ? '105px' : ''
+      }"
+      class="switchButton">
       <option
         [disabled]="true"
-        [selected]="
-          [0, podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id].indexOf(
-            lista_.filter
-          ) != -1
-        ">
+        [selected]="[0, podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id].indexOf(lista_.filter) != -1">
         Wybierz
       </option>
-      <ng-container
-        *ngFor="let pracownik of podreczne_.danePodreczneObiekt.pracownicy">
+      <ng-container *ngFor="let pracownik of podreczne_.danePodreczneObiekt.pracownicy">
         <option
-          [value]="pracownik.id"
-          *ngIf="
-            pracownik.id !=
-            podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id
-          "
-          [selected]="pracownik.id == lista_.filter">
-          {{ pracownik.imie }} {{ pracownik.nazwisko }}
+          *ngIf="pracownik.id != podreczne_.danePodreczneObiekt.zalogowanyUzytkownik?.id"
+          [selected]="pracownik.id == lista_.filter"
+          [value]="pracownik.id">
+          {{ pracownik.firstname }} {{ pracownik.lastname }}
         </option>
       </ng-container>
     </select>

@@ -29,7 +29,8 @@ export class PlatnosciPracownikaComponent implements OnInit, OnDestroy {
       if (k['paymentId'] != undefined && k['paymentStatus']) {
         this.paymentId = k['paymentId'];
         this.paymentStatus = k['paymentStatus'];
-        alert('Twoja płatność została zakończona, trwa przetwarzanie płatności. Proces ten może zająć kilka minut');
+        this.komunikaty.waitingForPaying();
+
         this.router.navigate([], {
           queryParams: {
             paymentId: null,

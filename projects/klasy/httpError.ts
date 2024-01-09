@@ -8,7 +8,7 @@ export class HttpError {
         message: string;
       }
     | undefined;
-
+  type: string = '';
   headers = {};
   message: string = '';
   name: string = '';

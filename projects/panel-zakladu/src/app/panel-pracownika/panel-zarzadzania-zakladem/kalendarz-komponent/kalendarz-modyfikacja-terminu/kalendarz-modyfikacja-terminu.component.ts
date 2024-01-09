@@ -1,25 +1,25 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
-import { Wizyta } from "../../../../klasy/panelPracownika/wizyta";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ListonoszService } from "../../../../serwisy/listonosz.service";
-import { Drzwi } from "../../../../enum/drzwi";
-import { UslugiService } from "../../panele/uslugi/uslugi.service";
-import { Usluga } from "../../../../klasy/panelPracownika/usluga/usluga";
-import { KalendarzKomponentService } from "../kalendarz-komponent.service";
-import { TokenService } from "../../../../serwisy/token.service";
-import { ErrorAnalyzerService } from "../../../../serwisy/error-analyzer.service";
-import { KomunikatyService } from "../../../../serwisy/komunikaty.service";
-import { Udane } from "../../../../enum/udane";
-import { environment } from "../../../../../environments/environment";
-import { Funkcje } from "../../../../funkcje";
-import * as EmailValidator from "email-validator";
-import { Info } from "../../../../enum/info";
+import { Component, Input, OnInit } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Wizyta } from '../../../../klasy/panelPracownika/wizyta';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ListonoszService } from '../../../../serwisy/listonosz.service';
+import { Drzwi } from '../../../../enum/drzwi';
+import { UslugiService } from '../../panele/uslugi/uslugi.service';
+import { Usluga } from '../../../../klasy/panelPracownika/usluga/usluga';
+import { KalendarzKomponentService } from '../kalendarz-komponent.service';
+import { TokenService } from '../../../../serwisy/token.service';
+import { ErrorAnalyzerService } from '../../../../serwisy/error-analyzer.service';
+import { KomunikatyService } from '../../../../serwisy/komunikaty.service';
+import { Udane } from '../../../../enum/udane';
+import { environment } from '../../../../../environments/environment';
+import { Funkcje } from '../../../../funkcje';
+import * as EmailValidator from 'email-validator';
+import { Info } from '../../../../enum/info';
 
 @Component({
-  selector: "app-kalendarz-modyfikacja-terminu",
-  templateUrl: "./kalendarz-modyfikacja-terminu.component.html",
-  styleUrls: ["./kalendarz-modyfikacja-terminu.component.scss"]
+  selector: 'app-kalendarz-modyfikacja-terminu',
+  templateUrl: './kalendarz-modyfikacja-terminu.component.html',
+  styleUrls: ['./kalendarz-modyfikacja-terminu.component.scss'],
 })
 export class KalendarzModyfikacjaTerminuComponent implements OnInit {
   @Input() formualrzRejestracjiWizyty: FormGroup = this.fb.group({});
@@ -43,35 +43,35 @@ export class KalendarzModyfikacjaTerminuComponent implements OnInit {
   ) {
     if (Funkcje.doPracy()) {
       this.formualrzRejestracjiWizyty = this.fb.group({
-        imie: ["Korneliia", [Validators.required]],
-        nazwisko: ["Mushak", [Validators.required]],
-        termin: ["", [Validators.required]],
-        poczatek: ["12:00", [Validators.required]],
-        prefix: ["+48", [Validators.required]],
-        confirmed: [""],
+        imie: ['Korneliia', [Validators.required]],
+        nazwisko: ['Mushak', [Validators.required]],
+        termin: ['', [Validators.required]],
+        poczatek: ['12:00', [Validators.required]],
+        prefix: ['+48', [Validators.required]],
+        confirmed: [''],
 
-        koniec: ["12:00", [Validators.required]],
-        telefon: ["530322879", [Validators.required]],
+        koniec: ['12:00', [Validators.required]],
+        telefon: ['530322879', [Validators.required]],
         wykonawca: [this.kalendarz_.wybranyPracownik.value, [Validators.required]],
-        opis: ["", []],
+        opis: ['', []],
         cena: [8, [Validators.required]],
-        email: ["alfagruis@gmail.com", []]
+        email: ['alfagruis@gmail.com', []],
       });
     } else {
       this.formualrzRejestracjiWizyty = this.fb.group({
-        imie: ["", [Validators.required]],
-        nazwisko: ["", [Validators.required]],
-        termin: ["", [Validators.required]],
-        poczatek: ["12:00", [Validators.required]],
-        prefix: ["+48", [Validators.required]],
-        confirmed: [""],
+        imie: ['', [Validators.required]],
+        nazwisko: ['', [Validators.required]],
+        termin: ['', [Validators.required]],
+        poczatek: ['12:00', [Validators.required]],
+        prefix: ['+48', [Validators.required]],
+        confirmed: [''],
 
-        koniec: ["12:00", [Validators.required]],
-        telefon: ["", [Validators.required]],
+        koniec: ['12:00', [Validators.required]],
+        telefon: ['', [Validators.required]],
         wykonawca: [this.kalendarz_.wybranyPracownik.value, [Validators.required]],
-        opis: ["", []],
+        opis: ['', []],
         cena: [0, [Validators.required]],
-        email: ["", []]
+        email: ['', []],
       });
     }
   }
@@ -90,16 +90,16 @@ export class KalendarzModyfikacjaTerminuComponent implements OnInit {
 
   obliczCzas(): string {
     let czas = 0;
-    this.kliknieteUslugi.forEach(usluga => (czas += Number(usluga.czas)));
-    const startVisit = this.formualrzRejestracjiWizyty.controls["poczatek"].value.split(":");
+    this.kliknieteUslugi.forEach(usluga => (czas += Number(usluga.time)));
+    const startVisit = this.formualrzRejestracjiWizyty.controls['poczatek'].value.split(':');
     const dateStartVisit = new Date().setHours(startVisit[0], startVisit[1], 0, 0);
     const newDate = new Date(dateStartVisit + czas * 1000 * 60).toLocaleTimeString();
-    return `${newDate.split(":")[0]}:${newDate.split(":")[1]}`;
+    return `${newDate.split(':')[0]}:${newDate.split(':')[1]}`;
   }
 
   obliczCene(): number {
     let liczba = 0;
-    this.kliknieteUslugi.forEach(usluga => (liczba += Number(usluga.cena)));
+    this.kliknieteUslugi.forEach(usluga => (liczba += Number(usluga.price)));
     return Math.round(liczba * 100) / 100;
   }
 
@@ -109,11 +109,11 @@ export class KalendarzModyfikacjaTerminuComponent implements OnInit {
 
   sendHandler() {
     ///walidacja Email jeśli nie pusty
-    const emailValue = this.formualrzRejestracjiWizyty.controls["email"].value;
+    const emailValue = this.formualrzRejestracjiWizyty.controls['email'].value;
     if (emailValue.length > 0) {
       if (!EmailValidator.validate(emailValue)) {
-        this.formualrzRejestracjiWizyty.controls["email"].setErrors({ email: false });
-        this.komunikaty_.komunikatInfo("Email jest zalecanym nieobowiązkowym polem");
+        this.formualrzRejestracjiWizyty.controls['email'].setErrors({ email: false });
+        this.komunikaty_.komunikatInfo('Email jest zalecanym nieobowiązkowym polem');
         //  return;
       }
     }
@@ -124,7 +124,7 @@ export class KalendarzModyfikacjaTerminuComponent implements OnInit {
       this.kliknieteUslugi.forEach(k => {
         uslugiId.push(k.id);
       });
-      data["uslugiId"] = uslugiId;
+      data['uslugiId'] = uslugiId;
     }
     if (!this.edit) {
       this.send(data);
@@ -138,13 +138,13 @@ export class KalendarzModyfikacjaTerminuComponent implements OnInit {
   }
 
   size() {
-    if (document.body.clientWidth < 700) return "small";
-    return "medium";
+    if (document.body.clientWidth < 700) return 'small';
+    return 'medium';
   }
 
   private send(data: any) {
     delete data.confirmed;
-    data["tryb"] = this.auto ? "auto" : "manual";
+    data['tryb'] = this.auto ? 'auto' : 'manual';
     this.listonosz
       .wyslij(Drzwi.kalendarzRejestracjaWizytyZPanelu, data)
       .then(k => {

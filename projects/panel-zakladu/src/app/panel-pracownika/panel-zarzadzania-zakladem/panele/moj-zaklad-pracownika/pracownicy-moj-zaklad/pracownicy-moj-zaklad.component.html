@@ -2,15 +2,17 @@
   <table class="pracownicyTable">
     <tr>
       <td class="naglowki1form" colspan="2">
-        Wybierz, jakie pracowniki mają być <br> wyświetlane na stronie zakładu
+        Wybierz, jakie pracowniki mają być <br />
+        wyświetlane na stronie zakładu
       </td>
       <td>
-        <ui-switch class="przelacznikPublicznePrywatne" [disabled]="!czyWidoczne"
-                   [(ngModel)]="pracownicy.widocznoscOgolna"
-                   checkedLabel="Publiczne" uncheckedLabel="Prywatne"
-        ></ui-switch>
+        <ui-switch
+          [(ngModel)]="pracownicy.widocznoscOgolna"
+          [disabled]="!czyWidoczne"
+          checkedLabel="Publiczne"
+          class="przelacznikPublicznePrywatne"
+          uncheckedLabel="Prywatne"></ui-switch>
       </td>
-
     </tr>
     <tr>
       <th>Imię</th>
@@ -18,12 +20,15 @@
       <th>Widoczność</th>
     </tr>
     <tr *ngFor="let pracownik of pracownicy.listaPracownikow">
-      <td>{{pracownik.imie}}</td>
-      <td>{{pracownik.nazwisko}}</td>
+      <td>{{ pracownik.firstname }}</td>
+      <td>{{ pracownik.lastname }}</td>
       <td>
-        <ui-switch [disabled]="!czyWidoczne" [(ngModel)]="pracownik.widocznosc" class="przelacznikWidocznyNiewidoczny"
-                   checkedLabel="Widoczny"
-                   uncheckedLabel="Niewidoczny"></ui-switch>
+        <ui-switch
+          [(ngModel)]="pracownik.widocznosc"
+          [disabled]="!czyWidoczne"
+          checkedLabel="Widoczny"
+          class="przelacznikWidocznyNiewidoczny"
+          uncheckedLabel="Niewidoczny"></ui-switch>
       </td>
     </tr>
   </table>

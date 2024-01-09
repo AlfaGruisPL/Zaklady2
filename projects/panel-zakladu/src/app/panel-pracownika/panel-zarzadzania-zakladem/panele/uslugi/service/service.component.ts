@@ -36,7 +36,7 @@ export class ServiceComponent {
       size: 'lg',
     });
     okno.componentInstance.usluga = usluga;
-    okno.componentInstance.pracownicy = this.service_.pracownicy;
+    okno.componentInstance.workers = this.service_.pracownicy;
   }
 
   public modifyDescription(service: Usluga) {
@@ -76,7 +76,6 @@ export class ServiceComponent {
             tmp.push(service.category);
           }
         });
-        console.log(123);
         return term === '' ? [] : tmp.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10);
       })
     );

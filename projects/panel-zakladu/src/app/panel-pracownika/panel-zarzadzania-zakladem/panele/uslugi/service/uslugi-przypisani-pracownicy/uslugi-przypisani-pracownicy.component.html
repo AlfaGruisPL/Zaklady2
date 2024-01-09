@@ -3,14 +3,14 @@
   <button (click)="activeModal.close('Nie')" aria-label="Close" class="btn-close" type="button"></button>
 </div>
 <div class="modal-body">
-  <h3>Usługa: {{ usluga.nazwa }}</h3>
+  <h3>Usługa: {{ usluga.title }}</h3>
   <table>
     <tr>
       <th>Wykonawca</th>
       <th>Dołączenie</th>
     </tr>
     <tr *ngFor="let pracownik of pracownicy">
-      <td>{{ pracownik.imie }} {{ pracownik.nazwisko }}</td>
+      <td>{{ pracownik.firstname }} {{ pracownik.lastname }}</td>
       <td><input (click)="ustaw($event, pracownik)" [checked]="czyZaznaczony(pracownik)" type="checkbox" /></td>
     </tr>
   </table>
