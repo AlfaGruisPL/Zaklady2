@@ -17,4 +17,5 @@ export enum Bledy {
   employeeModifyFail = 'Dane o pracowniku nie zostały zmodyfikowane',
   addEmployeeFail = 'Dodanie pracownika nie udane',
   autoRenewFail = 'Zmiana statusu auto odświeżania nie udała sie',
+  smmNotificationSuccess = 'Usługa SMS nie została zmodyfikowana',
 }

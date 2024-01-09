@@ -23,7 +23,7 @@ export enum Drzwi {
   autoRenew = '/pay/autoRenew',
   pracownik = '/uzytkownicyWZakladach/pracownik/',
   PlatnosciIloscPracownikow = '/platnosci/iloscPracownikow',
-  PlatnosciIUslugaSMS = '/platnosci/uslugaSms',
+  smsNotification = '/sms/powiadomieniaSms',
   mojeKonto = '/users/profil',
 
   informacjeDoPaneluPlatnosci = '/platnosci/informacjeDoPaneluPlatnosci',

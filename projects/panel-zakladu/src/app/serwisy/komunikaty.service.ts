@@ -66,22 +66,6 @@ export class KomunikatyService {
     }
   }
 
-  public uslugaSmsWlaczona() {
-    this.komunikaty.success('Usługa SMS została włączona', 'Udane');
-  }
-
-  public uslugaSmsWylaczona() {
-    this.komunikaty.success('Usługa SMS została wyłączona', 'Udane');
-  }
-
-  public uslugaSmsNieWylaczona() {
-    this.komunikaty.error('Wyłączenie usługi SMS nie powiodło się', 'Błąd');
-  }
-
-  public uslugaSmsNieWlaczona() {
-    this.komunikaty.error('Włączenie usługi SMS nie powiodło się', 'Błąd');
-  }
-
   public modyfikacjaUdana() {
     this.komunikaty.success('Zmodyfikowanie danych powiodło się', 'Udane');
   }
@@ -106,20 +90,12 @@ export class KomunikatyService {
     this.komunikaty.success('Twoje konto zostało aktywowane', 'Udane');
   }
 
-  public kontoWstrzymane() {
-    this.komunikaty.success('Twoje konto zostało wstrzymane', 'Udane');
-  }
-
   public kontoNieAktywowane_zabrakloPieniedzy() {
     this.komunikaty.error('Twoje konto nie zostało aktywowane, za mało funduszy na koncie', 'Bląd');
   }
 
   public kontoNieAktywowane() {
     this.komunikaty.error('Twoje konto nie zostało aktywowane', 'Bląd');
-  }
-
-  public kontoNieWstrzymane() {
-    this.komunikaty.error('Twoje konto nie zostało wstrzymane', 'Bląd');
   }
 
   public dodaniePracownikaUdane() {
@@ -134,16 +110,8 @@ export class KomunikatyService {
     this.komunikaty.error('Zdjęcie profilowe pracownika nie zostało zmienione', 'Bląd');
   }
 
-  public dodaniePracownikaNieUdane() {
-    this.komunikaty.error('Pracownik  nie został dodany, skontaktuj się z administratorem', 'Udane');
-  }
-
   public modyfikowaniePracownikaUdane() {
     this.komunikaty.success('Dane o pracowniku zostały zmodyfikowane', 'Udane');
-  }
-
-  public modyfikowaniePracownikaNieUdane() {
-    this.komunikaty.error('Dane o pracowniku nie zostały zmodyfikowane, skontaktuj się z administratorem', 'Udane');
   }
 
   public pracownikUsuniety() {

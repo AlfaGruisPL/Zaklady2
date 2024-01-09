@@ -20,7 +20,6 @@
       <td>
         <ui-switch
           [(ngModel)]="service.dane.smsPowiadomienia.threeDaysBefore"
-          [disabled]="!service.dane.status"
           checkedLabel="Włączone"
           class="uiSwitch120px"
           uncheckedLabel="Wyłączone"></ui-switch>
@@ -31,7 +30,6 @@
       <td>
         <ui-switch
           [(ngModel)]="service.dane.smsPowiadomienia.dayBefore"
-          [disabled]="!service.dane.status"
           checkedLabel="Włączone"
           class="uiSwitch120px"
           uncheckedLabel="Wyłączone"></ui-switch>
@@ -43,7 +41,6 @@
       <td>
         <ui-switch
           [(ngModel)]="service.dane.smsPowiadomienia.threeHoursBefore"
-          [disabled]="!service.dane.status"
           checkedLabel="Włączone"
           class="uiSwitch120px"
           uncheckedLabel="Wyłączone"></ui-switch>
@@ -55,7 +52,6 @@
       <td>
         <ui-switch
           [(ngModel)]="service.dane.smsPowiadomienia.hourBefore"
-          [disabled]="!service.dane.status"
           checkedLabel="Włączone"
           class="uiSwitch120px"
           uncheckedLabel="Wyłączone"></ui-switch>
@@ -68,4 +64,5 @@
       <td class="sumaSpan value">{{ przewidywanaOplata() }} groszy</td>
     </tr>
   </table>
+  <button (click)="save()" class="save domyslnyButtonZapisz">Zapisz</button>
 </div>
