@@ -142,6 +142,6 @@ export class WorkerModifyComponent implements OnInit {
   }
 
   private back() {
-    this.router_.navigate(['/panelPracownika/zarzadzaniePracownikam']);
+    this.router_.navigate(['/panelPracownika/zarzadzaniePracownikami']);
   }
 }

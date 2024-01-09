@@ -3,9 +3,9 @@
   <button (click)="activeModal.close('Nie')" aria-label="Close" class="btn-close" type="button"></button>
 </div>
 <div class="modal-body">
-  <h6>Opis usługi:</h6>
-  <app-ngx-editor [(value)]="usluga.description" [maxLength]="1000" />
-  <h6>Zdjęcie usługi:</h6>
+  <h5>Opis usługi:</h5>
+  <app-ngx-editor [(value)]="usluga.description" [maxLength]="1000"></app-ngx-editor>
+  <h5>Zdjęcie usługi:</h5>
   <app-select-image (changeImageId)="usluga.imageId = $event" [lastImageId]="usluga.imageId" />
 </div>
 <div class="modal-footer">
