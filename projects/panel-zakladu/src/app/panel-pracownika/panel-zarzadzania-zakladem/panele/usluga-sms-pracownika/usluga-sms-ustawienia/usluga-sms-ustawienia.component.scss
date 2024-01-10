@@ -2,6 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  position: relative;
 
   table {
     margin-top: 15px;
@@ -44,4 +45,10 @@
 h3 {
   padding-left: 20px;
   padding-bottom: 20px;
+}
+
+.save {
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }

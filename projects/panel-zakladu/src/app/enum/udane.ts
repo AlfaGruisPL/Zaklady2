@@ -15,4 +15,5 @@ export enum Udane {
   daneZostalyZapisane = 'Dane zostały zapisane',
   startAutoRenew = 'Auto odnawianie aktywności zakładu zostało włączone',
   stopAutoRenew = 'Auto odnawianie aktywności zakładu zostało wyłączone',
+  smmNotificationSuccess = 'Usługa SMS została zmodyfikowana',
 }

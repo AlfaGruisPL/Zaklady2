@@ -10,12 +10,17 @@ export class UslugaSmsUstawieniaComponent {
   constructor(public service: UslugaSmsService) {}
 
   przewidywanaOplata() {
+    const price = 11;
     let cena = 9;
-    if (this.service.dane.smsPowiadomienia.hourBefore) cena += 9;
-    if (this.service.dane.smsPowiadomienia.threeHoursBefore) cena += 9;
-    if (this.service.dane.smsPowiadomienia.dayBefore) cena += 9;
-    if (this.service.dane.smsPowiadomienia.threeDaysBefore) cena += 9;
+    if (this.service.dane.smsPowiadomienia.hourBefore) cena += price;
+    if (this.service.dane.smsPowiadomienia.threeHoursBefore) cena += price;
+    if (this.service.dane.smsPowiadomienia.dayBefore) cena += price;
+    if (this.service.dane.smsPowiadomienia.threeDaysBefore) cena += price;
 
     return cena;
+  }
+
+  save() {
+    this.service.saveData();
   }
 }

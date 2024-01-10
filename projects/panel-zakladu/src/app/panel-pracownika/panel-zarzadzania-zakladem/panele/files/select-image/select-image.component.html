@@ -11,6 +11,7 @@
       <input [(ngModel)]="finder" class="finder" placeholder="Wyszukiwarka" />
       <div class="dropdown-divider"></div>
       <div class="selectImageBlockContainer">
+
         <div
           (click)="changeImage(image.id, myDrop)"
           *ngFor="let image of Finder(files_.filesData)"

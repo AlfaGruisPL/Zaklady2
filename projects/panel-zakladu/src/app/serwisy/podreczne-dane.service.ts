@@ -43,7 +43,7 @@ export class PodreczneDaneService {
     await this.listonosz
       .pobierz(Drzwi.nazwaZakladu)
       .then(k => {
-        this.nazwaZakladu_domenowe = k.title;
+        this.nazwaZakladu_domenowe = k.name;
         this.zakladZnaleziony_domenowe = true;
       })
       .catch(error => {
