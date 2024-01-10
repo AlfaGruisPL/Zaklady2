@@ -35,7 +35,7 @@
               <option>Zakład</option>
               <option [disabled]="true">Pracownicy:</option>
               <option *ngFor="let pracownik of listaPracownikow" [value]="pracownik.id">
-                {{ pracownik.imie }} {{ pracownik.nazwisko }}
+                {{ pracownik.firstname }} {{ pracownik.lastname }}
               </option>
             </select>
           </td>

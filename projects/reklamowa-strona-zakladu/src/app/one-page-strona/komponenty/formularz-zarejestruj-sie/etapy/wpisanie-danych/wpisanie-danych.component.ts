@@ -14,7 +14,8 @@ export class WpisanieDanychComponent {
 
   constructor(public ZarejestrujSieService: ZarejestrujSieService) {}
 
-  resolved(captchaResponse: string) {
+  resolved(captchaResponse: string | null) {
+    if (!captchaResponse) return;
     this.captchaSolve = true;
     this.ZarejestrujSieService.DaneKlientaClass.capcha = captchaResponse;
   }

@@ -1,3 +1,26 @@
+.iconSocial {
+  fa-icon {
+    $color: #003495;
+    font-size: 25px;
+    margin-right: 10px;
+    color: $color;
+    transition: 100ms;
+
+    ::ng-deep svg {
+      transition: 100ms;
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: darken($color, 12%);
+
+      ::ng-deep svg {
+        scale: 1.1;
+      }
+    }
+  }
+}
+
 .naglowek {
   font-family: math;
   text-align: center;

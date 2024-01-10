@@ -65,9 +65,11 @@ export class SelectImageComponent implements OnInit {
     this.lastImageId = id;
   }
 
-  Finder(filesData: any) {
+  Finder(filesData: any): Array<any> {
     return filesData.filter((data: any) => {
-      return data.nazwa.toLowerCase().includes(this.finder.toLowerCase().trim());
+      if (data.nazwa) {
+        return data.nazwa.toLowerCase().includes(this.finder.toLowerCase().trim());
+      }
     });
   }
 }
