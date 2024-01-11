@@ -1,18 +1,17 @@
-import { environment } from "projects/panel-zakladu/src/environments/environment";
-import { usluga } from "../../../../../klasy/dane-podstawowe";
-import { Termin } from "../kalendarz/termin";
+import { usluga } from '../../../../../klasy/dane-podstawowe';
+import { Termin } from '../kalendarz/termin';
 
 export class DaneKlienta {
-  public imie: string = "";
-  public nazwisko: string = "";
-  public prefiksTelefonu: string = "";
-  public numerTelefonu: string = "";
-  public email: string = "";
+  public imie: string = '';
+  public nazwisko: string = '';
+  public prefiksTelefonu: string = '';
+  public numerTelefonu: string = '';
+  public email: string = '';
   public wybranyPracownik: number | undefined = undefined;
   public niewybranyPracownik: boolean = false;
   public uslugi: Array<usluga> = []; //wszystkie uslugi pobierane z api
-  public kodWeryfikacja: string = "";
-  public identyfikator: string = "";
+  public kodWeryfikacja: string = '';
+  public identyfikator: string = '';
   public kodWeryfikacjaPusty: boolean = false;
   public czyWszystkoUzupelnione: boolean = true;
   public imiePuste: boolean = false;
@@ -23,18 +22,18 @@ export class DaneKlienta {
   public niepoprawnyKod: boolean = false;
   public wybranyTermin: Termin | undefined;
   public wszystkieTerminy: Array<Termin> = [];
-  public capcha = "";
+  public capcha = '';
 
   constructor() {
     // informacje do rejestracji
-    if (!environment.production) {
-      this.imie = "Korneliia";
-      this.nazwisko = "Mushak";
-      this.prefiksTelefonu = "+48";
-      this.numerTelefonu = "530322879";
-      this.email = "korneliamushak@gmail.com";
-      this.kodWeryfikacja = "8";
-    }
+    /*  if (!environment.production) {
+        this.imie = "Korneliia";
+        this.nazwisko = "Mushak";
+        this.prefiksTelefonu = "+48";
+        this.numerTelefonu = "530322879";
+        this.email = "korneliamushak@gmail.com";
+        this.kodWeryfikacja = "8";
+      }*/
   }
 
   public czyKodWerifikacjaWpisany() {
@@ -74,7 +73,6 @@ export class DaneKlienta {
   }
 
   public czyWybranyPracownik() {
-
     this.niewybranyPracownik = false;
     if (this.wybranyPracownik == undefined) {
       this.niewybranyPracownik = true;
@@ -100,20 +98,20 @@ export class pracownikUslugiDTO {
 }
 
 export class DaneKlientaDTO {
-  public imie: string = "";
-  public nazwisko: string = "";
-  public numerTelefonu: string = "";
-  public email: string = "";
+  public imie: string = '';
+  public nazwisko: string = '';
+  public numerTelefonu: string = '';
+  public email: string = '';
   public poczatek: Date = new Date();
   public koniec: Date = new Date();
   public uslugiId: number[] = [];
   public pracownikId: number | undefined = 0;
-  public capcha = "";
+  public capcha = '';
 
   constructor(daneKlienta: DaneKlienta) {
     this.imie = daneKlienta.imie;
     this.nazwisko = daneKlienta.nazwisko;
-    this.numerTelefonu = daneKlienta.prefiksTelefonu + "-" + daneKlienta.numerTelefonu;
+    this.numerTelefonu = daneKlienta.prefiksTelefonu + '-' + daneKlienta.numerTelefonu;
     this.email = daneKlienta.email;
     this.pracownikId = daneKlienta.wybranyPracownik;
     this.capcha = daneKlienta.capcha;
