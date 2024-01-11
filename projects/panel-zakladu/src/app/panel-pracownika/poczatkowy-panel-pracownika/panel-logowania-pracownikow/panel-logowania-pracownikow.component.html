@@ -48,7 +48,7 @@
               style="position: absolute; top: 34px"></fa-icon>
           </td>
         </tr>
-        <tr>
+        <tr *ngIf="environment.demo.toString() == 'false' && environment.production.toString() == 'false'">
           <td>
             <select (change)="latweLogowanie($event)">
               <option default>Brak</option>
