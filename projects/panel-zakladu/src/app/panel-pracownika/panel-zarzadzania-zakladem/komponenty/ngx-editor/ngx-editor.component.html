@@ -1,4 +1,4 @@
-<div class="NgxEditor__Wrapper">
+<div *ngIf="value" class="NgxEditor__Wrapper">
   <ngx-editor-menu *ngIf="!disabled" [editor]="editor" [toolbar]="registerPage_.toolbar"></ngx-editor-menu>
   <ngx-editor
     #editorRef

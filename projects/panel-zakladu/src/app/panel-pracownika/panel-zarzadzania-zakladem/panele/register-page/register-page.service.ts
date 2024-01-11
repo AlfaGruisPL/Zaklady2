@@ -61,6 +61,9 @@ export class RegisterPageService {
       case 'template1':
         Object.assign(this.data.FirstTemplateData, data.data);
         break;
+      case 'template2':
+        Object.assign(this.data.SecondTemplateData, data.data);
+        break;
     }
     //todo tu można dodać tworzenie obiektu danego template
     //this.data.data = data['data'];

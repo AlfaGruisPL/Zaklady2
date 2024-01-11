@@ -15,7 +15,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PoczatkowyPanelPracownikaComponent } from './panel-pracownika/poczatkowy-panel-pracownika/poczatkowy-panel-pracownika.component';
 import { BannerPracownikaComponent } from './panel-pracownika/poczatkowy-panel-pracownika/banner-pracownika/banner-pracownika.component';
 import { StopkaPracownikaComponent } from './panel-pracownika/poczatkowy-panel-pracownika/stopka-pracownika/stopka-pracownika.component';
-import { StronaStartowaPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/strona-startowa-pracownika/strona-startowa-pracownika.component';
 import { MojeKontoPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moje-konto-pracownika/moje-konto-pracownika.component';
 import { MojZakladPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moj-zaklad-pracownika/moj-zaklad-pracownika.component';
 import { popperVariation, provideTippyConfig, TippyDirective, tooltipVariation } from '@ngneat/helipopper';
@@ -68,7 +67,6 @@ registerLocaleData(localePl, 'pl-PL');
     PoczatkowyPanelPracownikaComponent,
     BannerPracownikaComponent,
     StopkaPracownikaComponent,
-    StronaStartowaPracownikaComponent,
     MojZakladPracownikaComponent,
     RejestracjaZakladuComponent,
     BannerPracownikComponent,

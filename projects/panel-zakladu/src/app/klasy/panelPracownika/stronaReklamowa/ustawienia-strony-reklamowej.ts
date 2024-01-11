@@ -6,6 +6,7 @@ export class UstawieniaStronyReklamowejDto {
   template: string | undefined = '';
 
   constructor(zrodlo: Partial<UstawieniaStronyReklamowej> = {}) {
+    console.log(zrodlo);
     switch (zrodlo.template) {
       case 'template1':
         Object.assign(this.data, zrodlo.FirstTemplateData);

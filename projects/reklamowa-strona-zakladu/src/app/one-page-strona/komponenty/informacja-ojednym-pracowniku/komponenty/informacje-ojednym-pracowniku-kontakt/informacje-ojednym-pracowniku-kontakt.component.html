@@ -36,6 +36,10 @@
         <a [href]="daneOPracowniku.socialMedia.telegram">
           <fa-icon [icon]="faTelegram" />
         </a>
+        } @if (daneOPracowniku.socialMedia.whatsapp.length > 0) {
+        <a [href]="daneOPracowniku.socialMedia.whatsapp">
+          <fa-icon [icon]="faWhatsapp" />
+        </a>
         }
       </td>
     </tr>

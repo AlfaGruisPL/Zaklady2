@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { RegisterPageService } from '../../panele/register-page/register-page.service';
 import { PodreczneDaneService } from '../../../../serwisy/podreczne-dane.service';
 import { Editor, NgxEditorModule, Toolbar } from 'ngx-editor';
@@ -15,14 +15,16 @@ import { Info } from '../../../../enum/info';
   templateUrl: './ngx-editor.component.html',
   styleUrl: './ngx-editor.component.scss',
 })
-export class NgxEditorComponent {
+export class NgxEditorComponent implements OnInit {
   @ViewChild('editorRef', { read: ElementRef })
   editorRef: ElementRef<HTMLElement> | undefined;
-  @Input({ required: true }) value!: string;
+  @Input({ required: true }) value: string = 'Loading...';
   @Input() disabled = false;
   @Output() valueChange = new EventEmitter<string>();
   @Input() maxLength = 20000;
   editor: any = undefined;
+  interval: any;
+
   prevValue = '';
   toolbar: Toolbar = [
     ['bold', 'italic'],
