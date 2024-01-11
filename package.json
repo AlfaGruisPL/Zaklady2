@@ -1,7 +1,7 @@
 {
   "name": "zaklady",
-  "version": "0.0.79",
-  "relase_date": "11.01.2024 16:53",
+  "version": "0.0.81",
+  "relase_date": "11.01.2024 20:53",
   "scripts": {
     "postinstall": "npm i https://github.com/AlfaGruisPL/zakladLib.git --force",
     "npmInstall": "npm install --force",

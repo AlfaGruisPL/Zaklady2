@@ -10,4 +10,5 @@ export const environment = {
   api: 'https://api.fenek.tech',
   apiImage: 'https://api.fenek.tech/pliki/image/',
   demo: false,
+  name: 'dev',
 };
