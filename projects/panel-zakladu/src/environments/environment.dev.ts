@@ -9,4 +9,5 @@ export const environment = {
   linkDoStronyFirmowej: 'http://fenek.tech',
   api: 'https://api.fenek.tech',
   apiImage: 'https://api.fenek.tech/pliki/image/',
+  demo: false,
 };
