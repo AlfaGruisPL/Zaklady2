@@ -1,24 +1,24 @@
-import { Injectable } from "@angular/core";
-import { ListonoszService } from "./listonosz.service";
-import { Drzwi } from "../enum/drzwi";
-import { KomunikatyService } from "./komunikaty.service";
-import { BledyNumery } from "../enum/bledy-numery";
-import { DanePodreczneClass } from "../klasy/panelPracownika/dane-podreczne";
-import { BehaviorSubject } from "rxjs";
-import { TokenService } from "./token.service";
+import { Injectable } from '@angular/core';
+import { ListonoszService } from './listonosz.service';
+import { Drzwi } from '../enum/drzwi';
+import { KomunikatyService } from './komunikaty.service';
+import { BledyNumery } from '../enum/bledy-numery';
+import { DanePodreczneClass } from '../klasy/panelPracownika/dane-podreczne';
+import { BehaviorSubject } from 'rxjs';
+import { TokenService } from './token.service';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root',
 })
 export class PodreczneDaneService {
   public danePodreczneObiekt = new DanePodreczneClass();
   public danePodreczneObserveble = new BehaviorSubject<DanePodreczneClass | undefined>(undefined);
   public losowaLiczba = Math.round(Math.random() * 100000000);
   public wlasciciel = false;
-  public nazwaZakladu_domenowe = "";
+  public nazwaZakladu_domenowe = '';
   public zakladZnaleziony_domenowe: boolean = true;
   public subDomainID = false;
-  public wartoscAutomatycznegoIdentyfikatora = "_";
+  public wartoscAutomatycznegoIdentyfikatora = '_';
 
   constructor(
     private listonosz: ListonoszService,
@@ -43,7 +43,7 @@ export class PodreczneDaneService {
     await this.listonosz
       .pobierz(Drzwi.nazwaZakladu)
       .then(k => {
-        this.nazwaZakladu_domenowe = k.name;
+        this.nazwaZakladu_domenowe = k.nazwa;
         this.zakladZnaleziony_domenowe = true;
       })
       .catch(error => {

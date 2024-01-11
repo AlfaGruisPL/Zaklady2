@@ -1,15 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { ListonoszService } from "../../../serwisy/listonosz.service";
-import { ActivatedRoute, Router } from "@angular/router";
-import { ToastrService } from "ngx-toastr";
-import { FontAwesomeService } from "../../../serwisy/font-awesome.service";
-import { PodreczneDaneService } from "../../../serwisy/podreczne-dane.service";
-import { environment } from "../../../../environments/environment";
+import { Component, OnInit } from '@angular/core';
+import { ListonoszService } from '../../../serwisy/listonosz.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { FontAwesomeService } from '../../../serwisy/font-awesome.service';
+import { PodreczneDaneService } from '../../../serwisy/podreczne-dane.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
-  selector: "app-panel-logowania-pracownikow",
-  templateUrl: "./panel-logowania-pracownikow.component.html",
-  styleUrls: ["./panel-logowania-pracownikow.component.scss"]
+  selector: 'app-panel-logowania-pracownikow',
+  templateUrl: './panel-logowania-pracownikow.component.html',
+  styleUrls: ['./panel-logowania-pracownikow.component.scss'],
 })
 export class PanelLogowaniaPracownikowComponent implements OnInit {
   public email: string = environment.demo.toString() == 'true' ? 'mojzaklad.system@gmail.com' : '';
@@ -35,15 +35,15 @@ export class PanelLogowaniaPracownikowComponent implements OnInit {
     private toasts: ToastrService,
     public podreczne_: PodreczneDaneService,
     public fontAwesome: FontAwesomeService
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
+    console.log(environment.demo, environment.demo.toString() == 'true');
   }
 
   latweLogowanie(event: any) {
-    this.email = event.target.value.split(",")[0];
-    this.haslo = event.target.value.split(",")[1];
+    this.email = event.target.value.split(',')[0];
+    this.haslo = event.target.value.split(',')[1];
 
     this.logowanie();
   }
@@ -79,7 +79,7 @@ export class PanelLogowaniaPracownikowComponent implements OnInit {
     }
     const dane = {
       email: this.email,
-      haslo: this.haslo
+      haslo: this.haslo,
     };
     this.bladPrzyLogowaniu = true;
     this.czyKontoPotwierdzone = true;
@@ -87,10 +87,10 @@ export class PanelLogowaniaPracownikowComponent implements OnInit {
     this.listonosz
       .zaloguj(dane)
       .then(udane => {
-        this.Router.navigate(["/panelPracownika"]);
+        this.Router.navigate(['/panelPracownika']);
       })
       .catch(blad => {
-        switch (blad["error"]["reasonCode"]) {
+        switch (blad['error']['reasonCode']) {
           case 3:
             this.czyWolnoLogowac = false;
             break;
