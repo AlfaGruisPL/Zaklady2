@@ -10,7 +10,7 @@ import { TemplateIdDirective } from '../../../../../../../komponets/table/templa
   standalone: true,
   imports: [RegisterPageSaveButtonComponent, NgxEditorComponent, TemplateSettingComponent, TemplateIdDirective],
   templateUrl: './second-template-default.component.html',
-  styleUrl: './second-template-default.component.scss',
+  styles: ['./second-template-default.component.scss', '../../../register-page.component.scss'],
 })
 export class SecondTemplateDefaultComponent {
   constructor(public registerPage_: RegisterPageService) {}

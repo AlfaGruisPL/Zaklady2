@@ -9,7 +9,7 @@ import { NgTemplateOutlet } from '@angular/common';
   standalone: true,
   imports: [NgxEditorComponent, RegisterPageSaveButtonComponent, NgTemplateOutlet],
   templateUrl: './template-setting.component.html',
-  styles: ['./template-setting.component.scss', ''],
+  styleUrl: './template-setting.component.scss',
 })
 export class TemplateSettingComponent implements AfterContentInit {
   @ContentChildren(TemplateIdDirective)
