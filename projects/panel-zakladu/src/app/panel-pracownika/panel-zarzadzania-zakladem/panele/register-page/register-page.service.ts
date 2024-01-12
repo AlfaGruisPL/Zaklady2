@@ -34,9 +34,9 @@ export class RegisterPageService {
   ) {}
 
   fetchData() {
-    this.http_.pobierz(Drzwi.UstawieniaStronyReklamowej).then(dane => {
-      this.saveDataToVariable(dane);
-    });
+    /* this.http_.pobierz(Drzwi.UstawieniaStronyReklamowej).then(dane => {
+       this.saveDataToVariable(dane);
+     });*/
   }
 
   async saveData() {
@@ -55,16 +55,18 @@ export class RegisterPageService {
   }
 
   private saveDataToVariable(data: any) {
-    this.data.stronaReklamowaPrzelacznik = data.wlaczona;
-    this.selectedTemplate = data['template'];
-    switch (this.selectedTemplate) {
-      case 'template1':
-        Object.assign(this.data.FirstTemplateData, data.data);
-        break;
-      case 'template2':
-        Object.assign(this.data.SecondTemplateData, data.data);
-        break;
-    }
+    // console.log(this.data.SecondTemplateData);
+    //   console.log(new FirstTemplate());
+    /*  this.data.stronaReklamowaPrzelacznik = data.wlaczona;
+      this.selectedTemplate = data['template'];
+      switch (this.selectedTemplate) {
+        case 'template1':
+          //  Object.assign(this.data.FirstTemplateData, data.data);
+          break;
+        case 'template2':
+          //   Object.assign(this.data.SecondTemplateData, data.data);
+          console.log(this.data.SecondTemplateData);
+      }*/
     //todo tu można dodać tworzenie obiektu danego template
     //this.data.data = data['data'];
   }

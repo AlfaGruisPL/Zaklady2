@@ -1,8 +1,35 @@
-<h3 class="settingsSubTitle">Ustawienia panelu informacyjnego o pracownikach:</h3>
+<h3 class="settingsSubTitle">Ustawienia panelu informacyjnego o zakładzie:</h3>
+<!--
 <app-template-setting>
-  <ng-template TemplateId="label"> Opis panelu Lorem Impsum2</ng-template>
+  <ng-template TemplateId="label"> Opis panelu</ng-template>
   <ng-template TemplateId="setting">
     <app-ngx-editor [(value)]="registerPage_.data.SecondTemplateData.descriptionOfEmpolyeeSubPage"></app-ngx-editor>
   </ng-template>
 </app-template-setting>
+
+<app-template-setting>
+  <ng-template TemplateId="label">Tytuł panelu:</ng-template>
+  <ng-template TemplateId="setting">
+    <input [(ngModel)]="registerPage_.data.SecondTemplateData.aboutUs.information.title" />
+  </ng-template>
+</app-template-setting>
+
+<app-template-setting>
+  <ng-template TemplateId="label">Krótki opis zakładu</ng-template>
+  <ng-template TemplateId="setting">
+    <app-ngx-editor
+      [(value)]="registerPage_.data.SecondTemplateData.aboutUs.information.shortDescription"></app-ngx-editor>
+  </ng-template>
+</app-template-setting>
+
+<app-template-setting>
+  <ng-template TemplateId="label"> Długi opis zakładu</ng-template>
+  <ng-template TemplateId="setting">
+    <app-ngx-editor
+      [(value)]="registerPage_.data.SecondTemplateData.aboutUs.information.mainDescription"></app-ngx-editor>
+  </ng-template>
+</app-template-setting>
+
 <app-register-page-save-button />
+
+-->
