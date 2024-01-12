@@ -1,10 +1,8 @@
-<p>second-template-default works!</p>
-<div class="settingPanelContainer">
-  <div class="descritpionPanel">
-    <label>Opis panelu Lorem Impsum: </label>
-  </div>
-  <div class="inputPanel">
+<h3 class="settingsSubTitle">Ustawienia panelu informacyjnego o pracownikach:</h3>
+<app-template-setting>
+  <ng-template TemplateId="label"> Opis panelu Lorem Impsum2</ng-template>
+  <ng-template TemplateId="setting">
     <app-ngx-editor [(value)]="registerPage_.data.SecondTemplateData.descriptionOfEmpolyeeSubPage"></app-ngx-editor>
-  </div>
-</div>
+  </ng-template>
+</app-template-setting>
 <app-register-page-save-button />

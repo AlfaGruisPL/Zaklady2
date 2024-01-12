@@ -30,7 +30,7 @@
 
     <td>{{ index }}</td>
     <td>{{ obj.nazwa }}</td>
-    <td>{{ obj.size | fileSize }}</td>
+    <td [ngStyle]="{ color: obj.size > 0.5 * 1024 * 1024 ? 'red' : '' }">{{ obj.size | fileSize }}</td>
     <td>{{ obj.dataUtworzenia | date : 'dd.MM.yyyy HH:mm' }}</td>
     <td>
       <button (click)="deleteImage(obj.id)" class="domyslnyButtonUsun noPaddingTopBottom">Usuń</button>

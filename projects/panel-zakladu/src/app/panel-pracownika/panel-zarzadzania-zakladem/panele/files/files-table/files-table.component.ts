@@ -3,7 +3,7 @@ import { TableComponent } from '../../../../../komponets/table/table.component';
 import { KwotaPipe } from '../../../../../rureczki/kwota.pipe';
 import { TemplateIdDirective } from '../../../../../komponets/table/template-id.directive';
 import { FilesService } from '../files.service';
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { environment } from '../../../../../../environments/environment';
 import { UploadFileComponent } from '../upload-file/upload-file.component';
 import { ListonoszService } from '../../../../../serwisy/listonosz.service';
@@ -14,7 +14,16 @@ import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-files-table',
   standalone: true,
-  imports: [TableComponent, KwotaPipe, TemplateIdDirective, DatePipe, UploadFileComponent, FileSizePipe, NgbPopover],
+  imports: [
+    TableComponent,
+    KwotaPipe,
+    TemplateIdDirective,
+    DatePipe,
+    UploadFileComponent,
+    FileSizePipe,
+    NgbPopover,
+    CommonModule,
+  ],
   templateUrl: './files-table.component.html',
   styleUrl: './files-table.component.scss',
   encapsulation: ViewEncapsulation.None,
