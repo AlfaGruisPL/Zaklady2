@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { RegisterPageService } from '../../panele/register-page/register-page.service';
 import { PodreczneDaneService } from '../../../../serwisy/podreczne-dane.service';
 import { Editor, NgxEditorModule, Toolbar } from 'ngx-editor';
@@ -24,7 +24,6 @@ export class NgxEditorComponent implements OnInit {
   @Input() maxLength = 20000;
   editor: any = undefined;
   interval: any;
-
   prevValue = '';
   toolbar: Toolbar = [
     ['bold', 'italic'],
@@ -37,6 +36,7 @@ export class NgxEditorComponent implements OnInit {
     ['align_left', 'align_center', 'align_right', 'align_justify'],
   ];
   subject = new Subject();
+  @Input() saveTools: boolean = false;
   protected readonly undefined = undefined;
 
   constructor(
@@ -49,8 +49,23 @@ export class NgxEditorComponent implements OnInit {
     });
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    /* if (this.value == undefined) {
+       this.value = '';
+     }*/
+  }
+
   ngOnInit() {
     this.editor = new Editor();
+    if (this.saveTools) {
+      this.toolbar = [
+        ['bold', 'italic'],
+        ['underline', 'strike'],
+        ['code', 'blockquote'],
+        ['ordered_list', 'bullet_list'],
+        ['text_color', 'background_color'],
+      ];
+    }
   }
 
   changeValue($event: any) {

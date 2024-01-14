@@ -204,9 +204,9 @@
         [modyfikacja]="false"
         class="zdjecieProfilowe2"></app-moje-konto-zdjecie-profilowe>
       <app-select-image
-        (changeImageId)="mojeKontoObj.zdjecieProfiloweId = $event"
+        (imageIdChange)="mojeKontoObj.zdjecieProfiloweId = $event"
         *ngIf="wlaczPrzyciskZapisz"
-        [lastImageId]="mojeKontoObj.zdjecieProfiloweId" />
+        [imageId]="mojeKontoObj.zdjecieProfiloweId" />
     </div>
   </div>
   <div class="zmianaHasla">

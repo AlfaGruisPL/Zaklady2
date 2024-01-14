@@ -1,14 +1,12 @@
 import { Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { RouterLink } from "@angular/router";
+import { RouterLink, RouterLinkActive } from "@angular/router";
 
 @Component({
-  selector: "[app-second-template-menu]",
+  selector: '[app-second-template-menu]',
   standalone: true,
-  imports: [CommonModule, RouterLink],
-  templateUrl: "./second-template-menu.component.html",
-  styleUrls: ["./second-template-menu.component.scss"]
+  imports: [CommonModule, RouterLink, RouterLinkActive],
+  templateUrl: './second-template-menu.component.html',
+  styleUrls: ['./second-template-menu.component.scss'],
 })
-export class SecondTemplateMenuComponent {
-
-}
+export class SecondTemplateMenuComponent {}

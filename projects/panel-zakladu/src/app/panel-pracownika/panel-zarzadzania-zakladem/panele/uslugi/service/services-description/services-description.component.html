@@ -6,7 +6,7 @@
   <h5>Opis usługi:</h5>
   <app-ngx-editor [(value)]="usluga.description" [maxLength]="1000"></app-ngx-editor>
   <h5>Zdjęcie usługi:</h5>
-  <app-select-image (changeImageId)="usluga.imageId = $event" [lastImageId]="usluga.imageId" />
+  <app-select-image (imageIdChange)="usluga.imageId = $event" [imageId]="usluga.imageId" />
 </div>
 <div class="modal-footer">
   <button (click)="activeModal.close('Nie')" class="domyslnyButtonZapisz">Zamknij</button>

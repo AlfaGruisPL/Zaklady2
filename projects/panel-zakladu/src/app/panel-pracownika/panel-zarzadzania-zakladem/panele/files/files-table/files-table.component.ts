@@ -30,6 +30,7 @@ import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
 })
 export class FilesTableComponent {
   env = environment;
+  value = '';
 
   constructor(public files_: FilesService, public http_: ListonoszService) {}
 
@@ -41,5 +42,18 @@ export class FilesTableComponent {
       .finally(() => {
         this.files_.FetchDataFromDB();
       });
+  }
+
+  getDataByFilter(data: Array<any>) {
+    if (this.value.length == 0) {
+      return data;
+    }
+    return data.filter(file => {
+      return file['nazwa'].toLowerCase().trim().indexOf(this.value.toLowerCase().trim()) != -1;
+    });
+  }
+
+  setDataWithSearch($event: any) {
+    this.value = $event;
   }
 }

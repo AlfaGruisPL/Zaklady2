@@ -1,11 +1,13 @@
 <app-table
+  (searchChange)="setDataWithSearch($event)"
   [async]="false"
   [collectionSize]="files_.filesData.length"
-  [data]="files_.filesData"
+  [data]="getDataByFilter(files_.filesData)"
   [loading]="files_.filesDataLoading"
   [pageSize]="15"
   [paggiantionMaxElementArray]="[10, 15, 20, 35, 50, 100]"
   [paggiantion]="true"
+  [search]="true"
   [title]="'Lista plików zakładu:'">
   <ng-template TemplateId="thead">
     <th>Podgląd</th>

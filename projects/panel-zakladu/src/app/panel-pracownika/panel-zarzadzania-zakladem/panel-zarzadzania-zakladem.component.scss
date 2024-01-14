@@ -1,8 +1,19 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+}
+
 .menuTresc {
   width: 100%;
-  height: calc(100dvh - 49px - 7px);
+  flex-grow: 100;
+  overflow: auto;
+  // height: calc(100dvh - 49px - 7px);
   @media (max-width: 1500px) {
-    height: calc(100dvh - 49px - 7px - 31px);
+    //height: calc(100dvh - 49px - 7px - 31px);
+  }
+  @media (max-width: 500px) {
+    // height: calc(100dvh - 49px - 7px - 27px);
   }
   float: left;
   border-bottom: 1px solid rgba(0, 0, 0, 0.55);

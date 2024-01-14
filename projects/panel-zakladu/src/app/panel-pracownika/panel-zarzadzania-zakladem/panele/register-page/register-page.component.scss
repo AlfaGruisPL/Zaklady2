@@ -4,6 +4,12 @@
   height: 100%;
 }
 
+::ng-deep {
+  app-ngx-editor {
+    background: red;
+  }
+}
+
 .panelZakladu {
   display: flex;
   flex-grow: 999;

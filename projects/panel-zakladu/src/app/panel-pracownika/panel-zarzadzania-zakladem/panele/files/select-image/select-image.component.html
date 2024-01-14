@@ -24,13 +24,13 @@
         (click)="changeImage(0, myDrop)"
         (mouseenter)="mouseInto()"
         (mouseleave)="mouseOuto()"
-        [disabled]="lastImageId == 0"
+        [disabled]="imageId == 0"
         class="deleteImage">
         <fa-icon [icon]="faX" />
       </button>
     </div>
   </div>
   <div class="previewImageDiv">
-    <img [src]="env.api + '/pliki/image/' + lastImageId" alt="Image" class="previewImage" />
+    <img [src]="env.api + '/pliki/image/' + imageId" alt="Image" class="previewImage" />
   </div>
 </div>

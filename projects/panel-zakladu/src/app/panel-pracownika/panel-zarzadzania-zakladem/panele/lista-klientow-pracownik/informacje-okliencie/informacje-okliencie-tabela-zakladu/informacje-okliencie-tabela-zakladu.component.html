@@ -7,7 +7,7 @@
   [subTableVariable]="'uslugiArray'"
   [title]="'Wizyty w zakładzie:'">
   <ng-template TemplateId="thead">
-    <th>Nr.</th>
+    <th class="NotInMobile">Nr.</th>
     <th>Data</th>
     <th>Utworzenie</th>
     <th>Wykonanie</th>
@@ -17,7 +17,7 @@
   </ng-template>
 
   <ng-template TemplateId="tbody" let-index="index" let-obj>
-    <td>{{ index }}</td>
+    <td class="NotInMobile">{{ index }}</td>
     <td>{{ obj.poczatek | date : 'dd.MM.yyyy      hh:mm/' }}{{ obj.koniec | date : 'hh:mm' }}</td>
     <td>
       <ng-container *ngIf="obj.tryb == 'reklamowa'">Strona reklamowa</ng-container>
