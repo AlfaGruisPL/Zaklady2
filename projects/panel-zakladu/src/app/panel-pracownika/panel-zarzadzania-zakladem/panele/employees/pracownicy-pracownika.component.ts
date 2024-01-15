@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { WorkersTableService } from './worker-table-panel/workers-table/workers-table.service';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -9,10 +8,4 @@ import { RouterOutlet } from '@angular/router';
   styleUrls: ['./pracownicy-pracownika.component.scss'],
   imports: [RouterOutlet],
 })
-export class PracownicyPracownikaComponent implements OnInit {
-  constructor(public workersTable_: WorkersTableService) {}
-
-  ngOnInit() {
-    this.workersTable_.pobierzListePracownikow();
-  }
-}
+export class PracownicyPracownikaComponent {}

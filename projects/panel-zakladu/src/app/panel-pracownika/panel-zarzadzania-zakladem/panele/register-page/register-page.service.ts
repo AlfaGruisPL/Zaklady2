@@ -54,6 +54,18 @@ export class RegisterPageService {
       });
   }
 
+  skopiujObiekty(obiekt1: any, obiekt2: any): void {
+    for (const klucz in obiekt2) {
+      if (obiekt2.hasOwnProperty(klucz)) {
+        if (typeof obiekt2[klucz] === 'object' && typeof obiekt1[klucz] === 'object') {
+          this.skopiujObiekty(obiekt1[klucz], obiekt2[klucz]);
+        } else if (obiekt1.hasOwnProperty(klucz)) {
+          obiekt2[klucz] = obiekt1[klucz];
+        }
+      }
+    }
+  }
+
   private saveDataToVariable(data: any) {
     this.data.stronaReklamowaPrzelacznik = data.wlaczona;
     this.selectedTemplate = data['template'];
@@ -61,6 +73,11 @@ export class RegisterPageService {
       case 'template1':
         Object.assign(this.data.FirstTemplateData, data.data);
         break;
+      case 'template2':
+        //  this.skopiujObiekty(data.data, this.data.SecondTemplateData);
+        Object.assign(this.data.SecondTemplateData, data.data);
+        console.log(this.data.SecondTemplateData, data.data);
+      //     console.log(this.data.SecondTemplateData);
     }
     //todo tu można dodać tworzenie obiektu danego template
     //this.data.data = data['data'];

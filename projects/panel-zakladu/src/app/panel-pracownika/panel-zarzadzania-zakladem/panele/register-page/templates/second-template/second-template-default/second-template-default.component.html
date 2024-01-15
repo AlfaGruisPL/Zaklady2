@@ -1,3 +1,136 @@
-<p>second-template-default works!</p>
+<h3 class="settingsSubTitle">Ustawienia strony głównej:</h3>
+<h4 class="settingsSubTitle">Strona główna:</h4>
+<app-template-setting>
+  <ng-template TemplateId="label"> Logo zakładu</ng-template>
+  <ng-template TemplateId="setting">
+    <input [(ngModel)]="registerPage_.data.SecondTemplateData.header.nav.logo" />
+    <span [innerHTML]="changeLetterColor(registerPage_.data.SecondTemplateData.header.nav.logo)" class="exampleColor">
+    </span>
+  </ng-template>
+</app-template-setting>
+<app-template-setting>
+  <ng-template TemplateId="label">Tytuł zakładu:</ng-template>
+  <ng-template TemplateId="setting">
+    <input [(ngModel)]="registerPage_.data.SecondTemplateData.header.title" />
+  </ng-template>
+</app-template-setting>
 
+<app-template-setting>
+  <ng-template TemplateId="label">Tło:</ng-template>
+  <ng-template TemplateId="setting">
+    <app-select-image [(imageId)]="registerPage_.data.SecondTemplateData.header.backgroundImage" />
+  </ng-template>
+</app-template-setting>
+
+<app-template-setting>
+  <ng-template TemplateId="label">Opis zakładu:</ng-template>
+  <ng-template TemplateId="setting">
+    <app-ngx-editor
+      [(value)]="registerPage_.data.SecondTemplateData.header.description"
+      [maxLength]="2000"
+      [saveTools]="true"></app-ngx-editor>
+  </ng-template>
+</app-template-setting>
+
+<h4 class="settingsSubTitle">Ustawienia panelu informacyjnego o zakładzie:</h4>
+<app-template-setting>
+  <ng-template TemplateId="label">Tytuł panelu:</ng-template>
+  <ng-template TemplateId="setting">
+    <input [(ngModel)]="registerPage_.data.SecondTemplateData.aboutUs.information.title" />
+  </ng-template>
+</app-template-setting>
+
+<app-template-setting>
+  <ng-template TemplateId="label">Krótki opis zakładu</ng-template>
+  <ng-template TemplateId="setting">
+    <app-ngx-editor
+      [(value)]="registerPage_.data.SecondTemplateData.aboutUs.information.shortDescription"
+      [maxLength]="2000"
+      [saveTools]="true"></app-ngx-editor>
+  </ng-template>
+</app-template-setting>
+
+<h4 class="settingsSubTitle">Ustawienia panelu informacyjnego o pracownikach:</h4>
+<app-template-setting>
+  <ng-template TemplateId="label"> Zdjęcia do panelu na stronie głównej</ng-template>
+  <ng-template TemplateId="setting">
+    <app-select-image [(imageId)]="registerPage_.data.SecondTemplateData.aboutUs.images.otherImages.image1" />
+    <app-select-image [(imageId)]="registerPage_.data.SecondTemplateData.aboutUs.images.otherImages.image2" />
+    <app-select-image [(imageId)]="registerPage_.data.SecondTemplateData.aboutUs.images.otherImages.image3" />
+  </ng-template>
+</app-template-setting>
+<app-template-setting>
+  <ng-template TemplateId="label"> Zdjęcia główne do panelu na stronie głównej</ng-template>
+  <ng-template TemplateId="setting">
+    <app-select-image [(imageId)]="registerPage_.data.SecondTemplateData.aboutUs.images.mainImage" />
+  </ng-template>
+</app-template-setting>
+<h4 class="settingsSubTitle">Ustawienia panelu informacyjnego o usługach:</h4>
+<app-template-setting>
+  <ng-template TemplateId="label">Tytuł panelu:</ng-template>
+  <ng-template TemplateId="setting">
+    <input [(ngModel)]="registerPage_.data.SecondTemplateData.services.title" />
+  </ng-template>
+</app-template-setting>
+<app-template-setting>
+  <ng-template TemplateId="label">Tytuł panelu dla poszczególnych usług:</ng-template>
+  <ng-template TemplateId="setting">
+    <input [(ngModel)]="registerPage_.data.SecondTemplateData.services.subPage.title" />
+  </ng-template>
+</app-template-setting>
+<h4 class="settingsSubTitle">Panel pracowników:</h4>
+<app-template-setting>
+  <ng-template TemplateId="label">Tytuł panelu:</ng-template>
+  <ng-template TemplateId="setting">
+    <input [(ngModel)]="registerPage_.data.SecondTemplateData.employees.title" />
+  </ng-template>
+</app-template-setting>
+<app-template-setting>
+  <ng-template TemplateId="label"> Opis:</ng-template>
+  <ng-template TemplateId="setting">
+    <app-ngx-editor
+      [(value)]="registerPage_.data.SecondTemplateData.employees.shortDescription"
+      [maxLength]="2000"
+      [saveTools]="true"></app-ngx-editor>
+  </ng-template>
+</app-template-setting>
+<h4 class="settingsSubTitle">Panel płatności:</h4>
+<app-template-setting>
+  <ng-template TemplateId="label">Tytuł panelu:</ng-template>
+  <ng-template TemplateId="setting">
+    <input [(ngModel)]="registerPage_.data.SecondTemplateData.pricing.title" />
+  </ng-template>
+</app-template-setting>
+<app-template-setting>
+  <ng-template TemplateId="label"> Opis:</ng-template>
+  <ng-template TemplateId="setting">
+    <app-ngx-editor
+      [(value)]="registerPage_.data.SecondTemplateData.pricing.subPage.shortDescription"
+      [maxLength]="2000"
+      [saveTools]="true"></app-ngx-editor>
+  </ng-template>
+</app-template-setting>
+
+<h4 class="settingsSubTitle">Panel kontaktu:</h4>
+<app-template-setting>
+  <ng-template TemplateId="label">Tytuł panelu:</ng-template>
+  <ng-template TemplateId="setting">
+    <input [(ngModel)]="registerPage_.data.SecondTemplateData.getInTouch.title" />
+  </ng-template>
+</app-template-setting>
+<app-template-setting>
+  <ng-template TemplateId="label"> Opis:</ng-template>
+  <ng-template TemplateId="setting">
+    <app-ngx-editor
+      [(value)]="registerPage_.data.SecondTemplateData.getInTouch.shortDescription"
+      [maxLength]="2000"
+      [saveTools]="true"></app-ngx-editor>
+  </ng-template>
+</app-template-setting>
+<app-template-setting>
+  <ng-template TemplateId="label"> Zdjęcia główne do panelu na stronie głównej</ng-template>
+  <ng-template TemplateId="setting">
+    <app-select-image [(imageId)]="registerPage_.data.SecondTemplateData.getInTouch.backgroundImage" />
+  </ng-template>
+</app-template-setting>
 <app-register-page-save-button />

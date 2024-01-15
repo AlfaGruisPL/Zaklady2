@@ -32,8 +32,8 @@ export class SelectImageComponent implements OnInit {
 
   //option
   @Input() outSideModify = false;
-  @Input() lastImageId: number | string = 0;
-  @Output() changeImageId: EventEmitter<number> = new EventEmitter();
+  @Input() imageId: number | string = 0;
+  @Output() imageIdChange: EventEmitter<number> = new EventEmitter();
   env = environment;
   finder = '';
   tmp = 0;
@@ -49,25 +49,27 @@ export class SelectImageComponent implements OnInit {
   }
 
   mouseInto() {
-    if (this.lastImageId == 0) return;
-    this.tmp = +this.lastImageId;
-    this.lastImageId = -1;
+    if (this.imageId == 0) return;
+    this.tmp = +this.imageId;
+    this.imageId = -1;
   }
 
   mouseOuto() {
-    if (this.lastImageId == 0) return;
-    this.lastImageId = this.tmp;
+    if (this.imageId == 0) return;
+    this.imageId = this.tmp;
   }
 
   changeImage(id: number, myDrop: NgbDropdown) {
-    this.changeImageId.emit(id);
+    this.imageIdChange.emit(id);
     myDrop.close();
-    this.lastImageId = id;
+    this.imageId = id;
   }
 
-  Finder(filesData: any) {
+  Finder(filesData: any): Array<any> {
     return filesData.filter((data: any) => {
-      return data.nazwa.toLowerCase().includes(this.finder.toLowerCase().trim());
+      if (data.nazwa) {
+        return data.nazwa.toLowerCase().includes(this.finder.toLowerCase().trim());
+      }
     });
   }
 }

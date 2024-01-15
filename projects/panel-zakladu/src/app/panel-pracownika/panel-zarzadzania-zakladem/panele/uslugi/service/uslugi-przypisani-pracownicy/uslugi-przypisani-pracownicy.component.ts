@@ -10,7 +10,7 @@ import { Pracownik } from '../../../../../../klasy/panelPracownika/pracownicy/pr
 })
 export class UslugiPrzypisaniPracownicyComponent {
   @Input() usluga: Usluga = new Usluga();
-  @Input() pracownicy: Array<Pracownik> = [];
+  @Input() employees: Array<Pracownik> = [];
 
   constructor(public activeModal: NgbActiveModal) {}
 

@@ -18,7 +18,7 @@ export class DanePodstawowe {
   public uslugi: Array<usluga> = [];
   public wysokosc = 0;
   public szerokosc = 0;
-  public opisZakladuWStopce = '';
+
   public wyswietlaneDane: wyswietlaneDane = new wyswietlaneDane();
   public listaPracownikow: any[] = [];
   public mozliwoscPlatnosciKarta = false;
@@ -32,6 +32,7 @@ export class DanePodstawowe {
   data = {
     banner: '',
     logo: '',
+    opisZakladuWStopce: '',
   };
 
   czyJakasPlatnosc() {
@@ -80,8 +81,8 @@ export class adres {
 
 export class usluga {
   public id: number = 0;
-  public nazwa: string = '';
-  public cena: string = '';
-  public pracownicy: Array<number> = [];
+  public title: string = '';
+  public price: string = '';
+  public workers: Array<number> = [];
   public wybrane = false;
 }

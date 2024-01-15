@@ -3,13 +3,14 @@
   margin: auto;
   width: 350px;
   background: rgba(245, 245, 245, 0.69);
-  height: 500px; /* Ustal wysokość iframe */
+  height: 800px; /* Ustal wysokość iframe */
+  max-height: 80vh;
   overflow: hidden;
   //  border: 2px inset black;
 
   iframe {
     width: 2820px;
-    height: 5000px;
+    height: 7000px;
     zoom: 0.35;
     -moz-transform: scale(0.35);
     -moz-transform-origin: 0 0;

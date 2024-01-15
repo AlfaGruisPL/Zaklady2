@@ -4,9 +4,9 @@
       <th>Zdjęcie banneru</th>
       <td>
         <app-select-image
-          (changeImageId)="registerPage_.data.FirstTemplateData.banner = $event"
+          (imageIdChange)="registerPage_.data.FirstTemplateData.banner = $event"
           [height]="'30px'"
-          [lastImageId]="registerPage_.data.FirstTemplateData.banner" />
+          [imageId]="registerPage_.data.FirstTemplateData.banner" />
       </td>
       .
     </tr>
@@ -14,9 +14,9 @@
       <th>Logo zakładu:</th>
       <td>
         <app-select-image
-          (changeImageId)="registerPage_.data.FirstTemplateData.logo = $event"
+          (imageIdChange)="registerPage_.data.FirstTemplateData.logo = $event"
           [height]="'30px'"
-          [lastImageId]="registerPage_.data.FirstTemplateData.logo" />
+          [imageId]="registerPage_.data.FirstTemplateData.logo" />
       </td>
     </tr>
     <tr>

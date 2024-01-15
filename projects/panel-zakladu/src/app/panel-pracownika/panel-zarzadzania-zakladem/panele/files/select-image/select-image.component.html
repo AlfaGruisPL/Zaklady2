@@ -11,28 +11,26 @@
       <input [(ngModel)]="finder" class="finder" placeholder="Wyszukiwarka" />
       <div class="dropdown-divider"></div>
       <div class="selectImageBlockContainer">
-
-        <div
-          (click)="changeImage(image.id, myDrop)"
-          *ngFor="let image of Finder(files_.filesData)"
-          class="selectImageBlock">
+        @for (image of Finder(files_.filesData); track image.id) {
+        <div (click)="changeImage(image.id, myDrop)" class="selectImageBlock">
           <span> {{ image.nazwa | maxDlugosc : 25 }}</span>
           <div class="imageDiv">
             <img [src]="env.api + '/pliki/image/' + image.id" alt="Image" class="miniImg" />
           </div>
         </div>
+        }
       </div>
       <button
         (click)="changeImage(0, myDrop)"
         (mouseenter)="mouseInto()"
         (mouseleave)="mouseOuto()"
-        [disabled]="lastImageId == 0"
+        [disabled]="imageId == 0"
         class="deleteImage">
         <fa-icon [icon]="faX" />
       </button>
     </div>
   </div>
   <div class="previewImageDiv">
-    <img [src]="env.api + '/pliki/image/' + lastImageId" alt="Image" class="previewImage" />
+    <img [src]="env.api + '/pliki/image/' + imageId" alt="Image" class="previewImage" />
   </div>
 </div>

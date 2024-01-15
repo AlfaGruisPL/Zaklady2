@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { RegisterPageService } from '../../panele/register-page/register-page.service';
 import { PodreczneDaneService } from '../../../../serwisy/podreczne-dane.service';
 import { Editor, NgxEditorModule, Toolbar } from 'ngx-editor';
@@ -15,14 +15,15 @@ import { Info } from '../../../../enum/info';
   templateUrl: './ngx-editor.component.html',
   styleUrl: './ngx-editor.component.scss',
 })
-export class NgxEditorComponent {
+export class NgxEditorComponent implements OnInit {
   @ViewChild('editorRef', { read: ElementRef })
   editorRef: ElementRef<HTMLElement> | undefined;
-  @Input({ required: true }) value!: string;
+  @Input({ required: true }) value: string = 'Loading...';
   @Input() disabled = false;
   @Output() valueChange = new EventEmitter<string>();
   @Input() maxLength = 20000;
   editor: any = undefined;
+  interval: any;
   prevValue = '';
   toolbar: Toolbar = [
     ['bold', 'italic'],
@@ -35,6 +36,7 @@ export class NgxEditorComponent {
     ['align_left', 'align_center', 'align_right', 'align_justify'],
   ];
   subject = new Subject();
+  @Input() saveTools: boolean = false;
   protected readonly undefined = undefined;
 
   constructor(
@@ -47,8 +49,23 @@ export class NgxEditorComponent {
     });
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    /* if (this.value == undefined) {
+       this.value = '';
+     }*/
+  }
+
   ngOnInit() {
     this.editor = new Editor();
+    if (this.saveTools) {
+      this.toolbar = [
+        ['bold', 'italic'],
+        ['underline', 'strike'],
+        ['code', 'blockquote'],
+        ['ordered_list', 'bullet_list'],
+        ['text_color', 'background_color'],
+      ];
+    }
   }
 
   changeValue($event: any) {

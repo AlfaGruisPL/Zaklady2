@@ -1,0 +1,32 @@
+<h3 class="settingsSubTitle">Ustawienia podstron:</h3>
+<h4 class="settingsSubTitle">Ustawienia panelu informacyjnego o zakładzie:</h4>
+<app-template-setting>
+  <ng-template TemplateId="label"> Długi opis zakładu</ng-template>
+  <ng-template TemplateId="setting">
+    <app-ngx-editor
+      [(value)]="registerPage_.data.SecondTemplateData.aboutUs.information.mainDescription"
+      [maxLength]="2000"
+      [saveTools]="true"></app-ngx-editor>
+  </ng-template>
+</app-template-setting>
+
+<h4 class="settingsSubTitle">Panel płatności:</h4>
+
+<app-template-setting>
+  <ng-template TemplateId="label"> Opis:</ng-template>
+  <ng-template TemplateId="setting">
+    <app-ngx-editor
+      [(value)]="registerPage_.data.SecondTemplateData.pricing.subPage.shortDescription"
+      [maxLength]="2000"
+      [saveTools]="true"></app-ngx-editor>
+  </ng-template>
+</app-template-setting>
+<h4 class="settingsSubTitle">Ustawienia panelu informacyjnego o usługach:</h4>
+
+<app-template-setting>
+  <ng-template TemplateId="label">Tytuł panelu dla poszczególnych usług:</ng-template>
+  <ng-template TemplateId="setting">
+    <input [(ngModel)]="registerPage_.data.SecondTemplateData.services.subPage.title" />
+  </ng-template>
+</app-template-setting>
+<app-register-page-save-button />

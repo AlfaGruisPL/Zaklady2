@@ -1,7 +1,7 @@
 {
   "name": "zaklady",
-  "version": "0.0.66",
-  "relase_date": "28.12.2023 00:20",
+  "version": "0.0.82",
+  "relase_date": "14.01.2024 22:18",
   "scripts": {
     "postinstall": "npm i https://github.com/AlfaGruisPL/zakladLib.git --force",
     "npmInstall": "npm install --force",
@@ -35,6 +35,7 @@
     "@asymmetrik/ngx-leaflet": "^17.0.0",
     "@fortawesome/angular-fontawesome": "^0.14.1",
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
+    "@fortawesome/free-brands-svg-icons": "^6.5.1",
     "@fortawesome/free-regular-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@ng-bootstrap/ng-bootstrap": "^16.0.0",

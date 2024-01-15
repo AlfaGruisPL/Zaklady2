@@ -1,0 +1,10 @@
+<div [ngClass]="{short}" class="settingPanelContainer">
+  <div [ngClass]="{short}" class="descritpionPanel">
+    <label>
+      <ng-container *ngTemplateOutlet="label"></ng-container>
+    </label>
+  </div>
+  <div class="inputPanel">
+    <ng-container *ngTemplateOutlet="setting"></ng-container>
+  </div>
+</div>

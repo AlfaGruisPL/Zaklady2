@@ -42,11 +42,11 @@ export class WyborUslugComponent implements OnInit {
   }
 
   czyWykonuje(usluga: usluga) {
-    if (usluga.pracownicy == undefined) {
+    if (usluga.workers == undefined) {
       console.log('Błąd tablicy pracownikow w usludze');
     }
     return (
-      usluga.pracownicy.find(id => {
+      usluga.workers.find(id => {
         return id == this.zarejestrujSie_.DaneKlientaClass.wybranyPracownik;
       }) != undefined
     );

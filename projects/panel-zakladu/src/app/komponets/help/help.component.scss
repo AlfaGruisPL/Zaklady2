@@ -45,6 +45,10 @@
   height: 26px;
   border-radius: 50%;
   z-index: 2000;
+  @media (max-width: 500px) {
+    width: 25px;
+    height: 25px;
+  }
 
   display: flex;
   justify-content: center;

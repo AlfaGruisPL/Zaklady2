@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WorkersTableComponent } from './workers-table/workers-table.component';
 import { WorkersTableFilterComponent } from './workers-table-filter/workers-table-filter.component';
 import { WorkersTableService } from './workers-table/workers-table.service';
@@ -10,10 +10,12 @@ import { WorkersTableService } from './workers-table/workers-table.service';
   templateUrl: './worker-table-panel.component.html',
   styleUrl: './worker-table-panel.component.scss',
 })
-export class WorkerTablePanelComponent {
+export class WorkerTablePanelComponent implements OnInit {
   constructor(public workersTable_: WorkersTableService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.workersTable_.pobierzListePracownikow();
+  }
 
   activeWorker() {
     return this.workersTable_.ListaPracownikow.filter(k => k.archived == false).length;

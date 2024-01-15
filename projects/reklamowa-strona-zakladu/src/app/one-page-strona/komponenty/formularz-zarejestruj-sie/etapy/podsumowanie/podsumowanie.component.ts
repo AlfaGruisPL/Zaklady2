@@ -12,6 +12,7 @@ import { usluga } from '../../../../../klasy/dane-podstawowe';
 })
 export class PodsumowanieComponent implements OnInit {
   @Output() wyslijKrok = new EventEmitter<number>();
+  protected readonly environment = environment;
 
   constructor(public rejestracja: ZarejestrujSieService, public danePodstawowe: DanePodstawoweService) {}
 
@@ -36,7 +37,7 @@ export class PodsumowanieComponent implements OnInit {
       .filter(usluga => {
         return usluga.wybrane;
       })
-      .reduce((suma: number, usluga) => suma + Number(usluga.cena), 0);
+      .reduce((suma: number, usluga) => suma + Number(usluga.price), 0);
   }
 
   wybraneUslugi() {
@@ -45,7 +46,7 @@ export class PodsumowanieComponent implements OnInit {
     });
     if (tmp.length > 5) {
       tmp = tmp.slice(0, 5);
-      tmp.push({ nazwa: '...' });
+      tmp.push({ title: '...' });
     }
     return tmp;
   }
@@ -60,6 +61,4 @@ export class PodsumowanieComponent implements OnInit {
     }
     return '---';
   }
-
-  protected readonly environment = environment;
 }

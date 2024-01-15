@@ -1,24 +1,24 @@
-import { Component, Inject, InjectionToken, OnInit, Optional, PLATFORM_ID } from "@angular/core";
-import { environment } from "../environments/environment";
-import packageInfo from "../../../../package.json";
-import { isPlatformBrowser, isPlatformServer } from "@angular/common";
-import { HOST_ID } from "./host";
-import { GoogleAnalyticsService } from "ngx-google-analytics";
-import { ActivatedRoute, Router } from "@angular/router";
-import * as AOS from "aos";
+import { Component, Inject, InjectionToken, OnInit, Optional, PLATFORM_ID } from '@angular/core';
+import { environment } from '../environments/environment';
+import packageInfo from '../../../../package.json';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { HOST_ID } from './host';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
+import { ActivatedRoute, Router } from '@angular/router';
+import * as AOS from 'aos';
 
 declare let gtag: Function;
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   environment = environment;
   wersja: string = packageInfo.version;
   data_wydania: string = packageInfo.relase_date;
-  routeFragment: string | null = "";
+  routeFragment: string | null = '';
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -26,8 +26,7 @@ export class AppComponent implements OnInit {
     private router: Router,
     private googleService_: GoogleAnalyticsService,
     @Optional() @Inject(HOST_ID) private host: InjectionToken<string>
-  ) {
-  }
+  ) {}
 
   test() {
     console.log(this.routeFragment, 123);
@@ -37,7 +36,11 @@ export class AppComponent implements OnInit {
     setTimeout(() => {
       AOS.init();
     }, 20);
-    this.googleService_.event("enter_name", "user_register_form", "Name");
+    setInterval(() => {
+      AOS.refresh();
+    }, 120);
+
+    this.googleService_.event('enter_name', 'user_register_form', 'Name');
 
     if (isPlatformBrowser(this.platformId)) {
       // Kod zostanie wykonany, jeśli strona jest renderowana po stronie klienta

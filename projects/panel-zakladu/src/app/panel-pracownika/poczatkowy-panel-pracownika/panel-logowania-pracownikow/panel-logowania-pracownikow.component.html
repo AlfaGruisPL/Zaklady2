@@ -13,7 +13,7 @@
         poprawny skontaktuj się z właścicielem zakładu lub administratorem strony
       </p>
       <a [queryParams]="{ strzalka: true }" [routerLink]="['../rejestracja']" class="chceszSieZalogowacLubZarejestrowac"
-      >Kliknij, aby zarejestrować nowy zakład</a
+        >Kliknij, aby zarejestrować nowy zakład</a
       >
     </div>
 
@@ -48,16 +48,14 @@
               style="position: absolute; top: 34px"></fa-icon>
           </td>
         </tr>
-        <tr *ngIf="environment.production.toString() == 'false'">
+        <tr *ngIf="environment.demo.toString() == 'false' && environment.production.toString() == 'false'">
           <td>
             <select (change)="latweLogowanie($event)">
               <option default>Brak</option>
-              <option [value]="['korneliamushak@gmail.com', 'Kroliczek1234!@#$']">korneliamushak</option>
-              <option [value]="['alfagruis@gmail.com', 'Kawa0808)aaaa']">alfagruis</option>
+              <option [value]="['korneliamushak@gmail.com', 'Kro123$']">korneliamushak</option>
+              <option [value]="['alfagruis@gmail.com', 'Ka123a']">alfagruis</option>
               <option [value]="['kixiyi3465@nasmis.com', 'fcf4d5f79aa55785c376 ']">k</option>
-              <option [value]="['mojzaklad.system@gmail.com', 'Kawa0808)aaaa']">mojzaklad.system&#64;gmail.com</option>
-
-
+              <option [value]="['mojzaklad.system@gmail.com', 'haslo']">mojzaklad.system&#64;gmail.com</option>
             </select>
           </td>
         </tr>
@@ -98,17 +96,14 @@
         </button>
         <br />
         <a [queryParams]="{ strzalka: true }" [routerLink]="['../reset']" class="niePamietaszHasla"
-        >Nie pamiętasz hasła? Kliknij, aby zresetować</a
+          >Nie pamiętasz hasła? Kliknij, aby zresetować</a
         >
-        <a *ngIf="environment.demo.toString() != 'true'"
-
-           [queryParams]="{ strzalka: true }"
-           [routerLink]="['../rejestracja']"
-
-           class="chceszSieZalogowacLubZarejestrowac"
-        >Kliknij, aby zarejestrować nowy zakład</a
-
-        >
+        <!--        <a-->
+        <!--          [queryParams]="{ strzalka: true }"-->
+        <!--          [routerLink]="['../rejestracja']"-->
+        <!--          class="chceszSieZalogowacLubZarejestrowac"-->
+        <!--          >Kliknij, aby zarejestrować nowy zakład</a-->
+        <!--        >-->
       </div>
     </form>
   </div>

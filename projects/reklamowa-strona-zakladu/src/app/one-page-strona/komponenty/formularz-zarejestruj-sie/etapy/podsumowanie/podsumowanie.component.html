@@ -16,7 +16,7 @@
       <td class="naglowek2">Godzina:</td>
       <td class="naglowek3">
         {{ rejestracja.DaneKlientaClass.wybranyTermin?.poczatek | date : 'HH:mm' }} -{{
-        rejestracja.DaneKlientaClass.wybranyTermin?.koniec | date : 'HH:mm'
+          rejestracja.DaneKlientaClass.wybranyTermin?.koniec | date : 'HH:mm'
         }}
       </td>
     </tr>
@@ -27,14 +27,11 @@
         <br />
         {{ danePodstawowe.danePodstawowe.adres.wojewodztwo }}<br />
         Nr
-        <ng-container *ngIf="danePodstawowe.danePodstawowe.adres.numerLokalu.length > 0">
-          /lokal:
-        </ng-container>
+        <ng-container *ngIf="danePodstawowe.danePodstawowe.adres.numerLokalu.length > 0"> /lokal:</ng-container>
         {{ danePodstawowe.danePodstawowe.adres.numerDomu }}
         <ng-container *ngIf="danePodstawowe.danePodstawowe.adres.numerLokalu.length > 0">
           / {{ danePodstawowe.danePodstawowe.adres.numerLokalu }}
         </ng-container>
-
       </td>
     </tr>
 
@@ -46,7 +43,7 @@
       <td class="naglowek2">Wybrane usługi:</td>
       <td class="naglowek3">
         <ul>
-          <li *ngFor="let usluga of wybraneUslugi()">{{ usluga.nazwa | maxDlugosc : 35 }}</li>
+          <li *ngFor="let usluga of wybraneUslugi()">{{ usluga.title | maxDlugosc : 35 }}</li>
         </ul>
       </td>
     </tr>

@@ -1,0 +1,55 @@
+.settingPanelContainer {
+  display: flex;
+  column-gap: 10px;
+  $borderColor: rgba(162, 162, 162, 0.54);
+  border-top: 1px solid $borderColor;
+  @media (max-width: 800px) {
+    flex-direction: column;
+    &.short {
+      flex-direction: row;
+    }
+  }
+
+  .descritpionPanel {
+    border-right: 1px solid $borderColor;
+    display: flex;
+    width: 240px;
+    align-items: center;
+    padding-left: 10px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    @media (max-width: 800px) {
+      padding-right: 10px;
+      width: 100%;
+      border-right: none;
+      &.short {
+        width: 50%;
+      }
+    }
+
+    label {
+      font-weight: bold;
+      padding: 4px;
+    }
+  }
+
+  .inputPanel {
+    @media (max-width: 800px) {
+      width: 100%;
+      padding-left: 10px;
+    }
+    box-sizing: border-box;
+    padding: 4px;
+    flex-grow: 10;
+    padding-right: 30px;
+  }
+}
+
+::ng-deep {
+  input {
+    width: 550px;
+    @media (max-width: 800px) {
+      width: 100%;
+    }
+  }
+}

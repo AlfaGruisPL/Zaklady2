@@ -1,48 +1,52 @@
 <div class="leftRightContainer">
-  <div class="left formContainer">
-    <div class="tabelka">
-      <table>
-        <tr>
-          <th>Szablon</th>
-          <td>
-            <select (change)="changeTemplate($event.target)" [value]="registerPage_.selectedTemplate">
-              <option value="template1">Szablon 1</option>
-              <option value="template2">Szablon 2</option>
-            </select>
-            {{ registerPage_.selectedTemplate }}
-          </td>
-        </tr>
-        <tr>
-          <th>Adres strony reklamowej</th>
-          <td>
-            <a
-              [href]="'http://' + danePodreczne_.danePodreczneObiekt.identyfikatorZakladu + '.mojzaklad.pl'"
-              style="font-weight: bold"
-              >www.{{ danePodreczne_.danePodreczneObiekt.identyfikatorZakladu }}.mojzaklad.pl</a
-            >
-          </td>
-        </tr>
-        <tr>
-          <th>Status strony reprezentacyjnej</th>
-          <td>
-            <ui-switch
-              [(ngModel)]="registerPage_.data.stronaReklamowaPrzelacznik"
-              [ngModelOptions]="{ standalone: true }"
-              checkedLabel="Włączona"
-              class="przelacznikPublicznePrywatne"
-              uncheckedLabel="Wyłączona"></ui-switch>
-          </td>
-        </tr>
-        <tr>
-          <th>Słowa kluczowe</th>
-          <td><input /></td>
-        </tr>
-        <tr>
-          <th>Opis dla google</th>
-          <td><textarea></textarea></td>
-        </tr>
-      </table>
-    </div>
+  <div class="left">
+    <h3 class="settingsSubTitle">Ustawienia ogólne:</h3>
+    <app-template-setting [short]="true">
+      <ng-template TemplateId="label">Status strony reprezentacyjnej:</ng-template>
+      <ng-template TemplateId="setting">
+        <ui-switch
+          [(ngModel)]="registerPage_.data.stronaReklamowaPrzelacznik"
+          [ngModelOptions]="{ standalone: true }"
+          checkedLabel="Włączona"
+          class="przelacznikPublicznePrywatne"
+          uncheckedLabel="Wyłączona"></ui-switch>
+      </ng-template>
+    </app-template-setting>
+
+    <app-template-setting [short]="true">
+      <ng-template TemplateId="label">Szablon:</ng-template>
+      <ng-template TemplateId="setting">
+        <select (change)="changeTemplate($event.target)" [value]="registerPage_.selectedTemplate">
+          <option value="template1">Szablon 1</option>
+          <option value="template2">Szablon 2</option>
+        </select>
+        {{ registerPage_.selectedTemplate }}
+      </ng-template>
+    </app-template-setting>
+
+    <app-template-setting [short]="true">
+      <ng-template TemplateId="label">Adres strony reklamowej:</ng-template>
+      <ng-template TemplateId="setting">
+        <a
+          [href]="'http://' + danePodreczne_.danePodreczneObiekt.identyfikatorZakladu + '.mojzaklad.pl'"
+          style="font-weight: bold"
+          >www.{{ danePodreczne_.danePodreczneObiekt.identyfikatorZakladu }}.mojzaklad.pl</a
+        >
+      </ng-template>
+    </app-template-setting>
+    <app-template-setting>
+      <ng-template TemplateId="label">Słowa kluczowe:</ng-template>
+      <ng-template TemplateId="setting">
+        <input />
+      </ng-template>
+    </app-template-setting>
+    <app-template-setting>
+      <ng-template TemplateId="label">Opis dla google:</ng-template>
+      <ng-template TemplateId="setting">
+        <textarea style="width: 100%"></textarea>
+      </ng-template>
+    </app-template-setting>
+
     <app-register-page-save-button />
   </div>
   <div class="right">

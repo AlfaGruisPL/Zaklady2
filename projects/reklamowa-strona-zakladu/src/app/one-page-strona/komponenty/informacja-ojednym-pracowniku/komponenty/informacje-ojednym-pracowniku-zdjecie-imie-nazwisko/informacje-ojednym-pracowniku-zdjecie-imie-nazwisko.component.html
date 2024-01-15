@@ -1,9 +1,6 @@
 <div (click)="wybierz()" class="zdjIprzycisk">
   <div class="zdjecie">
-    <img
-      [src]="env.apiFiles + '/' + daneOPracowniku.zdjecieProfiloweId | zdjecie | identyfikator"
-
-    />
+    <img [src]="env.apiFiles + '/' + daneOPracowniku.profilImageId | zdjecie | identyfikator" />
   </div>
   <div class="przycisk">
     <button (click)="wybierz()">Zarejestruj się</button>

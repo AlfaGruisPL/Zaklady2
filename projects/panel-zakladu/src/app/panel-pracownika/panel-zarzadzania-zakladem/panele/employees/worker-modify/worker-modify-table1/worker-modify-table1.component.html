@@ -113,6 +113,17 @@
     </td>
     <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.socialMedia.twitter }}</td>
   </tr>
+  <tr>
+    <th>Whatsapp</th>
+    <td *ngIf="tryb != 'wyswietlenie'">
+      <input
+        [(ngModel)]="pracownikObj.socialMedia.whatsapp"
+        [ngModelOptions]="{ standalone: true }"
+        class="logInputZaklad"
+        type="text" />
+    </td>
+    <td *ngIf="tryb == 'wyswietlenie'" class="wyswietlanieDanych">{{ pracownikObj.socialMedia.whatsapp }}</td>
+  </tr>
 </table>
 <table>
   <tr>

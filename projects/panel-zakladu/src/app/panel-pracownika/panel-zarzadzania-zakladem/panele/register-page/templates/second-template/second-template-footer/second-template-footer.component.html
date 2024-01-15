@@ -1,3 +1,37 @@
-<p>second-template-footer works!</p>
+<h3 class="settingsSubTitle">Ustawienia panelu stopki:</h3>
 
+<h4 class="settingsSubTitle">Panel 1:</h4>
+<app-template-setting>
+  <ng-template TemplateId="label">Tytuł panelu 1:</ng-template>
+  <ng-template TemplateId="setting">
+    <input [(ngModel)]="rPD_.footer.title" />
+  </ng-template>
+</app-template-setting>
+<app-template-setting>
+  <ng-template TemplateId="label">Opis 1:</ng-template>
+  <ng-template TemplateId="setting">
+    <app-ngx-editor [(value)]="rPD_.footer.shortDescription" [maxLength]="2000" [saveTools]="true"></app-ngx-editor>
+  </ng-template>
+</app-template-setting>
+<h4 class="settingsSubTitle">Panel kontaktu:</h4>
+<app-template-setting>
+  <ng-template TemplateId="label">Tytuł panelu:</ng-template>
+  <ng-template TemplateId="setting">
+    <input [(ngModel)]="rPD_.footer.contact.title" />
+  </ng-template>
+</app-template-setting>
+<h4 class="settingsSubTitle">Panel adresu:</h4>
+<app-template-setting>
+  <ng-template TemplateId="label">Tytuł panelu:</ng-template>
+  <ng-template TemplateId="setting">
+    <input [(ngModel)]="rPD_.footer.address.title" />
+  </ng-template>
+</app-template-setting>
+<h4 class="settingsSubTitle">Panel mapy:</h4>
+<app-template-setting>
+  <ng-template TemplateId="label">Tytuł panelu:</ng-template>
+  <ng-template TemplateId="setting">
+    <input [(ngModel)]="rPD_.footer.map.title" />
+  </ng-template>
+</app-template-setting>
 <app-register-page-save-button />

@@ -48,6 +48,7 @@ export class Pracownik {
     facebook: '',
     instagram: '',
     twitter: '',
+    whatsapp: '',
   };
 
   constructor() {
@@ -71,6 +72,7 @@ export class Pracownik {
       facebook: '',
       instagram: '',
       twitter: '',
+      whatsapp: '',
     };
   }
 

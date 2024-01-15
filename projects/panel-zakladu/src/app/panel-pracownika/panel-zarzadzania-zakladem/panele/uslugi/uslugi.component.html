@@ -10,16 +10,14 @@
       <div [ngClass]="{ disabled: service_.ladoowanieDanych }" class="divPlus">
         <fa-icon (click)="dodajWiersz()" [icon]="fontAwesome.plusWKolku" class="buttonPlus"></fa-icon>
       </div>
-
       <div class="daneZakladuTab">
         <table>
           <tr>
             <th></th>
-            <th class="thClass">Nr.</th>
+            <th class="thClass mobileHide">Nr.</th>
             <th class="thClass">Usługa</th>
             <th class="thClass">Cena(zł)</th>
             <th class="thClass">Czas (minuty)</th>
-            <th class="thClass">Kategoria</th>
             <th class="thClass" colspan="2">Opcje</th>
           </tr>
 

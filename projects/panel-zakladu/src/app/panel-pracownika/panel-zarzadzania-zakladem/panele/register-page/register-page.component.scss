@@ -12,9 +12,25 @@
 
 .formContainer {
   flex-grow: 1;
-  padding: 10px;
+  // padding: 10px;
   min-height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+h3.settingsSubTitle {
+  padding: 5px 5px 0 5px;
+  color: #343434;
+}
+
+h4.settingsSubTitle {
+  padding: 3px 3px 3px 3px;
+  font-size: 22px;
+  color: #646464;
+
+  &:not(:first-of-type) {
+    margin-top: 15px;
+    border-top: 2px dashed rgba(165, 42, 42, 0.25);
+  }
 }

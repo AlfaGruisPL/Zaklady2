@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Usluga } from '../../../../../klasy/panelPracownika/usluga/usluga';
 import { UslugiPrzypisaniPracownicyComponent } from './uslugi-przypisani-pracownicy/uslugi-przypisani-pracownicy.component';
 import { ServicesDescriptionComponent } from './services-description/services-description.component';
-import { debounceTime, distinctUntilChanged, map, Observable, OperatorFunction, take } from 'rxjs';
+import { take } from 'rxjs';
 import { NgbModal, NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
 import { KomunikatUniwersalnyService } from '../../../../../komponets/komunikat-uniwersalny/komunikat-uniwersalny.service';
 import { UslugiService } from '../uslugi.service';
@@ -36,7 +36,8 @@ export class ServiceComponent {
       size: 'lg',
     });
     okno.componentInstance.usluga = usluga;
-    okno.componentInstance.workers = this.service_.pracownicy;
+
+    okno.componentInstance.employees = this.service_.pracownicy;
   }
 
   public modifyDescription(service: Usluga) {
@@ -64,19 +65,4 @@ export class ServiceComponent {
         });
       });
   }
-
-  search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) =>
-    text$.pipe(
-      debounceTime(50),
-      distinctUntilChanged(),
-      map(term => {
-        const tmp: Array<any> = [];
-        this.service_.listaUslug.forEach(service => {
-          if (service.category !== undefined) {
-            tmp.push(service.category);
-          }
-        });
-        return term === '' ? [] : tmp.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10);
-      })
-    );
 }

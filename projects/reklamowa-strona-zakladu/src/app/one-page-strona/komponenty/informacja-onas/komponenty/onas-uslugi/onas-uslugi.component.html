@@ -1,10 +1,10 @@
 <div class="uslugiTable">
-  <table style="width: 100%;">
+  <table style="width: 100%">
     <tr>
       <td colspan="2">
-        <h1 class="informacjeOnasTytul">Nasze usługi
-          <fa-icon [icon]="faIcons.uslugi"
-                   class="iconkaUslugi"></fa-icon>
+        <h1 class="informacjeOnasTytul">
+          Nasze usługi
+          <fa-icon [icon]="faIcons.uslugi" class="iconkaUslugi"></fa-icon>
         </h1>
       </td>
       <td></td>
@@ -15,60 +15,40 @@
     </tr>
     <tr
       *ngFor="
-      let usluga of danePodstawowe.danePodstawowe.uslugi
-        | slice : (strona - 1) * max : strona * max;
-      let index = index
-    "
-    >
+        let usluga of danePodstawowe.danePodstawowe.uslugi | slice : (strona - 1) * max : strona * max;
+        let index = index
+      ">
       <td class="informacjaNaglowek1">
         {{
-        danePodstawowe.danePodstawowe.uslugi.length -
-        (danePodstawowe.danePodstawowe.uslugi.length -
-          index -
-          max * strona +
-          max) +
-        1
+          danePodstawowe.danePodstawowe.uslugi.length -
+            (danePodstawowe.danePodstawowe.uslugi.length - index - max * strona + max) +
+            1
         }}
-        . {{ usluga.nazwa }}
+        . {{ usluga.title }}
       </td>
-      <td class="informacjaNaglowek2">{{ usluga.cena }} zł</td>
+      <td class="informacjaNaglowek2">{{ usluga.price }} zł</td>
     </tr>
     <tr
       *ngFor="
-      let k of [].constructor(
-        max -
-          (
-            danePodstawowe.danePodstawowe.uslugi
-            | slice : (strona - 1) * max : strona * max
-          ).length
-      )
-    "
-    >
+        let k of [].constructor(
+          max - (danePodstawowe.danePodstawowe.uslugi | slice : (strona - 1) * max : strona * max).length
+        )
+      ">
       <td class="informacjaNaglowek1" style="visibility: hidden">.</td>
       <td class="informacjaNaglowek1"></td>
     </tr>
     <tr>
       <td *ngIf="danePodstawowe.danePodstawowe.uslugi.length > 10" colspan="3">
-        <div
-          style="
-          display: flex;
-          justify-content: center;
-          width: 100%;
-          padding-top: 30px;
-        "
-        >
+        <div style="display: flex; justify-content: center; width: 100%; padding-top: 30px">
           <ngb-pagination
             [(page)]="strona"
             [boundaryLinks]="true"
             [collectionSize]="danePodstawowe.danePodstawowe.uslugi.length"
             [maxSize]="5"
             [pageSize]="max"
-            [rotate]="true"
-          ></ngb-pagination>
-
+            [rotate]="true"></ngb-pagination>
         </div>
       </td>
     </tr>
   </table>
-
 </div>

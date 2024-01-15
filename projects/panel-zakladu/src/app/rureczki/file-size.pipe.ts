@@ -14,7 +14,7 @@ export class FileSizePipe implements PipeTransform {
       const mbValue = (value / (1024 * 1024)).toFixed(2);
       return `${mbValue} MB`;
     } else {
-      return `${value} KB`;
+      return `${(value / 1024).toFixed(2)} KB`;
     }
   }
 }

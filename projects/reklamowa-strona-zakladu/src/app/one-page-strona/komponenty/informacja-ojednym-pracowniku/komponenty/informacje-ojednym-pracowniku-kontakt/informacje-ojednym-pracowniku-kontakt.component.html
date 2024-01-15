@@ -1,5 +1,5 @@
 <div class="imieNazwisko">
-  <h2>{{ daneOPracowniku.imie }} {{ daneOPracowniku.nazwisko }}</h2>
+  <h2>{{ daneOPracowniku.firstname }} {{ daneOPracowniku.lastname }}</h2>
 </div>
 <div class="kontakt">
   <table>
@@ -8,7 +8,7 @@
     </tr>
     <tr>
       <td class="naglowek2" style="width: 205px">Numer telefonu:</td>
-      <td class="naglowek3">{{ daneOPracowniku.numerTelefonu }}</td>
+      <td class="naglowek3">{{ daneOPracowniku.phoneNumber }}</td>
       <td rowspan="2">
         <button (click)="wybierz()" class="napiszDoMnieButton napiszDoMnieButton1">Napisz do mnie</button>
       </td>
@@ -16,6 +16,35 @@
     <tr>
       <td class="naglowek2" style="width: 205px">E-mail:</td>
       <td class="naglowek3">{{ daneOPracowniku.email }}</td>
+    </tr>
+    <tr>
+      <th class="naglowek2">Kontakt:</th>
+      <td class="iconSocial">
+        @if (daneOPracowniku.socialMedia.facebook.length > 0) {
+        <a [href]="daneOPracowniku.socialMedia.facebook">
+          <fa-icon [icon]="faFacebook" />
+        </a>
+        } @if (daneOPracowniku.socialMedia.instagram.length > 0) {
+        <a [href]="daneOPracowniku.socialMedia.instagram">
+          <fa-icon [icon]="faInstagram" />
+        </a>
+        } @if (daneOPracowniku.socialMedia.twitter.length > 0) {
+        <a [href]="daneOPracowniku.socialMedia.twitter">
+          <fa-icon [icon]="faTwitter" />
+        </a>
+        } @if (daneOPracowniku.socialMedia.telegram.length > 0) {
+        <a [href]="daneOPracowniku.socialMedia.telegram">
+          <fa-icon [icon]="faTelegram" />
+        </a>
+        } @if (daneOPracowniku.socialMedia.whatsapp.length > 0) {
+        <a [href]="daneOPracowniku.socialMedia.whatsapp">
+          <fa-icon [icon]="faWhatsapp" />
+        </a>
+        }
+      </td>
+    </tr>
+    <tr>
+      <td [innerHTML]="daneOPracowniku.description" colspan="3"></td>
     </tr>
   </table>
   <div class="napiszDoMnieButton2">

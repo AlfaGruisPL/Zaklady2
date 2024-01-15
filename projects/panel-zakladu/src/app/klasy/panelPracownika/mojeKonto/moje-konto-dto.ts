@@ -5,6 +5,7 @@ export class MojeKontoDTO {
   public nazwisko: string = '';
   public prefiks: string = '';
   public numerTelefonu: string = '';
+  public profilImageId: number = 0;
   public email: string = '';
   public adres: {
     wojewodztwo?: string;
@@ -21,6 +22,7 @@ export class MojeKontoDTO {
     this.imie = mojeKonto.imie;
     this.nazwisko = mojeKonto.nazwisko;
     this.prefiks = mojeKonto.prefiks;
+    this.profilImageId = mojeKonto.zdjecieProfiloweId;
     this.numerTelefonu = mojeKonto.numer_telefonu;
     this.workDay = mojeKonto.workDay;
     this.email = mojeKonto.email;
