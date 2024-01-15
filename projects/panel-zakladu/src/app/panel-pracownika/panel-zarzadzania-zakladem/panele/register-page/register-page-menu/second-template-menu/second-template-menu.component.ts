@@ -1,6 +1,6 @@
-import { Component } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { RouterLink, RouterLinkActive } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: '[app-second-template-menu]',
@@ -9,4 +9,16 @@ import { RouterLink, RouterLinkActive } from "@angular/router";
   templateUrl: './second-template-menu.component.html',
   styleUrls: ['./second-template-menu.component.scss'],
 })
-export class SecondTemplateMenuComponent {}
+export class SecondTemplateMenuComponent implements OnInit {
+  ngOnInit() {
+    /* document.querySelectorAll('.Atag').forEach(tag => {
+       const parent = tag.parentElement;
+       if (parent) {
+         const parent2 = parent.parentElement;
+         if (parent2) {
+           parent2.appendChild(tag);
+         }
+       }
+     });*/
+  }
+}

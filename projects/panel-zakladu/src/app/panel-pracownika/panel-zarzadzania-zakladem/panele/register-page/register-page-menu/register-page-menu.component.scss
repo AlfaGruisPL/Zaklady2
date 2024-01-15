@@ -6,16 +6,20 @@ $button-backgroundColor: #e1e1e1;
     flex-wrap: wrap;
     justify-items: stretch;
   }
+  overflow-x: hidden;
 
-  div {
-    flex-grow: 10;
-
-    display: flex;
+  /* div {
+     /*  //flex-grow: 10;
+       z-index: 2;
+       width: 0;
+       overflow-x: hidden;*/
+  //    display: contents;
+  /*  position: relative;
     @media (max-width: 800px) {
       flex-wrap: wrap;
       width: 100%;
     }
-  }
+}*/
 
   a {
     display: flex;
@@ -28,10 +32,13 @@ $button-backgroundColor: #e1e1e1;
     padding-left: 20px;
     padding-right: 20px;
     border: 1px solid rgba(84, 84, 84, 0.85);
-
+    transition: 500ms;
     font-size: 16px;
     color: #333;
     text-decoration: none;
+    z-index: 2;
+    top: 0px;
+    position: relative;
     @media (max-width: 800px) {
       font-size: 12px;
       padding: 0 10px;
@@ -45,12 +52,16 @@ $button-backgroundColor: #e1e1e1;
 
     &.registerPageMenuFirstLink {
       flex-grow: 2;
+      z-index: 1;
+      position: relative;
     }
 
     &.active {
-      background: lighten($button-backgroundColor, 10);
-      color: #560000;
-      background: red !important;
+      background: lighten($button-backgroundColor, 30);
+      color: #000000;
+      z-index: 5;
+      position: relative;
+      scale: 1.15;
     }
   }
 }

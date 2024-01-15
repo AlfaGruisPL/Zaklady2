@@ -1,3 +1,10 @@
-<p>second-template-footer works!</p>
+<h3 class="settingsSubTitle">Ustawienia panelu stopki:</h3>
+
+<app-template-setting>
+  <ng-template TemplateId="label">Tytuł zakładu:</ng-template>
+  <ng-template TemplateId="setting">
+    <input [(ngModel)]="rPD_.footer.title" />
+  </ng-template>
+</app-template-setting>
 
 <app-register-page-save-button />

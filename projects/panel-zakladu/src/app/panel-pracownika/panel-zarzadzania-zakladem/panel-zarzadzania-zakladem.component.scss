@@ -67,7 +67,8 @@
     width: calc(100vw - 220px);
     height: calc(100% - 2px);
     float: left;
-    background: #fbfeff;
+    //background: #fbfeff;
+    background: #f3f3f3;
     overflow-y: auto;
     @media (max-width: 1500px) {
       width: 100vw;

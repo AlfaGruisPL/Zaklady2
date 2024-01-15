@@ -9,7 +9,10 @@
       <th>Wykonawca</th>
       <th>Dołączenie</th>
     </tr>
-    <tr *ngFor="let pracownik of pracownicy">
+    {{
+      employees.length
+    }}
+    <tr *ngFor="let pracownik of employees">
       <td>{{ pracownik.firstname }} {{ pracownik.lastname }}</td>
       <td><input (click)="ustaw($event, pracownik)" [checked]="czyZaznaczony(pracownik)" type="checkbox" /></td>
     </tr>

@@ -40,11 +40,11 @@ export class SecondTemplateTmp {
   banner: string | number = 0;
   header = {
     nav: {
-      logo: 0,
+      logo: '',
     },
     title: '',
-    backgroundImage: 'number',
-    description: 'string',
+    backgroundImage: 0,
+    description: '',
   };
   aboutUs: {
     information: {
@@ -97,10 +97,12 @@ export class SecondTemplateTmp {
       saturday: { closing: '11:12', opening: '09:00', activeDay: true },
     },
     contact: {
+      title: 'Contact',
       email: 'info@example.com',
       numberOfPhone: '(+123) 456 789 101',
     },
     address: {
+      title: 'Contact',
       country: 'Ukraine',
       city: 'Lviv',
       village: 'Krysowychi',
@@ -109,6 +111,7 @@ export class SecondTemplateTmp {
       zipCode: '35-750',
     },
     map: {
+      title: 'Contact',
       latitude: '49.84461671294488',
       longitude: '24.032144925333583',
     },

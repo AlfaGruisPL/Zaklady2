@@ -36,7 +36,8 @@ export class ServiceComponent {
       size: 'lg',
     });
     okno.componentInstance.usluga = usluga;
-    okno.componentInstance.workers = this.service_.pracownicy;
+
+    okno.componentInstance.employees = this.service_.pracownicy;
   }
 
   public modifyDescription(service: Usluga) {
