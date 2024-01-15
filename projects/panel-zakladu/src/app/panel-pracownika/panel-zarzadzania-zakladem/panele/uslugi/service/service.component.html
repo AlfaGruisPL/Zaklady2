@@ -1,7 +1,7 @@
 <td>
   <fa-icon (click)="usunWiersz(index)" [icon]="faMinusCircle" class="buttonMinus"></fa-icon>
 </td>
-<td class="zlotyID">{{ index + 1 }}.</td>
+<td class="zlotyID mobileHide">{{ index + 1 }}.</td>
 <td>
   <input [(ngModel)]="usluga.title" [ngModelOptions]="{ standalone: true }" class="logInputZaklad input1" />
 </td>
@@ -21,15 +21,7 @@
     class="logInputZaklad input3"
     type="number" />
 </td>
-<td class="pracownicyTd">
-  <input
-    [(ngModel)]="usluga.category"
-    [ngModelOptions]="{ standalone: true }"
-    [ngbTypeahead]="search"
-    class="logInputZaklad categorieInput"
-    id="typeahead-format"
-    type="text" />
-</td>
+
 <td class="pracownicyTd">
   <fa-icon (click)="modyfikacjaPracownikow(usluga)" [icon]="faPerson" class="iconkaUser" />
   <span class="counter">{{ usluga.workers.length }}</span>

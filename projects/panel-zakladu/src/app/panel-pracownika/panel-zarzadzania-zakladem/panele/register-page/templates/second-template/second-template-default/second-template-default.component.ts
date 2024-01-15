@@ -39,6 +39,6 @@ export class SecondTemplateDefaultComponent {
     let part1 = firstWord.substring(0, firstWordLength - 2);
     let part2 = firstWord.substring(firstWordLength - 2, firstWordLength - 1);
     let part3 = firstWord.substring(firstWordLength - 1);
-    return part1 + '<span>' + part2 + '/<span>' + part3 + ' ' + next;
+    return part1 + '<span class="colorLetter">' + part2 + '</span>' + part3 + ' ' + next;
   }
 }

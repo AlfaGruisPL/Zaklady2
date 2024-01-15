@@ -5,6 +5,9 @@
   border-top: 1px solid $borderColor;
   @media (max-width: 800px) {
     flex-direction: column;
+    &.short {
+      flex-direction: row;
+    }
   }
 
   .descritpionPanel {
@@ -19,6 +22,9 @@
       padding-right: 10px;
       width: 100%;
       border-right: none;
+      &.short {
+        width: 50%;
+      }
     }
 
     label {

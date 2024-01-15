@@ -1,0 +1,11 @@
+::ng-deep {
+  .exampleColor {
+    width: 100%;
+    font-weight: bolder;
+    padding-left: 10px;
+
+    .colorLetter {
+      color: #ff002c;
+    }
+  }
+}

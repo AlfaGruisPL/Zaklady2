@@ -54,10 +54,12 @@
     <fa-icon [icon]="faFile"></fa-icon>
     <span> Pliki i zdjęcia </span>
   </a>
-  <a [routerLink]="['raporty']" routerLinkActive="aktywneMenu">
-    <fa-icon [icon]="ikonki.flaga"></fa-icon>
-    <span>Raporty </span>
-  </a>
+  <!--
+<a [routerLink]="['raporty']" routerLinkActive="aktywneMenu">
+  <fa-icon [icon]="ikonki.flaga"></fa-icon>
+  <span>Raporty </span>
+</a>
+-->
   <a *ngIf="!token_.czyWlasciciel()" [href]="podreczne_.linkDoStronyReklamowej()" target="_blank">
     <fa-icon [icon]="ikonki.zdjecie"></fa-icon>
     <span> Strona reprezentacyjna </span>

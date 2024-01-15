@@ -13,6 +13,8 @@ import { take } from 'rxjs';
 import { SelectImageComponent } from '../../files/select-image/select-image.component';
 import { NgxEditorModule } from 'ngx-editor';
 import { RegisterPageSaveButtonComponent } from '../register-page-save-button/register-page-save-button.component';
+import { TemplateIdDirective } from '../../../../../komponets/table/template-id.directive';
+import { TemplateSettingComponent } from '../templates/components/template-setting/template-setting.component';
 
 @Component({
   standalone: true,
@@ -26,6 +28,8 @@ import { RegisterPageSaveButtonComponent } from '../register-page-save-button/re
     SelectImageComponent,
     NgxEditorModule,
     RegisterPageSaveButtonComponent,
+    TemplateIdDirective,
+    TemplateSettingComponent,
   ],
   selector: "app-strona-reprezentacyjna-ustawienia [style]='color:red'",
   templateUrl: './strona-reprezentacyjna-ustawienia.component.html',
