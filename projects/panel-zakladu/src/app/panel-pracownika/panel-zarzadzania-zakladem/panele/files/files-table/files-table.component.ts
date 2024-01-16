@@ -10,6 +10,7 @@ import { ListonoszService } from '../../../../../serwisy/listonosz.service';
 import { Drzwi } from '../../../../../enum/drzwi';
 import { FileSizePipe } from '../../../../../rureczki/file-size.pipe';
 import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
+import { QualityPipe } from "../../../../../rureczki/quality.pipe";
 
 @Component({
   selector: 'app-files-table',
@@ -23,6 +24,7 @@ import { NgbPopover } from '@ng-bootstrap/ng-bootstrap';
     FileSizePipe,
     NgbPopover,
     CommonModule,
+    QualityPipe,
   ],
   templateUrl: './files-table.component.html',
   styleUrl: './files-table.component.scss',

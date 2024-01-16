@@ -45,6 +45,7 @@ html {
 .NotInMobile {
   @media (max-width: 1200px) {
     display: none;
+    z-index: 99;
   }
 }
 

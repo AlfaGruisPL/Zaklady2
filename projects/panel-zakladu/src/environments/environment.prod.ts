@@ -9,6 +9,7 @@ export const environment = {
   linkDoStronyFirmowej: 'http://mojzaklad.pl',
   api: 'https://api.mojzaklad.pl',
   apiImage: 'https://api.mojzaklad.pl/pliki/image/',
+  apiImageLow: 'https://api.mojzaklad.pl/pliki/image/',
   demo: true,
   name: 'prod',
 };

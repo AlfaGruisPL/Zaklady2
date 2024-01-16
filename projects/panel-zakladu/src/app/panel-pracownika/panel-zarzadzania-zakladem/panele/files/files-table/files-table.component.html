@@ -24,7 +24,7 @@
       /></ng-template>
       <img
         [ngbPopover]="bigImage"
-        [src]="env.api + '/pliki/image/' + obj.id"
+        [src]="env.api + '/pliki/image/' + obj.id | quality : 15"
         popoverTitle="Zdęcie:"
         style="max-width: 60px; max-height: 30px"
         triggers="mouseenter:mouseleave" />
