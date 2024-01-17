@@ -3,7 +3,7 @@
     height: height
   }"
   class="imageContainer">
-  <div #myDrop="ngbDropdown" class="FileSelect" container="body" ngbDropdown>
+  <div #myDrop="ngbDropdown" (click)="getData()" class="FileSelect" container="body" ngbDropdown>
     <button class="fileSelectButton" id="dropdownForm1" ngbDropdownToggle type="button">Wybierz zdjęcie</button>
     <div aria-labelledby="dropdownForm1" class="dropDownDiv" ngbDropdownMenu>
       <h4>Wybierz zdjęcie:</h4>
@@ -11,7 +11,9 @@
       <input [(ngModel)]="finder" class="finder" placeholder="Wyszukiwarka" />
       <div class="dropdown-divider"></div>
       <div class="selectImageBlockContainer">
-        @for (image of Finder(files_.filesData); track image.id) {
+        @if (files_.fileLoading) {
+        <h6>Ładowanie zdjęć....</h6>
+        } @for (image of Finder(files_.filesData); track image.id) {
         <div (click)="changeImage(image.id, myDrop)" class="selectImageBlock">
           <span> {{ image.nazwa | maxDlugosc : 25 }}</span>
           <div class="imageDiv">

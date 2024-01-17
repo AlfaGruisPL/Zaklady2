@@ -42,6 +42,7 @@ export class RegisterPageService {
   async saveData() {
     this.data.template = this.selectedTemplate;
     const dane = new UstawieniaStronyReklamowejDto(this.data);
+    console.log(dane);
     this.http_
       .wyslij(Drzwi.UstawieniaStronyReklamowej, dane)
       .then(dane => {
@@ -69,6 +70,8 @@ export class RegisterPageService {
   private saveDataToVariable(data: any) {
     this.data.stronaReklamowaPrzelacznik = data.wlaczona;
     this.selectedTemplate = data['template'];
+    this.data.keywords = data['keyWords'];
+    this.data.miniDescription = data['miniDescription'];
     switch (this.selectedTemplate) {
       case 'template1':
         Object.assign(this.data.FirstTemplateData, data.data);
@@ -76,10 +79,6 @@ export class RegisterPageService {
       case 'template2':
         //  this.skopiujObiekty(data.data, this.data.SecondTemplateData);
         Object.assign(this.data.SecondTemplateData, data.data);
-        console.log(this.data.SecondTemplateData, data.data);
-      //     console.log(this.data.SecondTemplateData);
     }
-    //todo tu można dodać tworzenie obiektu danego template
-    //this.data.data = data['data'];
   }
 }

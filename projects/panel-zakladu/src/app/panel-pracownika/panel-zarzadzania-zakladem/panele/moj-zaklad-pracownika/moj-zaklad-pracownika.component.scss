@@ -1,7 +1,6 @@
 .panelZakladu {
   width: 100%;
   min-height: 100%;
-  background: #fbfeff;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -126,10 +125,6 @@
       border-left: 2px solid #afb0b4;
       padding: 10px;
       display: block;
-    }
-
-    .payMethod {
-      margin-left: 9px;
     }
   }
 }

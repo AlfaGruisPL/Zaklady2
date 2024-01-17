@@ -10,6 +10,7 @@ export const environment = {
   api: 'https://api.mojzaklad.pl',
   demo: true
   apiImage: 'https://api.mojzaklad.pl/pliki/image/',
+  apiImageLow: 'https://api.mojzaklad.pl/pliki/image/',
   demo: true,
   name: 'prod',
 };

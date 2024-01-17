@@ -70,7 +70,7 @@ export class TableComponent implements AfterContentInit {
   @Input() search = false;
   @Input() paggiantion = true;
   @Input() displaySum = false;
-  @Input()  paggiantionMaxElementArray = [5, 10, 15, 20]
+  @Input() paggiantionMaxElementArray = [5, 10, 15, 20];
   @Input() async = true;
   //test
   @Input() subTableOpenVariable = 'open';
@@ -79,6 +79,7 @@ export class TableComponent implements AfterContentInit {
   @Output() pageChange = new EventEmitter();
   @Output() changeRowsOnPage = new EventEmitter();
   @Output() searchChange = new EventEmitter();
+  k = 0;
   protected readonly Math = Math;
 
   constructor() {
@@ -155,7 +156,11 @@ export class TableComponent implements AfterContentInit {
 
   calcEmptyCells(cells: HTMLCollectionOf<HTMLTableCellElement>) {
     const array = Array.from(cells).filter(cell => {
-      return !cell.classList.contains('NotInMobile');
+      if (getComputedStyle(cell).zIndex != '99') {
+        return true;
+      }
+      return false;
+      // return !cell.classList.contains('NotInMobile');
     });
 
     return array.length;

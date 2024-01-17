@@ -42,10 +42,10 @@ export class SelectImageComponent implements OnInit {
 
   constructor(public files_: FilesService) {}
 
-  ngOnInit() {
-    if (this.files_.filesData.length == 0) {
-      this.files_.FetchDataFromDB();
-    }
+  ngOnInit() {}
+
+  getData() {
+    this.files_.FetchDataFromDB();
   }
 
   mouseInto() {

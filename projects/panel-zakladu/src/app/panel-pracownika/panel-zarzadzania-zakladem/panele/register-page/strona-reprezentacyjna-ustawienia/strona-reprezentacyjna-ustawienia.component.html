@@ -35,15 +35,17 @@
       </ng-template>
     </app-template-setting>
     <app-template-setting>
-      <ng-template TemplateId="label">Słowa kluczowe:</ng-template>
+      <ng-template TemplateId="label"
+        >Słowa kluczowe: <span style="color: #3c3c3c">(Oddzielone przecinkami)</span></ng-template
+      >
       <ng-template TemplateId="setting">
-        <input />
+        <input [(ngModel)]="registerPage_.data.keywords" />
       </ng-template>
     </app-template-setting>
     <app-template-setting>
       <ng-template TemplateId="label">Opis dla google:</ng-template>
       <ng-template TemplateId="setting">
-        <textarea style="width: 100%"></textarea>
+        <textarea [(ngModel)]="registerPage_.data.miniDescription" style="width: 100%"> </textarea>
       </ng-template>
     </app-template-setting>
 
