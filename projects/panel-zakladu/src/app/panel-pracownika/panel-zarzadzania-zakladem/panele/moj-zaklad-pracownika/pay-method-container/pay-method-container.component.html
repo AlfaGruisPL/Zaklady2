@@ -1,0 +1,33 @@
+<table class="payMethod">
+  <tr
+    [(payMethod)]="mojZakladKlasa.platnosci.blik"
+    [(zapiszButton)]="!zapiszButton"
+    [payMethodName]="'Blik'"
+    app-pay-metod></tr>
+  <tr></tr>
+  <tr
+    [(payMethod)]="mojZakladKlasa.platnosci.Google_Pay"
+    [(zapiszButton)]="!zapiszButton"
+    [payMethodName]="'Google Pay'"
+    app-pay-metod></tr>
+  <tr></tr>
+  <tr
+    [(payMethod)]="mojZakladKlasa.platnosci.Apple_Pay"
+    [(zapiszButton)]="!zapiszButton"
+    [payMethodName]="'Apple Pay'"
+    app-pay-metod></tr>
+  <tr></tr>
+
+  <tr
+    [(payMethod)]="mojZakladKlasa.platnosci.Visa"
+    [(zapiszButton)]="!zapiszButton"
+    [payMethodName]="'Visa'"
+    app-pay-metod></tr>
+  <tr></tr>
+  <tr
+    [(payMethod)]="mojZakladKlasa.platnosci.MasterCard"
+    [(zapiszButton)]="!zapiszButton"
+    [payMethodName]="'MasterCard'"
+    app-pay-metod></tr>
+  <tr></tr>
+</table>

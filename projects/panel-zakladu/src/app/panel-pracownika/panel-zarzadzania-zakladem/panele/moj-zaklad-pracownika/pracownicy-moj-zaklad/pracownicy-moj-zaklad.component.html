@@ -1,18 +1,7 @@
 <div class="pracownicy">
   <table class="pracownicyTable">
     <tr>
-      <td class="naglowki1form" colspan="2">
-        Wybierz, jakie pracowniki mają być <br />
-        wyświetlane na stronie zakładu
-      </td>
-      <td>
-        <ui-switch
-          [(ngModel)]="pracownicy.widocznoscOgolna"
-          [disabled]="!czyWidoczne"
-          checkedLabel="Publiczne"
-          class="przelacznikPublicznePrywatne"
-          uncheckedLabel="Prywatne"></ui-switch>
-      </td>
+      <td class="naglowki1form" colspan="2">Wybierz pracowników:</td>
     </tr>
     <tr>
       <th>Imię</th>

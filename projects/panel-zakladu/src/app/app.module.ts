@@ -54,6 +54,9 @@ import { FileSizePipe } from './rureczki/file-size.pipe';
 import { TableComponent } from './komponets/table/table.component';
 import { TemplateIdDirective } from './komponets/table/template-id.directive';
 import { ServiceComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/service/service.component';
+import { DayOpeningHoursComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moj-zaklad-pracownika/day-opening-hours/day-opening-hours.component';
+import { PayMetodComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moj-zaklad-pracownika/pay-method-container/pay-metod/pay-metod.component';
+import { PayMethodContainerComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moj-zaklad-pracownika/pay-method-container/pay-method-container.component';
 
 registerLocaleData(localePl, 'pl-PL');
 
@@ -127,6 +130,9 @@ registerLocaleData(localePl, 'pl-PL');
     TableComponent,
     TemplateIdDirective,
     ServiceComponent,
+    DayOpeningHoursComponent,
+    PayMetodComponent,
+    PayMethodContainerComponent,
   ],
   providers: [
     NgbDropdown,

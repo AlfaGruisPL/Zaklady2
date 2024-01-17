@@ -1,0 +1,15 @@
+:host {
+  display: contents;
+}
+
+::ng-deep {
+  .payMethod {
+    margin-left: 9px;
+
+    tr {
+      td {
+        padding-left: 30px;
+      }
+    }
+  }
+}

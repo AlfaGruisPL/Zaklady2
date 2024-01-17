@@ -1,0 +1,26 @@
+<td class="naglowki2form"><label>Poniedziałek</label></td>
+<td>
+  <input
+    [(ngModel)]="dzien.opening"
+    [disabled]="!dzien.activeDay || !zapiszButton"
+    [ngModelOptions]="{ standalone: true }"
+    class="logInputZaklad logInputZaklad_czas"
+    placeholder="Otwarcie"
+    type="time" />
+</td>
+<td>
+  <input
+    [(ngModel)]="dzien.closing"
+    [disabled]="!dzien.activeDay || !zapiszButton"
+    [ngModelOptions]="{ standalone: true }"
+    class="logInputZaklad logInputZaklad_czas"
+    placeholder="Zamknięcie"
+    type="time" />
+  <ui-switch
+    [(ngModel)]="dzien.activeDay"
+    [disabled]="!zapiszButton"
+    [ngModelOptions]="{ standalone: true }"
+    checkedLabel="Czynne"
+    class="przelacznikCzynneNieczynne"
+    uncheckedLabel="Nieczynne"></ui-switch>
+</td>
