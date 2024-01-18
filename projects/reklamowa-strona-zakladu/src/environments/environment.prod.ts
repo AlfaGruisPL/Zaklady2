@@ -6,5 +6,5 @@ export const environment = {
   linkDoZdjeciaProfilowego: 'https://api.mojzaklad.pl/pliki/wyswietlZdjecieProfilowe/',
   linkDoBaneruStronyReklamowej: 'https://api.mojzaklad.pl/pliki/banerStronyReklamowej',
   linkDoLogaStronyReklamowej: 'https://api.mojzaklad.pl/pliki/logoStronyReklamowej',
-  googleCaptchaKey: '6Ldl6gspAAAAAG2XPK4zKieIyti2haYRqnWR8RaV',
+  googleCaptchaKey: '6Ldx_1MpAAAAAICoyhuEgTNU7-nICGtvPQcIZfBn',
 };
