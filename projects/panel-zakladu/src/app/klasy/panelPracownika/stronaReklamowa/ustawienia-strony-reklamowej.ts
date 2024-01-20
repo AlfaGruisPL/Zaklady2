@@ -110,14 +110,17 @@ export class SecondTemplateTmp {
   footer = {
     title: 'Salio',
     shortDescription: 'Our barbershop is the created for men who appreciate premium quality, time and flawless look.',
-    openingHours: {
-      sunday: { closing: '', opening: '', activeDay: false },
-      monday: { closing: '13:14', opening: '07:00', activeDay: true },
-      tuesday: { closing: '16:00', opening: '06:00', activeDay: true },
-      wednesday: { closing: '12:13', opening: '08:00', activeDay: true },
-      thursday: { closing: '', opening: '', activeDay: false },
-      friday: { closing: '10:11', opening: '05:00', activeDay: true },
-      saturday: { closing: '11:12', opening: '09:00', activeDay: true },
+    address: {
+      title: '',
+      schedule: {
+        sunday: { closing: '', opening: '', activeDay: false },
+        monday: { closing: '13:14', opening: '07:00', activeDay: true },
+        tuesday: { closing: '16:00', opening: '06:00', activeDay: true },
+        wednesday: { closing: '12:13', opening: '08:00', activeDay: true },
+        thursday: { closing: '', opening: '', activeDay: false },
+        friday: { closing: '10:11', opening: '05:00', activeDay: true },
+        saturday: { closing: '11:12', opening: '09:00', activeDay: true },
+      },
     },
     contact: {
       title: 'Contact',

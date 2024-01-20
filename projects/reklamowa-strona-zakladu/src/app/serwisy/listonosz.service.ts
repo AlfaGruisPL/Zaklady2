@@ -1,12 +1,19 @@
 import { Injectable } from '@angular/core';
 import { ListyService } from './listy.service';
 import { Drzwi } from '../enum/drzwi';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ListonoszService {
-  constructor(public listy: ListyService) {}
+  constructor(public listy: ListyService, public router: Router) {}
+
+  checkServerConnection(error: any) {
+    if (error.status == 0) {
+      this.router.navigate(['page500']);
+    }
+  }
 
   pobierz(drzwi: Drzwi | string): Promise<any> {
     return new Promise((resolve, reject) => {
@@ -15,6 +22,7 @@ export class ListonoszService {
           resolve(next['value']);
         },
         error => {
+          this.checkServerConnection(error);
           reject(error);
         }
       );

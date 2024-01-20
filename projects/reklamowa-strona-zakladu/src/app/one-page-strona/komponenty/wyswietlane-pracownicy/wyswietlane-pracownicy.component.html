@@ -31,7 +31,7 @@
     </div>
   </div>
   } @else {
-  <div style="display: block; width: 100%">
+  <div class="containerForSlider">
     <ngx-slick-carousel #slickModal="slick-carousel" [config]="slideConfig" class="carousel">
       @for (pracownik of listaPracownikow; track pracownik.id) {
       <div
