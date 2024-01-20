@@ -54,6 +54,7 @@ import { MetodyPlatnosciComponent } from './komponenty/metody-platnosci/metody-p
 import { MaxDlugoscPipe } from './rurki/max-dlugosc.pipe';
 import { TerminNieDostepnyComponent } from './one-page-strona/komponenty/formularz-zarejestruj-sie/etapy/termin-nie-dostepny/termin-nie-dostepny.component';
 import { RecaptchaModule } from 'ng-recaptcha';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 
 @NgModule({
   declarations: [
@@ -102,7 +103,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
     BrowserAnimationsModule,
     CarouselModule,
     NgSelectModule,
-    NgbPaginationModule,
+    NgbPaginationModule,SlickCarouselModule,
     RecaptchaModule,
     NgbModule,
     FontAwesomeModule,

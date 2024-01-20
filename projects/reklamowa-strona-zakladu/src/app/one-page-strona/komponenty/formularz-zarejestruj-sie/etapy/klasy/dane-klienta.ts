@@ -82,47 +82,51 @@ export class DaneKlienta {
 }
 
 export class pracownikUslugiDTO {
-  public pracownikId: number = 0;
-  public uslugiId: Array<number> = [];
+  public idOfEmployee: number = 0;
+  public idOfServices: Array<number> = [];
 
   constructor(pracownikUslugi: DaneKlienta) {
     pracownikUslugi.uslugi.forEach(usluga => {
       if (usluga.wybrane) {
-        this.uslugiId.push(usluga.id);
+        this.idOfServices.push(usluga.id);
       }
     });
     if (pracownikUslugi.wybranyPracownik != undefined) {
-      this.pracownikId = pracownikUslugi.wybranyPracownik;
+      this.idOfEmployee = pracownikUslugi.wybranyPracownik;
     }
   }
 }
 
 export class DaneKlientaDTO {
-  public imie: string = '';
-  public nazwisko: string = '';
-  public numerTelefonu: string = '';
-  public email: string = '';
-  public poczatek: Date = new Date();
-  public koniec: Date = new Date();
-  public uslugiId: number[] = [];
-  public pracownikId: number | undefined = 0;
-  public capcha = '';
+  public idOfServices: number[] = [];
+  public idOfEmployee: number | undefined = 0;
+  public reCaptcha = '';
+  selectedDate = {
+    start: new Date(),
+    end: new Date(),
+  };
+  dataOfUser = {
+    name: '',
+    surname: '',
+    numberOfPhone: '',
+    email: '',
+  };
 
   constructor(daneKlienta: DaneKlienta) {
-    this.imie = daneKlienta.imie;
-    this.nazwisko = daneKlienta.nazwisko;
-    this.numerTelefonu = daneKlienta.prefiksTelefonu + '-' + daneKlienta.numerTelefonu;
-    this.email = daneKlienta.email;
-    this.pracownikId = daneKlienta.wybranyPracownik;
-    this.capcha = daneKlienta.capcha;
+    this.dataOfUser.name = daneKlienta.imie;
+    this.dataOfUser.surname = daneKlienta.nazwisko;
+    this.dataOfUser.numberOfPhone = daneKlienta.prefiksTelefonu + '-' + daneKlienta.numerTelefonu;
+    this.dataOfUser.email = daneKlienta.email;
+    this.idOfEmployee = daneKlienta.wybranyPracownik;
+    this.reCaptcha = daneKlienta.capcha;
     const k = daneKlienta.wybranyTermin;
     if (k) {
-      this.poczatek = k.poczatek;
-      this.koniec = k.koniec;
+      this.selectedDate.start = k.poczatek;
+      this.selectedDate.end = k.koniec;
     }
     daneKlienta.uslugi.forEach(usluga => {
       if (usluga.wybrane) {
-        this.uslugiId.push(usluga.id);
+        this.idOfServices.push(usluga.id);
       }
     });
   }

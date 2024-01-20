@@ -19,7 +19,6 @@ export class DanePodstawowe {
   public wysokosc = 0;
   public szerokosc = 0;
 
-  public wyswietlaneDane: wyswietlaneDane = new wyswietlaneDane();
   public listaPracownikow: any[] = [];
   public mozliwoscPlatnosciKarta = false;
   public platnosci = {

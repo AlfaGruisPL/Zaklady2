@@ -6,5 +6,5 @@ export const environment = {
   linkDoZdjeciaProfilowego: 'http://fenek.tech:3000/pliki/wyswietlZdjecieProfilowe/',
   linkDoBaneruStronyReklamowej: 'http://fenek.tech:3000/pliki/banerStronyReklamowej',
   linkDoLogaStronyReklamowej: 'http://fenek.tech:3000/pliki/logoStronyReklamowej',
-  googleCaptchaKey: '6Ldl6gspAAAAAG2XPK4zKieIyti2haYRqnWR8RaV',
+  googleCaptchaKey: '6Ldx_1MpAAAAAICoyhuEgTNU7-nICGtvPQcIZfBn',
 };

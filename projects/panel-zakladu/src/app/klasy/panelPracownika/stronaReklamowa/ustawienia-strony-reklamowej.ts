@@ -40,6 +40,22 @@ export class FirstTemplate {
   opisZakladuWStopce: string = '';
   logo: string | number = '';
   banner: string | number = '';
+
+  wyswietlaneDane = {
+    address: false,
+    nip: false,
+    regon: false,
+    email: false,
+    phone: false,
+    hours: false,
+    opisCzyWyswietlic: false,
+    establishmentDate: false,
+    map: false,
+    services: false,
+    numberOfEmployees: false,
+    companyData: false,
+    ourContact: false,
+  };
 }
 
 export class SecondTemplateTmp {
@@ -121,6 +137,40 @@ export class SecondTemplateTmp {
       title: 'Contact',
       latitude: '49.84461671294488',
       longitude: '24.032144925333583',
+    },
+  };
+  registration = {
+    steps: {
+      chooseAemployee: {
+        title: 'Choose a barber9',
+        description:
+          'Barbershop offers professional services of certified barbers with years of experience. On this page you can choose a preferred barber in a few clicks.9',
+      },
+      chooseAservice: {
+        title: 'Choose a service9',
+        description:
+          'Barbershop offers professional services of certified barbers with years of experience. On this page you can choose a preferred barber in a few clicks.9',
+      },
+      chooseAdate: {
+        title: 'Choose a date9',
+        description:
+          'Feel free to use our services! We are open to scheduling an appointment at a convenient time for you. Choose a date that suits your preferences, and we will do our best to accommodate your schedule.9',
+      },
+      basicData: {
+        title: 'Enter basic data9',
+        description:
+          'Feel free to use our services! We are open to scheduling an appointment at a convenient time for you. Choose a date that suits your preferences, and we will do our best to accommodate your schedule.9',
+      },
+      veryfication: {
+        title: 'Veryfication9',
+        description:
+          'Feel free to use our services! We are open to scheduling an appointment at a convenient time for you. Choose a date that suits your preferences, and we will do our best to accommodate your schedule.9',
+      },
+      summary: {
+        title: 'It is all9',
+        description:
+          'Feel free to use our services! We are open to scheduling an appointment at a convenient time for you. Choose a date that suits your preferences, and we will do our best to accommodate your schedule.9',
+      },
     },
   };
 

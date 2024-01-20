@@ -1,0 +1,94 @@
+<h3 class="settingsSubTitle">Ustawienia Panelu rejestracji wizyty:</h3>
+<h4 class="settingsSubTitle">Wybór pracownika:</h4>
+<app-template-setting>
+  <ng-template TemplateId="label">Tytuł:</ng-template>
+  <ng-template TemplateId="setting">
+    <input [(ngModel)]="rPDS_.registration.steps.chooseAemployee.title" />
+  </ng-template>
+</app-template-setting>
+<app-template-setting>
+  <ng-template TemplateId="label">Opis:</ng-template>
+  <ng-template TemplateId="setting">
+    <app-ngx-editor
+      [(value)]="rPDS_.registration.steps.chooseAemployee.description"
+      [maxLength]="2000"
+      [saveTools]="true"></app-ngx-editor>
+  </ng-template>
+</app-template-setting>
+
+<h4 class="settingsSubTitle">Wybór usługi:</h4>
+<app-template-setting>
+  <ng-template TemplateId="label">Tytuł:</ng-template>
+  <ng-template TemplateId="setting"><input [(ngModel)]="rPDS_.registration.steps.chooseAservice.title" /></ng-template>
+</app-template-setting>
+<app-template-setting>
+  <ng-template TemplateId="label">Opis:</ng-template>
+  <ng-template TemplateId="setting">
+    <app-ngx-editor
+      [(value)]="rPDS_.registration.steps.chooseAservice.description"
+      [maxLength]="2000"
+      [saveTools]="true"></app-ngx-editor>
+  </ng-template>
+</app-template-setting>
+
+<h4 class="settingsSubTitle">Wybór terminu:</h4>
+<app-template-setting>
+  <ng-template TemplateId="label">Tytuł:</ng-template>
+  <ng-template TemplateId="setting"><input [(ngModel)]="rPDS_.registration.steps.chooseAdate.title" /></ng-template>
+</app-template-setting>
+<app-template-setting>
+  <ng-template TemplateId="label">Opis:</ng-template>
+  <ng-template TemplateId="setting">
+    <app-ngx-editor
+      [(value)]="rPDS_.registration.steps.chooseAdate.description"
+      [maxLength]="2000"
+      [saveTools]="true"></app-ngx-editor>
+  </ng-template>
+</app-template-setting>
+
+<h4 class="settingsSubTitle">Informacje o kliencie:</h4>
+<app-template-setting>
+  <ng-template TemplateId="label">Tytuł:</ng-template>
+  <ng-template TemplateId="setting"><input [(ngModel)]="rPDS_.registration.steps.basicData.title" /></ng-template>
+</app-template-setting>
+<app-template-setting>
+  <ng-template TemplateId="label">Opis:</ng-template>
+  <ng-template TemplateId="setting">
+    <app-ngx-editor
+      [(value)]="rPDS_.registration.steps.basicData.description"
+      [maxLength]="2000"
+      [saveTools]="true"></app-ngx-editor>
+  </ng-template>
+</app-template-setting>
+
+<h4 class="settingsSubTitle">Weryfikacja wizyty:</h4>
+<app-template-setting>
+  <ng-template TemplateId="label">Tytuł:</ng-template>
+  <ng-template TemplateId="setting"><input [(ngModel)]="rPDS_.registration.steps.veryfication.title" /></ng-template>
+</app-template-setting>
+<app-template-setting>
+  <ng-template TemplateId="label">Opis:</ng-template>
+  <ng-template TemplateId="setting">
+    <app-ngx-editor
+      [(value)]="rPDS_.registration.steps.veryfication.description"
+      [maxLength]="2000"
+      [saveTools]="true"></app-ngx-editor>
+  </ng-template>
+</app-template-setting>
+
+<h4 class="settingsSubTitle">Podsumowanie:</h4>
+<app-template-setting>
+  <ng-template TemplateId="label">Tytuł:</ng-template>
+  <ng-template TemplateId="setting"><input [(ngModel)]="rPDS_.registration.steps.summary.title" /></ng-template>
+</app-template-setting>
+<app-template-setting>
+  <ng-template TemplateId="label">Opis:</ng-template>
+  <ng-template TemplateId="setting">
+    <app-ngx-editor
+      [(value)]="rPDS_.registration.steps.summary.description"
+      [maxLength]="2000"
+      [saveTools]="true"></app-ngx-editor>
+  </ng-template>
+</app-template-setting>
+
+<app-register-page-save-button />

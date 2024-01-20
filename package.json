@@ -1,7 +1,7 @@
 {
   "name": "zaklady",
-  "version": "0.0.83",
-  "relase_date": "15.01.2024 23:17",
+  "version": "0.0.84",
+  "relase_date": "19.01.2024 22:46",
   "scripts": {
     "postinstall": "npm i https://github.com/AlfaGruisPL/zakladLib.git --force",
     "npmInstall": "npm install --force",
@@ -65,10 +65,12 @@
     "ngx-google-analytics": "^14.0.1",
     "ngx-if-platform": "^2.0.0",
     "ngx-owl-carousel-o": "^17.0.0",
+    "ngx-slick-carousel": "^17.0.0",
     "ngx-toastr": "^18.0.0",
     "ngx-ui-switch": "^15.0.0",
     "password-validator": "^5.3.0",
     "rxjs": "~7.8.1",
+    "slick-carousel": "^1.8.1",
     "suneditor": "^2.45.1 --legacy-peer-deps",
     "tslib": "^2.6.2",
     "zakladlib": "github:AlfaGruisPL/zakladLib",

@@ -68,6 +68,7 @@ export class RegisterPageService {
   }
 
   private saveDataToVariable(data: any) {
+    console.log(1, this.selectedTemplate);
     this.data.stronaReklamowaPrzelacznik = data.wlaczona;
     this.selectedTemplate = data['template'];
     this.data.keywords = data['keyWords'];

@@ -371,10 +371,14 @@
             "styles": [
               "projects/reklamowa-strona-zakladu/src/styles.scss",
               "./node_modules/leaflet/dist/leaflet.css",
+              "./node_modules/slick-carousel/slick/slick.scss",
+              "./node_modules/slick-carousel/slick/slick-theme.scss",
               "projects/reklamowa-strona-zakladu/src/animation.scss",
               "node_modules/aos/dist/aos.css"
             ],
             "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/slick-carousel/slick/slick.min.js"
             ]
           },
           "configurations": {

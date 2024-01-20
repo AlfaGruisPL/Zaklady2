@@ -5,32 +5,34 @@
         Trochę informacji o naszym zakładzie
         <fa-icon [icon]="faIcons.info" class="iconkaPodstawowe"></fa-icon>
       </td>
-
     </tr>
-    <tr *ngIf="DanePodstawowe_.danePodstawowe.wyswietlaneDane.establishmentDate">
+    <!-- //todo Data założenia --->
+    <tr>
       <td class="informacjaNaglowek1">Data założenia:</td>
       <td class="informacjaNaglowek2">
         {{ DanePodstawowe_.danePodstawowe.dataZalozenia }}
       </td>
     </tr>
-    <tr *ngIf="DanePodstawowe_.danePodstawowe.wyswietlaneDane.numberOfEmployees">
+    <!-- //todo numberOfEmployees --->
+    <tr>
       <td class="informacjaNaglowek1">Ilość pracowników:</td>
       <td class="informacjaNaglowek2">
         {{ DanePodstawowe_.danePodstawowe.iloscPracownikow }}
       </td>
     </tr>
-    <tr *ngIf="DanePodstawowe_.danePodstawowe.wyswietlaneDane.nip">
+    <tr>
+      <!-- //todo NIP --->
       <td class="informacjaNaglowek1">NIP:</td>
       <td class="informacjaNaglowek2">
         {{ DanePodstawowe_.danePodstawowe.NIP }}
       </td>
     </tr>
-    <tr *ngIf="DanePodstawowe_.danePodstawowe.wyswietlaneDane.regon">
+    <tr>
+      <!-- //todo REGON --->
       <td class="informacjaNaglowek1">REGON:</td>
       <td class="informacjaNaglowek2">
         {{ DanePodstawowe_.danePodstawowe.REGON }}
       </td>
     </tr>
   </table>
-
 </div>
