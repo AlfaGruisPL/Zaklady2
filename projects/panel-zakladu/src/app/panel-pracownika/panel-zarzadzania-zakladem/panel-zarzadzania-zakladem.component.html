@@ -1,14 +1,13 @@
 <div class="menuTresc">
   <div class="menu">
-    <div class="menuDiv">
-      <app-menu-top />
-      <app-menu-pracownik />
-    </div>
+    <app-menu-top />
+    <app-menu-pracownik />
+
     <app-menu-bottom />
   </div>
   <div class="tresc" id="trescPaneluAdministratoraID">
     <app-banner-pracownik />
-    <router-outlet />
+    <router-outlet style="display: contents" />
 
     <app-strzalka [ScrollTop]="height" />
   </div>

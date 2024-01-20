@@ -1,3 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2000;
+  overflow-y: auto;
+}
 
 .platnosci {
   .divNaNaglowek {
@@ -11,7 +17,6 @@
     border-bottom: 2px solid blue;
 
     .tytulNaglowka {
-
       top: -20px;
     }
   }

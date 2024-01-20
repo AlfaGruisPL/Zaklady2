@@ -1,11 +1,17 @@
 @import './../../../../../assets/style/colors';
 
+:host {
+  display: contents;
+}
+
 nav {
   margin: 0;
   padding: 0;
   flex-direction: column;
   display: flex;
+  flex-grow: 100;
   column-gap: 5px;
+
   font-family: 'Arial Black', serif;
   @media (max-width: 1500px) {
     width: 100vw;

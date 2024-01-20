@@ -1,3 +1,10 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2000;
+  overflow-y: auto;
+}
+
 .panelZakladu {
   width: 100%;
   min-height: 100%;
