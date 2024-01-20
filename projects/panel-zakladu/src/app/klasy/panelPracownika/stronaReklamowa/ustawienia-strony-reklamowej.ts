@@ -110,7 +110,7 @@ export class SecondTemplateTmp {
   footer = {
     title: 'Salio',
     shortDescription: 'Our barbershop is the created for men who appreciate premium quality, time and flawless look.',
-    address: {
+    openingHours: {
       title: '',
       schedule: {
         sunday: { closing: '', opening: '', activeDay: false },
