@@ -8,7 +8,7 @@
   <div class="naglowek">
     <h3 class="nasiPracownicy">Nasi pracownicy</h3>
   </div>
-  @if (listaPracownikow.length <= 3) {
+  @if (false) {
   <div class="wierszPracownikow" data-aos="zoom-in-up" data-aos-duration="300" data-aos-once="true">
     <div
       (click)="czyPracownikKlikniety = true; daneKliknietegoPracownika = pracownik"
@@ -30,7 +30,7 @@
       </div>
     </div>
   </div>
-  } @else {
+  }
   <div class="containerForSlider">
     <ngx-slick-carousel #slickModal="slick-carousel" [config]="slideConfig" class="carousel">
       @for (pracownik of listaPracownikow; track pracownik.id) {
@@ -64,6 +64,4 @@
       }
     </ngx-slick-carousel>
   </div>
-  }
 </div>
-<ng-template #slider></ng-template>
