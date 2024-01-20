@@ -98,11 +98,9 @@ export class pracownikUslugiDTO {
 }
 
 export class DaneKlientaDTO {
-  public poczatek: Date = new Date();
-  public koniec: Date = new Date();
   public idOfServices: number[] = [];
   public idOfEmployee: number | undefined = 0;
-  public capcha = '';
+  public reCaptcha = '';
   selectedDate = {
     start: new Date(),
     end: new Date(),
@@ -120,7 +118,7 @@ export class DaneKlientaDTO {
     this.dataOfUser.numberOfPhone = daneKlienta.prefiksTelefonu + '-' + daneKlienta.numerTelefonu;
     this.dataOfUser.email = daneKlienta.email;
     this.idOfEmployee = daneKlienta.wybranyPracownik;
-    this.capcha = daneKlienta.capcha;
+    this.reCaptcha = daneKlienta.capcha;
     const k = daneKlienta.wybranyTermin;
     if (k) {
       this.selectedDate.start = k.poczatek;

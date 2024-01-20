@@ -40,6 +40,22 @@ export class FirstTemplate {
   opisZakladuWStopce: string = '';
   logo: string | number = '';
   banner: string | number = '';
+
+  wyswietlaneDane = {
+    address: false,
+    nip: false,
+    regon: false,
+    email: false,
+    phone: false,
+    hours: false,
+    opisCzyWyswietlic: false,
+    establishmentDate: false,
+    map: false,
+    services: false,
+    numberOfEmployees: false,
+    companyData: false,
+    ourContact: false,
+  };
 }
 
 export class SecondTemplateTmp {

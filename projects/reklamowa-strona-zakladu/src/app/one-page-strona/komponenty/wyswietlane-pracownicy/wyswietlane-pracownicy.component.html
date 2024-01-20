@@ -8,55 +8,62 @@
   <div class="naglowek">
     <h3 class="nasiPracownicy">Nasi pracownicy</h3>
   </div>
+  @if (listaPracownikow.length <= 3) {
   <div class="wierszPracownikow" data-aos="zoom-in-up" data-aos-duration="300" data-aos-once="true">
-    <ng-container *ngIf="listaPracownikow.length <= 41; else slider">
-      <div
-        (click)="czyPracownikKlikniety = true; daneKliknietegoPracownika = pracownik"
-        *ngFor="let pracownik of listaPracownikow"
-        class="pracownik">
-        <div class="imieNazwisko">
-          <span> {{ pracownik.firstname }} {{ pracownik.lastname }} </span>
-        </div>
-        <div class="zdjecie">
-          <img
-            [src]="
-              env.apiFiles + '/' + (pracownik.profilImageId ? pracownik.profilImageId : 0) | zdjecie | identyfikator
-            "
-            class="backGroundBlur" />
-          <img
-            [src]="
-              env.apiFiles + '/' + (pracownik.profilImageId ? pracownik.profilImageId : 0) | zdjecie | identyfikator
-            "
-            class="zdjeciePracownika" />
-        </div>
-        <div class="popatrz">
-          <button class="zobacz"><span>Zobacz</span></button>
-        </div>
+    <div
+      (click)="czyPracownikKlikniety = true; daneKliknietegoPracownika = pracownik"
+      *ngFor="let pracownik of listaPracownikow"
+      class="pracownik">
+      <div class="imieNazwisko">
+        <span> {{ pracownik.firstname }} {{ pracownik.lastname }} </span>
       </div>
-    </ng-container>
-  </div>
-</div>
-<ng-template #slider>
-  <div class="glider-contain pracownicy" style="width: 90%; margin-left: 20px; margin-right: 20px">
-    <div class="glider">
-      <div
-        (click)="czyPracownikKlikniety = true; daneKliknietegoPracownika = pracownik"
-        *ngFor="let pracownik of listaPracownikow"
-        class="pracownik">
-        <div class="imieNazwisko">
-          <span> {{ pracownik.firstname }} {{ pracownik.lastname }} </span>
-        </div>
-        <div class="zdjecie">
-          <img [src]="env.apiFiles + '/' + pracownik.profilImageId | zdjecie | identyfikator" />
-        </div>
-        <div class="popatrz">
-          <button class="zobacz"><span>Zobacz</span></button>
-        </div>
+      <div class="zdjecie">
+        <img
+          [src]="env.apiFiles + '/' + (pracownik.profilImageId ? pracownik.profilImageId : 0) | zdjecie | identyfikator"
+          class="backGroundBlur" />
+        <img
+          [src]="env.apiFiles + '/' + (pracownik.profilImageId ? pracownik.profilImageId : 0) | zdjecie | identyfikator"
+          class="zdjeciePracownika" />
+      </div>
+      <div class="popatrz">
+        <button class="zobacz"><span>Zobacz</span></button>
       </div>
     </div>
-
-    <button aria-label="Previous" class="glider-prev">«</button>
-    <button aria-label="Next" class="glider-next">»</button>
-    <div class="dots" role="tablist"></div>
   </div>
-</ng-template>
+  } @else {
+  <div style="display: block; width: 100%">
+    <ngx-slick-carousel #slickModal="slick-carousel" [config]="slideConfig" class="carousel">
+      @for (pracownik of listaPracownikow; track pracownik.id) {
+      <div
+        ngxSlickItem
+        class="slide"
+        style="display: flex; justify-content: center; flex-direction: column; width: 100px; align-items: center">
+        <div class="pracownik2">
+          <div class="imieNazwisko">
+            <span> {{ pracownik.firstname }} {{ pracownik.lastname }} </span>
+          </div>
+
+          <div class="zdjecie">
+            <img
+              [src]="
+                env.apiFiles + '/' + (pracownik.profilImageId ? pracownik.profilImageId : 0) | zdjecie | identyfikator
+              "
+              class="backGroundBlur" />
+            <img
+              [src]="
+                env.apiFiles + '/' + (pracownik.profilImageId ? pracownik.profilImageId : 0) | zdjecie | identyfikator
+              "
+              class="zdjeciePracownika" />
+          </div>
+
+          <div class="popatrz">
+            <button class="zobacz"><span>Zobacz</span></button>
+          </div>
+        </div>
+      </div>
+      }
+    </ngx-slick-carousel>
+  </div>
+  }
+</div>
+<ng-template #slider></ng-template>
