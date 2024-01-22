@@ -11,7 +11,7 @@
     </tr>
     <tr>
       <th>Netto:</th>
-      <td>{{ kwota - kwota * 0.23 }}zł</td>
+      <td>{{ Number(kwota - kwota * 0.23).toFixed(2) }}zł</td>
     </tr>
     <tr>
       <th>Podatek:</th>
@@ -19,7 +19,7 @@
     </tr>
     <tr>
       <th>Kwota do zapłaty (Brutto):</th>
-      <td>{{ kwota * 1.23 }}zł</td>
+      <td>{{ Number(kwota * 1.23).toFixed(2) }}zł</td>
     </tr>
 
     <tr>

@@ -22,6 +22,8 @@
     </td>
     <td>{{ obj.dataUtworzenia | date : 'dd.MM.yyyy  HH:mm' }}</td>
     <td>{{ liczba(obj.kwota) / 100 }}zł</td>
+    @if (obj.probyPlatnosci && obj.probyPlatnosci.length) {
+
     <ng-container [ngSwitch]="obj.probyPlatnosci[obj.probyPlatnosci.length - 1].status">
       <td *ngSwitchCase="'NEW'" class="statusyPlatnosci" style="color: #005200">Nowa</td>
       <td *ngSwitchCase="'CONFIRMED'" class="statusyPlatnosci" style="color: green">Zatwierdzona</td>
@@ -31,6 +33,7 @@
       <td *ngSwitchCase="'ABANDONED'" class="statusyPlatnosci" style="color: #0010c5">Opuszczona</td>
       <td *ngSwitchCase="'REJECTED'" class="statusyPlatnosci" style="color: #000000">Odrzucona</td>
     </ng-container>
+    }
 
     <td>
       <button (click)="zamknijWszystkie()" *ngIf="obj.czyRozwiniete" class="przyciskRozwijania zwin">Zwiń</button>
@@ -40,11 +43,13 @@
         class="przyciskRozwijania">
         Rozwiń
       </button>
+      @if (obj.probyPlatnosci && obj.probyPlatnosci.length) {
       <button
         (click)="otworzPlatnosc(obj.linkDoPlatnosci)"
         *ngIf="obj.probyPlatnosci[obj.probyPlatnosci.length - 1].status == 'NEW' && obj.linkDoPlatnosci != undefined">
         Opłać ponownie
       </button>
+      }
     </td>
   </ng-template>
 
