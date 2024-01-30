@@ -11,6 +11,7 @@ export class NapiszNam {
   public pustaTresc: boolean = false;
   public komuWyslacPuste: boolean = false;
   public czyWszystkoUzupelnione: boolean = true;
+  touched = false;
 
   public czyWszystkoUzupelnioneFunkcja() {
     this.pusteImie = false;
@@ -45,17 +46,17 @@ export class NapiszNam {
 }
 
 export class NapiszNamDto {
-  public imie: string = '';
-  public nazwisko: string = '';
-  public adresEmail: string = '';
-  public wiadomosc: string = '';
+  public name: string = '';
+  public surname: string = '';
+  public email: string = '';
+  public message: string = '';
   public komuWyslac: string = '';
 
   constructor(napiszNamKlasa: NapiszNam) {
-    this.imie = napiszNamKlasa.imie;
-    this.nazwisko = napiszNamKlasa.nazwisko;
-    this.adresEmail = napiszNamKlasa.adresEmail;
-    this.wiadomosc = napiszNamKlasa.wiadomosc;
+    this.name = napiszNamKlasa.imie;
+    this.surname = napiszNamKlasa.nazwisko;
+    this.email = napiszNamKlasa.adresEmail;
+    this.message = napiszNamKlasa.wiadomosc;
     this.komuWyslac = napiszNamKlasa.komuWyslac;
   }
 }

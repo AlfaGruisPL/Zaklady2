@@ -17,6 +17,7 @@ export class OknoPlatnosciComponent {
   public kwota = 50;
   public regulamin = false;
   protected readonly environment = environment;
+  protected readonly Number = Number;
 
   constructor(
     public activeModal: NgbActiveModal,

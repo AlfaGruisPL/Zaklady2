@@ -82,6 +82,6 @@ export class usluga {
   public id: number = 0;
   public title: string = '';
   public price: string = '';
-  public workers: Array<number> = [];
+  public employees: Array<number> = [];
   public wybrane = false;
 }

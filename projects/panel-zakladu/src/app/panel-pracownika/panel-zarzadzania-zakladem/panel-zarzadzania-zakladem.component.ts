@@ -24,11 +24,7 @@ export class PanelZarzadzaniaZaklademComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.godzinaInterval = setInterval(() => {
       this.godzina = new Date();
-      /* const element = document.getElementById("trescPaneluAdministratoraID");
-       if (element) {
-         this.height = element.scrollTop;
-       }*/
-    }, 180);
+    }, 1000);
     this.DanePodreczne.pobierajaca();
     this.DanePodreczne.ustawZmienneTypuUzytkownika();
   }

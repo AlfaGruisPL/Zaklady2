@@ -10,6 +10,7 @@ import { dzien } from '../../../../../klasy/panelPracownika/mojZaklad/moj-zaklad
   styleUrl: './day-opening-hours.component.scss',
 })
 export class DayOpeningHoursComponent {
+  @Input({ required: true }) dayName!: string;
   @Input({ required: true }) dzien!: dzien;
   @Output() dzienChange = new EventEmitter();
 

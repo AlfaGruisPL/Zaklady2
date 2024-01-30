@@ -2,10 +2,6 @@
   <div class="naglowekZolty">
     <span class="naglowek1Wzoltym">Uzupełnij formularz danymi o swoim zakładzie </span>
     <span class="naglowek1Wzoltym2"> * oznacza że pole jest zalecane do uzupełnienia </span>
-
-    <span class="naglowek1Wzoltym2">
-      Publiczne/prywatne - służy do określenia, jakie dane mają być wyświetlane na stronie reprezentacyjnej
-    </span>
   </div>
   <form (ngSubmit)="zapisz()">
     <div class="containerMojZaklad">
@@ -219,13 +215,41 @@
           <tr>
             <td class="naglowki1form" colspan="3">Ustaw godziny otwarcia i zamknięcia w robocze dni</td>
           </tr>
-          <tr [(dzien)]="mojZakladKlasa.niedziela" [(zapiszButton)]="zapiszButton" app-day-opening-hours></tr>
-          <tr [(dzien)]="mojZakladKlasa.poniedzialek" [(zapiszButton)]="zapiszButton" app-day-opening-hours></tr>
-          <tr [(dzien)]="mojZakladKlasa.wtorek" [(zapiszButton)]="zapiszButton" app-day-opening-hours></tr>
-          <tr [(dzien)]="mojZakladKlasa.sroda" [(zapiszButton)]="zapiszButton" app-day-opening-hours></tr>
-          <tr [(dzien)]="mojZakladKlasa.czwartek" [(zapiszButton)]="zapiszButton" app-day-opening-hours></tr>
-          <tr [(dzien)]="mojZakladKlasa.piatek" [(zapiszButton)]="zapiszButton" app-day-opening-hours></tr>
-          <tr [(dzien)]="mojZakladKlasa.sobota" [(zapiszButton)]="zapiszButton" app-day-opening-hours></tr>
+          <tr
+            [(dzien)]="mojZakladKlasa.niedziela"
+            [(zapiszButton)]="zapiszButton"
+            [dayName]="'Niedziela'"
+            app-day-opening-hours></tr>
+          <tr
+            [(dzien)]="mojZakladKlasa.poniedzialek"
+            [(zapiszButton)]="zapiszButton"
+            [dayName]="'Poniedziałek'"
+            app-day-opening-hours></tr>
+          <tr
+            [(dzien)]="mojZakladKlasa.wtorek"
+            [(zapiszButton)]="zapiszButton"
+            [dayName]="'Wtorek'"
+            app-day-opening-hours></tr>
+          <tr
+            [(dzien)]="mojZakladKlasa.sroda"
+            [(zapiszButton)]="zapiszButton"
+            [dayName]="'Środa'"
+            app-day-opening-hours></tr>
+          <tr
+            [(dzien)]="mojZakladKlasa.czwartek"
+            [(zapiszButton)]="zapiszButton"
+            [dayName]="'Czwartek'"
+            app-day-opening-hours></tr>
+          <tr
+            [(dzien)]="mojZakladKlasa.piatek"
+            [(zapiszButton)]="zapiszButton"
+            [dayName]="'Piątek'"
+            app-day-opening-hours></tr>
+          <tr
+            [(dzien)]="mojZakladKlasa.sobota"
+            [(zapiszButton)]="zapiszButton"
+            [dayName]="'Sobota'"
+            app-day-opening-hours></tr>
         </table>
       </div>
       <div class="tabela3">
@@ -312,12 +336,6 @@
       <div class="tabela6">
         <table class="tableBorder">
           <tr>
-            <td class="naglowki2form">
-              <label> Cennik usług</label>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
             <th>Możliwość płatności kartą</th>
             <td></td>
             <td>
@@ -363,15 +381,13 @@
     <div class="divNaPrzycisk">
       <button
         (click)="zapisz()"
-        *ngIf="zapiszButton == true"
+        *ngIf="zapiszButton"
         [disabled]="zablokowanyPrzycisk"
         class="zmodyfikujZapiszButton"
         type="submit">
         Zapisz
       </button>
-      <button (click)="zmodyfikujFunkcja()" *ngIf="zmodyfikuj == true" class="zmodyfikujZapiszButton">
-        Zmodyfikuj
-      </button>
+      <button (click)="zmodyfikujFunkcja()" *ngIf="zmodyfikuj" class="zmodyfikujZapiszButton">Zmodyfikuj</button>
     </div>
   </form>
 </div>

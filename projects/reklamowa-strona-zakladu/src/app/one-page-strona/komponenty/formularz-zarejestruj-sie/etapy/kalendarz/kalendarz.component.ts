@@ -32,7 +32,10 @@ export class KalendarzComponent implements OnInit {
   dataKursor = new Date();
   protected readonly Math = Math;
 
-  constructor(public ZarejestrujSie: ZarejestrujSieService, public danePodstawowe: DanePodstawoweService) {}
+  constructor(
+    public ZarejestrujSie: ZarejestrujSieService,
+    public danePodstawowe: DanePodstawoweService
+  ) {}
 
   public czyPracuje(dzien: number) {
     switch (dzien) {
@@ -105,9 +108,9 @@ export class KalendarzComponent implements OnInit {
 
   terminyNaDzien(data: DzienTygodnia): Array<any> {
     const tablica = this.ZarejestrujSie.DaneKlientaClass.wszystkieTerminy.filter(usluga => {
-      if (usluga.poczatek.getDate() == data.data.getDate()) {
-        if (usluga.poczatek.getFullYear() == data.data.getFullYear()) {
-          if (usluga.poczatek.getMonth() == data.data.getMonth()) {
+      if (usluga.start.getDate() == data.data.getDate()) {
+        if (usluga.start.getFullYear() == data.data.getFullYear()) {
+          if (usluga.start.getMonth() == data.data.getMonth()) {
             return true;
           }
         }

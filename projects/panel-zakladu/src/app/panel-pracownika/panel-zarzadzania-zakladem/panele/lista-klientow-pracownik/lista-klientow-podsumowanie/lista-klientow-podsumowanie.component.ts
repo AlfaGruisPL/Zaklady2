@@ -9,11 +9,14 @@ import {
   faPlusMinus,
   faUsersBetweenLines,
 } from '@fortawesome/free-solid-svg-icons';
+import { InformationDivForScheduleComponent } from '../../harmonogram-pracownika/harmonogram-podsumowanie-administratora/information-div-for-schedule/information-div-for-schedule.component';
 
 @Component({
   selector: 'app-lista-klientow-podsumowanie',
+  standalone: true,
   templateUrl: './lista-klientow-podsumowanie.component.html',
   styleUrls: ['./lista-klientow-podsumowanie.component.scss'],
+  imports: [InformationDivForScheduleComponent],
 })
 export class ListaKlientowPodsumowanieComponent {
   protected readonly faCalculator = faCalculator;

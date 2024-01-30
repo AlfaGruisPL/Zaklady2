@@ -13,6 +13,13 @@
     <app-ngx-editor [(value)]="rPD_.footer.shortDescription" [maxLength]="2000" [saveTools]="true"></app-ngx-editor>
   </ng-template>
 </app-template-setting>
+<h4 class="settingsSubTitle">Godziny otwarcia:</h4>
+<app-template-setting>
+  <ng-template TemplateId="label">Tytuł panelu:</ng-template>
+  <ng-template TemplateId="setting">
+    <input [(ngModel)]="rPD_.footer.openingHours.title" />
+  </ng-template>
+</app-template-setting>
 <h4 class="settingsSubTitle">Panel kontaktu:</h4>
 <app-template-setting>
   <ng-template TemplateId="label">Tytuł panelu:</ng-template>

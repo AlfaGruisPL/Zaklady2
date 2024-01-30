@@ -5,6 +5,7 @@ import { Drzwi } from '../../../enum/drzwi';
 import { Pracownik } from '../../../klasy/pracownik';
 import { NapiszNamService } from './napisz-nam.service';
 import { FaIconsService } from '../../../serwisy/fa-icons.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-napisz-nam',
@@ -18,8 +19,14 @@ export class NapiszNamComponent implements OnInit {
   public wiadomoscNieWyslana: boolean = false;
   public aktywnyPrzycisk: boolean = false;
   public emailPrawidlowy: boolean = true;
+  captcha: null | string = null;
+  protected readonly env = environment;
 
-  constructor(public listonosz: ListonoszService, public napiszNam: NapiszNamService, public faIcons: FaIconsService) {}
+  constructor(
+    public listonosz: ListonoszService,
+    public napiszNam: NapiszNamService,
+    public faIcons: FaIconsService
+  ) {}
 
   ngOnInit() {}
 
@@ -49,6 +56,10 @@ export class NapiszNamComponent implements OnInit {
   }
 
   public czyEmailPrawidlowy_() {}
+
+  resolved(value: string | null) {
+    this.captcha = value;
+  }
 
   public reset() {
     this.wiadomoscNieWyslana = false;

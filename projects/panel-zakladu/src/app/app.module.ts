@@ -30,7 +30,7 @@ import { UslugiPracownikaComponent } from './panel-pracownika/panel-zarzadzania-
 import { UslugiPrzypisaniPracownicyComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/service/uslugi-przypisani-pracownicy/uslugi-przypisani-pracownicy.component';
 import { RejestracjaUdanaComponent } from './panel-pracownika/poczatkowy-panel-pracownika/rejestracja-zakladu/rejestracja-udana/rejestracja-udana.component';
 import { RureczkiModule } from './rureczki/rureczki.module';
-import { ListaKlientowModule } from './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/lista-klientow.module';
+
 import { SharedModule } from './shared.module';
 import { KalendarzKomponentModule } from './panel-pracownika/panel-zarzadzania-zakladem/kalendarz-komponent/kalendarz-komponent.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -89,7 +89,6 @@ registerLocaleData(localePl, 'pl-PL');
     AppRoutingModule,
     FormsModule,
     KalendarzKomponentModule,
-    ListaKlientowModule,
     HttpClientModule,
     RureczkiModule,
     ToastrModule.forRoot({ closeButton: true }),

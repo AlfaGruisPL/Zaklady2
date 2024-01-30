@@ -10,22 +10,9 @@
   width: 100%;
   flex-grow: 100;
   overflow: auto;
-  // height: calc(100dvh - 49px - 7px);
-  @media (max-width: 1500px) {
-    //height: calc(100dvh - 49px - 7px - 31px);
-  }
-  @media (max-width: 500px) {
-    // height: calc(100dvh - 49px - 7px - 27px);
-  }
   float: left;
   border-bottom: 1px solid rgba(0, 0, 0, 0.55);
-  //border-top: 1px solid #000;
   display: flex;
-  @media (max-width: 1500px) {
-    .menu {
-      display: none;
-    }
-  }
 
   .menu {
     width: 220px;
@@ -36,6 +23,9 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    @media (max-width: 1500px) {
+      display: none;
+    }
 
     .tutulStrony {
       position: absolute;
