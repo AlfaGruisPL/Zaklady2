@@ -227,3 +227,14 @@
   margin-right: 10px;
   filter: drop-shadow(0px 0px 1px #686868);
 }
+
+.recaptcha {
+  margin: 4px 0 3px 15px;
+
+  ::ng-deep {
+    .rc-anchor-light.rc-anchor-normal,
+    .rc-anchor-light.rc-anchor-compact {
+      border: 3px solid red;
+    }
+  }
+}

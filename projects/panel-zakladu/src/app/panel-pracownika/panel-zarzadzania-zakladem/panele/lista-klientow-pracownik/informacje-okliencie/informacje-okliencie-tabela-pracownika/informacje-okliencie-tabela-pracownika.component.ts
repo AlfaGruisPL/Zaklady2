@@ -29,6 +29,7 @@ export class InformacjeOKliencieTabelaPracownikaComponent {
   @Input() klient: Klient = new Klient({});
   public page = 1;
   public pageSize = 5;
+  @Input() employee: string = '';
   protected readonly eval = eval;
 
   sort(data: Wizyta[]) {

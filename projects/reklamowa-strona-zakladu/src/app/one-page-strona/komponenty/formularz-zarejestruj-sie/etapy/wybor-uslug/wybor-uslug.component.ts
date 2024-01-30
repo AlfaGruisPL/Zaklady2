@@ -14,7 +14,10 @@ export class WyborUslugComponent implements OnInit {
   strona: number = 0;
   max = 14;
 
-  constructor(public danePodstawowe: DanePodstawoweService, public zarejestrujSie_: ZarejestrujSieService) {}
+  constructor(
+    public danePodstawowe: DanePodstawoweService,
+    public zarejestrujSie_: ZarejestrujSieService
+  ) {}
 
   ngOnInit() {}
 
@@ -42,11 +45,12 @@ export class WyborUslugComponent implements OnInit {
   }
 
   czyWykonuje(usluga: usluga) {
-    if (usluga.workers == undefined) {
+    if (usluga.employees == undefined) {
       console.log('Błąd tablicy pracownikow w usludze');
     }
+
     return (
-      usluga.workers.find(id => {
+      usluga.employees.find(id => {
         return id == this.zarejestrujSie_.DaneKlientaClass.wybranyPracownik;
       }) != undefined
     );

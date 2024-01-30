@@ -16,7 +16,7 @@
 
   <div class="formularz" data-aos="fade-left" data-aos-delay="50" data-aos-once="true">
     <form>
-      <table class="formularzTab">
+      <table (keydown)="napiszNam.napiszNamObj.touched = true" class="formularzTab">
         <tr>
           <td colspan="2">
             <span class="zostawWiadomosc">Wybierz komu chcesz wysłać wiadomość</span>
@@ -88,8 +88,13 @@
       <div class="divNaPrzycisk">
         <button (click)="reset()" [disabled]="aktywnyPrzycisk" class="buttonReset" type="reset">Reset</button>
 
-        <button (click)="wyslij()" [disabled]="aktywnyPrzycisk" class="buttonWyslij" type="submit">Wyślij</button>
+        <button (click)="wyslij()" [disabled]="aktywnyPrzycisk || captcha == null" class="buttonWyslij" type="submit">
+          Wyślij
+        </button>
       </div>
+      @if (napiszNam.napiszNamObj.touched) {
+        <re-captcha (resolved)="resolved($event)" [siteKey]="env.googleCaptchaKey" class="recaptcha"></re-captcha>
+      }
       <div class="divNaKomunikaty">
         <span *ngIf="!napiszNam.napiszNamObj.czyWszystkoUzupelnione" class="czerwone">Uzupełnij wszystkie pola</span>
 

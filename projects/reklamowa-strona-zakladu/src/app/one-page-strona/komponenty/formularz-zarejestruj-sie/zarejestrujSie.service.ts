@@ -28,8 +28,8 @@ export class ZarejestrujSieService {
         this.DaneKlientaClass.wszystkieTerminy = [];
         odpowiedz.forEach(termin_ => {
           const terminOBJ = new Termin();
-          terminOBJ.poczatek = new Date(termin_.poczatek);
-          terminOBJ.koniec = new Date(termin_.koniec);
+          terminOBJ.start = new Date(termin_.start);
+          terminOBJ.end = new Date(termin_.end);
           this.DaneKlientaClass.wszystkieTerminy.push(terminOBJ);
         });
       })

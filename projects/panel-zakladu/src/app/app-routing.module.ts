@@ -6,13 +6,12 @@ import { PanelLogowaniaPracownikowComponent } from './panel-pracownika/poczatkow
 import { PanelZarzadzaniaZaklademComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panel-zarzadzania-zakladem.component';
 import { MojeKontoPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moje-konto-pracownika/moje-konto-pracownika.component';
 import { MojZakladPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/moj-zaklad-pracownika/moj-zaklad-pracownika.component';
-import { RejestracjaZakladuComponent } from './panel-pracownika/poczatkowy-panel-pracownika/rejestracja-zakladu/rejestracja-zakladu.component';
-import { ListaKlientowPracownikComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/lista-klientow-pracownik.component';
 import { UslugaSmsPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/usluga-sms-pracownika/usluga-sms-pracownika.component';
 import { UslugiPracownikaComponent } from './panel-pracownika/panel-zarzadzania-zakladem/panele/uslugi/uslugi.component';
 import { ZalogowanyGuard } from './straznicy/zalogowany.guard';
 import { reverseLoginGuard } from './straznicy/reverse-login.guard';
 import { RegisterCompleteComponent } from './panel-pracownika/poczatkowy-panel-pracownika/rejestracja-zakladu/register-complete/register-complete.component';
+import { RejestracjaZakladuComponent } from './panel-pracownika/poczatkowy-panel-pracownika/rejestracja-zakladu/rejestracja-zakladu.component';
 
 const zakladDzieci: Routes = [
   {
@@ -111,7 +110,15 @@ const panelePracownika: Routes = [
   },
   {
     path: 'listaKlientow',
-    component: ListaKlientowPracownikComponent,
+    redirectTo: 'customers',
+    pathMatch: 'full',
+  },
+  {
+    path: 'customers',
+    loadChildren: () =>
+      import(
+        './panel-pracownika/panel-zarzadzania-zakladem/panele/lista-klientow-pracownik/customers-router.module'
+      ).then(k => k.CustomersRouterModule),
   },
   {
     path: '**',

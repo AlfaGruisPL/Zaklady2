@@ -121,8 +121,8 @@ export class DaneKlientaDTO {
     this.reCaptcha = daneKlienta.capcha;
     const k = daneKlienta.wybranyTermin;
     if (k) {
-      this.selectedDate.start = k.poczatek;
-      this.selectedDate.end = k.koniec;
+      this.selectedDate.start = k.start;
+      this.selectedDate.end = k.end;
     }
     daneKlienta.uslugi.forEach(usluga => {
       if (usluga.wybrane) {

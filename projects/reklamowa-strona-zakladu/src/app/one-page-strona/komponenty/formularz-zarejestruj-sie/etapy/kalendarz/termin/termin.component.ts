@@ -20,13 +20,13 @@ export class TerminComponent implements OnInit {
 
     //this.termin = this.zarejestrujSie_.DaneKlientaClass.wybranyTermin
     //  }
-    const poczatek = this.termin.poczatek.getHours();
-    const koniec = this.termin.koniec.getHours();
-    const roznica = poczatek + this.termin.poczatek.getMinutes() / 60 - this.godzinaRozpoczecia;
+    const poczatek = this.termin.start.getHours();
+    const koniec = this.termin.end.getHours();
+    const roznica = poczatek + this.termin.start.getMinutes() / 60 - this.godzinaRozpoczecia;
 
     this.top = roznica * 26.9 + 'px';
     this.wysokosc =
-      (koniec + this.termin.koniec.getMinutes() / 60 - (poczatek + this.termin.poczatek.getMinutes() / 60)) * 27;
+      (koniec + this.termin.end.getMinutes() / 60 - (poczatek + this.termin.start.getMinutes() / 60)) * 27;
   }
 
   wybierzTermin() {

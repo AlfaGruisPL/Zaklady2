@@ -1,5 +1,4 @@
 <app-table
-  -
   [async]="false"
   [collectionSize]="klient.wizyty.length"
   [data]="klient.wizyty"
@@ -7,20 +6,19 @@
   [search]="false"
   [subTableOpenVariable]="'uslugiTabela'"
   [subTableVariable]="'uslugiArray'"
-  [title]="'Wizyty u pracownika:'">
+  [title]="'Wizyty u pracownika: (' + employee + ')'">
   <ng-template TemplateId="thead">
     <th class="NotInMobile">Nr.</th>
     <th>Data</th>
     <th>Utworzenie</th>
     <th>Wykonanie</th>
     <th>Kwota</th>
-    <th>Wykonawca</th>
     <th>Zarządzanie</th>
   </ng-template>
 
   <ng-template TemplateId="tbody" let-index="index" let-obj>
     <td class="NotInMobile">{{ index }}</td>
-    <td>{{ obj.poczatek | date : 'dd.MM.yyyy      hh:mm/' }}{{ obj.koniec | date : 'hh:mm' }}</td>
+    <td>{{ obj.poczatek | date: 'dd.MM.yyyy      hh:mm/' }}{{ obj.koniec | date: 'hh:mm' }}</td>
 
     <td>
       <ng-container *ngIf="obj.tryb == 'reklamowa'">Strona reklamowa</ng-container>
@@ -30,7 +28,7 @@
       <app-completed-visit-status [visit]="obj"></app-completed-visit-status>
     </td>
     <td>{{ obj.cena }}zł</td>
-    <td>{{ obj.pracownik.imie + '  ' + obj.pracownik.nazwisko }}</td>
+
     <td>
       <button (click)="wyswietlDaneDodatkowe(obj)" *ngIf="obj.tryb !== 'manual'" class="domyslnyButton3">Usługi</button>
       <button (click)="wyswietlDaneDodatkowe(obj)" *ngIf="obj.tryb == 'manual'" class="domyslnyButton3">Opis</button>

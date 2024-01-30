@@ -1,7 +1,4 @@
-<div class="modal-header">
-  <h4 class="modal-title">Lista wizyt klienta:</h4>
-  <button (click)="activeModal.close('Nie')" aria-label="Close" class="btn-close" type="button"></button>
-</div>
+<app-back-arrow />
 <div class="modal-body">
   <div class="top">
     <h6>Dane klienta:</h6>
@@ -22,18 +19,16 @@
     <table class="informacjeOKliencie">
       <tr>
         <th>Pierwsza wizyta</th>
-        <td>{{ pierwszaWizyta() | date : 'dd.MM.yyyy' }}</td>
+        <td>{{ pierwszaWizyta() | date: 'dd.MM.yyyy' }}</td>
       </tr>
       <tr>
         <th>Ostatnia wizyta</th>
-        <td>{{ ostatniaWizyta() | date : 'dd.MM.yyyy' }}</td>
+        <td>{{ ostatniaWizyta() | date: 'dd.MM.yyyy' }}</td>
       </tr>
     </table>
   </div>
-  <app-informacje-okliencie-tabela-pracownika [klient]="klient"></app-informacje-okliencie-tabela-pracownika>
+  <app-informacje-okliencie-tabela-pracownika
+    [employee]="employeeName"
+    [klient]="klient"></app-informacje-okliencie-tabela-pracownika>
   <app-informacje-okliencie-tabela-zakladu [klient]="klient"></app-informacje-okliencie-tabela-zakladu>
-</div>
-
-<div class="modal-footer">
-  <button (click)="activeModal.close('Nie')" class="domyslnyButton3">Wyjdź</button>
 </div>

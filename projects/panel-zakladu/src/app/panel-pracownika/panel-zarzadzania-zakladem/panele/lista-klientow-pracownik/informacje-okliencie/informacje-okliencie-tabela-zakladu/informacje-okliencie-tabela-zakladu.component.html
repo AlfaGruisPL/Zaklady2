@@ -18,7 +18,7 @@
 
   <ng-template TemplateId="tbody" let-index="index" let-obj>
     <td class="NotInMobile">{{ index }}</td>
-    <td>{{ obj.poczatek | date : 'dd.MM.yyyy      hh:mm/' }}{{ obj.koniec | date : 'hh:mm' }}</td>
+    <td>{{ obj.poczatek | date: 'dd.MM.yyyy      hh:mm/' }}{{ obj.koniec | date: 'hh:mm' }}</td>
     <td>
       <ng-container *ngIf="obj.tryb == 'reklamowa'">Strona reklamowa</ng-container>
       <ng-container *ngIf="obj.tryb != 'reklamowa'">Ręczne</ng-container>
@@ -28,7 +28,7 @@
     </td>
     <td>{{ obj.cena }}zł</td>
 
-    <td>{{ obj.pracownik.imie + '  ' + obj.pracownik.nazwisko }}</td>
+    <td>{{ obj.pracownik.firstname + '  ' + obj.pracownik.lastname }}</td>
     <td>
       <button (click)="wyswietlDaneDodatkowe(obj)" *ngIf="obj.tryb !== 'manual'" class="domyslnyButton3">Usługi</button>
       <button (click)="wyswietlDaneDodatkowe(obj)" *ngIf="obj.tryb == 'manual'" class="domyslnyButton3">Opis</button>

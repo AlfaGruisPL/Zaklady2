@@ -2,6 +2,7 @@ import { Wizyta } from '../panelPracownika/wizyta';
 
 export class Klient {
   numer = 0;
+  id = 0;
   firstName = '';
   lastName = '';
   phone = '';

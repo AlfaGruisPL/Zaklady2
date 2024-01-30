@@ -1,5 +1,4 @@
 export class Termin {
-  poczatek: Date = new Date()
-  koniec: Date = new Date()
-
+  start: Date = new Date();
+  end: Date = new Date();
 }

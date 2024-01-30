@@ -61,8 +61,8 @@ export class FormularzZarejestrujSieComponent implements OnInit {
     this.zarejestrujSieService.DaneKlientaClass.niepoprawnyKod = false;
     this.zarejestrujSieService.butonDisabled_weryfikacjaKodu = true;
     const kodDTO = {
-      kod: this.zarejestrujSieService.DaneKlientaClass.kodWeryfikacja,
-      identyfikator: this.zarejestrujSieService.DaneKlientaClass.identyfikator,
+      veryficationCode: this.zarejestrujSieService.DaneKlientaClass.kodWeryfikacja,
+      veryficationId: this.zarejestrujSieService.DaneKlientaClass.identyfikator,
     };
     this.listonosz
       .wyslij(Drzwi.kodWeryfikacyjnyIdentyfikator, kodDTO)
