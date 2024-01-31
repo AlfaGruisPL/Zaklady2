@@ -45,6 +45,10 @@ const panelePracownika: Routes = [
   },
   {
     path: 'zarejestrowaneWizyty',
+    redirectTo: 'registeredVisits',
+  },
+  {
+    path: 'registeredVisits',
     loadChildren: () =>
       import(
         './panel-pracownika/panel-zarzadzania-zakladem/panele/zarejestrowane-wizyty-pracownika/zarejestrowane-wizyty.module'
@@ -59,6 +63,10 @@ const panelePracownika: Routes = [
   },
   {
     path: 'zarzadzaniePracownikami',
+    redirectTo: 'employeeManagement',
+  },
+  {
+    path: 'employeeManagement',
     loadChildren: () =>
       import('./panel-pracownika/panel-zarzadzania-zakladem/panele/employees/employees-router.module').then(
         k => k.routes
@@ -66,6 +74,10 @@ const panelePracownika: Routes = [
   },
   {
     path: 'podsumowanie',
+    redirectTo: 'summary',
+  },
+  {
+    path: 'summary',
     loadChildren: () =>
       import('./panel-pracownika/panel-zarzadzania-zakladem/panele/podsumowanie/podsumowanie-router.module').then(
         k => k.routes
@@ -135,6 +147,10 @@ const routes: Routes = [
   },
   {
     path: 'panelPracownika',
+    redirectTo: 'panel',
+  },
+  {
+    path: 'panel',
     component: PanelZarzadzaniaZaklademComponent,
     children: panelePracownika,
     canActivate: [ZalogowanyGuard],
